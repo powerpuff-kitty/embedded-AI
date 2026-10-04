@@ -1,0 +1,15 @@
+id: ds-cnn-kws-24k
+name: DS-CNN KWS 24k
+domain: audio
+tasks: [keyword-spotting]
+class: tinyml
+description: ""
+links: { repository: "https://github.com/prarabdhmisra/edge-tinyml", model: null, paper: null, homepage: null }
+model: { parameters: 24000, file_size_mb: 0.045, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/prarabdhmisra/edge-tinyml", notes: "Primary project source." }]
+tags: [tinyml, int8]
