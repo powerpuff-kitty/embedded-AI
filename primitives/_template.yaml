@@ -1,0 +1,11 @@
+# Intelligence primitive template
+
+id:
+name:
+category: planning | optimization | state-estimation | sensor-fusion | tracking | control
+learned: false
+description:
+inputs: []
+outputs: []
+implementations: []
+embedded_notes:
