@@ -1,0 +1,15 @@
+id: ti-tinyml-modelzoo
+name: TI TinyML Model Zoo
+domain: sensors
+tasks: [time-series-classification, forecasting, anomaly-detection, audio-classification, image-classification, radar-classification]
+class: model-collection
+description: ""
+links: { repository: "https://github.com/TexasInstruments/tinyml-modelzoo", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/TexasInstruments/tinyml-modelzoo", notes: "Primary project/model source; verify deployment metrics separately." }]
+tags: [tinyml, sensors, radar]
