@@ -1,0 +1,15 @@
+id: example-model
+name: Example Model
+domain: vision
+tasks: [object-detection]
+class: small-specialized-model
+description: ""
+links: { repository: null, model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: null, targets: [], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: []
+tags: []
