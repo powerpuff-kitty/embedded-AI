@@ -1,0 +1,4 @@
+import fs from "node:fs/promises"; import fg from "fast-glob"; import YAML from "yaml";
+const paths=await fg("catalog/**/*.yaml",{ignore:["catalog/_template.yaml"]}); const rows=[];
+for(const path of paths){const m=YAML.parse(await fs.readFile(path,"utf8")); rows.push({id:m.id,name:m.name,domain:m.domain,tasks:m.tasks,class:m.class,parameters:m.model?.parameters,file_size_mb:m.model?.file_size_mb,path});}
+rows.sort((a,b)=>a.domain.localeCompare(b.domain)||a.name.localeCompare(b.name)); await fs.mkdir("generated",{recursive:true}); await fs.writeFile("generated/catalog.json",JSON.stringify(rows,null,2)+"\n");
