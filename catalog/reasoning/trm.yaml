@@ -1,0 +1,15 @@
+id: tiny-recursive-model
+name: Tiny Recursive Model
+domain: reasoning
+tasks: [structured-reasoning]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/SamsungSAILMontreal/TinyRecursiveModels", model: null, paper: null, homepage: null }
+model: { parameters: 7000000, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/SamsungSAILMontreal/TinyRecursiveModels", notes: "Primary project source." }]
+tags: [reasoning, research]
