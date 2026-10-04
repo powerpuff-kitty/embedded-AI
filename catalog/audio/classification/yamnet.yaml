@@ -1,0 +1,15 @@
+id: yamnet
+name: YAMNet
+domain: audio
+tasks: [sound-classification]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet", model: null, paper: null, homepage: null }
+model: { parameters: 3700000, file_size_mb: null, architecture: null, precision: null }
+license: { code: Apache-2.0, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet", notes: "Primary project source." }]
+tags: [audio-events]
