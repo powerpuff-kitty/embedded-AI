@@ -1,0 +1,15 @@
+id: silero-vad
+name: Silero VAD
+domain: audio
+tasks: [voice-activity-detection]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/snakers4/silero-vad", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: 2, architecture: null, precision: null }
+license: { code: MIT, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/snakers4/silero-vad", notes: "Primary project source." }]
+tags: [vad, offline]
