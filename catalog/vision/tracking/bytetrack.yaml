@@ -1,0 +1,15 @@
+id: bytetrack
+name: ByteTrack
+domain: vision
+tasks: [multi-object-tracking]
+class: tracking-system
+description: ""
+links: { repository: "https://github.com/ifzhang/ByteTrack", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/ifzhang/ByteTrack", notes: "Primary project/model source; verify deployment metrics separately." }]
+tags: [tracking, detection]
