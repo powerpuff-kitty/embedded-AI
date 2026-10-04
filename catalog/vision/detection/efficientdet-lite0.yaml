@@ -1,0 +1,15 @@
+id: efficientdet-lite0
+name: EfficientDet-Lite0
+domain: vision
+tasks: [object-detection]
+class: small-specialized-model
+description: ""
+links: { repository: "https://www.tensorflow.org/lite/examples/object_detection/overview", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://www.tensorflow.org/lite/examples/object_detection/overview", notes: "Primary project/model source; verify deployment metrics separately." }]
+tags: [detection, tflite]
