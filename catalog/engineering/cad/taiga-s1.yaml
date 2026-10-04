@@ -1,0 +1,15 @@
+id: taiga-s1
+name: Taiga-S1
+domain: engineering
+tasks: [cad-action-selection]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/shhivv/taiga-s1", model: null, paper: null, homepage: null }
+model: { parameters: 1200000, file_size_mb: null, architecture: null, precision: null }
+license: { code: MIT, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/shhivv/taiga-s1", notes: "Primary project source." }]
+tags: [cad, action-selection]
