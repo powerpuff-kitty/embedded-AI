@@ -1,0 +1,4 @@
+id: esp32
+name: ESP32 family
+class: microcontroller
+notes: Record exact ESP32 variant in benchmarks.
