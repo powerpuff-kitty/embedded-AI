@@ -1,0 +1,6 @@
+id: luckfox-rv1106
+name: Rockchip RV1106 / Luckfox Pico family
+class: embedded-linux
+ram_mb: 256
+accelerators: [npu]
+notes: Exact RKNN compatibility must be evidenced per model.
