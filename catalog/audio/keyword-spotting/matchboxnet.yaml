@@ -1,0 +1,15 @@
+id: matchboxnet
+name: MatchboxNet
+domain: audio
+tasks: [keyword-spotting]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/NVIDIA/NeMo", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/NVIDIA/NeMo", notes: "Primary project/model source; verify deployment metrics separately." }]
+tags: [keyword-spotting, speech]
