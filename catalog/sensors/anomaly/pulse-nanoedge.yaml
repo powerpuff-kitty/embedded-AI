@@ -1,0 +1,15 @@
+id: pulse-nanoedge
+name: Pulse / NanoEdge vibration anomaly detector
+domain: sensors
+tasks: [vibration-anomaly-detection]
+class: tinyml
+description: ""
+links: { repository: "https://github.com/Ayushkothari96/pulse", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/Ayushkothari96/pulse", notes: "Primary project source." }]
+tags: [vibration, anomaly-detection, stm32]
