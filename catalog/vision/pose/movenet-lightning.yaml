@@ -1,0 +1,15 @@
+id: movenet-lightning
+name: MoveNet Lightning
+domain: vision
+tasks: [pose-estimation]
+class: small-specialized-model
+description: ""
+links: { repository: "https://www.tensorflow.org/hub/tutorials/movenet", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: 2.9, architecture: null, precision: null }
+license: { code: Apache-2.0, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://www.tensorflow.org/hub/tutorials/movenet", notes: "Primary project source." }]
+tags: [pose, mobile]
