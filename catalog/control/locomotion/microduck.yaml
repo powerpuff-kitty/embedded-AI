@@ -1,0 +1,15 @@
+id: microduck-locomotion
+name: MicroDuck locomotion policies
+domain: control
+tasks: [locomotion]
+class: reinforcement-learning-policy
+description: ""
+links: { repository: "https://github.com/jackyrx/NX_microduck", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge, robot], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/jackyrx/NX_microduck", notes: "Primary project source; deployment metrics require independent verification." }]
+tags: [locomotion, servo, robotics]
