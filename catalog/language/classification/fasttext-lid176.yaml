@@ -1,0 +1,15 @@
+id: fasttext-lid176
+name: fastText lid.176
+domain: language
+tasks: [language-identification]
+class: small-specialized-model
+description: ""
+links: { repository: "https://fasttext.cc/docs/en/language-identification.html", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: 0.917, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://fasttext.cc/docs/en/language-identification.html", notes: "Primary project source." }]
+tags: [language-id]
