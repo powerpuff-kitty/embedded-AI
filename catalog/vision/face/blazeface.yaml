@@ -1,0 +1,15 @@
+id: blazeface
+name: BlazeFace
+domain: vision
+tasks: [face-detection]
+class: small-specialized-model
+description: ""
+links: { repository: "https://github.com/google-ai-edge/mediapipe", model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
+license: { code: unknown, weights: unknown }
+deployment: { offline: true, targets: [edge], accelerators: [] }
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: [{ type: official, url: "https://github.com/google-ai-edge/mediapipe", notes: "Primary project/model source; verify deployment metrics separately." }]
+tags: [face-detection, mobile]
