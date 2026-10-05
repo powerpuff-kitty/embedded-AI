@@ -1,1 +1,10 @@
 node_modules/
+dist/
+.venv/
+.models/
+runs/
+__pycache__/
+*.pyc
+audit.json
+playwright-report/
+test-results/

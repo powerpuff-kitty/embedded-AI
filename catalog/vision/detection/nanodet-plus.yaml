@@ -1,15 +1,44 @@
 id: nanodet-plus
 name: NanoDet-Plus
+kind: model
 domain: vision
 tasks: [object-detection]
 class: small-specialized-model
-description: ""
-links: { repository: "https://github.com/RangiLyu/nanodet", model: null, paper: null, homepage: null }
-model: { parameters: 1170000, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: NanoDet-Plus-m-416 detector with the matching 416-pixel inference configuration.
+links:
+  repository: https://github.com/RangiLyu/nanodet
+  model: https://github.com/RangiLyu/nanodet#model-zoo
+model:
+  parameters: 1170000
+  file_size_mb: null
+  measurement_scope: 1.17M inference weights for Plus-m; approximately 2.3MB FP16 or 1.2MB INT8 are upstream reports, not measured here.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [ncnn, MNN, openvino]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://github.com/RangiLyu/nanodet", notes: "Primary project/model source; verify deployment metrics separately." }]
+evidence:
+  - {type: official, url: 'https://github.com/RangiLyu/nanodet', notes: 'Model zoo differentiates original NanoDet-m and NanoDet-Plus-m.'}
 tags: [detection, mobile]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published detector weights; custom categories require suitable labelled training data.
+  needs_data: RGB images with the selected 416x416 preprocessing.
+  update_strategy: Pin checkpoint, configuration and conversion; compare accuracy after export.
+data:
+  inputs: [RGB images at selected 416x416 preprocessing]
+  outputs: [COCO bounding boxes and class scores]
+  languages: []
+evaluation: [Report detection AP and target end-to-end latency after conversion.]
+limitations:
+  - The README headline 980 KB refers to original NanoDet-m, not NanoDet-Plus-m.
+  - Legacy training dependencies need review; compact parameters do not establish NPU compatibility.
+review:
+  level: documentation
+  variant: NanoDet-Plus-m-416; config/nanodet-plus-m_416.yml
+  artifact_reference: https://github.com/RangiLyu/nanodet#model-zoo
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Acquire the exact checkpoint, verify its terms and benchmark conversion on the device.

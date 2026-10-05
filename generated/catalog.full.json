@@ -772,23 +772,21 @@
     {
       "id": "yamnet",
       "name": "YAMNet",
+      "kind": "model",
       "domain": "audio",
       "tasks": [
         "sound-classification"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "AudioSet 521-class YAMNet with Keras 2 weights and explicit log-mel preprocessing.",
       "links": {
         "repository": "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://storage.googleapis.com/audioset/yamnet.h5"
       },
       "model": {
         "parameters": 3700000,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Approximately 3.7M weights; feature extraction and overlapping audio windows add runtime memory."
       },
       "license": {
         "code": "Apache-2.0",
@@ -801,7 +799,13 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "tensorflow",
+        "tf-keras"
+      ],
+      "formats": [
+        "hdf5"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -812,16 +816,47 @@
       "evidence": [
         {
           "type": "official",
-          "url": "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet",
-          "notes": "Primary project source."
+          "url": "https://github.com/tensorflow/models/blob/master/research/audioset/yamnet/README.md",
+          "notes": "Model artifact, input pipeline and Keras version warning."
         }
       ],
       "tags": [
         "audio-events"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained weights; task adaptation requires labelled audio.",
+        "needs_data": "16 kHz mono waveform transformed into 96x64 log-mel patches.",
+        "update_strategy": "Pin weights and Keras version; evaluate changes on representative recordings."
+      },
+      "data": {
+        "inputs": [
+          "16 kHz mono waveform; 96x64 log-mel patches"
+        ],
+        "outputs": [
+          "521 per-class scores",
+          "1024-dimensional audio embeddings"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Evaluate per-class precision/recall and false alerts in deployment audio."
+      ],
+      "limitations": [
+        "The reference Keras 2 implementation is incompatible with default Keras 3.",
+        "Fixed sound categories are not open-ended audio understanding; weights terms remain unreviewed."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "AudioSet YAMNet Keras 2 yamnet.h5",
+        "artifact_reference": "https://storage.googleapis.com/audioset/yamnet.h5",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Pin and hash the artifact before deployment; no board evidence inferred."
+      },
       "path": "catalog/audio/classification/yamnet.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "cactus-whistle",
@@ -881,27 +916,25 @@
     {
       "id": "silero-vad",
       "name": "Silero VAD",
+      "kind": "model",
       "domain": "audio",
       "tasks": [
         "voice-activity-detection"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Silero ONNX at commit 1e261b036686cd0017d500ee96acd1c4ba572a9d, with a local streaming reference adapter.",
       "links": {
         "repository": "https://github.com/snakers4/silero-vad",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx"
       },
       "model": {
         "parameters": null,
         "file_size_mb": 2,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Approximately 2 MB describes upstream JIT weights, not this ONNX file or process RAM."
       },
       "license": {
         "code": "MIT",
-        "weights": "unknown"
+        "weights": "MIT"
       },
       "deployment": {
         "offline": true,
@@ -910,7 +943,14 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "onnxruntime",
+        "pytorch"
+      ],
+      "formats": [
+        "onnx",
+        "jit"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -922,16 +962,48 @@
         {
           "type": "official",
           "url": "https://github.com/snakers4/silero-vad",
-          "notes": "Primary project source."
+          "notes": "Documentation review of variant, input/state contract and licence; not a board benchmark."
         }
       ],
       "tags": [
         "vad",
         "offline"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained weights; adapt only with documented data.",
+        "needs_data": "Mono waveform; reference recipe requires 16 kHz PCM16 WAV.",
+        "update_strategy": "Pin variant and artifact revision; rerun quality and workload tests before upgrading."
+      },
+      "data": {
+        "inputs": [
+          "Mono 16 kHz waveform in the reference recipe"
+        ],
+        "outputs": [
+          "Speech probability per 512 samples",
+          "Postprocessed intervals"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Measure miss/false-alarm rates and segmentation delay on representative noisy speech."
+      ],
+      "limitations": [
+        "Detects speech but does not transcribe or identify speakers.",
+        "Documentation review does not certify hardware compatibility or task quality."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "Silero ONNX at pinned upstream revision",
+        "revision": "1e261b036686cd0017d500ee96acd1c4ba572a9d",
+        "artifact_reference": "https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "See recipe acquisition receipts; hardware tests are separate."
+      },
       "path": "catalog/audio/vad/silero-vad.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "microwakeword",
@@ -2307,14 +2379,14 @@
     {
       "id": "finbert-prosus",
       "name": "FinBERT (ProsusAI)",
+      "kind": "model",
       "domain": "finance",
       "tasks": [
         "financial-sentiment-classification"
       ],
       "class": "text-encoder-classifier",
-      "kind": "model",
       "catalogue_batch": "business-2026-10-05",
-      "description": "BERT-based classifier of positive, negative and neutral sentiment in English financial text.",
+      "description": "BERT-based classifier for positive, negative and neutral sentiment in English financial text.",
       "links": {
         "repository": "https://github.com/ProsusAI/finBERT",
         "model": "https://huggingface.co/ProsusAI/finbert"
@@ -2322,12 +2394,12 @@
       "model": {
         "parameters": null,
         "file_size_mb": null,
-        "measurement_scope": "Exact checkpoint tensor count and resident memory have not been measured here."
+        "measurement_scope": "BERT-family desktop reference; exact file and parameter measurements remain unrecorded."
       },
       "license": {
         "code": "Apache-2.0",
         "weights": "unknown",
-        "notes": "Do not substitute the repository code license for an unestablished separate model-weight license."
+        "notes": "The code licence is not substituted for unestablished model-weight terms."
       },
       "deployment": {
         "offline": true,
@@ -2335,13 +2407,15 @@
           "desktop",
           "server"
         ],
-        "notes": "BERT-class desktop specialist, not a demonstrated tiny-MCU model."
+        "notes": "Not demonstrated on tiny MCUs."
       },
       "runtimes": [
-        "pytorch",
-        "transformers"
+        "transformers",
+        "pytorch"
       ],
-      "formats": [],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -2350,40 +2424,41 @@
       },
       "usage": {
         "mode": "pretrained",
-        "training": "optional-fine-tuning",
-        "needs_data": "Financial text; domain-labelled examples for evaluating or adapting sentiment.",
-        "update_strategy": "Monitor topic/language shift and calibrate thresholds on held-out text."
+        "training": "Published sentiment weights; domain adaptation requires representative labelled text.",
+        "needs_data": "English financial text and the matching tokenizer.",
+        "update_strategy": "Pin model and tokenizer; re-evaluate calibration on held-out text after changes."
       },
       "data": {
         "inputs": [
-          "english-financial-text"
+          "English financial text and matching tokenizer"
         ],
         "outputs": [
-          "positive-negative-neutral-scores"
+          "Positive",
+          "Negative",
+          "Neutral"
         ],
         "languages": [
           "en"
         ]
       },
       "evaluation": [
-        "Macro F1 and calibration on issuer/time-separated documents.",
-        "Avoid counting duplicated articles across training and testing."
+        "Class-balanced precision/recall and calibration on held-out financial text."
       ],
       "limitations": [
-        "Sentiment does not predict stock returns by itself.",
-        "Not a financial reasoning or advice model."
+        "Sentiment is not price prediction, financial advice or unrestricted financial reasoning.",
+        "Separate weights terms are unresolved in this review; no device measurement is inferred."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://huggingface.co/ProsusAI/finbert",
-          "notes": "English financial sentiment task and three output labels."
+          "notes": "Task and output labels."
         },
         {
           "type": "official",
           "url": "https://github.com/ProsusAI/finBERT",
-          "notes": "Code and repository licensing; weights assessed separately."
+          "notes": "Code terms; weights assessed separately."
         }
       ],
       "related": [
@@ -2396,6 +2471,14 @@
         "english",
         "desktop-reference"
       ],
+      "review": {
+        "level": "documentation",
+        "variant": "ProsusAI/finbert sentiment checkpoint; not other projects using the FinBERT name",
+        "artifact_reference": "https://huggingface.co/ProsusAI/finbert",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Clarify weight terms and acquire/hash the exact checkpoint before deployment."
+      },
       "path": "catalog/finance/sentiment/finbert.yaml",
       "usage_mode": "pretrained"
     },
@@ -3504,24 +3587,22 @@
     {
       "id": "all-minilm-l6-v2",
       "name": "all-MiniLM-L6-v2",
+      "kind": "model",
       "domain": "language",
       "tasks": [
         "embeddings",
         "semantic-search"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Sentence-transformers MiniLM encoder with mean pooling and normalization for sentence embeddings.",
       "links": {
         "repository": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
       },
       "model": {
         "parameters": 22700000,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Approximately 22.7M encoder weights; tokenization and vector indexes add memory."
       },
       "license": {
         "code": "Apache-2.0",
@@ -3534,7 +3615,14 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "sentence-transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -3546,40 +3634,70 @@
         {
           "type": "official",
           "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
-          "notes": "Primary project source."
+          "notes": "Encoder, pooling, truncation and model terms."
         }
       ],
       "tags": [
         "embeddings"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published weights; domain adaptation is optional and must be evaluated.",
+        "needs_data": "English sentences or short paragraphs.",
+        "update_strategy": "Pin tokenizer, model revision, pooling and normalization before indexing documents."
+      },
+      "data": {
+        "inputs": [
+          "English sentences or short paragraphs"
+        ],
+        "outputs": [
+          "384-dimensional sentence embeddings"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Measure retrieval recall and ranking on the intended corpus and language distribution."
+      ],
+      "limitations": [
+        "Default truncation is 256 wordpieces; preprocessing is part of the deployment.",
+        "Similarity is not a factual-answer score, and index memory is separate from model memory."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "sentence-transformers/all-MiniLM-L6-v2 with mean pooling and normalization",
+        "artifact_reference": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Pin and hash selected model/tokenizer files; no hardware result inferred."
+      },
       "path": "catalog/language/embeddings/all-minilm-l6-v2.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "fasttext-lid176",
       "name": "fastText lid.176",
+      "kind": "model",
       "domain": "language",
       "tasks": [
         "language-identification"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Compressed lid.176.ftz language classifier, distinct from the much larger uncompressed .bin artifact.",
       "links": {
         "repository": "https://fasttext.cc/docs/en/language-identification.html",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
       },
       "model": {
         "parameters": null,
         "file_size_mb": 0.917,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Publisher 917 kB compressed weights report; not process RAM or the uncompressed model."
       },
       "license": {
-        "code": "unknown",
-        "weights": "unknown"
+        "code": "MIT",
+        "weights": "CC-BY-SA-3.0"
       },
       "deployment": {
         "offline": true,
@@ -3588,7 +3706,13 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "fasttext-cpp",
+        "python"
+      ],
+      "formats": [
+        "fasttext-ftz"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -3600,15 +3724,48 @@
         {
           "type": "official",
           "url": "https://fasttext.cc/docs/en/language-identification.html",
-          "notes": "Primary project source."
+          "notes": "Compressed artifact, 176 languages and CC-BY-SA-3.0 model terms."
         }
       ],
       "tags": [
         "language-id"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published language-identification weights; custom classifier training is a separate task.",
+        "needs_data": "UTF-8 text.",
+        "update_strategy": "Pin compressed artifact and runtime; evaluate language confusion on actual documents."
+      },
+      "data": {
+        "inputs": [
+          "UTF-8 text"
+        ],
+        "outputs": [
+          "Language label among 176 languages and score"
+        ],
+        "languages": [
+          "multilingual-176"
+        ]
+      },
+      "evaluation": [
+        "Language confusion",
+        "unknown inputs and confidence calibration on the deployment corpus."
+      ],
+      "limitations": [
+        "Short and code-switched text is difficult; detection does not perform translation.",
+        "Original fastText repository is archived; model terms differ from the MIT code licence."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "Compressed lid.176.ftz; not uncompressed lid.176.bin",
+        "artifact_reference": "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Pin/hash the compressed artifact and verify runtime support on the target."
+      },
       "path": "catalog/language/classification/fasttext-lid176.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "cactus-needle3",
@@ -4368,23 +4525,21 @@
     {
       "id": "chronos-bolt-tiny",
       "name": "Chronos-Bolt Tiny",
+      "kind": "model",
       "domain": "time-series",
       "tasks": [
         "forecasting"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Amazon Chronos-Bolt Tiny for numerical multi-step quantile forecasts, not the larger Chronos families.",
       "links": {
         "repository": "https://huggingface.co/amazon/chronos-bolt-tiny",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://huggingface.co/amazon/chronos-bolt-tiny"
       },
       "model": {
         "parameters": 9000000,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Approximate 9M upstream model count; context, batching and runtime add memory."
       },
       "license": {
         "code": "Apache-2.0",
@@ -4397,7 +4552,13 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "chronos-forecasting",
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -4409,25 +4570,55 @@
         {
           "type": "official",
           "url": "https://huggingface.co/amazon/chronos-bolt-tiny",
-          "notes": "Primary project source."
+          "notes": "Tiny checkpoint and forecast contract."
         }
       ],
       "tags": [
         "forecasting"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained weights; evaluate zero-shot transfer before considering adaptation.",
+        "needs_data": "Regularly sampled historical numerical context.",
+        "update_strategy": "Pin checkpoint, context length and library; evaluate chronological holdout data."
+      },
+      "data": {
+        "inputs": [
+          "Regularly sampled historical numerical context"
+        ],
+        "outputs": [
+          "Multi-step quantile forecasts"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Chronological MAE or MASE and quantile loss compared with naive baselines."
+      ],
+      "limitations": [
+        "Forecast uncertainty needs calibration in the actual domain.",
+        "Context and batch size alter memory; forecast output does not guarantee financial returns."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "amazon/chronos-bolt-tiny; not Chronos 2 or larger Bolt variants",
+        "artifact_reference": "https://huggingface.co/amazon/chronos-bolt-tiny",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Pin/hash selected artifacts and measure target workload."
+      },
       "path": "catalog/time-series/forecasting/chronos-bolt-tiny.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "dlinear",
       "name": "DLinear",
+      "kind": "model",
       "domain": "time-series",
       "tasks": [
         "forecasting"
       ],
       "class": "linear-time-series-model",
-      "kind": "model",
       "catalogue_batch": "business-2026-10-05",
       "description": "Trainable forecasting architecture combining trend/remainder decomposition with two linear projections.",
       "links": {
@@ -4438,7 +4629,7 @@
       "model": {
         "parameters": null,
         "file_size_mb": null,
-        "measurement_scope": "Depends on input window, horizon and whether projections are shared or channel-specific. Illustrative single-series 96-to-24 biased projections contain 4656 parameters; this is a calculation, not a published checkpoint measurement."
+        "measurement_scope": "4656 parameters is a calculation for the included 96-to-24 architecture; NPZ overhead and interpreter RAM are separate."
       },
       "license": {
         "code": "Apache-2.0",
@@ -4450,12 +4641,15 @@
           "desktop",
           "edge"
         ],
-        "notes": "The small mathematical model may be portable; actual export/runtime and board performance remain unverified."
+        "notes": "Board export and performance remain unverified."
       },
       "runtimes": [
+        "numpy",
         "pytorch"
       ],
-      "formats": [],
+      "formats": [
+        "npz"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -4464,33 +4658,32 @@
       },
       "usage": {
         "mode": "requires-training",
-        "training": "supervised-sequence-fitting",
-        "needs_data": "Regularly sampled histories with a specified forecast horizon and missing-data policy.",
-        "update_strategy": "Refit using rolling-origin evaluation; record scaling and window parameters."
+        "training": "Fit on historical training observations only; no pretrained company data.",
+        "needs_data": "Regularly sampled numerical series with chronological train/validation/test target splits.",
+        "update_strategy": "Version training data, scaler and fitted weights; repeat held-out evaluation after updates."
       },
       "data": {
         "inputs": [
-          "numerical-time-series-window"
+          "Regularly sampled numerical history"
         ],
         "outputs": [
-          "future-numerical-values"
+          "24 future predictions in the reference configuration"
         ],
         "languages": []
       },
       "evaluation": [
-        "Rolling-origin MAE/MASE against naive and seasonal-naive baselines.",
-        "Report each horizon and distribution-shift failures."
+        "Compare chronological held-out MAE/RMSE against last-value and seasonal-naive baselines using a train-only scaler."
       ],
       "limitations": [
-        "A tiny parameter count does not establish forecast quality.",
-        "No universal business or stock forecast weights are provided."
+        "The NumPy recipe fits ridge least squares rather than the upstream Adam training algorithm.",
+        "Synthetic-fixture accuracy does not establish real demand or stock forecasting quality."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/cure-lab/LTSF-Linear",
-          "notes": "Architecture, implementation, licensing and links to integrations."
+          "notes": "Architecture and upstream training implementation."
         }
       ],
       "related": [
@@ -4508,29 +4701,35 @@
         "compact-candidate",
         "requires-training"
       ],
+      "review": {
+        "level": "documentation",
+        "variant": "Single-series 96-to-24 DLinear; kernel 25; two biased linear heads",
+        "artifact_reference": "https://github.com/cure-lab/LTSF-Linear/blob/main/models/DLinear.py",
+        "artifact_sha256": null,
+        "artifact_integrity": "requires-training",
+        "remaining": "Hash each locally fitted artifact; keep measured host results separate from model-family claims."
+      },
       "path": "catalog/time-series/forecasting/dlinear.yaml",
       "usage_mode": "requires-training"
     },
     {
       "id": "tiny-time-mixer",
       "name": "TinyTimeMixer",
+      "kind": "model",
       "domain": "time-series",
       "tasks": [
         "forecasting"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Granite TTM-R2 checkpoint family; deployment requires an explicit context/horizon checkpoint selection.",
       "links": {
         "repository": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2"
       },
       "model": {
         "parameters": null,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Different context/horizon configurations prevent a universal model size or RAM count."
       },
       "license": {
         "code": "Apache-2.0",
@@ -4543,7 +4742,13 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "tsfm-public",
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -4555,15 +4760,45 @@
         {
           "type": "official",
           "url": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
-          "notes": "Primary project source."
+          "notes": "Checkpoint family and selection requirements."
         }
       ],
       "tags": [
         "forecasting"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained checkpoints; adaptation is configuration-dependent.",
+        "needs_data": "Multivariate numerical context matched to checkpoint length and channel requirements.",
+        "update_strategy": "Select and pin the exact branch/configuration and evaluate each update chronologically."
+      },
+      "data": {
+        "inputs": [
+          "Multivariate numerical historical context"
+        ],
+        "outputs": [
+          "Numerical forecasts at the selected checkpoint horizon"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Per-channel chronological forecast errors and naive baselines; document any adaptation data."
+      ],
+      "limitations": [
+        "This family entry intentionally has no single parameter count or exact acquired artifact.",
+        "Exact checkpoint selection and hashing remain deployment prerequisites; no board result is inferred."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "granite-timeseries-ttm-r2 family; context/horizon revision selection remains required",
+        "artifact_reference": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Select exact context/horizon checkpoint before acquisition or benchmarking."
+      },
       "path": "catalog/time-series/forecasting/tiny-time-mixer.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "neuralforecast",
@@ -4969,14 +5204,15 @@
         "video-action-recognition"
       ],
       "class": "small-specialized-model",
-      "description": "Causal video activity classification with recurrent stream buffers.",
+      "description": "Causal video activity classification using per-stream recurrent buffers.",
       "links": {
-        "repository": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"
+        "repository": "https://github.com/tensorflow/models/tree/master/official/projects/movinet",
+        "model": "https://storage.googleapis.com/tf_model_garden/vision/movinet/movinet_a0_stream.tflite"
       },
       "model": {
         "parameters": null,
         "file_size_mb": 13,
-        "measurement_scope": "Published FP32 TFLite binary, not RAM or quantized file size."
+        "measurement_scope": "Publisher FP32 TFLite binary size; frames, state tensors and runtime are additional memory."
       },
       "license": {
         "code": "Apache-2.0",
@@ -4988,11 +5224,11 @@
           "mobile",
           "desktop"
         ],
-        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+        "notes": "Upstream targets are not results reproduced by this project."
       },
       "runtimes": [
-        "tensorflow",
-        "tflite"
+        "tflite",
+        "tensorflow"
       ],
       "formats": [
         "tflite"
@@ -5023,16 +5259,49 @@
           "notes": "Not tested by this catalogue."
         }
       ],
-      "notes": "Use the streaming variant rather than the base 3D-convolution model. Keep independent state per stream and reset at cuts. Target latency and memory remain unmeasured.",
       "reviewed": "2026-10-05",
       "evidence": [
         {
           "type": "official",
-          "url": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"
+          "url": "https://github.com/tensorflow/models/blob/master/official/projects/movinet/README.md",
+          "notes": "Streaming model, FP32 file size, input dimensions and stream-state requirements."
         }
       ],
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published Kinetics600 weights; custom classes require adaptation and evaluation.",
+        "needs_data": "Ordered 172x172 video frames with separate state tensors per stream.",
+        "update_strategy": "Pin the current non-legacy streaming artifact; evaluate state-reset behaviour on changes."
+      },
+      "data": {
+        "inputs": [
+          "Ordered 172x172 frames",
+          "Per-stream state tensors"
+        ],
+        "outputs": [
+          "Kinetics600 activity scores",
+          "Updated stream state"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Activity precision/recall",
+        "causal latency and stream reset tests."
+      ],
+      "limitations": [
+        "The base 3D-convolution variant is not this streaming model; keep independent state for every video.",
+        "Action labels do not certify fall detection or inferred intent; no board benchmark is recorded."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "MoViNet-A0-Stream Kinetics600 FP32 TFLite; not Base or legacy stream",
+        "artifact_reference": "https://storage.googleapis.com/tf_model_garden/vision/movinet/movinet_a0_stream.tflite",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Acquire/hash the selected streaming model and verify deployment conditions."
+      },
       "path": "catalog/video/action-recognition/movinet-a0-stream.yaml",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "tsm-mobilenetv2",
@@ -5329,12 +5598,13 @@
       "class": "small-specialized-model",
       "description": "Tiny top-down body-keypoint estimation network.",
       "links": {
-        "repository": "https://github.com/open-mmlab/mmpose"
+        "repository": "https://github.com/open-mmlab/mmpose",
+        "model": "https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose"
       },
       "model": {
         "parameters": 3340000,
         "file_size_mb": null,
-        "measurement_scope": "Published COCO 256x192 pose network only; excludes person detector."
+        "measurement_scope": "Upstream tiny COCO pose-network count; excludes the person detector."
       },
       "license": {
         "code": "Apache-2.0",
@@ -5346,13 +5616,14 @@
           "edge",
           "desktop"
         ],
-        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+        "notes": "Target classes are not reproduced device compatibility."
       },
       "runtimes": [
-        "pytorch",
+        "mmpose",
         "onnxruntime"
       ],
       "formats": [
+        "pytorch-checkpoint",
         "onnx"
       ],
       "requirements": {
@@ -5379,23 +5650,49 @@
           "notes": "Not tested by this catalogue."
         }
       ],
-      "notes": "Full multi-person pipelines need detection, crop/resize and identity tracking. The pose-network parameter count is not the complete pipeline footprint.",
       "reviewed": "2026-10-05",
       "evidence": [
         {
           "type": "official",
-          "url": "https://github.com/open-mmlab/mmpose"
-        },
-        {
-          "type": "official",
-          "url": "https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md"
+          "url": "https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md",
+          "notes": "Tiny model variant and reported pose-network parameter count."
         }
       ],
       "related": [
         "rtmlib"
       ],
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained weights; task-specific adaptation is separate.",
+        "needs_data": "Person crops at 256x192 with matching preprocessing.",
+        "update_strategy": "Pin checkpoint and conversion; evaluate detector and pose together."
+      },
+      "data": {
+        "inputs": [
+          "Person crop at 256x192"
+        ],
+        "outputs": [
+          "COCO-17 joints with confidence"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Evaluate keypoint AP and detector-plus-pose end-to-end latency separately."
+      ],
+      "limitations": [
+        "3.34M covers the pose model only, not detection or tracking.",
+        "The runnable recipe uses RTMPose-S with YOLOX-tiny; those measurements must not be labelled RTMPose-t."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "RTMPose-t COCO 256x192; rtmpose-tiny_8xb256-420e_coco-256x192",
+        "artifact_reference": "https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Acquire this exact tiny checkpoint separately from the RTMPose-S recipe."
+      },
       "path": "catalog/vision/pose/rtmpose-t.yaml",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "blazeface",
@@ -5511,26 +5808,24 @@
     {
       "id": "mobile-sam",
       "name": "MobileSAM",
+      "kind": "model",
       "domain": "vision",
       "tasks": [
         "image-segmentation"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "MobileSAM v1 vit_t encoder and mask decoder for prompted image segmentation.",
       "links": {
         "repository": "https://github.com/ChaoningZhang/MobileSAM",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt"
       },
       "model": {
         "parameters": 9660000,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Approximate 9.66M v1 total parameter count; image-resolution-dependent RAM is unmeasured."
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -5540,7 +5835,12 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -5552,16 +5852,47 @@
         {
           "type": "official",
           "url": "https://github.com/ChaoningZhang/MobileSAM",
-          "notes": "Primary project/model source; verify deployment metrics separately."
+          "notes": "v1 model variant and prompted segmentation interface."
         }
       ],
       "tags": [
         "segmentation",
         "sam"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published weights; evaluate transfer on the intended image domain.",
+        "needs_data": "RGB image and point or box prompts.",
+        "update_strategy": "Pin v1 artifact and inference settings independently of MobileSAMv2."
+      },
+      "data": {
+        "inputs": [
+          "RGB image",
+          "Point or box prompts"
+        ],
+        "outputs": [
+          "Prompt-conditioned segmentation masks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Mask IoU; separate image-encoding latency from repeated prompt decoding."
+      ],
+      "limitations": [
+        "Image encoder and mask decoder are both required.",
+        "Prompted masks do not automatically carry semantic category labels; weight terms remain unknown here."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "MobileSAM v1 vit_t weights/mobile_sam.pt; not MobileSAMv2",
+        "artifact_reference": "https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Pin/hash weights and verify their separate terms before product deployment."
+      },
       "path": "catalog/vision/segmentation/mobilesam.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "rfdn",
@@ -5909,14 +6240,15 @@
         "monocular-depth-estimation"
       ],
       "class": "small-specialized-model",
-      "description": "Small foundation-model variant for single-image relative depth.",
+      "description": "Small ViT-S foundation-model variant for single-image relative depth estimation.",
       "links": {
-        "repository": "https://github.com/DepthAnything/Depth-Anything-V2"
+        "repository": "https://github.com/DepthAnything/Depth-Anything-V2",
+        "model": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small"
       },
       "model": {
         "parameters": 24800000,
         "file_size_mb": null,
-        "measurement_scope": "Published Small model count; not peak runtime RAM."
+        "measurement_scope": "24.8M for Small; runtime RAM depends on image dimensions and backend."
       },
       "license": {
         "code": "Apache-2.0",
@@ -5927,12 +6259,14 @@
         "targets": [
           "desktop"
         ],
-        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+        "notes": "Upstream CUDA/MPS/CPU paths are not reproduced device results."
       },
       "runtimes": [
         "pytorch"
       ],
-      "formats": [],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -5957,16 +6291,46 @@
           "notes": "Not tested by this catalogue."
         }
       ],
-      "notes": "This entry covers the relative-depth Small checkpoint, not separately fine-tuned metric variants. Upstream includes CUDA, MPS and CPU selection; board runtime support is unverified.",
       "reviewed": "2026-10-05",
       "evidence": [
         {
           "type": "official",
-          "url": "https://github.com/DepthAnything/Depth-Anything-V2"
+          "url": "https://github.com/DepthAnything/Depth-Anything-V2",
+          "notes": "Small relative-depth checkpoint; licence and backend selection."
         }
       ],
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published relative-depth weights; metric fine-tuning is a separate variant.",
+        "needs_data": "Single RGB image with ViT-S preprocessing.",
+        "update_strategy": "Pin model revision and resize policy; evaluate quality and runtime before upgrades."
+      },
+      "data": {
+        "inputs": [
+          "Single RGB image with ViT-S preprocessing"
+        ],
+        "outputs": [
+          "Relative depth map"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Depth error with documented scale/shift alignment; temporal consistency and domain transfer."
+      ],
+      "limitations": [
+        "Relative depth is not metric distance or reconstruction of hidden surfaces.",
+        "Small model terms must not be assumed to apply to larger family variants."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "Depth Anything V2 Small ViT-S; depth_anything_v2_vits.pth",
+        "artifact_reference": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Acquire/hash this checkpoint before execution; no hardware inference from the parameter count."
+      },
       "path": "catalog/vision/depth/depth-anything-v2-small.yaml",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "fastdepth",
@@ -6487,26 +6851,24 @@
     {
       "id": "nanodet-plus",
       "name": "NanoDet-Plus",
+      "kind": "model",
       "domain": "vision",
       "tasks": [
         "object-detection"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "NanoDet-Plus-m-416 detector with the matching 416-pixel inference configuration.",
       "links": {
         "repository": "https://github.com/RangiLyu/nanodet",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://github.com/RangiLyu/nanodet#model-zoo"
       },
       "model": {
         "parameters": 1170000,
         "file_size_mb": null,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "1.17M inference weights for Plus-m; approximately 2.3MB FP16 or 1.2MB INT8 are upstream reports, not measured here."
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -6516,7 +6878,14 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "ncnn",
+        "MNN",
+        "openvino"
+      ],
+      "formats": [
+        "onnx"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -6528,16 +6897,46 @@
         {
           "type": "official",
           "url": "https://github.com/RangiLyu/nanodet",
-          "notes": "Primary project/model source; verify deployment metrics separately."
+          "notes": "Model zoo differentiates original NanoDet-m and NanoDet-Plus-m."
         }
       ],
       "tags": [
         "detection",
         "mobile"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published detector weights; custom categories require suitable labelled training data.",
+        "needs_data": "RGB images with the selected 416x416 preprocessing.",
+        "update_strategy": "Pin checkpoint, configuration and conversion; compare accuracy after export."
+      },
+      "data": {
+        "inputs": [
+          "RGB images at selected 416x416 preprocessing"
+        ],
+        "outputs": [
+          "COCO bounding boxes and class scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Report detection AP and target end-to-end latency after conversion."
+      ],
+      "limitations": [
+        "The README headline 980 KB refers to original NanoDet-m, not NanoDet-Plus-m.",
+        "Legacy training dependencies need review; compact parameters do not establish NPU compatibility."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "NanoDet-Plus-m-416; config/nanodet-plus-m_416.yml",
+        "artifact_reference": "https://github.com/RangiLyu/nanodet#model-zoo",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Acquire the exact checkpoint, verify its terms and benchmark conversion on the device."
+      },
       "path": "catalog/vision/detection/nanodet-plus.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "pp-ocrv6-tiny",
@@ -6596,23 +6995,21 @@
     {
       "id": "movenet-lightning",
       "name": "MoveNet Lightning",
+      "kind": "model",
       "domain": "vision",
       "tasks": [
         "pose-estimation"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "MoveNet SinglePose Lightning INT8 TFLite for image-relative body landmarks.",
       "links": {
         "repository": "https://www.tensorflow.org/hub/tutorials/movenet",
-        "model": null,
-        "paper": null,
-        "homepage": null
+        "model": "https://www.tensorflow.org/hub/tutorials/movenet"
       },
       "model": {
         "parameters": null,
         "file_size_mb": 2.9,
-        "architecture": null,
-        "precision": null
+        "measurement_scope": "Previously catalogued 2.9 MB is an INT8 Lightning file report, not all exports or process RAM."
       },
       "license": {
         "code": "Apache-2.0",
@@ -6625,7 +7022,12 @@
         ],
         "accelerators": []
       },
-      "formats": [],
+      "runtimes": [
+        "tflite"
+      ],
+      "formats": [
+        "tflite"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -6637,16 +7039,46 @@
         {
           "type": "official",
           "url": "https://www.tensorflow.org/hub/tutorials/movenet",
-          "notes": "Primary project source."
+          "notes": "SinglePose variant, input preparation and keypoint output contract."
         }
       ],
       "tags": [
         "pose",
         "mobile"
       ],
+      "reviewed": "2026-10-05",
+      "usage": {
+        "mode": "pretrained",
+        "training": "Published pretrained weights; custom task adaptation is separate.",
+        "needs_data": "RGB image or person-centred crop at the selected Lightning input resolution.",
+        "update_strategy": "Pin export variant and preprocessing; rerun keypoint and workload tests."
+      },
+      "data": {
+        "inputs": [
+          "RGB image or person-centred crop"
+        ],
+        "outputs": [
+          "17 image-relative body keypoints with confidence"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Measure keypoint error and temporal jitter with the actual resize/crop policy."
+      ],
+      "limitations": [
+        "Single-person output; occlusion and framing can hide joints.",
+        "Landmarks do not establish calibrated world position or reproduced hardware compatibility."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "MoveNet SinglePose Lightning INT8 TFLite",
+        "artifact_reference": "https://www.tensorflow.org/hub/tutorials/movenet",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "Acquire and pin the selected TFLite artifact and verify weight terms."
+      },
       "path": "catalog/vision/pose/movenet-lightning.yaml",
-      "kind": "model",
-      "usage_mode": "unknown"
+      "usage_mode": "pretrained"
     },
     {
       "id": "rtmlib",
@@ -6658,13 +7090,14 @@
         "pose-tracking"
       ],
       "class": "vision-toolkit",
-      "description": "Lean inference toolkit for RTMPose-related models.",
+      "description": "Lean inference toolkit for RTMPose-related models, with an explicit two-model reference recipe.",
       "links": {
         "repository": "https://github.com/Tau-J/rtmlib"
       },
       "model": {
         "parameters": null,
-        "file_size_mb": null
+        "file_size_mb": null,
+        "measurement_scope": "No single model size; detector and pose models are separate artifacts."
       },
       "license": {
         "code": "Apache-2.0",
@@ -6675,15 +7108,15 @@
         "targets": [
           "desktop"
         ],
-        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+        "notes": "Target classes are not reproduced device results."
       },
       "runtimes": [
         "onnxruntime",
-        "opencv",
-        "openvino",
-        "tensorrt"
+        "python"
       ],
-      "formats": [],
+      "formats": [
+        "onnx"
+      ],
       "requirements": {
         "ram_mb": {
           "minimum": null,
@@ -6709,19 +7142,57 @@
           "notes": "Not tested by this catalogue."
         }
       ],
-      "notes": "A library, not an independent pretrained model. RAM, licenses and accuracy also depend on the detector and pose checkpoints selected.",
       "reviewed": "2026-10-05",
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/Tau-J/rtmlib"
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py",
+          "notes": "Explicit detector/pose paths and lightweight Body configuration."
         }
       ],
       "related": [
         "rtmpose-t"
       ],
+      "usage": {
+        "mode": "companion",
+        "training": "Supporting library; separate detector and pose checkpoints are required.",
+        "needs_data": "Decoded BGR video frames and local detector/pose ONNX files.",
+        "update_strategy": "Pin library and both artifacts; rerun end-to-end tests before upgrades."
+      },
+      "data": {
+        "inputs": [
+          "Decoded BGR frames",
+          "Local detector ONNX",
+          "Local pose ONNX"
+        ],
+        "outputs": [
+          "COCO-17 joints; reference recipe adds track IDs and JSONL"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Evaluate detections",
+        "joints",
+        "identity switches and end-to-end frame latency on real video."
+      ],
+      "limitations": [
+        "A toolkit is not one pretrained neural model; model and dataset terms require separate review.",
+        "Lightweight Body uses RTMPose-S, not RTMPose-t. The recipe tracker is a baseline and can switch IDs."
+      ],
+      "review": {
+        "level": "documentation",
+        "variant": "rtmlib 0.0.13 recipe: YOLOX-tiny plus RTMPose-S body7",
+        "artifact_reference": "https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py",
+        "artifact_sha256": null,
+        "artifact_integrity": "not-acquired-in-documentation-review",
+        "remaining": "See recipe acquisition receipts for individual checkpoint integrity; no board certification inferred."
+      },
       "path": "pipelines/pose/rtmlib.yaml",
-      "usage_mode": "unknown"
+      "usage_mode": "companion"
     },
     {
       "id": "pidnet-s",

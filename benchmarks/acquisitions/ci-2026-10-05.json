@@ -1,0 +1,10 @@
+{
+  "workflow_run": "https://github.com/powerpuff-kitty/embedded-AI/actions/runs/37299920740",
+  "artifact_id": 11341681090,
+  "note": "Receipt summary from explicit HTTPS acquisitions. Archive hashes and extracted model hashes are different where ZIP is used; not independent publisher signatures.",
+  "artifacts": [
+    {"name":"silero","download_sha256":"1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3","model_sha256":"1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3","model_bytes":2327524},
+    {"name":"detector","download_sha256":"36e09ca555916253fa1b5d51bec01e48e98e1f0af966c51ce3e844d8c8fc4cfc","model_sha256":"ceb11c07298f95c50d7c5abeb906d03340c85f23aa79e3e66966e7fb6c307250","model_bytes":20283006},
+    {"name":"pose","download_sha256":"7673922e531014906ca4f0f239b7e233b740146a10b632deaa2a28d45470d802","model_sha256":"9aeb635b83f86aea45cf45d85798f7eba1a162de8e0d721c44e54fe5eebaf47d","model_bytes":21890172}
+  ]
+}

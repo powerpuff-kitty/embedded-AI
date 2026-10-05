@@ -1,0 +1,63 @@
+name: runnable recipes and explorer
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: recipes-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v7
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v7
+        with: {node-version: 22, package-manager-cache: false}
+      - uses: actions/setup-python@v6
+        with: {python-version: '3.11'}
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=high
+      - run: npm run check && npm run reviews:check
+      - run: python -m pip install -r recipes/requirements.txt playwright==1.55.0
+      - name: Check actual optional-runtime imports before acquiring models
+        run: python -c "import rtmlib, onnxruntime, cv2, numpy, tqdm; print('Runtime imports passed')"
+      - run: python -m unittest discover -s tests_python -v
+      - name: Acquire the three explicitly selected and SHA-pinned upstream artifacts
+        run: |
+          python -m recipes.download silero --accept-upstream-terms
+          python -m recipes.download detector --accept-upstream-terms
+          python -m recipes.download pose --accept-upstream-terms
+      - name: Execute real inference on synthetic fixtures
+        run: python scripts/smoke-recipes.py
+      - name: Include these CI observations in the private preview only
+        run: |
+          mkdir -p benchmarks/results/preview runs/receipts
+          cp runs/benchmarks/*.json benchmarks/results/preview/
+          cp .models/*.receipt.json runs/receipts/
+          python -m pip freeze > runs/resolved-python.txt
+          npm run site:build
+      - run: python -m playwright install --with-deps chromium
+      - name: Browser interaction and responsive screenshots
+        run: python tests_python/browser_smoke.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: runnable-catalogue-evidence
+          retention-days: 14
+          path: |
+            dist/
+            runs/benchmarks/
+            runs/browser/
+            runs/receipts/
+            runs/resolved-python.txt
+            runs/forecast/evaluation.json
+            runs/vad.json
+            runs/pose.jsonl

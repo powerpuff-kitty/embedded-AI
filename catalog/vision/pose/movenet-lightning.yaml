@@ -1,15 +1,44 @@
 id: movenet-lightning
 name: MoveNet Lightning
+kind: model
 domain: vision
 tasks: [pose-estimation]
 class: small-specialized-model
-description: ""
-links: { repository: "https://www.tensorflow.org/hub/tutorials/movenet", model: null, paper: null, homepage: null }
-model: { parameters: null, file_size_mb: 2.9, architecture: null, precision: null }
-license: { code: Apache-2.0, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: MoveNet SinglePose Lightning INT8 TFLite for image-relative body landmarks.
+links:
+  repository: https://www.tensorflow.org/hub/tutorials/movenet
+  model: https://www.tensorflow.org/hub/tutorials/movenet
+model:
+  parameters: null
+  file_size_mb: 2.9
+  measurement_scope: Previously catalogued 2.9 MB is an INT8 Lightning file report, not all exports or process RAM.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [tflite]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://www.tensorflow.org/hub/tutorials/movenet", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://www.tensorflow.org/hub/tutorials/movenet', notes: 'SinglePose variant, input preparation and keypoint output contract.'}
 tags: [pose, mobile]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published pretrained weights; custom task adaptation is separate.
+  needs_data: RGB image or person-centred crop at the selected Lightning input resolution.
+  update_strategy: Pin export variant and preprocessing; rerun keypoint and workload tests.
+data:
+  inputs: [RGB image or person-centred crop]
+  outputs: [17 image-relative body keypoints with confidence]
+  languages: []
+evaluation: [Measure keypoint error and temporal jitter with the actual resize/crop policy.]
+limitations:
+  - Single-person output; occlusion and framing can hide joints.
+  - Landmarks do not establish calibrated world position or reproduced hardware compatibility.
+review:
+  level: documentation
+  variant: MoveNet SinglePose Lightning INT8 TFLite
+  artifact_reference: https://www.tensorflow.org/hub/tutorials/movenet
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Acquire and pin the selected TFLite artifact and verify weight terms.

@@ -1,15 +1,44 @@
 id: mobile-sam
 name: MobileSAM
+kind: model
 domain: vision
 tasks: [image-segmentation]
 class: small-specialized-model
-description: ""
-links: { repository: "https://github.com/ChaoningZhang/MobileSAM", model: null, paper: null, homepage: null }
-model: { parameters: 9660000, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: MobileSAM v1 vit_t encoder and mask decoder for prompted image segmentation.
+links:
+  repository: https://github.com/ChaoningZhang/MobileSAM
+  model: https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt
+model:
+  parameters: 9660000
+  file_size_mb: null
+  measurement_scope: Approximate 9.66M v1 total parameter count; image-resolution-dependent RAM is unmeasured.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://github.com/ChaoningZhang/MobileSAM", notes: "Primary project/model source; verify deployment metrics separately." }]
+evidence:
+  - {type: official, url: 'https://github.com/ChaoningZhang/MobileSAM', notes: 'v1 model variant and prompted segmentation interface.'}
 tags: [segmentation, sam]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published weights; evaluate transfer on the intended image domain.
+  needs_data: RGB image and point or box prompts.
+  update_strategy: Pin v1 artifact and inference settings independently of MobileSAMv2.
+data:
+  inputs: [RGB image, Point or box prompts]
+  outputs: [Prompt-conditioned segmentation masks]
+  languages: []
+evaluation: [Mask IoU; separate image-encoding latency from repeated prompt decoding.]
+limitations:
+  - Image encoder and mask decoder are both required.
+  - Prompted masks do not automatically carry semantic category labels; weight terms remain unknown here.
+review:
+  level: documentation
+  variant: MobileSAM v1 vit_t weights/mobile_sam.pt; not MobileSAMv2
+  artifact_reference: https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Pin/hash weights and verify their separate terms before product deployment.

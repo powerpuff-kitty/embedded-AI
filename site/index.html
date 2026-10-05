@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An evidence-first catalogue of local AI models, toolkits and intelligence primitives.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+<title>embedded-AI / Catalogue</title><link rel="stylesheet" href="style.css"></head>
+<body><header><a class="brand" href="./">embedded<span>—</span>AI</a><nav><a href="skeleton.html">Skeleton replay</a><a href="https://github.com/powerpuff-kitty/embedded-AI">Repository</a></nav></header>
+<main><section class="hero"><p class="eyebrow">THE RUNNABLE CATALOGUE / V0.2</p><h1>Small intelligence.<br>Visible evidence.</h1><p class="intro">Find a specialist, inspect its constraints, and measure the real workload. Models, toolkits and non-AI companions are labelled separately.</p><div id="stats" class="stats" aria-live="polite"></div></section>
+<div class="layout"><aside><form id="filters"><h2>Find a component</h2><label>Search<input name="q" type="search" placeholder="Task, model, capability…"></label>
+<label>Domain<select name="domain"><option value="">All domains</option></select></label>
+<label>Task<select name="task"><option value="">All tasks</option></select></label>
+<div class="pair"><label>Kind<select name="kind"><option value="">All kinds</option></select></label><label>Use<select name="usage"><option value="">All modes</option></select></label></div>
+<label>Runtime / format<select name="runtime"><option value="">All runtimes</option></select></label>
+<label>Weights licence<select name="license"><option value="">All terms</option></select></label>
+<label class="check"><input name="offline" type="checkbox">Offline operation documented</label>
+<hr><h3>Measured workload</h3><label>Exact target<select name="target"><option value="">No target selected</option></select></label>
+<label>Process RSS budget, MB<input name="ram" type="number" min="1" step="1" placeholder="For example, 128"></label>
+<label class="check"><input name="candidates" type="checkbox">Show untested candidates separately</label><p class="fine">A model file is not a RAM measurement. A host benchmark does not establish compatibility on another device.</p><button type="reset" class="secondary">Reset filters</button></form></aside>
+<section class="results"><div class="result-head"><h2 id="count" aria-live="polite">Loading catalogue…</h2><button id="compare" disabled>Compare (0/4)</button></div>
+<p id="error" class="error" role="alert"></p><div id="entries"></div><section id="candidates-section" hidden><h2>Untested candidates</h2><p>These do not have matching measured evidence. They are not confirmed fits.</p><div id="candidates"></div></section></section></div>
+</main><footer>Evidence before claims. No model inference, analytics or external API calls run in this browser.</footer>
+<dialog id="details"><button id="close" class="close" aria-label="Close details">Close</button><div id="detail-content"></div></dialog>
+<script type="module" src="app.mjs"></script></body></html>

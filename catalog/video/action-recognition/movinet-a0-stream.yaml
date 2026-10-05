@@ -1,19 +1,50 @@
-id: "movinet-a0-stream"
-name: "MoViNet-A0 Streaming"
-kind: "model"
-domain: "video"
-tasks: ["video-action-recognition"]
-class: "small-specialized-model"
-description: "Causal video activity classification with recurrent stream buffers."
-links: {"repository": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"}
-model: {"parameters": null, "file_size_mb": 13, "measurement_scope": "Published FP32 TFLite binary, not RAM or quantized file size."}
-license: {"code": "Apache-2.0", "weights": "unknown"}
-deployment: {"offline": true, "targets": ["mobile", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
-runtimes: ["tensorflow", "tflite"]
-formats: ["tflite"]
-requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
-io: {"inputs": ["video-frames", "stream-state"], "outputs": ["activity-scores", "updated-stream-state"], "camera_setup": "one RGB camera", "temporal_mode": "causal", "coordinate_system": "not-applicable"}
-compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
-notes: "Use the streaming variant rather than the base 3D-convolution model. Keep independent state per stream and reset at cuts. Target latency and memory remain unmeasured."
-reviewed: "2026-10-05"
-evidence: [{"type": "official", "url": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"}]
+id: movinet-a0-stream
+name: MoViNet-A0 Streaming
+kind: model
+domain: video
+tasks: [video-action-recognition]
+class: small-specialized-model
+description: Causal video activity classification using per-stream recurrent buffers.
+links:
+  repository: https://github.com/tensorflow/models/tree/master/official/projects/movinet
+  model: https://storage.googleapis.com/tf_model_garden/vision/movinet/movinet_a0_stream.tflite
+model:
+  parameters: null
+  file_size_mb: 13
+  measurement_scope: Publisher FP32 TFLite binary size; frames, state tensors and runtime are additional memory.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, desktop], notes: 'Upstream targets are not results reproduced by this project.'}
+runtimes: [tflite, tensorflow]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+io:
+  inputs: [video-frames, stream-state]
+  outputs: [activity-scores, updated-stream-state]
+  camera_setup: one RGB camera
+  temporal_mode: causal
+  coordinate_system: not-applicable
+compatibility:
+  - {target: luckfox-rv1106, status: unknown, notes: Not tested by this catalogue.}
+reviewed: '2026-10-05'
+evidence:
+  - {type: official, url: 'https://github.com/tensorflow/models/blob/master/official/projects/movinet/README.md', notes: 'Streaming model, FP32 file size, input dimensions and stream-state requirements.'}
+usage:
+  mode: pretrained
+  training: Published Kinetics600 weights; custom classes require adaptation and evaluation.
+  needs_data: Ordered 172x172 video frames with separate state tensors per stream.
+  update_strategy: Pin the current non-legacy streaming artifact; evaluate state-reset behaviour on changes.
+data:
+  inputs: [Ordered 172x172 frames, Per-stream state tensors]
+  outputs: [Kinetics600 activity scores, Updated stream state]
+  languages: []
+evaluation: [Activity precision/recall, causal latency and stream reset tests.]
+limitations:
+  - The base 3D-convolution variant is not this streaming model; keep independent state for every video.
+  - Action labels do not certify fall detection or inferred intent; no board benchmark is recorded.
+review:
+  level: documentation
+  variant: MoViNet-A0-Stream Kinetics600 FP32 TFLite; not Base or legacy stream
+  artifact_reference: https://storage.googleapis.com/tf_model_garden/vision/movinet/movinet_a0_stream.tflite
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Acquire/hash the selected streaming model and verify deployment conditions.

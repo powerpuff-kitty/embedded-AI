@@ -1,15 +1,45 @@
 id: silero-vad
 name: Silero VAD
+kind: model
 domain: audio
 tasks: [voice-activity-detection]
 class: small-specialized-model
-description: ""
-links: { repository: "https://github.com/snakers4/silero-vad", model: null, paper: null, homepage: null }
-model: { parameters: null, file_size_mb: 2, architecture: null, precision: null }
-license: { code: MIT, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: Silero ONNX at commit 1e261b036686cd0017d500ee96acd1c4ba572a9d, with a local streaming reference adapter.
+links:
+  repository: https://github.com/snakers4/silero-vad
+  model: https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx
+model:
+  parameters: null
+  file_size_mb: 2
+  measurement_scope: Approximately 2 MB describes upstream JIT weights, not this ONNX file or process RAM.
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [onnxruntime, pytorch]
+formats: [onnx, jit]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://github.com/snakers4/silero-vad", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://github.com/snakers4/silero-vad', notes: 'Documentation review of variant, input/state contract and licence; not a board benchmark.'}
 tags: [vad, offline]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published pretrained weights; adapt only with documented data.
+  needs_data: Mono waveform; reference recipe requires 16 kHz PCM16 WAV.
+  update_strategy: Pin variant and artifact revision; rerun quality and workload tests before upgrading.
+data:
+  inputs: [Mono 16 kHz waveform in the reference recipe]
+  outputs: [Speech probability per 512 samples, Postprocessed intervals]
+  languages: []
+evaluation: [Measure miss/false-alarm rates and segmentation delay on representative noisy speech.]
+limitations:
+  - Detects speech but does not transcribe or identify speakers.
+  - Documentation review does not certify hardware compatibility or task quality.
+review:
+  level: documentation
+  variant: Silero ONNX at pinned upstream revision
+  revision: 1e261b036686cd0017d500ee96acd1c4ba572a9d
+  artifact_reference: https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: See recipe acquisition receipts; hardware tests are separate.

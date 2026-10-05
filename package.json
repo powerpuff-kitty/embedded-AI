@@ -2,17 +2,19 @@
   "name": "embedded-ai-catalog",
   "private": true,
   "type": "module",
+  "version": "0.2.0",
+  "engines": {"node": ">=22"},
   "scripts": {
     "validate": "tsx scripts/validate.ts",
     "index": "tsx scripts/generate-index.ts",
     "search": "tsx scripts/search.ts",
     "test": "tsx --test tests/*.test.ts",
-    "check": "npm run validate && npm test && npm run index -- --check"
+    "check": "npm run validate && npm test && npm run index -- --check",
+    "site:build": "tsx scripts/build-site.ts",
+    "site:serve": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "test:python": "python3 -m unittest discover -s tests_python -v",
+    "bench": "python3 -m bench.runner",
+    "reviews:check": "tsx scripts/review-priority.ts --check"
   },
-  "devDependencies": {
-    "ajv": "^8.17.1",
-    "fast-glob": "^3.3.3",
-    "tsx": "^4.20.0",
-    "yaml": "^2.8.0"
-  }
+  "devDependencies": {"ajv": "8.20.0", "tsx": "4.23.15", "yaml": "2.9.1"}
 }

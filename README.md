@@ -14,33 +14,48 @@ Audio · Video · Vision · Language · Geospatial · Time series · Engineering
 
 ## Structure
 ```text
-catalog/       # learned models, architectures and model collections
-pipelines/     # complete applications and training/integration toolkits
-primitives/    # non-AI algorithms, optimization and simulation tools
+catalog/       # learned models, architectures and collections
+pipelines/     # applications and training/integration toolkits
+primitives/    # non-AI optimization and simulation
 hardware/      # device profiles
 runtimes/      # runtime profiles
-schema/        # manifest and supplemental metadata schemas
-scripts/       # validation, search and generation
-benchmarks/    # reproduced device evidence when available
-generated/     # summary, full metadata and coverage JSON exports
+schema/        # catalogue and benchmark schemas
+scripts/       # validation, search, generation and site build
+site/          # static explorer and local skeleton viewer
+recipes/       # local forecast, VAD and pose examples
+bench/         # process-isolated measurement adapters
+benchmarks/    # actual environment-specific observations
+generated/     # summary, full metadata and coverage JSON
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), the [vision/video/3D guide](docs/VISION-VIDEO-3D.md), and the [finance/administration/business guide](docs/BUSINESS-AI.md). Copy `catalog/_template.yaml` for a model; consult the new records for complete usage and evaluation metadata.
+See [Contributing](CONTRIBUTING.md), [vision/video/3D](docs/VISION-VIDEO-3D.md) and [finance/administration/business](docs/BUSINESS-AI.md).
 
 ## Use the catalogue
 ```sh
-npm install
+npm ci --ignore-scripts
 npm run search -- --domain finance --usage pretrained
 npm run search -- --query anomaly --json
 npm run index
 npm run check
 ```
 
-Edit YAML, not generated tables. `npm run index` regenerates the README and JSON files; `npm run check` validates sources, runs regression tests and detects stale generated files. Main-branch CI also commits regenerated outputs after validation; pull-request checks remain read-only.
+Edit YAML, not generated tables. Main-branch CI regenerates and commits only catalogue outputs; pull-request checks remain read-only.
 
-Compatibility levels are `unsupported`, `theoretical`, `reported`, `reproduced` and `unknown`. Only evidence-backed device tests qualify as reproduced. Small parameters, local availability and “edge” marketing do not establish MCU or RV1106 compatibility.
+Compatibility levels are `unsupported`, `theoretical`, `reported`, `reproduced` and `unknown`. Only actual device evidence qualifies as reproduced. Small model parameters and edge marketing do not establish MCU or RV1106 compatibility.
 
-The project is a curated, growing catalogue, not an exhaustive list of every model. Unknown fields remain visible. It includes desktop reference models and non-neural companions when useful for composing an embedded intelligence system.
+## Runnable Catalogue v0.2
+
+Read the [v0.2 guide](docs/RUNNABLE-V02.md), [runnable recipes](recipes/README.md), [benchmark methodology](benchmarks/README.md) and [dependency review](docs/SECURITY-REVIEW-V02.md).
+
+```sh
+npm run reviews:check
+npm run site:build
+npm run site:serve
+```
+
+The static explorer supports search, filters, source details and comparison. The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally, not automatically published.
+
+This is a growing curated catalogue, not an exhaustive list or a guarantee that all entries fit small devices. Unknown fields remain visible.
 
 <!-- CATALOG:START -->
 
@@ -82,9 +97,9 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [DS-CNN KWS 24k](catalog/audio/keyword-spotting/ds-cnn-24k.yaml) · [upstream](<https://github.com/prarabdhmisra/edge-tinyml>) | model / unknown | keyword-spotting | 24K | 45 kB | — | edge | unknown / unknown | unknown |
 | [MatchboxNet](catalog/audio/keyword-spotting/matchboxnet.yaml) · [upstream](<https://github.com/NVIDIA/NeMo>) | model / unknown | keyword-spotting | — | — | — | edge | unknown / unknown | unknown |
-| [YAMNet](catalog/audio/classification/yamnet.yaml) · [upstream](<https://github.com/tensorflow/models/tree/master/research/audioset/yamnet>) | model / unknown | sound-classification | 3.7M | — | — | edge | Apache-2.0 / unknown | unknown |
+| [YAMNet](catalog/audio/classification/yamnet.yaml) · [upstream](<https://storage.googleapis.com/audioset/yamnet.h5>) | model / pretrained | sound-classification | 3.7M | — | tensorflow, tf-keras, hdf5 | edge | Apache-2.0 / unknown | unknown |
 | [Whistle](catalog/audio/speech-to-text/whistle.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/whistle>) | model / unknown | speech-to-text | — | 16.9 MB | — | edge | unknown / Apache-2.0 | unknown |
-| [Silero VAD](catalog/audio/vad/silero-vad.yaml) · [upstream](<https://github.com/snakers4/silero-vad>) | model / unknown | voice-activity-detection | — | 2 MB | — | edge | MIT / unknown | unknown |
+| [Silero VAD](catalog/audio/vad/silero-vad.yaml) · [upstream](<https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx>) | model / pretrained | voice-activity-detection | — | 2 MB | onnxruntime, pytorch, onnx, jit | edge | MIT / MIT | unknown |
 | [microWakeWord](catalog/audio/wake-word/microwakeword.yaml) · [upstream](<https://github.com/OHF-Voice/micro-wake-word>) | model / unknown | wake-word-detection | — | — | — | edge | Apache-2.0 / unknown | unknown |
 
 <a id="catalogue-business"></a>
@@ -138,7 +153,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
-| [FinBERT (ProsusAI)](catalog/finance/sentiment/finbert.yaml) · [upstream](<https://huggingface.co/ProsusAI/finbert>) | model / pretrained | financial-sentiment-classification | — | — | pytorch, transformers | desktop, server | Apache-2.0 / unknown | unknown |
+| [FinBERT (ProsusAI)](catalog/finance/sentiment/finbert.yaml) · [upstream](<https://huggingface.co/ProsusAI/finbert>) | model / pretrained | financial-sentiment-classification | — | — | transformers, pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / unknown | unknown |
 | [Kronos-mini](catalog/finance/forecasting/kronos-mini.yaml) · [upstream](<https://huggingface.co/NeoQuasar/Kronos-mini>) | model / pretrained | financial-time-series-forecasting | 4.1M | — | pytorch, safetensors | desktop, server | MIT / MIT | unknown |
 | [Kronos-small](catalog/finance/forecasting/kronos-small.yaml) · [upstream](<https://huggingface.co/NeoQuasar/Kronos-small>) | model / pretrained | financial-time-series-forecasting | 24.7M | — | pytorch, safetensors | desktop, server | MIT / MIT | unknown |
 | [hmmlearn](pipelines/finance/hmmlearn.yaml) · [upstream](<https://github.com/hmmlearn/hmmlearn>) | toolkit / requires-training | hidden-state-estimation, sequence-modelling | — | — | python, numpy | desktop, server | BSD-3-Clause / not-provided | unknown |
@@ -173,8 +188,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
-| [all-MiniLM-L6-v2](catalog/language/embeddings/all-minilm-l6-v2.yaml) · [upstream](<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>) | model / unknown | embeddings, semantic-search | 22.7M | — | — | edge | Apache-2.0 / Apache-2.0 | unknown |
-| [fastText lid.176](catalog/language/classification/fasttext-lid176.yaml) · [upstream](<https://fasttext.cc/docs/en/language-identification.html>) | model / unknown | language-identification | — | 917 kB | — | edge | unknown / unknown | unknown |
+| [all-MiniLM-L6-v2](catalog/language/embeddings/all-minilm-l6-v2.yaml) · [upstream](<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>) | model / pretrained | embeddings, semantic-search | 22.7M | — | sentence-transformers, onnxruntime, safetensors, onnx | edge | Apache-2.0 / Apache-2.0 | unknown |
+| [fastText lid.176](catalog/language/classification/fasttext-lid176.yaml) · [upstream](<https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz>) | model / pretrained | language-identification | — | 917 kB | fasttext-cpp, python, fasttext-ftz | edge | MIT / CC-BY-SA-3.0 | unknown |
 | [Needle 3](catalog/language/tool-calling/needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / unknown | unknown |
 
 <a id="catalogue-mapping"></a>
@@ -236,9 +251,9 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
-| [Chronos-Bolt Tiny](catalog/time-series/forecasting/chronos-bolt-tiny.yaml) · [upstream](<https://huggingface.co/amazon/chronos-bolt-tiny>) | model / unknown | forecasting | 9M | — | — | edge | Apache-2.0 / Apache-2.0 | unknown |
-| [DLinear](catalog/time-series/forecasting/dlinear.yaml) · [upstream](<https://github.com/cure-lab/LTSF-Linear>) | model / requires-training | forecasting | — | — | pytorch | desktop, edge | Apache-2.0 / not-provided | unknown |
-| [TinyTimeMixer](catalog/time-series/forecasting/tiny-time-mixer.yaml) · [upstream](<https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2>) | model / unknown | forecasting | — | — | — | edge | Apache-2.0 / Apache-2.0 | unknown |
+| [Chronos-Bolt Tiny](catalog/time-series/forecasting/chronos-bolt-tiny.yaml) · [upstream](<https://huggingface.co/amazon/chronos-bolt-tiny>) | model / pretrained | forecasting | 9M | — | chronos-forecasting, pytorch, safetensors | edge | Apache-2.0 / Apache-2.0 | unknown |
+| [DLinear](catalog/time-series/forecasting/dlinear.yaml) · [upstream](<https://github.com/cure-lab/LTSF-Linear>) | model / requires-training | forecasting | — | — | numpy, pytorch, npz | desktop, edge | Apache-2.0 / not-provided | unknown |
+| [TinyTimeMixer](catalog/time-series/forecasting/tiny-time-mixer.yaml) · [upstream](<https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2>) | model / pretrained | forecasting | — | — | tsfm-public, pytorch, safetensors | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [NeuralForecast](pipelines/time-series/neuralforecast.yaml) · [upstream](<https://github.com/Nixtla/neuralforecast>) | toolkit / requires-training | neural-forecasting, forecast-model-evaluation | — | — | python, pytorch | desktop, server | Apache-2.0 / configuration-dependent | unknown |
 | [StatsForecast](pipelines/time-series/statsforecast.yaml) · [upstream](<https://github.com/Nixtla/statsforecast>) | toolkit / requires-training | statistical-forecasting, baseline-evaluation | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
 
@@ -251,7 +266,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Robust Video Matting (MobileNetV3)](catalog/video/matting/robust-video-matting.yaml) · [upstream](<https://github.com/PeterL1n/RobustVideoMatting>) | model / unknown | human-video-matting | — | — | pytorch, onnxruntime, tensorflowjs, coreml, onnx | desktop, browser, mobile | GPL-3.0 / unknown | luckfox-rv1106: unknown |
 | [TransNet V2](catalog/video/shot-detection/transnet-v2.yaml) · [upstream](<https://github.com/soCzech/TransNetV2>) | model / unknown | shot-boundary-detection | — | — | tensorflow, pytorch | desktop | unknown / unknown | luckfox-rv1106: unknown |
 | [ST-GCN++ (PYSKL)](catalog/video/action-recognition/st-gcnpp.yaml) · [upstream](<https://github.com/kennymckormick/pyskl>) | model / unknown | skeleton-action-recognition | — | — | pytorch | desktop | unknown / unknown | luckfox-rv1106: unknown |
-| [MoViNet-A0 Streaming](catalog/video/action-recognition/movinet-a0-stream.yaml) · [upstream](<https://github.com/tensorflow/models/tree/master/official/projects/movinet>) | model / unknown | video-action-recognition | — | 13 MB | tensorflow, tflite | mobile, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [MoViNet-A0 Streaming](catalog/video/action-recognition/movinet-a0-stream.yaml) · [upstream](<https://storage.googleapis.com/tf_model_garden/vision/movinet/movinet_a0_stream.tflite>) | model / pretrained | video-action-recognition | — | 13 MB | tflite, tensorflow | mobile, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [TSM + MobileNetV2 (online)](catalog/video/action-recognition/tsm-mobilenetv2.yaml) · [upstream](<https://github.com/mit-han-lab/temporal-shift-module>) | model / unknown | video-action-recognition, gesture-recognition | — | — | pytorch | edge, desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [FastDVDnet](catalog/video/denoising/fastdvdnet.yaml) · [upstream](<https://github.com/m-tassano/fastdvdnet>) | model / unknown | video-denoising | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
 
@@ -263,16 +278,16 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [VideoPose3D](catalog/vision/pose/videopose3d.yaml) · [upstream](<https://github.com/facebookresearch/VideoPose3D>) | model / unknown | 2d-to-3d-pose-lifting | — | — | pytorch | desktop | CC-BY-NC / CC-BY-NC | luckfox-rv1106: unknown |
 | [MediaPipe Pose Landmarker Lite](catalog/vision/pose/mediapipe-pose-lite.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | body-pose-estimation | — | — | mediapipe, tflite, mediapipe-task | mobile, browser, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
-| [RTMPose-t](catalog/vision/pose/rtmpose-t.yaml) · [upstream](<https://github.com/open-mmlab/mmpose>) | model / unknown | body-pose-estimation | 3.34M | — | pytorch, onnxruntime, onnx | edge, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [RTMPose-t](catalog/vision/pose/rtmpose-t.yaml) · [upstream](<https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose>) | model / pretrained | body-pose-estimation | 3.34M | — | mmpose, onnxruntime, pytorch-checkpoint, onnx | edge, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [BlazeFace](catalog/vision/face/blazeface.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | face-detection | — | — | — | edge | unknown / unknown | unknown |
 | [MobileNetV3 Small](catalog/vision/classification/mobilenetv3-small.yaml) · [upstream](<https://github.com/tensorflow/models>) | model / unknown | image-classification, feature-extraction | — | — | — | edge | unknown / unknown | unknown |
-| [MobileSAM](catalog/vision/segmentation/mobilesam.yaml) · [upstream](<https://github.com/ChaoningZhang/MobileSAM>) | model / unknown | image-segmentation | 9.66M | — | — | edge | unknown / unknown | unknown |
+| [MobileSAM](catalog/vision/segmentation/mobilesam.yaml) · [upstream](<https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt>) | model / pretrained | image-segmentation | 9.66M | — | pytorch, pytorch-checkpoint | edge | Apache-2.0 / unknown | unknown |
 | [RFDN](catalog/vision/super-resolution/rfdn.yaml) · [upstream](<https://github.com/njulj/RFDN>) | model / unknown | image-super-resolution | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [MobileCLIP2-S0](catalog/vision/embeddings/mobileclip2-s0.yaml) · [upstream](<https://github.com/apple-aiml-research/ml-mobileclip>) | model / unknown | image-text-similarity, zero-shot-image-classification | 74.8M | — | pytorch, openclip | mobile, desktop | MIT / Apple-ML-Research-Model-TOU | luckfox-rv1106: unknown |
 | [SuperPoint](catalog/vision/features/superpoint.yaml) · [upstream](<https://github.com/magicleap/SuperPointPretrainedNetwork>) | model / unknown | keypoint-detection, descriptor-extraction | 1.3M | — | — | edge | unknown / unknown | unknown |
 | [Zero-DCE++](catalog/vision/enhancement/zero-dce-plus-plus.yaml) · [upstream](<https://github.com/Li-Chongyi/Zero-DCE_extension>) | model / unknown | low-light-enhancement | 10K | — | pytorch | desktop | CC-BY-NC-4.0 / unknown | luckfox-rv1106: unknown |
 | [FreeMoCap](pipelines/motion-capture/freemocap.yaml) · [upstream](<https://github.com/freemocap/freemocap>) | pipeline / unknown | markerless-motion-capture | — | — | python | desktop | AGPL-3.0 / unknown | luckfox-rv1106: unknown |
-| [Depth Anything V2 Small](catalog/vision/depth/depth-anything-v2-small.yaml) · [upstream](<https://github.com/DepthAnything/Depth-Anything-V2>) | model / unknown | monocular-depth-estimation | 24.8M | — | pytorch | desktop | Apache-2.0 / Apache-2.0 | luckfox-rv1106: unknown |
+| [Depth Anything V2 Small](catalog/vision/depth/depth-anything-v2-small.yaml) · [upstream](<https://huggingface.co/depth-anything/Depth-Anything-V2-Small>) | model / pretrained | monocular-depth-estimation | 24.8M | — | pytorch, pytorch-checkpoint | desktop | Apache-2.0 / Apache-2.0 | luckfox-rv1106: unknown |
 | [FastDepth](catalog/vision/depth/fastdepth.yaml) · [upstream](<https://github.com/dwofk/fast-depth>) | model / unknown | monocular-depth-estimation | — | — | — | edge | unknown / unknown | unknown |
 | [Lite-Mono](catalog/vision/depth/lite-mono.yaml) · [upstream](<https://github.com/noahzn/Lite-Mono>) | model / unknown | monocular-depth-estimation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [ZipDepth](catalog/vision/depth/zipdepth.yaml) · [upstream](<https://github.com/fabiotosi92/ZipDepth>) | model / unknown | monocular-depth-estimation | 6.1M | — | pytorch, onnxruntime, onnx | mobile, edge, desktop | MIT / unknown | luckfox-rv1106: unknown |
@@ -281,10 +296,10 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Lightweight 3D Human Pose Demo](pipelines/pose/lightweight-3d-pose.yaml) · [upstream](<https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch>) | pipeline / unknown | multi-person-3d-pose | — | — | pytorch, openvino | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [Depth Anything 3 Small](catalog/vision/depth/depth-anything-3-small.yaml) · [upstream](<https://github.com/ByteDance-Seed/Depth-Anything-3>) | model / unknown | multi-view-depth-estimation, camera-pose-estimation | 80M | — | pytorch | desktop | Apache-2.0 / Apache-2.0 | luckfox-rv1106: unknown |
 | [EfficientDet-Lite0](catalog/vision/detection/efficientdet-lite0.yaml) · [upstream](<https://www.tensorflow.org/lite/examples/object_detection/overview>) | model / unknown | object-detection | — | — | — | edge | unknown / unknown | unknown |
-| [NanoDet-Plus](catalog/vision/detection/nanodet-plus.yaml) · [upstream](<https://github.com/RangiLyu/nanodet>) | model / unknown | object-detection | 1.17M | — | — | edge | unknown / unknown | unknown |
+| [NanoDet-Plus](catalog/vision/detection/nanodet-plus.yaml) · [upstream](<https://github.com/RangiLyu/nanodet#model-zoo>) | model / pretrained | object-detection | 1.17M | — | ncnn, MNN, openvino, onnx | edge | Apache-2.0 / unknown | unknown |
 | [PP-OCRv6 Tiny](catalog/vision/ocr/pp-ocrv6-tiny.yaml) · [upstream](<https://github.com/PaddlePaddle/PaddleOCR>) | model / unknown | ocr | 1.5M | — | — | edge | Apache-2.0 / unknown | unknown |
-| [MoveNet Lightning](catalog/vision/pose/movenet-lightning.yaml) · [upstream](<https://www.tensorflow.org/hub/tutorials/movenet>) | model / unknown | pose-estimation | — | 2.9 MB | — | edge | Apache-2.0 / unknown | unknown |
-| [rtmlib](pipelines/pose/rtmlib.yaml) · [upstream](<https://github.com/Tau-J/rtmlib>) | toolkit / unknown | pose-inference, pose-tracking | — | — | onnxruntime, opencv, openvino, tensorrt | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [MoveNet Lightning](catalog/vision/pose/movenet-lightning.yaml) · [upstream](<https://www.tensorflow.org/hub/tutorials/movenet>) | model / pretrained | pose-estimation | — | 2.9 MB | tflite | edge | Apache-2.0 / unknown | unknown |
+| [rtmlib](pipelines/pose/rtmlib.yaml) · [upstream](<https://github.com/Tau-J/rtmlib>) | toolkit / companion | pose-inference, pose-tracking | — | — | onnxruntime, python, onnx | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [PIDNet-S](catalog/vision/segmentation/pidnet-s.yaml) · [upstream](<https://github.com/XuJiacong/PIDNet>) | model / unknown | semantic-segmentation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [LightStereo (OpenStereo)](catalog/vision/depth/lightstereo.yaml) · [upstream](<https://github.com/XiandaGuo/OpenStereo>) | model / unknown | stereo-depth-estimation | — | — | pytorch | desktop | academic-noncommercial-only / unknown | luckfox-rv1106: unknown |
 

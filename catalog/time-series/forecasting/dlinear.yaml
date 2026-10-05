@@ -1,24 +1,47 @@
 id: dlinear
 name: DLinear
+kind: model
 domain: time-series
 tasks: [forecasting]
 class: linear-time-series-model
-kind: model
 catalogue_batch: business-2026-10-05
 description: Trainable forecasting architecture combining trend/remainder decomposition with two linear projections.
-links: {repository: 'https://github.com/cure-lab/LTSF-Linear', paper: 'https://arxiv.org/abs/2205.13504', homepage: 'https://nixtlaverse.nixtla.io/neuralforecast/models.dlinear.html'}
-model: {parameters: null, file_size_mb: null, measurement_scope: 'Depends on input window, horizon and whether projections are shared or channel-specific. Illustrative single-series 96-to-24 biased projections contain 4656 parameters; this is a calculation, not a published checkpoint measurement.'}
+links:
+  repository: https://github.com/cure-lab/LTSF-Linear
+  paper: https://arxiv.org/abs/2205.13504
+  homepage: https://nixtlaverse.nixtla.io/neuralforecast/models.dlinear.html
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 4656 parameters is a calculation for the included 96-to-24 architecture; NPZ overhead and interpreter RAM are separate.
 license: {code: Apache-2.0, weights: not-provided}
-deployment: {offline: true, targets: [desktop, edge], notes: 'The small mathematical model may be portable; actual export/runtime and board performance remain unverified.'}
-runtimes: [pytorch]
-formats: []
+deployment: {offline: true, targets: [desktop, edge], notes: 'Board export and performance remain unverified.'}
+runtimes: [numpy, pytorch]
+formats: [npz]
 requirements: {ram_mb: {minimum: null, measured_peak: null}}
-usage: {mode: requires-training, training: supervised-sequence-fitting, needs_data: 'Regularly sampled histories with a specified forecast horizon and missing-data policy.', update_strategy: 'Refit using rolling-origin evaluation; record scaling and window parameters.'}
-data: {inputs: [numerical-time-series-window], outputs: [future-numerical-values], languages: []}
-evaluation: ['Rolling-origin MAE/MASE against naive and seasonal-naive baselines.', 'Report each horizon and distribution-shift failures.']
-limitations: ['A tiny parameter count does not establish forecast quality.', 'No universal business or stock forecast weights are provided.']
+usage:
+  mode: requires-training
+  training: Fit on historical training observations only; no pretrained company data.
+  needs_data: Regularly sampled numerical series with chronological train/validation/test target splits.
+  update_strategy: Version training data, scaler and fitted weights; repeat held-out evaluation after updates.
+data:
+  inputs: [Regularly sampled numerical history]
+  outputs: [24 future predictions in the reference configuration]
+  languages: []
+evaluation: [Compare chronological held-out MAE/RMSE against last-value and seasonal-naive baselines using a train-only scaler.]
+limitations:
+  - The NumPy recipe fits ridge least squares rather than the upstream Adam training algorithm.
+  - Synthetic-fixture accuracy does not establish real demand or stock forecasting quality.
 compatibility: []
-evidence: [{type: official, url: 'https://github.com/cure-lab/LTSF-Linear', notes: 'Architecture, implementation, licensing and links to integrations.'}]
+evidence:
+  - {type: official, url: 'https://github.com/cure-lab/LTSF-Linear', notes: 'Architecture and upstream training implementation.'}
 related: [neuralforecast, statsforecast, tiny-time-mixer, chronos-bolt-tiny, kronos-mini]
 reviewed: '2026-10-05'
 tags: [forecasting, business, infrastructure, compact-candidate, requires-training]
+review:
+  level: documentation
+  variant: Single-series 96-to-24 DLinear; kernel 25; two biased linear heads
+  artifact_reference: https://github.com/cure-lab/LTSF-Linear/blob/main/models/DLinear.py
+  artifact_sha256: null
+  artifact_integrity: requires-training
+  remaining: Hash each locally fitted artifact; keep measured host results separate from model-family claims.

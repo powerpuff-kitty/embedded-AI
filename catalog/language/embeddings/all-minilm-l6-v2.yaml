@@ -1,15 +1,44 @@
 id: all-minilm-l6-v2
 name: all-MiniLM-L6-v2
+kind: model
 domain: language
 tasks: [embeddings, semantic-search]
 class: small-specialized-model
-description: ""
-links: { repository: "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", model: null, paper: null, homepage: null }
-model: { parameters: 22700000, file_size_mb: null, architecture: null, precision: null }
-license: { code: Apache-2.0, weights: Apache-2.0 }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: Sentence-transformers MiniLM encoder with mean pooling and normalization for sentence embeddings.
+links:
+  repository: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+  model: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+model:
+  parameters: 22700000
+  file_size_mb: null
+  measurement_scope: Approximately 22.7M encoder weights; tokenization and vector indexes add memory.
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [sentence-transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2', notes: 'Encoder, pooling, truncation and model terms.'}
 tags: [embeddings]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published weights; domain adaptation is optional and must be evaluated.
+  needs_data: English sentences or short paragraphs.
+  update_strategy: Pin tokenizer, model revision, pooling and normalization before indexing documents.
+data:
+  inputs: [English sentences or short paragraphs]
+  outputs: [384-dimensional sentence embeddings]
+  languages: [en]
+evaluation: [Measure retrieval recall and ranking on the intended corpus and language distribution.]
+limitations:
+  - Default truncation is 256 wordpieces; preprocessing is part of the deployment.
+  - Similarity is not a factual-answer score, and index memory is separate from model memory.
+review:
+  level: documentation
+  variant: sentence-transformers/all-MiniLM-L6-v2 with mean pooling and normalization
+  artifact_reference: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Pin and hash selected model/tokenizer files; no hardware result inferred.
