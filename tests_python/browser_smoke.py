@@ -27,10 +27,13 @@ try:
         page.locator('#play').click();page.wait_for_timeout(200)
         assert 'SYNTHETIC' in page.locator('#status').inner_text()
         page.screenshot(path=str(root/'skeleton-desktop.png'))
-        page.set_viewport_size({'width':390,'height':844});page.goto('http://127.0.0.1:4173')
-        page.wait_for_selector('tbody tr');page.screenshot(path=str(root/'explorer-mobile.png'))
+        for width in (390, 768):
+            page.set_viewport_size({'width':width,'height':844});page.goto('http://127.0.0.1:4173')
+            page.wait_for_selector('tbody tr')
+            assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Horizontal page overflow'
+            page.screenshot(path=str(root/f'explorer-{width}.png'))
         assert not errors,errors
         browser.close()
-    print('Browser smoke passed: load, filters, comparison, unknown hardware, skeleton playback, mobile viewport.')
+    print('Browser smoke passed: load, filters, comparison, unknown hardware, skeleton playback and narrow-view layout.')
 finally:
     server.terminate();server.wait(timeout=5)
