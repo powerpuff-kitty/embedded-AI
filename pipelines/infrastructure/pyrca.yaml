@@ -1,0 +1,24 @@
+id: pyrca
+name: PyRCA
+domain: infrastructure
+tasks: [root-cause-ranking, metric-graph-analysis]
+class: root-cause-analysis-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Statistical and graph-based tools for ranking possible causes associated with anomalous metrics.
+links: {repository: 'https://github.com/salesforce/PyRCA', homepage: 'https://opensource.salesforce.com/PyRCA/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Graph size, selected method and metric history govern cost.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: configuration-dependent, needs_data: 'Service metrics, anomalous intervals and optional topology/domain constraints.', update_strategy: 'Reassess dependency graphs after topology or workload changes.'}
+data: {inputs: [metrics, anomaly-indicators, optional-topology], outputs: [ranked-cause-hypotheses], languages: []}
+evaluation: ['Top-k retrieval of known causes on held-out incidents.', 'Test sensitivity to missing metrics and graph errors.']
+limitations: ['Correlation and ranked hypotheses are not proof of causation.', 'Remediation remains a separate permissioned workflow.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/salesforce/PyRCA', notes: 'Root-cause analysis library and BSD-3-Clause license.'}]
+related: [merlion, loglizer]
+reviewed: '2026-10-05'
+tags: [infrastructure, operations, root-cause, requires-training]

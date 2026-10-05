@@ -1,0 +1,24 @@
+id: neuralforecast
+name: NeuralForecast
+domain: time-series
+tasks: [neural-forecasting, forecast-model-evaluation]
+class: forecasting-training-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Training/evaluation library containing DLinear and multiple other neural forecasting architectures.
+links: {repository: 'https://github.com/Nixtla/neuralforecast', homepage: 'https://nixtlaverse.nixtla.io/neuralforecast/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Select a compact model and measure its trained artifact separately from the framework.'}
+runtimes: [python, pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-sequence-fitting, needs_data: 'Timestamped target histories and any covariates available at prediction time.', update_strategy: 'Refit and compare models on fixed chronological folds.'}
+data: {inputs: [time-series, optional-covariates], outputs: [forecasts, fitted-models], languages: []}
+evaluation: ['Rolling-origin forecast errors by series and horizon.', 'Check that future covariates are actually known at inference time.']
+limitations: ['The toolkit includes large as well as small models.', 'Framework installation size is not one model size.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Nixtla/neuralforecast', notes: 'Model collection, DLinear integration and Apache-2.0 code.'}]
+related: [dlinear, statsforecast]
+reviewed: '2026-10-05'
+tags: [forecasting, business, requires-training]

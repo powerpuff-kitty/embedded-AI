@@ -1,0 +1,24 @@
+id: grid2op
+name: Grid2Op
+domain: energy
+tasks: [power-system-simulation, sequential-decision-evaluation]
+class: reinforcement-learning-environment
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Power-system simulation testbed for evaluating sequential decisions and learning agents.
+links: {repository: 'https://github.com/Grid2op/grid2op', homepage: 'https://grid2op.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MPL-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Requires a configured grid environment/backend; not a pretrained embedded controller.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: policy-training-environment, needs_data: 'Grid topology, operating scenarios, backend and action constraints.', update_strategy: 'Version scenarios and stress-test policies on unseen operating conditions.'}
+data: {inputs: [grid-scenarios, actions], outputs: [simulated-grid-states, rewards, violations], languages: []}
+evaluation: ['Scenario survival, constraint violations and policy robustness.', 'Compare against simple safe baselines under contingencies.']
+limitations: ['Not an authorization or safety case for operating a real grid.', 'Backend/data licenses and any policy weights need separate review.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Grid2op/grid2op', notes: 'Power-system sequential decision testbed and MPL-2.0 license.'}]
+related: [citylearn]
+reviewed: '2026-10-05'
+tags: [energy, infrastructure, simulation, companion]

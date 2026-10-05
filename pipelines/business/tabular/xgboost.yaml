@@ -1,0 +1,24 @@
+id: xgboost
+name: XGBoost
+domain: business
+tasks: [tabular-classification, tabular-regression, ranking]
+class: gradient-boosting-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Portable gradient-boosting library for training predictive models from structured records.
+links: {repository: 'https://github.com/dmlc/xgboost', homepage: 'https://xgboost.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'No fixed model size; budget trees, feature preprocessing and inference runtime separately.'}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Native inference is available; actual constraints depend on the fitted model and target build.'}
+runtimes: [xgboost-native, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-fitting, needs_data: 'Features and labels with documented provenance and observation time.', update_strategy: 'Revalidate calibration and cost tradeoffs before promoting retrained artifacts.'}
+data: {inputs: [structured-features], outputs: [predictions-or-ranking-scores], languages: []}
+evaluation: ['Held-out business metrics, calibration and subgroup error review where relevant.', 'Latency and memory at the selected tree count.']
+limitations: ['Not a pretrained corporate decision system.', 'Feature leakage can dominate apparent accuracy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dmlc/xgboost', notes: 'Gradient boosting, portability and Apache-2.0 code.'}]
+related: [lightgbm, catboost, qlib]
+reviewed: '2026-10-05'
+tags: [business, corporate, classical-ml, requires-training]

@@ -1,0 +1,24 @@
+id: statsforecast
+name: StatsForecast
+domain: time-series
+tasks: [statistical-forecasting, baseline-evaluation]
+class: statistical-forecasting-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Local statistical forecasting library with ARIMA, exponential-smoothing, Theta and baseline methods.
+links: {repository: 'https://github.com/Nixtla/statsforecast', homepage: 'https://nixtlaverse.nixtla.io/statsforecast/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Per-series model/state may be small; fitting many series and framework overhead remain separate costs.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: statistical-fitting, needs_data: 'Timestamped numerical histories with sampling frequency and seasonality definitions.', update_strategy: 'Refit/reselect models using fixed rolling-origin protocols.'}
+data: {inputs: [numerical-time-series], outputs: [forecasts, optional-intervals], languages: []}
+evaluation: ['MAE/MASE and interval coverage where available.', 'Compare against seasonal-naive forecasts before using neural alternatives.']
+limitations: ['A collection of statistical estimators, not one pretrained model.', 'Structural breaks and sparse histories can invalidate fitted assumptions.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Nixtla/statsforecast', notes: 'Statistical model families and Apache-2.0 code.'}]
+related: [dlinear, neuralforecast, merlion]
+reviewed: '2026-10-05'
+tags: [forecasting, classical-ml, business, requires-training]

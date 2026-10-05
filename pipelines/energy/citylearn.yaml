@@ -1,0 +1,24 @@
+id: citylearn
+name: CityLearn
+domain: energy
+tasks: [building-energy-simulation, demand-response-policy-training]
+class: reinforcement-learning-environment
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Simulation environment for building-energy coordination, demand response and evaluation of controllers.
+links: {repository: 'https://github.com/citylearn-project/CityLearn', homepage: 'https://www.citylearn.net/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation/training companion; any exported control policy needs a separate model record and hardware benchmark.'}
+runtimes: [python, gymnasium]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: policy-training-environment, needs_data: 'Building models, weather/load/tariff series and operational constraints.', update_strategy: 'Version scenarios and revalidate policies when assets or constraints change.'}
+data: {inputs: [building-scenarios, controller-actions], outputs: [simulated-states, rewards, energy-metrics], languages: []}
+evaluation: ['Energy/cost performance relative to rule-based controllers.', 'Constraint violations, comfort and robustness to forecast error.']
+limitations: ['Simulation performance does not establish safe real-building control.', 'Keep equipment limits and emergency fallback outside learned policies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/citylearn-project/CityLearn', notes: 'Current project home, simulation scope and MIT code license.'}]
+related: [grid2op, dlinear]
+reviewed: '2026-10-05'
+tags: [energy, infrastructure, buildings, simulation, companion]

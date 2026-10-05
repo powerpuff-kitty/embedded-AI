@@ -1,0 +1,24 @@
+id: loglizer
+name: Loglizer
+domain: infrastructure
+tasks: [log-anomaly-detection]
+class: anomaly-research-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Toolkit of statistical and machine-learning methods for anomaly detection from structured log events.
+links: {repository: 'https://github.com/logpai/loglizer'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Selected estimator, event vocabulary and windowing determine the actual deployment budget.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: configuration-dependent, needs_data: 'Structured log event windows; labels or normal examples depending on the estimator.', update_strategy: 'Retrain on reviewed logs and track event-vocabulary drift.'}
+data: {inputs: [log-event-features], outputs: [anomaly-labels-or-scores], languages: [log-format-dependent]}
+evaluation: ['Split by time and incident to avoid near-duplicate event leakage.', 'Measure false alerts per service-day and missed incidents.']
+limitations: ['A collection of algorithms, not a universal pretrained operations model.', 'Raw logs need parsing before most included methods can use them.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/logpai/loglizer', notes: 'Log-based anomaly algorithms and MIT licensing.'}]
+related: [drain3, merlion]
+reviewed: '2026-10-05'
+tags: [infrastructure, logs, anomaly, requires-training]

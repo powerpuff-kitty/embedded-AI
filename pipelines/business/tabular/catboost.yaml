@@ -1,0 +1,24 @@
+id: catboost
+name: CatBoost
+domain: business
+tasks: [tabular-classification, tabular-regression, ranking]
+class: gradient-boosting-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Gradient-boosted tree framework supporting numerical and categorical features.
+links: {repository: 'https://github.com/catboost/catboost', homepage: 'https://catboost.ai/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Fitted tree count and categorical processing determine artifact/runtime cost.'}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'CPU inference is a candidate deployment route; conversion restrictions depend on feature types and target format.'}
+runtimes: [catboost-native, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-fitting, needs_data: 'Structured features, categorical definitions and outcome labels.', update_strategy: 'Monitor unseen category rates and review new model versions before rollout.'}
+data: {inputs: [numerical-and-categorical-features], outputs: [predictions-or-ranking-scores], languages: []}
+evaluation: ['Time/entity-separated accuracy and calibration.', 'Test unseen categories and measure end-to-end memory.']
+limitations: ['No universal payment-risk, demand or customer model is supplied.', 'Training-library support does not prove a particular embedded export works.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/catboost/catboost', notes: 'Categorical/numerical features, CPU/GPU implementations and Apache-2.0 license.'}]
+related: [lightgbm, xgboost]
+reviewed: '2026-10-05'
+tags: [business, corporate, categorical-data, requires-training]

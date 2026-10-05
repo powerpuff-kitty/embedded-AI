@@ -1,0 +1,24 @@
+id: vowpal-wabbit
+name: Vowpal Wabbit
+domain: business
+tasks: [online-learning, contextual-bandits, action-ranking]
+class: online-learning-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Efficient learning system for linear and other configurable models, including contextual-bandit policies.
+links: {repository: 'https://github.com/VowpalWabbit/vowpal_wabbit', homepage: 'https://vowpalwabbit.org/', license: 'https://github.com/VowpalWabbit/vowpal_wabbit/blob/master/LICENSE'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Feature hashing, reductions and chosen policy determine learned state size.'}
+license: {code: BSD-3-Clause, weights: not-provided, notes: 'Three-clause BSD terms verified in LICENSE; included dependencies retain their own notices.'}
+deployment: {offline: true, targets: [desktop, server], notes: 'Local native runtime; configuration and live feedback handling are part of deployment.'}
+runtimes: [vowpal-wabbit-native, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: online-or-bandit-learning, needs_data: 'Context, permitted actions, observed rewards and logged action propensities where needed.', update_strategy: 'Evaluate policies offline and bound exploration before controlled rollout.'}
+data: {inputs: [context-features, action-set, feedback], outputs: [action-scores-or-distribution], languages: []}
+evaluation: ['Off-policy evaluation with valid propensity logging.', 'Compare a fixed policy and monitor regret, cost and constraint violations.']
+limitations: ['Only ranks within a defined action space; not a general-purpose corporate agent.', 'Policy learning must not bypass approvals or access controls.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/VowpalWabbit/vowpal_wabbit', notes: 'Native online-learning system and configurable learning techniques.'}, {type: official, url: 'https://github.com/VowpalWabbit/vowpal_wabbit/blob/master/LICENSE', notes: 'Three-clause BSD license text.'}]
+related: [lightfm, or-tools]
+reviewed: '2026-10-05'
+tags: [business, decisions, bandits, requires-training]

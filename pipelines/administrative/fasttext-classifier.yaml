@@ -1,0 +1,24 @@
+id: fasttext-classifier
+name: fastText supervised classifiers
+domain: administrative
+tasks: [text-classification, document-routing]
+class: text-classifier-training-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Library for training compact text classifiers; distinct from the pretrained lid.176 language-identification entry.
+links: {repository: 'https://github.com/facebookresearch/fastText', homepage: 'https://fasttext.cc/docs/en/supervised-tutorial.html'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Vocabulary, feature hashing, dimensions and quantization determine model size.'}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'C++ inference and quantized classifiers are possible; no board measurements supplied.'}
+runtimes: [fasttext-cpp, python]
+formats: [fasttext-bin, fasttext-ftz]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-fitting, needs_data: 'Representative text with task labels and consistent tokenization.', update_strategy: 'Rebuild and validate vocabulary/quantization when data or labels change.'}
+data: {inputs: [text], outputs: [custom-label-scores], languages: [training-data-dependent]}
+evaluation: ['Per-class recall and macro F1 on held-out real documents.', 'Compare accuracy, model size and latency before and after quantization.']
+limitations: ['The original repository is archived.', 'No universal business-category weights are provided.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/fastText', notes: 'Supervised classification, quantization, MIT code and archival status.'}]
+related: [fasttext-lid176, setfit]
+reviewed: '2026-10-05'
+tags: [administration, text, compact-candidate, archived]

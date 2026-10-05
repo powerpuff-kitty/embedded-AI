@@ -1,0 +1,24 @@
+id: river-half-space-trees
+name: River HalfSpaceTrees
+domain: infrastructure
+tasks: [streaming-anomaly-detection]
+class: online-tree-ensemble
+kind: model
+catalogue_batch: business-2026-10-05
+description: Non-neural streaming anomaly detector based on half-space tree ensembles.
+links: {repository: 'https://github.com/online-ml/river', homepage: 'https://riverml.xyz/latest/api/anomaly/HalfSpaceTrees/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'State grows with tree count and height; this is not a fixed pretrained artifact.'}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Candidate for bounded telemetry workloads; the Python runtime and preprocessing must also be budgeted.'}
+runtimes: [python, river]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: online-unsupervised-fitting, needs_data: 'Scaled numerical feature stream and an initialization window representative of normal operation.', update_strategy: 'Monitor drift and deliberately manage reference-window updates.'}
+data: {inputs: [scaled-numerical-features], outputs: [anomaly-scores], languages: []}
+evaluation: ['Prequential evaluation with alert rate and detection delay.', 'Compare score behaviour during warmup and drift.']
+limitations: ['Feature ranges/scaling and initialization affect scores.', 'Not a pretrained attack or failure classifier.']
+compatibility: []
+evidence: [{type: official, url: 'https://riverml.xyz/latest/api/anomaly/HalfSpaceTrees/', notes: 'Algorithm, parameters, initialization and feature-range assumptions.'}, {type: official, url: 'https://github.com/online-ml/river', notes: 'Library implementation and licensing.'}]
+related: [kitnet, merlion]
+reviewed: '2026-10-05'
+tags: [infrastructure, classical-ml, online-learning]

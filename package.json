@@ -5,7 +5,8 @@
   "scripts": {
     "validate": "tsx scripts/validate.ts",
     "index": "tsx scripts/generate-index.ts",
-    "test": "tsx --test tests/catalog.test.ts",
+    "search": "tsx scripts/search.ts",
+    "test": "tsx --test tests/*.test.ts",
     "check": "npm run validate && npm test && npm run index -- --check"
   },
   "devDependencies": {

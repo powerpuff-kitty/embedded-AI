@@ -1,0 +1,24 @@
+id: docling
+name: Docling
+domain: administrative
+tasks: [document-parsing, layout-analysis, table-extraction, ocr]
+class: document-processing-pipeline
+kind: pipeline
+catalogue_batch: business-2026-10-05
+description: Converts documents into structured content using configurable parsing, layout and OCR components.
+links: {repository: 'https://github.com/docling-project/docling', homepage: 'https://docling-project.github.io/docling/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: configuration-dependent, notes: 'Individual OCR, layout and other model artifacts carry their own licenses.'}
+deployment: {offline: true, targets: [desktop, server], notes: 'Select local components and pre-download required model artifacts; the whole pipeline is not one small model.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: configuration-dependent, needs_data: 'Source documents plus the chosen OCR/layout configuration.', update_strategy: 'Pin parser and model versions; rerun a representative document regression set.'}
+data: {inputs: [documents, scanned-pages], outputs: [structured-document-content, tables, text], languages: [component-dependent]}
+evaluation: ['Text/layout/table extraction accuracy per document family.', 'Peak memory and latency per page and per selected model pipeline.']
+limitations: ['Preserve originals, page references and extraction confidence.', 'PDF parsing is not invoice approval or legal interpretation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/docling-project/docling', notes: 'Document conversion features and separation of code/model licenses.'}]
+related: [gliner25-small, legal-bert-small, presidio]
+reviewed: '2026-10-05'
+tags: [administration, documents, invoices, companion]

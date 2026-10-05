@@ -1,0 +1,24 @@
+id: gliner25-small
+name: GLiNER2.5 Small v1
+domain: administrative
+tasks: [schema-driven-extraction, text-classification, relation-extraction]
+class: structured-extraction-model
+kind: model
+catalogue_batch: business-2026-10-05
+description: Compact English boundary-extraction checkpoint for entities, labels, structured records and relations.
+links: {repository: 'https://github.com/fastino-ai/GLiNER2', model: 'https://huggingface.co/fastino/gliner2.5-small-v1'}
+model: {parameters: 74000000, file_size_mb: 296, measurement_scope: 'Publisher approximate FP32 weights and total parameter count; not peak process memory.'}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server], notes: 'Use AutoExtractor for this boundary checkpoint, not the legacy GLiNER2 span loader; CPU/CUDA/MPS paths are documented upstream.'}
+runtimes: [gliner2, pytorch]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: optional-fine-tuning, needs_data: 'English source text plus the requested schema; labelled examples for domain evaluation.', update_strategy: 'Pin the boundary-compatible library and checkpoint; reassess after schema changes.'}
+data: {inputs: [english-text, extraction-schema], outputs: [entity-spans, labels, records, relations], languages: [en]}
+evaluation: ['Exact span/field F1, record completeness and false extraction rate.', 'Check truncation and cross-chunk relations on long documents.']
+limitations: ['Not a bank-card or MCU-class model merely because it is called Small.', 'Extracted amounts and dates require deterministic validation and source provenance.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/fastino/gliner2.5-small-v1', notes: '74M boundary model, approximately 296 MB FP32, English and AutoExtractor loading.'}]
+related: [docling, spacy-en-core-web-sm, presidio]
+reviewed: '2026-10-05'
+tags: [administration, invoices, extraction, english]

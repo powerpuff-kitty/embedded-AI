@@ -1,0 +1,24 @@
+id: drain3
+name: Drain3
+domain: infrastructure
+tasks: [log-template-mining, log-structuring]
+class: log-mining-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Streaming log-template miner for converting repeated messages into structured templates and variable fields.
+links: {repository: 'https://github.com/logpai/Drain3', license: 'https://github.com/logpai/Drain3/blob/master/LICENSE.txt'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable, notes: 'Verified against LICENSE.txt; no neural checkpoint is involved.'}
+deployment: {offline: true, targets: [desktop, server], notes: 'Template count, cache limits and persistence determine state size.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: online-template-mining, needs_data: 'Log messages and application-specific masking/configuration.', update_strategy: 'Persist/version templates and set explicit cache limits.'}
+data: {inputs: [log-message-stream], outputs: [template-ids, templates, extracted-parameters], languages: [log-format-dependent]}
+evaluation: ['Template stability and parsing accuracy on unseen logs.', 'Measure cluster-state growth and downstream anomaly quality.']
+limitations: ['A novel log template is not necessarily an incident.', 'Log parameters may contain secrets and require masking.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/logpai/Drain3', notes: 'Streaming template mining, masking, persistence and state controls.'}, {type: official, url: 'https://github.com/logpai/Drain3/blob/master/LICENSE.txt', notes: 'MIT license text.'}]
+related: [loglizer, presidio]
+reviewed: '2026-10-05'
+tags: [infrastructure, logs, non-neural, companion]

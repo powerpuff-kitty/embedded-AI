@@ -7,16 +7,18 @@ import Ajv2020 from 'ajv/dist/2020.js';
 
 export type Entry = Record<string, any> & { id: string; name: string; domain: string; tasks: string[]; path: string };
 const schema = JSON.parse(await fs.readFile(new URL('../schema/model.schema.json', import.meta.url), 'utf8'));
+const businessSchema = JSON.parse(await fs.readFile(new URL('../schema/business-metadata.schema.json', import.meta.url), 'utf8'));
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 ajv.addFormat('http-url', (value: string) => {
   try { const u = new URL(value); return ['http:', 'https:'].includes(u.protocol) && !!u.hostname && !u.username && !u.password; }
   catch { return false; }
 });
-const validate = ajv.compile(schema);
+const validate = ajv.compile(schema), validateBusiness = ajv.compile(businessSchema);
 const cmp = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 export function kindOf(e: Entry): string {
   return e.kind ?? (e.class === 'tracking-system' ? 'pipeline' : e.class === 'model-collection' ? 'collection' : 'model');
 }
+export const usageOf = (e: Entry): string => e.usage?.mode ?? 'unknown';
 export function validateEntries(entries: Entry[], root = process.cwd()): void {
   const errors: string[] = [], ids = new Set<string>();
   for (const e of entries) {
@@ -24,6 +26,11 @@ export function validateEntries(entries: Entry[], root = process.cwd()): void {
     if (ids.has(e.id)) errors.push(`${e.path}: duplicate id ${e.id}`);
     ids.add(e.id);
     if (!Object.values(e.links).some(Boolean)) errors.push(`${e.path}: at least one upstream link is required`);
+    if (e.catalogue_batch === 'business-2026-10-05' || e.usage !== undefined) {
+      if (!validateBusiness(e)) errors.push(`${e.path}: ${ajv.errorsText(validateBusiness.errors, { separator: '; ' })}`);
+      if (usageOf(e) === 'pretrained' && kindOf(e) === 'model' && !e.links.model)
+        errors.push(`${e.path}: pretrained model requires an explicit model-card/artifact link`);
+    }
     if (['pipeline', 'toolkit', 'primitive'].includes(kindOf(e)) && (e.model.parameters != null || e.model.file_size_mb != null))
       errors.push(`${e.path}: companion tools must not claim a single model size`);
     for (const c of e.compatibility) {
@@ -69,19 +76,21 @@ export function formatParams(n: number | null): string {
 export const formatSize = (n: number | null): string => n == null ? '—' : n < 1 ? `${Number((n * 1000).toFixed(3))} kB` : `${n} MB`;
 export function renderCatalogue(entries: Entry[]): string {
   let out = `## Full catalogue\n\n**${entries.length} entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in \`catalog/\`, \`pipelines/\` and \`primitives/\`.\n\n`;
-  out += 'Names link to manifests; upstream links point to the original projects. **—** means unknown or not applicable, never zero. Model file sizes use decimal MB/kB and are not RAM requirements. Sizes are checkpoint-dependent; read each manifest for scope.\n\n';
-  out += '**C / W** = code license / weights license. Unknown weights terms are never replaced by the code license. Target classes are upstream/proposed targets, not reproduced compatibility. Status is kept per hardware target; no global supported/unsupported badge is inferred.\n\n';
-  out += 'Companion tools are included for composition, not labelled as tiny neural networks. Live/causal versus windowed/offline processing and camera/coordinate requirements are recorded in the new vision manifests. See [vision and 3D guide](docs/VISION-VIDEO-3D.md).\n\n';
+  out += 'Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.\n\n';
+  out += '**Use:** `pretrained` = published weights, still requiring task data/evaluation; `requires-training` = fit or adapt on your data; `companion` = supporting pipeline/tool; `unknown` = not reviewed. Kind and use are independent: a training toolkit is not a pretrained business model.\n\n';
+  out += '**C / W** = code license / weights license. Unknown weights terms are never replaced by code terms. Target classes are upstream/proposed targets, not reproduced compatibility. Status remains per hardware target.\n\n';
+  out += 'This is a curated, expandable catalogue, not an exhaustive list of every AI or a guarantee that all entries fit embedded boards. Companion tools and desktop references are labelled separately.\n\n';
+  out += 'Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).\n\n';
   const domains = [...new Set(entries.map(e => e.domain))];
   out += domains.map(d => `[${escapeCell(d)}](#catalogue-${d})`).join(' · ') + '\n\n';
   for (const domain of domains) {
     out += `<a id="catalogue-${domain}"></a>\n\n### ${domain.charAt(0).toUpperCase() + domain.slice(1).replaceAll('-', ' ')}\n\n`;
-    out += '| Entry / source | Kind | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |\n';
+    out += '| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |\n';
     out += '|---|---|---|---:|---:|---|---|---|---|\n';
     for (const e of entries.filter(e => e.domain === domain)) {
       const runtime = [...new Set([...(e.runtimes ?? []), ...(e.formats ?? [])])].join(', ') || '—';
       const compatibility = e.compatibility.length ? e.compatibility.map((c: any) => `${c.target}: ${c.status}`).join('; ') : 'unknown';
-      out += `| [${escapeCell(e.name)}](${e.path}) · [upstream](<${upstream(e)}>) | ${kindOf(e)} | ${escapeCell(e.tasks.join(', '))} | ${formatParams(e.model.parameters)} | ${formatSize(e.model.file_size_mb)} | ${escapeCell(runtime)} | ${escapeCell(e.deployment.targets.join(', ') || '—')} | ${escapeCell(e.license.code)} / ${escapeCell(e.license.weights)} | ${escapeCell(compatibility)} |\n`;
+      out += `| [${escapeCell(e.name)}](${e.path}) · [upstream](<${upstream(e)}>) | ${kindOf(e)} / ${usageOf(e)} | ${escapeCell(e.tasks.join(', '))} | ${formatParams(e.model.parameters)} | ${formatSize(e.model.file_size_mb)} | ${escapeCell(runtime)} | ${escapeCell(e.deployment.targets.join(', ') || '—')} | ${escapeCell(e.license.code)} / ${escapeCell(e.license.weights)} | ${escapeCell(compatibility)} |\n`;
     }
     out += '\n';
   }
@@ -96,7 +105,22 @@ export function updateReadme(readme: string, catalogue: string): string {
   return readme.slice(0, readme.indexOf(start)) + block + readme.slice(readme.indexOf(end) + end.length);
 }
 export function renderIndex(entries: Entry[]): string {
-  // Stable summary index; full source metadata remains in each linked YAML manifest.
   return '[\n' + entries.map(e => '  ' + JSON.stringify({ id: e.id, name: e.name, domain: e.domain, tasks: e.tasks, class: e.class,
-    parameters: e.model.parameters ?? null, file_size_mb: e.model.file_size_mb ?? null, path: e.path, kind: kindOf(e), upstream: upstream(e) })).join(',\n') + '\n]\n';
+    parameters: e.model.parameters ?? null, file_size_mb: e.model.file_size_mb ?? null, path: e.path, kind: kindOf(e), upstream: upstream(e), usage_mode: usageOf(e) })).join(',\n') + '\n]\n';
+}
+export function renderFullIndex(entries: Entry[]): string {
+  return JSON.stringify({ schema_version: 1, entries: entries.map(e => ({ ...e, kind: kindOf(e), usage_mode: usageOf(e) })) }, null, 2) + '\n';
+}
+export function renderCoverage(entries: Entry[]): string {
+  const countBy = (fn: (e: Entry) => string) => Object.fromEntries([...new Set(entries.map(fn))].sort(cmp).map(key => [key, entries.filter(e => fn(e) === key).length]));
+  return JSON.stringify({ total: entries.length, by_domain: countBy(e => e.domain), by_kind: countBy(kindOf), by_usage: countBy(usageOf),
+    unknowns: { usage: entries.filter(e => usageOf(e) === 'unknown').length, code_license: entries.filter(e => e.license.code === 'unknown').length,
+      weights_license: entries.filter(e => e.license.weights === 'unknown').length, measured_peak_ram: entries.filter(e => e.requirements?.ram_mb?.measured_peak == null).length },
+    reproduced_entries: entries.filter(e => e.compatibility.some((c: any) => c.status === 'reproduced')).length,
+    note: 'Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes.' }, null, 2) + '\n';
+}
+export function filterEntries(entries: Entry[], filters: { domain?: string; task?: string; kind?: string; usage?: string; query?: string } = {}): Entry[] {
+  return entries.filter(e => (!filters.domain || e.domain === filters.domain) && (!filters.task || e.tasks.includes(filters.task)) &&
+    (!filters.kind || kindOf(e) === filters.kind) && (!filters.usage || usageOf(e) === filters.usage) &&
+    (!filters.query || [e.id, e.name, e.description ?? '', ...(e.tags ?? [])].join(' ').toLowerCase().includes(filters.query.toLowerCase())));
 }

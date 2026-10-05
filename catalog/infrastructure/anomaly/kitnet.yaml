@@ -1,0 +1,24 @@
+id: kitnet
+name: KitNET
+domain: infrastructure
+tasks: [streaming-anomaly-detection]
+class: autoencoder-ensemble
+kind: model
+catalogue_batch: business-2026-10-05
+description: Online-trained ensemble of small autoencoders scoring unusual numerical observations.
+links: {repository: 'https://github.com/ymirsky/KitNET-py'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Feature count, feature mapping and maximum autoencoder size determine the trained model.'}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Compact algorithm candidate; upstream Python implementation does not establish paper-speed performance or RV1106 compatibility.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: online-unsupervised-fitting, needs_data: 'Representative normal observations for feature-mapping and anomaly-detector grace periods.', update_strategy: 'Control retraining explicitly; do not silently learn attacks or faults as normal.'}
+data: {inputs: [numerical-feature-stream], outputs: [reconstruction-error-anomaly-score], languages: []}
+evaluation: ['False-alert rate, detection delay and precision/recall on time-separated anomalies.', 'Include feature extraction and warmup when measuring system performance.']
+limitations: ['Zero scores during training are not evidence that a stream is healthy.', 'Anomaly scores do not establish malicious intent or incident cause.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ymirsky/KitNET-py', notes: 'Autoencoder ensemble, grace periods, MIT license and implementation speed caveats.'}]
+related: [kitsune, river-half-space-trees]
+reviewed: '2026-10-05'
+tags: [infrastructure, security, anomaly, compact-candidate]

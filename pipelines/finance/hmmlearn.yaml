@@ -1,0 +1,24 @@
+id: hmmlearn
+name: hmmlearn
+domain: finance
+tasks: [hidden-state-estimation, sequence-modelling]
+class: statistical-learning-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Hidden Markov model training and inference library; a possible market-regime modelling baseline, not a pretrained bull/bear classifier.
+links: {repository: 'https://github.com/hmmlearn/hmmlearn', homepage: 'https://hmmlearn.readthedocs.io/en/stable/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Model state count, feature dimensions and covariance choice determine the trained artifact size.'}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Fitted statistical models may be compact; Python and numerical-library overhead is separate.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: unsupervised-fitting, needs_data: 'Ordered numerical observations from the intended deployment domain.', update_strategy: 'Refit on a controlled rolling window and align latent states between versions.'}
+data: {inputs: [numerical-observation-sequence], outputs: [latent-state-estimates, sequence-likelihoods], languages: []}
+evaluation: ['Held-out sequence likelihood and state stability.', 'For markets, compare regimes out of time without future leakage.']
+limitations: ['Market-state interpretation is application-specific.', 'Upstream declares limited-maintenance mode.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/hmmlearn/hmmlearn', notes: 'Unsupervised HMM library, BSD-3-Clause and limited maintenance.'}]
+related: [qlib]
+reviewed: '2026-10-05'
+tags: [classical-ml, finance, requires-training]

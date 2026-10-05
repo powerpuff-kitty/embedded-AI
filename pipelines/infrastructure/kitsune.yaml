@@ -1,0 +1,24 @@
+id: kitsune
+name: Kitsune network anomaly pipeline
+domain: infrastructure
+tasks: [network-feature-extraction, network-anomaly-detection]
+class: network-monitoring-pipeline
+kind: pipeline
+catalogue_batch: business-2026-10-05
+description: Combines AfterImage packet statistics with a KitNET autoencoder ensemble for network anomaly scoring.
+links: {repository: 'https://github.com/ymirsky/Kitsune-py'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Capture/parsing state and dependency overhead are part of the total cost, not just neural weights.'}
+runtimes: [python, numpy, tshark-or-scapy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: online-unsupervised-fitting, needs_data: 'Authorized packet captures and a representative normal training interval.', update_strategy: 'Version feature extraction and normal baselines; review drift and abnormal training data.'}
+data: {inputs: [authorized-packet-captures], outputs: [per-observation-anomaly-scores], languages: []}
+evaluation: ['End-to-end throughput, false alerts and detection delay.', 'Evaluate feature-state memory at realistic traffic cardinality.']
+limitations: ['Reference Python code is not the optimized implementation used for all published speed claims.', 'Restrict monitoring to networks and traffic for which access is authorized.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ymirsky/Kitsune-py', notes: 'AfterImage plus KitNET architecture and parsing/performance caveats.'}]
+related: [kitnet]
+reviewed: '2026-10-05'
+tags: [networking, infrastructure, defensive-security, companion]

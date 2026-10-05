@@ -1,0 +1,24 @@
+id: splink
+name: Splink
+domain: business
+tasks: [probabilistic-record-linkage, deduplication]
+class: record-linkage-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Links and deduplicates structured records without requiring a shared unique identifier.
+links: {repository: 'https://github.com/moj-analytical-services/splink', homepage: 'https://moj-analytical-services.github.io/splink/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Local SQL backends are possible; candidate-pair volume rather than neural weights dominates many workloads.'}
+runtimes: [python, sql-backend]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: probabilistic-parameter-estimation, needs_data: 'Authorized records, comparison definitions, blocking rules and review labels for evaluation.', update_strategy: 'Re-estimate match parameters when sources or normalization rules change.'}
+data: {inputs: [structured-records, comparison-rules], outputs: [match-probabilities, candidate-links], languages: [field-dependent]}
+evaluation: ['Pairwise precision/recall and erroneous-merge cost.', 'Review thresholds using labelled matches and difficult non-matches.']
+limitations: ['Probable matches should not silently merge consequential customer or supplier records.', 'Data normalization and blocking choices affect both recall and cost.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/moj-analytical-services/splink', notes: 'Probabilistic linkage, SQL backend support and MIT license.'}]
+related: [docling, presidio]
+reviewed: '2026-10-05'
+tags: [business, administration, entity-resolution, requires-training]

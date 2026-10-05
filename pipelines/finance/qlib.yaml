@@ -1,0 +1,24 @@
+id: qlib
+name: Qlib
+domain: finance
+tasks: [quantitative-research, model-evaluation, backtesting]
+class: quantitative-research-platform
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Research framework for data preparation, model training and quantitative evaluation; not one deployable predictor.
+links: {repository: 'https://github.com/microsoft/qlib'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Local workflows require locally available market data and selected model dependencies.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: configuration-dependent, needs_data: 'Point-in-time features, labels, market calendars and execution assumptions.', update_strategy: 'Version datasets, experiments, models and backtest configurations.'}
+data: {inputs: [market-data, model-configuration], outputs: [trained-models, research-reports, backtests], languages: []}
+evaluation: ['Chronological validation, survivorship-bias checks and cost-sensitive backtests.', 'Retain failed experiments to assess selection bias.']
+limitations: ['Infrastructure for research is not evidence of alpha.', 'Data-provider licenses and availability are independent of the MIT code license.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/qlib', notes: 'Quantitative research platform, supported modelling workflows and code license.'}]
+related: [kronos-mini, kronos-small, finbert-prosus, lightgbm, xgboost]
+reviewed: '2026-10-05'
+tags: [finance, backtesting, companion]

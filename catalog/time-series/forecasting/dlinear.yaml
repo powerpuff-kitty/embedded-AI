@@ -1,0 +1,24 @@
+id: dlinear
+name: DLinear
+domain: time-series
+tasks: [forecasting]
+class: linear-time-series-model
+kind: model
+catalogue_batch: business-2026-10-05
+description: Trainable forecasting architecture combining trend/remainder decomposition with two linear projections.
+links: {repository: 'https://github.com/cure-lab/LTSF-Linear', paper: 'https://arxiv.org/abs/2205.13504', homepage: 'https://nixtlaverse.nixtla.io/neuralforecast/models.dlinear.html'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Depends on input window, horizon and whether projections are shared or channel-specific. Illustrative single-series 96-to-24 biased projections contain 4656 parameters; this is a calculation, not a published checkpoint measurement.'}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge], notes: 'The small mathematical model may be portable; actual export/runtime and board performance remain unverified.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-sequence-fitting, needs_data: 'Regularly sampled histories with a specified forecast horizon and missing-data policy.', update_strategy: 'Refit using rolling-origin evaluation; record scaling and window parameters.'}
+data: {inputs: [numerical-time-series-window], outputs: [future-numerical-values], languages: []}
+evaluation: ['Rolling-origin MAE/MASE against naive and seasonal-naive baselines.', 'Report each horizon and distribution-shift failures.']
+limitations: ['A tiny parameter count does not establish forecast quality.', 'No universal business or stock forecast weights are provided.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/cure-lab/LTSF-Linear', notes: 'Architecture, implementation, licensing and links to integrations.'}]
+related: [neuralforecast, statsforecast, tiny-time-mixer, chronos-bolt-tiny, kronos-mini]
+reviewed: '2026-10-05'
+tags: [forecasting, business, infrastructure, compact-candidate, requires-training]

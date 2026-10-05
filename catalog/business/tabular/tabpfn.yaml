@@ -1,0 +1,24 @@
+id: tabpfn
+name: TabPFN model family
+domain: business
+tasks: [tabular-classification, tabular-regression]
+class: tabular-foundation-model
+kind: collection
+catalogue_batch: business-2026-10-05
+description: Pretrained tabular model family using labelled task data as context; included as a desktop reference, not a tiny embedded model.
+links: {repository: 'https://github.com/PriorLabs/TabPFN', homepage: 'https://docs.priorlabs.ai/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Version-dependent family; context rows and feature count also affect inference memory.'}
+license: {code: Apache-2.0, weights: version-dependent-restricted, notes: 'Current upstream lists several recent weight releases as non-commercial; older v2 uses separate attribution terms. Review the exact checkpoint license.'}
+deployment: {offline: true, targets: [desktop, server], notes: 'Local PyTorch inference after obtaining model artifacts; some variants are gated and larger tasks are GPU-oriented.'}
+runtimes: [pytorch, tabpfn]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: in-context-adaptation, needs_data: 'Labelled rows for the actual task plus query rows; pretrained does not mean no customer data is needed.', update_strategy: 'Pin a specific licensed checkpoint and version context construction.'}
+data: {inputs: [labelled-tabular-context, query-rows], outputs: [class-probabilities-or-regression-predictions], languages: []}
+evaluation: ['Held-out task performance with strict row/entity separation.', 'Measure memory/latency as context size grows and compare small tree baselines.']
+limitations: ['Do not infer MCU suitability from a family name or parameter count.', 'Code licensing does not grant commercial rights to all model weights.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PriorLabs/TabPFN', notes: 'Local inference, version-specific model licensing and context/resource requirements.'}]
+related: [lightgbm, xgboost, catboost]
+reviewed: '2026-10-05'
+tags: [business, tabular, desktop-reference, restricted-weights]

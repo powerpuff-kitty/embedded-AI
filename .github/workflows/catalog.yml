@@ -1,14 +1,63 @@
 name: catalog
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 permissions:
   contents: read
+concurrency:
+  group: catalog-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   validate:
+    if: github.event_name == 'pull_request' || github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install
       - run: npm run check
+  generate-main:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Validate records and run regression tests
+        run: npm run validate && npm test
+      - name: Regenerate all catalogue outputs
+        run: npm run index
+      - name: Verify source and generated consistency
+        run: npm run check
+      - name: Commit generated catalogue only
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add -- README.md generated/catalog.json generated/catalog.full.json generated/coverage.json
+          if git diff --cached --quiet; then
+            echo 'All generated files already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: regenerate catalogue README and JSON exports'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin HEAD:main
+      - name: Record catalogue coverage
+        run: |
+          echo '### Catalogue coverage' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat generated/coverage.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

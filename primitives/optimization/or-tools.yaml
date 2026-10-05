@@ -1,0 +1,24 @@
+id: or-tools
+name: OR-Tools
+domain: business
+tasks: [constraint-optimization, scheduling, routing, assignment]
+class: optimization-toolkit
+kind: primitive
+catalogue_batch: business-2026-10-05
+description: Non-neural optimization software for constructing feasible assignments, schedules and routes under explicit constraints.
+links: {repository: 'https://github.com/google/or-tools', homepage: 'https://developers.google.com/optimization/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Solver cost depends on problem size, constraints and time limits; not a pretrained AI checkpoint.'}
+runtimes: [or-tools-native, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: not-applicable, needs_data: 'Variables, objectives, constraints and optionally demand forecasts.', update_strategy: 'Re-solve as inputs change; version constraints and validate feasibility independently.'}
+data: {inputs: [optimization-problem], outputs: [solutions, solver-status, objective-values], languages: []}
+evaluation: ['Feasibility, constraint violations, objective quality and solve-time bounds.', 'Test infeasible/time-limited cases and deterministic fallback rules.']
+limitations: ['An optimal solution to an incorrect formulation can still be unusable.', 'A solver result does not authorize a purchase, payment or infrastructure action.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google/or-tools', notes: 'Combinatorial optimization toolkit and Apache-2.0 license.'}]
+related: [dlinear, lightgbm, vowpal-wabbit]
+reviewed: '2026-10-05'
+tags: [business, inventory, scheduling, non-neural, companion]

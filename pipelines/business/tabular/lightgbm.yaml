@@ -1,0 +1,24 @@
+id: lightgbm
+name: LightGBM
+domain: business
+tasks: [tabular-classification, tabular-regression, ranking]
+class: gradient-boosting-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Tree-ensemble training and inference framework for structured-data prediction; business targets require a fitted model.
+links: {repository: 'https://github.com/lightgbm-org/LightGBM', homepage: 'https://lightgbm.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Tree count, depth and feature processing determine the fitted artifact size.'}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Compact fitted ensembles may be deployable with native inference; no blanket MCU/RV1106 guarantee.'}
+runtimes: [lightgbm-native, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: supervised-fitting, needs_data: 'Point-in-time structured features and labels for the chosen business target.', update_strategy: 'Retrain on governed data; compare drift, calibration and operational cost.'}
+data: {inputs: [structured-features], outputs: [predictions-or-ranking-scores], languages: []}
+evaluation: ['Time/entity-separated tests and target-appropriate metrics.', 'Measure false-positive cost, calibration and model/runtime size.']
+limitations: ['Churn, payment delay and stockout are proposed applications, not shipped pretrained models.', 'Avoid sensitive/proxy features and retain human review for consequential decisions.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/lightgbm-org/LightGBM', notes: 'Canonical repository after project move, tree algorithms and MIT code.'}]
+related: [xgboost, catboost, qlib, or-tools]
+reviewed: '2026-10-05'
+tags: [business, corporate, classical-ml, requires-training]

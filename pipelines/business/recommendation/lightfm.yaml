@@ -1,0 +1,24 @@
+id: lightfm
+name: LightFM
+domain: business
+tasks: [recommendation, personalised-ranking]
+class: recommendation-training-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Hybrid recommendation library combining interactions with user/item metadata.
+links: {repository: 'https://github.com/lyst/lightfm'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Embeddings grow with user/item/features cardinality and latent dimensions.'}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Score-generation cost and embedding tables must be measured for the actual catalogue.'}
+runtimes: [python, lightfm]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: interaction-based-fitting, needs_data: 'Authorized interaction histories and optional user/item features.', update_strategy: 'Refresh embeddings with controlled data snapshots; evaluate cold-start items separately.'}
+data: {inputs: [interaction-matrix, user-item-features], outputs: [recommendation-scores], languages: []}
+evaluation: ['Recall/NDCG on future interactions and cold-start cases.', 'Compare popularity baselines and exposure/coverage.']
+limitations: ['No pretrained model for a company-specific catalogue.', 'A small latent dimension does not guarantee a small total embedding table.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/lyst/lightfm', notes: 'Hybrid recommendation methods and Apache-2.0 implementation.'}]
+related: [vowpal-wabbit, all-minilm-l6-v2]
+reviewed: '2026-10-05'
+tags: [business, recommendations, requires-training]

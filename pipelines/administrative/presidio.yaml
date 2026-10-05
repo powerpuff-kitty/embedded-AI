@@ -1,0 +1,24 @@
+id: presidio
+name: Presidio
+domain: administrative
+tasks: [sensitive-data-detection, redaction, de-identification]
+class: privacy-processing-pipeline
+kind: pipeline
+catalogue_batch: business-2026-10-05
+description: Hybrid NLP and pattern-based framework for detecting and masking sensitive information.
+links: {repository: 'https://github.com/data-privacy-stack/presidio', homepage: 'https://data-privacy-stack.github.io/presidio/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Use local recognizers/NLP engines; an optional external integration changes the privacy boundary.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: configuration-dependent, needs_data: 'Text/images/records plus configured recognizers and language-specific NLP components.', update_strategy: 'Maintain recognizers and test newly introduced sensitive formats.'}
+data: {inputs: [text, images, structured-records], outputs: [sensitive-spans, redacted-content], languages: [recognizer-dependent]}
+evaluation: ['Recall and false positives by sensitive entity and language.', 'Test synthetic and reviewed real examples without exposing production secrets.']
+limitations: ['No guarantee of detecting all sensitive information.', 'Anonymization claims require a wider privacy assessment; masking alone is insufficient.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/data-privacy-stack/presidio', notes: 'Canonical repository, hybrid recognizers, supported data types and detection limitations.'}]
+related: [spacy-en-core-web-sm, docling]
+reviewed: '2026-10-05'
+tags: [administration, privacy, pii, companion]

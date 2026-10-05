@@ -1,0 +1,24 @@
+id: spacy-en-core-web-sm
+name: spaCy en_core_web_sm
+domain: administrative
+tasks: [named-entity-recognition, linguistic-analysis]
+class: nlp-model-bundle
+kind: model
+catalogue_batch: business-2026-10-05
+description: CPU-oriented English NLP model bundle including generic entity recognition and linguistic annotations.
+links: {repository: 'https://github.com/explosion/spaCy', model: 'https://huggingface.co/spacy/en_core_web_sm'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Versioned multi-component trained pipeline; package and runtime size must be measured together.'}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server], notes: 'Pin the model package and compatible spaCy version together.'}
+runtimes: [spacy]
+formats: [spacy-pipeline]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: optional-fine-tuning, needs_data: 'English text; annotated examples or rules for custom administrative fields.', update_strategy: 'Evaluate entity coverage before updating model/runtime versions.'}
+data: {inputs: [english-text], outputs: [entities, token-annotations], languages: [en]}
+evaluation: ['Entity precision/recall by type and document source.', 'Test dates, organisation names and unseen formats on the actual corpus.']
+limitations: ['Generic entities are not an invoice or contract schema.', 'This English checkpoint does not establish French or Spanish support.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/spacy/en_core_web_sm', notes: 'English components, CPU-oriented use, MIT terms and version compatibility.'}]
+related: [presidio, gliner25-small]
+reviewed: '2026-10-05'
+tags: [administration, ner, english]

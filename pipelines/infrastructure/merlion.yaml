@@ -1,0 +1,24 @@
+id: merlion
+name: Merlion
+domain: infrastructure
+tasks: [forecasting, anomaly-detection, change-point-detection]
+class: time-series-analysis-toolkit
+kind: toolkit
+catalogue_batch: business-2026-10-05
+description: Framework for comparing statistical and learned methods on univariate or multivariate time series.
+links: {repository: 'https://github.com/salesforce/Merlion'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: configuration-dependent}
+deployment: {offline: true, targets: [desktop, server], notes: 'Framework and selected models have separate memory costs.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: configuration-dependent, needs_data: 'Historical telemetry, sampling metadata and labels/normal periods where required.', update_strategy: 'Refit/calibrate after approved workload changes and evaluate drift.'}
+data: {inputs: [time-series], outputs: [forecasts, anomaly-scores, change-points], languages: []}
+evaluation: ['Rolling-origin forecast comparison against seasonal baselines.', 'Incident-level detection delay and false-alarm rate.']
+limitations: ['Model selection is workload-dependent.', 'Anomaly detection alone does not establish a root cause.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/salesforce/Merlion', notes: 'Forecasting/anomaly/change-point workflows and BSD-3-Clause code.'}]
+related: [pyrca, dlinear, statsforecast]
+reviewed: '2026-10-05'
+tags: [infrastructure, telemetry, forecasting, requires-training]

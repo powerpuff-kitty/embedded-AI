@@ -1,0 +1,24 @@
+id: finbert-prosus
+name: FinBERT (ProsusAI)
+domain: finance
+tasks: [financial-sentiment-classification]
+class: text-encoder-classifier
+kind: model
+catalogue_batch: business-2026-10-05
+description: BERT-based classifier of positive, negative and neutral sentiment in English financial text.
+links: {repository: 'https://github.com/ProsusAI/finBERT', model: 'https://huggingface.co/ProsusAI/finbert'}
+model: {parameters: null, file_size_mb: null, measurement_scope: 'Exact checkpoint tensor count and resident memory have not been measured here.'}
+license: {code: Apache-2.0, weights: unknown, notes: 'Do not substitute the repository code license for an unestablished separate model-weight license.'}
+deployment: {offline: true, targets: [desktop, server], notes: 'BERT-class desktop specialist, not a demonstrated tiny-MCU model.'}
+runtimes: [pytorch, transformers]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: optional-fine-tuning, needs_data: 'Financial text; domain-labelled examples for evaluating or adapting sentiment.', update_strategy: 'Monitor topic/language shift and calibrate thresholds on held-out text.'}
+data: {inputs: [english-financial-text], outputs: [positive-negative-neutral-scores], languages: [en]}
+evaluation: ['Macro F1 and calibration on issuer/time-separated documents.', 'Avoid counting duplicated articles across training and testing.']
+limitations: ['Sentiment does not predict stock returns by itself.', 'Not a financial reasoning or advice model.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/ProsusAI/finbert', notes: 'English financial sentiment task and three output labels.'}, {type: official, url: 'https://github.com/ProsusAI/finBERT', notes: 'Code and repository licensing; weights assessed separately.'}]
+related: [qlib]
+reviewed: '2026-10-05'
+tags: [finance, sentiment, english, desktop-reference]

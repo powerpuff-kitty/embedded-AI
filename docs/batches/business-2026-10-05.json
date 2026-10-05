@@ -1,0 +1,12 @@
+{
+  "id": "business-2026-10-05",
+  "scope": "All finance, administration, infrastructure, energy, business and forecasting entries discussed in the October 5 expansion",
+  "expected_ids": [
+    "kronos-mini", "kronos-small", "finbert-prosus", "hmmlearn", "qlib",
+    "setfit", "fasttext-classifier", "spacy-en-core-web-sm", "gliner25-small", "legal-bert-small", "docling", "presidio",
+    "kitnet", "kitsune", "river-half-space-trees", "drain3", "loglizer", "merlion", "pyrca",
+    "citylearn", "grid2op",
+    "lightgbm", "xgboost", "catboost", "lightfm", "vowpal-wabbit", "splink", "or-tools", "tabpfn",
+    "dlinear", "neuralforecast", "statsforecast"
+  ]
+}
