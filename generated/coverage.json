@@ -1,0 +1,45 @@
+{
+  "total": 95,
+  "by_domain": {
+    "administrative": 7,
+    "audio": 6,
+    "business": 8,
+    "control": 6,
+    "energy": 2,
+    "engineering": 1,
+    "finance": 5,
+    "geospatial": 2,
+    "infrastructure": 7,
+    "language": 3,
+    "mapping": 4,
+    "reasoning": 1,
+    "robotics": 1,
+    "science": 1,
+    "sensors": 3,
+    "simulation": 1,
+    "time-series": 5,
+    "video": 6,
+    "vision": 26
+  },
+  "by_kind": {
+    "collection": 2,
+    "model": 61,
+    "pipeline": 10,
+    "primitive": 2,
+    "toolkit": 20
+  },
+  "by_usage": {
+    "companion": 8,
+    "pretrained": 7,
+    "requires-training": 17,
+    "unknown": 63
+  },
+  "unknowns": {
+    "usage": 63,
+    "code_license": 29,
+    "weights_license": 49,
+    "measured_peak_ram": 95
+  },
+  "reproduced_entries": 0,
+  "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."
+}

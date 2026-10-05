@@ -1,0 +1,6862 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "docling",
+      "name": "Docling",
+      "domain": "administrative",
+      "tasks": [
+        "document-parsing",
+        "layout-analysis",
+        "table-extraction",
+        "ocr"
+      ],
+      "class": "document-processing-pipeline",
+      "kind": "pipeline",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Converts documents into structured content using configurable parsing, layout and OCR components.",
+      "links": {
+        "repository": "https://github.com/docling-project/docling",
+        "homepage": "https://docling-project.github.io/docling/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "configuration-dependent",
+        "notes": "Individual OCR, layout and other model artifacts carry their own licenses."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Select local components and pre-download required model artifacts; the whole pipeline is not one small model."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "configuration-dependent",
+        "needs_data": "Source documents plus the chosen OCR/layout configuration.",
+        "update_strategy": "Pin parser and model versions; rerun a representative document regression set."
+      },
+      "data": {
+        "inputs": [
+          "documents",
+          "scanned-pages"
+        ],
+        "outputs": [
+          "structured-document-content",
+          "tables",
+          "text"
+        ],
+        "languages": [
+          "component-dependent"
+        ]
+      },
+      "evaluation": [
+        "Text/layout/table extraction accuracy per document family.",
+        "Peak memory and latency per page and per selected model pipeline."
+      ],
+      "limitations": [
+        "Preserve originals, page references and extraction confidence.",
+        "PDF parsing is not invoice approval or legal interpretation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/docling-project/docling",
+          "notes": "Document conversion features and separation of code/model licenses."
+        }
+      ],
+      "related": [
+        "gliner25-small",
+        "legal-bert-small",
+        "presidio"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "documents",
+        "invoices",
+        "companion"
+      ],
+      "path": "pipelines/administrative/docling.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "setfit",
+      "name": "SetFit",
+      "domain": "administrative",
+      "tasks": [
+        "few-shot-text-classification",
+        "document-routing"
+      ],
+      "class": "text-classifier-training-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Fine-tunes sentence-transformer-based classifiers for user-defined document, email or ticket categories.",
+      "links": {
+        "repository": "https://github.com/huggingface/setfit",
+        "homepage": "https://huggingface.co/docs/setfit/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "The chosen encoder and trained classification head determine deployment size."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local use after obtaining a compatible base encoder; target export must be checked independently."
+      },
+      "runtimes": [
+        "python",
+        "sentence-transformers"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-fine-tuning",
+        "needs_data": "Labelled examples for the actual routing taxonomy, including ambiguous and out-of-scope cases.",
+        "update_strategy": "Revalidate after taxonomy changes; retrain on reviewed examples."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "labelled-training-examples"
+        ],
+        "outputs": [
+          "custom-category-scores"
+        ],
+        "languages": [
+          "encoder-dependent"
+        ]
+      },
+      "evaluation": [
+        "Macro F1 per category and per supported language.",
+        "Measure abstention and misrouting cost on organisation-separated examples."
+      ],
+      "limitations": [
+        "Not a ready-made classifier for a particular company.",
+        "Encoder licensing and language support vary."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/setfit",
+          "notes": "Few-shot classification method, encoder-based training and Apache-2.0 code."
+        }
+      ],
+      "related": [
+        "all-minilm-l6-v2",
+        "fasttext-classifier"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "email",
+        "support-tickets",
+        "requires-training"
+      ],
+      "path": "pipelines/administrative/setfit.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "legal-bert-small",
+      "name": "LEGAL-BERT-Small",
+      "domain": "administrative",
+      "tasks": [
+        "legal-text-representation",
+        "masked-language-modelling"
+      ],
+      "class": "domain-text-encoder",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "English legal-domain encoder for adaptation to classification and information extraction, not legal advice.",
+      "links": {
+        "model": "https://huggingface.co/nlpaueb/legal-bert-small-uncased",
+        "paper": "https://aclanthology.org/2020.findings-emnlp.261/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Publisher describes approximately one-third of BERT-base; exact artifact size not measured here."
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "CC-BY-SA-4.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local encoder inference; a downstream classifier or extraction head is an additional component."
+      },
+      "runtimes": [
+        "transformers",
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "downstream-adaptation-required",
+        "needs_data": "English legal text; labelled examples for the desired clause or document task.",
+        "update_strategy": "Version task heads and evaluate changes by jurisdiction and document source."
+      },
+      "data": {
+        "inputs": [
+          "english-legal-text"
+        ],
+        "outputs": [
+          "text-representations",
+          "masked-token-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task-specific F1 on source-separated legal documents.",
+        "Check jurisdiction, language and temporal generalisation before use."
+      ],
+      "limitations": [
+        "Pretraining is not a ready-made contract reviewer.",
+        "Preserve source passages and require qualified review for consequential legal conclusions."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/nlpaueb/legal-bert-small-uncased",
+          "notes": "Legal encoder purpose, English corpus and CC-BY-SA-4.0 model terms."
+        }
+      ],
+      "related": [
+        "docling",
+        "gliner25-small"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "legal",
+        "administration",
+        "english",
+        "downstream-training"
+      ],
+      "path": "catalog/administrative/legal/legal-bert-small.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "spacy-en-core-web-sm",
+      "name": "spaCy en_core_web_sm",
+      "domain": "administrative",
+      "tasks": [
+        "named-entity-recognition",
+        "linguistic-analysis"
+      ],
+      "class": "nlp-model-bundle",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "CPU-oriented English NLP model bundle including generic entity recognition and linguistic annotations.",
+      "links": {
+        "repository": "https://github.com/explosion/spaCy",
+        "model": "https://huggingface.co/spacy/en_core_web_sm"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Versioned multi-component trained pipeline; package and runtime size must be measured together."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Pin the model package and compatible spaCy version together."
+      },
+      "runtimes": [
+        "spacy"
+      ],
+      "formats": [
+        "spacy-pipeline"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "optional-fine-tuning",
+        "needs_data": "English text; annotated examples or rules for custom administrative fields.",
+        "update_strategy": "Evaluate entity coverage before updating model/runtime versions."
+      },
+      "data": {
+        "inputs": [
+          "english-text"
+        ],
+        "outputs": [
+          "entities",
+          "token-annotations"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Entity precision/recall by type and document source.",
+        "Test dates, organisation names and unseen formats on the actual corpus."
+      ],
+      "limitations": [
+        "Generic entities are not an invoice or contract schema.",
+        "This English checkpoint does not establish French or Spanish support."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/spacy/en_core_web_sm",
+          "notes": "English components, CPU-oriented use, MIT terms and version compatibility."
+        }
+      ],
+      "related": [
+        "presidio",
+        "gliner25-small"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "ner",
+        "english"
+      ],
+      "path": "catalog/administrative/extraction/spacy-en-core-web-sm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "gliner25-small",
+      "name": "GLiNER2.5 Small v1",
+      "domain": "administrative",
+      "tasks": [
+        "schema-driven-extraction",
+        "text-classification",
+        "relation-extraction"
+      ],
+      "class": "structured-extraction-model",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Compact English boundary-extraction checkpoint for entities, labels, structured records and relations.",
+      "links": {
+        "repository": "https://github.com/fastino-ai/GLiNER2",
+        "model": "https://huggingface.co/fastino/gliner2.5-small-v1"
+      },
+      "model": {
+        "parameters": 74000000,
+        "file_size_mb": 296,
+        "measurement_scope": "Publisher approximate FP32 weights and total parameter count; not peak process memory."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Use AutoExtractor for this boundary checkpoint, not the legacy GLiNER2 span loader; CPU/CUDA/MPS paths are documented upstream."
+      },
+      "runtimes": [
+        "gliner2",
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "optional-fine-tuning",
+        "needs_data": "English source text plus the requested schema; labelled examples for domain evaluation.",
+        "update_strategy": "Pin the boundary-compatible library and checkpoint; reassess after schema changes."
+      },
+      "data": {
+        "inputs": [
+          "english-text",
+          "extraction-schema"
+        ],
+        "outputs": [
+          "entity-spans",
+          "labels",
+          "records",
+          "relations"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Exact span/field F1, record completeness and false extraction rate.",
+        "Check truncation and cross-chunk relations on long documents."
+      ],
+      "limitations": [
+        "Not a bank-card or MCU-class model merely because it is called Small.",
+        "Extracted amounts and dates require deterministic validation and source provenance."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/fastino/gliner2.5-small-v1",
+          "notes": "74M boundary model, approximately 296 MB FP32, English and AutoExtractor loading."
+        }
+      ],
+      "related": [
+        "docling",
+        "spacy-en-core-web-sm",
+        "presidio"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "invoices",
+        "extraction",
+        "english"
+      ],
+      "path": "catalog/administrative/extraction/gliner25-small.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "presidio",
+      "name": "Presidio",
+      "domain": "administrative",
+      "tasks": [
+        "sensitive-data-detection",
+        "redaction",
+        "de-identification"
+      ],
+      "class": "privacy-processing-pipeline",
+      "kind": "pipeline",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Hybrid NLP and pattern-based framework for detecting and masking sensitive information.",
+      "links": {
+        "repository": "https://github.com/data-privacy-stack/presidio",
+        "homepage": "https://data-privacy-stack.github.io/presidio/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Use local recognizers/NLP engines; an optional external integration changes the privacy boundary."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "configuration-dependent",
+        "needs_data": "Text/images/records plus configured recognizers and language-specific NLP components.",
+        "update_strategy": "Maintain recognizers and test newly introduced sensitive formats."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "images",
+          "structured-records"
+        ],
+        "outputs": [
+          "sensitive-spans",
+          "redacted-content"
+        ],
+        "languages": [
+          "recognizer-dependent"
+        ]
+      },
+      "evaluation": [
+        "Recall and false positives by sensitive entity and language.",
+        "Test synthetic and reviewed real examples without exposing production secrets."
+      ],
+      "limitations": [
+        "No guarantee of detecting all sensitive information.",
+        "Anonymization claims require a wider privacy assessment; masking alone is insufficient."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/data-privacy-stack/presidio",
+          "notes": "Canonical repository, hybrid recognizers, supported data types and detection limitations."
+        }
+      ],
+      "related": [
+        "spacy-en-core-web-sm",
+        "docling"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "privacy",
+        "pii",
+        "companion"
+      ],
+      "path": "pipelines/administrative/presidio.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "fasttext-classifier",
+      "name": "fastText supervised classifiers",
+      "domain": "administrative",
+      "tasks": [
+        "text-classification",
+        "document-routing"
+      ],
+      "class": "text-classifier-training-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Library for training compact text classifiers; distinct from the pretrained lid.176 language-identification entry.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fastText",
+        "homepage": "https://fasttext.cc/docs/en/supervised-tutorial.html"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Vocabulary, feature hashing, dimensions and quantization determine model size."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "C++ inference and quantized classifiers are possible; no board measurements supplied."
+      },
+      "runtimes": [
+        "fasttext-cpp",
+        "python"
+      ],
+      "formats": [
+        "fasttext-bin",
+        "fasttext-ftz"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-fitting",
+        "needs_data": "Representative text with task labels and consistent tokenization.",
+        "update_strategy": "Rebuild and validate vocabulary/quantization when data or labels change."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "custom-label-scores"
+        ],
+        "languages": [
+          "training-data-dependent"
+        ]
+      },
+      "evaluation": [
+        "Per-class recall and macro F1 on held-out real documents.",
+        "Compare accuracy, model size and latency before and after quantization."
+      ],
+      "limitations": [
+        "The original repository is archived.",
+        "No universal business-category weights are provided."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/fastText",
+          "notes": "Supervised classification, quantization, MIT code and archival status."
+        }
+      ],
+      "related": [
+        "fasttext-lid176",
+        "setfit"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "administration",
+        "text",
+        "compact-candidate",
+        "archived"
+      ],
+      "path": "pipelines/administrative/fasttext-classifier.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "ds-cnn-kws-24k",
+      "name": "DS-CNN KWS 24k",
+      "domain": "audio",
+      "tasks": [
+        "keyword-spotting"
+      ],
+      "class": "tinyml",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/prarabdhmisra/edge-tinyml",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 24000,
+        "file_size_mb": 0.045,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/prarabdhmisra/edge-tinyml",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "tinyml",
+        "int8"
+      ],
+      "path": "catalog/audio/keyword-spotting/ds-cnn-24k.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "matchboxnet",
+      "name": "MatchboxNet",
+      "domain": "audio",
+      "tasks": [
+        "keyword-spotting"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/NVIDIA/NeMo",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA/NeMo",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "keyword-spotting",
+        "speech"
+      ],
+      "path": "catalog/audio/keyword-spotting/matchboxnet.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "yamnet",
+      "name": "YAMNet",
+      "domain": "audio",
+      "tasks": [
+        "sound-classification"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 3700000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "audio-events"
+      ],
+      "path": "catalog/audio/classification/yamnet.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "cactus-whistle",
+      "name": "Whistle",
+      "domain": "audio",
+      "tasks": [
+        "speech-to-text"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/Cactus-Compute/whistle",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": 16.9,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/Cactus-Compute/whistle",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "offline",
+        "speech"
+      ],
+      "path": "catalog/audio/speech-to-text/whistle.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "silero-vad",
+      "name": "Silero VAD",
+      "domain": "audio",
+      "tasks": [
+        "voice-activity-detection"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/snakers4/silero-vad",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": 2,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/snakers4/silero-vad",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "vad",
+        "offline"
+      ],
+      "path": "catalog/audio/vad/silero-vad.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "microwakeword",
+      "name": "microWakeWord",
+      "domain": "audio",
+      "tasks": [
+        "wake-word-detection"
+      ],
+      "class": "tinyml",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/OHF-Voice/micro-wake-word",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OHF-Voice/micro-wake-word",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "tinyml",
+        "wake-word"
+      ],
+      "path": "catalog/audio/wake-word/microwakeword.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "or-tools",
+      "name": "OR-Tools",
+      "domain": "business",
+      "tasks": [
+        "constraint-optimization",
+        "scheduling",
+        "routing",
+        "assignment"
+      ],
+      "class": "optimization-toolkit",
+      "kind": "primitive",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Non-neural optimization software for constructing feasible assignments, schedules and routes under explicit constraints.",
+      "links": {
+        "repository": "https://github.com/google/or-tools",
+        "homepage": "https://developers.google.com/optimization/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Solver cost depends on problem size, constraints and time limits; not a pretrained AI checkpoint."
+      },
+      "runtimes": [
+        "or-tools-native",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "not-applicable",
+        "needs_data": "Variables, objectives, constraints and optionally demand forecasts.",
+        "update_strategy": "Re-solve as inputs change; version constraints and validate feasibility independently."
+      },
+      "data": {
+        "inputs": [
+          "optimization-problem"
+        ],
+        "outputs": [
+          "solutions",
+          "solver-status",
+          "objective-values"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Feasibility, constraint violations, objective quality and solve-time bounds.",
+        "Test infeasible/time-limited cases and deterministic fallback rules."
+      ],
+      "limitations": [
+        "An optimal solution to an incorrect formulation can still be unusable.",
+        "A solver result does not authorize a purchase, payment or infrastructure action."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google/or-tools",
+          "notes": "Combinatorial optimization toolkit and Apache-2.0 license."
+        }
+      ],
+      "related": [
+        "dlinear",
+        "lightgbm",
+        "vowpal-wabbit"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "inventory",
+        "scheduling",
+        "non-neural",
+        "companion"
+      ],
+      "path": "primitives/optimization/or-tools.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "vowpal-wabbit",
+      "name": "Vowpal Wabbit",
+      "domain": "business",
+      "tasks": [
+        "online-learning",
+        "contextual-bandits",
+        "action-ranking"
+      ],
+      "class": "online-learning-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Efficient learning system for linear and other configurable models, including contextual-bandit policies.",
+      "links": {
+        "repository": "https://github.com/VowpalWabbit/vowpal_wabbit",
+        "homepage": "https://vowpalwabbit.org/",
+        "license": "https://github.com/VowpalWabbit/vowpal_wabbit/blob/master/LICENSE"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Feature hashing, reductions and chosen policy determine learned state size."
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided",
+        "notes": "Three-clause BSD terms verified in LICENSE; included dependencies retain their own notices."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local native runtime; configuration and live feedback handling are part of deployment."
+      },
+      "runtimes": [
+        "vowpal-wabbit-native",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "online-or-bandit-learning",
+        "needs_data": "Context, permitted actions, observed rewards and logged action propensities where needed.",
+        "update_strategy": "Evaluate policies offline and bound exploration before controlled rollout."
+      },
+      "data": {
+        "inputs": [
+          "context-features",
+          "action-set",
+          "feedback"
+        ],
+        "outputs": [
+          "action-scores-or-distribution"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Off-policy evaluation with valid propensity logging.",
+        "Compare a fixed policy and monitor regret, cost and constraint violations."
+      ],
+      "limitations": [
+        "Only ranks within a defined action space; not a general-purpose corporate agent.",
+        "Policy learning must not bypass approvals or access controls."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/VowpalWabbit/vowpal_wabbit",
+          "notes": "Native online-learning system and configurable learning techniques."
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/VowpalWabbit/vowpal_wabbit/blob/master/LICENSE",
+          "notes": "Three-clause BSD license text."
+        }
+      ],
+      "related": [
+        "lightfm",
+        "or-tools"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "decisions",
+        "bandits",
+        "requires-training"
+      ],
+      "path": "pipelines/business/decision/vowpal-wabbit.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "splink",
+      "name": "Splink",
+      "domain": "business",
+      "tasks": [
+        "probabilistic-record-linkage",
+        "deduplication"
+      ],
+      "class": "record-linkage-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Links and deduplicates structured records without requiring a shared unique identifier.",
+      "links": {
+        "repository": "https://github.com/moj-analytical-services/splink",
+        "homepage": "https://moj-analytical-services.github.io/splink/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local SQL backends are possible; candidate-pair volume rather than neural weights dominates many workloads."
+      },
+      "runtimes": [
+        "python",
+        "sql-backend"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "probabilistic-parameter-estimation",
+        "needs_data": "Authorized records, comparison definitions, blocking rules and review labels for evaluation.",
+        "update_strategy": "Re-estimate match parameters when sources or normalization rules change."
+      },
+      "data": {
+        "inputs": [
+          "structured-records",
+          "comparison-rules"
+        ],
+        "outputs": [
+          "match-probabilities",
+          "candidate-links"
+        ],
+        "languages": [
+          "field-dependent"
+        ]
+      },
+      "evaluation": [
+        "Pairwise precision/recall and erroneous-merge cost.",
+        "Review thresholds using labelled matches and difficult non-matches."
+      ],
+      "limitations": [
+        "Probable matches should not silently merge consequential customer or supplier records.",
+        "Data normalization and blocking choices affect both recall and cost."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/moj-analytical-services/splink",
+          "notes": "Probabilistic linkage, SQL backend support and MIT license."
+        }
+      ],
+      "related": [
+        "docling",
+        "presidio"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "administration",
+        "entity-resolution",
+        "requires-training"
+      ],
+      "path": "pipelines/business/records/splink.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "lightfm",
+      "name": "LightFM",
+      "domain": "business",
+      "tasks": [
+        "recommendation",
+        "personalised-ranking"
+      ],
+      "class": "recommendation-training-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Hybrid recommendation library combining interactions with user/item metadata.",
+      "links": {
+        "repository": "https://github.com/lyst/lightfm"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Embeddings grow with user/item/features cardinality and latent dimensions."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Score-generation cost and embedding tables must be measured for the actual catalogue."
+      },
+      "runtimes": [
+        "python",
+        "lightfm"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "interaction-based-fitting",
+        "needs_data": "Authorized interaction histories and optional user/item features.",
+        "update_strategy": "Refresh embeddings with controlled data snapshots; evaluate cold-start items separately."
+      },
+      "data": {
+        "inputs": [
+          "interaction-matrix",
+          "user-item-features"
+        ],
+        "outputs": [
+          "recommendation-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall/NDCG on future interactions and cold-start cases.",
+        "Compare popularity baselines and exposure/coverage."
+      ],
+      "limitations": [
+        "No pretrained model for a company-specific catalogue.",
+        "A small latent dimension does not guarantee a small total embedding table."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lyst/lightfm",
+          "notes": "Hybrid recommendation methods and Apache-2.0 implementation."
+        }
+      ],
+      "related": [
+        "vowpal-wabbit",
+        "all-minilm-l6-v2"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "recommendations",
+        "requires-training"
+      ],
+      "path": "pipelines/business/recommendation/lightfm.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "catboost",
+      "name": "CatBoost",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression",
+        "ranking"
+      ],
+      "class": "gradient-boosting-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Gradient-boosted tree framework supporting numerical and categorical features.",
+      "links": {
+        "repository": "https://github.com/catboost/catboost",
+        "homepage": "https://catboost.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Fitted tree count and categorical processing determine artifact/runtime cost."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU inference is a candidate deployment route; conversion restrictions depend on feature types and target format."
+      },
+      "runtimes": [
+        "catboost-native",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-fitting",
+        "needs_data": "Structured features, categorical definitions and outcome labels.",
+        "update_strategy": "Monitor unseen category rates and review new model versions before rollout."
+      },
+      "data": {
+        "inputs": [
+          "numerical-and-categorical-features"
+        ],
+        "outputs": [
+          "predictions-or-ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Time/entity-separated accuracy and calibration.",
+        "Test unseen categories and measure end-to-end memory."
+      ],
+      "limitations": [
+        "No universal payment-risk, demand or customer model is supplied.",
+        "Training-library support does not prove a particular embedded export works."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/catboost/catboost",
+          "notes": "Categorical/numerical features, CPU/GPU implementations and Apache-2.0 license."
+        }
+      ],
+      "related": [
+        "lightgbm",
+        "xgboost"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "corporate",
+        "categorical-data",
+        "requires-training"
+      ],
+      "path": "pipelines/business/tabular/catboost.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "lightgbm",
+      "name": "LightGBM",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression",
+        "ranking"
+      ],
+      "class": "gradient-boosting-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Tree-ensemble training and inference framework for structured-data prediction; business targets require a fitted model.",
+      "links": {
+        "repository": "https://github.com/lightgbm-org/LightGBM",
+        "homepage": "https://lightgbm.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Tree count, depth and feature processing determine the fitted artifact size."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Compact fitted ensembles may be deployable with native inference; no blanket MCU/RV1106 guarantee."
+      },
+      "runtimes": [
+        "lightgbm-native",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-fitting",
+        "needs_data": "Point-in-time structured features and labels for the chosen business target.",
+        "update_strategy": "Retrain on governed data; compare drift, calibration and operational cost."
+      },
+      "data": {
+        "inputs": [
+          "structured-features"
+        ],
+        "outputs": [
+          "predictions-or-ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Time/entity-separated tests and target-appropriate metrics.",
+        "Measure false-positive cost, calibration and model/runtime size."
+      ],
+      "limitations": [
+        "Churn, payment delay and stockout are proposed applications, not shipped pretrained models.",
+        "Avoid sensitive/proxy features and retain human review for consequential decisions."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lightgbm-org/LightGBM",
+          "notes": "Canonical repository after project move, tree algorithms and MIT code."
+        }
+      ],
+      "related": [
+        "xgboost",
+        "catboost",
+        "qlib",
+        "or-tools"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "corporate",
+        "classical-ml",
+        "requires-training"
+      ],
+      "path": "pipelines/business/tabular/lightgbm.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "tabpfn",
+      "name": "TabPFN model family",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression"
+      ],
+      "class": "tabular-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Pretrained tabular model family using labelled task data as context; included as a desktop reference, not a tiny embedded model.",
+      "links": {
+        "repository": "https://github.com/PriorLabs/TabPFN",
+        "homepage": "https://docs.priorlabs.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Version-dependent family; context rows and feature count also affect inference memory."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "version-dependent-restricted",
+        "notes": "Current upstream lists several recent weight releases as non-commercial; older v2 uses separate attribution terms. Review the exact checkpoint license."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local PyTorch inference after obtaining model artifacts; some variants are gated and larger tasks are GPU-oriented."
+      },
+      "runtimes": [
+        "pytorch",
+        "tabpfn"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "in-context-adaptation",
+        "needs_data": "Labelled rows for the actual task plus query rows; pretrained does not mean no customer data is needed.",
+        "update_strategy": "Pin a specific licensed checkpoint and version context construction."
+      },
+      "data": {
+        "inputs": [
+          "labelled-tabular-context",
+          "query-rows"
+        ],
+        "outputs": [
+          "class-probabilities-or-regression-predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out task performance with strict row/entity separation.",
+        "Measure memory/latency as context size grows and compare small tree baselines."
+      ],
+      "limitations": [
+        "Do not infer MCU suitability from a family name or parameter count.",
+        "Code licensing does not grant commercial rights to all model weights."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/PriorLabs/TabPFN",
+          "notes": "Local inference, version-specific model licensing and context/resource requirements."
+        }
+      ],
+      "related": [
+        "lightgbm",
+        "xgboost",
+        "catboost"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "tabular",
+        "desktop-reference",
+        "restricted-weights"
+      ],
+      "path": "catalog/business/tabular/tabpfn.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "xgboost",
+      "name": "XGBoost",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression",
+        "ranking"
+      ],
+      "class": "gradient-boosting-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Portable gradient-boosting library for training predictive models from structured records.",
+      "links": {
+        "repository": "https://github.com/dmlc/xgboost",
+        "homepage": "https://xgboost.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "No fixed model size; budget trees, feature preprocessing and inference runtime separately."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Native inference is available; actual constraints depend on the fitted model and target build."
+      },
+      "runtimes": [
+        "xgboost-native",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-fitting",
+        "needs_data": "Features and labels with documented provenance and observation time.",
+        "update_strategy": "Revalidate calibration and cost tradeoffs before promoting retrained artifacts."
+      },
+      "data": {
+        "inputs": [
+          "structured-features"
+        ],
+        "outputs": [
+          "predictions-or-ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out business metrics, calibration and subgroup error review where relevant.",
+        "Latency and memory at the selected tree count."
+      ],
+      "limitations": [
+        "Not a pretrained corporate decision system.",
+        "Feature leakage can dominate apparent accuracy."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dmlc/xgboost",
+          "notes": "Gradient boosting, portability and Apache-2.0 code."
+        }
+      ],
+      "related": [
+        "lightgbm",
+        "catboost",
+        "qlib"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "business",
+        "corporate",
+        "classical-ml",
+        "requires-training"
+      ],
+      "path": "pipelines/business/tabular/xgboost.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "mhflocke",
+      "name": "MH-FLOCKE",
+      "domain": "control",
+      "tasks": [
+        "adaptive-locomotion"
+      ],
+      "class": "bio-inspired-controller",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/MarcHesse/mhflocke",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MarcHesse/mhflocke",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "cpg",
+        "spiking-neural-network",
+        "locomotion"
+      ],
+      "path": "catalog/control/biomimetic/mhflocke.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "emg-winter-soldier-arm",
+      "name": "EMG Winter Soldier Arm",
+      "domain": "control",
+      "tasks": [
+        "emg-to-servo-control"
+      ],
+      "class": "tinyml",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "emg",
+        "servo",
+        "gesture"
+      ],
+      "path": "catalog/control/human-interface/emg-winter-soldier-arm.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "quadruped-cpg",
+      "name": "Quadruped CPG Controller",
+      "domain": "control",
+      "tasks": [
+        "gait-generation"
+      ],
+      "class": "neural-oscillator",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/Tatonta/Quadruped-Robot",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Tatonta/Quadruped-Robot",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "cpg",
+        "locomotion",
+        "biomimetic"
+      ],
+      "path": "catalog/control/biomimetic/quadruped-cpg.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "microduck-locomotion",
+      "name": "MicroDuck locomotion policies",
+      "domain": "control",
+      "tasks": [
+        "locomotion"
+      ],
+      "class": "reinforcement-learning-policy",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/jackyrx/NX_microduck",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jackyrx/NX_microduck",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "locomotion",
+        "servo",
+        "robotics"
+      ],
+      "path": "catalog/control/locomotion/microduck.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "ardupilot-neural-mixer",
+      "name": "ArduPilot Neural Mixer",
+      "domain": "control",
+      "tasks": [
+        "motor-servo-control"
+      ],
+      "class": "reinforcement-learning-policy",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/virtualrobotix/Ardupilot-Neural-Mixer",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/virtualrobotix/Ardupilot-Neural-Mixer",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "motor",
+        "servo",
+        "flight-control"
+      ],
+      "path": "catalog/control/motor/ardupilot-neural-mixer.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "opendoge-locomotion",
+      "name": "OpenDoge locomotion policy",
+      "domain": "control",
+      "tasks": [
+        "quadruped-locomotion"
+      ],
+      "class": "reinforcement-learning-policy",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/OpenDogeRobotics/OpenDoge_origin",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "robot"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenDogeRobotics/OpenDoge_origin",
+          "notes": "Primary project source; deployment metrics require independent verification."
+        }
+      ],
+      "tags": [
+        "locomotion",
+        "quadruped",
+        "onnx"
+      ],
+      "path": "catalog/control/locomotion/opendoge.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "citylearn",
+      "name": "CityLearn",
+      "domain": "energy",
+      "tasks": [
+        "building-energy-simulation",
+        "demand-response-policy-training"
+      ],
+      "class": "reinforcement-learning-environment",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Simulation environment for building-energy coordination, demand response and evaluation of controllers.",
+      "links": {
+        "repository": "https://github.com/citylearn-project/CityLearn",
+        "homepage": "https://www.citylearn.net/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Simulation/training companion; any exported control policy needs a separate model record and hardware benchmark."
+      },
+      "runtimes": [
+        "python",
+        "gymnasium"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "policy-training-environment",
+        "needs_data": "Building models, weather/load/tariff series and operational constraints.",
+        "update_strategy": "Version scenarios and revalidate policies when assets or constraints change."
+      },
+      "data": {
+        "inputs": [
+          "building-scenarios",
+          "controller-actions"
+        ],
+        "outputs": [
+          "simulated-states",
+          "rewards",
+          "energy-metrics"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Energy/cost performance relative to rule-based controllers.",
+        "Constraint violations, comfort and robustness to forecast error."
+      ],
+      "limitations": [
+        "Simulation performance does not establish safe real-building control.",
+        "Keep equipment limits and emergency fallback outside learned policies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/citylearn-project/CityLearn",
+          "notes": "Current project home, simulation scope and MIT code license."
+        }
+      ],
+      "related": [
+        "grid2op",
+        "dlinear"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "energy",
+        "infrastructure",
+        "buildings",
+        "simulation",
+        "companion"
+      ],
+      "path": "pipelines/energy/citylearn.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "grid2op",
+      "name": "Grid2Op",
+      "domain": "energy",
+      "tasks": [
+        "power-system-simulation",
+        "sequential-decision-evaluation"
+      ],
+      "class": "reinforcement-learning-environment",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Power-system simulation testbed for evaluating sequential decisions and learning agents.",
+      "links": {
+        "repository": "https://github.com/Grid2op/grid2op",
+        "homepage": "https://grid2op.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MPL-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Requires a configured grid environment/backend; not a pretrained embedded controller."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "policy-training-environment",
+        "needs_data": "Grid topology, operating scenarios, backend and action constraints.",
+        "update_strategy": "Version scenarios and stress-test policies on unseen operating conditions."
+      },
+      "data": {
+        "inputs": [
+          "grid-scenarios",
+          "actions"
+        ],
+        "outputs": [
+          "simulated-grid-states",
+          "rewards",
+          "violations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Scenario survival, constraint violations and policy robustness.",
+        "Compare against simple safe baselines under contingencies."
+      ],
+      "limitations": [
+        "Not an authorization or safety case for operating a real grid.",
+        "Backend/data licenses and any policy weights need separate review."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Grid2op/grid2op",
+          "notes": "Power-system sequential decision testbed and MPL-2.0 license."
+        }
+      ],
+      "related": [
+        "citylearn"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "energy",
+        "infrastructure",
+        "simulation",
+        "companion"
+      ],
+      "path": "pipelines/energy/grid2op.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "taiga-s1",
+      "name": "Taiga-S1",
+      "domain": "engineering",
+      "tasks": [
+        "cad-action-selection"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/shhivv/taiga-s1",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1200000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shhivv/taiga-s1",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "cad",
+        "action-selection"
+      ],
+      "path": "catalog/engineering/cad/taiga-s1.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "finbert-prosus",
+      "name": "FinBERT (ProsusAI)",
+      "domain": "finance",
+      "tasks": [
+        "financial-sentiment-classification"
+      ],
+      "class": "text-encoder-classifier",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "BERT-based classifier of positive, negative and neutral sentiment in English financial text.",
+      "links": {
+        "repository": "https://github.com/ProsusAI/finBERT",
+        "model": "https://huggingface.co/ProsusAI/finbert"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Exact checkpoint tensor count and resident memory have not been measured here."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown",
+        "notes": "Do not substitute the repository code license for an unestablished separate model-weight license."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "BERT-class desktop specialist, not a demonstrated tiny-MCU model."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "optional-fine-tuning",
+        "needs_data": "Financial text; domain-labelled examples for evaluating or adapting sentiment.",
+        "update_strategy": "Monitor topic/language shift and calibrate thresholds on held-out text."
+      },
+      "data": {
+        "inputs": [
+          "english-financial-text"
+        ],
+        "outputs": [
+          "positive-negative-neutral-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Macro F1 and calibration on issuer/time-separated documents.",
+        "Avoid counting duplicated articles across training and testing."
+      ],
+      "limitations": [
+        "Sentiment does not predict stock returns by itself.",
+        "Not a financial reasoning or advice model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/ProsusAI/finbert",
+          "notes": "English financial sentiment task and three output labels."
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/ProsusAI/finBERT",
+          "notes": "Code and repository licensing; weights assessed separately."
+        }
+      ],
+      "related": [
+        "qlib"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "finance",
+        "sentiment",
+        "english",
+        "desktop-reference"
+      ],
+      "path": "catalog/finance/sentiment/finbert.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "kronos-mini",
+      "name": "Kronos-mini",
+      "domain": "finance",
+      "tasks": [
+        "financial-time-series-forecasting"
+      ],
+      "class": "financial-foundation-model",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Pretrained predictor for financial candlestick sequences, used with a separate learned tokenizer.",
+      "links": {
+        "repository": "https://github.com/shiyu-coder/Kronos",
+        "model": "https://huggingface.co/NeoQuasar/Kronos-mini",
+        "tokenizer": "https://huggingface.co/NeoQuasar/Kronos-Tokenizer-2k"
+      },
+      "model": {
+        "parameters": 4100000,
+        "file_size_mb": null,
+        "measurement_scope": "Approximate predictor-only count; excludes the required Kronos-Tokenizer-2k and inference buffers."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local inference after downloading artifacts; no MCU or RV1106 benchmark established."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "optional-fine-tuning",
+        "needs_data": "Chronological OHLC observations and historical/future timestamps; volume and amount are optional.",
+        "update_strategy": "Freeze checkpoints for each evaluation; assess drift before fine-tuning."
+      },
+      "data": {
+        "inputs": [
+          "ohlc-sequence",
+          "timestamps",
+          "optional-volume-and-amount"
+        ],
+        "outputs": [
+          "forecast-candlesticks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Walk-forward testing against naive forecasts using point-in-time data.",
+        "Evaluate transaction costs, slippage and drawdown separately from forecast accuracy."
+      ],
+      "limitations": [
+        "A forecast is not a trading strategy or evidence of profitability.",
+        "Context and sampling settings affect working memory; predictor size is not total RAM."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/NeoQuasar/Kronos-mini",
+          "notes": "Pretrained model, MIT terms, predictor size and tokenizer pairing."
+        }
+      ],
+      "related": [
+        "kronos-small",
+        "qlib",
+        "dlinear"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "finance",
+        "stocks",
+        "forecasting",
+        "desktop-reference"
+      ],
+      "path": "catalog/finance/forecasting/kronos-mini.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "kronos-small",
+      "name": "Kronos-small",
+      "domain": "finance",
+      "tasks": [
+        "financial-time-series-forecasting"
+      ],
+      "class": "financial-foundation-model",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Pretrained financial candlestick predictor; larger alternative to Kronos-mini.",
+      "links": {
+        "repository": "https://github.com/shiyu-coder/Kronos",
+        "model": "https://huggingface.co/NeoQuasar/Kronos-small",
+        "tokenizer": "https://huggingface.co/NeoQuasar/Kronos-Tokenizer-base"
+      },
+      "model": {
+        "parameters": 24700000,
+        "file_size_mb": null,
+        "measurement_scope": "Approximate predictor-only count; the base tokenizer is an additional learned component."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Reference research inference; benchmark complete tokenizer/predictor workload before deployment."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "optional-fine-tuning",
+        "needs_data": "Historical OHLC data and aligned timestamps; optional volume/amount.",
+        "update_strategy": "Version the predictor, tokenizer and data snapshots together."
+      },
+      "data": {
+        "inputs": [
+          "ohlc-sequence",
+          "timestamps"
+        ],
+        "outputs": [
+          "forecast-candlesticks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Out-of-time forecast errors and calibration across market regimes.",
+        "Paper trading with realistic execution costs only after baseline comparison."
+      ],
+      "limitations": [
+        "The documented context limit is 512 observations.",
+        "No profitability or real-money execution guarantee."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/NeoQuasar/Kronos-small",
+          "notes": "Model size, tokenizer pairing, context limit and MIT terms."
+        }
+      ],
+      "related": [
+        "kronos-mini",
+        "qlib"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "finance",
+        "stocks",
+        "forecasting"
+      ],
+      "path": "catalog/finance/forecasting/kronos-small.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "hmmlearn",
+      "name": "hmmlearn",
+      "domain": "finance",
+      "tasks": [
+        "hidden-state-estimation",
+        "sequence-modelling"
+      ],
+      "class": "statistical-learning-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Hidden Markov model training and inference library; a possible market-regime modelling baseline, not a pretrained bull/bear classifier.",
+      "links": {
+        "repository": "https://github.com/hmmlearn/hmmlearn",
+        "homepage": "https://hmmlearn.readthedocs.io/en/stable/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Model state count, feature dimensions and covariance choice determine the trained artifact size."
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Fitted statistical models may be compact; Python and numerical-library overhead is separate."
+      },
+      "runtimes": [
+        "python",
+        "numpy"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "unsupervised-fitting",
+        "needs_data": "Ordered numerical observations from the intended deployment domain.",
+        "update_strategy": "Refit on a controlled rolling window and align latent states between versions."
+      },
+      "data": {
+        "inputs": [
+          "numerical-observation-sequence"
+        ],
+        "outputs": [
+          "latent-state-estimates",
+          "sequence-likelihoods"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out sequence likelihood and state stability.",
+        "For markets, compare regimes out of time without future leakage."
+      ],
+      "limitations": [
+        "Market-state interpretation is application-specific.",
+        "Upstream declares limited-maintenance mode."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/hmmlearn/hmmlearn",
+          "notes": "Unsupervised HMM library, BSD-3-Clause and limited maintenance."
+        }
+      ],
+      "related": [
+        "qlib"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "classical-ml",
+        "finance",
+        "requires-training"
+      ],
+      "path": "pipelines/finance/hmmlearn.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "qlib",
+      "name": "Qlib",
+      "domain": "finance",
+      "tasks": [
+        "quantitative-research",
+        "model-evaluation",
+        "backtesting"
+      ],
+      "class": "quantitative-research-platform",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Research framework for data preparation, model training and quantitative evaluation; not one deployable predictor.",
+      "links": {
+        "repository": "https://github.com/microsoft/qlib"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Local workflows require locally available market data and selected model dependencies."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "configuration-dependent",
+        "needs_data": "Point-in-time features, labels, market calendars and execution assumptions.",
+        "update_strategy": "Version datasets, experiments, models and backtest configurations."
+      },
+      "data": {
+        "inputs": [
+          "market-data",
+          "model-configuration"
+        ],
+        "outputs": [
+          "trained-models",
+          "research-reports",
+          "backtests"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Chronological validation, survivorship-bias checks and cost-sensitive backtests.",
+        "Retain failed experiments to assess selection bias."
+      ],
+      "limitations": [
+        "Infrastructure for research is not evidence of alpha.",
+        "Data-provider licenses and availability are independent of the MIT code license."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/qlib",
+          "notes": "Quantitative research platform, supported modelling workflows and code license."
+        }
+      ],
+      "related": [
+        "kronos-mini",
+        "kronos-small",
+        "finbert-prosus",
+        "lightgbm",
+        "xgboost"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "finance",
+        "backtesting",
+        "companion"
+      ],
+      "path": "pipelines/finance/qlib.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "olmoearth-v1-nano",
+      "name": "OlmoEarth v1 Nano",
+      "domain": "geospatial",
+      "tasks": [
+        "earth-observation-embedding"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/allenai/OlmoEarth-v1-Nano",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1400000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/allenai/OlmoEarth-v1-Nano",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "satellite",
+        "earth-observation"
+      ],
+      "path": "catalog/geospatial/earth-observation/olmoearth-nano.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "olmoearth-v1-tiny",
+      "name": "OlmoEarth v1 Tiny",
+      "domain": "geospatial",
+      "tasks": [
+        "earth-observation-embedding"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/allenai/OlmoEarth-v1-Tiny",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 6200000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/allenai/OlmoEarth-v1-Tiny",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "satellite",
+        "earth-observation"
+      ],
+      "path": "catalog/geospatial/earth-observation/olmoearth-tiny.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "merlion",
+      "name": "Merlion",
+      "domain": "infrastructure",
+      "tasks": [
+        "forecasting",
+        "anomaly-detection",
+        "change-point-detection"
+      ],
+      "class": "time-series-analysis-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Framework for comparing statistical and learned methods on univariate or multivariate time series.",
+      "links": {
+        "repository": "https://github.com/salesforce/Merlion"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Framework and selected models have separate memory costs."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "configuration-dependent",
+        "needs_data": "Historical telemetry, sampling metadata and labels/normal periods where required.",
+        "update_strategy": "Refit/calibrate after approved workload changes and evaluate drift."
+      },
+      "data": {
+        "inputs": [
+          "time-series"
+        ],
+        "outputs": [
+          "forecasts",
+          "anomaly-scores",
+          "change-points"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin forecast comparison against seasonal baselines.",
+        "Incident-level detection delay and false-alarm rate."
+      ],
+      "limitations": [
+        "Model selection is workload-dependent.",
+        "Anomaly detection alone does not establish a root cause."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/salesforce/Merlion",
+          "notes": "Forecasting/anomaly/change-point workflows and BSD-3-Clause code."
+        }
+      ],
+      "related": [
+        "pyrca",
+        "dlinear",
+        "statsforecast"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "telemetry",
+        "forecasting",
+        "requires-training"
+      ],
+      "path": "pipelines/infrastructure/merlion.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "loglizer",
+      "name": "Loglizer",
+      "domain": "infrastructure",
+      "tasks": [
+        "log-anomaly-detection"
+      ],
+      "class": "anomaly-research-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Toolkit of statistical and machine-learning methods for anomaly detection from structured log events.",
+      "links": {
+        "repository": "https://github.com/logpai/loglizer"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Selected estimator, event vocabulary and windowing determine the actual deployment budget."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "configuration-dependent",
+        "needs_data": "Structured log event windows; labels or normal examples depending on the estimator.",
+        "update_strategy": "Retrain on reviewed logs and track event-vocabulary drift."
+      },
+      "data": {
+        "inputs": [
+          "log-event-features"
+        ],
+        "outputs": [
+          "anomaly-labels-or-scores"
+        ],
+        "languages": [
+          "log-format-dependent"
+        ]
+      },
+      "evaluation": [
+        "Split by time and incident to avoid near-duplicate event leakage.",
+        "Measure false alerts per service-day and missed incidents."
+      ],
+      "limitations": [
+        "A collection of algorithms, not a universal pretrained operations model.",
+        "Raw logs need parsing before most included methods can use them."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/logpai/loglizer",
+          "notes": "Log-based anomaly algorithms and MIT licensing."
+        }
+      ],
+      "related": [
+        "drain3",
+        "merlion"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "logs",
+        "anomaly",
+        "requires-training"
+      ],
+      "path": "pipelines/infrastructure/loglizer.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "drain3",
+      "name": "Drain3",
+      "domain": "infrastructure",
+      "tasks": [
+        "log-template-mining",
+        "log-structuring"
+      ],
+      "class": "log-mining-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Streaming log-template miner for converting repeated messages into structured templates and variable fields.",
+      "links": {
+        "repository": "https://github.com/logpai/Drain3",
+        "license": "https://github.com/logpai/Drain3/blob/master/LICENSE.txt"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Verified against LICENSE.txt; no neural checkpoint is involved."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Template count, cache limits and persistence determine state size."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "online-template-mining",
+        "needs_data": "Log messages and application-specific masking/configuration.",
+        "update_strategy": "Persist/version templates and set explicit cache limits."
+      },
+      "data": {
+        "inputs": [
+          "log-message-stream"
+        ],
+        "outputs": [
+          "template-ids",
+          "templates",
+          "extracted-parameters"
+        ],
+        "languages": [
+          "log-format-dependent"
+        ]
+      },
+      "evaluation": [
+        "Template stability and parsing accuracy on unseen logs.",
+        "Measure cluster-state growth and downstream anomaly quality."
+      ],
+      "limitations": [
+        "A novel log template is not necessarily an incident.",
+        "Log parameters may contain secrets and require masking."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/logpai/Drain3",
+          "notes": "Streaming template mining, masking, persistence and state controls."
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/logpai/Drain3/blob/master/LICENSE.txt",
+          "notes": "MIT license text."
+        }
+      ],
+      "related": [
+        "loglizer",
+        "presidio"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "logs",
+        "non-neural",
+        "companion"
+      ],
+      "path": "pipelines/infrastructure/drain3.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "kitsune",
+      "name": "Kitsune network anomaly pipeline",
+      "domain": "infrastructure",
+      "tasks": [
+        "network-feature-extraction",
+        "network-anomaly-detection"
+      ],
+      "class": "network-monitoring-pipeline",
+      "kind": "pipeline",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Combines AfterImage packet statistics with a KitNET autoencoder ensemble for network anomaly scoring.",
+      "links": {
+        "repository": "https://github.com/ymirsky/Kitsune-py"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Capture/parsing state and dependency overhead are part of the total cost, not just neural weights."
+      },
+      "runtimes": [
+        "python",
+        "numpy",
+        "tshark-or-scapy"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "online-unsupervised-fitting",
+        "needs_data": "Authorized packet captures and a representative normal training interval.",
+        "update_strategy": "Version feature extraction and normal baselines; review drift and abnormal training data."
+      },
+      "data": {
+        "inputs": [
+          "authorized-packet-captures"
+        ],
+        "outputs": [
+          "per-observation-anomaly-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "End-to-end throughput, false alerts and detection delay.",
+        "Evaluate feature-state memory at realistic traffic cardinality."
+      ],
+      "limitations": [
+        "Reference Python code is not the optimized implementation used for all published speed claims.",
+        "Restrict monitoring to networks and traffic for which access is authorized."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ymirsky/Kitsune-py",
+          "notes": "AfterImage plus KitNET architecture and parsing/performance caveats."
+        }
+      ],
+      "related": [
+        "kitnet"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "networking",
+        "infrastructure",
+        "defensive-security",
+        "companion"
+      ],
+      "path": "pipelines/infrastructure/kitsune.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "pyrca",
+      "name": "PyRCA",
+      "domain": "infrastructure",
+      "tasks": [
+        "root-cause-ranking",
+        "metric-graph-analysis"
+      ],
+      "class": "root-cause-analysis-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Statistical and graph-based tools for ranking possible causes associated with anomalous metrics.",
+      "links": {
+        "repository": "https://github.com/salesforce/PyRCA",
+        "homepage": "https://opensource.salesforce.com/PyRCA/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Graph size, selected method and metric history govern cost."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "configuration-dependent",
+        "needs_data": "Service metrics, anomalous intervals and optional topology/domain constraints.",
+        "update_strategy": "Reassess dependency graphs after topology or workload changes."
+      },
+      "data": {
+        "inputs": [
+          "metrics",
+          "anomaly-indicators",
+          "optional-topology"
+        ],
+        "outputs": [
+          "ranked-cause-hypotheses"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Top-k retrieval of known causes on held-out incidents.",
+        "Test sensitivity to missing metrics and graph errors."
+      ],
+      "limitations": [
+        "Correlation and ranked hypotheses are not proof of causation.",
+        "Remediation remains a separate permissioned workflow."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/salesforce/PyRCA",
+          "notes": "Root-cause analysis library and BSD-3-Clause license."
+        }
+      ],
+      "related": [
+        "merlion",
+        "loglizer"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "operations",
+        "root-cause",
+        "requires-training"
+      ],
+      "path": "pipelines/infrastructure/pyrca.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "kitnet",
+      "name": "KitNET",
+      "domain": "infrastructure",
+      "tasks": [
+        "streaming-anomaly-detection"
+      ],
+      "class": "autoencoder-ensemble",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Online-trained ensemble of small autoencoders scoring unusual numerical observations.",
+      "links": {
+        "repository": "https://github.com/ymirsky/KitNET-py"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Feature count, feature mapping and maximum autoencoder size determine the trained model."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Compact algorithm candidate; upstream Python implementation does not establish paper-speed performance or RV1106 compatibility."
+      },
+      "runtimes": [
+        "python",
+        "numpy"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "online-unsupervised-fitting",
+        "needs_data": "Representative normal observations for feature-mapping and anomaly-detector grace periods.",
+        "update_strategy": "Control retraining explicitly; do not silently learn attacks or faults as normal."
+      },
+      "data": {
+        "inputs": [
+          "numerical-feature-stream"
+        ],
+        "outputs": [
+          "reconstruction-error-anomaly-score"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "False-alert rate, detection delay and precision/recall on time-separated anomalies.",
+        "Include feature extraction and warmup when measuring system performance."
+      ],
+      "limitations": [
+        "Zero scores during training are not evidence that a stream is healthy.",
+        "Anomaly scores do not establish malicious intent or incident cause."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ymirsky/KitNET-py",
+          "notes": "Autoencoder ensemble, grace periods, MIT license and implementation speed caveats."
+        }
+      ],
+      "related": [
+        "kitsune",
+        "river-half-space-trees"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "security",
+        "anomaly",
+        "compact-candidate"
+      ],
+      "path": "catalog/infrastructure/anomaly/kitnet.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "river-half-space-trees",
+      "name": "River HalfSpaceTrees",
+      "domain": "infrastructure",
+      "tasks": [
+        "streaming-anomaly-detection"
+      ],
+      "class": "online-tree-ensemble",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Non-neural streaming anomaly detector based on half-space tree ensembles.",
+      "links": {
+        "repository": "https://github.com/online-ml/river",
+        "homepage": "https://riverml.xyz/latest/api/anomaly/HalfSpaceTrees/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "State grows with tree count and height; this is not a fixed pretrained artifact."
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Candidate for bounded telemetry workloads; the Python runtime and preprocessing must also be budgeted."
+      },
+      "runtimes": [
+        "python",
+        "river"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "online-unsupervised-fitting",
+        "needs_data": "Scaled numerical feature stream and an initialization window representative of normal operation.",
+        "update_strategy": "Monitor drift and deliberately manage reference-window updates."
+      },
+      "data": {
+        "inputs": [
+          "scaled-numerical-features"
+        ],
+        "outputs": [
+          "anomaly-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Prequential evaluation with alert rate and detection delay.",
+        "Compare score behaviour during warmup and drift."
+      ],
+      "limitations": [
+        "Feature ranges/scaling and initialization affect scores.",
+        "Not a pretrained attack or failure classifier."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://riverml.xyz/latest/api/anomaly/HalfSpaceTrees/",
+          "notes": "Algorithm, parameters, initialization and feature-range assumptions."
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/online-ml/river",
+          "notes": "Library implementation and licensing."
+        }
+      ],
+      "related": [
+        "kitnet",
+        "merlion"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "infrastructure",
+        "classical-ml",
+        "online-learning"
+      ],
+      "path": "catalog/infrastructure/anomaly/river-half-space-trees.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "all-minilm-l6-v2",
+      "name": "all-MiniLM-L6-v2",
+      "domain": "language",
+      "tasks": [
+        "embeddings",
+        "semantic-search"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 22700000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "embeddings"
+      ],
+      "path": "catalog/language/embeddings/all-minilm-l6-v2.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "fasttext-lid176",
+      "name": "fastText lid.176",
+      "domain": "language",
+      "tasks": [
+        "language-identification"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://fasttext.cc/docs/en/language-identification.html",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": 0.917,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://fasttext.cc/docs/en/language-identification.html",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "language-id"
+      ],
+      "path": "catalog/language/classification/fasttext-lid176.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "cactus-needle3",
+      "name": "Needle 3",
+      "domain": "language",
+      "tasks": [
+        "tool-calling",
+        "structured-extraction",
+        "embeddings"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/Cactus-Compute/needle3",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/Cactus-Compute/needle3",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "tool-calling",
+        "offline"
+      ],
+      "path": "catalog/language/tool-calling/needle3.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "brush",
+      "name": "Brush",
+      "kind": "pipeline",
+      "domain": "mapping",
+      "tasks": [
+        "gaussian-splat-reconstruction",
+        "novel-view-rendering"
+      ],
+      "class": "vision-pipeline",
+      "description": "Rust/WebGPU-compatible engine for optimizing and viewing Gaussian splats.",
+      "links": {
+        "repository": "https://github.com/ArthurBrussee/brush"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "rust",
+        "burn",
+        "webgpu"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "images",
+          "camera-poses"
+        ],
+        "outputs": [
+          "gaussian-splat-scene"
+        ],
+        "camera_setup": "overlapping captured viewpoints with poses",
+        "temporal_mode": "offline",
+        "coordinate_system": "input reconstruction frame"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Scene-specific optimization, not a tiny fixed pretrained network. Interactive rendering is not live reconstruction. Splats are not automatically collision meshes or semantic room maps.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ArthurBrussee/brush"
+        }
+      ],
+      "related": [
+        "colmap"
+      ],
+      "path": "pipelines/reconstruction/brush.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "rtabmap",
+      "name": "RTAB-Map",
+      "kind": "pipeline",
+      "domain": "mapping",
+      "tasks": [
+        "slam",
+        "scene-mapping"
+      ],
+      "class": "vision-pipeline",
+      "description": "Mapping and localization library with a standalone application.",
+      "links": {
+        "repository": "https://github.com/introlab/rtabmap"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "native-cpp"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "stereo-or-rgbd",
+          "calibration",
+          "optional-other-sensors"
+        ],
+        "outputs": [
+          "map",
+          "camera-trajectory"
+        ],
+        "camera_setup": "configuration-dependent; stereo or RGB-D common",
+        "temporal_mode": "causal",
+        "coordinate_system": "world frame with calibrated metric sensors"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "A complete mapping system. Memory grows with maps and retained sensor data; it is not a fixed-size pretrained model. Review optional backend dependencies separately.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/introlab/rtabmap"
+        }
+      ],
+      "path": "pipelines/mapping/rtabmap.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "colmap",
+      "name": "COLMAP",
+      "kind": "pipeline",
+      "domain": "mapping",
+      "tasks": [
+        "structure-from-motion",
+        "multi-view-stereo"
+      ],
+      "class": "vision-pipeline",
+      "description": "Photogrammetry from overlapping images with pose and geometry estimation.",
+      "links": {
+        "repository": "https://github.com/colmap/colmap"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "native-cpp"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "overlapping-images"
+        ],
+        "outputs": [
+          "camera-poses",
+          "sparse-or-dense-reconstruction"
+        ],
+        "camera_setup": "one moving camera or multiple viewpoints",
+        "temporal_mode": "offline",
+        "coordinate_system": "reconstruction-world; scale requires an external reference"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Not a live activity model. Dense-stage acceleration depends on build/backend. A single fixed view or pure rotation cannot provide ordinary translational stereo parallax.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/colmap/colmap"
+        }
+      ],
+      "related": [
+        "brush"
+      ],
+      "path": "pipelines/reconstruction/colmap.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "orb-slam3",
+      "name": "ORB-SLAM3",
+      "kind": "pipeline",
+      "domain": "mapping",
+      "tasks": [
+        "visual-slam",
+        "camera-localization"
+      ],
+      "class": "vision-pipeline",
+      "description": "Geometric visual and visual-inertial localization with sparse mapping.",
+      "links": {
+        "repository": "https://github.com/UZ-SLAMLab/ORB_SLAM3"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "native-cpp"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "image-sequence",
+          "camera-calibration",
+          "optional-imu"
+        ],
+        "outputs": [
+          "camera-trajectory",
+          "sparse-map"
+        ],
+        "camera_setup": "monocular, stereo or RGB-D; moving viewpoints",
+        "temporal_mode": "causal",
+        "coordinate_system": "monocular up-to-scale; scale depends on sensor configuration"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "A SLAM system, not a small neural network. Sparse landmarks are not a complete textured mesh. Its vocabulary/dependencies still consume storage and RAM.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3"
+        }
+      ],
+      "path": "pipelines/mapping/orb-slam3.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "tiny-recursive-model",
+      "name": "Tiny Recursive Model",
+      "domain": "reasoning",
+      "tasks": [
+        "structured-reasoning"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 7000000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "reasoning",
+        "research"
+      ],
+      "path": "catalog/reasoning/trm.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "edgevla-tiny",
+      "name": "EdgeVLA-Tiny",
+      "domain": "robotics",
+      "tasks": [
+        "vision-language-action"
+      ],
+      "class": "compact-vla",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/enfuse/edgevla-tiny-fmb",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 164000000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/enfuse/edgevla-tiny-fmb",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "robotics",
+        "vla"
+      ],
+      "path": "catalog/robotics/vla/edgevla-tiny.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mattersim-small",
+      "name": "MatterSim Small",
+      "domain": "science",
+      "tasks": [
+        "atomistic-potential"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/microsoft/mattersim",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1000000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/mattersim",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "materials",
+        "simulation"
+      ],
+      "path": "catalog/science/materials/mattersim-small.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "tf-micro-magic-wand",
+      "name": "TensorFlow Lite Micro Magic Wand",
+      "domain": "sensors",
+      "tasks": [
+        "imu-gesture-recognition"
+      ],
+      "class": "tinyml",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/tensorflow/tflite-micro",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/tflite-micro",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "tinyml",
+        "imu",
+        "gesture"
+      ],
+      "path": "catalog/sensors/gesture/tf-micro-magic-wand.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "ti-tinyml-modelzoo",
+      "name": "TI TinyML Model Zoo",
+      "domain": "sensors",
+      "tasks": [
+        "time-series-classification",
+        "forecasting",
+        "anomaly-detection",
+        "audio-classification",
+        "image-classification",
+        "radar-classification"
+      ],
+      "class": "model-collection",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/TexasInstruments/tinyml-modelzoo",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/TexasInstruments/tinyml-modelzoo",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "tinyml",
+        "sensors",
+        "radar"
+      ],
+      "path": "catalog/sensors/model-zoo/ti-tinyml-modelzoo.yaml",
+      "kind": "collection",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "pulse-nanoedge",
+      "name": "Pulse / NanoEdge vibration anomaly detector",
+      "domain": "sensors",
+      "tasks": [
+        "vibration-anomaly-detection"
+      ],
+      "class": "tinyml",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/Ayushkothari96/pulse",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Ayushkothari96/pulse",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "vibration",
+        "anomaly-detection",
+        "stm32"
+      ],
+      "path": "catalog/sensors/anomaly/pulse-nanoedge.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mujoco",
+      "name": "MuJoCo",
+      "kind": "primitive",
+      "domain": "simulation",
+      "tasks": [
+        "articulated-physics-simulation"
+      ],
+      "class": "physics-simulator",
+      "description": "Rigid-body and contact dynamics simulator for articulated systems.",
+      "links": {
+        "repository": "https://github.com/google-deepmind/mujoco"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "native-c-cpp",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "body-model",
+          "joint-state",
+          "control-inputs"
+        ],
+        "outputs": [
+          "simulated-state",
+          "contacts"
+        ],
+        "camera_setup": "none required",
+        "temporal_mode": "not-applicable",
+        "coordinate_system": "simulation-world"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Not a trained AI model, pose detector or motion-capture system. Physics simulation requires bodies, constraints and controls; stickman replay can instead directly render measured joint trajectories.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-deepmind/mujoco"
+        }
+      ],
+      "path": "primitives/simulation/mujoco.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "chronos-bolt-tiny",
+      "name": "Chronos-Bolt Tiny",
+      "domain": "time-series",
+      "tasks": [
+        "forecasting"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/amazon/chronos-bolt-tiny",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 9000000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/amazon/chronos-bolt-tiny",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "forecasting"
+      ],
+      "path": "catalog/time-series/forecasting/chronos-bolt-tiny.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "dlinear",
+      "name": "DLinear",
+      "domain": "time-series",
+      "tasks": [
+        "forecasting"
+      ],
+      "class": "linear-time-series-model",
+      "kind": "model",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Trainable forecasting architecture combining trend/remainder decomposition with two linear projections.",
+      "links": {
+        "repository": "https://github.com/cure-lab/LTSF-Linear",
+        "paper": "https://arxiv.org/abs/2205.13504",
+        "homepage": "https://nixtlaverse.nixtla.io/neuralforecast/models.dlinear.html"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Depends on input window, horizon and whether projections are shared or channel-specific. Illustrative single-series 96-to-24 biased projections contain 4656 parameters; this is a calculation, not a published checkpoint measurement."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "The small mathematical model may be portable; actual export/runtime and board performance remain unverified."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-sequence-fitting",
+        "needs_data": "Regularly sampled histories with a specified forecast horizon and missing-data policy.",
+        "update_strategy": "Refit using rolling-origin evaluation; record scaling and window parameters."
+      },
+      "data": {
+        "inputs": [
+          "numerical-time-series-window"
+        ],
+        "outputs": [
+          "future-numerical-values"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin MAE/MASE against naive and seasonal-naive baselines.",
+        "Report each horizon and distribution-shift failures."
+      ],
+      "limitations": [
+        "A tiny parameter count does not establish forecast quality.",
+        "No universal business or stock forecast weights are provided."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/cure-lab/LTSF-Linear",
+          "notes": "Architecture, implementation, licensing and links to integrations."
+        }
+      ],
+      "related": [
+        "neuralforecast",
+        "statsforecast",
+        "tiny-time-mixer",
+        "chronos-bolt-tiny",
+        "kronos-mini"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "forecasting",
+        "business",
+        "infrastructure",
+        "compact-candidate",
+        "requires-training"
+      ],
+      "path": "catalog/time-series/forecasting/dlinear.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "tiny-time-mixer",
+      "name": "TinyTimeMixer",
+      "domain": "time-series",
+      "tasks": [
+        "forecasting"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "forecasting"
+      ],
+      "path": "catalog/time-series/forecasting/tiny-time-mixer.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "neuralforecast",
+      "name": "NeuralForecast",
+      "domain": "time-series",
+      "tasks": [
+        "neural-forecasting",
+        "forecast-model-evaluation"
+      ],
+      "class": "forecasting-training-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Training/evaluation library containing DLinear and multiple other neural forecasting architectures.",
+      "links": {
+        "repository": "https://github.com/Nixtla/neuralforecast",
+        "homepage": "https://nixtlaverse.nixtla.io/neuralforecast/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "configuration-dependent"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Select a compact model and measure its trained artifact separately from the framework."
+      },
+      "runtimes": [
+        "python",
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "supervised-sequence-fitting",
+        "needs_data": "Timestamped target histories and any covariates available at prediction time.",
+        "update_strategy": "Refit and compare models on fixed chronological folds."
+      },
+      "data": {
+        "inputs": [
+          "time-series",
+          "optional-covariates"
+        ],
+        "outputs": [
+          "forecasts",
+          "fitted-models"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin forecast errors by series and horizon.",
+        "Check that future covariates are actually known at inference time."
+      ],
+      "limitations": [
+        "The toolkit includes large as well as small models.",
+        "Framework installation size is not one model size."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Nixtla/neuralforecast",
+          "notes": "Model collection, DLinear integration and Apache-2.0 code."
+        }
+      ],
+      "related": [
+        "dlinear",
+        "statsforecast"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "forecasting",
+        "business",
+        "requires-training"
+      ],
+      "path": "pipelines/time-series/neuralforecast.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "statsforecast",
+      "name": "StatsForecast",
+      "domain": "time-series",
+      "tasks": [
+        "statistical-forecasting",
+        "baseline-evaluation"
+      ],
+      "class": "statistical-forecasting-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "business-2026-10-05",
+      "description": "Local statistical forecasting library with ARIMA, exponential-smoothing, Theta and baseline methods.",
+      "links": {
+        "repository": "https://github.com/Nixtla/statsforecast",
+        "homepage": "https://nixtlaverse.nixtla.io/statsforecast/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Per-series model/state may be small; fitting many series and framework overhead remain separate costs."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "statistical-fitting",
+        "needs_data": "Timestamped numerical histories with sampling frequency and seasonality definitions.",
+        "update_strategy": "Refit/reselect models using fixed rolling-origin protocols."
+      },
+      "data": {
+        "inputs": [
+          "numerical-time-series"
+        ],
+        "outputs": [
+          "forecasts",
+          "optional-intervals"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "MAE/MASE and interval coverage where available.",
+        "Compare against seasonal-naive forecasts before using neural alternatives."
+      ],
+      "limitations": [
+        "A collection of statistical estimators, not one pretrained model.",
+        "Structural breaks and sparse histories can invalidate fitted assumptions."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Nixtla/statsforecast",
+          "notes": "Statistical model families and Apache-2.0 code."
+        }
+      ],
+      "related": [
+        "dlinear",
+        "neuralforecast",
+        "merlion"
+      ],
+      "reviewed": "2026-10-05",
+      "tags": [
+        "forecasting",
+        "classical-ml",
+        "business",
+        "requires-training"
+      ],
+      "path": "pipelines/time-series/statsforecast.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "robust-video-matting-mobilenetv3",
+      "name": "Robust Video Matting (MobileNetV3)",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "human-video-matting"
+      ],
+      "class": "small-specialized-model",
+      "description": "Recurrent human foreground and alpha-mask estimation.",
+      "links": {
+        "repository": "https://github.com/PeterL1n/RobustVideoMatting"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser",
+          "mobile"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime",
+        "tensorflowjs",
+        "coreml"
+      ],
+      "formats": [
+        "onnx",
+        "coreml"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "video-frame",
+          "recurrent-state"
+        ],
+        "outputs": [
+          "alpha-mask",
+          "foreground",
+          "updated-state"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "causal",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Select MobileNetV3, not the larger ResNet variant. Preserve recurrent state within each stream. Repository code has GPL obligations; checkpoint terms should be reviewed separately.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/PeterL1n/RobustVideoMatting"
+        }
+      ],
+      "path": "catalog/video/matting/robust-video-matting.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "transnet-v2",
+      "name": "TransNet V2",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "shot-boundary-detection"
+      ],
+      "class": "small-specialized-model",
+      "description": "Detects video shot cuts and transitions.",
+      "links": {
+        "repository": "https://github.com/soCzech/TransNetV2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "tensorflow",
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "video-frame-window"
+        ],
+        "outputs": [
+          "shot-boundary-scores"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "windowed",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Temporal windows introduce context and possible lookahead. Shot boundaries are not semantic story scenes. Primarily an offline Film Analyzer candidate.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/soCzech/TransNetV2"
+        }
+      ],
+      "path": "catalog/video/shot-detection/transnet-v2.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "st-gcnpp",
+      "name": "ST-GCN++ (PYSKL)",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "skeleton-action-recognition"
+      ],
+      "class": "small-specialized-model",
+      "description": "Action recognition from temporally ordered body skeletons.",
+      "links": {
+        "repository": "https://github.com/kennymckormick/pyskl"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "skeleton-sequence"
+        ],
+        "outputs": [
+          "action-scores"
+        ],
+        "camera_setup": "none directly; upstream pose estimator supplies skeletons",
+        "temporal_mode": "windowed",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "PYSKL is the training/inference toolbox, not the model size. Its maintainer marks it unmaintained. Account separately for pose extraction, temporal windows and joint conventions.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kennymckormick/pyskl"
+        }
+      ],
+      "related": [
+        "rtmpose-t",
+        "mediapipe-pose-lite"
+      ],
+      "path": "catalog/video/action-recognition/st-gcnpp.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "movinet-a0-stream",
+      "name": "MoViNet-A0 Streaming",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "video-action-recognition"
+      ],
+      "class": "small-specialized-model",
+      "description": "Causal video activity classification with recurrent stream buffers.",
+      "links": {
+        "repository": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": 13,
+        "measurement_scope": "Published FP32 TFLite binary, not RAM or quantized file size."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "tensorflow",
+        "tflite"
+      ],
+      "formats": [
+        "tflite"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "video-frames",
+          "stream-state"
+        ],
+        "outputs": [
+          "activity-scores",
+          "updated-stream-state"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "causal",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Use the streaming variant rather than the base 3D-convolution model. Keep independent state per stream and reset at cuts. Target latency and memory remain unmeasured.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"
+        }
+      ],
+      "path": "catalog/video/action-recognition/movinet-a0-stream.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "tsm-mobilenetv2",
+      "name": "TSM + MobileNetV2 (online)",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "video-action-recognition",
+        "gesture-recognition"
+      ],
+      "class": "small-specialized-model",
+      "description": "Temporal-shift video model with a mobile image backbone.",
+      "links": {
+        "repository": "https://github.com/mit-han-lab/temporal-shift-module"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "video-frames"
+        ],
+        "outputs": [
+          "action-scores"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "causal",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Select the online MobileNetV2 configuration. The upstream Jetson Nano demo is not RV1106 evidence. The shift operation adds no weights, but the backbone is not parameter-free.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mit-han-lab/temporal-shift-module"
+        }
+      ],
+      "path": "catalog/video/action-recognition/tsm-mobilenetv2.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "fastdvdnet",
+      "name": "FastDVDnet",
+      "kind": "model",
+      "domain": "video",
+      "tasks": [
+        "video-denoising"
+      ],
+      "class": "small-specialized-model",
+      "description": "Temporal video denoising without explicit optical-flow estimation.",
+      "links": {
+        "repository": "https://github.com/m-tassano/fastdvdnet"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "noisy-frame-window"
+        ],
+        "outputs": [
+          "denoised-frame"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "windowed",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Reference inference uses neighbouring frames, including lookahead around the output frame. Measure end-to-end buffering latency, not only network inference. GPU reference code is not a board deployment.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/m-tassano/fastdvdnet"
+        }
+      ],
+      "path": "catalog/video/denoising/fastdvdnet.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "videopose3d",
+      "name": "VideoPose3D",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "2d-to-3d-pose-lifting"
+      ],
+      "class": "small-specialized-model",
+      "description": "Temporal lifting of 2D joint trajectories into estimated 3D poses.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/VideoPose3D"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "CC-BY-NC",
+        "weights": "CC-BY-NC"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "body-landmarks-2d-sequence"
+        ],
+        "outputs": [
+          "estimated-body-landmarks-3d"
+        ],
+        "camera_setup": "none directly; consumes 2D tracks",
+        "temporal_mode": "configuration-dependent",
+        "coordinate_system": "estimated body-relative-3d"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Non-commercial license. Choose causal versus symmetric temporal configurations explicitly. Requires a separate 2D pose detector; not a shared-room localization system.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/VideoPose3D"
+        }
+      ],
+      "related": [
+        "rtmpose-t"
+      ],
+      "path": "catalog/vision/pose/videopose3d.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mediapipe-pose-lite",
+      "name": "MediaPipe Pose Landmarker Lite",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "body-pose-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Lite detector/landmarker bundle producing 33 body landmarks.",
+      "links": {
+        "repository": "https://github.com/google-ai-edge/mediapipe"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "browser",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "mediapipe",
+        "tflite"
+      ],
+      "formats": [
+        "tflite",
+        "mediapipe-task"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image-or-video"
+        ],
+        "outputs": [
+          "body-landmarks-2d",
+          "estimated-body-landmarks-3d"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "causal",
+        "coordinate_system": "image-2d and body-relative-3d"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "The bundle includes detection and landmark models. Estimated world landmarks are body-centred, not a calibrated shared-room position. Live-stream mode does not guarantee target FPS.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-ai-edge/mediapipe"
+        },
+        {
+          "type": "official",
+          "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker"
+        }
+      ],
+      "path": "catalog/vision/pose/mediapipe-pose-lite.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "rtmpose-t",
+      "name": "RTMPose-t",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "body-pose-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Tiny top-down body-keypoint estimation network.",
+      "links": {
+        "repository": "https://github.com/open-mmlab/mmpose"
+      },
+      "model": {
+        "parameters": 3340000,
+        "file_size_mb": null,
+        "measurement_scope": "Published COCO 256x192 pose network only; excludes person detector."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "person-crop"
+        ],
+        "outputs": [
+          "body-landmarks-2d"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "image-2d"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Full multi-person pipelines need detection, crop/resize and identity tracking. The pose-network parameter count is not the complete pipeline footprint.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/open-mmlab/mmpose"
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md"
+        }
+      ],
+      "related": [
+        "rtmlib"
+      ],
+      "path": "catalog/vision/pose/rtmpose-t.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "blazeface",
+      "name": "BlazeFace",
+      "domain": "vision",
+      "tasks": [
+        "face-detection"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/google-ai-edge/mediapipe",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-ai-edge/mediapipe",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "face-detection",
+        "mobile"
+      ],
+      "path": "catalog/vision/face/blazeface.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mobilenetv3-small",
+      "name": "MobileNetV3 Small",
+      "domain": "vision",
+      "tasks": [
+        "image-classification",
+        "feature-extraction"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/tensorflow/models",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/models",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "mobile",
+        "classification"
+      ],
+      "path": "catalog/vision/classification/mobilenetv3-small.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mobile-sam",
+      "name": "MobileSAM",
+      "domain": "vision",
+      "tasks": [
+        "image-segmentation"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/ChaoningZhang/MobileSAM",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 9660000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ChaoningZhang/MobileSAM",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "segmentation",
+        "sam"
+      ],
+      "path": "catalog/vision/segmentation/mobilesam.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "rfdn",
+      "name": "RFDN",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "image-super-resolution"
+      ],
+      "class": "small-specialized-model",
+      "description": "Residual feature distillation for lightweight image upscaling.",
+      "links": {
+        "repository": "https://github.com/njulj/RFDN"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "low-resolution-image"
+        ],
+        "outputs": [
+          "upscaled-image"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Checkpoint and scale factor must be specified when benchmarking. High-resolution feature maps may dominate memory. Upscaling does not establish that generated detail was observed.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/njulj/RFDN"
+        }
+      ],
+      "path": "catalog/vision/super-resolution/rfdn.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "mobileclip2-s0",
+      "name": "MobileCLIP2-S0",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "image-text-similarity",
+        "zero-shot-image-classification"
+      ],
+      "class": "small-specialized-model",
+      "description": "Dual-encoder model for image/text similarity and frame categorization.",
+      "links": {
+        "repository": "https://github.com/apple-aiml-research/ml-mobileclip"
+      },
+      "model": {
+        "parameters": 74800000,
+        "file_size_mb": null,
+        "measurement_scope": "Approximate total: published 11.4M image encoder + 63.4M text encoder."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "Apple-ML-Research-Model-TOU"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "openclip"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image",
+          "text-labels"
+        ],
+        "outputs": [
+          "image-embedding",
+          "text-embedding",
+          "similarity-scores"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Not a temporal action model. Fixed labels can use precomputed text embeddings; image-only deployment still needs target benchmarks. Code and model terms differ.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/apple-aiml-research/ml-mobileclip"
+        }
+      ],
+      "path": "catalog/vision/embeddings/mobileclip2-s0.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "superpoint",
+      "name": "SuperPoint",
+      "domain": "vision",
+      "tasks": [
+        "keypoint-detection",
+        "descriptor-extraction"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/magicleap/SuperPointPretrainedNetwork",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1300000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/magicleap/SuperPointPretrainedNetwork",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "keypoints",
+        "slam"
+      ],
+      "path": "catalog/vision/features/superpoint.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "zero-dce-plus-plus",
+      "name": "Zero-DCE++",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "low-light-enhancement"
+      ],
+      "class": "small-specialized-model",
+      "description": "Compact learned curve adjustment for low-light images.",
+      "links": {
+        "repository": "https://github.com/Li-Chongyi/Zero-DCE_extension"
+      },
+      "model": {
+        "parameters": 10000,
+        "file_size_mb": null,
+        "measurement_scope": "Approximate parameter count reported for Zero-DCE++."
+      },
+      "license": {
+        "code": "CC-BY-NC-4.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "enhanced-image"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "not-applicable"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Repository restricts code to academic/non-commercial use. Enhancement is not evidence recovery; preserve original frames and evaluate downstream detector accuracy.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Li-Chongyi/Zero-DCE_extension"
+        },
+        {
+          "type": "official",
+          "url": "https://arxiv.org/abs/2103.00860"
+        }
+      ],
+      "path": "catalog/vision/enhancement/zero-dce-plus-plus.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "freemocap",
+      "name": "FreeMoCap",
+      "kind": "pipeline",
+      "domain": "vision",
+      "tasks": [
+        "markerless-motion-capture"
+      ],
+      "class": "vision-pipeline",
+      "description": "Application for camera capture, calibration and skeleton reconstruction.",
+      "links": {
+        "repository": "https://github.com/freemocap/freemocap"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "AGPL-3.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "synchronized-camera-videos",
+          "calibration"
+        ],
+        "outputs": [
+          "skeleton-sequences"
+        ],
+        "camera_setup": "multiple calibrated cameras for triangulated 3D",
+        "temporal_mode": "offline",
+        "coordinate_system": "calibrated-3d when triangulated"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Desktop application; record the exact release/branch and pose backend. Live capture or preview does not imply causal real-time 3D reconstruction. Model dependencies have their own terms.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/freemocap/freemocap"
+        }
+      ],
+      "path": "pipelines/motion-capture/freemocap.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "depth-anything-v2-small",
+      "name": "Depth Anything V2 Small",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "monocular-depth-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Small foundation-model variant for single-image relative depth.",
+      "links": {
+        "repository": "https://github.com/DepthAnything/Depth-Anything-V2"
+      },
+      "model": {
+        "parameters": 24800000,
+        "file_size_mb": null,
+        "measurement_scope": "Published Small model count; not peak runtime RAM."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "relative-depth-map"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "relative-depth"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "This entry covers the relative-depth Small checkpoint, not separately fine-tuned metric variants. Upstream includes CUDA, MPS and CPU selection; board runtime support is unverified.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/DepthAnything/Depth-Anything-V2"
+        }
+      ],
+      "path": "catalog/vision/depth/depth-anything-v2-small.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "fastdepth",
+      "name": "FastDepth",
+      "domain": "vision",
+      "tasks": [
+        "monocular-depth-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/dwofk/fast-depth",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dwofk/fast-depth",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "depth",
+        "robotics"
+      ],
+      "path": "catalog/vision/depth/fastdepth.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "lite-mono",
+      "name": "Lite-Mono",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "monocular-depth-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Lightweight CNN/Transformer family for self-supervised monocular depth.",
+      "links": {
+        "repository": "https://github.com/noahzn/Lite-Mono"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "relative-depth-or-disparity"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "relative-depth"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Size depends on tiny/small/standard/8m configuration. Specify checkpoint, input resolution and training domain. KITTI performance does not establish indoor room accuracy.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/noahzn/Lite-Mono"
+        }
+      ],
+      "path": "catalog/vision/depth/lite-mono.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "zipdepth",
+      "name": "ZipDepth",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "monocular-depth-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Compact distilled single-image relative-depth model.",
+      "links": {
+        "repository": "https://github.com/fabiotosi92/ZipDepth"
+      },
+      "model": {
+        "parameters": 6100000,
+        "file_size_mb": null,
+        "measurement_scope": "Approximate fused-model parameter count; variant must be recorded."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "relative-depth-map"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "relative-depth"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Upstream provides a mobile/NPU-oriented variant. NPU-friendly does not establish RKNN/RV1106 support. Relative depth is not distance in metres.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/fabiotosi92/ZipDepth"
+        }
+      ],
+      "path": "catalog/vision/depth/zipdepth.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "easymocap",
+      "name": "EasyMocap",
+      "kind": "toolkit",
+      "domain": "vision",
+      "tasks": [
+        "motion-capture",
+        "multi-view-pose-fitting"
+      ],
+      "class": "vision-toolkit",
+      "description": "Toolbox for monocular and multi-view markerless motion capture.",
+      "links": {
+        "repository": "https://github.com/zju3dv/EasyMocap"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "opencv"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-videos",
+          "camera-calibration"
+        ],
+        "outputs": [
+          "skeleton-sequences",
+          "fitted-body-models"
+        ],
+        "camera_setup": "single or multiple; synchronized calibrated views for triangulation",
+        "temporal_mode": "offline",
+        "coordinate_system": "configuration-dependent; calibrated multi-view can share a world frame"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "A complete toolbox, not a tiny model. Check body-model assets such as SMPL separately for licensing. Monocular fitted poses are not equivalent to measured multi-view geometry.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/zju3dv/EasyMocap"
+        }
+      ],
+      "path": "pipelines/motion-capture/easymocap.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "bytetrack",
+      "name": "ByteTrack",
+      "domain": "vision",
+      "tasks": [
+        "multi-object-tracking"
+      ],
+      "class": "tracking-system",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/ifzhang/ByteTrack",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ifzhang/ByteTrack",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "tracking",
+        "detection"
+      ],
+      "path": "catalog/vision/tracking/bytetrack.yaml",
+      "kind": "pipeline",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "lightweight-3d-pose",
+      "name": "Lightweight 3D Human Pose Demo",
+      "kind": "pipeline",
+      "domain": "vision",
+      "tasks": [
+        "multi-person-3d-pose"
+      ],
+      "class": "vision-pipeline",
+      "description": "Monocular multi-person 2D/3D pose demo with CPU deployment path.",
+      "links": {
+        "repository": "https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch",
+        "openvino"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image-or-video"
+        ],
+        "outputs": [
+          "body-landmarks-2d",
+          "estimated-body-landmarks-3d"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "estimated camera/body coordinates"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Includes pose inference and postprocessing; not one guaranteed tiny artifact. Estimated skeletons do not reconstruct a room or establish calibrated person positions.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch"
+        }
+      ],
+      "path": "pipelines/pose/lightweight-3d-pose.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "depth-anything-3-small",
+      "name": "Depth Anything 3 Small",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "multi-view-depth-estimation",
+        "camera-pose-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Small DA3 variant for relative depth and camera geometry.",
+      "links": {
+        "repository": "https://github.com/ByteDance-Seed/Depth-Anything-3"
+      },
+      "model": {
+        "parameters": 80000000,
+        "file_size_mb": null,
+        "measurement_scope": "Published 0.08B DA3-SMALL count; approximate."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "one-or-more-rgb-images"
+        ],
+        "outputs": [
+          "relative-depth",
+          "camera-intrinsics",
+          "camera-extrinsics"
+        ],
+        "camera_setup": "one or more RGB views",
+        "temporal_mode": "configuration-dependent",
+        "coordinate_system": "geometry up to scale"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Larger than tiny embedded models. DA3-SMALL has no Gaussian-splat head or metric-depth capability in the upstream table. Do not transfer Giant/Large capabilities or memory results to Small.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ByteDance-Seed/Depth-Anything-3"
+        }
+      ],
+      "path": "catalog/vision/depth/depth-anything-3-small.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "efficientdet-lite0",
+      "name": "EfficientDet-Lite0",
+      "domain": "vision",
+      "tasks": [
+        "object-detection"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://www.tensorflow.org/lite/examples/object_detection/overview",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://www.tensorflow.org/lite/examples/object_detection/overview",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "detection",
+        "tflite"
+      ],
+      "path": "catalog/vision/detection/efficientdet-lite0.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "nanodet-plus",
+      "name": "NanoDet-Plus",
+      "domain": "vision",
+      "tasks": [
+        "object-detection"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/RangiLyu/nanodet",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1170000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/RangiLyu/nanodet",
+          "notes": "Primary project/model source; verify deployment metrics separately."
+        }
+      ],
+      "tags": [
+        "detection",
+        "mobile"
+      ],
+      "path": "catalog/vision/detection/nanodet-plus.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "pp-ocrv6-tiny",
+      "name": "PP-OCRv6 Tiny",
+      "domain": "vision",
+      "tasks": [
+        "ocr"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://github.com/PaddlePaddle/PaddleOCR",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": 1500000,
+        "file_size_mb": null,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/PaddlePaddle/PaddleOCR",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "ocr"
+      ],
+      "path": "catalog/vision/ocr/pp-ocrv6-tiny.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "movenet-lightning",
+      "name": "MoveNet Lightning",
+      "domain": "vision",
+      "tasks": [
+        "pose-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "",
+      "links": {
+        "repository": "https://www.tensorflow.org/hub/tutorials/movenet",
+        "model": null,
+        "paper": null,
+        "homepage": null
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": 2.9,
+        "architecture": null,
+        "precision": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge"
+        ],
+        "accelerators": []
+      },
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://www.tensorflow.org/hub/tutorials/movenet",
+          "notes": "Primary project source."
+        }
+      ],
+      "tags": [
+        "pose",
+        "mobile"
+      ],
+      "path": "catalog/vision/pose/movenet-lightning.yaml",
+      "kind": "model",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "rtmlib",
+      "name": "rtmlib",
+      "kind": "toolkit",
+      "domain": "vision",
+      "tasks": [
+        "pose-inference",
+        "pose-tracking"
+      ],
+      "class": "vision-toolkit",
+      "description": "Lean inference toolkit for RTMPose-related models.",
+      "links": {
+        "repository": "https://github.com/Tau-J/rtmlib"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "onnxruntime",
+        "opencv",
+        "openvino",
+        "tensorrt"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image-or-video"
+        ],
+        "outputs": [
+          "landmarks",
+          "pose-tracks"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "model-dependent"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "A library, not an independent pretrained model. RAM, licenses and accuracy also depend on the detector and pose checkpoints selected.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Tau-J/rtmlib"
+        }
+      ],
+      "related": [
+        "rtmpose-t"
+      ],
+      "path": "pipelines/pose/rtmlib.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "pidnet-s",
+      "name": "PIDNet-S",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "semantic-segmentation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Small PIDNet variant for pixel-level scene categories.",
+      "links": {
+        "repository": "https://github.com/XuJiacong/PIDNet"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "semantic-label-map"
+        ],
+        "camera_setup": "one RGB camera",
+        "temporal_mode": "framewise",
+        "coordinate_system": "image-2d"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "Cityscapes/CamVid checkpoints describe road scenes, not arbitrary indoor categories. Despite its name, this is a segmentation network, not a motor PID controller.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/XuJiacong/PIDNet"
+        }
+      ],
+      "path": "catalog/vision/segmentation/pidnet-s.yaml",
+      "usage_mode": "unknown"
+    },
+    {
+      "id": "lightstereo",
+      "name": "LightStereo (OpenStereo)",
+      "kind": "model",
+      "domain": "vision",
+      "tasks": [
+        "stereo-depth-estimation"
+      ],
+      "class": "small-specialized-model",
+      "description": "Efficient stereo matching for disparity estimation.",
+      "links": {
+        "repository": "https://github.com/XiandaGuo/OpenStereo"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "academic-noncommercial-only",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Upstream target classes, not hardware results reproduced by this catalogue."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "io": {
+        "inputs": [
+          "rectified-left-image",
+          "rectified-right-image"
+        ],
+        "outputs": [
+          "disparity-map"
+        ],
+        "camera_setup": "two calibrated and synchronized RGB cameras",
+        "temporal_mode": "framewise",
+        "coordinate_system": "disparity; metric depth requires calibration and known baseline"
+      },
+      "compatibility": [
+        {
+          "target": "luckfox-rv1106",
+          "status": "unknown",
+          "notes": "Not tested by this catalogue."
+        }
+      ],
+      "notes": "OpenStereo explicitly prohibits commercial use of its code. Choose a LightStereo checkpoint, not an arbitrary model in the zoo. Stereo inference alone is not scene fusion.",
+      "reviewed": "2026-10-05",
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/XiandaGuo/OpenStereo"
+        }
+      ],
+      "path": "catalog/vision/depth/lightstereo.yaml",
+      "usage_mode": "unknown"
+    }
+  ]
+}
