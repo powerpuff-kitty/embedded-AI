@@ -29,15 +29,15 @@
     "toolkit": 20
   },
   "by_usage": {
-    "companion": 8,
-    "pretrained": 7,
+    "companion": 9,
+    "pretrained": 19,
     "requires-training": 17,
-    "unknown": 63
+    "unknown": 50
   },
   "unknowns": {
-    "usage": 63,
-    "code_license": 29,
-    "weights_license": 49,
+    "usage": 50,
+    "code_license": 26,
+    "weights_license": 47,
     "measured_peak_ram": 95
   },
   "reproduced_entries": 0,
