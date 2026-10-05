@@ -1,19 +1,47 @@
-id: "depth-anything-v2-small"
-name: "Depth Anything V2 Small"
-kind: "model"
-domain: "vision"
-tasks: ["monocular-depth-estimation"]
-class: "small-specialized-model"
-description: "Small foundation-model variant for single-image relative depth."
-links: {"repository": "https://github.com/DepthAnything/Depth-Anything-V2"}
-model: {"parameters": 24800000, "file_size_mb": null, "measurement_scope": "Published Small model count; not peak runtime RAM."}
-license: {"code": "Apache-2.0", "weights": "Apache-2.0"}
-deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
-runtimes: ["pytorch"]
-formats: []
-requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
-io: {"inputs": ["rgb-image"], "outputs": ["relative-depth-map"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "relative-depth"}
-compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
-notes: "This entry covers the relative-depth Small checkpoint, not separately fine-tuned metric variants. Upstream includes CUDA, MPS and CPU selection; board runtime support is unverified."
-reviewed: "2026-10-05"
-evidence: [{"type": "official", "url": "https://github.com/DepthAnything/Depth-Anything-V2"}]
+id: depth-anything-v2-small
+name: Depth Anything V2 Small
+kind: model
+domain: vision
+tasks: [monocular-depth-estimation]
+class: small-specialized-model
+description: Small ViT-S foundation-model variant for single-image relative depth estimation.
+links:
+  repository: https://github.com/DepthAnything/Depth-Anything-V2
+  model: https://huggingface.co/depth-anything/Depth-Anything-V2-Small
+model: {parameters: 24800000, file_size_mb: null, measurement_scope: '24.8M for Small; runtime RAM depends on image dimensions and backend.'}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop], notes: 'Upstream CUDA/MPS/CPU paths are not reproduced device results.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+io:
+  inputs: [rgb-image]
+  outputs: [relative-depth-map]
+  camera_setup: one RGB camera
+  temporal_mode: framewise
+  coordinate_system: relative-depth
+compatibility:
+  - {target: luckfox-rv1106, status: unknown, notes: Not tested by this catalogue.}
+reviewed: '2026-10-05'
+evidence:
+  - {type: official, url: 'https://github.com/DepthAnything/Depth-Anything-V2', notes: 'Small relative-depth checkpoint; licence and backend selection.'}
+usage:
+  mode: pretrained
+  training: Published relative-depth weights; metric fine-tuning is a separate variant.
+  needs_data: Single RGB image with ViT-S preprocessing.
+  update_strategy: Pin model revision and resize policy; evaluate quality and runtime before upgrades.
+data:
+  inputs: [Single RGB image with ViT-S preprocessing]
+  outputs: [Relative depth map]
+  languages: []
+evaluation: [Depth error with documented scale/shift alignment; temporal consistency and domain transfer.]
+limitations:
+  - Relative depth is not metric distance or reconstruction of hidden surfaces.
+  - Small model terms must not be assumed to apply to larger family variants.
+review:
+  level: documentation
+  variant: Depth Anything V2 Small ViT-S; depth_anything_v2_vits.pth
+  artifact_reference: https://huggingface.co/depth-anything/Depth-Anything-V2-Small
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Acquire/hash this checkpoint before execution; no hardware inference from the parameter count.

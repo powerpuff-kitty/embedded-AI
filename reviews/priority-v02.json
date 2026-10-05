@@ -1,0 +1,6 @@
+{
+  "reviewed": "2026-10-05",
+  "level": "documentation",
+  "entry_ids": ["silero-vad", "yamnet", "movenet-lightning", "rtmpose-t", "rtmlib", "dlinear", "all-minilm-l6-v2", "nanodet-plus", "depth-anything-v2-small", "chronos-bolt-tiny", "tiny-time-mixer", "finbert-prosus", "mobile-sam", "fasttext-lid176", "movinet-a0-stream"],
+  "note": "15 priority source reviews, not 15 downloads or device benchmarks. Null artifact hashes remain explicit."
+}

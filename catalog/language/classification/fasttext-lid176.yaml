@@ -1,15 +1,44 @@
 id: fasttext-lid176
 name: fastText lid.176
+kind: model
 domain: language
 tasks: [language-identification]
 class: small-specialized-model
-description: ""
-links: { repository: "https://fasttext.cc/docs/en/language-identification.html", model: null, paper: null, homepage: null }
-model: { parameters: null, file_size_mb: 0.917, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: Compressed lid.176.ftz language classifier, distinct from the much larger uncompressed .bin artifact.
+links:
+  repository: https://fasttext.cc/docs/en/language-identification.html
+  model: https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz
+model:
+  parameters: null
+  file_size_mb: 0.917
+  measurement_scope: Publisher 917 kB compressed weights report; not process RAM or the uncompressed model.
+license: {code: MIT, weights: CC-BY-SA-3.0}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [fasttext-cpp, python]
+formats: [fasttext-ftz]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://fasttext.cc/docs/en/language-identification.html", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://fasttext.cc/docs/en/language-identification.html', notes: 'Compressed artifact, 176 languages and CC-BY-SA-3.0 model terms.'}
 tags: [language-id]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published language-identification weights; custom classifier training is a separate task.
+  needs_data: UTF-8 text.
+  update_strategy: Pin compressed artifact and runtime; evaluate language confusion on actual documents.
+data:
+  inputs: [UTF-8 text]
+  outputs: [Language label among 176 languages and score]
+  languages: [multilingual-176]
+evaluation: [Language confusion, unknown inputs and confidence calibration on the deployment corpus.]
+limitations:
+  - Short and code-switched text is difficult; detection does not perform translation.
+  - Original fastText repository is archived; model terms differ from the MIT code licence.
+review:
+  level: documentation
+  variant: Compressed lid.176.ftz; not uncompressed lid.176.bin
+  artifact_reference: https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Pin/hash the compressed artifact and verify runtime support on the target.

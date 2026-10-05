@@ -1,15 +1,44 @@
 id: yamnet
 name: YAMNet
+kind: model
 domain: audio
 tasks: [sound-classification]
 class: small-specialized-model
-description: ""
-links: { repository: "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet", model: null, paper: null, homepage: null }
-model: { parameters: 3700000, file_size_mb: null, architecture: null, precision: null }
-license: { code: Apache-2.0, weights: unknown }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: AudioSet 521-class YAMNet with Keras 2 weights and explicit log-mel preprocessing.
+links:
+  repository: https://github.com/tensorflow/models/tree/master/research/audioset/yamnet
+  model: https://storage.googleapis.com/audioset/yamnet.h5
+model:
+  parameters: 3700000
+  file_size_mb: null
+  measurement_scope: Approximately 3.7M weights; feature extraction and overlapping audio windows add runtime memory.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [tensorflow, tf-keras]
+formats: [hdf5]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://github.com/tensorflow/models/tree/master/research/audioset/yamnet", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://github.com/tensorflow/models/blob/master/research/audioset/yamnet/README.md', notes: 'Model artifact, input pipeline and Keras version warning.'}
 tags: [audio-events]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published pretrained weights; task adaptation requires labelled audio.
+  needs_data: 16 kHz mono waveform transformed into 96x64 log-mel patches.
+  update_strategy: Pin weights and Keras version; evaluate changes on representative recordings.
+data:
+  inputs: [16 kHz mono waveform; 96x64 log-mel patches]
+  outputs: [521 per-class scores, 1024-dimensional audio embeddings]
+  languages: []
+evaluation: [Evaluate per-class precision/recall and false alerts in deployment audio.]
+limitations:
+  - The reference Keras 2 implementation is incompatible with default Keras 3.
+  - Fixed sound categories are not open-ended audio understanding; weights terms remain unreviewed.
+review:
+  level: documentation
+  variant: AudioSet YAMNet Keras 2 yamnet.h5
+  artifact_reference: https://storage.googleapis.com/audioset/yamnet.h5
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Pin and hash the artifact before deployment; no board evidence inferred.

@@ -1,15 +1,44 @@
 id: chronos-bolt-tiny
 name: Chronos-Bolt Tiny
+kind: model
 domain: time-series
 tasks: [forecasting]
 class: small-specialized-model
-description: ""
-links: { repository: "https://huggingface.co/amazon/chronos-bolt-tiny", model: null, paper: null, homepage: null }
-model: { parameters: 9000000, file_size_mb: null, architecture: null, precision: null }
-license: { code: Apache-2.0, weights: Apache-2.0 }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: Amazon Chronos-Bolt Tiny for numerical multi-step quantile forecasts, not the larger Chronos families.
+links:
+  repository: https://huggingface.co/amazon/chronos-bolt-tiny
+  model: https://huggingface.co/amazon/chronos-bolt-tiny
+model:
+  parameters: 9000000
+  file_size_mb: null
+  measurement_scope: Approximate 9M upstream model count; context, batching and runtime add memory.
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [chronos-forecasting, pytorch]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://huggingface.co/amazon/chronos-bolt-tiny", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://huggingface.co/amazon/chronos-bolt-tiny', notes: 'Tiny checkpoint and forecast contract.'}
 tags: [forecasting]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published pretrained weights; evaluate zero-shot transfer before considering adaptation.
+  needs_data: Regularly sampled historical numerical context.
+  update_strategy: Pin checkpoint, context length and library; evaluate chronological holdout data.
+data:
+  inputs: [Regularly sampled historical numerical context]
+  outputs: [Multi-step quantile forecasts]
+  languages: []
+evaluation: [Chronological MAE or MASE and quantile loss compared with naive baselines.]
+limitations:
+  - Forecast uncertainty needs calibration in the actual domain.
+  - Context and batch size alter memory; forecast output does not guarantee financial returns.
+review:
+  level: documentation
+  variant: amazon/chronos-bolt-tiny; not Chronos 2 or larger Bolt variants
+  artifact_reference: https://huggingface.co/amazon/chronos-bolt-tiny
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Pin/hash selected artifacts and measure target workload.

@@ -1,15 +1,44 @@
 id: tiny-time-mixer
 name: TinyTimeMixer
+kind: model
 domain: time-series
 tasks: [forecasting]
 class: small-specialized-model
-description: ""
-links: { repository: "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2", model: null, paper: null, homepage: null }
-model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
-license: { code: Apache-2.0, weights: Apache-2.0 }
-deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
-requirements: { ram_mb: { minimum: null, measured_peak: null } }
+description: Granite TTM-R2 checkpoint family; deployment requires an explicit context/horizon checkpoint selection.
+links:
+  repository: https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2
+  model: https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: Different context/horizon configurations prevent a universal model size or RAM count.
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge], accelerators: []}
+runtimes: [tsfm-public, pytorch]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
 compatibility: []
-evidence: [{ type: official, url: "https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2", notes: "Primary project source." }]
+evidence:
+  - {type: official, url: 'https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2', notes: 'Checkpoint family and selection requirements.'}
 tags: [forecasting]
+reviewed: '2026-10-05'
+usage:
+  mode: pretrained
+  training: Published pretrained checkpoints; adaptation is configuration-dependent.
+  needs_data: Multivariate numerical context matched to checkpoint length and channel requirements.
+  update_strategy: Select and pin the exact branch/configuration and evaluate each update chronologically.
+data:
+  inputs: [Multivariate numerical historical context]
+  outputs: [Numerical forecasts at the selected checkpoint horizon]
+  languages: []
+evaluation: [Per-channel chronological forecast errors and naive baselines; document any adaptation data.]
+limitations:
+  - This family entry intentionally has no single parameter count or exact acquired artifact.
+  - Exact checkpoint selection and hashing remain deployment prerequisites; no board result is inferred.
+review:
+  level: documentation
+  variant: granite-timeseries-ttm-r2 family; context/horizon revision selection remains required
+  artifact_reference: https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Select exact context/horizon checkpoint before acquisition or benchmarking.

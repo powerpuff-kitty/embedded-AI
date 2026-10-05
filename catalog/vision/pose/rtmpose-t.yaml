@@ -1,20 +1,51 @@
-id: "rtmpose-t"
-name: "RTMPose-t"
-kind: "model"
-domain: "vision"
-tasks: ["body-pose-estimation"]
-class: "small-specialized-model"
-description: "Tiny top-down body-keypoint estimation network."
-links: {"repository": "https://github.com/open-mmlab/mmpose"}
-model: {"parameters": 3340000, "file_size_mb": null, "measurement_scope": "Published COCO 256x192 pose network only; excludes person detector."}
-license: {"code": "Apache-2.0", "weights": "unknown"}
-deployment: {"offline": true, "targets": ["edge", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
-runtimes: ["pytorch", "onnxruntime"]
-formats: ["onnx"]
-requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
-io: {"inputs": ["person-crop"], "outputs": ["body-landmarks-2d"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "image-2d"}
-compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
-notes: "Full multi-person pipelines need detection, crop/resize and identity tracking. The pose-network parameter count is not the complete pipeline footprint."
-reviewed: "2026-10-05"
-evidence: [{"type": "official", "url": "https://github.com/open-mmlab/mmpose"}, {"type": "official", "url": "https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md"}]
-related: ["rtmlib"]
+id: rtmpose-t
+name: RTMPose-t
+kind: model
+domain: vision
+tasks: [body-pose-estimation]
+class: small-specialized-model
+description: Tiny top-down body-keypoint estimation network.
+links:
+  repository: https://github.com/open-mmlab/mmpose
+  model: https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose
+model:
+  parameters: 3340000
+  file_size_mb: null
+  measurement_scope: Upstream tiny COCO pose-network count; excludes the person detector.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge, desktop], notes: 'Target classes are not reproduced device compatibility.'}
+runtimes: [mmpose, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+io:
+  inputs: [person-crop]
+  outputs: [body-landmarks-2d]
+  camera_setup: one RGB camera
+  temporal_mode: framewise
+  coordinate_system: image-2d
+compatibility:
+  - {target: luckfox-rv1106, status: unknown, notes: Not tested by this catalogue.}
+reviewed: '2026-10-05'
+evidence:
+  - {type: official, url: 'https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md', notes: 'Tiny model variant and reported pose-network parameter count.'}
+related: [rtmlib]
+usage:
+  mode: pretrained
+  training: Published pretrained weights; task-specific adaptation is separate.
+  needs_data: Person crops at 256x192 with matching preprocessing.
+  update_strategy: Pin checkpoint and conversion; evaluate detector and pose together.
+data:
+  inputs: [Person crop at 256x192]
+  outputs: [COCO-17 joints with confidence]
+  languages: []
+evaluation: [Evaluate keypoint AP and detector-plus-pose end-to-end latency separately.]
+limitations:
+  - 3.34M covers the pose model only, not detection or tracking.
+  - The runnable recipe uses RTMPose-S with YOLOX-tiny; those measurements must not be labelled RTMPose-t.
+review:
+  level: documentation
+  variant: RTMPose-t COCO 256x192; rtmpose-tiny_8xb256-420e_coco-256x192
+  artifact_reference: https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: Acquire this exact tiny checkpoint separately from the RTMPose-S recipe.

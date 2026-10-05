@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
+      - uses: actions/checkout@v7
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v7
+        with: {node-version: 22, package-manager-cache: false}
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=high
       - run: npm run check
+      - run: npm run reviews:check
+      - run: npm run site:build
   generate-main:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -28,28 +29,21 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
-      - name: Validate records and run regression tests
-        run: npm run validate && npm test
-      - name: Regenerate all catalogue outputs
-        run: npm run index
-      - name: Verify source and generated consistency
-        run: npm run check
+      - uses: actions/checkout@v7
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v7
+        with: {node-version: 22, package-manager-cache: false}
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=high
+      - run: npm run validate && npm test
+      - run: npm run index
+      - run: npm run check && npm run reviews:check && npm run site:build
       - name: Commit generated catalogue only
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git add -- README.md generated/catalog.json generated/catalog.full.json generated/coverage.json
-          if git diff --cached --quiet; then
-            echo 'All generated files already current.'
-            exit 0
-          fi
+          if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'chore: regenerate catalogue README and JSON exports'

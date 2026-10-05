@@ -1,20 +1,50 @@
-id: "rtmlib"
-name: "rtmlib"
-kind: "toolkit"
-domain: "vision"
-tasks: ["pose-inference", "pose-tracking"]
-class: "vision-toolkit"
-description: "Lean inference toolkit for RTMPose-related models."
-links: {"repository": "https://github.com/Tau-J/rtmlib"}
-model: {"parameters": null, "file_size_mb": null}
-license: {"code": "Apache-2.0", "weights": "unknown"}
-deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
-runtimes: ["onnxruntime", "opencv", "openvino", "tensorrt"]
-formats: []
-requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
-io: {"inputs": ["rgb-image-or-video"], "outputs": ["landmarks", "pose-tracks"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "model-dependent"}
-compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
-notes: "A library, not an independent pretrained model. RAM, licenses and accuracy also depend on the detector and pose checkpoints selected."
-reviewed: "2026-10-05"
-evidence: [{"type": "official", "url": "https://github.com/Tau-J/rtmlib"}]
-related: ["rtmpose-t"]
+id: rtmlib
+name: rtmlib
+kind: toolkit
+domain: vision
+tasks: [pose-inference, pose-tracking]
+class: vision-toolkit
+description: Lean inference toolkit for RTMPose-related models, with an explicit two-model reference recipe.
+links: {repository: 'https://github.com/Tau-J/rtmlib'}
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: No single model size; detector and pose models are separate artifacts.
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop], notes: 'Target classes are not reproduced device results.'}
+runtimes: [onnxruntime, python]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+io:
+  inputs: [rgb-image-or-video]
+  outputs: [landmarks, pose-tracks]
+  camera_setup: one RGB camera
+  temporal_mode: framewise
+  coordinate_system: model-dependent
+compatibility:
+  - {target: luckfox-rv1106, status: unknown, notes: Not tested by this catalogue.}
+reviewed: '2026-10-05'
+evidence:
+  - {type: official, url: 'https://github.com/Tau-J/rtmlib'}
+  - {type: official, url: 'https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py', notes: 'Explicit detector/pose paths and lightweight Body configuration.'}
+related: [rtmpose-t]
+usage:
+  mode: companion
+  training: Supporting library; separate detector and pose checkpoints are required.
+  needs_data: Decoded BGR video frames and local detector/pose ONNX files.
+  update_strategy: Pin library and both artifacts; rerun end-to-end tests before upgrades.
+data:
+  inputs: [Decoded BGR frames, Local detector ONNX, Local pose ONNX]
+  outputs: [COCO-17 joints; reference recipe adds track IDs and JSONL]
+  languages: []
+evaluation: [Evaluate detections, joints, identity switches and end-to-end frame latency on real video.]
+limitations:
+  - A toolkit is not one pretrained neural model; model and dataset terms require separate review.
+  - Lightweight Body uses RTMPose-S, not RTMPose-t. The recipe tracker is a baseline and can switch IDs.
+review:
+  level: documentation
+  variant: 'rtmlib 0.0.13 recipe: YOLOX-tiny plus RTMPose-S body7'
+  artifact_reference: https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py
+  artifact_sha256: null
+  artifact_integrity: not-acquired-in-documentation-review
+  remaining: See recipe acquisition receipts for individual checkpoint integrity; no board certification inferred.

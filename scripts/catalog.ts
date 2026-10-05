@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import fg from 'fast-glob';
+import { discoverManifests } from './discover.ts';
 import YAML from 'yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
 
@@ -47,9 +47,7 @@ export function validateEntries(entries: Entry[], root = process.cwd()): void {
   if (errors.length) throw new Error(errors.join('\n'));
 }
 export async function loadEntries(root = process.cwd()): Promise<Entry[]> {
-  const paths = await fg(['catalog/**/*.yaml', 'pipelines/**/*.yaml', 'primitives/**/*.yaml'], {
-    cwd: root, ignore: ['**/_*.yaml'], followSymbolicLinks: false,
-  });
+  const paths = await discoverManifests(root);
   if (!paths.length) throw new Error('No catalogue entries found');
   const entries: Entry[] = [];
   for (const p of paths.sort(cmp)) {
