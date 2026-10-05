@@ -68,8 +68,9 @@ class Pose:
         self.np = np
         self.model = RTMPose(model, model_input_size=(192, 256), backend='onnxruntime', device='cpu')
         self.image = np.zeros((256, 192, 3), dtype=np.uint8)
-        self.metadata = {'artifact_sha256': digest(model), 'precision': 'float32', 'runtime': 'rtmlib-onnxruntime-cpu',
-                         'shape': [1, 3, 256, 192], 'scope': 'RTMPose-S pose-only whole-frame crop; detector excluded',
+        self.metadata = {'artifact_sha256': digest(model), 'precision': 'float32',
+                         'runtime': 'rtmlib-onnxruntime-cpu', 'shape': [1, 3, 256, 192],
+                         'scope': 'RTMPose-S pose-only whole-frame crop; detector excluded',
                          'input': 'synthetic black crop, not a human-pose accuracy test'}
 
     def infer(self):

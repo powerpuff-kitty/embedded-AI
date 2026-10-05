@@ -4,20 +4,20 @@
     "file": "silero.onnx",
     "license": "MIT",
     "source": "https://github.com/snakers4/silero-vad",
-    "sha256": null
+    "sha256": "1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3"
   },
   "pose": {
     "url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-s_simcc-body7_pt-body7_420e-256x192-acd4a1ef_20230504.zip",
     "file": "pose.onnx",
     "license": "Review upstream checkpoint and training-data terms",
     "source": "https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py",
-    "sha256": null
+    "sha256": "7673922e531014906ca4f0f239b7e233b740146a10b632deaa2a28d45470d802"
   },
   "detector": {
     "url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/yolox_tiny_8xb8-300e_humanart-6f3252f9.zip",
     "file": "detector.onnx",
     "license": "Review upstream checkpoint and training-data terms",
     "source": "https://github.com/Tau-J/rtmlib/blob/main/rtmlib/tools/solution/body.py",
-    "sha256": null
+    "sha256": "36e09ca555916253fa1b5d51bec01e48e98e1f0af966c51ce3e844d8c8fc4cfc"
   }
 }
