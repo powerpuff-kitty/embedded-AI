@@ -9,12 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: {persist-credentials: false}
-      - uses: actions/setup-node@v4
-        with: {node-version: 22}
+      - uses: actions/setup-node@v7
+        with: {node-version: 22, package-manager-cache: false}
       - run: npm install --ignore-scripts
-      - name: Print exact audit report and installed versions
+      - name: Print exact audit report
+        run: npm audit --json > audit.json || true
+      - name: Package only repository files and installed build dependencies
         run: |
-          npm ls --all
-          npm audit --json || true
+          git archive HEAD > /tmp/source.tar
+          tar -rf /tmp/source.tar node_modules package-lock.json audit.json
+          gzip /tmp/source.tar
+      - uses: actions/upload-artifact@v7
+        with:
+          name: v02-source-snapshot
+          path: /tmp/source.tar.gz
+          retention-days: 1
