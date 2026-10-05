@@ -1,0 +1,20 @@
+id: "rtmpose-t"
+name: "RTMPose-t"
+kind: "model"
+domain: "vision"
+tasks: ["body-pose-estimation"]
+class: "small-specialized-model"
+description: "Tiny top-down body-keypoint estimation network."
+links: {"repository": "https://github.com/open-mmlab/mmpose"}
+model: {"parameters": 3340000, "file_size_mb": null, "measurement_scope": "Published COCO 256x192 pose network only; excludes person detector."}
+license: {"code": "Apache-2.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["edge", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "onnxruntime"]
+formats: ["onnx"]
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["person-crop"], "outputs": ["body-landmarks-2d"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "image-2d"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Full multi-person pipelines need detection, crop/resize and identity tracking. The pose-network parameter count is not the complete pipeline footprint."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/open-mmlab/mmpose"}, {"type": "official", "url": "https://github.com/open-mmlab/mmpose/blob/main/projects/rtmpose/README.md"}]
+related: ["rtmlib"]

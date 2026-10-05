@@ -1,0 +1,19 @@
+id: "freemocap"
+name: "FreeMoCap"
+kind: "pipeline"
+domain: "vision"
+tasks: ["markerless-motion-capture"]
+class: "vision-pipeline"
+description: "Application for camera capture, calibration and skeleton reconstruction."
+links: {"repository": "https://github.com/freemocap/freemocap"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "AGPL-3.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["python"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["synchronized-camera-videos", "calibration"], "outputs": ["skeleton-sequences"], "camera_setup": "multiple calibrated cameras for triangulated 3D", "temporal_mode": "offline", "coordinate_system": "calibrated-3d when triangulated"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Desktop application; record the exact release/branch and pose backend. Live capture or preview does not imply causal real-time 3D reconstruction. Model dependencies have their own terms."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/freemocap/freemocap"}]

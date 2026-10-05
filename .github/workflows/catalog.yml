@@ -1,5 +1,7 @@
 name: catalog
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -9,5 +11,4 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm run validate
-      - run: npm run index
+      - run: npm run check

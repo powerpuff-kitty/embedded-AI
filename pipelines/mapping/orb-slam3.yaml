@@ -1,0 +1,19 @@
+id: "orb-slam3"
+name: "ORB-SLAM3"
+kind: "pipeline"
+domain: "mapping"
+tasks: ["visual-slam", "camera-localization"]
+class: "vision-pipeline"
+description: "Geometric visual and visual-inertial localization with sparse mapping."
+links: {"repository": "https://github.com/UZ-SLAMLab/ORB_SLAM3"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "GPL-3.0", "weights": "not-applicable"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["native-cpp"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["image-sequence", "camera-calibration", "optional-imu"], "outputs": ["camera-trajectory", "sparse-map"], "camera_setup": "monocular, stereo or RGB-D; moving viewpoints", "temporal_mode": "causal", "coordinate_system": "monocular up-to-scale; scale depends on sensor configuration"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "A SLAM system, not a small neural network. Sparse landmarks are not a complete textured mesh. Its vocabulary/dependencies still consume storage and RAM."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3"}]

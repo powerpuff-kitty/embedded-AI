@@ -1,0 +1,20 @@
+id: "brush"
+name: "Brush"
+kind: "pipeline"
+domain: "mapping"
+tasks: ["gaussian-splat-reconstruction", "novel-view-rendering"]
+class: "vision-pipeline"
+description: "Rust/WebGPU-compatible engine for optimizing and viewing Gaussian splats."
+links: {"repository": "https://github.com/ArthurBrussee/brush"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "Apache-2.0", "weights": "not-applicable"}
+deployment: {"offline": true, "targets": ["desktop", "browser"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["rust", "burn", "webgpu"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["images", "camera-poses"], "outputs": ["gaussian-splat-scene"], "camera_setup": "overlapping captured viewpoints with poses", "temporal_mode": "offline", "coordinate_system": "input reconstruction frame"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Scene-specific optimization, not a tiny fixed pretrained network. Interactive rendering is not live reconstruction. Splats are not automatically collision meshes or semantic room maps."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/ArthurBrussee/brush"}]
+related: ["colmap"]

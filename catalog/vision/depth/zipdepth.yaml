@@ -1,0 +1,19 @@
+id: "zipdepth"
+name: "ZipDepth"
+kind: "model"
+domain: "vision"
+tasks: ["monocular-depth-estimation"]
+class: "small-specialized-model"
+description: "Compact distilled single-image relative-depth model."
+links: {"repository": "https://github.com/fabiotosi92/ZipDepth"}
+model: {"parameters": 6100000, "file_size_mb": null, "measurement_scope": "Approximate fused-model parameter count; variant must be recorded."}
+license: {"code": "MIT", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["mobile", "edge", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "onnxruntime"]
+formats: ["onnx"]
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image"], "outputs": ["relative-depth-map"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "relative-depth"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Upstream provides a mobile/NPU-oriented variant. NPU-friendly does not establish RKNN/RV1106 support. Relative depth is not distance in metres."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/fabiotosi92/ZipDepth"}]

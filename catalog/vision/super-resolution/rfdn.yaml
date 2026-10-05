@@ -1,0 +1,19 @@
+id: "rfdn"
+name: "RFDN"
+kind: "model"
+domain: "vision"
+tasks: ["image-super-resolution"]
+class: "small-specialized-model"
+description: "Residual feature distillation for lightweight image upscaling."
+links: {"repository": "https://github.com/njulj/RFDN"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "MIT", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["low-resolution-image"], "outputs": ["upscaled-image"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Checkpoint and scale factor must be specified when benchmarking. High-resolution feature maps may dominate memory. Upscaling does not establish that generated detail was observed."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/njulj/RFDN"}]

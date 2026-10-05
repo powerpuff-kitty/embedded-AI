@@ -1,0 +1,19 @@
+id: "depth-anything-v2-small"
+name: "Depth Anything V2 Small"
+kind: "model"
+domain: "vision"
+tasks: ["monocular-depth-estimation"]
+class: "small-specialized-model"
+description: "Small foundation-model variant for single-image relative depth."
+links: {"repository": "https://github.com/DepthAnything/Depth-Anything-V2"}
+model: {"parameters": 24800000, "file_size_mb": null, "measurement_scope": "Published Small model count; not peak runtime RAM."}
+license: {"code": "Apache-2.0", "weights": "Apache-2.0"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image"], "outputs": ["relative-depth-map"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "relative-depth"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "This entry covers the relative-depth Small checkpoint, not separately fine-tuned metric variants. Upstream includes CUDA, MPS and CPU selection; board runtime support is unverified."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/DepthAnything/Depth-Anything-V2"}]

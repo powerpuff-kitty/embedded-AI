@@ -1,0 +1,19 @@
+id: "robust-video-matting-mobilenetv3"
+name: "Robust Video Matting (MobileNetV3)"
+kind: "model"
+domain: "video"
+tasks: ["human-video-matting"]
+class: "small-specialized-model"
+description: "Recurrent human foreground and alpha-mask estimation."
+links: {"repository": "https://github.com/PeterL1n/RobustVideoMatting"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "GPL-3.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop", "browser", "mobile"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "onnxruntime", "tensorflowjs", "coreml"]
+formats: ["onnx", "coreml"]
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["video-frame", "recurrent-state"], "outputs": ["alpha-mask", "foreground", "updated-state"], "camera_setup": "one RGB camera", "temporal_mode": "causal", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Select MobileNetV3, not the larger ResNet variant. Preserve recurrent state within each stream. Repository code has GPL obligations; checkpoint terms should be reviewed separately."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/PeterL1n/RobustVideoMatting"}]

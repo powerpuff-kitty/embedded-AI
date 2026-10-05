@@ -1,0 +1,19 @@
+id: "tsm-mobilenetv2"
+name: "TSM + MobileNetV2 (online)"
+kind: "model"
+domain: "video"
+tasks: ["video-action-recognition", "gesture-recognition"]
+class: "small-specialized-model"
+description: "Temporal-shift video model with a mobile image backbone."
+links: {"repository": "https://github.com/mit-han-lab/temporal-shift-module"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "MIT", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["edge", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["video-frames"], "outputs": ["action-scores"], "camera_setup": "one RGB camera", "temporal_mode": "causal", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Select the online MobileNetV2 configuration. The upstream Jetson Nano demo is not RV1106 evidence. The shift operation adds no weights, but the backbone is not parameter-free."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/mit-han-lab/temporal-shift-module"}]

@@ -2,14 +2,14 @@ id: emg-winter-soldier-arm
 name: EMG Winter Soldier Arm
 domain: control
 tasks: [emg-to-servo-control]
-class: https://github.com/SuryaUT/EMG-Winter-Soldier-Arm
+class: tinyml
 description: ""
-links: { repository: "tinyml", model: null, paper: null, homepage: null }
+links: { repository: "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }
 deployment: { offline: true, targets: [edge, robot], accelerators: [] }
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []
-evidence: [{ type: official, url: "tinyml", notes: "Primary project source; deployment metrics require independent verification." }]
+evidence: [{ type: official, url: "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm", notes: "Primary project source; deployment metrics require independent verification." }]
 tags: [emg, servo, gesture]

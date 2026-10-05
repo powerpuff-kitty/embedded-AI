@@ -1,0 +1,19 @@
+id: "lightweight-3d-pose"
+name: "Lightweight 3D Human Pose Demo"
+kind: "pipeline"
+domain: "vision"
+tasks: ["multi-person-3d-pose"]
+class: "vision-pipeline"
+description: "Monocular multi-person 2D/3D pose demo with CPU deployment path."
+links: {"repository": "https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "Apache-2.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "openvino"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image-or-video"], "outputs": ["body-landmarks-2d", "estimated-body-landmarks-3d"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "estimated camera/body coordinates"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Includes pose inference and postprocessing; not one guaranteed tiny artifact. Estimated skeletons do not reconstruct a room or establish calibrated person positions."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch"}]

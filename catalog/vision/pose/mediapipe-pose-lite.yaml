@@ -1,0 +1,19 @@
+id: "mediapipe-pose-lite"
+name: "MediaPipe Pose Landmarker Lite"
+kind: "model"
+domain: "vision"
+tasks: ["body-pose-estimation"]
+class: "small-specialized-model"
+description: "Lite detector/landmarker bundle producing 33 body landmarks."
+links: {"repository": "https://github.com/google-ai-edge/mediapipe"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "Apache-2.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["mobile", "browser", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["mediapipe", "tflite"]
+formats: ["tflite", "mediapipe-task"]
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image-or-video"], "outputs": ["body-landmarks-2d", "estimated-body-landmarks-3d"], "camera_setup": "one RGB camera", "temporal_mode": "causal", "coordinate_system": "image-2d and body-relative-3d"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "The bundle includes detection and landmark models. Estimated world landmarks are body-centred, not a calibrated shared-room position. Live-stream mode does not guarantee target FPS."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/google-ai-edge/mediapipe"}, {"type": "official", "url": "https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker"}]

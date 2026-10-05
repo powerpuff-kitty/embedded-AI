@@ -1,0 +1,20 @@
+id: "colmap"
+name: "COLMAP"
+kind: "pipeline"
+domain: "mapping"
+tasks: ["structure-from-motion", "multi-view-stereo"]
+class: "vision-pipeline"
+description: "Photogrammetry from overlapping images with pose and geometry estimation."
+links: {"repository": "https://github.com/colmap/colmap"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "BSD-3-Clause", "weights": "not-applicable"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["native-cpp"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["overlapping-images"], "outputs": ["camera-poses", "sparse-or-dense-reconstruction"], "camera_setup": "one moving camera or multiple viewpoints", "temporal_mode": "offline", "coordinate_system": "reconstruction-world; scale requires an external reference"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Not a live activity model. Dense-stage acceleration depends on build/backend. A single fixed view or pure rotation cannot provide ordinary translational stereo parallax."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/colmap/colmap"}]
+related: ["brush"]

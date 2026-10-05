@@ -1,0 +1,19 @@
+id: "rtabmap"
+name: "RTAB-Map"
+kind: "pipeline"
+domain: "mapping"
+tasks: ["slam", "scene-mapping"]
+class: "vision-pipeline"
+description: "Mapping and localization library with a standalone application."
+links: {"repository": "https://github.com/introlab/rtabmap"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "unknown", "weights": "not-applicable"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["native-cpp"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["stereo-or-rgbd", "calibration", "optional-other-sensors"], "outputs": ["map", "camera-trajectory"], "camera_setup": "configuration-dependent; stereo or RGB-D common", "temporal_mode": "causal", "coordinate_system": "world frame with calibrated metric sensors"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "A complete mapping system. Memory grows with maps and retained sensor data; it is not a fixed-size pretrained model. Review optional backend dependencies separately."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/introlab/rtabmap"}]

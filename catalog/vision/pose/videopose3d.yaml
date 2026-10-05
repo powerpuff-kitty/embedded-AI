@@ -1,0 +1,20 @@
+id: "videopose3d"
+name: "VideoPose3D"
+kind: "model"
+domain: "vision"
+tasks: ["2d-to-3d-pose-lifting"]
+class: "small-specialized-model"
+description: "Temporal lifting of 2D joint trajectories into estimated 3D poses."
+links: {"repository": "https://github.com/facebookresearch/VideoPose3D"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "CC-BY-NC", "weights": "CC-BY-NC"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["body-landmarks-2d-sequence"], "outputs": ["estimated-body-landmarks-3d"], "camera_setup": "none directly; consumes 2D tracks", "temporal_mode": "configuration-dependent", "coordinate_system": "estimated body-relative-3d"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Non-commercial license. Choose causal versus symmetric temporal configurations explicitly. Requires a separate 2D pose detector; not a shared-room localization system."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/facebookresearch/VideoPose3D"}]
+related: ["rtmpose-t"]

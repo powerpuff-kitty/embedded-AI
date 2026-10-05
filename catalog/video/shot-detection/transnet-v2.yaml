@@ -1,0 +1,19 @@
+id: "transnet-v2"
+name: "TransNet V2"
+kind: "model"
+domain: "video"
+tasks: ["shot-boundary-detection"]
+class: "small-specialized-model"
+description: "Detects video shot cuts and transitions."
+links: {"repository": "https://github.com/soCzech/TransNetV2"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "unknown", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["tensorflow", "pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["video-frame-window"], "outputs": ["shot-boundary-scores"], "camera_setup": "one RGB camera", "temporal_mode": "windowed", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Temporal windows introduce context and possible lookahead. Shot boundaries are not semantic story scenes. Primarily an offline Film Analyzer candidate."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/soCzech/TransNetV2"}]

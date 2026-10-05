@@ -1,0 +1,19 @@
+id: "movinet-a0-stream"
+name: "MoViNet-A0 Streaming"
+kind: "model"
+domain: "video"
+tasks: ["video-action-recognition"]
+class: "small-specialized-model"
+description: "Causal video activity classification with recurrent stream buffers."
+links: {"repository": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"}
+model: {"parameters": null, "file_size_mb": 13, "measurement_scope": "Published FP32 TFLite binary, not RAM or quantized file size."}
+license: {"code": "Apache-2.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["mobile", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["tensorflow", "tflite"]
+formats: ["tflite"]
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["video-frames", "stream-state"], "outputs": ["activity-scores", "updated-stream-state"], "camera_setup": "one RGB camera", "temporal_mode": "causal", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Use the streaming variant rather than the base 3D-convolution model. Keep independent state per stream and reset at cuts. Target latency and memory remain unmeasured."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/tensorflow/models/tree/master/official/projects/movinet"}]

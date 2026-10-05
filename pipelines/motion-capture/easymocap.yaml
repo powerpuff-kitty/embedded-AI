@@ -1,0 +1,19 @@
+id: "easymocap"
+name: "EasyMocap"
+kind: "toolkit"
+domain: "vision"
+tasks: ["motion-capture", "multi-view-pose-fitting"]
+class: "vision-toolkit"
+description: "Toolbox for monocular and multi-view markerless motion capture."
+links: {"repository": "https://github.com/zju3dv/EasyMocap"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "unknown", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "opencv"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-videos", "camera-calibration"], "outputs": ["skeleton-sequences", "fitted-body-models"], "camera_setup": "single or multiple; synchronized calibrated views for triangulation", "temporal_mode": "offline", "coordinate_system": "configuration-dependent; calibrated multi-view can share a world frame"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "A complete toolbox, not a tiny model. Check body-model assets such as SMPL separately for licensing. Monocular fitted poses are not equivalent to measured multi-view geometry."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/zju3dv/EasyMocap"}]

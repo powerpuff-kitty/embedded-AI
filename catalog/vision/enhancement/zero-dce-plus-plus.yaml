@@ -1,0 +1,19 @@
+id: "zero-dce-plus-plus"
+name: "Zero-DCE++"
+kind: "model"
+domain: "vision"
+tasks: ["low-light-enhancement"]
+class: "small-specialized-model"
+description: "Compact learned curve adjustment for low-light images."
+links: {"repository": "https://github.com/Li-Chongyi/Zero-DCE_extension"}
+model: {"parameters": 10000, "file_size_mb": null, "measurement_scope": "Approximate parameter count reported for Zero-DCE++."}
+license: {"code": "CC-BY-NC-4.0", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image"], "outputs": ["enhanced-image"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Repository restricts code to academic/non-commercial use. Enhancement is not evidence recovery; preserve original frames and evaluate downstream detector accuracy."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/Li-Chongyi/Zero-DCE_extension"}, {"type": "official", "url": "https://arxiv.org/abs/2103.00860"}]

@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "validate": "tsx scripts/validate.ts",
-    "index": "tsx scripts/generate-index.ts"
+    "index": "tsx scripts/generate-index.ts",
+    "test": "tsx --test tests/catalog.test.ts",
+    "check": "npm run validate && npm test && npm run index -- --check"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

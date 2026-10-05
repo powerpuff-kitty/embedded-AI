@@ -1,0 +1,19 @@
+id: "pidnet-s"
+name: "PIDNet-S"
+kind: "model"
+domain: "vision"
+tasks: ["semantic-segmentation"]
+class: "small-specialized-model"
+description: "Small PIDNet variant for pixel-level scene categories."
+links: {"repository": "https://github.com/XuJiacong/PIDNet"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "MIT", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image"], "outputs": ["semantic-label-map"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "image-2d"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Cityscapes/CamVid checkpoints describe road scenes, not arbitrary indoor categories. Despite its name, this is a segmentation network, not a motor PID controller."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/XuJiacong/PIDNet"}]

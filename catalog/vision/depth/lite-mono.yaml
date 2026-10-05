@@ -1,0 +1,19 @@
+id: "lite-mono"
+name: "Lite-Mono"
+kind: "model"
+domain: "vision"
+tasks: ["monocular-depth-estimation"]
+class: "small-specialized-model"
+description: "Lightweight CNN/Transformer family for self-supervised monocular depth."
+links: {"repository": "https://github.com/noahzn/Lite-Mono"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "MIT", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image"], "outputs": ["relative-depth-or-disparity"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "relative-depth"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Size depends on tiny/small/standard/8m configuration. Specify checkpoint, input resolution and training domain. KITTI performance does not establish indoor room accuracy."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/noahzn/Lite-Mono"}]

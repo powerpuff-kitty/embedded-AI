@@ -1,0 +1,19 @@
+id: "mobileclip2-s0"
+name: "MobileCLIP2-S0"
+kind: "model"
+domain: "vision"
+tasks: ["image-text-similarity", "zero-shot-image-classification"]
+class: "small-specialized-model"
+description: "Dual-encoder model for image/text similarity and frame categorization."
+links: {"repository": "https://github.com/apple-aiml-research/ml-mobileclip"}
+model: {"parameters": 74800000, "file_size_mb": null, "measurement_scope": "Approximate total: published 11.4M image encoder + 63.4M text encoder."}
+license: {"code": "MIT", "weights": "Apple-ML-Research-Model-TOU"}
+deployment: {"offline": true, "targets": ["mobile", "desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch", "openclip"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rgb-image", "text-labels"], "outputs": ["image-embedding", "text-embedding", "similarity-scores"], "camera_setup": "one RGB camera", "temporal_mode": "framewise", "coordinate_system": "not-applicable"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Not a temporal action model. Fixed labels can use precomputed text embeddings; image-only deployment still needs target benchmarks. Code and model terms differ."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/apple-aiml-research/ml-mobileclip"}]

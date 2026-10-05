@@ -1,0 +1,19 @@
+id: "lightstereo"
+name: "LightStereo (OpenStereo)"
+kind: "model"
+domain: "vision"
+tasks: ["stereo-depth-estimation"]
+class: "small-specialized-model"
+description: "Efficient stereo matching for disparity estimation."
+links: {"repository": "https://github.com/XiandaGuo/OpenStereo"}
+model: {"parameters": null, "file_size_mb": null}
+license: {"code": "academic-noncommercial-only", "weights": "unknown"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["rectified-left-image", "rectified-right-image"], "outputs": ["disparity-map"], "camera_setup": "two calibrated and synchronized RGB cameras", "temporal_mode": "framewise", "coordinate_system": "disparity; metric depth requires calibration and known baseline"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "OpenStereo explicitly prohibits commercial use of its code. Choose a LightStereo checkpoint, not an arbitrary model in the zoo. Stereo inference alone is not scene fusion."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/XiandaGuo/OpenStereo"}]

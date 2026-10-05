@@ -1,0 +1,19 @@
+id: "depth-anything-3-small"
+name: "Depth Anything 3 Small"
+kind: "model"
+domain: "vision"
+tasks: ["multi-view-depth-estimation", "camera-pose-estimation"]
+class: "small-specialized-model"
+description: "Small DA3 variant for relative depth and camera geometry."
+links: {"repository": "https://github.com/ByteDance-Seed/Depth-Anything-3"}
+model: {"parameters": 80000000, "file_size_mb": null, "measurement_scope": "Published 0.08B DA3-SMALL count; approximate."}
+license: {"code": "Apache-2.0", "weights": "Apache-2.0"}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
+runtimes: ["pytorch"]
+formats: []
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+io: {"inputs": ["one-or-more-rgb-images"], "outputs": ["relative-depth", "camera-intrinsics", "camera-extrinsics"], "camera_setup": "one or more RGB views", "temporal_mode": "configuration-dependent", "coordinate_system": "geometry up to scale"}
+compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
+notes: "Larger than tiny embedded models. DA3-SMALL has no Gaussian-splat head or metric-depth capability in the upstream table. Do not transfer Giant/Large capabilities or memory results to Small."
+reviewed: "2026-10-05"
+evidence: [{"type": "official", "url": "https://github.com/ByteDance-Seed/Depth-Anything-3"}]
