@@ -3,7 +3,7 @@ name: FastDepth
 domain: vision
 tasks: [monocular-depth-estimation]
 class: small-specialized-model
-description: ""
+description: "Compact encoder-decoder network for monocular depth estimation on embedded hardware."
 links: { repository: "https://github.com/dwofk/fast-depth", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

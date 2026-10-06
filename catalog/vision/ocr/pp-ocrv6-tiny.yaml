@@ -3,7 +3,7 @@ name: PP-OCRv6 Tiny
 domain: vision
 tasks: [ocr]
 class: small-specialized-model
-description: ""
+description: "PaddleOCR PP-OCRv6 tiny text-detection and recognition model for edge OCR."
 links: { repository: "https://github.com/PaddlePaddle/PaddleOCR", model: null, paper: null, homepage: null }
 model: { parameters: 1500000, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

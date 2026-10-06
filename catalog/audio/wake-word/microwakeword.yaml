@@ -3,7 +3,7 @@ name: microWakeWord
 domain: audio
 tasks: [wake-word-detection]
 class: tinyml
-description: ""
+description: "Micro wake-word models for ESP32/ESPHome that fit in tens of kilobytes."
 links: { repository: "https://github.com/OHF-Voice/micro-wake-word", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

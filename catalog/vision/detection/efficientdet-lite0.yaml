@@ -3,7 +3,7 @@ name: EfficientDet-Lite0
 domain: vision
 tasks: [object-detection]
 class: small-specialized-model
-description: ""
+description: "TFLite EfficientDet-Lite0 object detector for mobile and edge inference."
 links: { repository: "https://www.tensorflow.org/lite/examples/object_detection/overview", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }

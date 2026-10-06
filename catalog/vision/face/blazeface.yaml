@@ -3,7 +3,7 @@ name: BlazeFace
 domain: vision
 tasks: [face-detection]
 class: small-specialized-model
-description: ""
+description: "Lightweight MediaPipe face detector for mobile and edge devices."
 links: { repository: "https://github.com/google-ai-edge/mediapipe", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

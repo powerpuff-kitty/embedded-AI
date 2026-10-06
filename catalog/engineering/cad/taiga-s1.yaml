@@ -3,7 +3,7 @@ name: Taiga-S1
 domain: engineering
 tasks: [cad-action-selection]
 class: small-specialized-model
-description: ""
+description: "Compact model that selects parametric CAD operations from design context."
 links: { repository: "https://github.com/shhivv/taiga-s1", model: null, paper: null, homepage: null }
 model: { parameters: 1200000, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

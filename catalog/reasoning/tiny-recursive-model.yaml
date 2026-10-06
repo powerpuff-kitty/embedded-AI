@@ -3,7 +3,7 @@ name: Tiny Recursive Model
 domain: reasoning
 tasks: [structured-reasoning]
 class: small-specialized-model
-description: ""
+description: "Small recursive model for structured reasoning tasks."
 links: { repository: "https://github.com/SamsungSAILMontreal/TinyRecursiveModels", model: null, paper: null, homepage: null }
 model: { parameters: 7000000, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

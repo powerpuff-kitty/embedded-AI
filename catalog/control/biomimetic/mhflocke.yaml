@@ -3,7 +3,7 @@ name: MH-FLOCKE
 domain: control
 tasks: [adaptive-locomotion]
 class: bio-inspired-controller
-description: ""
+description: "Bio-inspired flocking and adaptive-locomotion controller for edge robots."
 links: { repository: "https://github.com/MarcHesse/mhflocke", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

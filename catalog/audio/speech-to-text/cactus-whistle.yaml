@@ -3,7 +3,7 @@ name: Whistle
 domain: audio
 tasks: [speech-to-text]
 class: small-specialized-model
-description: ""
+description: "Cactus Compute speech-to-text model packaged for on-device use."
 links: { repository: "https://huggingface.co/Cactus-Compute/whistle", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: 16.9, architecture: null, precision: null }
 license: { code: unknown, weights: Apache-2.0 }

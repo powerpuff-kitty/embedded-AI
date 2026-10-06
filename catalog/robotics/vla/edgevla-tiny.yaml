@@ -3,7 +3,7 @@ name: EdgeVLA-Tiny
 domain: robotics
 tasks: [vision-language-action]
 class: compact-vla
-description: ""
+description: "Compact vision-language-action model for edge robotics."
 links: { repository: "https://huggingface.co/enfuse/edgevla-tiny-fmb", model: null, paper: null, homepage: null }
 model: { parameters: 164000000, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: Apache-2.0 }

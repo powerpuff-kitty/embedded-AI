@@ -3,7 +3,7 @@ name: TensorFlow Lite Micro Magic Wand
 domain: sensors
 tasks: [imu-gesture-recognition]
 class: tinyml
-description: ""
+description: "TensorFlow Lite Micro gesture example recognising wand-like IMU motions."
 links: { repository: "https://github.com/tensorflow/tflite-micro", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

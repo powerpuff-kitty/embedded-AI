@@ -3,7 +3,7 @@ name: DS-CNN KWS 24k
 domain: audio
 tasks: [keyword-spotting]
 class: tinyml
-description: ""
+description: "Depthwise-separable CNN keyword-spotting model trained at 24 kHz for edge targets."
 links: { repository: "https://github.com/prarabdhmisra/edge-tinyml", model: null, paper: null, homepage: null }
 model: { parameters: 24000, file_size_mb: 0.045, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }
