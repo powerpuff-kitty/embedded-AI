@@ -17,7 +17,8 @@ usage: {mode: pretrained, training: 'Pretrained face models; enrollment drives r
 data: {inputs: [camera-frames], outputs: [face-boxes, identity-match], languages: []}
 evaluation: ['Detection/recognition accuracy and bias review plus memory/latency on the board.']
 limitations: ['Biometric privacy concerns; weight terms vary; accuracy depends on lighting/pose.']
-compatibility: []
+compatibility:
+  - {target: esp32, status: reported, evidence: 'https://github.com/espressif/esp-who', notes: 'Upstream face models run on ESP32 camera modules; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/espressif/esp-who', notes: 'Documentation review of ESP32 face toolkit and Apache-2.0 code licence; not a bias or board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [vision, face, esp32, embedded]
