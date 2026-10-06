@@ -1,0 +1,23 @@
+id: gpt4all
+name: GPT4All
+domain: language
+tasks: [on-device-llm, text-generation, local-chat]
+class: on-device-llm-app
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Desktop ecosystem for running local LLMs on consumer CPUs and GPUs with a simple runtime."
+links: {repository: 'https://github.com/nomic-ai/gpt4all', homepage: 'https://www.nomic.ai/gpt4all'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Desktop-focused; not an MCU runtime.'}
+runtimes: [llama-cpp-native]
+formats: [gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/app for local models; models are trained elsewhere.', needs_data: 'A GGUF model file and adequate desktop memory.', update_strategy: 'Pin runtime/model; re-measure memory and throughput per model.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [multilingual-models]}
+evaluation: ['Tokens-per-second, memory and quality at the chosen model/quantization.']
+limitations: ['Model-weight licences vary per model and must be checked individually.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/nomic-ai/gpt4all', notes: 'Documentation review of local LLM runtime and MIT code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, local, gguf]

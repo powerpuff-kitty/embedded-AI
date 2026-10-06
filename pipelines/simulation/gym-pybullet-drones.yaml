@@ -1,0 +1,23 @@
+id: gym-pybullet-drones
+name: gym-pybullet-drones
+domain: simulation
+tasks: [drone-control, reinforcement-learning, simulation]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "PyBullet-based quadrotor environment for reinforcement learning and control research."
+links: {repository: 'https://github.com/utiasDSL/gym-pybullet-drones', paper: 'https://arxiv.org/abs/2103.02142'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation environment; policies can be transferred to hardware with care.'}
+runtimes: [python, pybullet]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulator for training/testing drone control and RL policies.', needs_data: 'Task definition, reward and a control policy or learning setup.', update_strategy: 'Pin simulator version; validate sim-to-real transfer before flight.'}
+data: {inputs: [control-actions], outputs: [simulated-state, rewards], languages: []}
+evaluation: ['Tracking error, robustness and successful sim-to-real transfer.']
+limitations: ['Simplified dynamics; simulation results do not guarantee flight safety.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/utiasDSL/gym-pybullet-drones', notes: 'Documentation review of quadrotor simulation scope and MIT licence; not a flight benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, drones, reinforcement-learning]

@@ -1,0 +1,23 @@
+id: pytorch-wildlife
+name: PyTorch-Wildlife
+domain: vision
+tasks: [wildlife-detection, species-classification, conservation-inference]
+class: conservation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Conservation deep-learning framework and model zoo hosting MegaDetector and species classifiers."
+links: {repository: 'https://github.com/microsoft/Pytorch-Wildlife', homepage: 'https://microsoft.github.io/Biodiversity/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'CPU inference is supported; optional CUDA gives large speedups.'}
+runtimes: [pytorch, python]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Framework plus fine-tuning recipes for detection and classification.', needs_data: 'Camera-trap imagery; labelled data for adaptation.', update_strategy: 'Pin framework and model versions; revalidate detection/classification metrics per dataset.'}
+data: {inputs: [camera-trap-image], outputs: [detections, species-labels], languages: []}
+evaluation: ['Detection and species metrics on the deployment region plus inference cost.']
+limitations: ['Species classifiers are region-specific; performance drops outside their training domain.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/Pytorch-Wildlife', notes: 'Documentation review of framework scope and hosted models; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, conservation, toolkit, detection]

@@ -1,0 +1,23 @@
+id: torchmd-net
+name: TorchMD-NET
+domain: science
+tasks: [machine-learned-potentials, molecular-dynamics, atomistic-simulation]
+class: atomistic-potential-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Neural network potentials for atomistic simulation with equivariant transformer models."
+links: {repository: 'https://github.com/torchmd/torchmd-net', paper: 'https://arxiv.org/abs/2202.02541'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation-oriented; small potentials can accelerate inference on workstations.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains ML potentials from quantum-chemistry reference data.', needs_data: 'Reference energies/forces covering the target chemistry and conditions.', update_strategy: 'Validate extrapolation and stability before production simulation.'}
+data: {inputs: [atomic-configuration], outputs: [energy, forces], languages: []}
+evaluation: ['Energy/force error and trajectory stability versus reference calculations.']
+limitations: ['Potentials are only valid within their training distribution.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/torchmd/torchmd-net', notes: 'Documentation review of neural potential scope and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, materials, potentials, molecular-dynamics]

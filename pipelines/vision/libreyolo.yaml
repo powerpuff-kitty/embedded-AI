@@ -1,0 +1,23 @@
+id: libreyolo
+name: LibreYOLO
+domain: vision
+tasks: [object-detection, pose-estimation, instance-segmentation]
+class: detection-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "MIT-licensed computer-vision library covering YOLO, RT-DETR and RF-DETR detection families."
+links: {repository: 'https://github.com/LibreYOLO/libreyolo'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'Exports to ONNX; upstream positions it as a permissively licensed alternative.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Training/fine-tuning and export of detection models.', needs_data: 'Task-specific labelled images and a selected model family.', update_strategy: 'Pin model family and export settings; re-benchmark per target.'}
+data: {inputs: [rgb-image, labelled-dataset], outputs: [boxes, keypoints, masks], languages: []}
+evaluation: ['mAP/keypoint metrics plus latency and memory on the target device.']
+limitations: ['Weights for some families carry their own licences separate from the code.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/LibreYOLO/libreyolo', notes: 'Documentation review of supported families and MIT code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, mit, onnx]

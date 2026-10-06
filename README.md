@@ -53,7 +53,7 @@ npm run site:build
 npm run site:serve
 ```
 
-The static explorer supports search, filters, source details and comparison. The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally, not automatically published.
+The static explorer supports search, filters, source details and comparison, plus a deterministic offline need matcher that ranks entries from a plain-language description with visible reasons. The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally and, on `main`, published read-only to GitHub Pages by `.github/workflows/pages.yml`; no analytics or upload endpoints are used.
 
 This is a growing curated catalogue, not an exhaustive list or a guarantee that all entries fit small devices. Unknown fields remain visible.
 
@@ -61,7 +61,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**95 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**284 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -73,7 +73,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[administrative](#catalogue-administrative) · [audio](#catalogue-audio) · [business](#catalogue-business) · [control](#catalogue-control) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [finance](#catalogue-finance) · [geospatial](#catalogue-geospatial) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [science](#catalogue-science) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [time-series](#catalogue-time-series) · [video](#catalogue-video) · [vision](#catalogue-vision)
+[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [control](#catalogue-control) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-administrative"></a>
 
@@ -89,18 +89,64 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Presidio](pipelines/administrative/presidio.yaml) · [upstream](<https://github.com/data-privacy-stack/presidio>) | pipeline / companion | sensitive-data-detection, redaction, de-identification | — | — | python | desktop, server | MIT / configuration-dependent | unknown |
 | [fastText supervised classifiers](pipelines/administrative/fasttext-classifier.yaml) · [upstream](<https://github.com/facebookresearch/fastText>) | toolkit / requires-training | text-classification, document-routing | — | — | fasttext-cpp, python, fasttext-bin, fasttext-ftz | desktop, server | MIT / not-provided | unknown |
 
+<a id="catalogue-agriculture"></a>
+
+### Agriculture
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [AgML](pipelines/agriculture/agml.yaml) · [upstream](<https://github.com/Project-AgML/AgML>) | toolkit / requires-training | agricultural-dataset-management, crop-classification, plant-disease-detection, crop-segmentation | — | — | python, pytorch, tensorflow | desktop, server | unknown / not-applicable | unknown |
+
 <a id="catalogue-audio"></a>
 
 ### Audio
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [MegaDetector-Acoustic](catalog/audio/classification/megadetector-acoustic.yaml) · [upstream](<https://github.com/microsoft/MegaDetector-Acoustic>) | collection / pretrained | bioacoustic-classification, species-identification | — | — | pytorch, pytorch-checkpoint | edge, desktop, server | MIT / unknown | unknown |
+| [Arm ML Examples](catalog/audio/keyword-spotting/arm-ml-examples.yaml) · [upstream](<https://github.com/ARM-software/ML-examples>) | collection / companion | keyword-spotting, mcu-inference, model-optimization | — | — | tensorflow, tflite-micro, cmsis-nn, ethos-u, tflite | edge | Apache-2.0 / not-provided | unknown |
 | [DS-CNN KWS 24k](catalog/audio/keyword-spotting/ds-cnn-24k.yaml) · [upstream](<https://github.com/prarabdhmisra/edge-tinyml>) | model / unknown | keyword-spotting | 24K | 45 kB | — | edge | unknown / unknown | unknown |
+| [ML-KWS-for-MCU](catalog/audio/keyword-spotting/ml-kws-for-mcu.yaml) · [upstream](<https://github.com/ARM-software/ML-KWS-for-MCU>) | collection / requires-training | keyword-spotting, mcu-inference | — | — | tensorflow, tflite, cmsis-nn | edge | Apache-2.0 / not-provided | unknown |
 | [MatchboxNet](catalog/audio/keyword-spotting/matchboxnet.yaml) · [upstream](<https://github.com/NVIDIA/NeMo>) | model / unknown | keyword-spotting | — | — | — | edge | unknown / unknown | unknown |
+| [RNNoise](pipelines/audio/rnnoise.yaml) · [upstream](<https://github.com/xiph/rnnoise>) | pipeline / pretrained | noise-suppression, speech-enhancement | — | — | native-c, c-source | edge, mobile, desktop | BSD-3-Clause / BSD-3-Clause | unknown |
 | [YAMNet](catalog/audio/classification/yamnet.yaml) · [upstream](<https://storage.googleapis.com/audioset/yamnet.h5>) | model / pretrained | sound-classification | 3.7M | — | tensorflow, tf-keras, hdf5 | edge | Apache-2.0 / unknown | unknown |
+| [pyannote-audio](pipelines/audio/pyannote-audio.yaml) · [upstream](<https://github.com/pyannote/pyannote-audio>) | toolkit / pretrained | speaker-diarization, speaker-verification, voice-activity-detection | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | MIT / unknown | unknown |
+| [DeepFilterNet](pipelines/audio/deepfilternet.yaml) · [upstream](<https://github.com/Rikorose/DeepFilterNet>) | pipeline / pretrained | speech-enhancement, noise-suppression | — | — | pytorch, onnxruntime, onnx | edge, mobile, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [ESPnet](pipelines/audio/espnet.yaml) · [upstream](<https://github.com/espnet/espnet>) | toolkit / requires-training | speech-recognition, text-to-speech, speech-translation, speech-enhancement | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | Apache-2.0 / not-provided | unknown |
+| [FunASR](pipelines/audio/funasr.yaml) · [upstream](<https://github.com/modelscope/FunASR>) | toolkit / pretrained | speech-recognition, voice-activity-detection, punctuation-restoration, speaker-diarization | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | MIT / not-provided | unknown |
+| [NVIDIA NeMo](pipelines/audio/nvidia-nemo.yaml) · [upstream](<https://github.com/NVIDIA/NeMo>) | toolkit / requires-training | speech-recognition, text-to-speech, speech-enhancement, speaker-diarization | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [SpeechBrain](pipelines/audio/speechbrain.yaml) · [upstream](<https://github.com/speechbrain/speechbrain>) | toolkit / requires-training | speech-recognition, speaker-recognition, speech-enhancement, text-to-speech | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [Moonshine](catalog/audio/speech-to-text/moonshine.yaml) · [upstream](<https://github.com/moonshine-ai/moonshine>) | collection / pretrained | speech-to-text | — | — | moonshine-native, onnxruntime | edge, mobile, desktop, browser | MIT / MIT | unknown |
+| [Vosk](pipelines/audio/vosk-api.yaml) · [upstream](<https://github.com/alphacep/vosk-api>) | toolkit / pretrained | speech-to-text | — | — | vosk-native, kaldi | mobile, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+| [WeNet](pipelines/audio/wenet.yaml) · [upstream](<https://github.com/wenet-e2e/wenet>) | toolkit / requires-training | speech-to-text, streaming-asr | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | mobile, desktop, server | Apache-2.0 / not-provided | unknown |
+| [Whisper](catalog/audio/speech-to-text/openai-whisper.yaml) · [upstream](<https://huggingface.co/openai/whisper-large-v3>) | collection / pretrained | speech-to-text, speech-translation | — | — | pytorch, whisper-cpp, onnxruntime, pytorch-checkpoint | desktop, server, edge | MIT / MIT | unknown |
 | [Whistle](catalog/audio/speech-to-text/whistle.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/whistle>) | model / unknown | speech-to-text | — | 16.9 MB | — | edge | unknown / Apache-2.0 | unknown |
+| [faster-whisper](pipelines/audio/faster-whisper.yaml) · [upstream](<https://github.com/SYSTRAN/faster-whisper>) | toolkit / companion | speech-to-text, voice-activity-detection | — | — | ctranslate2, onnxruntime, pytorch-checkpoint | desktop, server, edge | MIT / MIT | unknown |
+| [sherpa-onnx](pipelines/audio/sherpa-onnx.yaml) · [upstream](<https://github.com/k2-fsa/sherpa-onnx>) | toolkit / companion | speech-to-text, text-to-speech, keyword-spotting, speaker-diarization | — | — | sherpa-onnx-native, onnxruntime, onnx | mobile, edge, desktop, browser | Apache-2.0 / not-provided | unknown |
+| [whisper.cpp](pipelines/audio/whisper-cpp.yaml) · [upstream](<https://github.com/ggml-org/whisper.cpp>) | toolkit / companion | speech-to-text, voice-activity-detection | — | — | ggml, whisper-cpp-native | mobile, edge, desktop, browser | MIT / MIT | unknown |
+| [Kokoro-82M](catalog/audio/text-to-speech/kokoro-82m.yaml) · [upstream](<https://huggingface.co/hexgrad/Kokoro-82M>) | model / pretrained | text-to-speech | 82M | — | pytorch, onnxruntime | desktop, server, edge | unknown / Apache-2.0 | unknown |
+| [Piper](pipelines/audio/piper.yaml) · [upstream](<https://github.com/OHF-Voice/piper1-gpl>) | toolkit / companion | text-to-speech | — | — | piper-native, onnxruntime, python, onnx | edge, desktop, server | GPL-3.0 / unknown | unknown |
 | [Silero VAD](catalog/audio/vad/silero-vad.yaml) · [upstream](<https://github.com/snakers4/silero-vad/blob/1e261b036686cd0017d500ee96acd1c4ba572a9d/src/silero_vad/data/silero_vad.onnx>) | model / pretrained | voice-activity-detection | — | 2 MB | onnxruntime, pytorch, onnx, jit | edge | MIT / MIT | unknown |
+| [ESP-SR](pipelines/audio/esp-sr.yaml) · [upstream](<https://github.com/espressif/esp-sr>) | toolkit / pretrained | wake-word-detection, speech-recognition, voice-activity-detection | — | — | esp-sr-native | edge | Apache-2.0 / unknown | unknown |
 | [microWakeWord](catalog/audio/wake-word/microwakeword.yaml) · [upstream](<https://github.com/OHF-Voice/micro-wake-word>) | model / unknown | wake-word-detection | — | — | — | edge | Apache-2.0 / unknown | unknown |
+| [openWakeWord](catalog/audio/wake-word/openwakeword.yaml) · [upstream](<https://github.com/dscripka/openWakeWord>) | collection / pretrained | wake-word-detection | — | — | onnxruntime, tflite, onnx | edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+
+<a id="catalogue-automotive"></a>
+
+### Automotive
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [openpilot](pipelines/automotive/openpilot.yaml) · [upstream](<https://github.com/commaai/openpilot>) | pipeline / companion | driver-assistance, lane-keeping, adaptive-cruise-control, driver-monitoring | — | — | python, onnxruntime, onnx | edge | MIT / not-applicable | unknown |
+| [DonkeyCar](pipelines/automotive/donkeycar.yaml) · [upstream](<https://github.com/autorope/donkeycar>) | pipeline / requires-training | self-driving-rc-car, imitation-learning, autonomous-driving | — | — | tensorflow, python | edge, desktop | MIT / not-applicable | unknown |
+
+<a id="catalogue-benchmark"></a>
+
+### Benchmark
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [MLPerf Tiny](pipelines/benchmark/mlperf-tiny.yaml) · [upstream](<https://github.com/mlcommons/tiny>) | collection / companion | tinyml-benchmarking, model-evaluation, keyword-spotting, visual-wake-words | — | — | tflite-micro, native-c, tflite | edge | Apache-2.0 / not-provided | unknown |
 
 <a id="catalogue-business"></a>
 
@@ -108,6 +154,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [AutoGluon](pipelines/business/tabular/autogluon.yaml) · [upstream](<https://github.com/autogluon/autogluon>) | toolkit / requires-training | automl, tabular-classification, tabular-regression, time-series-forecasting | — | — | python, pytorch, pytorch-checkpoint, onnx | desktop, server | Apache-2.0 / not-provided | unknown |
 | [OR-Tools](primitives/optimization/or-tools.yaml) · [upstream](<https://github.com/google/or-tools>) | primitive / companion | constraint-optimization, scheduling, routing, assignment | — | — | or-tools-native, python | desktop, server | Apache-2.0 / not-applicable | unknown |
 | [Vowpal Wabbit](pipelines/business/decision/vowpal-wabbit.yaml) · [upstream](<https://github.com/VowpalWabbit/vowpal_wabbit>) | toolkit / requires-training | online-learning, contextual-bandits, action-ranking | — | — | vowpal-wabbit-native, python | desktop, server | BSD-3-Clause / not-provided | unknown |
 | [Splink](pipelines/business/records/splink.yaml) · [upstream](<https://github.com/moj-analytical-services/splink>) | toolkit / requires-training | probabilistic-record-linkage, deduplication | — | — | python, sql-backend | desktop, server | MIT / not-provided | unknown |
@@ -127,7 +174,11 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [EMG Winter Soldier Arm](catalog/control/human-interface/emg-winter-soldier-arm.yaml) · [upstream](<https://github.com/SuryaUT/EMG-Winter-Soldier-Arm>) | model / unknown | emg-to-servo-control | — | — | — | edge, robot | unknown / unknown | unknown |
 | [Quadruped CPG Controller](catalog/control/biomimetic/quadruped-cpg.yaml) · [upstream](<https://github.com/Tatonta/Quadruped-Robot>) | model / unknown | gait-generation | — | — | — | edge, robot | unknown / unknown | unknown |
 | [MicroDuck locomotion policies](catalog/control/locomotion/microduck.yaml) · [upstream](<https://github.com/jackyrx/NX_microduck>) | model / unknown | locomotion | — | — | — | edge, robot | unknown / unknown | unknown |
+| [TinyMPC](primitives/control/tinympc.yaml) · [upstream](<https://github.com/TinyMPC/tinympc>) | primitive / companion | model-predictive-control, embedded-optimization | — | — | native-cpp, python, c-source | edge, robot | MIT / not-applicable | unknown |
+| [acados](primitives/control/acados.yaml) · [upstream](<https://github.com/acados/acados>) | primitive / companion | model-predictive-control, nonlinear-optimization | — | — | native-c, python, c-source | desktop, edge, robot | unknown / not-applicable | unknown |
 | [ArduPilot Neural Mixer](catalog/control/motor/ardupilot-neural-mixer.yaml) · [upstream](<https://github.com/virtualrobotix/Ardupilot-Neural-Mixer>) | model / unknown | motor-servo-control | — | — | — | edge, robot | unknown / unknown | unknown |
+| [CasADi](primitives/control/casadi.yaml) · [upstream](<https://github.com/casadi/casadi>) | primitive / companion | nonlinear-optimization, model-predictive-control, automatic-differentiation | — | — | python, native-cpp, c-source | desktop, server, edge | LGPL-3.0 / not-applicable | unknown |
+| [OSQP](primitives/control/osqp.yaml) · [upstream](<https://github.com/osqp/osqp>) | primitive / companion | quadratic-programming, convex-optimization | — | — | native-c, c-source | desktop, server, edge | Apache-2.0 / not-applicable | unknown |
 | [OpenDoge locomotion policy](catalog/control/locomotion/opendoge.yaml) · [upstream](<https://github.com/OpenDogeRobotics/OpenDoge_origin>) | model / unknown | quadruped-locomotion | — | — | — | edge, robot | unknown / unknown | unknown |
 
 <a id="catalogue-energy"></a>
@@ -137,6 +188,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [CityLearn](pipelines/energy/citylearn.yaml) · [upstream](<https://github.com/citylearn-project/CityLearn>) | toolkit / companion | building-energy-simulation, demand-response-policy-training | — | — | python, gymnasium | desktop, server | MIT / not-applicable | unknown |
+| [pandapower](primitives/energy/pandapower.yaml) · [upstream](<https://github.com/e2nIEE/pandapower>) | primitive / companion | power-flow, power-system-analysis | — | — | python, numpy | desktop, server | BSD-3-Clause / not-applicable | unknown |
 | [Grid2Op](pipelines/energy/grid2op.yaml) · [upstream](<https://github.com/Grid2op/grid2op>) | toolkit / companion | power-system-simulation, sequential-decision-evaluation | — | — | python | desktop, server | MPL-2.0 / not-applicable | unknown |
 
 <a id="catalogue-engineering"></a>
@@ -146,6 +198,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
+| [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
 
 <a id="catalogue-finance"></a>
 
@@ -158,6 +211,28 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Kronos-small](catalog/finance/forecasting/kronos-small.yaml) · [upstream](<https://huggingface.co/NeoQuasar/Kronos-small>) | model / pretrained | financial-time-series-forecasting | 24.7M | — | pytorch, safetensors | desktop, server | MIT / MIT | unknown |
 | [hmmlearn](pipelines/finance/hmmlearn.yaml) · [upstream](<https://github.com/hmmlearn/hmmlearn>) | toolkit / requires-training | hidden-state-estimation, sequence-modelling | — | — | python, numpy | desktop, server | BSD-3-Clause / not-provided | unknown |
 | [Qlib](pipelines/finance/qlib.yaml) · [upstream](<https://github.com/microsoft/qlib>) | toolkit / companion | quantitative-research, model-evaluation, backtesting | — | — | python | desktop, server | MIT / configuration-dependent | unknown |
+| [FinRL](pipelines/finance/finrl.yaml) · [upstream](<https://github.com/AI4Finance-Foundation/FinRL>) | toolkit / requires-training | reinforcement-learning, portfolio-allocation, trading | — | — | python, pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+
+<a id="catalogue-gaming"></a>
+
+### Gaming
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Leela Chess Zero](pipelines/gaming/lc0.yaml) · [upstream](<https://github.com/LeelaChessZero/lc0>) | pipeline / pretrained | chess-engine, monte-carlo-tree-search | — | — | onnxruntime, native-cpp, onnx | desktop, server | GPL-3.0 / unknown | unknown |
+| [Maia-3](catalog/gaming/maia3.yaml) · [upstream](<https://huggingface.co/collections/UofTCSSLab/maia3>) | model / pretrained | chess-move-prediction, human-like-policy-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
+| [mctx](primitives/gaming/mctx.yaml) · [upstream](<https://github.com/google-deepmind/mctx>) | primitive / companion | monte-carlo-tree-search, planning, game-search | — | — | jax | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [PettingZoo](primitives/gaming/pettingzoo.yaml) · [upstream](<https://github.com/Farama-Foundation/PettingZoo>) | primitive / companion | multi-agent-environments, reinforcement-learning, environment-api | — | — | python | desktop, server, edge | MIT / not-applicable | unknown |
+| [Melting Pot](pipelines/gaming/meltingpot.yaml) · [upstream](<https://github.com/google-deepmind/meltingpot>) | pipeline / companion | multi-agent-reinforcement-learning, social-simulation | — | — | python | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [CleanRL](pipelines/gaming/cleanrl.yaml) · [upstream](<https://github.com/vwxyzjn/cleanrl>) | toolkit / requires-training | reinforcement-learning, policy-training | — | — | pytorch, onnx | desktop, server | MIT / not-provided | unknown |
+| [Dopamine](pipelines/gaming/dopamine.yaml) · [upstream](<https://github.com/google/dopamine>) | toolkit / requires-training | reinforcement-learning, atari-agents, policy-training | — | — | jax, tensorflow | desktop, server | Apache-2.0 / not-provided | unknown |
+| [Godot RL Agents](pipelines/gaming/godot-rl-agents.yaml) · [upstream](<https://github.com/edbeeching/godot_rl_agents>) | toolkit / requires-training | reinforcement-learning, game-agent-training, npc-behaviour | — | — | pytorch, onnxruntime, onnx | desktop | MIT / not-provided | unknown |
+| [Gymnasium](primitives/gaming/gymnasium.yaml) · [upstream](<https://github.com/Farama-Foundation/Gymnasium>) | primitive / companion | reinforcement-learning, environment-api, simulation-interface | — | — | python | desktop, server, edge | MIT / not-applicable | unknown |
+| [PufferLib](pipelines/gaming/pufferlib.yaml) · [upstream](<https://github.com/PufferAI/PufferLib>) | toolkit / requires-training | reinforcement-learning, environment-vectorization, policy-training | — | — | pytorch | desktop, server | MIT / not-provided | unknown |
+| [Sample Factory](pipelines/gaming/sample-factory.yaml) · [upstream](<https://github.com/alex-petrenko/sample-factory>) | toolkit / requires-training | reinforcement-learning, high-throughput-policy-training | — | — | pytorch, onnx | desktop, server | MIT / not-provided | unknown |
+| [Stable-Baselines3](pipelines/gaming/stable-baselines3.yaml) · [upstream](<https://github.com/DLR-RM/stable-baselines3>) | toolkit / requires-training | reinforcement-learning, policy-training, game-agent-training | — | — | pytorch, onnxruntime, onnx | desktop, server | MIT / not-provided | unknown |
+| [Unity ML-Agents](pipelines/gaming/ml-agents.yaml) · [upstream](<https://github.com/Unity-Technologies/ml-agents>) | toolkit / requires-training | reinforcement-learning, imitation-learning, game-agent-training | — | — | pytorch, onnxruntime, onnx | desktop, mobile | Apache-2.0 / not-provided | unknown |
+| [Stable Retro](pipelines/gaming/stable-retro.yaml) · [upstream](<https://github.com/Farama-Foundation/stable-retro>) | toolkit / companion | retro-game-reinforcement-learning, environment-emulation | — | — | python | desktop | MIT / not-applicable | unknown |
 
 <a id="catalogue-geospatial"></a>
 
@@ -165,8 +240,29 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [MegaDetector-Overhead](catalog/geospatial/earth-observation/megadetector-overhead.yaml) · [upstream](<https://github.com/microsoft/MegaDetector-Overhead>) | collection / pretrained | aerial-wildlife-detection, overhead-detection | — | — | pytorch, pytorch-checkpoint | desktop, server, edge | MIT / unknown | unknown |
+| [Clay](catalog/geospatial/earth-observation/clay.yaml) · [upstream](<https://github.com/Clay-foundation/model>) | collection / pretrained | earth-observation-embedding, geospatial-feature-extraction | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / Apache-2.0 | unknown |
 | [OlmoEarth v1 Nano](catalog/geospatial/earth-observation/olmoearth-nano.yaml) · [upstream](<https://huggingface.co/allenai/OlmoEarth-v1-Nano>) | model / unknown | earth-observation-embedding | 1.4M | — | — | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [OlmoEarth v1 Tiny](catalog/geospatial/earth-observation/olmoearth-tiny.yaml) · [upstream](<https://huggingface.co/allenai/OlmoEarth-v1-Tiny>) | model / unknown | earth-observation-embedding | 6.2M | — | — | edge | Apache-2.0 / Apache-2.0 | unknown |
+| [Prithvi-EO-2.0](catalog/geospatial/earth-observation/prithvi-eo-2.yaml) · [upstream](<https://huggingface.co/ibm-nasa-geospatial/Prithvi-EO-2.0-300M>) | collection / pretrained | earth-observation-embedding, flood-mapping, crop-classification, burn-scar-segmentation | — | — | pytorch, terratorch, pytorch-checkpoint | desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+| [TerraTorch](pipelines/geospatial/terratorch.yaml) · [upstream](<https://github.com/IBM/terratorch>) | toolkit / requires-training | earth-observation-fine-tuning, earth-observation-segmentation, earth-observation-classification | — | — | pytorch, lightning, pytorch-checkpoint, onnx | desktop, server | Apache-2.0 / not-provided | unknown |
+| [eo-learn](pipelines/geospatial/eo-learn.yaml) · [upstream](<https://github.com/sentinel-hub/eo-learn>) | toolkit / companion | earth-observation-processing, geospatial-feature-extraction | — | — | python, numpy | desktop, server | MIT / not-applicable | unknown |
+| [TorchGeo](pipelines/geospatial/torchgeo.yaml) · [upstream](<https://github.com/microsoft/torchgeo>) | toolkit / companion | geospatial-dataset-management, earth-observation-segmentation, earth-observation-classification | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | MIT / not-provided | unknown |
+| [Raster Vision](pipelines/geospatial/raster-vision.yaml) · [upstream](<https://github.com/azavea/raster-vision>) | toolkit / requires-training | geospatial-object-detection, geospatial-semantic-segmentation, geospatial-classification | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [segment-geospatial](pipelines/geospatial/segment-geospatial.yaml) · [upstream](<https://github.com/opengeos/segment-geospatial>) | toolkit / pretrained | geospatial-segmentation, interactive-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+
+<a id="catalogue-healthcare"></a>
+
+### Healthcare
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [BrainFlow](pipelines/healthcare/brainflow.yaml) · [upstream](<https://github.com/brainflow-dev/brainflow>) | toolkit / companion | biosignal-acquisition, signal-processing, bci | — | — | native-cpp, python | mobile, edge, desktop | MIT / not-applicable | unknown |
+| [TorchXRayVision](catalog/healthcare/imaging/torchxrayvision.yaml) · [upstream](<https://github.com/mlmed/torchxrayvision>) | collection / pretrained | chest-xray-classification, medical-image-representation | — | — | pytorch, pytorch-checkpoint | server, desktop | Apache-2.0 / unknown | unknown |
+| [MNE-Python](pipelines/healthcare/mne-python.yaml) · [upstream](<https://github.com/mne-tools/mne-python>) | toolkit / companion | eeg-analysis, meg-analysis, neurophysiology-processing | — | — | python, numpy | desktop, server | BSD-3-Clause / not-applicable | unknown |
+| [MONAI](pipelines/healthcare/monai.yaml) · [upstream](<https://github.com/Project-MONAI/MONAI>) | toolkit / requires-training | medical-image-segmentation, medical-image-classification, medical-image-registration | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | server, desktop, edge | Apache-2.0 / not-provided | unknown |
+| [nnU-Net](pipelines/healthcare/nnunet.yaml) · [upstream](<https://github.com/MIC-DKFZ/nnUNet>) | toolkit / requires-training | medical-image-segmentation | — | — | pytorch, pytorch-checkpoint, onnx | server, desktop | Apache-2.0 / not-provided | unknown |
+| [NeuroKit2](pipelines/healthcare/neurokit2.yaml) · [upstream](<https://github.com/neuropsychology/NeuroKit>) | toolkit / companion | physiological-signal-processing, ecg-analysis, eda-analysis, signal-quality-assessment | — | — | python, numpy | desktop, server, edge | MIT / not-applicable | unknown |
 
 <a id="catalogue-infrastructure"></a>
 
@@ -188,8 +284,13 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [FastEmbed](pipelines/language/fastembed.yaml) · [upstream](<https://github.com/qdrant/fastembed>) | toolkit / pretrained | embeddings, semantic-search | — | — | onnxruntime, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [Sentence Transformers](pipelines/language/sentence-transformers.yaml) · [upstream](<https://github.com/UKPLab/sentence-transformers>) | toolkit / pretrained | embeddings, semantic-search, text-classification, sentence-similarity | — | — | pytorch, onnxruntime, transformers, safetensors, onnx, pytorch-checkpoint | mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
 | [all-MiniLM-L6-v2](catalog/language/embeddings/all-minilm-l6-v2.yaml) · [upstream](<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>) | model / pretrained | embeddings, semantic-search | 22.7M | — | sentence-transformers, onnxruntime, safetensors, onnx | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [fastText lid.176](catalog/language/classification/fasttext-lid176.yaml) · [upstream](<https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz>) | model / pretrained | language-identification | — | 917 kB | fasttext-cpp, python, fasttext-ftz | edge | MIT / CC-BY-SA-3.0 | unknown |
+| [GPT4All](pipelines/language/gpt4all.yaml) · [upstream](<https://github.com/nomic-ai/gpt4all>) | toolkit / companion | on-device-llm, text-generation, local-chat | — | — | llama-cpp-native, gguf | desktop | MIT / not-provided | unknown |
+| [SmolLM](catalog/language/on-device/smollm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolLM2-135M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [TinyLlama](catalog/language/on-device/tinyllama.yaml) · [upstream](<https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>) | collection / pretrained | text-generation, on-device-llm | 1.1B | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
 | [Needle 3](catalog/language/tool-calling/needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / unknown | unknown |
 
 <a id="catalogue-mapping"></a>
@@ -198,10 +299,33 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [GTSAM](primitives/optimization/gtsam.yaml) · [upstream](<https://github.com/borglab/gtsam>) | primitive / companion | factor-graph-optimization, slam, sensor-fusion | — | — | native-cpp, python | desktop, server, edge, robot | BSD-3-Clause / not-applicable | unknown |
+| [3D Gaussian Splatting](pipelines/mapping/gaussian-splatting.yaml) · [upstream](<https://github.com/graphdeco-inria/gaussian-splatting>) | pipeline / companion | gaussian-splat-reconstruction, novel-view-synthesis | — | — | pytorch, cuda, ply | desktop, server | unknown / not-applicable | unknown |
 | [Brush](pipelines/reconstruction/brush.yaml) · [upstream](<https://github.com/ArthurBrussee/brush>) | pipeline / unknown | gaussian-splat-reconstruction, novel-view-rendering | — | — | rust, burn, webgpu | desktop, browser | Apache-2.0 / not-applicable | luckfox-rv1106: unknown |
+| [g2o](primitives/optimization/g2o.yaml) · [upstream](<https://github.com/RainerKuemmerle/g2o>) | primitive / companion | graph-optimization, slam | — | — | native-cpp | desktop, server, edge | unknown / not-applicable | unknown |
+| [Nerfstudio](pipelines/mapping/nerfstudio.yaml) · [upstream](<https://github.com/nerfstudio-project/nerfstudio>) | pipeline / companion | neural-radiance-fields, novel-view-synthesis, 3d-reconstruction | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [Ceres Solver](primitives/optimization/ceres-solver.yaml) · [upstream](<https://github.com/ceres-solver/ceres-solver>) | primitive / companion | nonlinear-least-squares, bundle-adjustment, slam | — | — | native-cpp, c-source | desktop, server, edge | BSD-3-Clause / not-applicable | unknown |
 | [RTAB-Map](pipelines/mapping/rtabmap.yaml) · [upstream](<https://github.com/introlab/rtabmap>) | pipeline / unknown | slam, scene-mapping | — | — | native-cpp | desktop | unknown / not-applicable | luckfox-rv1106: unknown |
 | [COLMAP](pipelines/reconstruction/colmap.yaml) · [upstream](<https://github.com/colmap/colmap>) | pipeline / unknown | structure-from-motion, multi-view-stereo | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
 | [ORB-SLAM3](pipelines/mapping/orb-slam3.yaml) · [upstream](<https://github.com/UZ-SLAMLab/ORB_SLAM3>) | pipeline / unknown | visual-slam, camera-localization | — | — | native-cpp | desktop | GPL-3.0 / not-applicable | luckfox-rv1106: unknown |
+
+<a id="catalogue-music"></a>
+
+### Music
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Basic Pitch](pipelines/music/basic-pitch.yaml) · [upstream](<https://github.com/spotify/basic-pitch>) | toolkit / pretrained | automatic-music-transcription, pitch-estimation | — | — | tensorflow, coreml, tflite, onnxruntime, onnx | mobile, desktop, browser | Apache-2.0 / Apache-2.0 | unknown |
+| [Demucs](catalog/music/source-separation/demucs.yaml) · [upstream](<https://github.com/facebookresearch/demucs>) | collection / pretrained | music-source-separation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+| [Spleeter](pipelines/music/spleeter.yaml) · [upstream](<https://github.com/deezer/spleeter>) | toolkit / pretrained | music-source-separation | — | — | tensorflow, python | desktop, server | MIT / MIT | unknown |
+
+<a id="catalogue-networking"></a>
+
+### Networking
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [nPrintML](pipelines/networking/nprintml.yaml) · [upstream](<https://github.com/nprint/nprintml>) | toolkit / requires-training | network-traffic-classification, packet-analysis, traffic-anomaly-detection | — | — | python | desktop, server | unknown / not-provided | unknown |
 
 <a id="catalogue-reasoning"></a>
 
@@ -217,7 +341,49 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [MAVSDK](pipelines/robotics/mavsdk.yaml) · [upstream](<https://github.com/mavlink/MAVSDK>) | toolkit / companion | drone-control-sdk, autonomous-vehicle-interface | — | — | native-cpp, python | edge, desktop, robot | BSD-3-Clause / not-applicable | unknown |
+| [PX4 Autopilot](pipelines/robotics/px4-autopilot.yaml) · [upstream](<https://github.com/PX4/PX4-Autopilot>) | pipeline / companion | flight-control, autonomous-vehicle-control, sensor-fusion | — | — | native-cpp, nuttx | edge, robot | BSD-3-Clause / not-applicable | unknown |
+| [robomimic](pipelines/robotics/robomimic.yaml) · [upstream](<https://github.com/ARISE-Initiative/robomimic>) | toolkit / requires-training | imitation-learning, robot-manipulation, offline-rl | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | MIT / not-provided | unknown |
+| [Nav2](primitives/robotics/navigation2.yaml) · [upstream](<https://github.com/ros-navigation/navigation2>) | primitive / companion | path-planning, robot-navigation, obstacle-avoidance | — | — | ros2, native-cpp | edge, desktop, robot | Apache-2.0 / not-applicable | unknown |
+| [LeRobot](pipelines/robotics/lerobot.yaml) · [upstream](<https://github.com/huggingface/lerobot>) | toolkit / requires-training | robot-learning, imitation-learning, robot-policy-training, teleoperation | — | — | pytorch, pytorch-checkpoint, onnx | desktop, edge, robot | Apache-2.0 / Apache-2.0 | unknown |
+| [Octo](catalog/robotics/policies/octo.yaml) · [upstream](<https://huggingface.co/rail-berkeley/octo-small>) | collection / pretrained | robot-policy-learning, robot-manipulation | — | — | jax, pytorch, transformers, safetensors | desktop, server | MIT / MIT | unknown |
 | [EdgeVLA-Tiny](catalog/robotics/vla/edgevla-tiny.yaml) · [upstream](<https://huggingface.co/enfuse/edgevla-tiny-fmb>) | model / unknown | vision-language-action | 164M | — | — | edge | unknown / unknown | unknown |
+| [OpenVLA](catalog/robotics/vla/openvla.yaml) · [upstream](<https://huggingface.co/openvla/openvla-7b>) | collection / pretrained | vision-language-action, robot-manipulation | 7B | — | pytorch, transformers, safetensors | server, desktop | MIT / MIT | unknown |
+
+<a id="catalogue-runtime"></a>
+
+### Runtime
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [MaixPy](pipelines/runtime/maixpy.yaml) · [upstream](<https://github.com/sipeed/MaixPy>) | toolkit / companion | edge-ai-deployment, embedded-vision | — | — | maixpy-native, nncase, kmodel | edge | MIT / not-applicable | unknown |
+| [Seeed SenseCraft Model Assistant](pipelines/runtime/sensecraft-model-assistant.yaml) · [upstream](<https://github.com/Seeed-Studio/ModelAssistant>) | toolkit / requires-training | embedded-model-training, model-deployment, edge-vision | — | — | python, onnxruntime, tflite, ncnn, onnx | edge, mobile, desktop | unknown / not-provided | unknown |
+| [Vitis AI](pipelines/runtime/vitis-ai.yaml) · [upstream](<https://github.com/Xilinx/Vitis-AI>) | toolkit / companion | fpga-inference, dpu-deployment, model-compilation | — | — | vitis-ai-native, onnx, xmodel | edge, server | Apache-2.0 / not-applicable | unknown |
+| [BitNetMCU](pipelines/runtime/bitnetmcu.yaml) · [upstream](<https://github.com/cpldcpu/BitNetMCU>) | toolkit / companion | mcu-inference, low-bit-quantization | — | — | native-c, c-source | edge | unknown / not-applicable | unknown |
+| [ESP-DL](pipelines/runtime/esp-dl.yaml) · [upstream](<https://github.com/espressif/esp-dl>) | toolkit / companion | mcu-inference, esp32-deployment | — | — | esp-dl-native, tflite, onnx, esp-dl | edge | Apache-2.0 / not-applicable | unknown |
+| [MCUNet / TinyEngine](pipelines/runtime/tinyengine.yaml) · [upstream](<https://github.com/mit-han-lab/tinyengine>) | toolkit / companion | mcu-inference, on-device-training, model-compilation | — | — | tinyengine-native, cmsis-nn, c-source | edge | MIT / not-applicable | unknown |
+| [TensorFlow Lite for Microcontrollers](pipelines/runtime/tflite-micro.yaml) · [upstream](<https://github.com/tensorflow/tflite-micro>) | toolkit / companion | mcu-inference, tinyml-deployment | — | — | tflite-micro-native, cmsis-nn, tflite | edge | Apache-2.0 / not-applicable | unknown |
+| [Z-Ant](pipelines/runtime/zant.yaml) · [upstream](<https://github.com/ZantFoundation/Z-Ant>) | toolkit / companion | mcu-inference, model-optimization, embedded-deployment | — | — | zant-native, onnx | edge | unknown / not-applicable | unknown |
+| [deepC](pipelines/runtime/deepc.yaml) · [upstream](<https://github.com/ai-techsystems/deepC>) | toolkit / companion | mcu-inference, model-compilation, embedded-deployment | — | — | deepc-native, onnx | edge | unknown / not-applicable | unknown |
+| [emlearn](pipelines/runtime/emlearn.yaml) · [upstream](<https://github.com/emlearn/emlearn>) | toolkit / companion | mcu-inference, classical-ml-deployment | — | — | emlearn-c, python, c-source | edge | MIT / not-applicable | unknown |
+| [CMSIS-NN](pipelines/runtime/cmsis-nn.yaml) · [upstream](<https://github.com/ARM-software/CMSIS-NN>) | toolkit / companion | mcu-kernels, mcu-inference | — | — | cmsis-nn, native-c, c-source | edge | Apache-2.0 / not-applicable | unknown |
+| [MNN](pipelines/runtime/mnn.yaml) · [upstream](<https://github.com/alibaba/MNN>) | toolkit / companion | mobile-inference, on-device-inference, model-conversion | — | — | mnn-native, opencl, vulkan, mnn, onnx | mobile, edge, desktop, server | Apache-2.0 / not-applicable | unknown |
+| [Paddle Lite](pipelines/runtime/paddle-lite.yaml) · [upstream](<https://github.com/PaddlePaddle/Paddle-Lite>) | toolkit / companion | mobile-inference, on-device-inference, model-optimization | — | — | paddle-lite-native, paddle, onnx | mobile, edge, desktop | Apache-2.0 / not-applicable | unknown |
+| [TNN](pipelines/runtime/tnn.yaml) · [upstream](<https://github.com/Tencent/TNN>) | toolkit / companion | mobile-inference, on-device-inference, model-conversion | — | — | tnn-native, opencl, metal, onnx, tnn | mobile, edge, desktop, server | BSD-3-Clause / not-applicable | unknown |
+| [ncnn](pipelines/runtime/ncnn.yaml) · [upstream](<https://github.com/Tencent/ncnn>) | toolkit / companion | mobile-inference, on-device-inference | — | — | ncnn-native, vulkan, onnx | mobile, edge, desktop | BSD-3-Clause / not-applicable | unknown |
+| [Apache TVM](pipelines/runtime/apache-tvm.yaml) · [upstream](<https://github.com/apache/tvm>) | toolkit / companion | model-compilation, on-device-inference, autotuning | — | — | tvm-native, relay, tvm-ffi | desktop, mobile, edge | Apache-2.0 / not-applicable | unknown |
+| [ONNX](pipelines/runtime/onnx.yaml) · [upstream](<https://github.com/onnx/onnx>) | toolkit / companion | model-interchange, model-format | — | — | onnxruntime, openvino, ncnn, onnx | desktop, server, mobile, edge | Apache-2.0 / not-applicable | unknown |
+| [ONNX Model Zoo](catalog/runtime/model-zoo/onnx-model-zoo.yaml) · [upstream](<https://github.com/onnx/models>) | collection / pretrained | model-zoo, benchmarking, model-interchange | — | — | onnxruntime, onnx | desktop, server, mobile, edge | Apache-2.0 / unknown | unknown |
+| [Cactus](pipelines/runtime/cactus.yaml) · [upstream](<https://github.com/cactus-compute/cactus>) | toolkit / companion | on-device-inference, model-quantization, mobile-deployment | — | — | cactus-native | mobile, edge, robot | unknown / not-applicable | unknown |
+| [ExecuTorch](pipelines/runtime/executorch.yaml) · [upstream](<https://github.com/pytorch/executorch>) | toolkit / companion | on-device-inference, mcu-deployment, model-export | — | — | executorch-native, pytorch, pte | mobile, edge, desktop, browser | BSD-3-Clause / not-applicable | unknown |
+| [ONNX Runtime](pipelines/runtime/onnxruntime.yaml) · [upstream](<https://github.com/microsoft/onnxruntime>) | toolkit / companion | on-device-inference, cross-platform-execution | — | — | onnxruntime-native, onnx | desktop, server, mobile, edge, browser | MIT / not-applicable | unknown |
+| [OnnxStream](pipelines/runtime/onnxstream.yaml) · [upstream](<https://github.com/vitoplantamura/OnnxStream>) | toolkit / companion | on-device-inference, onnx-execution | — | — | onnxstream-native, onnxruntime, onnx | edge, desktop, browser | MIT / not-applicable | unknown |
+| [OpenVINO](pipelines/runtime/openvino.yaml) · [upstream](<https://github.com/openvinotoolkit/openvino>) | toolkit / companion | on-device-inference, model-optimization, model-compilation | — | — | openvino-native, onnxruntime, onnx, openvino-ir | desktop, server, edge | Apache-2.0 / not-applicable | unknown |
+| [LiteRT-LM](pipelines/runtime/litert-lm.yaml) · [upstream](<https://github.com/google-ai-edge/LiteRT-LM>) | toolkit / companion | on-device-llm-inference, text-generation | — | — | litert-lm-native | mobile, edge, desktop | Apache-2.0 / not-applicable | unknown |
+| [MLC LLM](pipelines/runtime/mlc-llm.yaml) · [upstream](<https://github.com/mlc-ai/mlc-llm>) | toolkit / companion | on-device-llm-inference, model-compilation, text-generation | — | — | mlc-native, tvm | mobile, edge, desktop, browser | Apache-2.0 / not-applicable | unknown |
+| [llama.cpp](pipelines/runtime/llama-cpp.yaml) · [upstream](<https://github.com/ggml-org/llama.cpp>) | toolkit / companion | on-device-llm-inference, text-generation, quantization | — | — | llama-cpp-native, ggml, gguf | desktop, mobile, edge, browser | MIT / not-applicable | unknown |
+| [llamafile](pipelines/runtime/llamafile.yaml) · [upstream](<https://github.com/Mozilla-Ocho/llamafile>) | toolkit / companion | on-device-llm-inference, single-file-deployment | — | — | llama-cpp-native, cosmopolitan, gguf | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [audio.cpp](pipelines/runtime/audio-cpp.yaml) · [upstream](<https://github.com/0xShug0/audio.cpp>) | toolkit / companion | speech-to-text, text-to-speech, voice-activity-detection, voice-conversion | — | — | ggml, audio-cpp-native, gguf | desktop, edge, mobile | unknown / not-applicable | unknown |
 
 <a id="catalogue-science"></a>
 
@@ -225,7 +391,27 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [MACE](catalog/science/materials/mace.yaml) · [upstream](<https://github.com/ACEsuit/mace>) | collection / requires-training | atomistic-potential, molecular-dynamics | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
 | [MatterSim Small](catalog/science/materials/mattersim-small.yaml) · [upstream](<https://github.com/microsoft/mattersim>) | model / unknown | atomistic-potential | 1M | — | — | edge | MIT / unknown | unknown |
+| [TorchMD-NET](catalog/science/materials/torchmd-net.yaml) · [upstream](<https://github.com/torchmd/torchmd-net>) | collection / requires-training | machine-learned-potentials, molecular-dynamics, atomistic-simulation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+| [OpenMM](pipelines/science/openmm.yaml) · [upstream](<https://github.com/openmm/openmm>) | toolkit / companion | molecular-dynamics, atomistic-simulation | — | — | native-cpp, python, cuda | desktop, server | MIT / not-applicable | unknown |
+| [Chemprop](pipelines/science/chemprop.yaml) · [upstream](<https://github.com/chemprop/chemprop>) | toolkit / requires-training | molecular-property-prediction, molecular-representation | — | — | pytorch, python, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+| [DeepChem](pipelines/science/deepchem.yaml) · [upstream](<https://github.com/deepchem/deepchem>) | toolkit / requires-training | molecular-property-prediction, drug-discovery, materials-informatics | — | — | pytorch, tensorflow, python, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+| [ESM (Evolutionary Scale Modeling)](catalog/science/proteins/esm.yaml) · [upstream](<https://huggingface.co/facebook/esm2_t33_650M_UR50D>) | collection / pretrained | protein-language-modelling, protein-embedding, protein-structure-prediction | — | — | pytorch, transformers, pytorch-checkpoint | desktop, server | MIT / MIT | unknown |
+| [AlphaFold](pipelines/science/alphafold.yaml) · [upstream](<https://github.com/google-deepmind/alphafold>) | toolkit / pretrained | protein-structure-prediction | — | — | jax | server | Apache-2.0 / unknown | unknown |
+| [ColabFold](pipelines/science/colabfold.yaml) · [upstream](<https://github.com/sokrypton/ColabFold>) | toolkit / pretrained | protein-structure-prediction, protein-complex-prediction | — | — | jax, pytorch, pytorch-checkpoint | server, desktop | MIT / unknown | unknown |
+| [OpenFold](pipelines/science/openfold.yaml) · [upstream](<https://github.com/aqlaboratory/openfold>) | toolkit / requires-training | protein-structure-prediction | — | — | pytorch, pytorch-checkpoint | server, desktop | unknown / unknown | unknown |
+
+<a id="catalogue-security"></a>
+
+### Security
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Adversarial Robustness Toolbox](pipelines/security/adversarial-robustness-toolbox.yaml) · [upstream](<https://github.com/Trusted-AI/adversarial-robustness-toolbox>) | toolkit / companion | adversarial-attack-testing, model-hardening, poisoning-detection | — | — | python, pytorch, tensorflow | desktop, server | MIT / not-applicable | unknown |
+| [Foolbox](pipelines/security/foolbox.yaml) · [upstream](<https://github.com/bethgelab/foolbox>) | toolkit / companion | adversarial-attacks, robustness-evaluation | — | — | pytorch, tensorflow, jax | desktop, server | MIT / not-applicable | unknown |
+| [SecML](pipelines/security/secml.yaml) · [upstream](<https://github.com/pralab/secml>) | toolkit / companion | adversarial-attacks, secure-ml-evaluation | — | — | python, pytorch | desktop, server | unknown / not-applicable | unknown |
+| [CleverHans](pipelines/security/cleverhans.yaml) · [upstream](<https://github.com/tensorflow/cleverhans>) | toolkit / companion | adversarial-examples, robustness-evaluation | — | — | python, tensorflow, pytorch | desktop, server | MIT / not-applicable | unknown |
 
 <a id="catalogue-sensors"></a>
 
@@ -233,7 +419,11 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [Bearing Fault Detection](pipelines/sensors/bearing-fault-detection.yaml) · [upstream](<https://github.com/malyvsen/bearing-fault-detection>) | pipeline / requires-training | bearing-fault-detection, predictive-maintenance, anomaly-detection | — | — | python | edge | unknown / unknown | unknown |
 | [TensorFlow Lite Micro Magic Wand](catalog/sensors/gesture/tf-micro-magic-wand.yaml) · [upstream](<https://github.com/tensorflow/tflite-micro>) | model / unknown | imu-gesture-recognition | — | — | — | edge | unknown / unknown | unknown |
+| [STM32 AI Model Zoo](catalog/sensors/model-zoo/stm32ai-modelzoo.yaml) · [upstream](<https://github.com/STMicroelectronics/stm32ai-modelzoo>) | collection / pretrained | keyword-spotting, image-classification, human-activity-recognition, anomaly-detection | — | — | tflite, onnx, stm32cube-ai | edge | unknown / unknown | unknown |
+| [SPARROW](pipelines/sensors/sparrow.yaml) · [upstream](<https://github.com/microsoft/SPARROW>) | pipeline / companion | remote-wildlife-monitoring, edge-inference | — | — | python | edge | MIT / not-applicable | unknown |
+| [SignalMint](pipelines/sensors/signalmint.yaml) · [upstream](<https://github.com/Charan-Hari/SignalMint>) | pipeline / requires-training | streaming-anomaly-detection, signal-compression | — | — | pytorch, native-c, c-source | edge | unknown / unknown | unknown |
 | [TI TinyML Model Zoo](catalog/sensors/model-zoo/ti-tinyml-modelzoo.yaml) · [upstream](<https://github.com/TexasInstruments/tinyml-modelzoo>) | collection / unknown | time-series-classification, forecasting, anomaly-detection, audio-classification, image-classification, radar-classification | — | — | — | edge | unknown / unknown | unknown |
 | [Pulse / NanoEdge vibration anomaly detector](catalog/sensors/anomaly/pulse-nanoedge.yaml) · [upstream](<https://github.com/Ayushkothari96/pulse>) | model / unknown | vibration-anomaly-detection | — | — | — | edge | unknown / unknown | unknown |
 
@@ -244,6 +434,22 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [MuJoCo](primitives/simulation/mujoco.yaml) · [upstream](<https://github.com/google-deepmind/mujoco>) | primitive / unknown | articulated-physics-simulation | — | — | native-c-cpp, python | desktop | Apache-2.0 / not-applicable | luckfox-rv1106: unknown |
+| [CARLA](pipelines/simulation/carla.yaml) · [upstream](<https://github.com/carla-simulator/carla>) | pipeline / companion | autonomous-driving-simulation, reinforcement-learning, perception-testing | — | — | python, native-cpp | desktop, server | MIT / not-applicable | unknown |
+| [gym-pybullet-drones](pipelines/simulation/gym-pybullet-drones.yaml) · [upstream](<https://github.com/utiasDSL/gym-pybullet-drones>) | pipeline / companion | drone-control, reinforcement-learning, simulation | — | — | python, pybullet | desktop, server | MIT / not-applicable | unknown |
+| [AirSim](pipelines/simulation/airsim.yaml) · [upstream](<https://github.com/microsoft/AirSim>) | pipeline / companion | drone-simulation, autonomous-vehicle-simulation, reinforcement-learning | — | — | python, native-cpp | desktop | MIT / not-applicable | unknown |
+| [Meta-World](pipelines/simulation/metaworld.yaml) · [upstream](<https://github.com/Farama-Foundation/Metaworld>) | pipeline / companion | meta-reinforcement-learning, robot-manipulation, benchmarking | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
+| [Isaac Lab](pipelines/simulation/isaac-lab.yaml) · [upstream](<https://github.com/isaac-sim/IsaacLab>) | pipeline / companion | robot-learning, reinforcement-learning, simulation | — | — | pytorch, omni-isaac | desktop, server | BSD-3-Clause / not-applicable | unknown |
+| [robosuite](pipelines/simulation/robosuite.yaml) · [upstream](<https://github.com/ARISE-Initiative/robosuite>) | pipeline / companion | robot-manipulation, simulation, reinforcement-learning | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
+| [Genesis](pipelines/simulation/genesis.yaml) · [upstream](<https://github.com/Genesis-Embodied-AI/Genesis>) | pipeline / companion | robotics-simulation, physics-simulation, reinforcement-learning | — | — | python, native-cpp | desktop, server | Apache-2.0 / not-applicable | unknown |
+
+<a id="catalogue-telecom"></a>
+
+### Telecom
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [TorchSig](pipelines/telecom/torchsig.yaml) · [upstream](<https://github.com/TorchDSP/torchsig>) | toolkit / requires-training | rf-signal-classification, signal-processing, modulation-recognition | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server, edge | unknown / not-provided | unknown |
+| [GNU Radio](pipelines/telecom/gnuradio.yaml) · [upstream](<https://github.com/gnuradio/gnuradio>) | toolkit / companion | sdr-signal-processing, rf-dsp | — | — | native-cpp, python | desktop, edge | GPL-3.0 / not-applicable | unknown |
 
 <a id="catalogue-time-series"></a>
 
@@ -251,11 +457,19 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [tsfresh](pipelines/time-series/tsfresh.yaml) · [upstream](<https://github.com/blue-yonder/tsfresh>) | toolkit / companion | feature-extraction, time-series-classification | — | — | python, scikit-learn | desktop, server, edge | MIT / not-provided | unknown |
 | [Chronos-Bolt Tiny](catalog/time-series/forecasting/chronos-bolt-tiny.yaml) · [upstream](<https://huggingface.co/amazon/chronos-bolt-tiny>) | model / pretrained | forecasting | 9M | — | chronos-forecasting, pytorch, safetensors | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [DLinear](catalog/time-series/forecasting/dlinear.yaml) · [upstream](<https://github.com/cure-lab/LTSF-Linear>) | model / requires-training | forecasting | — | — | numpy, pytorch, npz | desktop, edge | Apache-2.0 / not-provided | unknown |
+| [Darts](pipelines/time-series/darts.yaml) · [upstream](<https://github.com/unit8co/darts>) | toolkit / requires-training | forecasting, anomaly-detection, time-series-classification | — | — | pytorch, python, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [Kats](pipelines/time-series/kats.yaml) · [upstream](<https://github.com/facebookresearch/Kats>) | toolkit / requires-training | forecasting, anomaly-detection, changepoint-detection, time-series-features | — | — | python, pickle | desktop, server | MIT / not-provided | unknown |
+| [MOMENT](catalog/time-series/forecasting/moment.yaml) · [upstream](<https://github.com/moment-timeseries-foundation-model/moment>) | collection / pretrained | forecasting, classification, anomaly-detection, imputation | — | — | pytorch, transformers, pytorch-checkpoint | desktop, server, edge | MIT / MIT | unknown |
+| [Orbit](pipelines/time-series/orbit.yaml) · [upstream](<https://github.com/uber/orbit>) | toolkit / requires-training | forecasting, changepoint-detection | — | — | python, stan, pytorch, pickle | desktop, server | unknown / not-provided | unknown |
+| [PatchTST](catalog/time-series/forecasting/patchtst.yaml) · [upstream](<https://github.com/yuqinie98/PatchTST>) | collection / requires-training | forecasting | — | — | pytorch, pytorch-checkpoint | desktop, server, edge | unknown / unknown | unknown |
+| [Prophet](pipelines/time-series/prophet.yaml) · [upstream](<https://github.com/facebook/prophet>) | toolkit / requires-training | forecasting | — | — | python, r, stan, pickle, json | desktop, server | MIT / not-provided | unknown |
 | [TinyTimeMixer](catalog/time-series/forecasting/tiny-time-mixer.yaml) · [upstream](<https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2>) | model / pretrained | forecasting | — | — | tsfm-public, pytorch, safetensors | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [NeuralForecast](pipelines/time-series/neuralforecast.yaml) · [upstream](<https://github.com/Nixtla/neuralforecast>) | toolkit / requires-training | neural-forecasting, forecast-model-evaluation | — | — | python, pytorch | desktop, server | Apache-2.0 / configuration-dependent | unknown |
 | [StatsForecast](pipelines/time-series/statsforecast.yaml) · [upstream](<https://github.com/Nixtla/statsforecast>) | toolkit / requires-training | statistical-forecasting, baseline-evaluation | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
+| [sktime](pipelines/time-series/sktime.yaml) · [upstream](<https://github.com/sktime/sktime>) | toolkit / requires-training | time-series-classification, forecasting, time-series-transformation | — | — | python, scikit-learn, numpy, pickle | desktop, server, edge | BSD-3-Clause / not-provided | unknown |
 
 <a id="catalogue-video"></a>
 
@@ -263,6 +477,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [MMAction2](pipelines/video/mmaction2.yaml) · [upstream](<https://github.com/open-mmlab/mmaction2>) | toolkit / requires-training | action-recognition, temporal-action-localization, skeleton-action-recognition | — | — | pytorch, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [Robust Video Matting (MobileNetV3)](catalog/video/matting/robust-video-matting.yaml) · [upstream](<https://github.com/PeterL1n/RobustVideoMatting>) | model / unknown | human-video-matting | — | — | pytorch, onnxruntime, tensorflowjs, coreml, onnx | desktop, browser, mobile | GPL-3.0 / unknown | luckfox-rv1106: unknown |
 | [TransNet V2](catalog/video/shot-detection/transnet-v2.yaml) · [upstream](<https://github.com/soCzech/TransNetV2>) | model / unknown | shot-boundary-detection | — | — | tensorflow, pytorch | desktop | unknown / unknown | luckfox-rv1106: unknown |
 | [ST-GCN++ (PYSKL)](catalog/video/action-recognition/st-gcnpp.yaml) · [upstream](<https://github.com/kennymckormick/pyskl>) | model / unknown | skeleton-action-recognition | — | — | pytorch | desktop | unknown / unknown | luckfox-rv1106: unknown |
@@ -277,30 +492,81 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [VideoPose3D](catalog/vision/pose/videopose3d.yaml) · [upstream](<https://github.com/facebookresearch/VideoPose3D>) | model / unknown | 2d-to-3d-pose-lifting | — | — | pytorch | desktop | CC-BY-NC / CC-BY-NC | luckfox-rv1106: unknown |
+| [rembg](pipelines/vision/rembg.yaml) · [upstream](<https://github.com/danielgatis/rembg>) | toolkit / pretrained | background-removal, image-segmentation | — | — | onnxruntime, onnx | desktop, server, edge | MIT / unknown | unknown |
+| [MMPose](pipelines/vision/mmpose.yaml) · [upstream](<https://github.com/open-mmlab/mmpose>) | toolkit / requires-training | body-pose-estimation, hand-pose-estimation, face-landmark | — | — | pytorch, onnxruntime, openvino, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [MediaPipe Pose Landmarker Lite](catalog/vision/pose/mediapipe-pose-lite.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | body-pose-estimation | — | — | mediapipe, tflite, mediapipe-task | mobile, browser, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [RTMPose-t](catalog/vision/pose/rtmpose-t.yaml) · [upstream](<https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose>) | model / pretrained | body-pose-estimation | 3.34M | — | mmpose, onnxruntime, pytorch-checkpoint, onnx | edge, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [Coral Edge TPU Examples](pipelines/vision/coral-edge-tpu.yaml) · [upstream](<https://github.com/google-coral/tflite>) | toolkit / companion | edge-tpu-inference, image-classification, object-detection | — | — | tflite, edgetpu | edge | Apache-2.0 / not-applicable | unknown |
+| [DepthAI](pipelines/vision/depthai.yaml) · [upstream](<https://github.com/luxonis/depthai>) | pipeline / companion | edge-vision, depth-estimation, object-detection, spatial-inference | — | — | depthai-native, openvino, blob, onnx | edge, robot | MIT / not-applicable | unknown |
 | [BlazeFace](catalog/vision/face/blazeface.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | face-detection | — | — | — | edge | unknown / unknown | unknown |
+| [ESP-WHO](pipelines/vision/esp-who.yaml) · [upstream](<https://github.com/espressif/esp-who>) | toolkit / pretrained | face-detection, face-recognition, esp32-vision | — | — | esp-dl, tflite | edge | Apache-2.0 / unknown | unknown |
+| [InsightFace](pipelines/vision/insightface.yaml) · [upstream](<https://github.com/deepinsight/insightface>) | toolkit / pretrained | face-detection, face-recognition, face-alignment | — | — | onnxruntime, pytorch, mxnet, onnx | mobile, edge, desktop, server | MIT / unknown | unknown |
+| [DeepFace](pipelines/vision/deepface.yaml) · [upstream](<https://github.com/serengil/deepface>) | toolkit / pretrained | face-recognition, face-attribute-analysis, face-verification | — | — | tensorflow, onnxruntime, pytorch, onnx | desktop, server, edge | MIT / unknown | unknown |
+| [face_recognition](pipelines/vision/face-recognition.yaml) · [upstream](<https://github.com/ageitgey/face_recognition>) | toolkit / pretrained | face-recognition, face-detection, face-encoding | — | — | python, dlib | desktop, server, edge | MIT / unknown | unknown |
+| [CodeFormer](catalog/vision/enhancement/codeformer.yaml) · [upstream](<https://github.com/sczhou/CodeFormer>) | collection / pretrained | face-restoration, image-restoration | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
+| [GFPGAN](catalog/vision/enhancement/gfpgan.yaml) · [upstream](<https://github.com/TencentARC/GFPGAN>) | collection / pretrained | face-restoration, image-restoration | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
+| [CVNets](catalog/vision/classification/apple-cvnets.yaml) · [upstream](<https://github.com/apple/ml-cvnets>) | collection / pretrained | image-classification, object-detection, semantic-segmentation | — | — | pytorch, coreml, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop, server | unknown / unknown | unknown |
+| [FastViT](catalog/vision/classification/apple-fastvit.yaml) · [upstream](<https://github.com/apple/ml-fastvit>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, coreml, pytorch-checkpoint | mobile, edge, desktop | unknown / unknown | unknown |
+| [MMPreTrain](pipelines/vision/mmpretrain.yaml) · [upstream](<https://github.com/open-mmlab/mmpretrain>) | toolkit / requires-training | image-classification, feature-extraction, self-supervised-learning | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [MobileNetV3 Small](catalog/vision/classification/mobilenetv3-small.yaml) · [upstream](<https://github.com/tensorflow/models>) | model / unknown | image-classification, feature-extraction | — | — | — | edge | unknown / unknown | unknown |
+| [MobileOne](catalog/vision/classification/mobileone.yaml) · [upstream](<https://github.com/apple/ml-mobileone>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, coreml, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop | unknown / unknown | unknown |
+| [TorchVision Models](catalog/vision/classification/torchvision-models.yaml) · [upstream](<https://github.com/pytorch/vision>) | collection / pretrained | image-classification, object-detection, semantic-segmentation, video-classification | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | mobile, desktop, server | BSD-3-Clause / unknown | unknown |
+| [timm (PyTorch Image Models)](catalog/vision/classification/timm.yaml) · [upstream](<https://github.com/huggingface/pytorch-image-models>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop, server | Apache-2.0 / unknown | unknown |
 | [MobileSAM](catalog/vision/segmentation/mobilesam.yaml) · [upstream](<https://github.com/ChaoningZhang/MobileSAM/blob/master/weights/mobile_sam.pt>) | model / pretrained | image-segmentation | 9.66M | — | pytorch, pytorch-checkpoint | edge | Apache-2.0 / unknown | unknown |
+| [Segment Anything (SAM)](catalog/vision/segmentation/segment-anything.yaml) · [upstream](<https://huggingface.co/facebook/sam-vit-base>) | collection / pretrained | image-segmentation, promptable-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
 | [RFDN](catalog/vision/super-resolution/rfdn.yaml) · [upstream](<https://github.com/njulj/RFDN>) | model / unknown | image-super-resolution | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
+| [Real-ESRGAN](catalog/vision/super-resolution/real-esrgan.yaml) · [upstream](<https://github.com/xinntao/Real-ESRGAN>) | collection / pretrained | image-super-resolution, image-restoration | — | — | pytorch, ncnn, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | unknown / unknown | unknown |
 | [MobileCLIP2-S0](catalog/vision/embeddings/mobileclip2-s0.yaml) · [upstream](<https://github.com/apple-aiml-research/ml-mobileclip>) | model / unknown | image-text-similarity, zero-shot-image-classification | 74.8M | — | pytorch, openclip | mobile, desktop | MIT / Apple-ML-Research-Model-TOU | luckfox-rv1106: unknown |
 | [SuperPoint](catalog/vision/features/superpoint.yaml) · [upstream](<https://github.com/magicleap/SuperPointPretrainedNetwork>) | model / unknown | keypoint-detection, descriptor-extraction | 1.3M | — | — | edge | unknown / unknown | unknown |
 | [Zero-DCE++](catalog/vision/enhancement/zero-dce-plus-plus.yaml) · [upstream](<https://github.com/Li-Chongyi/Zero-DCE_extension>) | model / unknown | low-light-enhancement | 10K | — | pytorch | desktop | CC-BY-NC-4.0 / unknown | luckfox-rv1106: unknown |
 | [FreeMoCap](pipelines/motion-capture/freemocap.yaml) · [upstream](<https://github.com/freemocap/freemocap>) | pipeline / unknown | markerless-motion-capture | — | — | python | desktop | AGPL-3.0 / unknown | luckfox-rv1106: unknown |
 | [Depth Anything V2 Small](catalog/vision/depth/depth-anything-v2-small.yaml) · [upstream](<https://huggingface.co/depth-anything/Depth-Anything-V2-Small>) | model / pretrained | monocular-depth-estimation | 24.8M | — | pytorch, pytorch-checkpoint | desktop | Apache-2.0 / Apache-2.0 | luckfox-rv1106: unknown |
+| [Depth Pro](catalog/vision/depth/apple-depth-pro.yaml) · [upstream](<https://github.com/apple/ml-depth-pro>) | collection / pretrained | monocular-depth-estimation, metric-depth | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
 | [FastDepth](catalog/vision/depth/fastdepth.yaml) · [upstream](<https://github.com/dwofk/fast-depth>) | model / unknown | monocular-depth-estimation | — | — | — | edge | unknown / unknown | unknown |
 | [Lite-Mono](catalog/vision/depth/lite-mono.yaml) · [upstream](<https://github.com/noahzn/Lite-Mono>) | model / unknown | monocular-depth-estimation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [ZipDepth](catalog/vision/depth/zipdepth.yaml) · [upstream](<https://github.com/fabiotosi92/ZipDepth>) | model / unknown | monocular-depth-estimation | 6.1M | — | pytorch, onnxruntime, onnx | mobile, edge, desktop | MIT / unknown | luckfox-rv1106: unknown |
 | [EasyMocap](pipelines/motion-capture/easymocap.yaml) · [upstream](<https://github.com/zju3dv/EasyMocap>) | toolkit / unknown | motion-capture, multi-view-pose-fitting | — | — | pytorch, opencv | desktop | unknown / unknown | luckfox-rv1106: unknown |
 | [ByteTrack](catalog/vision/tracking/bytetrack.yaml) · [upstream](<https://github.com/ifzhang/ByteTrack>) | pipeline / unknown | multi-object-tracking | — | — | — | edge | unknown / unknown | unknown |
+| [Deep SORT](primitives/vision/deep-sort.yaml) · [upstream](<https://github.com/nwojke/deep_sort>) | primitive / companion | multi-object-tracking | — | — | python, tensorflow | desktop, edge, server | GPL-3.0 / not-applicable | unknown |
+| [Norfair](pipelines/vision/norfair.yaml) · [upstream](<https://github.com/tryolabs/norfair>) | toolkit / companion | multi-object-tracking, tracking | — | — | python, numpy | desktop, edge, server | MIT / not-applicable | unknown |
+| [OC-SORT](catalog/vision/tracking/oc-sort.yaml) · [upstream](<https://github.com/noahcao/OC_SORT>) | collection / companion | multi-object-tracking | — | — | python, pytorch | desktop, server, edge | MIT / unknown | unknown |
+| [SORT](primitives/vision/sort.yaml) · [upstream](<https://github.com/abewley/sort>) | primitive / companion | multi-object-tracking | — | — | python, numpy | desktop, edge, server | GPL-3.0 / not-applicable | unknown |
 | [Lightweight 3D Human Pose Demo](pipelines/pose/lightweight-3d-pose.yaml) · [upstream](<https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch>) | pipeline / unknown | multi-person-3d-pose | — | — | pytorch, openvino | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [Depth Anything 3 Small](catalog/vision/depth/depth-anything-3-small.yaml) · [upstream](<https://github.com/ByteDance-Seed/Depth-Anything-3>) | model / unknown | multi-view-depth-estimation, camera-pose-estimation | 80M | — | pytorch | desktop | Apache-2.0 / Apache-2.0 | luckfox-rv1106: unknown |
 | [EfficientDet-Lite0](catalog/vision/detection/efficientdet-lite0.yaml) · [upstream](<https://www.tensorflow.org/lite/examples/object_detection/overview>) | model / unknown | object-detection | — | — | — | edge | unknown / unknown | unknown |
+| [LibreYOLO](pipelines/vision/libreyolo.yaml) · [upstream](<https://github.com/LibreYOLO/libreyolo>) | toolkit / requires-training | object-detection, pose-estimation, instance-segmentation | — | — | pytorch, onnxruntime, onnx | edge, desktop, server | MIT / not-provided | unknown |
+| [MMDetection](pipelines/vision/mmdetection.yaml) · [upstream](<https://github.com/open-mmlab/mmdetection>) | toolkit / requires-training | object-detection, instance-segmentation | — | — | pytorch, onnxruntime, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [NanoDet-Plus](catalog/vision/detection/nanodet-plus.yaml) · [upstream](<https://github.com/RangiLyu/nanodet#model-zoo>) | model / pretrained | object-detection | 1.17M | — | ncnn, MNN, openvino, onnx | edge | Apache-2.0 / unknown | unknown |
+| [OpenCV Zoo](catalog/vision/classification/opencv-zoo.yaml) · [upstream](<https://github.com/opencv/opencv_zoo>) | collection / pretrained | object-detection, image-classification, face-detection, human-segmentation | — | — | opencv, onnxruntime, tflite, onnx, caffemodel | mobile, edge, desktop, server | Apache-2.0 / unknown | unknown |
+| [PaddleDetection](pipelines/vision/paddledetection.yaml) · [upstream](<https://github.com/PaddlePaddle/PaddleDetection>) | toolkit / requires-training | object-detection, instance-segmentation, keypoint-detection, tracking | — | — | paddle, paddle-lite, onnxruntime, onnx | mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
+| [Ultralytics YOLO](catalog/vision/detection/ultralytics.yaml) · [upstream](<https://github.com/ultralytics/ultralytics>) | collection / pretrained | object-detection, instance-segmentation, pose-estimation, image-classification | — | — | pytorch, onnxruntime, tflite, openvino, pytorch-checkpoint, onnx, openvino-ir | mobile, edge, desktop, server | AGPL-3.0 / AGPL-3.0 | unknown |
+| [YOLOX](catalog/vision/detection/yolox.yaml) · [upstream](<https://github.com/Megvii-BaseDetection/YOLOX>) | collection / pretrained | object-detection | — | — | pytorch, onnxruntime, openvino, onnx, openvino-ir | mobile, edge, desktop, server | Apache-2.0 / unknown | unknown |
+| [EasyOCR](pipelines/vision/easyocr.yaml) · [upstream](<https://github.com/JaidedAI/EasyOCR>) | toolkit / pretrained | ocr, text-detection, text-recognition | — | — | pytorch, onnxruntime, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / unknown | unknown |
 | [PP-OCRv6 Tiny](catalog/vision/ocr/pp-ocrv6-tiny.yaml) · [upstream](<https://github.com/PaddlePaddle/PaddleOCR>) | model / unknown | ocr | 1.5M | — | — | edge | Apache-2.0 / unknown | unknown |
+| [PaddleOCR](pipelines/vision/paddleocr.yaml) · [upstream](<https://github.com/PaddlePaddle/PaddleOCR>) | toolkit / pretrained | ocr, text-detection, text-recognition, document-structure | — | — | paddle, paddle-lite, onnxruntime, onnx | mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
+| [Surya](pipelines/vision/surya.yaml) · [upstream](<https://github.com/VikParuchuri/surya>) | toolkit / pretrained | ocr, layout-analysis, table-recognition, reading-order | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
+| [docTR](pipelines/vision/doctr.yaml) · [upstream](<https://github.com/mindee/doctr>) | toolkit / pretrained | ocr, document-text-detection, document-text-recognition | — | — | pytorch, tensorflow, onnxruntime, onnx, tflite, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / unknown | unknown |
+| [Grounding DINO](catalog/vision/detection/grounding-dino.yaml) · [upstream](<https://huggingface.co/IDEA-Research/grounding-dino-tiny>) | collection / pretrained | open-vocabulary-detection, text-conditioned-detection, zero-shot-detection | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
+| [MediaPipe](pipelines/vision/mediapipe.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | toolkit / companion | pose-estimation, face-detection, hand-tracking, object-detection | — | — | tflite, mediapipe-task | mobile, browser, desktop, edge | Apache-2.0 / unknown | unknown |
 | [MoveNet Lightning](catalog/vision/pose/movenet-lightning.yaml) · [upstream](<https://www.tensorflow.org/hub/tutorials/movenet>) | model / pretrained | pose-estimation | — | 2.9 MB | tflite | edge | Apache-2.0 / unknown | unknown |
 | [rtmlib](pipelines/pose/rtmlib.yaml) · [upstream](<https://github.com/Tau-J/rtmlib>) | toolkit / companion | pose-inference, pose-tracking | — | — | onnxruntime, python, onnx | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [MMSegmentation](pipelines/vision/mmsegmentation.yaml) · [upstream](<https://github.com/open-mmlab/mmsegmentation>) | toolkit / requires-training | semantic-segmentation, scene-parsing | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [PIDNet-S](catalog/vision/segmentation/pidnet-s.yaml) · [upstream](<https://github.com/XuJiacong/PIDNet>) | model / unknown | semantic-segmentation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
+| [Segmentation Models PyTorch](catalog/vision/segmentation/segmentation-models-pytorch.yaml) · [upstream](<https://github.com/qubvel/segmentation_models.pytorch>) | collection / pretrained | semantic-segmentation, instance-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop, server | MIT / unknown | unknown |
+| [MegaDetector-Classifier](pipelines/vision/megadetector-classifier.yaml) · [upstream](<https://github.com/microsoft/MegaDetector-Classifier>) | toolkit / requires-training | species-classification, model-fine-tuning | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+| [SpeciesNet](catalog/vision/classification/speciesnet.yaml) · [upstream](<https://github.com/google/cameratrapai>) | collection / pretrained | species-classification, wildlife-detection | — | — | pytorch, pytorch-checkpoint | desktop, server, edge | unknown / unknown | unknown |
 | [LightStereo (OpenStereo)](catalog/vision/depth/lightstereo.yaml) · [upstream](<https://github.com/XiandaGuo/OpenStereo>) | model / unknown | stereo-depth-estimation | — | — | pytorch | desktop | academic-noncommercial-only / unknown | luckfox-rv1106: unknown |
+| [CosmoEdge](pipelines/vision/cosmo-edge.yaml) · [upstream](<https://github.com/cosmo-wander-ai/cosmo-edge>) | pipeline / companion | video-analytics, on-device-vlm, object-detection | — | — | native-cpp, rknn, onnx | edge | unknown / not-applicable | unknown |
+| [Anomalib](pipelines/vision/anomalib.yaml) · [upstream](<https://github.com/openvinotoolkit/anomalib>) | toolkit / requires-training | visual-anomaly-detection, defect-detection | — | — | pytorch, openvino, onnxruntime, onnx, openvino-ir | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [MegaDetector V6](catalog/vision/detection/megadetector-v6.yaml) · [upstream](<https://github.com/microsoft/MegaDetector>) | collection / pretrained | wildlife-detection, object-detection | 2.3M | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | edge, desktop, server | MIT / MIT, Apache-2.0 or AGPL-3.0 per variant | unknown |
+| [PyTorch-Wildlife](pipelines/vision/pytorch-wildlife.yaml) · [upstream](<https://github.com/microsoft/Pytorch-Wildlife>) | toolkit / companion | wildlife-detection, species-classification, conservation-inference | — | — | pytorch, python, pytorch-checkpoint | desktop, server, edge | MIT / not-provided | unknown |
+
+<a id="catalogue-weather"></a>
+
+### Weather
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [GraphCast](catalog/weather/forecasting/graphcast.yaml) · [upstream](<https://github.com/google-deepmind/graphcast>) | collection / pretrained | weather-forecasting, medium-range-forecasting | — | — | jax, haiku | desktop, server | Apache-2.0 / unknown | unknown |
 
 <!-- CATALOG:END -->

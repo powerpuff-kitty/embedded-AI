@@ -1,0 +1,23 @@
+id: tsfresh
+name: tsfresh
+domain: time-series
+tasks: [feature-extraction, time-series-classification]
+class: time-series-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Automatic extraction of a large set of features from time series for classical ML."
+links: {repository: 'https://github.com/blue-yonder/tsfresh', homepage: 'https://tsfresh.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Feature extraction can feed lightweight classifiers suitable for embedded deployment.'}
+runtimes: [python, scikit-learn]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Feature extraction primitive; classifiers are trained separately.', needs_data: 'Time series with labels for the downstream task.', update_strategy: 'Pin feature configuration; revalidate selected features and timing.'}
+data: {inputs: [time-series], outputs: [feature-matrix, selected-features], languages: []}
+evaluation: ['Feature-selection stability and downstream accuracy on held-out series.']
+limitations: ['Feature computation can be slow on long series; selection is essential.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/blue-yonder/tsfresh', notes: 'Documentation review of feature-extraction scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [time-series, features, classical-ml]

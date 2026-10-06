@@ -1,0 +1,23 @@
+id: nnunet
+name: nnU-Net
+domain: healthcare
+tasks: [medical-image-segmentation]
+class: medical-segmentation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Self-configuring medical-image segmentation framework that adapts its pipeline per dataset."
+links: {repository: 'https://github.com/MIC-DKFZ/nnUNet', paper: 'https://www.nature.com/articles/s41592-020-01008-z'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Primarily server/desktop training; exported models may be optimised for constrained inference.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Automatically configures and trains a U-Net per dataset.', needs_data: 'De-identified medical images with segmentation masks and a defined protocol.', update_strategy: 'Retrain per dataset/protocol and revalidate before any clinical review.'}
+data: {inputs: [medical-image], outputs: [segmentation-mask], languages: []}
+evaluation: ['Dice/HD metrics on site-matched held-out data and inference cost.']
+limitations: ['Not a pretrained clinical product; requires local validation and governance.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/MIC-DKFZ/nnUNet', notes: 'Documentation review of self-configuring pipeline and Apache-2.0 licence; not a clinical benchmark.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, segmentation, medical-imaging]

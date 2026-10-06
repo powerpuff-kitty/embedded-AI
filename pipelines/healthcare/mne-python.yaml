@@ -1,0 +1,23 @@
+id: mne-python
+name: MNE-Python
+domain: healthcare
+tasks: [eeg-analysis, meg-analysis, neurophysiology-processing]
+class: biosignal-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for processing and analysing EEG/MEG neurophysiology data with ML integration."
+links: {repository: 'https://github.com/mne-tools/mne-python', homepage: 'https://mne.tools/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis toolkit; near-sensor use requires careful pipeline selection.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic signal processing plus interfaces to learned decoders.', needs_data: 'Neurophysiology recordings with acquisition metadata.', update_strategy: 'Pin version and revalidate preprocessing/epoching on target data.'}
+data: {inputs: [eeg-meg-recordings], outputs: [cleaned-signals, features, epochs], languages: []}
+evaluation: ['Preprocessing correctness and downstream decoder accuracy on held-out subjects.']
+limitations: ['Not a diagnostic tool; subject-specific variability is large.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mne-tools/mne-python', notes: 'Documentation review of neurophysiology scope and BSD-3-Clause licence; not a clinical benchmark.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, eeg, biosignals, signal-processing]

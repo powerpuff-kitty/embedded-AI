@@ -1,0 +1,23 @@
+id: nerfstudio
+name: Nerfstudio
+domain: mapping
+tasks: [neural-radiance-fields, novel-view-synthesis, 3d-reconstruction]
+class: reconstruction-toolkit
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Modular framework for neural radiance fields and 3D scene reconstruction from images."
+links: {repository: 'https://github.com/nerfstudio-project/nerfstudio', homepage: 'https://docs.nerf.studio/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'GPU-heavy training/rendering; not an on-device runtime.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Trains NeRF/3DGS models from posed images; rendering is a separate concern.', needs_data: 'Calibrated multi-view imagery and camera poses.', update_strategy: 'Pin version; re-evaluate reconstruction quality per capture protocol.'}
+data: {inputs: [posed-images], outputs: [3d-scene-model, rendered-views], languages: []}
+evaluation: ['Reconstruction/rendering quality against held-out views.']
+limitations: ['Compute-heavy; reconstruction quality depends on capture and calibration.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/nerfstudio-project/nerfstudio', notes: 'Documentation review of reconstruction scope and Apache-2.0 licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [mapping, reconstruction, nerf, 3d]

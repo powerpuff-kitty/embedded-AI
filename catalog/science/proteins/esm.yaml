@@ -1,0 +1,23 @@
+id: esm
+name: ESM (Evolutionary Scale Modeling)
+domain: science
+tasks: [protein-language-modelling, protein-embedding, protein-structure-prediction]
+class: protein-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Meta protein language-model family producing embeddings and structure predictions from sequences."
+links: {repository: 'https://github.com/facebookresearch/esm', model: 'https://huggingface.co/facebook/esm2_t33_650M_UR50D'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server], notes: 'Small variants can run on constrained inference; larger models need GPU/server memory.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained checkpoints; task heads are fine-tuned per application.', needs_data: 'Protein sequences for embedding; labelled assays for downstream tasks.', update_strategy: 'Pin checkpoint revision; revalidate per target protein family.'}
+data: {inputs: [protein-sequence], outputs: [embeddings, structure-prediction], languages: []}
+evaluation: ['Downstream task metrics and embedding stability across sequence families.']
+limitations: ['Predictions are computational hypotheses, not experimental validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/esm', notes: 'Documentation review of model family, checkpoint link and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, proteins, embeddings, pretrained]

@@ -1,0 +1,23 @@
+id: tinyengine
+name: MCUNet / TinyEngine
+domain: runtime
+tasks: [mcu-inference, on-device-training, model-compilation]
+class: mcu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "MIT-licensed MCU inference and on-device training engine behind MCUNet and MLPerf Tiny entries."
+links: {repository: 'https://github.com/mit-han-lab/tinyengine', paper: 'https://arxiv.org/abs/2010.11267'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Targets microcontrollers; upstream reports training under 256 KB in MCUNetV3.'}
+runtimes: [tinyengine-native, cmsis-nn]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Generates and compiles code for a chosen model; supports on-device training variants.', needs_data: 'A supported model graph and a target MCU memory budget.', update_strategy: 'Recompile per target and re-validate after toolchain upgrades.'}
+data: {inputs: [model-graph], outputs: [compiled-inference-code, inference-results], languages: []}
+evaluation: ['Flash/RAM fit, latency and accuracy after quantization on the target MCU.']
+limitations: ['Requires device-specific compilation; not a drop-in desktop runtime.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mit-han-lab/tinyengine', notes: 'Documentation review of MCUNet/TinyEngine scope, code generation and reported memory.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mcu, tinyml, code-generation]

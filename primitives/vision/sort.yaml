@@ -1,0 +1,23 @@
+id: sort
+name: SORT
+domain: vision
+tasks: [multi-object-tracking]
+class: tracking-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Simple online real-time tracking algorithm combining Kalman filtering and Hungarian association."
+links: {repository: 'https://github.com/abewley/sort', paper: 'https://arxiv.org/abs/1602.00763'}
+model: {parameters: null, file_size_mb: null}
+license: {code: GPL-3.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Lightweight tracker needing only detector boxes; no learned model.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Association primitive; tuned via IoU/max-age parameters.', needs_data: 'Per-frame detections from a detector.', update_strategy: 'Re-tune and revalidate ID metrics per scene and detector.'}
+data: {inputs: [per-frame-detections], outputs: [track-ids, trajectories], languages: []}
+evaluation: ['MOTA/IDF1 and ID-switch rates on target sequences.']
+limitations: ['GPL-3.0 copyleft; no appearance model, so occlusions cause ID switches.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/abewley/sort', notes: 'Documentation review of online tracking algorithm and GPL-3.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, tracking, kalman, primitive]

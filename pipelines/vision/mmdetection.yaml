@@ -1,0 +1,23 @@
+id: mmdetection
+name: MMDetection
+domain: vision
+tasks: [object-detection, instance-segmentation]
+class: detection-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "OpenMMLab detection toolbox with a broad model zoo and export/deployment tooling."
+links: {repository: 'https://github.com/open-mmlab/mmdetection', homepage: 'https://mmdetection.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Supports ONNX/TensorRT export and mobile-friendly architectures.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains and fine-tunes detection/segmentation models.', needs_data: 'Labelled detection data and a selected architecture.', update_strategy: 'Re-export and re-benchmark after upgrades; verify per-model licences.'}
+data: {inputs: [rgb-image, labelled-dataset], outputs: [boxes, masks], languages: []}
+evaluation: ['mAP/mask metrics plus post-export latency on the target.']
+limitations: ['Model-zoo entries carry their own licences; large backbones need server resources.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/open-mmlab/mmdetection', notes: 'Documentation review of toolbox scope and Apache-2.0 code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, openmmlab, export]

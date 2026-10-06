@@ -1,0 +1,23 @@
+id: carla
+name: CARLA
+domain: simulation
+tasks: [autonomous-driving-simulation, reinforcement-learning, perception-testing]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Open urban driving simulator for developing, training and validating autonomous driving systems."
+links: {repository: 'https://github.com/carla-simulator/carla', homepage: 'https://carla.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'High-fidelity simulator requiring desktop/server GPU resources.'}
+runtimes: [python, native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulation platform for training and evaluating driving agents.', needs_data: 'Maps, sensor configuration and scenario definitions.', update_strategy: 'Pin simulator version; document sim-to-real limitations per result.'}
+data: {inputs: [simulated-sensors, agent-actions], outputs: [simulated-observations, scenario-metrics], languages: []}
+evaluation: ['Scenario coverage, sensor realism and transfer to target hardware.']
+limitations: ['Compute-heavy; simulator behaviour is not a vehicle-level safety proof.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/carla-simulator/carla', notes: 'Documentation review of simulator scope and MIT licence; not a real-hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, autonomous-driving, testing]

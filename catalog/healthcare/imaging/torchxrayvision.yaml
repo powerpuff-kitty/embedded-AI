@@ -1,0 +1,23 @@
+id: torchxrayvision
+name: TorchXRayVision
+domain: healthcare
+tasks: [chest-xray-classification, medical-image-representation]
+class: medical-imaging-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Library and pretrained chest X-ray models across multiple public datasets."
+links: {repository: 'https://github.com/mlmed/torchxrayvision', paper: 'https://arxiv.org/abs/2111.06649'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Research and educational use; not a regulated medical device.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained classifiers and feature extractors; fine-tuning is supported.', needs_data: 'Chest radiographs with labels and site-appropriate evaluation data.', update_strategy: 'Verify weights terms and revalidate calibration on local data before any review.'}
+data: {inputs: [chest-xray-image], outputs: [pathology-scores, embeddings], languages: []}
+evaluation: ['AUROC and calibration on site-matched data; review dataset shift carefully.']
+limitations: ['Cannot be used for diagnosis without regulatory clearance and local validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mlmed/torchxrayvision', notes: 'Documentation review of pretrained models and Apache-2.0 code licence; not a clinical benchmark.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, chest-xray, pretrained]

@@ -1,0 +1,23 @@
+id: apache-tvm
+name: Apache TVM
+domain: runtime
+tasks: [model-compilation, on-device-inference, autotuning]
+class: model-compiler
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Deep-learning compiler stack that generates optimized kernels for diverse targets including MCUs."
+links: {repository: 'https://github.com/apache/tvm', homepage: 'https://tvm.apache.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, mobile, edge], notes: 'Targets range from servers to microcontrollers (via microTVM).'}
+runtimes: [tvm-native]
+formats: [relay, tvm-ffi]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Compiler; imports models from multiple frontends and compiles per target.', needs_data: 'A source model and a target specification for tuning.', update_strategy: 'Recompile and re-tune per target; cache tuned schedules.'}
+data: {inputs: [source-model, target-spec], outputs: [compiled-module, inference-results], languages: []}
+evaluation: ['Generated-kernel latency and accuracy versus a reference implementation.']
+limitations: ['Autotuning cost and operator coverage vary by frontend and backend.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/apache/tvm', notes: 'Documentation review of compiler targets and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, compiler, tvm, autotuning]

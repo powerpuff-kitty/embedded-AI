@@ -1,0 +1,23 @@
+id: mavsdk
+name: MAVSDK
+domain: robotics
+tasks: [drone-control-sdk, autonomous-vehicle-interface]
+class: autopilot-sdk
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Cross-language SDK for controlling MAVLink autopilots such as PX4 and ArduPilot."
+links: {repository: 'https://github.com/mavlink/MAVSDK', homepage: 'https://mavsdk.mavlink.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [edge, desktop, robot], notes: 'Client SDK for companion computers; not itself a learned model.'}
+runtimes: [native-cpp, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'SDK primitive for command/telemetry; autonomy logic is separate.', needs_data: 'A compatible autopilot and a command/telemetry design.', update_strategy: 'Follow upstream safety guidance; test in simulation and with failsafes.'}
+data: {inputs: [commands, telemetry-requests], outputs: [telemetry, vehicle-actions], languages: []}
+evaluation: ['Command reliability, latency and failsafe behaviour on the target vehicle.']
+limitations: ['A control SDK is not a safety system; flight testing and governance are required.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mavlink/MAVSDK', notes: 'Documentation review of autopilot SDK scope and BSD-3-Clause licence; not a flight benchmark.'}]
+reviewed: '2026-10-06'
+tags: [robotics, drones, mavlink, sdk]

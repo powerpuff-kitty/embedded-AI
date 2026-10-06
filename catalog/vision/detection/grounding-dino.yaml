@@ -1,0 +1,23 @@
+id: grounding-dino
+name: Grounding DINO
+domain: vision
+tasks: [open-vocabulary-detection, text-conditioned-detection, zero-shot-detection]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Open-set detector that localises objects from free-text category prompts."
+links: {repository: 'https://github.com/IDEA-Research/GroundingDINO', model: 'https://huggingface.co/IDEA-Research/grounding-dino-tiny', paper: 'https://arxiv.org/abs/2303.05499'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Swin-T tiny variant is the practical constrained-inference option.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained open-vocabulary detector; fine-tuning is optional.', needs_data: 'Images plus text prompts; labelled data for evaluation.', update_strategy: 'Re-benchmark prompt sets and measure latency per target.'}
+data: {inputs: [rgb-image, text-prompt], outputs: [boxes, phrase-labels], languages: [en]}
+evaluation: ['Recall/AP for prompted categories and latency on the target.']
+limitations: ['Prompt phrasing and rare categories affect detection; large backbones need server resources.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/IDEA-Research/GroundingDINO', notes: 'Documentation review of open-vocabulary detection and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, open-vocabulary, pretrained]

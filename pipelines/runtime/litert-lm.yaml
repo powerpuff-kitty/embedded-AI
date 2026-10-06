@@ -1,0 +1,23 @@
+id: litert-lm
+name: LiteRT-LM
+domain: runtime
+tasks: [on-device-llm-inference, text-generation]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Google inference framework for deploying large language models on edge devices."
+links: {repository: 'https://github.com/google-ai-edge/LiteRT-LM'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'Upstream target classes, not hardware results reproduced by this catalogue.'}
+runtimes: [litert-lm-native]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; accepts externally trained LLM checkpoints.', needs_data: 'A compatible converted LLM artifact.', update_strategy: 'Pin the runtime and model bundle; revalidate context and memory budgets per device.'}
+data: {inputs: [converted-llm, text-prompt], outputs: [generated-text], languages: []}
+evaluation: ['Per-device memory, tokens-per-second and output quality on representative prompts.']
+limitations: ['Framework availability is not evidence that a given model fits a specific device.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-ai-edge/LiteRT-LM', notes: 'Documentation review of scope and supported targets; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, on-device, llm]

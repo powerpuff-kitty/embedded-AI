@@ -1,0 +1,23 @@
+id: arm-ml-examples
+name: Arm ML Examples
+domain: audio
+tasks: [keyword-spotting, mcu-inference, model-optimization]
+class: embedded-examples-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Arm examples for deploying and optimizing neural networks on Cortex-M and Ethos-U targets."
+links: {repository: 'https://github.com/ARM-software/ML-examples'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge], notes: 'Reference workflows for CMSIS-NN, Ethos-U and related Arm targets.'}
+runtimes: [tensorflow, tflite-micro, cmsis-nn, ethos-u]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Example training/optimization/deployment flows; not a single model.', needs_data: 'A dataset, a target Arm device and a model choice.', update_strategy: 'Re-run per target toolchain; re-measure flash/RAM and accuracy.'}
+data: {inputs: [audio-or-image-data], outputs: [deployed-model, predictions], languages: []}
+evaluation: ['Accuracy and flash/RAM/latency on the specific Arm target.']
+limitations: ['Example workflows are starting points, not production guarantees.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ARM-software/ML-examples', notes: 'Documentation review of Arm embedded examples and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, arm, mcu, examples]

@@ -1,0 +1,23 @@
+id: sktime
+name: sktime
+domain: time-series
+tasks: [time-series-classification, forecasting, time-series-transformation]
+class: time-series-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Unified scikit-learn-style API for time-series learning, forecasting and classification."
+links: {repository: 'https://github.com/sktime/sktime', homepage: 'https://www.sktime.net/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Classical methods can be lightweight; neural estimators need more compute.'}
+runtimes: [python, scikit-learn, numpy]
+formats: [pickle]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits classical/neural time-series estimators on user data.', needs_data: 'Time series with correct temporal splitting and validation.', update_strategy: 'Backtest on rolling windows; refit as data drifts.'}
+data: {inputs: [time-series], outputs: [forecasts, classes, features], languages: []}
+evaluation: ['Rolling-origin backtests and comparison to naive baselines.']
+limitations: ['Random splits leak across time; classical baselines are often hard to beat.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sktime/sktime', notes: 'Documentation review of time-series API scope and BSD-3-Clause licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, classification, classical-ml]

@@ -1,0 +1,23 @@
+id: colabfold
+name: ColabFold
+domain: science
+tasks: [protein-structure-prediction, protein-complex-prediction]
+class: protein-structure-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Accessible AlphaFold2/ESMFold pipeline with fast multiple-sequence-alignment generation."
+links: {repository: 'https://github.com/sokrypton/ColabFold', paper: 'https://www.nature.com/articles/s41592-022-01488-1'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'GPU/CPU scientific pipeline; not an embedded model.'}
+runtimes: [jax, pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Inference pipeline using released AF2/ESMFold weights.', needs_data: 'Protein sequences and database access for MSA generation.', update_strategy: 'Verify upstream weight terms; validate predictions experimentally.'}
+data: {inputs: [protein-sequence], outputs: [structure-coordinates, confidence], languages: []}
+evaluation: ['Structure accuracy against experimental structures and confidence calibration.']
+limitations: ['Weight terms inherit from AlphaFold/ESMFold; predictions are hypotheses.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sokrypton/ColabFold', notes: 'Documentation review of protein-folding pipeline and MIT code licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, proteins, structure-prediction, pipeline]

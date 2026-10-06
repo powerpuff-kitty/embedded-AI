@@ -1,0 +1,23 @@
+id: torchvision-models
+name: TorchVision Models
+domain: vision
+tasks: [image-classification, object-detection, semantic-segmentation, video-classification]
+class: vision-model-zoo
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Reference PyTorch vision architectures and pretrained weights maintained with torchvision."
+links: {repository: 'https://github.com/pytorch/vision', homepage: 'https://pytorch.org/vision/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: unknown}
+deployment: {offline: true, targets: [mobile, desktop, server], notes: 'Includes mobile-oriented backbones; export to ONNX/TFLite for embedded targets.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained classification/detection/segmentation weights; fine-tuning common.', needs_data: 'Task-labelled data for fine-tuning/evaluation.', update_strategy: 'Pin version and verify per-model weight terms; re-benchmark after export.'}
+data: {inputs: [image-or-video], outputs: [classes, boxes, masks], languages: []}
+evaluation: ['Reported metrics versus actual target metrics plus latency/memory.']
+limitations: ['Pretrained weights inherit dataset licensing and bias characteristics.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pytorch/vision', notes: 'Documentation review of model zoo scope and BSD-3-Clause licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, model-zoo, pytorch, pretrained]

@@ -1,0 +1,23 @@
+id: brainflow
+name: BrainFlow
+domain: healthcare
+tasks: [biosignal-acquisition, signal-processing, bci]
+class: biosignal-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Cross-platform library for acquiring and filtering EEG, EMG, ECG and other biosignals."
+links: {repository: 'https://github.com/brainflow-dev/brainflow', homepage: 'https://brainflow.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'C++ core with bindings; designed for real-time acquisition on modest hardware.'}
+runtimes: [native-cpp, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Acquisition and processing primitive; learned decoders are separate.', needs_data: 'A supported biosensor board and a processing pipeline.', update_strategy: 'Pin version and revalidate filters/timing with the target device.'}
+data: {inputs: [biosensor-stream], outputs: [filtered-signals, features], languages: []}
+evaluation: ['Signal quality, latency and drop-rate on the target acquisition hardware.']
+limitations: ['Not a medical device; depends on sensor quality and electrode placement.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/brainflow-dev/brainflow', notes: 'Documentation review of biosignal acquisition scope and MIT licence; not a clinical benchmark.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, biosignals, bci, acquisition]

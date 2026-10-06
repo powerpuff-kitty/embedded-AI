@@ -1,0 +1,23 @@
+id: openmm
+name: OpenMM
+domain: science
+tasks: [molecular-dynamics, atomistic-simulation]
+class: simulation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "High-performance toolkit for molecular dynamics simulations with GPU and CPU backends."
+links: {repository: 'https://github.com/openmm/openmm', homepage: 'https://openmm.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Physics simulation engine; ML potentials plug in as custom forces.'}
+runtimes: [native-cpp, python, cuda]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulation primitive; force fields may be deterministic or ML-based.', needs_data: 'System topology, parameters and a simulation protocol.', update_strategy: 'Validate energetics/conservation; pin engine version.'}
+data: {inputs: [molecular-system, force-field], outputs: [trajectories, energies], languages: []}
+evaluation: ['Energy conservation, stability and agreement with reference methods.']
+limitations: ['Results depend on the force field; not a substitute for experiment.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/openmm/openmm', notes: 'Documentation review of molecular simulation scope and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, molecular-dynamics, simulation, primitive]

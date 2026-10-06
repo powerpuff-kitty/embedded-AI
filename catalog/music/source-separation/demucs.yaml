@@ -1,0 +1,23 @@
+id: demucs
+name: Demucs
+domain: music
+tasks: [music-source-separation]
+class: source-separation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Hybrid Transformer Demucs family for separating music into vocals, drums, bass and other stems."
+links: {repository: 'https://github.com/facebookresearch/demucs'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Desktop/GPU-targeted; smaller variants may fit constrained inference with optimization.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released pretrained separation models; retraining expects large music datasets.', needs_data: 'Music audio for inference; multi-stem data for training/evaluation.', update_strategy: 'Verify weights terms and re-measure SDR and latency per model variant.'}
+data: {inputs: [music-audio], outputs: [separated-stems], languages: []}
+evaluation: ['Source-to-distortion ratio and auditability of separated stems.']
+limitations: ['Model weights terms are not stated in the reviewed README; verify before use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/demucs', notes: 'Documentation review of model family, task and MIT code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [music, source-separation, pretrained]

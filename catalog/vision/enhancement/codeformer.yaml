@@ -1,0 +1,23 @@
+id: codeformer
+name: CodeFormer
+domain: vision
+tasks: [face-restoration, image-restoration]
+class: face-restoration-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Transformer-based face restoration model with a controllable fidelity-quality trade-off."
+links: {repository: 'https://github.com/sczhou/CodeFormer', paper: 'https://arxiv.org/abs/2206.11253'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Desktop-scale; not embedded-friendly without optimization.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained restoration models; fine-tuning is possible.', needs_data: 'Degraded/clean face pairs for evaluation or fine-tuning.', update_strategy: 'Verify licence terms (reported restrictions); tune the fidelity weight carefully.'}
+data: {inputs: [degraded-face-image], outputs: [restored-face-image], languages: []}
+evaluation: ['Identity preservation and artifact review across fidelity settings.']
+limitations: ['Reported non-commercial/limited licence; verify before any use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sczhou/CodeFormer', notes: 'Documentation review of restoration scope; licence terms not confirmed.'}]
+reviewed: '2026-10-06'
+tags: [vision, face, restoration, transformer]

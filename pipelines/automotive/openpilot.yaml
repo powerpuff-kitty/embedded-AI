@@ -1,0 +1,23 @@
+id: openpilot
+name: openpilot
+domain: automotive
+tasks: [driver-assistance, lane-keeping, adaptive-cruise-control, driver-monitoring]
+class: adas-pipeline
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Open-source advanced driver-assistance system running perception and control on embedded car hardware."
+links: {repository: 'https://github.com/commaai/openpilot'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Runs on dedicated comma hardware; vehicle support and safety cases are device-specific.'}
+runtimes: [python, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deployment pipeline; perception models ship with the stack.', needs_data: 'Supported vehicle, sensors and calibration; data for evaluation.', update_strategy: 'Follow upstream safety process; never deploy unreviewed changes on public roads.'}
+data: {inputs: [camera-and-sensor-stream], outputs: [steering-and-actuation-commands], languages: []}
+evaluation: ['Perception and control performance under the upstream safety validation process.']
+limitations: ['A driver-assistance project, not an autonomous driving guarantee; safety governance is mandatory.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/commaai/openpilot', notes: 'Documentation review of scope, hardware targets and MIT licence; not a safety or board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [automotive, adas, perception, control]

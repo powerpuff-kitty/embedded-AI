@@ -1,0 +1,23 @@
+id: paddleocr
+name: PaddleOCR
+domain: vision
+tasks: [ocr, text-detection, text-recognition, document-structure]
+class: ocr-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PaddlePaddle OCR toolkit with lightweight PP-OCR models and deployment tooling."
+links: {repository: 'https://github.com/PaddlePaddle/PaddleOCR'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'PP-OCR mobile models are designed for edge; export via Paddle Lite/ONNX.'}
+runtimes: [paddle, paddle-lite, onnxruntime]
+formats: [onnx, paddle]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained OCR models; fine-tuning for target scripts/layouts is supported.', needs_data: 'Document images; labelled text for fine-tuning/evaluation.', update_strategy: 'Pin model version; verify weight terms and re-benchmark after export.'}
+data: {inputs: [document-image], outputs: [text, boxes, structure], languages: [multilingual]}
+evaluation: ['Text detection/recognition accuracy on target documents plus latency.']
+limitations: ['Model-zoo weights carry their own terms; low-quality scans reduce accuracy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PaddlePaddle/PaddleOCR', notes: 'Documentation review of OCR toolkit, mobile models and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, ocr, paddle, edge]

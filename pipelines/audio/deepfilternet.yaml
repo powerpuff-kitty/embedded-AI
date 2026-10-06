@@ -1,0 +1,23 @@
+id: deepfilternet
+name: DeepFilterNet
+domain: audio
+tasks: [speech-enhancement, noise-suppression]
+class: realtime-speech-enhancement-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Low-latency full-band speech-enhancement pipeline intended for real-time embedded use."
+links: {repository: 'https://github.com/Rikorose/DeepFilterNet', paper: 'https://arxiv.org/abs/2205.05474'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge, mobile, desktop], notes: 'Upstream focuses on real-time operation on CPU and embedded targets.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained enhancement models; retraining requires noisy/clean pairs.', needs_data: '48 kHz or resampled mono audio; paired data for retraining/evaluation.', update_strategy: 'Pin model revision; re-measure latency and quality on the target.'}
+data: {inputs: [noisy-audio-frame], outputs: [enhanced-audio], languages: []}
+evaluation: ['Real-time factor, PESQ/STOI-style quality and artifact review on target audio.']
+limitations: ['Enhancement can introduce artifacts on out-of-domain noise and music.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Rikorose/DeepFilterNet', notes: 'Documentation review of real-time design and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech-enhancement, realtime, edge]

@@ -1,0 +1,23 @@
+id: mmaction2
+name: MMAction2
+domain: video
+tasks: [action-recognition, temporal-action-localization, skeleton-action-recognition]
+class: video-understanding-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "OpenMMLab video-understanding toolbox with action-recognition and detection model zoos."
+links: {repository: 'https://github.com/open-mmlab/mmaction2', homepage: 'https://mmaction2.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Includes compact action models; export paths for constrained inference.'}
+runtimes: [pytorch]
+formats: [onnx, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains/fine-tunes video action models from clip or skeleton data.', needs_data: 'Labelled video or skeleton sequences for target actions.', update_strategy: 'Revalidate on target cameras and clip lengths; re-benchmark after export.'}
+data: {inputs: [video-clip, skeleton-sequence], outputs: [action-class, temporal-segments], languages: []}
+evaluation: ['Top-1/mAP on target actions plus latency for the chosen clip length.']
+limitations: ['Temporal models are compute-heavy; clip length trades accuracy and latency.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/open-mmlab/mmaction2', notes: 'Documentation review of video-understanding scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [video, action-recognition, openmmlab]

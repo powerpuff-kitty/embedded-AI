@@ -1,0 +1,23 @@
+id: espnet
+name: ESPnet
+domain: audio
+tasks: [speech-recognition, text-to-speech, speech-translation, speech-enhancement]
+class: speech-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "End-to-end speech-processing toolkit covering ASR, TTS, translation and enhancement recipes."
+links: {repository: 'https://github.com/espnet/espnet', homepage: 'https://espnet.github.io/espnet/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training-focused; some models can be exported for constrained inference.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains speech models with reproducible recipes.', needs_data: 'Task audio with labels and a defined evaluation protocol.', update_strategy: 'Pin recipes and models; re-measure task metrics after updates.'}
+data: {inputs: [audio-waveform, text], outputs: [transcript, speech-audio, translations], languages: [multilingual-recipes]}
+evaluation: ['WER/BLEU/MOS-style metrics on representative held-out data.']
+limitations: ['Recipe results assume specific data and compute, not device deployment.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/espnet/espnet', notes: 'Documentation review of speech task coverage and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech, asr, tts]

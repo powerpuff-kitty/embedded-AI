@@ -1,0 +1,23 @@
+id: emlearn
+name: emlearn
+domain: runtime
+tasks: [mcu-inference, classical-ml-deployment]
+class: mcu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Machine-learning inference engine that compiles scikit-learn and Keras models to C for microcontrollers."
+links: {repository: 'https://github.com/emlearn/emlearn', homepage: 'https://emlearn.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Targets embedded/MCU toolchains; no host runtime dependency at run time.'}
+runtimes: [emlearn-c, python]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Models are trained in scikit-learn/Keras, then converted to C.', needs_data: 'A trained estimator and a target compilation environment.', update_strategy: 'Regenerate C when retraining and re-check flash/RAM use.'}
+data: {inputs: [trained-estimator, feature-vector], outputs: [c-source, predictions], languages: []}
+evaluation: ['Parity between Python and compiled C inference, plus flash/RAM use.']
+limitations: ['Supported estimators are a subset of scikit-learn; conversion is not universal.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/emlearn/emlearn', notes: 'Documentation review of supported models and embedded targets; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mcu, classical-ml, tinyml]

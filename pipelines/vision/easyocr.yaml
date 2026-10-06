@@ -1,0 +1,23 @@
+id: easyocr
+name: EasyOCR
+domain: vision
+tasks: [ocr, text-detection, text-recognition]
+class: ocr-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Ready-to-use OCR library covering dozens of languages with detection and recognition models."
+links: {repository: 'https://github.com/JaidedAI/EasyOCR'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'CPU and GPU modes; model size depends on the selected language set.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained per-language models; custom training is possible.', needs_data: 'Images for inference; labelled text for fine-tuning/evaluation.', update_strategy: 'Pin model sets; re-measure accuracy/latency and verify weight terms.'}
+data: {inputs: [rgb-image], outputs: [text, boxes, confidence], languages: [multilingual]}
+evaluation: ['Character/word accuracy on target documents plus latency.']
+limitations: ['Weight terms vary per model; accuracy depends on document quality and script.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/JaidedAI/EasyOCR', notes: 'Documentation review of OCR scope, languages and Apache-2.0 code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, ocr, multilingual, pretrained]

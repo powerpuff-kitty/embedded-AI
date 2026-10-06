@@ -1,0 +1,23 @@
+id: casadi
+name: CasADi
+domain: control
+tasks: [nonlinear-optimization, model-predictive-control, automatic-differentiation]
+class: optimization-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Symbolic framework for nonlinear optimization and optimal control with algorithmic differentiation."
+links: {repository: 'https://github.com/casadi/casadi', homepage: 'https://web.casadi.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: LGPL-3.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Code generation can target embedded deployments; library itself is desktop-oriented.'}
+runtimes: [python, native-cpp]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Optimization primitive; dynamics/objectives are specified, not learned.', needs_data: 'A mathematical model and constraints.', update_strategy: 'Regenerate embedded code after model changes and re-benchmark.'}
+data: {inputs: [symbolic-model, numeric-data], outputs: [optimization-solution, generated-code], languages: []}
+evaluation: ['Solver convergence, timing and constraint satisfaction on the target.']
+limitations: ['LGPL-3.0 has licensing implications for some deployments.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/casadi/casadi', notes: 'Documentation review of optimization/differentiation scope and LGPL-3.0 licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [control, optimization, mpc, primitive]

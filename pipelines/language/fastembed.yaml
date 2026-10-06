@@ -1,0 +1,23 @@
+id: fastembed
+name: FastEmbed
+domain: language
+tasks: [embeddings, semantic-search]
+class: embedding-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight embedding library optimized for fast CPU inference without PyTorch."
+links: {repository: 'https://github.com/qdrant/fastembed'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'CPU-focused with small ONNX models; no heavy framework dependency.'}
+runtimes: [onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained embedding models for inference; fine-tuning is external.', needs_data: 'Text to embed; labels only for retrieval evaluation.', update_strategy: 'Pin model; re-embed the corpus after model changes.'}
+data: {inputs: [text], outputs: [embedding-vector], languages: [multilingual-models]}
+evaluation: ['Retrieval quality and embedding latency on the target CPU.']
+limitations: ['Per-model weight terms vary; index rebuild required on change.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/qdrant/fastembed', notes: 'Documentation review of lightweight embedding scope and Apache-2.0 code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [language, embeddings, onnx, cpu]

@@ -1,0 +1,23 @@
+id: megadetector-overhead
+name: MegaDetector-Overhead
+domain: geospatial
+tasks: [aerial-wildlife-detection, overhead-detection]
+class: detection-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Point-based wildlife detection models for aerial and overhead imagery."
+links: {repository: 'https://github.com/microsoft/MegaDetector-Overhead', homepage: 'https://microsoft.github.io/Biodiversity/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Pairs with aerial imagery pipelines; deployment fit is per model.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained overhead detectors; adaptation to local surveys is expected.', needs_data: 'Georeferenced aerial imagery with point labels.', update_strategy: 'Revalidate per survey altitude/sensor; verify weight terms.'}
+data: {inputs: [aerial-image], outputs: [point-detections], languages: []}
+evaluation: ['Detection precision/recall per survey and sensor, with spatially blocked validation.']
+limitations: ['Aerial detection is sensitive to altitude, resolution and species.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/MegaDetector-Overhead', notes: 'Documentation review of overhead detection scope and MIT code licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, conservation, detection, aerial]

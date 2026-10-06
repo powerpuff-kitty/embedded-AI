@@ -1,0 +1,23 @@
+id: tinympc
+name: TinyMPC
+domain: control
+tasks: [model-predictive-control, embedded-optimization]
+class: control-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Embedded model-predictive-control solver optimised for microcontrollers and small robots."
+links: {repository: 'https://github.com/TinyMPC/tinympc', paper: 'https://arxiv.org/abs/2306.17154'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge, robot], notes: 'Targets MCU-class hardware; deterministic optimisation, not a learned model.'}
+runtimes: [native-cpp, python]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Solver primitive; system dynamics are modelled, not learned.', needs_data: 'A linear/quadratic model, constraints and a target solver build.', update_strategy: 'Re-validate timing and constraint handling on the target MCU.'}
+data: {inputs: [state, reference, model], outputs: [control-input], languages: []}
+evaluation: ['Solve time, worst-case timing and constraint satisfaction on the target.']
+limitations: ['Assumes a model of the system; model error can degrade control quality.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/TinyMPC/tinympc', notes: 'Documentation review of embedded MPC scope and MIT licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [control, mpc, embedded, primitive]

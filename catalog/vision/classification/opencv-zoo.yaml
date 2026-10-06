@@ -1,0 +1,23 @@
+id: opencv-zoo
+name: OpenCV Zoo
+domain: vision
+tasks: [object-detection, image-classification, face-detection, human-segmentation]
+class: vision-model-zoo
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "OpenCV curated zoo of lightweight models with consistent preprocessing and benchmarks."
+links: {repository: 'https://github.com/opencv/opencv_zoo'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Models are provided in multiple formats and benchmarked by upstream.'}
+runtimes: [opencv, onnxruntime, tflite]
+formats: [onnx, tflite, caffemodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained models ready for inference; retraining is external.', needs_data: 'Task inputs; labelled data only if adapting a model.', update_strategy: 'Verify per-model weight licences; re-benchmark on the target.'}
+data: {inputs: [image-or-video], outputs: [detections, classes, masks], languages: []}
+evaluation: ['Accuracy plus latency/memory on the target runtime and device.']
+limitations: ['Weight licences vary per model and are not implied by the repo licence.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/opencv/opencv_zoo', notes: 'Documentation review of model set, formats and Apache-2.0 code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, model-zoo, opencv, pretrained]

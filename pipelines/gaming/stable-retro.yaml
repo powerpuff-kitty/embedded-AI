@@ -1,0 +1,23 @@
+id: stable-retro
+name: Stable Retro
+domain: gaming
+tasks: [retro-game-reinforcement-learning, environment-emulation]
+class: game-environment-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Gymnasium-compatible interface to classic game ROMs for reinforcement-learning research."
+links: {repository: 'https://github.com/Farama-Foundation/stable-retro'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Emulator-based environments requiring ROMs supplied by the user.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Environment interface for RL; policies are trained separately.', needs_data: 'Legally obtained ROMs and a task/reward definition.', update_strategy: 'Pin environment version; revalidate reward and reproducibility.'}
+data: {inputs: [emulator-actions], outputs: [screen-frames, rewards], languages: []}
+evaluation: ['Score/reward reproducibility and cross-version consistency.']
+limitations: ["ROM licensing is the user's responsibility; classic games are limited benchmarks."]
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Farama-Foundation/stable-retro', notes: 'Documentation review of environment interface and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, retro, reinforcement-learning, environment]

@@ -1,0 +1,23 @@
+id: gymnasium
+name: Gymnasium
+domain: gaming
+tasks: [reinforcement-learning, environment-api, simulation-interface]
+class: rl-environment-api
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Standard API for reinforcement-learning environments and agents maintained by the Farama Foundation."
+links: {repository: 'https://github.com/Farama-Foundation/Gymnasium', homepage: 'https://gymnasium.farama.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Interface standard; not a model or runtime.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Environment interface used by the surrounding RL toolkits.', needs_data: 'An environment implementation and a task definition.', update_strategy: 'Pin API version when persisting trained policies or environment wrappers.'}
+data: {inputs: [actions], outputs: [observations, rewards, termination], languages: []}
+evaluation: ['Environment correctness, determinism and reward design review.']
+limitations: ['An API does not confer any task competence or hardware fitness.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Farama-Foundation/Gymnasium', notes: 'Documentation review of the environment API standard and MIT licence.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, api, primitive]

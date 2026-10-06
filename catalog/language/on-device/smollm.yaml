@@ -1,0 +1,23 @@
+id: smollm
+name: SmolLM
+domain: language
+tasks: [text-generation, on-device-llm]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Hugging Face family of small language models intended for on-device and edge deployment."
+links: {repository: 'https://github.com/huggingface/smollm', model: 'https://huggingface.co/HuggingFaceTB/SmolLM2-135M'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'Smallest variants are candidates for constrained devices via GGUF/ExecuTorch; verify per device.'}
+runtimes: [transformers, llama-cpp, executorch]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained checkpoints; fine-tuning is optional.', needs_data: 'Prompts for inference; task data for evaluation or fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality per target.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en, multilingual-variants]}
+evaluation: ['Task quality at the chosen size/quantization plus memory and tokens-per-second.']
+limitations: ['Small models have limited reasoning and knowledge; quantized quality varies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/smollm', notes: 'Documentation review of model family, sizes and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, on-device, pretrained]

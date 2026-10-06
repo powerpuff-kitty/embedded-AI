@@ -1,0 +1,23 @@
+id: terratorch
+name: TerraTorch
+domain: geospatial
+tasks: [earth-observation-fine-tuning, earth-observation-segmentation, earth-observation-classification]
+class: geospatial-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "IBM/NASA toolkit for fine-tuning geospatial foundation models on remote-sensing tasks."
+links: {repository: 'https://github.com/IBM/terratorch'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/fine-tuning toolkit; deployment depends on the exported model.'}
+runtimes: [pytorch, lightning]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fine-tunes geospatial foundation models with task heads.', needs_data: 'Georeferenced imagery with labels and spatially blocked splits.', update_strategy: 'Revalidate per sensor/region; verify backbone weight terms.'}
+data: {inputs: [geospatial-raster, labels], outputs: [fine-tuned-model, geospatial-predictions], languages: []}
+evaluation: ['Spatially blocked validation and per-region error analysis.']
+limitations: ['Backbone weight terms vary; random splits leak spatial correlation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/IBM/terratorch', notes: 'Documentation review of geospatial fine-tuning scope and Apache-2.0 licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, foundation-model, fine-tuning, remote-sensing]

@@ -1,0 +1,23 @@
+id: tnn
+name: TNN
+domain: runtime
+tasks: [mobile-inference, on-device-inference, model-conversion]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Tencent neural-network inference framework for mobile, desktop and server backends."
+links: {repository: 'https://github.com/Tencent/TNN'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Supports ARM CPU, OpenCL, Metal and vendor NPU backends.'}
+runtimes: [tnn-native, opencl, metal]
+formats: [onnx, tnn]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/converter; models are trained externally.', needs_data: 'A supported model and target backend.', update_strategy: 'Pin version/backend; re-benchmark per device.'}
+data: {inputs: [converted-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and accuracy for the selected backend.']
+limitations: ['Backend support and quality vary by vendor device.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Tencent/TNN', notes: 'Documentation review of inference scope and BSD-3-Clause licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mobile, inference, tencent]

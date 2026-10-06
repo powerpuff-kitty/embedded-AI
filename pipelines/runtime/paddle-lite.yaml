@@ -1,0 +1,23 @@
+id: paddle-lite
+name: Paddle Lite
+domain: runtime
+tasks: [mobile-inference, on-device-inference, model-optimization]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight PaddlePaddle inference engine for mobile, embedded and edge devices."
+links: {repository: 'https://github.com/PaddlePaddle/Paddle-Lite', homepage: 'https://www.paddlepaddle.org.cn/lite'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'Supports ARM/x86 CPU and several vendor NPUs with quantization tooling.'}
+runtimes: [paddle-lite-native]
+formats: [paddle, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/optimizer that converts and quantizes PaddlePaddle models.', needs_data: 'A PaddlePaddle model and a target backend.', update_strategy: 'Reconvert per target and re-validate accuracy after quantization.'}
+data: {inputs: [paddle-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Post-quantization accuracy, latency and memory on the target.']
+limitations: ['Strongest fit with PaddlePaddle models; other frontends vary.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PaddlePaddle/Paddle-Lite', notes: 'Documentation review of mobile targets, quantization and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mobile, paddle, inference]

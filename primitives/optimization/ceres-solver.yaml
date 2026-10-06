@@ -1,0 +1,23 @@
+id: ceres-solver
+name: Ceres Solver
+domain: mapping
+tasks: [nonlinear-least-squares, bundle-adjustment, slam]
+class: optimization-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Nonlinear least-squares library used for bundle adjustment and SLAM back-ends."
+links: {repository: 'https://github.com/ceres-solver/ceres-solver', homepage: 'http://ceres-solver.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'C++ library; can be built for embedded targets but is CPU-oriented.'}
+runtimes: [native-cpp]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Optimization primitive; problem structure is provided, not learned.', needs_data: 'Residual/constraint formulation and initial values.', update_strategy: 'Re-check convergence and timing after library or problem changes.'}
+data: {inputs: [residual-model, observations], outputs: [optimized-parameters], languages: []}
+evaluation: ['Convergence, numerical robustness and solve time on the target problem.']
+limitations: ['Sensitive to initialization, scaling and outlier handling.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ceres-solver/ceres-solver', notes: 'Documentation review of nonlinear least-squares scope and BSD-3-Clause licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [mapping, optimization, slam, primitive]

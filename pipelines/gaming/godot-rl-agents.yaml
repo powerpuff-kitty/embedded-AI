@@ -1,0 +1,23 @@
+id: godot-rl-agents
+name: Godot RL Agents
+domain: gaming
+tasks: [reinforcement-learning, game-agent-training, npc-behaviour]
+class: game-rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Open-source toolkit for training reinforcement-learning NPCs and agents inside the Godot engine."
+links: {repository: 'https://github.com/edbeeching/godot_rl_agents', paper: 'https://arxiv.org/abs/2112.03636'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Training runs on desktop; trained agents can be exported to ONNX for in-game inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains agents with Stable-Baselines3, RLLib, CleanRL or Sample Factory backends.', needs_data: 'A Godot environment and a reward/observation design.', update_strategy: 'Retrain when game dynamics change; export and re-benchmark the ONNX policy.'}
+data: {inputs: [game-observations], outputs: [agent-actions, trained-policy], languages: []}
+evaluation: ['Task reward, stability and inference latency of the exported policy.']
+limitations: ['Trained behaviours are environment-specific and can overfit level layouts.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/edbeeching/godot_rl_agents', notes: 'Documentation review of backends, ONNX export and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, npc, onnx]

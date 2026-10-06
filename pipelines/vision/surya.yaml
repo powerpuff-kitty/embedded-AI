@@ -1,0 +1,23 @@
+id: surya
+name: Surya
+domain: vision
+tasks: [ocr, layout-analysis, table-recognition, reading-order]
+class: document-ai-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Multilingual document OCR and layout toolkit covering 90-plus languages."
+links: {repository: 'https://github.com/VikParuchuri/surya'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'GPU recommended; some models can run on CPU but latency is high.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained OCR/layout models; fine-tuning is limited.', needs_data: 'Document images; labelled data for evaluation.', update_strategy: 'Verify licence terms (dual licensing reported); re-benchmark per workload.'}
+data: {inputs: [document-image], outputs: [text, layout-regions, tables, reading-order], languages: [multilingual]}
+evaluation: ['Text/layout/table accuracy on target documents plus latency.']
+limitations: ['License not stated in the reviewed README; check current terms before commercial use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/VikParuchuri/surya', notes: 'Documentation review of document AI scope; licence terms not confirmed.'}]
+reviewed: '2026-10-06'
+tags: [vision, ocr, documents, layout]

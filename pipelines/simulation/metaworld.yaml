@@ -1,0 +1,23 @@
+id: metaworld
+name: Meta-World
+domain: simulation
+tasks: [meta-reinforcement-learning, robot-manipulation, benchmarking]
+class: simulation-benchmark
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Benchmark suite of simulated robotic manipulation tasks for meta- and multi-task RL."
+links: {repository: 'https://github.com/Farama-Foundation/Metaworld', paper: 'https://arxiv.org/abs/1910.10897'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation benchmark; not an embedded runtime.'}
+runtimes: [python, mujoco]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Environment/benchmark suite for policy learning and evaluation.', needs_data: 'Task suites, seeds and an evaluation protocol.', update_strategy: 'Pin suite version; report multi-task and seed variance.'}
+data: {inputs: [control-actions], outputs: [observations, rewards, success], languages: []}
+evaluation: ['Success rate across tasks and seeds, not a single favourable task.']
+limitations: ['Simulated tasks; transfer to real robots is not guaranteed.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Farama-Foundation/Metaworld', notes: 'Documentation review of manipulation benchmark scope and MIT licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, robotics, manipulation, benchmark]

@@ -1,0 +1,23 @@
+id: mediapipe
+name: MediaPipe
+domain: vision
+tasks: [pose-estimation, face-detection, hand-tracking, object-detection]
+class: on-device-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Google framework of on-device perception graphs spanning pose, face, hand and object tasks."
+links: {repository: 'https://github.com/google-ai-edge/mediapipe', homepage: 'https://ai.google.dev/edge/mediapipe'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, browser, desktop, edge], notes: 'Ships compiled graphs and TFLite models for Android, iOS, web and desktop.'}
+runtimes: [tflite, mediapipe-task]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime plus pretrained task models; custom models can be substituted.', needs_data: 'Camera or video input; labelled data only for custom models.', update_strategy: 'Pin the task bundle and re-measure per platform.'}
+data: {inputs: [camera-or-video-stream], outputs: [landmarks, detections, tracking], languages: []}
+evaluation: ['Task accuracy and latency on the target platform and resolution.']
+limitations: ['Per-task model licences and platform coverage vary.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-ai-edge/mediapipe', notes: 'Documentation review of on-device task graph scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, on-device, mediapipe, multi-task]

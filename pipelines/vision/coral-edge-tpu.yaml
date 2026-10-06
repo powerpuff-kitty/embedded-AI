@@ -1,0 +1,23 @@
+id: coral-edge-tpu
+name: Coral Edge TPU Examples
+domain: vision
+tasks: [edge-tpu-inference, image-classification, object-detection]
+class: edge-tpu-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Google Coral examples and tooling for running quantized TensorFlow Lite models on Edge TPU."
+links: {repository: 'https://github.com/google-coral/tflite', homepage: 'https://coral.ai/docs/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Targets Coral Edge TPU accelerators; requires full-integer quantization.'}
+runtimes: [tflite, edgetpu]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deployment tooling/examples; models are trained and quantized separately.', needs_data: 'A full-integer quantized .tflite model and a Coral device.', update_strategy: 'Verify per-model TPU compilation; re-benchmark after updates.'}
+data: {inputs: [rgb-image], outputs: [class-scores, detections], languages: []}
+evaluation: ['Throughput and accuracy after Edge TPU compilation on the target device.']
+limitations: ['Only supports operators/quantization compatible with the Edge TPU compiler.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-coral/tflite', notes: 'Documentation review of Edge TPU deployment scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, edge-tpu, tflite, deployment]

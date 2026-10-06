@@ -1,0 +1,23 @@
+id: mlperf-tiny
+name: MLPerf Tiny
+domain: benchmark
+tasks: [tinyml-benchmarking, model-evaluation, keyword-spotting, visual-wake-words]
+class: benchmark-suite
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "MLCommons benchmark suite measuring inference on microcontrollers across four reference tasks."
+links: {repository: 'https://github.com/mlcommons/tiny', homepage: 'https://mlcommons.org/benchmarks/inference-tiny/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge], notes: 'Reference implementations for KWS, visual wake words, image classification and anomaly detection.'}
+runtimes: [tflite-micro, native-c]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Benchmark suite; reference models are provided, task training is separate.', needs_data: 'A target board, toolchain and the suite datasets.', update_strategy: 'Pin suite version and report exact hardware, precision and scenario.'}
+data: {inputs: [reference-datasets], outputs: [latency, accuracy, energy-metrics], languages: []}
+evaluation: ['Latency, accuracy and optional energy under the published rules.']
+limitations: ['Closed-division results restrict model choice; scores are hardware- and version-specific.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mlcommons/tiny', notes: 'Documentation review of benchmark tasks and suite scope; not a device result by this catalogue.'}]
+reviewed: '2026-10-06'
+tags: [benchmark, tinyml, mcu, evaluation]

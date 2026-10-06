@@ -1,0 +1,23 @@
+id: openvla
+name: OpenVLA
+domain: robotics
+tasks: [vision-language-action, robot-manipulation]
+class: vla-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Open 7B vision-language-action model family for controlling robot manipulators."
+links: {repository: 'https://github.com/openvla/openvla', model: 'https://huggingface.co/openvla/openvla-7b', paper: 'https://arxiv.org/abs/2406.09246'}
+model: {parameters: 7000000000, file_size_mb: null, measurement_scope: 'Roughly 7B parameters for the main checkpoint; not a RAM budget.'}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [server, desktop], notes: 'Large model; typically served on a workstation and may be quantized for smaller hardware.'}
+runtimes: [pytorch, transformers]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained policy; fine-tuning on a robot/dataset improves task performance.', needs_data: 'Robot demonstrations and camera inputs for adaptation/evaluation.', update_strategy: 'Revalidate on the specific robot and enforce safety bounds on actions.'}
+data: {inputs: [rgb-image, instruction], outputs: [robot-actions], languages: [en]}
+evaluation: ['Task success rate on the target robot plus inference latency and safety limits.']
+limitations: ['Not embedded-friendly without quantization; actions require deterministic safety validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/openvla/openvla', notes: 'Documentation review of model size, tasks and MIT licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [robotics, vla, manipulation, pretrained]

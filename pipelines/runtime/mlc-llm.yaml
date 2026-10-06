@@ -1,0 +1,23 @@
+id: mlc-llm
+name: MLC LLM
+domain: runtime
+tasks: [on-device-llm-inference, model-compilation, text-generation]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Universal LLM deployment engine that compiles models for GPUs, NPUs and mobile CPUs."
+links: {repository: 'https://github.com/mlc-ai/mlc-llm', homepage: 'https://llm.mlc.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop, browser], notes: 'Targets include iOS, Android, WebGPU and various accelerators.'}
+runtimes: [mlc-native, tvm]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deployment compiler; models are trained and converted externally.', needs_data: 'A source model and target platform specification.', update_strategy: 'Rebuild per target backend and revalidate after compiler updates.'}
+data: {inputs: [source-model, text-prompt], outputs: [compiled-runtime, generated-text], languages: []}
+evaluation: ['Per-target memory, latency and output quality after compilation.']
+limitations: ['Compiled artifacts are target-specific and not portable between backends.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mlc-ai/mlc-llm', notes: 'Documentation review of compilation targets and platform coverage; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, llm, compiler, mobile]

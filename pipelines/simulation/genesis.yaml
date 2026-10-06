@@ -1,0 +1,23 @@
+id: genesis
+name: Genesis
+domain: simulation
+tasks: [robotics-simulation, physics-simulation, reinforcement-learning]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Generative physics simulation platform for robotics, embodied AI and reinforcement learning."
+links: {repository: 'https://github.com/Genesis-Embodied-AI/Genesis', homepage: 'https://genesis-world.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation engine requiring desktop/server compute; not an on-device runtime.'}
+runtimes: [python, native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulation environment for training and testing robot policies.', needs_data: 'Scenes, robot models and task definitions.', update_strategy: 'Pin simulator version; document sim-to-real gaps per result.'}
+data: {inputs: [scene-config, control-actions], outputs: [simulated-observations, rewards], languages: []}
+evaluation: ['Physics fidelity and sim-to-real transfer for the target robot.']
+limitations: ['Simulation results do not guarantee real-world safety or performance.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Genesis-Embodied-AI/Genesis', notes: 'Documentation review of simulation scope and Apache-2.0 licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, robotics, physics, embodied-ai]

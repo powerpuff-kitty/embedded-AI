@@ -1,0 +1,23 @@
+id: vosk-api
+name: Vosk
+domain: audio
+tasks: [speech-to-text]
+class: asr-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Offline speech-recognition toolkit with small models for mobile, embedded and server use."
+links: {repository: 'https://github.com/alphacep/vosk-api', homepage: 'https://alphacephei.com/vosk/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Upstream lists Android, iOS, Raspberry Pi and multiple server bindings.'}
+runtimes: [vosk-native, kaldi]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Published per-language models; custom training is separate.', needs_data: '16 kHz mono audio and a downloaded language model.', update_strategy: 'Pin model revision; re-run WER and memory tests on the target.'}
+data: {inputs: [mono-audio], outputs: [transcript], languages: [multilingual]}
+evaluation: ['Word error rate and streaming latency for the chosen model size.']
+limitations: ['Small models trade accuracy for size; licence can differ per model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/alphacep/vosk-api', notes: 'Documentation review of offline models and platform bindings; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech-to-text, offline, embedded]

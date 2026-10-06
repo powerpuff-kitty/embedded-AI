@@ -1,0 +1,23 @@
+id: norfair
+name: Norfair
+domain: vision
+tasks: [multi-object-tracking, tracking]
+class: tracking-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight Python library for real-time multi-object tracking from detections or keypoints."
+links: {repository: 'https://github.com/tryolabs/norfair'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Algorithmic tracker; runs alongside a detector and does not itself require a neural model.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Tracking primitive; no training, tuned via distance/threshold parameters.', needs_data: 'Per-frame detections or keypoints and a motion model choice.', update_strategy: 'Tune and revalidate ID-switch rates after detector or scene changes.'}
+data: {inputs: [per-frame-detections], outputs: [track-ids, trajectories], languages: []}
+evaluation: ['MOTA/IDF1/ID-switch metrics on target video and latency overhead.']
+limitations: ['Tracking quality is bounded by detector quality and motion assumptions.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tryolabs/norfair', notes: 'Documentation review of tracking scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, tracking, realtime]

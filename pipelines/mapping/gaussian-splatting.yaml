@@ -1,0 +1,23 @@
+id: gaussian-splatting
+name: 3D Gaussian Splatting
+domain: mapping
+tasks: [gaussian-splat-reconstruction, novel-view-synthesis]
+class: reconstruction-toolkit
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Reference implementation of 3D Gaussian splatting for real-time radiance-field rendering."
+links: {repository: 'https://github.com/graphdeco-inria/gaussian-splatting', paper: 'https://arxiv.org/abs/2308.04079'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'CUDA-heavy training; rendered splats can be viewed on lighter devices.'}
+runtimes: [pytorch, cuda]
+formats: [ply]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Optimizes Gaussian splats from posed images.', needs_data: 'Calibrated multi-view imagery and camera poses.', update_strategy: 'Review upstream licence terms (restrictions reported); pin version.'}
+data: {inputs: [posed-images], outputs: [gaussian-splats, rendered-views], languages: []}
+evaluation: ['Rendering quality against held-out views and viewer performance.']
+limitations: ['Upstream licence reportedly restricts commercial use; verify before deployment.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/graphdeco-inria/gaussian-splatting', notes: 'Documentation review of reconstruction scope and reported licence terms; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [mapping, reconstruction, gaussian-splatting, 3d]
