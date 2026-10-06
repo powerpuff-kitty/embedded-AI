@@ -1,0 +1,23 @@
+id: implicit
+name: implicit
+domain: recommendation
+tasks: [collaborative-filtering, recommendation]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Fast collaborative filtering for implicit feedback datasets using matrix factorisation."
+links: {repository: 'https://github.com/benfred/implicit'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'CPU/GPU training; CPU-serving friendly.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits ALS/BPR and related models to implicit interactions.', needs_data: 'Implicit interaction matrix (views, clicks, purchases).', update_strategy: 'Retrain incrementally; watch for popularity bias.'}
+data: {inputs: [implicit-interactions], outputs: [recommendations], languages: []}
+evaluation: ['Recall@k/MAP on held-out interactions.']
+limitations: ['Implicit signals conflate interest and exposure.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/benfred/implicit', notes: 'implicit collaborative filtering.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, collaborative-filtering, classical-ml]

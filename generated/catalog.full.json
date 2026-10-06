@@ -7772,6 +7772,270 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "mmfashion",
+      "name": "MMFashion",
+      "domain": "fashion",
+      "tasks": [
+        "fashion-attribute-prediction",
+        "fashion-retrieval",
+        "fashion-landmark-detection"
+      ],
+      "class": "fashion-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OpenMMLab toolbox for visual fashion analysis with a range of pretrained models.",
+      "links": {
+        "repository": "https://github.com/open-mmlab/mmfashion"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop",
+          "edge"
+        ],
+        "notes": "Includes compact backbones; export for constrained inference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained fashion models; fine-tuning on custom catalogues possible.",
+        "needs_data": "Fashion imagery with attributes/landmarks.",
+        "update_strategy": "Verify per-model licences; re-benchmark after export."
+      },
+      "data": {
+        "inputs": [
+          "fashion-image"
+        ],
+        "outputs": [
+          "attributes",
+          "landmarks",
+          "matches"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Attribute accuracy, retrieval recall and latency on target."
+      ],
+      "limitations": [
+        "Model-zoo entries carry their own licences; dataset bias in fashion imagery."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/open-mmlab/mmfashion",
+          "notes": "MMFashion toolbox."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "fashion",
+        "openmmlab",
+        "retrieval"
+      ],
+      "path": "pipelines/fashion/mmfashion.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "idm-vton",
+      "name": "IDM-VTON",
+      "domain": "fashion",
+      "tasks": [
+        "virtual-try-on",
+        "image-generation"
+      ],
+      "class": "diffusion-tryon-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Diffusion model for authentic virtual try-on in the wild with identity preservation.",
+      "links": {
+        "repository": "https://github.com/yisol/IDM-VTON",
+        "paper": "https://arxiv.org/abs/2403.05139"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "GPU inference; diffusion models are large."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released weights; fine-tuning is data-heavy.",
+        "needs_data": "Person and garment images.",
+        "update_strategy": "Verify licence; assess identity and consent handling."
+      },
+      "data": {
+        "inputs": [
+          "person-image",
+          "garment-image"
+        ],
+        "outputs": [
+          "try-on-image"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Texture fidelity and identity preservation on held-out pairs."
+      ],
+      "limitations": [
+        "License not stated; potential for misuse with real people."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/yisol/IDM-VTON",
+          "notes": "IDM-VTON try-on model."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2403.05139",
+          "notes": "Improving diffusion models for authentic virtual try-on."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "fashion",
+        "diffusion",
+        "virtual-try-on"
+      ],
+      "path": "catalog/fashion/idm-vton.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "ootdiffusion",
+      "name": "OOTDiffusion",
+      "domain": "fashion",
+      "tasks": [
+        "virtual-try-on",
+        "image-generation"
+      ],
+      "class": "diffusion-tryon-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Latent-diffusion model for controllable virtual clothing try-on (outfitting fusion).",
+      "links": {
+        "repository": "https://github.com/levihsu/OOTDiffusion",
+        "paper": "https://arxiv.org/abs/2403.01779"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Diffusion inference is GPU-class; not an embedded model."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released weights; fine-tuning is possible but data-heavy.",
+        "needs_data": "Person and garment images for inference.",
+        "update_strategy": "Verify licence; review outputs for consent and identity misuse."
+      },
+      "data": {
+        "inputs": [
+          "person-image",
+          "garment-image"
+        ],
+        "outputs": [
+          "try-on-image"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Garment fidelity, identity preservation and artifact review."
+      ],
+      "limitations": [
+        "License not stated; diffusion outputs can misrepresent garments or people."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/levihsu/OOTDiffusion",
+          "notes": "OOTDiffusion virtual try-on."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2403.01779",
+          "notes": "Outfitting fusion latent diffusion for try-on."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "fashion",
+        "diffusion",
+        "virtual-try-on"
+      ],
+      "path": "catalog/fashion/ootdiffusion.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "fate",
       "name": "FATE",
       "domain": "federated-learning",
@@ -8737,6 +9001,169 @@
         "trading"
       ],
       "path": "pipelines/finance/finrl.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "fraud-detection-handbook",
+      "name": "Fraud Detection Handbook",
+      "domain": "fraud-detection",
+      "tasks": [
+        "credit-card-fraud-detection",
+        "anomaly-detection"
+      ],
+      "class": "fraud-detection-handbook",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Reproducible machine-learning handbook for credit-card fraud detection with streaming features.",
+      "links": {
+        "repository": "https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook",
+        "paper": "https://arxiv.org/abs/2009.13477"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Reference pipeline; production fraud stacks differ."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains and evaluates fraud detectors with time-aware validation.",
+        "needs_data": "Transaction streams with labels and realistic delay.",
+        "update_strategy": "Revalidate PR-AUC over time; adapt thresholds to alert budgets."
+      },
+      "data": {
+        "inputs": [
+          "transaction-stream",
+          "card-features"
+        ],
+        "outputs": [
+          "fraud-scores",
+          "alerts"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Precision-recall AUC and alert volume under delayed labels."
+      ],
+      "limitations": [
+        "License not stated; extreme class imbalance and concept drift."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook",
+          "notes": "Fraud Detection Handbook."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "fraud-detection",
+        "finance",
+        "anomaly-detection"
+      ],
+      "path": "pipelines/fraud-detection/fraud-detection-handbook.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "fraudshield",
+      "name": "FraudShield",
+      "domain": "fraud-detection",
+      "tasks": [
+        "credit-card-fraud-detection",
+        "anomaly-detection"
+      ],
+      "class": "fraud-detection-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Machine-learning pipeline for enhanced credit-card fraud detection.",
+      "links": {
+        "repository": "https://github.com/shxu7788/FraudShield"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Research pipeline; production latency budget differs."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains classifiers/ensembles with imbalance handling.",
+        "needs_data": "Labelled transaction data with temporal splits.",
+        "update_strategy": "Revalidate PR-AUC and alert budget; retrain on drift."
+      },
+      "data": {
+        "inputs": [
+          "transaction-features"
+        ],
+        "outputs": [
+          "fraud-probability"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "PR-AUC/F1 at the operating threshold and alert volume."
+      ],
+      "limitations": [
+        "Public datasets may not reflect production fraud distributions."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shxu7788/FraudShield",
+          "notes": "FraudShield fraud detection."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "fraud-detection",
+        "finance",
+        "classical-ml"
+      ],
+      "path": "pipelines/fraud-detection/fraudshield.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -15613,6 +16040,330 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "deepctr",
+      "name": "DeepCTR",
+      "domain": "recommendation",
+      "tasks": [
+        "click-through-rate-prediction",
+        "ranking"
+      ],
+      "class": "ctr-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Modular package of deep-learning click-through-rate prediction models.",
+      "links": {
+        "repository": "https://github.com/shenweichen/DeepCTR"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server"
+        ],
+        "notes": "Training/serving library for ranking models."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains CTR/ranking models on impression logs.",
+        "needs_data": "Logs with features and click labels; time-aware splits.",
+        "update_strategy": "Retrain frequently; monitor calibration and drift."
+      },
+      "data": {
+        "inputs": [
+          "impression-features"
+        ],
+        "outputs": [
+          "click-probability"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "AUC/logloss offline plus calibrated online lift in controlled tests."
+      ],
+      "limitations": [
+        "Impression bias and delayed feedback complicate labels."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shenweichen/DeepCTR",
+          "notes": "DeepCTR CTR models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "ctr",
+        "advertising",
+        "tensorflow"
+      ],
+      "path": "pipelines/recommendation/deepctr.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "implicit",
+      "name": "implicit",
+      "domain": "recommendation",
+      "tasks": [
+        "collaborative-filtering",
+        "recommendation"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fast collaborative filtering for implicit feedback datasets using matrix factorisation.",
+      "links": {
+        "repository": "https://github.com/benfred/implicit"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "CPU/GPU training; CPU-serving friendly."
+      },
+      "runtimes": [
+        "python",
+        "numpy"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits ALS/BPR and related models to implicit interactions.",
+        "needs_data": "Implicit interaction matrix (views, clicks, purchases).",
+        "update_strategy": "Retrain incrementally; watch for popularity bias."
+      },
+      "data": {
+        "inputs": [
+          "implicit-interactions"
+        ],
+        "outputs": [
+          "recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k/MAP on held-out interactions."
+      ],
+      "limitations": [
+        "Implicit signals conflate interest and exposure."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/benfred/implicit",
+          "notes": "implicit collaborative filtering."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "collaborative-filtering",
+        "classical-ml"
+      ],
+      "path": "pipelines/recommendation/implicit.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "recbole",
+      "name": "RecBole",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "benchmarking"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Unified recommendation library covering a wide range of algorithms and datasets for benchmarking.",
+      "links": {
+        "repository": "https://github.com/RUCAIBox/RecBole",
+        "homepage": "https://recbole.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/benchmarking; models can be exported."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains and benchmarks many recommender algorithms under standard splits.",
+        "needs_data": "Interaction datasets with time-aware splits.",
+        "update_strategy": "Pin version; revalidate offline metrics before deployment."
+      },
+      "data": {
+        "inputs": [
+          "interaction-data"
+        ],
+        "outputs": [
+          "ranked-recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k/NDCG/MRR under time-based evaluation protocols."
+      ],
+      "limitations": [
+        "Offline metrics do not capture online effects; popularity bias applies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/RUCAIBox/RecBole",
+          "notes": "RecBole recommendation library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "benchmarking",
+        "pytorch"
+      ],
+      "path": "pipelines/recommendation/recbole.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "tensorflow-recommenders",
+      "name": "TensorFlow Recommenders",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "retrieval",
+        "ranking"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for building recommendation and retrieval models in TensorFlow.",
+      "links": {
+        "repository": "https://github.com/tensorflow/recommenders",
+        "homepage": "https://www.tensorflow.org/recommenders"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/serving library; deployed models can be exported."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains two-tower retrieval and ranking models from interaction data.",
+        "needs_data": "User-item interaction logs with a leakage-free split.",
+        "update_strategy": "Retrain on a schedule; monitor popularity and feedback loops."
+      },
+      "data": {
+        "inputs": [
+          "interaction-data",
+          "features"
+        ],
+        "outputs": [
+          "ranked-recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k/NDCG offline plus online business metrics."
+      ],
+      "limitations": [
+        "Feedback loops and popularity bias require careful monitoring."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/recommenders",
+          "notes": "TensorFlow Recommenders."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "tensorflow",
+        "retrieval",
+        "ranking"
+      ],
+      "path": "pipelines/recommendation/tensorflow-recommenders.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "mavsdk",
       "name": "MAVSDK",
       "domain": "robotics",
@@ -21028,6 +21779,260 @@
       ],
       "path": "pipelines/simulation/genesis.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "deepcr",
+      "name": "deepCR",
+      "domain": "space",
+      "tasks": [
+        "cosmic-ray-removal",
+        "image-restoration"
+      ],
+      "class": "astronomy-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Deep-learning cosmic-ray removal for astronomical images.",
+      "links": {
+        "repository": "https://github.com/profjsb/deepCR",
+        "paper": "https://arxiv.org/abs/2001.09538"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Small U-Net style models; CPU-capable inference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released models for common instruments; retraining needs masked data.",
+        "needs_data": "Astronomical images; masks for evaluation.",
+        "update_strategy": "Verify weights terms; revalidate per instrument."
+      },
+      "data": {
+        "inputs": [
+          "astronomical-image"
+        ],
+        "outputs": [
+          "cleaned-image",
+          "cosmic-ray-mask"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recovery of injected cosmic rays and effect on photometry."
+      ],
+      "limitations": [
+        "Weight terms not stated; instrument-specific training."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/profjsb/deepCR",
+          "notes": "deepCR cosmic-ray removal."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2001.09538",
+          "notes": "Deep learning for cosmic-ray removal."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "space",
+        "astronomy",
+        "image-restoration"
+      ],
+      "path": "catalog/space/deepcr.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "exominer",
+      "name": "ExoMiner",
+      "domain": "space",
+      "tasks": [
+        "exoplanet-detection",
+        "time-series-classification"
+      ],
+      "class": "astronomy-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NASA deep-learning model that vets exoplanet candidates from Kepler and TESS photometry.",
+      "links": {
+        "repository": "https://github.com/nasa/ExoMiner",
+        "paper": "https://iopscience.iop.org/article/10.3847/1538-4357/ac3140"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Trains/classifies on light curves; CPU-feasible for inference."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [
+        "tensorflow-savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained vetting models; retraining needs labelled transit signals.",
+        "needs_data": "Light curves with candidate signals.",
+        "update_strategy": "Verify licence; revalidate against new survey data."
+      },
+      "data": {
+        "inputs": [
+          "light-curve"
+        ],
+        "outputs": [
+          "planet-candidate-probability"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Precision/recall against confirmed planets and false positives."
+      ],
+      "limitations": [
+        "License not stated; survey-specific and imbalanced labels."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/nasa/ExoMiner",
+          "notes": "NASA ExoMiner."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "space",
+        "astronomy",
+        "exoplanets",
+        "nasa"
+      ],
+      "path": "catalog/space/exominer.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "astronn",
+      "name": "astroNN",
+      "domain": "space",
+      "tasks": [
+        "stellar-parameter-estimation",
+        "astronomical-classification",
+        "spectral-analysis"
+      ],
+      "class": "astronomy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Deep-learning library for astronomers covering spectra, photometry and uncertainty estimation.",
+      "links": {
+        "repository": "https://github.com/henrysky/astroNN"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/analysis; inference can be lightweight for small models."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains models on survey spectra/photometry with uncertainty estimates.",
+        "needs_data": "Astronomical survey data with reference labels.",
+        "update_strategy": "Pin survey data versions; revalidate per instrument."
+      },
+      "data": {
+        "inputs": [
+          "spectra",
+          "photometry"
+        ],
+        "outputs": [
+          "parameters",
+          "classes",
+          "uncertainties"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Parameter accuracy and calibrated uncertainties on held-out objects."
+      ],
+      "limitations": [
+        "Survey- and instrument-specific; not a general-purpose model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/henrysky/astroNN",
+          "notes": "astroNN astronomy deep learning."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "space",
+        "astronomy",
+        "spectroscopy"
+      ],
+      "path": "pipelines/space/astronn.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "torchsig",

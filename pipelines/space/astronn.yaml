@@ -1,0 +1,23 @@
+id: astronn
+name: astroNN
+domain: space
+tasks: [stellar-parameter-estimation, astronomical-classification, spectral-analysis]
+class: astronomy-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Deep-learning library for astronomers covering spectra, photometry and uncertainty estimation."
+links: {repository: 'https://github.com/henrysky/astroNN'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/analysis; inference can be lightweight for small models.'}
+runtimes: [tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains models on survey spectra/photometry with uncertainty estimates.', needs_data: 'Astronomical survey data with reference labels.', update_strategy: 'Pin survey data versions; revalidate per instrument.'}
+data: {inputs: [spectra, photometry], outputs: [parameters, classes, uncertainties], languages: []}
+evaluation: ['Parameter accuracy and calibrated uncertainties on held-out objects.']
+limitations: ['Survey- and instrument-specific; not a general-purpose model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/henrysky/astroNN', notes: 'astroNN astronomy deep learning.'}]
+reviewed: '2026-10-06'
+tags: [space, astronomy, spectroscopy]

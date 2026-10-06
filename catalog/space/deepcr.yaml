@@ -1,0 +1,23 @@
+id: deepcr
+name: deepCR
+domain: space
+tasks: [cosmic-ray-removal, image-restoration]
+class: astronomy-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Deep-learning cosmic-ray removal for astronomical images."
+links: {repository: 'https://github.com/profjsb/deepCR', paper: 'https://arxiv.org/abs/2001.09538'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Small U-Net style models; CPU-capable inference.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released models for common instruments; retraining needs masked data.', needs_data: 'Astronomical images; masks for evaluation.', update_strategy: 'Verify weights terms; revalidate per instrument.'}
+data: {inputs: [astronomical-image], outputs: [cleaned-image, cosmic-ray-mask], languages: []}
+evaluation: ['Recovery of injected cosmic rays and effect on photometry.']
+limitations: ['Weight terms not stated; instrument-specific training.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/profjsb/deepCR', notes: 'deepCR cosmic-ray removal.'}, {type: paper, url: 'https://arxiv.org/abs/2001.09538', notes: 'Deep learning for cosmic-ray removal.'}]
+reviewed: '2026-10-06'
+tags: [space, astronomy, image-restoration]

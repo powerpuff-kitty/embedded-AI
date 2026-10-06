@@ -1,0 +1,23 @@
+id: recbole
+name: RecBole
+domain: recommendation
+tasks: [recommendation, benchmarking]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Unified recommendation library covering a wide range of algorithms and datasets for benchmarking."
+links: {repository: 'https://github.com/RUCAIBox/RecBole', homepage: 'https://recbole.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Training/benchmarking; models can be exported.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains and benchmarks many recommender algorithms under standard splits.', needs_data: 'Interaction datasets with time-aware splits.', update_strategy: 'Pin version; revalidate offline metrics before deployment.'}
+data: {inputs: [interaction-data], outputs: [ranked-recommendations], languages: []}
+evaluation: ['Recall@k/NDCG/MRR under time-based evaluation protocols.']
+limitations: ['Offline metrics do not capture online effects; popularity bias applies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/RUCAIBox/RecBole', notes: 'RecBole recommendation library.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, benchmarking, pytorch]

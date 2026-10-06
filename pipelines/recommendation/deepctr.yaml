@@ -1,0 +1,23 @@
+id: deepctr
+name: DeepCTR
+domain: recommendation
+tasks: [click-through-rate-prediction, ranking]
+class: ctr-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Modular package of deep-learning click-through-rate prediction models."
+links: {repository: 'https://github.com/shenweichen/DeepCTR'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server], notes: 'Training/serving library for ranking models.'}
+runtimes: [tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains CTR/ranking models on impression logs.', needs_data: 'Logs with features and click labels; time-aware splits.', update_strategy: 'Retrain frequently; monitor calibration and drift.'}
+data: {inputs: [impression-features], outputs: [click-probability], languages: []}
+evaluation: ['AUC/logloss offline plus calibrated online lift in controlled tests.']
+limitations: ['Impression bias and delayed feedback complicate labels.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/shenweichen/DeepCTR', notes: 'DeepCTR CTR models.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, ctr, advertising, tensorflow]
