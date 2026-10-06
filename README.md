@@ -35,6 +35,7 @@ See [Contributing](CONTRIBUTING.md), [vision/video/3D](docs/VISION-VIDEO-3D.md) 
 npm ci --ignore-scripts
 npm run search -- --domain finance --usage pretrained
 npm run search -- --query anomaly --json
+npm run need -- "detect people offline with a tiny model"
 npm run index
 npm run check
 ```

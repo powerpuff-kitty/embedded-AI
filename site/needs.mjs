@@ -142,10 +142,10 @@ export function scoreEntry(entry, intent) {
   for (const token of intent.tokens) {
     let best = null;
     for (const [field, weight] of Object.entries(FIELD_WEIGHTS)) {
-      if (fields[field].split(/\s+/).includes(token)) {
+      if (fields[field].split(/[\s-]+/).includes(token)) {
         if (!best || weight > best.weight) best = { field, weight, token };
       } else if (fields[field].includes(token)) {
-        const partial = weight - 1;
+        const partial = Math.max(1, Math.round(weight / 3));
         if (!best || partial > best.weight) best = { field, weight: partial, token, partial: true };
       }
     }

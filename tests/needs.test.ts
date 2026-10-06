@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { tokenize, interpret, matchNeeds, describeIntent, applyNeedConstraints, shortlistMarkdown, upstreamOf, stem } from '../site/needs.mjs';
 import { loadEntries } from '../scripts/catalog.ts';
 const entries = await loadEntries();
@@ -77,4 +78,25 @@ test('light stemming connects word forms', () => {
 test('a gerund query still surfaces detection components', () => {
   const { results } = matchNeeds(entries, 'detecting objects in images');
   assert.ok(results.some(r => (r.entry.tasks || []).some(task => task.includes('detection'))), results.slice(0, 8).map(r => r.entry.id).join(','));
+});
+
+test('need CLI returns ranked JSON with reasons', () => {
+  const result = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/need.ts', 'detect people offline', '--json', '--limit', '5'], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout);
+  assert.ok(parsed.results.length > 0 && parsed.results.length <= 5);
+  assert.ok(parsed.results[0].reasons.length > 0);
+  assert.ok(parsed.results.every((r: any) => typeof r.id === 'string' && typeof r.score === 'number'));
+});
+
+test('need CLI rejects an invalid limit', () => {
+  const bad = spawnSync(process.execPath, ['--import', 'tsx', 'scripts/need.ts', 'anything', '--limit', '0'], { encoding: 'utf8' });
+  assert.notEqual(bad.status, 0);
+  assert.match(bad.stderr, /Invalid --limit/);
+});
+
+test('a focused camera query ranks vision components first', () => {
+  const { results } = matchNeeds(entries, 'detect people with a camera');
+  assert.equal(results[0].entry.domain, 'vision');
+  assert.ok(results.slice(0, 5).filter(r => r.entry.domain === 'vision').length >= 3, results.slice(0, 5).map(r => r.entry.id).join(','));
 });

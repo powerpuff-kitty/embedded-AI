@@ -20,6 +20,13 @@ unchanged.
    Markdown list (name, tasks, manifest, upstream link) on your clipboard.
 5. The query is shareable as `?need=...`.
 
+The same ranking is available from the terminal:
+
+```sh
+npm run need -- "detect people offline with a tiny model"
+npm run need -- "transcribe speech" --pretrained --json --limit 10
+```
+
 ## How ranking works (`site/needs.mjs`)
 
 - **Tokenize** the query, drop stopwords, apply light suffix stemming (so
