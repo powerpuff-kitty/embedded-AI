@@ -1,0 +1,23 @@
+id: realtime-flowlenia
+name: Real-time Flow-Lenia
+domain: artificial-life
+tasks: [continuous-cellular-automata, artificial-life-simulation]
+class: continuous-cellular-automaton
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "GPU-accelerated real-time Flow-Lenia with liquid shader effects."
+links: {repository: 'https://github.com/ochyai/realtime-flowlenia'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Targets PyTorch CUDA/MPS for interactive frame rates.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Interactive simulation; no training.', needs_data: 'A GPU runtime and Flow-Lenia parameters.', update_strategy: 'Pin version; re-check device support (CUDA/MPS).'}
+data: {inputs: [initial-state, parameters], outputs: [evolved-fields, rendered-frames], languages: []}
+evaluation: ['Frame rate and stability of the simulation on the target GPU.']
+limitations: ['Requires a GPU; visual/entertainment focus rather than analysis.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ochyai/realtime-flowlenia', notes: 'Real-time GPU Flow-Lenia.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, flow-lenia, gpu, interactive]

@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**284 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**294 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -86,7 +86,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [control](#catalogue-control) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [control](#catalogue-control) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-administrative"></a>
 
@@ -109,6 +109,23 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [AgML](pipelines/agriculture/agml.yaml) · [upstream](<https://github.com/Project-AgML/AgML>) | toolkit / requires-training | agricultural-dataset-management, crop-classification, plant-disease-detection, crop-segmentation | — | — | python, pytorch, tensorflow | desktop, server | Apache-2.0 / not-applicable | unknown |
+
+<a id="catalogue-artificial-life"></a>
+
+### Artificial life
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [3D Artefacts NCA](pipelines/artificial-life/nca-3d-artefacts.yaml) · [upstream](<https://github.com/real-itu/3d-artefacts-nca>) | pipeline / requires-training | 3d-artefact-generation, morphogenesis, self-organising-pattern-generation | — | — | pytorch | desktop | MIT / not-provided | unknown |
+| [Convoca](pipelines/artificial-life/convoca.yaml) · [upstream](<https://github.com/williamgilpin/convoca>) | toolkit / requires-training | cellular-automata-prediction, neural-cellular-automata-analysis | — | — | pytorch | desktop | unknown / not-provided | unknown |
+| [FlowLenia](primitives/artificial-life/flow-lenia.yaml) · [upstream](<https://github.com/erwanplantec/FlowLenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation, evolutionary-search | — | — | python | desktop | unknown / not-applicable | unknown |
+| [Lenia](primitives/artificial-life/lenia.yaml) · [upstream](<https://github.com/Chakazul/Lenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | python, javascript | desktop, browser | MIT / not-applicable | unknown |
+| [Real-time Flow-Lenia](primitives/artificial-life/realtime-flowlenia.yaml) · [upstream](<https://github.com/ochyai/realtime-flowlenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | pytorch | desktop | MIT / not-applicable | unknown |
+| [lenia_ca (Rust)](primitives/artificial-life/lenia-ca.yaml) · [upstream](<https://github.com/BirdbrainEngineer/lenia_ca>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | rust, wasm | browser, desktop, edge | MIT / not-applicable | unknown |
+| [Particle Lenia](primitives/artificial-life/particle-lenia.yaml) · [upstream](<https://github.com/silvernio/particle-lenia>) | primitive / companion | particle-simulation, artificial-life-simulation | — | — | typescript, webgpu | browser | unknown / not-applicable | unknown |
+| [Growing NCA (PyTorch, PWhiddy)](pipelines/artificial-life/growing-nca-pytorch.yaml) · [upstream](<https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch>) | pipeline / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | pytorch | desktop, browser | Apache-2.0 / not-provided | unknown |
+| [Growing NCA Reproduction (PyTorch)](pipelines/artificial-life/growing-nca-repro.yaml) · [upstream](<https://github.com/chenmingxiang110/Growing-Neural-Cellular-Automata>) | pipeline / requires-training | self-organising-pattern-generation, morphogenesis | — | — | pytorch | desktop | MIT / not-provided | unknown |
+| [Growing Neural Cellular Automata](catalog/artificial-life/growing-nca.yaml) · [upstream](<https://github.com/google-research/self-organising-systems>) | collection / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | jax | desktop | Apache-2.0 / not-provided | unknown |
 
 <a id="catalogue-audio"></a>
 

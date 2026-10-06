@@ -1,0 +1,23 @@
+id: particle-lenia
+name: Particle Lenia
+domain: artificial-life
+tasks: [particle-simulation, artificial-life-simulation]
+class: particle-life-simulation
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Particle-based Lenia simulation running in the browser with TypeScript and WebGPU."
+links: {repository: 'https://github.com/silvernio/particle-lenia'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [browser], notes: 'WebGPU browser simulation; no native backend.'}
+runtimes: [typescript, webgpu]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic particle simulation; not trained.', needs_data: 'A WebGPU-capable browser and simulation parameters.', update_strategy: 'Pin version; verify WebGPU availability.'}
+data: {inputs: [particle-state, parameters], outputs: [evolved-particles], languages: []}
+evaluation: ['Stability and performance across particle counts.']
+limitations: ['License not stated; WebGPU-only; a toy/simulation rather than a model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/silvernio/particle-lenia', notes: 'WebGPU particle Lenia.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, particle-lenia, webgpu, browser]

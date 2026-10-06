@@ -1,0 +1,23 @@
+id: flow-lenia
+name: FlowLenia
+domain: artificial-life
+tasks: [continuous-cellular-automata, artificial-life-simulation, evolutionary-search]
+class: continuous-cellular-automaton
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Mass-conservative Flow-Lenia implementation with parameter search for emergent creatures."
+links: {repository: 'https://github.com/erwanplantec/FlowLenia'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Simulation and search; GPU speeds up parameter sweeps.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Evokes creatures via search/optimisation over simulation parameters.', needs_data: 'A kernel/growth parameterisation and a search objective.', update_strategy: 'Pin version and parameter archives; re-run seeds.'}
+data: {inputs: [initial-state, parameters], outputs: [evolved-fields, creature-parameters], languages: []}
+evaluation: ['Stability, diversity and persistence of evoked creatures.']
+limitations: ['License not stated in the repository; simulation, not a learned model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/erwanplantec/FlowLenia', notes: 'Flow-Lenia implementation and search.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, cellular-automata, flow-lenia, evolutionary-search]
