@@ -1,5 +1,6 @@
 import { partition, safeURL, format } from './catalogue.mjs';
 import { matchNeeds, describeIntent, applyNeedConstraints, shortlistMarkdown } from './needs.mjs';
+import { initI18n, t, LOCALE_NAMES, getLocale, loadLocale, applyStatic } from './i18n.mjs';
 const $ = selector => document.querySelector(selector);
 const el = (tag,text,className) => { const node=document.createElement(tag); if(text!==undefined)node.textContent=String(text); if(className)node.className=className; return node; };
 const form=$('#filters'), selected=new Set();
@@ -26,7 +27,7 @@ function details(entry){
   const raw=el('details');raw.append(el('summary','Full metadata'),el('pre',JSON.stringify(entry,null,2)));box.append(raw);show(box);
 }
 function table(list,container){
-  container.replaceChildren();if(!list.length){container.append(el('p','No matching entries. Try fewer filters or inspect untested candidates.','empty'));return;}
+  container.replaceChildren();if(!list.length){container.append(el('p',t('emptyFilter'),'empty'));return;}
   const wrapper=el('div',undefined,'table-wrap'),table=el('table'),head=el('thead'),row=el('tr');
   for(const title of ['Select','Component','Task / use','Model size','Runtime','Evidence'])row.append(el('th',title));head.append(row);table.append(head);
   const body=el('tbody');
@@ -42,7 +43,7 @@ function table(list,container){
   table.append(body);wrapper.append(table);container.append(wrapper);
 }
 function rankedTable(results,container){
-  container.replaceChildren();if(!results.length){container.append(el('p','No entries matched. Try naming the task, sensor or constraint differently.','empty'));return;}
+  container.replaceChildren();if(!results.length){container.append(el('p',t('emptyNeed'),'empty'));return;}
   const wrapper=el('div',undefined,'table-wrap'),table=el('table'),head=el('thead'),row=el('tr');
   for(const title of ['Select','Component','Why it matched','Task / use','Model size','Evidence'])row.append(el('th',title));head.append(row);table.append(head);
   const body=el('tbody');
@@ -58,14 +59,14 @@ function rankedTable(results,container){
   table.append(body);wrapper.append(table);container.append(wrapper);
 }
 function filters(){const data=Object.fromEntries(new FormData(form));return {...data,offline:!!data.offline,candidates:!!data.candidates};}
-function updateCompare(){$('#compare').disabled=selected.size<2;$('#compare').textContent=`Compare (${selected.size}/4)`;$('#shortlist').disabled=selected.size<1;}
+function updateCompare(){$('#compare').disabled=selected.size<2;$('#compare-label').textContent=t('compare',{n:selected.size});$('#shortlist').disabled=selected.size<1;}
 function render(){
   $('#error').textContent='';
   if(needQuery){
     const constraints={offline:$('#need-offline').checked,pretrained:$('#need-pretrained').checked,model:$('#need-model').checked};
     const {intent,results}=matchNeeds(entries,needQuery,{limit:100});
     const {kept,excluded}=applyNeedConstraints(results,constraints);
-    $('#count').textContent=`${kept.length} matching component(s) for your need`;
+    $('#count').textContent=t('countNeed',{n:kept.length});
     $('#need-hint').textContent=[`Interpreted tokens: ${intent.tokens.slice(0,12).join(', ')||'none'}`,...describeIntent(intent)].join(' · ');
     const excludedBox=$('#need-excluded');excludedBox.replaceChildren();
     if(excluded.length){const reasons=[...new Set(excluded.map(x=>x.reason))].slice(0,3);excludedBox.append(el('p',`${excluded.length} ranked match(es) hidden by your constraints: ${reasons.join('; ')}.`,undefined));excludedBox.className='fine';}
@@ -73,15 +74,19 @@ function render(){
     history.replaceState(null,'',location.pathname+'?need='+encodeURIComponent(needQuery));return;
   }
   $('#need-hint').textContent='';$('#need-excluded').replaceChildren();
-  const f=filters(),result=partition(entries,f,runs);$('#count').textContent=`${result.matching.length} matching components`;
+  const f=filters(),result=partition(entries,f,runs);$('#count').textContent=t('countComponents',{n:result.matching.length});
   if(f.ram&&!f.target)$('#error').textContent='Choose an exact target before applying a measured-memory budget. Unknowns are not confirmed fits.';
   table(result.matching,$('#entries'));$('#candidates-section').hidden=!result.candidates.length;table(result.candidates,$('#candidates'));
   const params=new URLSearchParams();for(const [key,value]of Object.entries(f))if(value)params.set(key,value===true?'1':value);
   history.replaceState(null,'',location.pathname+(params.size?'?'+params:''));
 }
-$('#match').onclick=()=>{needQuery=$('#need').value.trim();render();};
-$('#need-clear').onclick=()=>{$('#need').value='';needQuery='';render();};
-$('#need').addEventListener('keydown',event=>{if(event.key==='Enter'&&(event.metaKey||event.ctrlKey)){needQuery=$('#need').value.trim();render();}});
+let needTimer;
+const runNeed=()=>{needQuery=$('#need').value.trim();render();};
+const scheduleNeed=()=>{clearTimeout(needTimer);needTimer=setTimeout(runNeed,300);};
+$('#match').onclick=runNeed;
+$('#need').addEventListener('input',scheduleNeed);
+$('#need-clear').onclick=()=>{clearTimeout(needTimer);$('#need').value='';needQuery='';render();};
+$('#need').addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();clearTimeout(needTimer);runNeed();}});
 $('#compare').onclick=()=>{
   const items=entries.filter(e=>selected.has(e.id)),box=el('section');box.append(el('h2','Compare components'),el('p','Latency and RAM observations are workload-specific. Different hosts or variants are not directly ranked.'));
   const wrapper=el('div',undefined,'table-wrap'),t=el('table',undefined,'comparison');
@@ -93,7 +98,10 @@ for(const id of ['#need-offline','#need-pretrained','#need-model'])$(id).addEven
 form.addEventListener('input',render);form.addEventListener('reset',()=>setTimeout(render,0));
 function options(name,values){const select=form.elements.namedItem(name);for(const value of [...new Set(values)].filter(Boolean).sort()) {const o=el('option',value);o.value=value;select.append(o);}}
 try{
+  await initI18n();
   const response=await fetch('./data/catalog.json');if(!response.ok)throw new Error(`Catalogue HTTP ${response.status}`);const data=await response.json();entries=data.entries;runs=data.benchmarks||[];
+  const localeSelect=$('#locale');for(const code of Object.keys(LOCALE_NAMES)){const opt=el('option',LOCALE_NAMES[code]);opt.value=code;localeSelect.append(opt);}localeSelect.value=getLocale();
+  localeSelect.addEventListener('change',async()=>{try{await loadLocale(localeSelect.value);localStorage.setItem('locale',localeSelect.value);}catch{}applyStatic(document);updateCompare();render();});
   options('domain',entries.map(e=>e.domain));options('task',entries.flatMap(e=>e.tasks));options('kind',entries.map(e=>e.kind));options('usage',entries.map(e=>e.usage?.mode||'unknown'));options('runtime',entries.flatMap(e=>[...(e.runtimes||[]),...(e.formats||[])]));options('license',entries.map(e=>e.license.weights));options('target',['luckfox-rv1106','esp32',...runs.map(r=>r.hardware.id),...entries.flatMap(e=>(e.compatibility||[]).map(c=>c.target))]);
   for(const [key,value]of new URLSearchParams(location.search)){const input=form.elements.namedItem(key);if(input){if(input.type==='checkbox')input.checked=value==='1';else input.value=value;}}
   const needParam=new URLSearchParams(location.search).get('need');if(needParam){$('#need').value=needParam;needQuery=needParam;}
