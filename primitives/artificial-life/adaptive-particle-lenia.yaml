@@ -1,0 +1,23 @@
+id: adaptive-particle-lenia
+name: Adaptive Particle Lenia
+domain: artificial-life
+tasks: [particle-simulation, artificial-life-simulation, evolutionary-search]
+class: particle-life-simulation
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Adaptive Particle Lenia for finding self-organising particle creatures."
+links: {repository: 'https://github.com/KazuyaHoribe/AdaptiveParticleLenia'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Simulation + parameter search; GPU helps.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Searches particle-interaction parameters; not a learned model.', needs_data: 'Particle initial conditions and parameter ranges.', update_strategy: 'Pin version and parameter archives; re-run seeds.'}
+data: {inputs: [particle-state, parameters], outputs: [evolved-particles, parameters], languages: []}
+evaluation: ['Persistence and diversity of discovered particle creatures.']
+limitations: ['License not stated; research simulation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/KazuyaHoribe/AdaptiveParticleLenia', notes: 'Adaptive Particle Lenia.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, particle-lenia, simulation]

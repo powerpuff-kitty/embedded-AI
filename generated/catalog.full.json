@@ -832,6 +832,336 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "3d-growing-nca",
+      "name": "3D Growing NCA (Aadityaza)",
+      "domain": "artificial-life",
+      "tasks": [
+        "3d-artefact-generation",
+        "morphogenesis"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "3D growing neural cellular automata implementation in notebooks.",
+      "links": {
+        "repository": "https://github.com/Aadityaza/3d-Growing-neural-cellular-automata",
+        "paper": "https://distill.pub/2020/growing-ca/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Voxel NCA; GPU recommended for 3D rollouts."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a 3D local rule to grow a voxel target.",
+        "needs_data": "A voxel target and a training harness.",
+        "update_strategy": "Retrain per target; record seeds and grid size."
+      },
+      "data": {
+        "inputs": [
+          "voxel-target",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-3d-structure"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Structural fidelity to the voxel target and stability."
+      ],
+      "limitations": [
+        "Educational implementation; 3D memory grows cubically."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Aadityaza/3d-Growing-neural-cellular-automata",
+          "notes": "3D growing NCA notebooks."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "3d"
+      ],
+      "path": "pipelines/artificial-life/3d-growing-nca.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "3d-nca-monash",
+      "name": "3D Neural Cellular Automata (Monash)",
+      "domain": "artificial-life",
+      "tasks": [
+        "3d-artefact-generation",
+        "morphogenesis",
+        "self-organising-pattern-generation"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Three-dimensional neural cellular automata implementation from Monash DeepNeuron.",
+      "links": {
+        "repository": "https://github.com/MonashDeepNeuron/3D-Neural-Cellular-Automata"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Voxel NCA; training and rollouts are GPU-bound."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a shared 3D update rule from a voxel target.",
+        "needs_data": "Voxel target and training configuration.",
+        "update_strategy": "Retrain per target; version checkpoints and grid size."
+      },
+      "data": {
+        "inputs": [
+          "voxel-target",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-3d-structure"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Structural fidelity and regeneration after damage."
+      ],
+      "limitations": [
+        "Voxel NCA memory scales cubically with resolution."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MonashDeepNeuron/3D-Neural-Cellular-Automata",
+          "notes": "3D NCA implementation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "3d"
+      ],
+      "path": "pipelines/artificial-life/3d-nca-monash.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "asal",
+      "name": "ASAL (Automating the Search for Artificial Life)",
+      "domain": "artificial-life",
+      "tasks": [
+        "artificial-life-search",
+        "evolutionary-search",
+        "foundation-model-guided-search"
+      ],
+      "class": "artificial-life-search",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Sakana AI framework that uses foundation models to search for interesting artificial-life simulations.",
+      "links": {
+        "repository": "https://github.com/SakanaAI/asal",
+        "paper": "https://arxiv.org/abs/2412.17799"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Search/training pipeline; foundation-model CLIP embeddings drive the objective."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Searches simulation parameter spaces; optional supervised/RL targets.",
+        "needs_data": "A simulation substrate, a vision model and an objective.",
+        "update_strategy": "Pin the foundation model and simulation version; record seeds and search budgets."
+      },
+      "data": {
+        "inputs": [
+          "simulation-definition",
+          "objective"
+        ],
+        "outputs": [
+          "discovered-simulations",
+          "parameters"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Open-endedness/diversity of found substrates under a fixed compute budget."
+      ],
+      "limitations": [
+        "Objective and foundation-model biases steer the search; not a general intelligence."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/SakanaAI/asal",
+          "notes": "ASAL search framework."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2412.17799",
+          "notes": "Automating the Search for Artificial Life with Foundation Models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "search",
+        "foundation-models",
+        "sakana"
+      ],
+      "path": "pipelines/artificial-life/asal.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "asal-pytorch",
+      "name": "ASAL (PyTorch reimplementation)",
+      "domain": "artificial-life",
+      "tasks": [
+        "artificial-life-search",
+        "evolutionary-search"
+      ],
+      "class": "artificial-life-search",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Independent PyTorch reimplementation of the ASAL artificial-life search method.",
+      "links": {
+        "repository": "https://github.com/fredericowieser/ASAL-PyTorch",
+        "paper": "https://arxiv.org/abs/2412.17799"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Research reimplementation of a search pipeline."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Searches simulation parameters with a learned objective.",
+        "needs_data": "A simulation and an objective embedding model.",
+        "update_strategy": "Pin dependencies; re-run with recorded seeds."
+      },
+      "data": {
+        "inputs": [
+          "simulation-definition",
+          "objective"
+        ],
+        "outputs": [
+          "discovered-simulations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Reproduction of reported search behaviour and diversity."
+      ],
+      "limitations": [
+        "License not stated; a reimplementation, not the reference."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/fredericowieser/ASAL-PyTorch",
+          "notes": "PyTorch ASAL reimplementation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "search",
+        "pytorch",
+        "reimplementation"
+      ],
+      "path": "pipelines/artificial-life/asal-pytorch.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "convoca",
       "name": "Convoca",
       "domain": "artificial-life",
@@ -911,6 +1241,86 @@
       ],
       "path": "pipelines/artificial-life/convoca.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "capow",
+      "name": "CAPOW (Continuous Cellular Automata)",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Rudy Rucker's CAPOW explorer for continuous-valued cellular automata.",
+      "links": {
+        "repository": "https://github.com/rudyrucker/capow"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Native C++ application for exploring continuous CA rules."
+      },
+      "runtimes": [
+        "native-cpp"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Rule exploration; not a learned model.",
+        "needs_data": "A rule and initial field.",
+        "update_strategy": "Pin version; export and version any interesting rules."
+      },
+      "data": {
+        "inputs": [
+          "initial-field",
+          "rule"
+        ],
+        "outputs": [
+          "evolved-fields"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Stability and richness of patterns for a given rule."
+      ],
+      "limitations": [
+        "GPL-3.0 copyleft; a creative exploration tool."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/rudyrucker/capow",
+          "notes": "CAPOW continuous CA."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "cellular-automata",
+        "continuous",
+        "native"
+      ],
+      "path": "primitives/artificial-life/capow.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "flow-lenia",
@@ -1078,6 +1488,87 @@
       "usage_mode": "companion"
     },
     {
+      "id": "lenia-tutorial",
+      "name": "Lenia Tutorial",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "From Conway to Lenia: tutorials and notebooks for continuous cellular automata.",
+      "links": {
+        "repository": "https://github.com/lenia-org/Lenia-Tutorial"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Notebooks introducing Lenia step by step."
+      },
+      "runtimes": [
+        "jupyter",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Educational material; simulations are deterministic.",
+        "needs_data": "A notebook runtime and example parameter sets.",
+        "update_strategy": "Pin dependencies; notebooks may need environment updates."
+      },
+      "data": {
+        "inputs": [
+          "initial-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-fields"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "The notebook reproduces documented Lenia patterns."
+      ],
+      "limitations": [
+        "Teaching material; not a maintained library."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lenia-org/Lenia-Tutorial",
+          "notes": "Lenia tutorial."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "lenia",
+        "tutorial"
+      ],
+      "path": "catalog/artificial-life/lenia-tutorial.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "realtime-flowlenia",
       "name": "Real-time Flow-Lenia",
       "domain": "artificial-life",
@@ -1242,6 +1733,87 @@
       "usage_mode": "companion"
     },
     {
+      "id": "adaptive-particle-lenia",
+      "name": "Adaptive Particle Lenia",
+      "domain": "artificial-life",
+      "tasks": [
+        "particle-simulation",
+        "artificial-life-simulation",
+        "evolutionary-search"
+      ],
+      "class": "particle-life-simulation",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Adaptive Particle Lenia for finding self-organising particle creatures.",
+      "links": {
+        "repository": "https://github.com/KazuyaHoribe/AdaptiveParticleLenia"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Simulation + parameter search; GPU helps."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Searches particle-interaction parameters; not a learned model.",
+        "needs_data": "Particle initial conditions and parameter ranges.",
+        "update_strategy": "Pin version and parameter archives; re-run seeds."
+      },
+      "data": {
+        "inputs": [
+          "particle-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-particles",
+          "parameters"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Persistence and diversity of discovered particle creatures."
+      ],
+      "limitations": [
+        "License not stated; research simulation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/KazuyaHoribe/AdaptiveParticleLenia",
+          "notes": "Adaptive Particle Lenia."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "particle-lenia",
+        "simulation"
+      ],
+      "path": "primitives/artificial-life/adaptive-particle-lenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "particle-lenia",
       "name": "Particle Lenia",
       "domain": "artificial-life",
@@ -1320,6 +1892,87 @@
         "browser"
       ],
       "path": "primitives/artificial-life/particle-lenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "reaction-diffusion-playground",
+      "name": "Reaction-Diffusion Playground",
+      "domain": "artificial-life",
+      "tasks": [
+        "reaction-diffusion-simulation",
+        "pattern-formation"
+      ],
+      "class": "reaction-diffusion-simulation",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Interactive Gray-Scott reaction-diffusion simulation producing organic emergent patterns.",
+      "links": {
+        "repository": "https://github.com/jasonwebb/reaction-diffusion-playground"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "WebGL browser simulation; no learned model."
+      },
+      "runtimes": [
+        "javascript",
+        "webgl"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Deterministic simulation; parameters are hand-tuned.",
+        "needs_data": "Feed/kill rates, diffusion rates and a seed pattern.",
+        "update_strategy": "Pin version; save parameter presets with outputs."
+      },
+      "data": {
+        "inputs": [
+          "initial-pattern",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-patterns"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Pattern stability and diversity across parameter sets."
+      ],
+      "limitations": [
+        "License not stated; a simulation toy, not an AI model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jasonwebb/reaction-diffusion-playground",
+          "notes": "Reaction-diffusion playground."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "reaction-diffusion",
+        "webgl",
+        "simulation"
+      ],
+      "path": "primitives/artificial-life/reaction-diffusion-playground.yaml",
       "usage_mode": "companion"
     },
     {
@@ -1572,6 +2225,93 @@
         "jax"
       ],
       "path": "catalog/artificial-life/growing-nca.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "selforg-textures",
+      "name": "Self-Organising Textures",
+      "domain": "artificial-life",
+      "tasks": [
+        "texture-synthesis",
+        "self-organising-pattern-generation"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Distill article code for controllable, self-organising neural cellular automata textures.",
+      "links": {
+        "repository": "https://github.com/distillpub/post--selforg-textures",
+        "paper": "https://distill.pub/2021/selforg/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "CC-BY-4.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Notebooks and interactive demos for NCA texture generation."
+      },
+      "runtimes": [
+        "jax"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains NCA texture generators with rotation/scale invariance tricks.",
+        "needs_data": "A reference texture and a training harness.",
+        "update_strategy": "Retrain per texture; keep augmentation settings and seeds."
+      },
+      "data": {
+        "inputs": [
+          "reference-texture",
+          "initial-state"
+        ],
+        "outputs": [
+          "synthesised-texture"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Texture fidelity and controllability (rotation, scale, boundary)."
+      ],
+      "limitations": [
+        "Article companion code; CC-BY-4.0 terms apply to the repository."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/distillpub/post--selforg-textures",
+          "notes": "Self-Organising Textures code."
+        },
+        {
+          "type": "paper",
+          "url": "https://distill.pub/2021/selforg/",
+          "notes": "Self-Organising Textures article."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "texture-synthesis",
+        "jax"
+      ],
+      "path": "catalog/artificial-life/selforg-textures.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -17060,6 +17800,87 @@
       ],
       "path": "pipelines/telecom/gnuradio.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "curie",
+      "name": "CURIE",
+      "domain": "time-series",
+      "tasks": [
+        "concept-drift-detection",
+        "streaming-classification"
+      ],
+      "class": "drift-detector",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Concept-drift detector that represents a data stream in a cellular-automata grid.",
+      "links": {
+        "repository": "https://github.com/TxusLopez/CURIE"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Streaming algorithm; cellular-automata grid size drives cost."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Hybridised with a base learner; the CA grid is configured, not trained.",
+        "needs_data": "A data stream and a base classifier for evaluation.",
+        "update_strategy": "Re-validate detection delay and false alarms per stream."
+      },
+      "data": {
+        "inputs": [
+          "data-stream"
+        ],
+        "outputs": [
+          "drift-signals"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Detection delay, false alarms and downstream accuracy under drift."
+      ],
+      "limitations": [
+        "Research detector; parameters are dataset-dependent."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/TxusLopez/CURIE",
+          "notes": "Cellular-automata concept-drift detector."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "concept-drift",
+        "cellular-automata",
+        "streaming"
+      ],
+      "path": "pipelines/time-series/curie.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "tsfresh",

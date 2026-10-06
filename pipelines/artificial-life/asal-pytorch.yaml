@@ -1,0 +1,23 @@
+id: asal-pytorch
+name: ASAL (PyTorch reimplementation)
+domain: artificial-life
+tasks: [artificial-life-search, evolutionary-search]
+class: artificial-life-search
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Independent PyTorch reimplementation of the ASAL artificial-life search method."
+links: {repository: 'https://github.com/fredericowieser/ASAL-PyTorch', paper: 'https://arxiv.org/abs/2412.17799'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Research reimplementation of a search pipeline.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Searches simulation parameters with a learned objective.', needs_data: 'A simulation and an objective embedding model.', update_strategy: 'Pin dependencies; re-run with recorded seeds.'}
+data: {inputs: [simulation-definition, objective], outputs: [discovered-simulations], languages: []}
+evaluation: ['Reproduction of reported search behaviour and diversity.']
+limitations: ['License not stated; a reimplementation, not the reference.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/fredericowieser/ASAL-PyTorch', notes: 'PyTorch ASAL reimplementation.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, search, pytorch, reimplementation]

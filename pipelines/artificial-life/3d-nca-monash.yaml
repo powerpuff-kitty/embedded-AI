@@ -1,0 +1,23 @@
+id: 3d-nca-monash
+name: 3D Neural Cellular Automata (Monash)
+domain: artificial-life
+tasks: [3d-artefact-generation, morphogenesis, self-organising-pattern-generation]
+class: neural-cellular-automaton
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Three-dimensional neural cellular automata implementation from Monash DeepNeuron."
+links: {repository: 'https://github.com/MonashDeepNeuron/3D-Neural-Cellular-Automata'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Voxel NCA; training and rollouts are GPU-bound.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a shared 3D update rule from a voxel target.', needs_data: 'Voxel target and training configuration.', update_strategy: 'Retrain per target; version checkpoints and grid size.'}
+data: {inputs: [voxel-target, initial-state], outputs: [grown-3d-structure], languages: []}
+evaluation: ['Structural fidelity and regeneration after damage.']
+limitations: ['Voxel NCA memory scales cubically with resolution.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/MonashDeepNeuron/3D-Neural-Cellular-Automata', notes: '3D NCA implementation.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, neural-cellular-automata, 3d]

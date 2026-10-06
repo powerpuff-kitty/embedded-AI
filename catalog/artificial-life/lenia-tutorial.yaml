@@ -1,0 +1,23 @@
+id: lenia-tutorial
+name: Lenia Tutorial
+domain: artificial-life
+tasks: [continuous-cellular-automata, artificial-life-simulation]
+class: continuous-cellular-automaton
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "From Conway to Lenia: tutorials and notebooks for continuous cellular automata."
+links: {repository: 'https://github.com/lenia-org/Lenia-Tutorial'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, browser], notes: 'Notebooks introducing Lenia step by step.'}
+runtimes: [jupyter, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Educational material; simulations are deterministic.', needs_data: 'A notebook runtime and example parameter sets.', update_strategy: 'Pin dependencies; notebooks may need environment updates.'}
+data: {inputs: [initial-state, parameters], outputs: [evolved-fields], languages: []}
+evaluation: ['The notebook reproduces documented Lenia patterns.']
+limitations: ['Teaching material; not a maintained library.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/lenia-org/Lenia-Tutorial', notes: 'Lenia tutorial.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, lenia, tutorial]
