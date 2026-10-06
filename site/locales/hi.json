@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} घटक Markdown के रूप में क्लिपबोर्ड पर कॉपी किए गए।",
     "errorClipboardFail": "क्लिपबोर्ड उपलब्ध नहीं; सूची कॉपी नहीं हुई।",
     "catalogUnavailable": "कैटलॉग उपलब्ध नहीं",
-    "filterRamNote": "मॉडल फ़ाइल RAM माप नहीं है। होस्ट बेंचमार्क किसी अन्य डिवाइस पर अनुकूलता सिद्ध नहीं करता।"
+    "filterRamNote": "मॉडल फ़ाइल RAM माप नहीं है। होस्ट बेंचमार्क किसी अन्य डिवाइस पर अनुकूलता सिद्ध नहीं करता।",
+    "goToProject": "प्रोजेक्ट पर जाएं",
+    "linkRepository": "रिपॉज़िटरी",
+    "linkModel": "मॉडल",
+    "linkHomepage": "होमपेज",
+    "linkPaper": "पेपर",
+    "linkLicense": "लाइसेंस"
   },
   "domain": {
     "administrative": "प्रशासनिक",

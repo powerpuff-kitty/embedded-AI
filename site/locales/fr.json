@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} composant(s) copié(s) dans le presse-papiers au format Markdown.",
     "errorClipboardFail": "Presse-papiers indisponible ; la sélection n’a pas été copiée.",
     "catalogUnavailable": "Catalogue indisponible",
-    "filterRamNote": "Un fichier de modèle n’est pas une mesure de RAM. Un benchmark hôte n’établit pas la compatibilité sur un autre appareil."
+    "filterRamNote": "Un fichier de modèle n’est pas une mesure de RAM. Un benchmark hôte n’établit pas la compatibilité sur un autre appareil.",
+    "goToProject": "Ouvrir le projet",
+    "linkRepository": "Dépôt",
+    "linkModel": "Modèle",
+    "linkHomepage": "Page",
+    "linkPaper": "Article",
+    "linkLicense": "Licence"
   },
   "domain": {
     "administrative": "Administratif",

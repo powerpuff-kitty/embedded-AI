@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n}개를 Markdown으로 클립보드에 복사했습니다.",
     "errorClipboardFail": "클립보드를 사용할 수 없어 목록이 복사되지 않았습니다.",
     "catalogUnavailable": "카탈로그 사용 불가",
-    "filterRamNote": "모델 파일은 RAM 측정이 아닙니다. 호스트 벤치마크가 다른 기기의 호환성을 입증하지 않습니다."
+    "filterRamNote": "모델 파일은 RAM 측정이 아닙니다. 호스트 벤치마크가 다른 기기의 호환성을 입증하지 않습니다.",
+    "goToProject": "프로젝트로 이동",
+    "linkRepository": "저장소",
+    "linkModel": "모델",
+    "linkHomepage": "홈페이지",
+    "linkPaper": "논문",
+    "linkLicense": "라이선스"
   },
   "domain": {
     "administrative": "행정",

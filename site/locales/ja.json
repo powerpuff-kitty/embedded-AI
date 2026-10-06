@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} 件を Markdown でクリップボードにコピーしました。",
     "errorClipboardFail": "クリップボードが利用できません。リストはコピーされませんでした。",
     "catalogUnavailable": "カタログ利用不可",
-    "filterRamNote": "モデルファイルはRAM測定ではありません。ホストのベンチマークは別デバイスの互換性を確立しません。"
+    "filterRamNote": "モデルファイルはRAM測定ではありません。ホストのベンチマークは別デバイスの互換性を確立しません。",
+    "goToProject": "プロジェクトを開く",
+    "linkRepository": "リポジトリ",
+    "linkModel": "モデル",
+    "linkHomepage": "ホームページ",
+    "linkPaper": "論文",
+    "linkLicense": "ライセンス"
   },
   "domain": {
     "administrative": "管理",

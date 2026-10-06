@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} Komponente(n) als Markdown in die Zwischenablage kopiert.",
     "errorClipboardFail": "Zwischenablage nicht verfügbar; Auswahl nicht kopiert.",
     "catalogUnavailable": "Katalog nicht verfügbar",
-    "filterRamNote": "Eine Modelldatei ist keine RAM-Messung. Ein Host-Benchmark belegt keine Kompatibilität auf einem anderen Gerät."
+    "filterRamNote": "Eine Modelldatei ist keine RAM-Messung. Ein Host-Benchmark belegt keine Kompatibilität auf einem anderen Gerät.",
+    "goToProject": "Zum Projekt",
+    "linkRepository": "Repository",
+    "linkModel": "Modell",
+    "linkHomepage": "Webseite",
+    "linkPaper": "Paper",
+    "linkLicense": "Lizenz"
   },
   "domain": {
     "administrative": "Verwaltung",

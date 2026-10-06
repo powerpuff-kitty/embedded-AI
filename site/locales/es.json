@@ -104,7 +104,13 @@
     "errorClipboardOk": "Se copiaron {n} componente(s) al portapapeles como Markdown.",
     "errorClipboardFail": "Portapapeles no disponible; no se copió la lista.",
     "catalogUnavailable": "Catálogo no disponible",
-    "filterRamNote": "Un archivo de modelo no es una medición de RAM. Un benchmark de host no establece compatibilidad en otro dispositivo."
+    "filterRamNote": "Un archivo de modelo no es una medición de RAM. Un benchmark de host no establece compatibilidad en otro dispositivo.",
+    "goToProject": "Ir al proyecto",
+    "linkRepository": "Repositorio",
+    "linkModel": "Modelo",
+    "linkHomepage": "Página",
+    "linkPaper": "Artículo",
+    "linkLicense": "Licencia"
   },
   "domain": {
     "administrative": "Administrativo",

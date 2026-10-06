@@ -104,7 +104,13 @@
     "errorClipboardOk": "Copied {n} component(s) to the clipboard as Markdown.",
     "errorClipboardFail": "Clipboard unavailable; shortlist was not copied.",
     "catalogUnavailable": "Catalogue unavailable",
-    "filterRamNote": "A model file is not a RAM measurement. A host benchmark does not establish compatibility on another device."
+    "filterRamNote": "A model file is not a RAM measurement. A host benchmark does not establish compatibility on another device.",
+    "goToProject": "Go to project",
+    "linkRepository": "Repository",
+    "linkModel": "Model",
+    "linkHomepage": "Homepage",
+    "linkPaper": "Paper",
+    "linkLicense": "Licence"
   },
   "domain": {
     "administrative": "Administrative",

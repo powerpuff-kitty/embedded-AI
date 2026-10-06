@@ -104,7 +104,13 @@
     "errorClipboardOk": "تم نسخ {n} مكوّن إلى الحافظة بصيغة Markdown.",
     "errorClipboardFail": "الحافظة غير متاحة؛ لم يتم نسخ القائمة.",
     "catalogUnavailable": "الفهرس غير متاح",
-    "filterRamNote": "ملف النموذج ليس قياسًا للذاكرة. معيار المضيف لا يثبت التوافق على جهاز آخر."
+    "filterRamNote": "ملف النموذج ليس قياسًا للذاكرة. معيار المضيف لا يثبت التوافق على جهاز آخر.",
+    "goToProject": "الانتقال إلى المشروع",
+    "linkRepository": "المستودع",
+    "linkModel": "النموذج",
+    "linkHomepage": "الصفحة",
+    "linkPaper": "ورقة",
+    "linkLicense": "الترخيص"
   },
   "domain": {
     "administrative": "إداري",
