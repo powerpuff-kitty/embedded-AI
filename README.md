@@ -1,5 +1,14 @@
 # embedded-AI
 
+[![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
+[![pages](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/pages.yml?label=pages)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
+[![catalog](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/catalog.yml?label=validate)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
+[![recipes](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/recipes.yml?label=recipes)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml)
+[![entries](https://img.shields.io/badge/dynamic/json?color=blue&label=entries&query=%24.total&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](generated/coverage.json)
+[![reproduced](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=reproduced&query=%24.reproduced_entries&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](benchmarks/README.md)
+
+**▶ Live explorer — https://powerpuff-kitty.github.io/embedded-AI/** — describe a need in plain language and get ranked, evidence-labelled components. No account, no uploads, no tracking.
+
 A machine-readable catalogue of AI/ML models for local and resource-constrained computing, plus clearly labelled companion tools for perception, control, business analysis, mapping and simulation.
 
 ## Goals
@@ -10,7 +19,7 @@ A machine-readable catalogue of AI/ML models for local and resource-constrained 
 - Generate the complete human-facing catalogue and JSON exports from YAML.
 
 ## Domains
-Audio · Video · Vision · Language · Geospatial · Time series · Engineering/CAD · Robotics · Control · Science · Sensors · Mapping · Simulation · Finance · Administration · Business · IT infrastructure · Energy
+30 domains: Audio · Video · Vision · Language · Geospatial · Weather · Time series · Engineering/CAD · Robotics · Control · Science · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark.
 
 ## Structure
 ```text
@@ -31,6 +40,9 @@ generated/     # summary, full metadata and coverage JSON
 See [Contributing](CONTRIBUTING.md), [vision/video/3D](docs/VISION-VIDEO-3D.md) and [finance/administration/business](docs/BUSINESS-AI.md).
 
 ## Use the catalogue
+
+Start with the [live explorer](https://powerpuff-kitty.github.io/embedded-AI/) (no install), or run it locally:
+
 ```sh
 npm ci --ignore-scripts
 npm run search -- --domain finance --usage pretrained
