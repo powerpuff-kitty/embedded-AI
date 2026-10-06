@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Global camera-trap classifier covering thousands of species, designed to consume MegaDetector output."
 links: {repository: 'https://github.com/google/cameratrapai'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: Apache-2.0, weights: unknown}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Upstream positions it as a downstream classifier to MegaDetector detections.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: pretrained, training: 'Published classifier; fine-tuning for regional data is possible.', needs_data: 'Animal crops from a detector plus labels for evaluation.', update_strategy: 'Verify licence and revalidate accuracy on the target region before deployment.'}
 data: {inputs: [cropped-animal-image], outputs: [species-label, confidence], languages: []}
 evaluation: ['Top-1/top-k accuracy and calibration on a region-matched validation set.']
-limitations: ['License not stated in the reviewed README; verify before use.']
+limitations: ['Code licence is Apache-2.0; weight terms are unknown.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/google/cameratrapai', notes: 'Referenced by the MegaDetector documentation as a compatible global species classifier; not a board benchmark.'}]
 reviewed: '2026-10-06'

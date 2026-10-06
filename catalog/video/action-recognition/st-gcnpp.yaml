@@ -7,7 +7,7 @@ class: "small-specialized-model"
 description: "Action recognition from temporally ordered body skeletons."
 links: {"repository": "https://github.com/kennymckormick/pyskl"}
 model: {"parameters": null, "file_size_mb": null}
-license: {"code": "unknown", "weights": "unknown"}
+license: {"code": "Apache-2.0", "weights": "unknown"}
 deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
 runtimes: ["pytorch"]
 formats: []

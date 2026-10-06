@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "INT8 edge-signal pipeline combining label-free anomaly detection with neural compression and a C runtime."
 links: {repository: 'https://github.com/Charan-Hari/SignalMint'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: MIT, weights: unknown}
 deployment: {offline: true, targets: [edge], notes: 'Upstream describes a bit-exact C runtime for microcontrollers.'}
 runtimes: [pytorch, native-c]
 formats: [c-source]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: requires-training, training: 'Fit on target-signal data for anomaly detection and compression.', needs_data: 'Representative signal recordings and a defined anomaly criterion.', update_strategy: 'Retrain per sensor and operating regime; revalidate on held-out conditions.'}
 data: {inputs: [sensor-signal-window], outputs: [anomaly-score, compressed-representation], languages: []}
 evaluation: ['Anomaly AUC, compression ratio and MCU memory/latency on the target.']
-limitations: ['License not stated in the reviewed README; verify before use.']
+limitations: ['Code licence is MIT; validate compression and detection on target signals.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/Charan-Hari/SignalMint', notes: 'Documentation review of INT8 pipeline, compression and C runtime description; not a board benchmark.'}]
 reviewed: '2026-10-06'

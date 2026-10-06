@@ -7,7 +7,7 @@ class: "small-specialized-model"
 description: "Detects video shot cuts and transitions."
 links: {"repository": "https://github.com/soCzech/TransNetV2"}
 model: {"parameters": null, "file_size_mb": null}
-license: {"code": "unknown", "weights": "unknown"}
+license: {"code": "MIT", "weights": "unknown"}
 deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
 runtimes: ["tensorflow", "pytorch"]
 formats: []

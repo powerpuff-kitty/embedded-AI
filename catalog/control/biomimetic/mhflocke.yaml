@@ -6,7 +6,7 @@ class: bio-inspired-controller
 description: ""
 links: { repository: "https://github.com/MarcHesse/mhflocke", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
+license: { code: Apache-2.0, weights: unknown }
 deployment: { offline: true, targets: [edge, robot], accelerators: [] }
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }

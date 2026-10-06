@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Patch-based transformer for long-horizon time-series forecasting, integrated in common libraries."
 links: {repository: 'https://github.com/yuqinie98/PatchTST', paper: 'https://arxiv.org/abs/2211.14730'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: Apache-2.0, weights: unknown}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Model size is configurable; smaller instances may fit constrained inference.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: requires-training, training: 'Train per dataset; checkpoints are not a universal pretrained forecaster.', needs_data: 'Historical time series with a documented splitting/backtest scheme.', update_strategy: 'Retrain on a schedule and backtest on rolling windows.'}
 data: {inputs: [historic-time-series, covariates], outputs: [forecast-horizon], languages: []}
 evaluation: ['Rolling-origin MAE/MAPE and comparison to a naive baseline.']
-limitations: ['License not stated in the reviewed README; verify before use.']
+limitations: ['Code licence is Apache-2.0; backtest on rolling windows.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/yuqinie98/PatchTST', notes: 'Documentation review of architecture and benchmark scope; not a board benchmark.'}]
 reviewed: '2026-10-06'

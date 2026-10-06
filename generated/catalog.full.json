@@ -682,7 +682,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -725,7 +725,7 @@
         "Task metrics on field-representative held-out data, not just lab images."
       ],
       "limitations": [
-        "License not stated in the reviewed README; dataset terms also apply individually."
+        "Dataset terms apply individually; the code licence is Apache-2.0."
       ],
       "compatibility": [],
       "evidence": [
@@ -935,7 +935,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -1073,7 +1073,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -2513,7 +2513,7 @@
         "measurement_scope": "Approximate upstream parameter count for Kokoro-82M; not a RAM budget."
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "Apache-2.0"
       },
       "deployment": {
@@ -2564,7 +2564,7 @@
         "Real-time factor, peak memory and listening quality for the selected voice."
       ],
       "limitations": [
-        "Code repository licence not stated in the reviewed README; verify before reliance."
+        "Code licence is Apache-2.0; verify individual voice terms before redistribution."
       ],
       "compatibility": [],
       "evidence": [
@@ -4088,7 +4088,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -4145,7 +4145,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -4259,7 +4259,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -5821,7 +5821,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "AGPL-3.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -5866,7 +5866,7 @@
         "Move-prediction accuracy, calibration and latency versus human games."
       ],
       "limitations": [
-        "Code and weight licences are not stated in the reviewed material; verify before use."
+        "Code licence is AGPL-3.0 (copyleft); weight terms are unknown."
       ],
       "compatibility": [],
       "evidence": [
@@ -10478,7 +10478,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-provided"
       },
       "deployment": {
@@ -10519,7 +10519,7 @@
         "Classification metrics on held-out captures and robustness to changed traffic."
       ],
       "limitations": [
-        "License not stated in the reviewed README; packet data can contain sensitive content."
+        "Packet data can contain sensitive content; the code licence is Apache-2.0."
       ],
       "compatibility": [],
       "evidence": [
@@ -10560,7 +10560,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -11538,7 +11538,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "GPL-3.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -11580,7 +11580,7 @@
         "Accuracy at low bit-width, flash/RAM use and latency on the target MCU."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before use."
+        "Code licence is GPL-3.0 (copyleft); verify implications before use."
       ],
       "compatibility": [],
       "evidence": [
@@ -11874,7 +11874,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -11916,7 +11916,7 @@
         "Flash/RAM, latency and parity of the generated implementation on target."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before commercial use."
+        "Code licence is Apache-2.0; verify generated-artifact terms before commercial use."
       ],
       "compatibility": [],
       "evidence": [
@@ -11957,7 +11957,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -12000,7 +12000,7 @@
         "Flash/RAM fit, latency and numerical parity on the target board."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before commercial use."
+        "Code licence is Apache-2.0; verify generated-artifact terms before commercial use."
       ],
       "compatibility": [],
       "evidence": [
@@ -14411,7 +14411,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -14455,7 +14455,7 @@
         "Comparison against held-out structures and confidence calibration."
       ],
       "limitations": [
-        "License not stated in the reviewed README; predictions are hypotheses requiring experimental validation."
+        "Code licence is Apache-2.0; predictions are hypotheses requiring experimental validation."
       ],
       "compatibility": [],
       "evidence": [
@@ -14663,7 +14663,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -14706,7 +14706,7 @@
         "Attack success rates and robustness margin under the specified threat model."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before commercial use."
+        "Code licence is Apache-2.0; security results are threat-model-specific."
       ],
       "compatibility": [],
       "evidence": [
@@ -14829,7 +14829,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -14868,7 +14868,7 @@
         "Fault classification metrics and false-alarm rate across speeds and loads."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before use."
+        "Code licence is MIT; validate on target machines and fault classes."
       ],
       "compatibility": [],
       "evidence": [
@@ -14909,7 +14909,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -15130,7 +15130,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -15173,7 +15173,7 @@
         "Anomaly AUC, compression ratio and MCU memory/latency on the target."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before use."
+        "Code licence is MIT; validate compression and detection on target signals."
       ],
       "compatibility": [],
       "evidence": [
@@ -15276,7 +15276,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -15991,7 +15991,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "not-provided"
       },
       "deployment": {
@@ -16036,7 +16036,7 @@
         "Classification accuracy across SNR and channel conditions, not a single split."
       ],
       "limitations": [
-        "License not stated in the reviewed README; synthetic-to-real gap must be measured."
+        "Synthetic-to-real gap must be measured; the code licence is MIT."
       ],
       "compatibility": [],
       "evidence": [
@@ -16779,7 +16779,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -16823,7 +16823,7 @@
         "Rolling-origin MAE/MAPE and comparison to a naive baseline."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before use."
+        "Code licence is Apache-2.0; backtest on rolling windows."
       ],
       "compatibility": [],
       "evidence": [
@@ -17466,7 +17466,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -17534,7 +17534,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -18455,7 +18455,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -19853,7 +19853,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "BSD-3-Clause",
         "weights": "unknown"
       },
       "deployment": {
@@ -19900,14 +19900,14 @@
         "Perceptual/PSNR-style quality and latency on target imagery."
       ],
       "limitations": [
-        "Can hallucinate detail; licence terms not confirmed in the reviewed README."
+        "Can hallucinate detail; the code licence is BSD-3-Clause and weight terms are unknown."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/xinntao/Real-ESRGAN",
-          "notes": "Documentation review of super-resolution scope and export options; licence not confirmed."
+          "notes": "Documentation review of super-resolution scope and export options; code licence is BSD-3-Clause per repository LICENSE."
         }
       ],
       "reviewed": "2026-10-06",
@@ -20396,7 +20396,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -20662,7 +20662,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -22111,7 +22111,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -22158,14 +22158,14 @@
         "Text/layout/table accuracy on target documents plus latency."
       ],
       "limitations": [
-        "License not stated in the reviewed README; check current terms before commercial use."
+        "Code licence is Apache-2.0; check current dual/commercial terms before use."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/VikParuchuri/surya",
-          "notes": "Documentation review of document AI scope; licence terms not confirmed."
+          "notes": "Documentation review of document AI scope; code licence is Apache-2.0 per repository LICENSE."
         }
       ],
       "reviewed": "2026-10-06",
@@ -22999,7 +22999,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -23043,7 +23043,7 @@
         "Top-1/top-k accuracy and calibration on a region-matched validation set."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before use."
+        "Code licence is Apache-2.0; weight terms are unknown."
       ],
       "compatibility": [],
       "evidence": [
@@ -23152,7 +23152,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -23197,7 +23197,7 @@
         "End-to-end throughput and accuracy on the named board and sensor set."
       ],
       "limitations": [
-        "License not stated in the reviewed README; naming a target chip is not reproduced compatibility."
+        "Code licence is Apache-2.0; naming a target chip is not reproduced compatibility."
       ],
       "compatibility": [],
       "evidence": [

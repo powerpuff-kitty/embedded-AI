@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "C++ edge video-analytics engine targeting Rockchip RKNN, Sophon and RV1126B-class accelerators."
 links: {repository: 'https://github.com/cosmo-wander-ai/cosmo-edge', homepage: 'https://www.cosmowander.ai/docs/'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-applicable}
+license: {code: Apache-2.0, weights: not-applicable}
 deployment: {offline: true, targets: [edge], notes: 'Upstream names RKNN, Sophon, BM1688 and RV1126B targets; per-board validation is separate.'}
 runtimes: [native-cpp, rknn]
 formats: [onnx]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: companion, training: 'Runtime/pipeline for video analytics; models are supplied separately.', needs_data: 'Target board, converted models and configured pipelines.', update_strategy: 'Pin engine and model revisions; re-benchmark on each specific board.'}
 data: {inputs: [video-stream, detection-models], outputs: [events, overlays, analytics], languages: []}
 evaluation: ['End-to-end throughput and accuracy on the named board and sensor set.']
-limitations: ['License not stated in the reviewed README; naming a target chip is not reproduced compatibility.']
+limitations: ['Code licence is Apache-2.0; naming a target chip is not reproduced compatibility.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/cosmo-wander-ai/cosmo-edge', notes: 'Documentation review of target accelerators and pipeline scope; not a board benchmark.'}]
 reviewed: '2026-10-06'

@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Skill-aware chess model that predicts human moves and outcomes across Elo levels."
 links: {repository: 'https://github.com/CSSLab/maia3', model: 'https://huggingface.co/collections/UofTCSSLab/maia3', paper: 'https://arxiv.org/abs/2605.19091'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: AGPL-3.0, weights: unknown}
 deployment: {offline: true, targets: [desktop, server], notes: 'Upstream supports CUDA, Apple MPS and CPU inference.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: pretrained, training: 'Released skill-conditioned checkpoints; retraining expects the Lichess database subset.', needs_data: 'Board positions plus Elo context for inference; labelled games for retraining.', update_strategy: 'Pin the checkpoint; verify licence and re-measure accuracy/latency before deployment.'}
 data: {inputs: [board-position, active-elo, opponent-elo], outputs: [move-probabilities, expected-score], languages: []}
 evaluation: ['Move-prediction accuracy, calibration and latency versus human games.']
-limitations: ['Code and weight licences are not stated in the reviewed material; verify before use.']
+limitations: ['Code licence is AGPL-3.0 (copyleft); weight terms are unknown.']
 compatibility: []
 evidence: [{type: official, url: 'https://huggingface.co/collections/UofTCSSLab/maia3', notes: 'Model collection referenced by the upstream Maia project; not a board benchmark.'}]
 reviewed: '2026-10-06'

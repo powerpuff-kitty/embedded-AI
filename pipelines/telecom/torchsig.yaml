@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Machine-learning toolkit for radio-frequency signal datasets, transforms and classification models."
 links: {repository: 'https://github.com/TorchDSP/torchsig'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-provided}
+license: {code: MIT, weights: not-provided}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Training/analysis toolkit; trained classifiers may be exportable to constrained inference.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint, onnx]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: requires-training, training: 'Trains RF classifiers on synthesized or captured signal datasets.', needs_data: 'IQ/signal captures or generated datasets with labels.', update_strategy: 'Revalidate across channel conditions, hardware and SNR ranges.'}
 data: {inputs: [iq-signal-samples], outputs: [signal-class, modulation-label], languages: []}
 evaluation: ['Classification accuracy across SNR and channel conditions, not a single split.']
-limitations: ['License not stated in the reviewed README; synthetic-to-real gap must be measured.']
+limitations: ['Synthetic-to-real gap must be measured; the code licence is MIT.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/TorchDSP/torchsig', notes: 'Documentation review of RF dataset/transform/model scope; not a hardware benchmark.'}]
 reviewed: '2026-10-06'

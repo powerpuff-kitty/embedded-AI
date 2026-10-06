@@ -6,7 +6,7 @@ class: tracking-system
 description: ""
 links: { repository: "https://github.com/ifzhang/ByteTrack", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
+license: { code: MIT, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }

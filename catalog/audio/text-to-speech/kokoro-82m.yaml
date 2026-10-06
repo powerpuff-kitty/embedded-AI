@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "82-million-parameter open-weight text-to-speech model with Apache-licensed weights."
 links: {repository: 'https://github.com/hexgrad/kokoro', model: 'https://huggingface.co/hexgrad/Kokoro-82M'}
 model: {parameters: 82000000, file_size_mb: null, measurement_scope: 'Approximate upstream parameter count for Kokoro-82M; not a RAM budget.'}
-license: {code: unknown, weights: Apache-2.0}
+license: {code: Apache-2.0, weights: Apache-2.0}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Upstream targets production and personal use; embedded fit depends on runtime and voice tensors.'}
 runtimes: [pytorch, onnxruntime]
 formats: []
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: pretrained, training: 'Published pretrained weights; voice adaptation is separate.', needs_data: 'Text input and a compatible voice tensor; task data for evaluation.', update_strategy: 'Pin model and voice revisions; re-measure real-time factor and quality.'}
 data: {inputs: [text], outputs: [speech-audio], languages: [en, es, fr, hi, it, ja, pt-br, zh]}
 evaluation: ['Real-time factor, peak memory and listening quality for the selected voice.']
-limitations: ['Code repository licence not stated in the reviewed README; verify before reliance.']
+limitations: ['Code licence is Apache-2.0; verify individual voice terms before redistribution.']
 compatibility: []
 evidence: [{type: official, url: 'https://huggingface.co/hexgrad/Kokoro-82M', notes: 'Model card review of parameter count and weight licence; not a board benchmark.'}]
 reviewed: '2026-10-06'

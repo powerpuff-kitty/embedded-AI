@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Python library for the security evaluation of machine-learning algorithms."
 links: {repository: 'https://github.com/pralab/secml'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-applicable}
+license: {code: Apache-2.0, weights: not-applicable}
 deployment: {offline: true, targets: [desktop, server], notes: 'Research/evaluation library; not an embedded runtime.'}
 runtimes: [python, pytorch]
 formats: []
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: companion, training: 'Supports security evaluation and attack simulation; not model training.', needs_data: 'A target model and dataset with a defined threat model.', update_strategy: 'Pin version and re-run evaluations when the model changes.'}
 data: {inputs: [model, dataset], outputs: [attack-success-metrics, evaluations], languages: []}
 evaluation: ['Attack success rates and robustness margin under the specified threat model.']
-limitations: ['License not stated in the reviewed README; verify before commercial use.']
+limitations: ['Code licence is Apache-2.0; security results are threat-model-specific.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/pralab/secml', notes: 'Documentation review of security-evaluation scope; not a deployment benchmark.'}]
 reviewed: '2026-10-06'

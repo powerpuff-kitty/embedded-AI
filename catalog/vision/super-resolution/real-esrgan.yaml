@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Practical blind super-resolution models for restoring real-world degraded images."
 links: {repository: 'https://github.com/xinntao/Real-ESRGAN', paper: 'https://arxiv.org/abs/2107.10833'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: BSD-3-Clause, weights: unknown}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Includes compact variants and NCNN export for edge inference.'}
 runtimes: [pytorch, ncnn, onnxruntime]
 formats: [pytorch-checkpoint, ncnn, onnx]
@@ -16,8 +16,8 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: pretrained, training: 'Pretrained upscaling models; fine-tuning on custom degradations is possible.', needs_data: 'Degraded/clean image pairs for fine-tuning/evaluation.', update_strategy: 'Pin model variant; re-measure quality and latency per target.'}
 data: {inputs: [rgb-image], outputs: [upscaled-image], languages: []}
 evaluation: ['Perceptual/PSNR-style quality and latency on target imagery.']
-limitations: ['Can hallucinate detail; licence terms not confirmed in the reviewed README.']
+limitations: ['Can hallucinate detail; the code licence is BSD-3-Clause and weight terms are unknown.']
 compatibility: []
-evidence: [{type: official, url: 'https://github.com/xinntao/Real-ESRGAN', notes: 'Documentation review of super-resolution scope and export options; licence not confirmed.'}]
+evidence: [{type: official, url: 'https://github.com/xinntao/Real-ESRGAN', notes: 'Documentation review of super-resolution scope and export options; code licence is BSD-3-Clause per repository LICENSE.'}]
 reviewed: '2026-10-06'
 tags: [vision, super-resolution, restoration, ncnn]
