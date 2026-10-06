@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Inference runtime; converts Whisper checkpoi
 data: {inputs: [wav-audio, ggml-model], outputs: [transcript, timestamps], languages: [multilingual]}
 evaluation: ['Real-time factor, memory and WER at the chosen quantization on target hardware.']
 limitations: ['Inference only; larger models exceed small-device memory.']
-compatibility: []
+compatibility:
+  - {target: raspberry-pi, status: reported, evidence: 'https://github.com/ggml-org/whisper.cpp/discussions/166', notes: 'Upstream documents Raspberry Pi execution; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/ggml-org/whisper.cpp', notes: 'Documentation review of quantization, backends and platform support; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [audio, speech-to-text, ggml, quantization]

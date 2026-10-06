@@ -17,7 +17,8 @@ usage: {mode: pretrained, training: 'Pretrained wake-word/command models; custom
 data: {inputs: [microphone-audio], outputs: [wake-word-events, commands], languages: [multilingual-models]}
 evaluation: ['Wake rate, false-accepts and latency on the target board and microphone.']
 limitations: ['Component weight terms vary; accuracy depends strongly on acoustics and mic.']
-compatibility: []
+compatibility:
+  - {target: esp32, status: reported, evidence: 'https://github.com/espressif/esp-sr', notes: 'Upstream embedded speech targets ESP32 boards; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/espressif/esp-sr', notes: 'Documentation review of embedded speech scope and Apache-2.0 code licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [audio, wake-word, esp32, embedded]

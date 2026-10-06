@@ -2474,7 +2474,14 @@
       "limitations": [
         "Inference only; larger models exceed small-device memory."
       ],
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "raspberry-pi",
+          "status": "reported",
+          "evidence": "https://github.com/ggml-org/whisper.cpp/discussions/166",
+          "notes": "Upstream documents Raspberry Pi execution; not benchmarked by this catalogue."
+        }
+      ],
       "evidence": [
         {
           "type": "official",
@@ -2833,7 +2840,14 @@
       "limitations": [
         "Component weight terms vary; accuracy depends strongly on acoustics and mic."
       ],
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "esp32",
+          "status": "reported",
+          "evidence": "https://github.com/espressif/esp-sr",
+          "notes": "Upstream embedded speech targets ESP32 boards; not benchmarked by this catalogue."
+        }
+      ],
       "evidence": [
         {
           "type": "official",
@@ -2890,7 +2904,14 @@
           "measured_peak": null
         }
       },
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "esp32",
+          "status": "reported",
+          "evidence": "https://github.com/OHF-Voice/micro-wake-word",
+          "notes": "Upstream targets ESP32/ESPHome microcontrollers; not benchmarked by this catalogue."
+        }
+      ],
       "evidence": [
         {
           "type": "official",
@@ -11673,7 +11694,14 @@
       "limitations": [
         "Operator coverage and accelerator use vary by chip family."
       ],
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "esp32",
+          "status": "reported",
+          "evidence": "https://github.com/espressif/esp-dl",
+          "notes": "Upstream targets ESP32-S3/P4; not benchmarked by this catalogue."
+        }
+      ],
       "evidence": [
         {
           "type": "official",
@@ -18568,7 +18596,14 @@
       "limitations": [
         "Biometric privacy concerns; weight terms vary; accuracy depends on lighting/pose."
       ],
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "esp32",
+          "status": "reported",
+          "evidence": "https://github.com/espressif/esp-who",
+          "notes": "Upstream face models run on ESP32 camera modules; not benchmarked by this catalogue."
+        }
+      ],
       "evidence": [
         {
           "type": "official",

@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Runtime only; models are trained and quantiz
 data: {inputs: [converted-model, input-tensors], outputs: [inference-results], languages: []}
 evaluation: ['Flash/RAM use, latency and accuracy on the specific ESP32 variant.']
 limitations: ['Operator coverage and accelerator use vary by chip family.']
-compatibility: []
+compatibility:
+  - {target: esp32, status: reported, evidence: 'https://github.com/espressif/esp-dl', notes: 'Upstream targets ESP32-S3/P4; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/espressif/esp-dl', notes: 'Documentation review of ESP32 deployment scope and Apache-2.0 licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [runtime, mcu, esp32, tinyml]
