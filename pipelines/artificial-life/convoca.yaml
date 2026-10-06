@@ -1,0 +1,23 @@
+id: convoca
+name: Convoca
+domain: artificial-life
+tasks: [cellular-automata-prediction, neural-cellular-automata-analysis]
+class: convolutional-ca-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework for predicting and analysing cellular automata with convolutional neural networks."
+links: {repository: 'https://github.com/williamgilpin/convoca'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Analysis/training toolkit for CA rule learning.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains CNNs to predict CA evolution and infer rules.', needs_data: 'CA trajectories or rule datasets for training/evaluation.', update_strategy: 'Pin version and datasets; revalidate rule inference after changes.'}
+data: {inputs: [ca-state, rule-data], outputs: [predicted-state, inferred-rule], languages: []}
+evaluation: ['Prediction error and rule-inference accuracy on held-out CA rules.']
+limitations: ['License not stated; research toolkit rather than a deployed model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/williamgilpin/convoca', notes: 'Convolutional neural network analysis of cellular automata.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, cellular-automata, neural-cellular-automata, toolkit]

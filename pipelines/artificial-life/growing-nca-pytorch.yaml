@@ -1,0 +1,23 @@
+id: growing-nca-pytorch
+name: Growing NCA (PyTorch, PWhiddy)
+domain: artificial-life
+tasks: [self-organising-pattern-generation, texture-synthesis, morphogenesis]
+class: neural-cellular-automaton
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Extended PyTorch experiments reproducing Growing Neural Cellular Automata."
+links: {repository: 'https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch', paper: 'https://distill.pub/2020/growing-ca/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, browser], notes: 'Small models; the notebooks also demonstrate interactive/browser sampling.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains an NCA update rule per target pattern in PyTorch.', needs_data: 'A target pattern and a training run; no labelled dataset required.', update_strategy: 'Retrain per target; version checkpoints and seeds.'}
+data: {inputs: [target-image, initial-state], outputs: [grown-pattern], languages: []}
+evaluation: ['Pattern fidelity, regeneration after clipping and training stability.']
+limitations: ['A reproduction/experiment set, not a maintained library.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch', notes: 'PyTorch NCA experiments.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, neural-cellular-automata, pytorch, notebooks]

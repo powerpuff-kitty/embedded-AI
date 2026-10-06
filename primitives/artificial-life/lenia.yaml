@@ -1,0 +1,23 @@
+id: lenia
+name: Lenia
+domain: artificial-life
+tasks: [continuous-cellular-automata, artificial-life-simulation]
+class: continuous-cellular-automaton
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Bert Chan's continuous cellular automata and search for mathematical life forms."
+links: {repository: 'https://github.com/Chakazul/Lenia'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, browser], notes: 'Pure simulation; runs interactively on CPU or in a browser.'}
+runtimes: [python, javascript]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic simulation; some companion tooling searches for parameters.', needs_data: 'A kernel, growth function and initial seed.', update_strategy: 'Pin parameter sets; version any discovered creatures.'}
+data: {inputs: [initial-state, kernel, growth-parameters], outputs: [evolved-fields], languages: []}
+evaluation: ['Stability and diversity of emergent creatures for a given parameter set.']
+limitations: ['Not a learned model; not an AI training library.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Chakazul/Lenia', notes: 'Lenia continuous cellular automata.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, cellular-automata, simulation, primitive]

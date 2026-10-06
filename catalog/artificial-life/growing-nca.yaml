@@ -1,0 +1,23 @@
+id: growing-nca
+name: Growing Neural Cellular Automata
+domain: artificial-life
+tasks: [self-organising-pattern-generation, texture-synthesis, morphogenesis]
+class: neural-cellular-automaton
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Google Research reference code for learning morphogenesis and self-organising patterns with neural cellular automata."
+links: {repository: 'https://github.com/google-research/self-organising-systems', paper: 'https://distill.pub/2020/growing-ca/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Tiny per-cell update MLPs; training is the cost, not deployment.'}
+runtimes: [jax]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Train the local update rule from a target pattern or image.', needs_data: 'A target image/pattern and a training harness.', update_strategy: 'Retrain per target pattern; keep seeds and checkpoint the update rule.'}
+data: {inputs: [target-image, initial-state], outputs: [grown-pattern, per-cell-updates], languages: []}
+evaluation: ['Fidelity to the target and stability under damage and perturbation.']
+limitations: ['A single per-target model, not a general image generator or a physics simulation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-research/self-organising-systems', notes: 'Reference implementations for growing NCA and related self-organising experiments.'}, {type: paper, url: 'https://distill.pub/2020/growing-ca/', notes: 'Growing Neural Cellular Automata article.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, neural-cellular-automata, morphogenesis, jax]

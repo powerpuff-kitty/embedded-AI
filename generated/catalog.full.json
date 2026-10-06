@@ -745,6 +745,836 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "nca-3d-artefacts",
+      "name": "3D Artefacts NCA",
+      "domain": "artificial-life",
+      "tasks": [
+        "3d-artefact-generation",
+        "morphogenesis",
+        "self-organising-pattern-generation"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Official code for growing 3D artefacts and functional machines with neural cellular automata.",
+      "links": {
+        "repository": "https://github.com/real-itu/3d-artefacts-nca",
+        "paper": "https://arxiv.org/abs/2103.08737"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "3D NCA is heavier than 2D; training needs a GPU."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains 3D NCA to grow voxel artefacts and locomotion-capable machines.",
+        "needs_data": "Voxel targets and a training harness.",
+        "update_strategy": "Retrain per 3D target; record seeds and environment versions."
+      },
+      "data": {
+        "inputs": [
+          "voxel-target",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-3d-structure"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Structural fidelity plus functional behaviour for the machine tasks."
+      ],
+      "limitations": [
+        "Research code; 3D rollouts and training are compute-heavy."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/real-itu/3d-artefacts-nca",
+          "notes": "Official 3D NCA code."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2103.08737",
+          "notes": "Growing 3D Artefacts and Functional Machines with Neural Cellular Automata."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "3d",
+        "morphogenesis"
+      ],
+      "path": "pipelines/artificial-life/nca-3d-artefacts.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "convoca",
+      "name": "Convoca",
+      "domain": "artificial-life",
+      "tasks": [
+        "cellular-automata-prediction",
+        "neural-cellular-automata-analysis"
+      ],
+      "class": "convolutional-ca-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Framework for predicting and analysing cellular automata with convolutional neural networks.",
+      "links": {
+        "repository": "https://github.com/williamgilpin/convoca"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Analysis/training toolkit for CA rule learning."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains CNNs to predict CA evolution and infer rules.",
+        "needs_data": "CA trajectories or rule datasets for training/evaluation.",
+        "update_strategy": "Pin version and datasets; revalidate rule inference after changes."
+      },
+      "data": {
+        "inputs": [
+          "ca-state",
+          "rule-data"
+        ],
+        "outputs": [
+          "predicted-state",
+          "inferred-rule"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Prediction error and rule-inference accuracy on held-out CA rules."
+      ],
+      "limitations": [
+        "License not stated; research toolkit rather than a deployed model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/williamgilpin/convoca",
+          "notes": "Convolutional neural network analysis of cellular automata."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "cellular-automata",
+        "neural-cellular-automata",
+        "toolkit"
+      ],
+      "path": "pipelines/artificial-life/convoca.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "flow-lenia",
+      "name": "FlowLenia",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation",
+        "evolutionary-search"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Mass-conservative Flow-Lenia implementation with parameter search for emergent creatures.",
+      "links": {
+        "repository": "https://github.com/erwanplantec/FlowLenia"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Simulation and search; GPU speeds up parameter sweeps."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Evokes creatures via search/optimisation over simulation parameters.",
+        "needs_data": "A kernel/growth parameterisation and a search objective.",
+        "update_strategy": "Pin version and parameter archives; re-run seeds."
+      },
+      "data": {
+        "inputs": [
+          "initial-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-fields",
+          "creature-parameters"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Stability, diversity and persistence of evoked creatures."
+      ],
+      "limitations": [
+        "License not stated in the repository; simulation, not a learned model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/erwanplantec/FlowLenia",
+          "notes": "Flow-Lenia implementation and search."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "cellular-automata",
+        "flow-lenia",
+        "evolutionary-search"
+      ],
+      "path": "primitives/artificial-life/flow-lenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "lenia",
+      "name": "Lenia",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Bert Chan's continuous cellular automata and search for mathematical life forms.",
+      "links": {
+        "repository": "https://github.com/Chakazul/Lenia"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Pure simulation; runs interactively on CPU or in a browser."
+      },
+      "runtimes": [
+        "python",
+        "javascript"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Deterministic simulation; some companion tooling searches for parameters.",
+        "needs_data": "A kernel, growth function and initial seed.",
+        "update_strategy": "Pin parameter sets; version any discovered creatures."
+      },
+      "data": {
+        "inputs": [
+          "initial-state",
+          "kernel",
+          "growth-parameters"
+        ],
+        "outputs": [
+          "evolved-fields"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Stability and diversity of emergent creatures for a given parameter set."
+      ],
+      "limitations": [
+        "Not a learned model; not an AI training library."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Chakazul/Lenia",
+          "notes": "Lenia continuous cellular automata."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "cellular-automata",
+        "simulation",
+        "primitive"
+      ],
+      "path": "primitives/artificial-life/lenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "realtime-flowlenia",
+      "name": "Real-time Flow-Lenia",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "GPU-accelerated real-time Flow-Lenia with liquid shader effects.",
+      "links": {
+        "repository": "https://github.com/ochyai/realtime-flowlenia"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Targets PyTorch CUDA/MPS for interactive frame rates."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Interactive simulation; no training.",
+        "needs_data": "A GPU runtime and Flow-Lenia parameters.",
+        "update_strategy": "Pin version; re-check device support (CUDA/MPS)."
+      },
+      "data": {
+        "inputs": [
+          "initial-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-fields",
+          "rendered-frames"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Frame rate and stability of the simulation on the target GPU."
+      ],
+      "limitations": [
+        "Requires a GPU; visual/entertainment focus rather than analysis."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ochyai/realtime-flowlenia",
+          "notes": "Real-time GPU Flow-Lenia."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "flow-lenia",
+        "gpu",
+        "interactive"
+      ],
+      "path": "primitives/artificial-life/realtime-flowlenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "lenia-ca",
+      "name": "lenia_ca (Rust)",
+      "domain": "artificial-life",
+      "tasks": [
+        "continuous-cellular-automata",
+        "artificial-life-simulation"
+      ],
+      "class": "continuous-cellular-automaton",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Rust core for simulating the Lenia continuous cellular automata system, with WASM support.",
+      "links": {
+        "repository": "https://github.com/BirdbrainEngineer/lenia_ca"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop",
+          "edge"
+        ],
+        "notes": "Compiles to native and WebAssembly; no learned weights involved."
+      },
+      "runtimes": [
+        "rust",
+        "wasm"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Deterministic simulation core; parameters are supplied, not learned.",
+        "needs_data": "A kernel, growth mapping and initial state.",
+        "update_strategy": "Pin crate version; re-run reference parameter sets after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "initial-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-fields"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Determinism and stability of the simulation across parameter sets."
+      ],
+      "limitations": [
+        "A simulation core, not a neural model or training framework."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/BirdbrainEngineer/lenia_ca",
+          "notes": "Rust Lenia simulation core."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "cellular-automata",
+        "rust",
+        "wasm"
+      ],
+      "path": "primitives/artificial-life/lenia-ca.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "particle-lenia",
+      "name": "Particle Lenia",
+      "domain": "artificial-life",
+      "tasks": [
+        "particle-simulation",
+        "artificial-life-simulation"
+      ],
+      "class": "particle-life-simulation",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Particle-based Lenia simulation running in the browser with TypeScript and WebGPU.",
+      "links": {
+        "repository": "https://github.com/silvernio/particle-lenia"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "WebGPU browser simulation; no native backend."
+      },
+      "runtimes": [
+        "typescript",
+        "webgpu"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Deterministic particle simulation; not trained.",
+        "needs_data": "A WebGPU-capable browser and simulation parameters.",
+        "update_strategy": "Pin version; verify WebGPU availability."
+      },
+      "data": {
+        "inputs": [
+          "particle-state",
+          "parameters"
+        ],
+        "outputs": [
+          "evolved-particles"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Stability and performance across particle counts."
+      ],
+      "limitations": [
+        "License not stated; WebGPU-only; a toy/simulation rather than a model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/silvernio/particle-lenia",
+          "notes": "WebGPU particle Lenia."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "particle-lenia",
+        "webgpu",
+        "browser"
+      ],
+      "path": "primitives/artificial-life/particle-lenia.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "growing-nca-pytorch",
+      "name": "Growing NCA (PyTorch, PWhiddy)",
+      "domain": "artificial-life",
+      "tasks": [
+        "self-organising-pattern-generation",
+        "texture-synthesis",
+        "morphogenesis"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Extended PyTorch experiments reproducing Growing Neural Cellular Automata.",
+      "links": {
+        "repository": "https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch",
+        "paper": "https://distill.pub/2020/growing-ca/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Small models; the notebooks also demonstrate interactive/browser sampling."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains an NCA update rule per target pattern in PyTorch.",
+        "needs_data": "A target pattern and a training run; no labelled dataset required.",
+        "update_strategy": "Retrain per target; version checkpoints and seeds."
+      },
+      "data": {
+        "inputs": [
+          "target-image",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-pattern"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Pattern fidelity, regeneration after clipping and training stability."
+      ],
+      "limitations": [
+        "A reproduction/experiment set, not a maintained library."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch",
+          "notes": "PyTorch NCA experiments."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "pytorch",
+        "notebooks"
+      ],
+      "path": "pipelines/artificial-life/growing-nca-pytorch.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "growing-nca-repro",
+      "name": "Growing NCA Reproduction (PyTorch)",
+      "domain": "artificial-life",
+      "tasks": [
+        "self-organising-pattern-generation",
+        "morphogenesis"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Independent PyTorch reproduction of growing neural cellular automata.",
+      "links": {
+        "repository": "https://github.com/chenmingxiang110/Growing-Neural-Cellular-Automata",
+        "paper": "https://distill.pub/2020/growing-ca/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Compact per-cell network; CPU training is feasible for small targets."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a shared local rule to grow a target pattern.",
+        "needs_data": "A target pattern and a training configuration.",
+        "update_strategy": "Retrain per target; record seeds and iterations."
+      },
+      "data": {
+        "inputs": [
+          "target-image",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-pattern"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Fidelity to the target and robustness to pruning of cells."
+      ],
+      "limitations": [
+        "Educational reproduction; limited configurability."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/chenmingxiang110/Growing-Neural-Cellular-Automata",
+          "notes": "PyTorch reproduction of growing NCA."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "pytorch",
+        "reproduction"
+      ],
+      "path": "pipelines/artificial-life/growing-nca-repro.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "growing-nca",
+      "name": "Growing Neural Cellular Automata",
+      "domain": "artificial-life",
+      "tasks": [
+        "self-organising-pattern-generation",
+        "texture-synthesis",
+        "morphogenesis"
+      ],
+      "class": "neural-cellular-automaton",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google Research reference code for learning morphogenesis and self-organising patterns with neural cellular automata.",
+      "links": {
+        "repository": "https://github.com/google-research/self-organising-systems",
+        "paper": "https://distill.pub/2020/growing-ca/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Tiny per-cell update MLPs; training is the cost, not deployment."
+      },
+      "runtimes": [
+        "jax"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Train the local update rule from a target pattern or image.",
+        "needs_data": "A target image/pattern and a training harness.",
+        "update_strategy": "Retrain per target pattern; keep seeds and checkpoint the update rule."
+      },
+      "data": {
+        "inputs": [
+          "target-image",
+          "initial-state"
+        ],
+        "outputs": [
+          "grown-pattern",
+          "per-cell-updates"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Fidelity to the target and stability under damage and perturbation."
+      ],
+      "limitations": [
+        "A single per-target model, not a general image generator or a physics simulation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/self-organising-systems",
+          "notes": "Reference implementations for growing NCA and related self-organising experiments."
+        },
+        {
+          "type": "paper",
+          "url": "https://distill.pub/2020/growing-ca/",
+          "notes": "Growing Neural Cellular Automata article."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "artificial-life",
+        "neural-cellular-automata",
+        "morphogenesis",
+        "jax"
+      ],
+      "path": "catalog/artificial-life/growing-nca.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "megadetector-acoustic",
       "name": "MegaDetector-Acoustic",
       "domain": "audio",
