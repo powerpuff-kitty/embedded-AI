@@ -1,0 +1,23 @@
+id: wildfire-detection
+name: Wildfire Detection (CV)
+domain: environment
+tasks: [wildfire-detection, smoke-detection]
+class: wildfire-detection-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Computer-vision research project for detecting wildfires from imagery."
+links: {repository: 'https://github.com/AlimTleuliyev/wildfire-detection'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Research model; edge use needs measurement.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains imagery classifiers/detectors for fire and smoke.', needs_data: 'Labelled fire/smoke imagery from the target region.', update_strategy: 'Retrain per region/camera; revalidate false positives.'}
+data: {inputs: [camera-image], outputs: [fire-smoke-detections], languages: []}
+evaluation: ['Recall and false-alarm rate on regional imagery.']
+limitations: ['Weight terms not stated; research scope.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/AlimTleuliyev/wildfire-detection', notes: 'Wildfire detection research project.'}]
+reviewed: '2026-10-06'
+tags: [environment, wildfire, research]

@@ -1,0 +1,23 @@
+id: megamolbart
+name: MegaMolBART
+domain: drug-discovery
+tasks: [molecule-generation, molecular-representation, drug-discovery]
+class: molecular-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Transformer model for small-molecule cheminformatics and drug discovery based on SMILES."
+links: {repository: 'https://github.com/NVIDIA/MegaMolBART'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Transformer sized for GPU inference; retraining expects large molecular corpora.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained molecular model; supports fine-tuning and generation.', needs_data: 'SMILES datasets for fine-tuning; evaluation assays for tasks.', update_strategy: 'Verify licence; revalidate chemical validity and downstream predictions.'}
+data: {inputs: [smiles-string], outputs: [embeddings, generated-molecules], languages: []}
+evaluation: ['Validity/diversity of generated molecules and downstream property metrics.']
+limitations: ['License not stated; generated molecules are hypotheses, not validated drugs.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/NVIDIA/MegaMolBART', notes: 'MegaMolBART molecular model.'}]
+reviewed: '2026-10-06'
+tags: [drug-discovery, molecules, transformer]

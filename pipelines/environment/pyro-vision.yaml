@@ -1,0 +1,23 @@
+id: pyro-vision
+name: Pyro Vision
+domain: environment
+tasks: [wildfire-detection, smoke-detection]
+class: wildfire-detection-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch and ONNX wildfire-detection library designed for inference on edge devices."
+links: {repository: 'https://github.com/pyronear/pyro-vision', homepage: 'https://pyronear.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge, desktop], notes: 'Explicitly targets edge inference such as Raspberry Pi.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released detection models plus a training pipeline.', needs_data: 'Camera imagery with smoke/fire labels for adaptation.', update_strategy: 'Verify weight terms; revalidate false alarms per site and season.'}
+data: {inputs: [camera-image], outputs: [smoke-fire-detections], languages: []}
+evaluation: ['Detection recall and false-alarm rate on representative site imagery.']
+limitations: ['Weight terms not stated; models are site- and season-sensitive.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pyronear/pyro-vision', notes: 'Pyro Vision wildfire detection.'}]
+reviewed: '2026-10-06'
+tags: [environment, wildfire, edge, onnx]

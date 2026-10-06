@@ -2,6 +2,172 @@
   "schema_version": 1,
   "entries": [
     {
+      "id": "sign-language-gesture-recognition",
+      "name": "Sign-Language Gesture Recognition (CNN+RNN)",
+      "domain": "accessibility",
+      "tasks": [
+        "sign-language-recognition",
+        "gesture-recognition"
+      ],
+      "class": "sign-recognition-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "RNN and CNN pipeline that recognises sign-language gestures from video sequences.",
+      "links": {
+        "repository": "https://github.com/hthuwal/sign-language-gesture-recognition"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Video model; embedded use needs frame-rate and memory measurement."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorflow"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains spatio-temporal models on sign video clips.",
+        "needs_data": "Labelled sign-language video clips.",
+        "update_strategy": "Retrain per vocabulary/signer; validate on signer-independent splits."
+      },
+      "data": {
+        "inputs": [
+          "sign-video"
+        ],
+        "outputs": [
+          "gesture-class"
+        ],
+        "languages": [
+          "asl"
+        ]
+      },
+      "evaluation": [
+        "Top-k accuracy on held-out signers plus latency."
+      ],
+      "limitations": [
+        "Small vocabulary; not a full sign-language translation system."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/hthuwal/sign-language-gesture-recognition",
+          "notes": "Sign-language gesture recognition."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "accessibility",
+        "sign-language",
+        "video"
+      ],
+      "path": "pipelines/accessibility/sign-language-gesture-recognition.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "wlasl",
+      "name": "WLASL",
+      "domain": "accessibility",
+      "tasks": [
+        "sign-language-recognition",
+        "video-classification"
+      ],
+      "class": "sign-language-dataset",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Large-scale word-level American Sign Language dataset with baseline recognition methods.",
+      "links": {
+        "repository": "https://github.com/dxli94/WLASL",
+        "paper": "https://arxiv.org/abs/1910.11494"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Dataset plus baseline models; training is GPU-bound."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains sign-recognition models on the released video dataset.",
+        "needs_data": "Sign-language video clips with gloss labels.",
+        "update_strategy": "Verify dataset and licence terms; revalidate per signer and signer-independent splits."
+      },
+      "data": {
+        "inputs": [
+          "sign-video"
+        ],
+        "outputs": [
+          "gloss-class"
+        ],
+        "languages": [
+          "asl"
+        ]
+      },
+      "evaluation": [
+        "Top-k accuracy under signer-independent evaluation."
+      ],
+      "limitations": [
+        "License not stated; signer and vocabulary coverage limit real-world use."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dxli94/WLASL",
+          "notes": "WLASL dataset and baselines."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "accessibility",
+        "sign-language",
+        "dataset"
+      ],
+      "path": "catalog/accessibility/wlasl.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "docling",
       "name": "Docling",
       "domain": "administrative",
@@ -6449,6 +6615,171 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "dleps",
+      "name": "DLEPS",
+      "domain": "drug-discovery",
+      "tasks": [
+        "drug-efficacy-prediction",
+        "drug-discovery"
+      ],
+      "class": "drug-efficacy-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Deep-learning system that predicts drug efficacy from gene-expression signatures.",
+      "links": {
+        "repository": "https://github.com/kekegg/DLEPS",
+        "paper": "https://www.nature.com/articles/s41467-022-28165-3"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Research pipeline over perturbation datasets."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains on perturbation expression profiles to score drug efficacy.",
+        "needs_data": "Gene-expression perturbation data with labels.",
+        "update_strategy": "Verify licence; revalidate on independent perturbations."
+      },
+      "data": {
+        "inputs": [
+          "gene-expression-signature"
+        ],
+        "outputs": [
+          "efficacy-score"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Concordance with held-out efficacy measurements."
+      ],
+      "limitations": [
+        "License not stated; research use, not a clinical decision tool."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kekegg/DLEPS",
+          "notes": "DLEPS drug-efficacy prediction."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "drug-discovery",
+        "transcriptomics",
+        "research"
+      ],
+      "path": "pipelines/drug-discovery/dleps.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "megamolbart",
+      "name": "MegaMolBART",
+      "domain": "drug-discovery",
+      "tasks": [
+        "molecule-generation",
+        "molecular-representation",
+        "drug-discovery"
+      ],
+      "class": "molecular-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Transformer model for small-molecule cheminformatics and drug discovery based on SMILES.",
+      "links": {
+        "repository": "https://github.com/NVIDIA/MegaMolBART"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Transformer sized for GPU inference; retraining expects large molecular corpora."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained molecular model; supports fine-tuning and generation.",
+        "needs_data": "SMILES datasets for fine-tuning; evaluation assays for tasks.",
+        "update_strategy": "Verify licence; revalidate chemical validity and downstream predictions."
+      },
+      "data": {
+        "inputs": [
+          "smiles-string"
+        ],
+        "outputs": [
+          "embeddings",
+          "generated-molecules"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Validity/diversity of generated molecules and downstream property metrics."
+      ],
+      "limitations": [
+        "License not stated; generated molecules are hypotheses, not validated drugs."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA/MegaMolBART",
+          "notes": "MegaMolBART molecular model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "drug-discovery",
+        "molecules",
+        "transformer"
+      ],
+      "path": "catalog/drug-discovery/megamolbart.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "pykt",
       "name": "pyKT",
       "domain": "education",
@@ -6933,6 +7264,172 @@
       ],
       "path": "catalog/engineering/cad/deepcad.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "pyro-vision",
+      "name": "Pyro Vision",
+      "domain": "environment",
+      "tasks": [
+        "wildfire-detection",
+        "smoke-detection"
+      ],
+      "class": "wildfire-detection-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch and ONNX wildfire-detection library designed for inference on edge devices.",
+      "links": {
+        "repository": "https://github.com/pyronear/pyro-vision",
+        "homepage": "https://pyronear.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop"
+        ],
+        "notes": "Explicitly targets edge inference such as Raspberry Pi."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "onnx",
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released detection models plus a training pipeline.",
+        "needs_data": "Camera imagery with smoke/fire labels for adaptation.",
+        "update_strategy": "Verify weight terms; revalidate false alarms per site and season."
+      },
+      "data": {
+        "inputs": [
+          "camera-image"
+        ],
+        "outputs": [
+          "smoke-fire-detections"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Detection recall and false-alarm rate on representative site imagery."
+      ],
+      "limitations": [
+        "Weight terms not stated; models are site- and season-sensitive."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pyronear/pyro-vision",
+          "notes": "Pyro Vision wildfire detection."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "environment",
+        "wildfire",
+        "edge",
+        "onnx"
+      ],
+      "path": "pipelines/environment/pyro-vision.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "wildfire-detection",
+      "name": "Wildfire Detection (CV)",
+      "domain": "environment",
+      "tasks": [
+        "wildfire-detection",
+        "smoke-detection"
+      ],
+      "class": "wildfire-detection-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Computer-vision research project for detecting wildfires from imagery.",
+      "links": {
+        "repository": "https://github.com/AlimTleuliyev/wildfire-detection"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Research model; edge use needs measurement."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains imagery classifiers/detectors for fire and smoke.",
+        "needs_data": "Labelled fire/smoke imagery from the target region.",
+        "update_strategy": "Retrain per region/camera; revalidate false positives."
+      },
+      "data": {
+        "inputs": [
+          "camera-image"
+        ],
+        "outputs": [
+          "fire-smoke-detections"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall and false-alarm rate on regional imagery."
+      ],
+      "limitations": [
+        "Weight terms not stated; research scope."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/AlimTleuliyev/wildfire-detection",
+          "notes": "Wildfire detection research project."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "environment",
+        "wildfire",
+        "research"
+      ],
+      "path": "pipelines/environment/wildfire-detection.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "rvt",
@@ -12359,6 +12856,258 @@
       "path": "catalog/language/tool-calling/needle3.yaml",
       "kind": "model",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "glass",
+      "name": "GLASS",
+      "domain": "manufacturing",
+      "tasks": [
+        "industrial-anomaly-detection",
+        "defect-localization"
+      ],
+      "class": "industrial-anomaly-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Unified anomaly-synthesis strategy for industrial anomaly detection and localisation (ECCV 2024).",
+      "links": {
+        "repository": "https://github.com/cqylunlun/GLASS",
+        "paper": "https://arxiv.org/abs/2403.10045"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Trained detectors can be exported for edge inspection."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains on normal samples with synthetic anomalies.",
+        "needs_data": "Normal product images; anomaly labels for evaluation.",
+        "update_strategy": "Retrain per product line; recalibrate thresholds and monitor drift."
+      },
+      "data": {
+        "inputs": [
+          "product-image"
+        ],
+        "outputs": [
+          "anomaly-score",
+          "anomaly-map"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Image/pixel AUROC on held-out defects plus latency on the line."
+      ],
+      "limitations": [
+        "Weight terms not stated; synthesis can miss unseen defect types."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/cqylunlun/GLASS",
+          "notes": "GLASS industrial anomaly detection."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2403.10045",
+          "notes": "Unified anomaly synthesis with gradient ascent."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "manufacturing",
+        "anomaly-detection",
+        "defect-localization"
+      ],
+      "path": "pipelines/manufacturing/glass.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "open-iad",
+      "name": "Open-IAD",
+      "domain": "manufacturing",
+      "tasks": [
+        "industrial-anomaly-detection",
+        "benchmarking"
+      ],
+      "class": "industrial-anomaly-benchmark",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Open benchmark and toolkit for image anomaly detection in industrial manufacturing.",
+      "links": {
+        "repository": "https://github.com/M-3LAB/open-iad"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Benchmark/evaluation tooling; deployment depends on the chosen detector."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Standardises datasets, metrics and evaluation for anomaly detectors.",
+        "needs_data": "Manufacturing image datasets and detector implementations.",
+        "update_strategy": "Pin benchmark version; report per-dataset metrics."
+      },
+      "data": {
+        "inputs": [
+          "industrial-image"
+        ],
+        "outputs": [
+          "anomaly-scores",
+          "metrics"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Image- and pixel-level AUROC/F1 across benchmark datasets."
+      ],
+      "limitations": [
+        "License not stated; benchmark results depend on the chosen method."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/M-3LAB/open-iad",
+          "notes": "Open-IAD industrial anomaly benchmark."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "manufacturing",
+        "anomaly-detection",
+        "benchmark"
+      ],
+      "path": "pipelines/manufacturing/open-iad.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "steel-surface-defect",
+      "name": "Hot-Rolled Steel Surface Defect Detection",
+      "domain": "manufacturing",
+      "tasks": [
+        "surface-defect-detection",
+        "quality-inspection"
+      ],
+      "class": "defect-classifier",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "CNN trained to classify surface defects on hot-rolled steel strips from grayscale images.",
+      "links": {
+        "repository": "https://github.com/aviralchharia/Surface-Defect-Detection-in-Hot-Rolled-Steel-Strips"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Small CNN; a candidate for on-line inspection with measurement."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorflow"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a CNN on the NEU surface-defect dataset (six classes).",
+        "needs_data": "Labelled steel surface-defect images for the target line.",
+        "update_strategy": "Retrain per mill/line; revalidate on new defect classes."
+      },
+      "data": {
+        "inputs": [
+          "grayscale-surface-image"
+        ],
+        "outputs": [
+          "defect-class"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Per-class accuracy/F1 and latency on representative line images."
+      ],
+      "limitations": [
+        "Trained on a small public dataset; not validated for a specific production line."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/aviralchharia/Surface-Defect-Detection-in-Hot-Rolled-Steel-Strips",
+          "notes": "Steel surface-defect classifier."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "manufacturing",
+        "defect-detection",
+        "quality-inspection"
+      ],
+      "path": "pipelines/manufacturing/steel-surface-defect.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "gtsam",

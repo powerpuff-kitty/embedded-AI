@@ -1,0 +1,23 @@
+id: open-iad
+name: Open-IAD
+domain: manufacturing
+tasks: [industrial-anomaly-detection, benchmarking]
+class: industrial-anomaly-benchmark
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Open benchmark and toolkit for image anomaly detection in industrial manufacturing."
+links: {repository: 'https://github.com/M-3LAB/open-iad'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Benchmark/evaluation tooling; deployment depends on the chosen detector.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Standardises datasets, metrics and evaluation for anomaly detectors.', needs_data: 'Manufacturing image datasets and detector implementations.', update_strategy: 'Pin benchmark version; report per-dataset metrics.'}
+data: {inputs: [industrial-image], outputs: [anomaly-scores, metrics], languages: []}
+evaluation: ['Image- and pixel-level AUROC/F1 across benchmark datasets.']
+limitations: ['License not stated; benchmark results depend on the chosen method.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/M-3LAB/open-iad', notes: 'Open-IAD industrial anomaly benchmark.'}]
+reviewed: '2026-10-06'
+tags: [manufacturing, anomaly-detection, benchmark]

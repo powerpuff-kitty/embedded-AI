@@ -1,0 +1,23 @@
+id: glass
+name: GLASS
+domain: manufacturing
+tasks: [industrial-anomaly-detection, defect-localization]
+class: industrial-anomaly-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Unified anomaly-synthesis strategy for industrial anomaly detection and localisation (ECCV 2024)."
+links: {repository: 'https://github.com/cqylunlun/GLASS', paper: 'https://arxiv.org/abs/2403.10045'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Trained detectors can be exported for edge inspection.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains on normal samples with synthetic anomalies.', needs_data: 'Normal product images; anomaly labels for evaluation.', update_strategy: 'Retrain per product line; recalibrate thresholds and monitor drift.'}
+data: {inputs: [product-image], outputs: [anomaly-score, anomaly-map], languages: []}
+evaluation: ['Image/pixel AUROC on held-out defects plus latency on the line.']
+limitations: ['Weight terms not stated; synthesis can miss unseen defect types.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/cqylunlun/GLASS', notes: 'GLASS industrial anomaly detection.'}, {type: paper, url: 'https://arxiv.org/abs/2403.10045', notes: 'Unified anomaly synthesis with gradient ascent.'}]
+reviewed: '2026-10-06'
+tags: [manufacturing, anomaly-detection, defect-localization]
