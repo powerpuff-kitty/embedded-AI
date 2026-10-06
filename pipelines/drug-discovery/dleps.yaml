@@ -1,0 +1,23 @@
+id: dleps
+name: DLEPS
+domain: drug-discovery
+tasks: [drug-efficacy-prediction, drug-discovery]
+class: drug-efficacy-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Deep-learning system that predicts drug efficacy from gene-expression signatures."
+links: {repository: 'https://github.com/kekegg/DLEPS', paper: 'https://www.nature.com/articles/s41467-022-28165-3'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research pipeline over perturbation datasets.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains on perturbation expression profiles to score drug efficacy.', needs_data: 'Gene-expression perturbation data with labels.', update_strategy: 'Verify licence; revalidate on independent perturbations.'}
+data: {inputs: [gene-expression-signature], outputs: [efficacy-score], languages: []}
+evaluation: ['Concordance with held-out efficacy measurements.']
+limitations: ['License not stated; research use, not a clinical decision tool.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/kekegg/DLEPS', notes: 'DLEPS drug-efficacy prediction.'}]
+reviewed: '2026-10-06'
+tags: [drug-discovery, transcriptomics, research]

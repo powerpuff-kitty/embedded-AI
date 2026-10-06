@@ -1,0 +1,23 @@
+id: steel-surface-defect
+name: Hot-Rolled Steel Surface Defect Detection
+domain: manufacturing
+tasks: [surface-defect-detection, quality-inspection]
+class: defect-classifier
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "CNN trained to classify surface defects on hot-rolled steel strips from grayscale images."
+links: {repository: 'https://github.com/aviralchharia/Surface-Defect-Detection-in-Hot-Rolled-Steel-Strips'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Small CNN; a candidate for on-line inspection with measurement.'}
+runtimes: [pytorch, tensorflow]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a CNN on the NEU surface-defect dataset (six classes).', needs_data: 'Labelled steel surface-defect images for the target line.', update_strategy: 'Retrain per mill/line; revalidate on new defect classes.'}
+data: {inputs: [grayscale-surface-image], outputs: [defect-class], languages: []}
+evaluation: ['Per-class accuracy/F1 and latency on representative line images.']
+limitations: ['Trained on a small public dataset; not validated for a specific production line.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/aviralchharia/Surface-Defect-Detection-in-Hot-Rolled-Steel-Strips', notes: 'Steel surface-defect classifier.'}]
+reviewed: '2026-10-06'
+tags: [manufacturing, defect-detection, quality-inspection]

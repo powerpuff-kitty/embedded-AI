@@ -19,7 +19,7 @@ A machine-readable catalogue of AI/ML models for local and resource-constrained 
 - Generate the complete human-facing catalogue and JSON exports from YAML.
 
 ## Domains
-40 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine.
+44 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment.
 
 ## Structure
 ```text
@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**337 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**346 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -86,7 +86,16 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [event-vision](#catalogue-event-vision) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[accessibility](#catalogue-accessibility) · [administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [drug-discovery](#catalogue-drug-discovery) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [environment](#catalogue-environment) · [event-vision](#catalogue-event-vision) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [manufacturing](#catalogue-manufacturing) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+
+<a id="catalogue-accessibility"></a>
+
+### Accessibility
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Sign-Language Gesture Recognition (CNN+RNN)](pipelines/accessibility/sign-language-gesture-recognition.yaml) · [upstream](<https://github.com/hthuwal/sign-language-gesture-recognition>) | pipeline / requires-training | sign-language-recognition, gesture-recognition | — | — | pytorch, tensorflow | desktop, edge | MIT / not-provided | unknown |
+| [WLASL](catalog/accessibility/wlasl.yaml) · [upstream](<https://github.com/dxli94/WLASL>) | collection / requires-training | sign-language-recognition, video-classification | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
 
 <a id="catalogue-administrative"></a>
 
@@ -228,6 +237,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [OSQP](primitives/control/osqp.yaml) · [upstream](<https://github.com/osqp/osqp>) | primitive / companion | quadratic-programming, convex-optimization | — | — | native-c, c-source | desktop, server, edge | Apache-2.0 / not-applicable | unknown |
 | [OpenDoge locomotion policy](catalog/control/locomotion/opendoge.yaml) · [upstream](<https://github.com/OpenDogeRobotics/OpenDoge_origin>) | model / unknown | quadruped-locomotion | — | — | — | edge, robot | unknown / unknown | unknown |
 
+<a id="catalogue-drug-discovery"></a>
+
+### Drug discovery
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [DLEPS](pipelines/drug-discovery/dleps.yaml) · [upstream](<https://github.com/kekegg/DLEPS>) | pipeline / requires-training | drug-efficacy-prediction, drug-discovery | — | — | pytorch, pytorch-checkpoint | desktop, server | unknown / unknown | unknown |
+| [MegaMolBART](catalog/drug-discovery/megamolbart.yaml) · [upstream](<https://github.com/NVIDIA/MegaMolBART>) | collection / pretrained | molecule-generation, molecular-representation, drug-discovery | — | — | pytorch, pytorch-checkpoint | server, desktop | unknown / unknown | unknown |
+
 <a id="catalogue-education"></a>
 
 ### Education
@@ -254,6 +272,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
 | [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+
+<a id="catalogue-environment"></a>
+
+### Environment
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Pyro Vision](pipelines/environment/pyro-vision.yaml) · [upstream](<https://github.com/pyronear/pyro-vision>) | toolkit / pretrained | wildfire-detection, smoke-detection | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | edge, desktop | Apache-2.0 / unknown | unknown |
+| [Wildfire Detection (CV)](pipelines/environment/wildfire-detection.yaml) · [upstream](<https://github.com/AlimTleuliyev/wildfire-detection>) | pipeline / requires-training | wildfire-detection, smoke-detection | — | — | pytorch, pytorch-checkpoint | desktop, edge | MIT / unknown | unknown |
 
 <a id="catalogue-event-vision"></a>
 
@@ -381,6 +408,16 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [SmolLM](catalog/language/on-device/smollm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolLM2-135M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
 | [TinyLlama](catalog/language/on-device/tinyllama.yaml) · [upstream](<https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>) | collection / pretrained | text-generation, on-device-llm | 1.1B | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
 | [Needle 3](catalog/language/tool-calling/needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / Apache-2.0 | unknown |
+
+<a id="catalogue-manufacturing"></a>
+
+### Manufacturing
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [GLASS](pipelines/manufacturing/glass.yaml) · [upstream](<https://github.com/cqylunlun/GLASS>) | pipeline / requires-training | industrial-anomaly-detection, defect-localization | — | — | pytorch, pytorch-checkpoint | desktop, server, edge | MIT / unknown | unknown |
+| [Open-IAD](pipelines/manufacturing/open-iad.yaml) · [upstream](<https://github.com/M-3LAB/open-iad>) | toolkit / companion | industrial-anomaly-detection, benchmarking | — | — | pytorch | desktop, server, edge | unknown / not-provided | unknown |
+| [Hot-Rolled Steel Surface Defect Detection](pipelines/manufacturing/steel-surface-defect.yaml) · [upstream](<https://github.com/aviralchharia/Surface-Defect-Detection-in-Hot-Rolled-Steel-Strips>) | pipeline / requires-training | surface-defect-detection, quality-inspection | — | — | pytorch, tensorflow, pytorch-checkpoint | desktop, edge | MIT / unknown | unknown |
 
 <a id="catalogue-mapping"></a>
 

@@ -1,6 +1,7 @@
 {
-  "total": 337,
+  "total": 346,
   "by_domain": {
+    "accessibility": 2,
     "administrative": 7,
     "agriculture": 1,
     "artificial-life": 19,
@@ -10,9 +11,11 @@
     "business": 9,
     "climate": 1,
     "control": 10,
+    "drug-discovery": 2,
     "education": 1,
     "energy": 3,
     "engineering": 2,
+    "environment": 2,
     "event-vision": 4,
     "federated-learning": 5,
     "finance": 6,
@@ -22,6 +25,7 @@
     "healthcare": 6,
     "infrastructure": 7,
     "language": 8,
+    "manufacturing": 3,
     "mapping": 9,
     "marine": 1,
     "music": 3,
@@ -43,23 +47,23 @@
     "weather": 1
   },
   "by_kind": {
-    "collection": 53,
+    "collection": 55,
     "model": 63,
-    "pipeline": 41,
+    "pipeline": 46,
     "primitive": 24,
-    "toolkit": 156
+    "toolkit": 158
   },
   "by_usage": {
-    "companion": 118,
-    "pretrained": 87,
-    "requires-training": 82,
+    "companion": 119,
+    "pretrained": 89,
+    "requires-training": 88,
     "unknown": 50
   },
   "unknowns": {
     "usage": 50,
-    "code_license": 39,
-    "weights_license": 95,
-    "measured_peak_ram": 337
+    "code_license": 43,
+    "weights_license": 102,
+    "measured_peak_ram": 346
   },
   "reproduced_entries": 3,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."

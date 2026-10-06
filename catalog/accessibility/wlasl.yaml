@@ -1,0 +1,23 @@
+id: wlasl
+name: WLASL
+domain: accessibility
+tasks: [sign-language-recognition, video-classification]
+class: sign-language-dataset
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Large-scale word-level American Sign Language dataset with baseline recognition methods."
+links: {repository: 'https://github.com/dxli94/WLASL', paper: 'https://arxiv.org/abs/1910.11494'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Dataset plus baseline models; training is GPU-bound.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains sign-recognition models on the released video dataset.', needs_data: 'Sign-language video clips with gloss labels.', update_strategy: 'Verify dataset and licence terms; revalidate per signer and signer-independent splits.'}
+data: {inputs: [sign-video], outputs: [gloss-class], languages: [asl]}
+evaluation: ['Top-k accuracy under signer-independent evaluation.']
+limitations: ['License not stated; signer and vocabulary coverage limit real-world use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dxli94/WLASL', notes: 'WLASL dataset and baselines.'}]
+reviewed: '2026-10-06'
+tags: [accessibility, sign-language, dataset]

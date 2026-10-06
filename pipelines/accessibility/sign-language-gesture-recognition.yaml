@@ -1,0 +1,23 @@
+id: sign-language-gesture-recognition
+name: Sign-Language Gesture Recognition (CNN+RNN)
+domain: accessibility
+tasks: [sign-language-recognition, gesture-recognition]
+class: sign-recognition-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "RNN and CNN pipeline that recognises sign-language gestures from video sequences."
+links: {repository: 'https://github.com/hthuwal/sign-language-gesture-recognition'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Video model; embedded use needs frame-rate and memory measurement.'}
+runtimes: [pytorch, tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains spatio-temporal models on sign video clips.', needs_data: 'Labelled sign-language video clips.', update_strategy: 'Retrain per vocabulary/signer; validate on signer-independent splits.'}
+data: {inputs: [sign-video], outputs: [gesture-class], languages: [asl]}
+evaluation: ['Top-k accuracy on held-out signers plus latency.']
+limitations: ['Small vocabulary; not a full sign-language translation system.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/hthuwal/sign-language-gesture-recognition', notes: 'Sign-language gesture recognition.'}]
+reviewed: '2026-10-06'
+tags: [accessibility, sign-language, video]
