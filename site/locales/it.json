@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} componente(i) copiati negli appunti come Markdown.",
     "errorClipboardFail": "Appunti non disponibili; la selezione non è stata copiata.",
     "catalogUnavailable": "Catalogo non disponibile",
-    "filterRamNote": "Un file di modello non è una misura di RAM. Un benchmark host non stabilisce la compatibilità su un altro dispositivo."
+    "filterRamNote": "Un file di modello non è una misura di RAM. Un benchmark host non stabilisce la compatibilità su un altro dispositivo.",
+    "goToProject": "Vai al progetto",
+    "linkRepository": "Repository",
+    "linkModel": "Modello",
+    "linkHomepage": "Pagina",
+    "linkPaper": "Articolo",
+    "linkLicense": "Licenza"
   },
   "domain": {
     "administrative": "Amministrativo",

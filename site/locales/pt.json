@@ -104,7 +104,13 @@
     "errorClipboardOk": "{n} componente(s) copiado(s) para a área de transferência como Markdown.",
     "errorClipboardFail": "Área de transferência indisponível; a lista não foi copiada.",
     "catalogUnavailable": "Catálogo indisponível",
-    "filterRamNote": "Um ficheiro de modelo não é uma medição de RAM. Um benchmark de anfitrião não estabelece compatibilidade noutro dispositivo."
+    "filterRamNote": "Um ficheiro de modelo não é uma medição de RAM. Um benchmark de anfitrião não estabelece compatibilidade noutro dispositivo.",
+    "goToProject": "Abrir projeto",
+    "linkRepository": "Repositório",
+    "linkModel": "Modelo",
+    "linkHomepage": "Página",
+    "linkPaper": "Artigo",
+    "linkLicense": "Licença"
   },
   "domain": {
     "administrative": "Administrativo",

@@ -104,7 +104,13 @@
     "errorClipboardOk": "已将 {n} 个组件以 Markdown 复制到剪贴板。",
     "errorClipboardFail": "剪贴板不可用；清单未复制。",
     "catalogUnavailable": "目录不可用",
-    "filterRamNote": "模型文件不是 RAM 测量。主机基准不能确立在另一设备上的兼容性。"
+    "filterRamNote": "模型文件不是 RAM 测量。主机基准不能确立在另一设备上的兼容性。",
+    "goToProject": "前往项目",
+    "linkRepository": "仓库",
+    "linkModel": "模型",
+    "linkHomepage": "主页",
+    "linkPaper": "论文",
+    "linkLicense": "许可"
   },
   "domain": {
     "administrative": "行政",

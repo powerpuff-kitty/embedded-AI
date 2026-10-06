@@ -18,6 +18,11 @@ try:
         assert page.evaluate("getComputedStyle(document.querySelector('aside')).position")=='sticky'
         page.locator('th .sort').first.click()
         assert page.locator('th[aria-sort="ascending"], th[aria-sort="descending"]').count()>=1
+        page.locator('tbody tr').first.locator('td').nth(3).click()
+        assert page.locator('#details').is_visible()
+        assert page.locator('#details .go').count()>=1
+        assert page.locator('#details .go').first.get_attribute('target')=='_blank'
+        page.keyboard.press('Escape')
         page.screenshot(path=str(root/'explorer-desktop.png'))
         page.locator('[name=domain]').select_option('finance')
         finance_rows=page.locator('tbody tr').count()
