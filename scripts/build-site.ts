@@ -21,7 +21,7 @@ async function visit(dir: string): Promise<void> {
 }
 await visit('benchmarks/results');
 await fs.mkdir('dist/data',{recursive:true});
-for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
+for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
 await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records}));
 await fs.writeFile('dist/.nojekyll','');
 console.log(`Built static explorer: ${entries.length} entries, ${records.length} measured runs. No public deployment performed.`);

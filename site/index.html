@@ -15,8 +15,8 @@
 <hr><h3>Measured workload</h3><label>Exact target<select name="target"><option value="">No target selected</option></select></label>
 <label>Process RSS budget, MB<input name="ram" type="number" min="1" step="1" placeholder="For example, 128"></label>
 <label class="check"><input name="candidates" type="checkbox">Show untested candidates separately</label><p class="fine">A model file is not a RAM measurement. A host benchmark does not establish compatibility on another device.</p><button type="reset" class="secondary">Reset filters</button></form></aside>
-<section class="results"><div class="result-head"><h2 id="count" aria-live="polite">Loading catalogue…</h2><button id="compare" disabled>Compare (0/4)</button></div>
+<section class="results"><section class="need"><h2>Describe what you need</h2><textarea id="need" rows="2" placeholder="e.g. detect people on a camera offline with a tiny model"></textarea><div class="need-actions"><button id="match" type="button">Find matching AI</button><button id="need-clear" type="button" class="secondary">Clear</button></div><p id="need-hint" class="fine"></p></section><div class="result-head"><h2 id="count" aria-live="polite">Loading catalogue…</h2><button id="compare" disabled>Compare (0/4)</button></div>
 <p id="error" class="error" role="alert"></p><div id="entries"></div><section id="candidates-section" hidden><h2>Untested candidates</h2><p>These do not have matching measured evidence. They are not confirmed fits.</p><div id="candidates"></div></section></section></div>
-</main><footer>Evidence before claims. No model inference, analytics or external API calls run in this browser.</footer>
+</main><footer>Evidence before claims. Need matching is deterministic and runs offline. No model inference, analytics or external API calls run in this browser.</footer>
 <dialog id="details"><button id="close" class="close" aria-label="Close details">Close</button><div id="detail-content"></div></dialog>
 <script type="module" src="app.mjs"></script></body></html>
