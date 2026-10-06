@@ -2713,7 +2713,14 @@
           "measured_peak": null
         }
       },
-      "compatibility": [],
+      "compatibility": [
+        {
+          "target": "local-process-darwin-arm64-ddf7ff5ebd",
+          "status": "reproduced",
+          "benchmark": "benchmarks/results/local-2026-10-06/silero-vad-local.json",
+          "notes": "Pinned MIT ONNX at the recorded revision, 512-sample chunks, measured on this exact host only; not RV1106 or MCU evidence."
+        }
+      ],
       "evidence": [
         {
           "type": "official",

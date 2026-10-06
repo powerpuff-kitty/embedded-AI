@@ -17,7 +17,11 @@ deployment: {offline: true, targets: [edge], accelerators: []}
 runtimes: [onnxruntime, pytorch]
 formats: [onnx, jit]
 requirements: {ram_mb: {minimum: null, measured_peak: null}}
-compatibility: []
+compatibility:
+  - target: local-process-darwin-arm64-ddf7ff5ebd
+    status: reproduced
+    benchmark: benchmarks/results/local-2026-10-06/silero-vad-local.json
+    notes: 'Pinned MIT ONNX at the recorded revision, 512-sample chunks, measured on this exact host only; not RV1106 or MCU evidence.'
 evidence:
   - {type: official, url: 'https://github.com/snakers4/silero-vad', notes: 'Documentation review of variant, input/state contract and licence; not a board benchmark.'}
 tags: [vad, offline]

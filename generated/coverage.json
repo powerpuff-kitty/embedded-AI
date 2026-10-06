@@ -51,6 +51,6 @@
     "weights_license": 87,
     "measured_peak_ram": 284
   },
-  "reproduced_entries": 1,
+  "reproduced_entries": 2,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."
 }
