@@ -34,5 +34,5 @@ report.push(`unknown code licence: ${unknownCode}; unknown weights licence: ${un
 report.push(`compatibility: reproduced ${compat.reproduced}, reported ${compat.reported}, unknown ${compat.unknown}`);
 console.log(report.join('\n'));
 
-const structural = problems['id/filename'].length + problems.naming.length + problems.reviewed.length;
+const structural = problems['id/filename'].length + problems.naming.length + problems.duplicateName.length;
 if (strict && structural) process.exitCode = 1;
