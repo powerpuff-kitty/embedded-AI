@@ -8,6 +8,7 @@ links: { repository: "https://github.com/SamsungSAILMontreal/TinyRecursiveModels
 model: { parameters: 7000000, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
+runtimes: [pytorch]
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []

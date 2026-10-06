@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Example training/optimization/deployment flo
 data: {inputs: [audio-or-image-data], outputs: [deployed-model, predictions], languages: []}
 evaluation: ['Accuracy and flash/RAM/latency on the specific Arm target.']
 limitations: ['Example workflows are starting points, not production guarantees.']
-compatibility: []
+compatibility:
+  - {target: cortex-m, status: reported, evidence: 'https://github.com/ARM-software/ML-examples', notes: 'Upstream examples target Cortex-M and Ethos-U; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/ARM-software/ML-examples', notes: 'Documentation review of Arm embedded examples and Apache-2.0 licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [audio, arm, mcu, examples]

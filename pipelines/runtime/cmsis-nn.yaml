@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Kernel library; not a model trainer or stand
 data: {inputs: [network-operators, input-tensors], outputs: [accelerated-inference], languages: []}
 evaluation: ['Cycle counts, flash/RAM use and numerical accuracy on the target core.']
 limitations: ['Targets Arm Cortex-M; not portable to other architectures.']
-compatibility: []
+compatibility:
+  - {target: cortex-m, status: reported, evidence: 'https://github.com/ARM-software/CMSIS-NN', notes: 'Kernel library is built for Arm Cortex-M cores; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/ARM-software/CMSIS-NN', notes: 'Documentation review of Cortex-M kernels and Apache-2.0 licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [runtime, mcu, cortex-m, kernels]

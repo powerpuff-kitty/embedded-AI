@@ -8,7 +8,8 @@ links: { repository: "https://github.com/PaddlePaddle/PaddleOCR", model: null, p
 model: { parameters: 1500000, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
+runtimes: [paddle]
+formats: [paddle]
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []
 evidence: [{ type: official, url: "https://github.com/PaddlePaddle/PaddleOCR", notes: "Primary project source." }]
