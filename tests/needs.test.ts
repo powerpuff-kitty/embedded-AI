@@ -100,3 +100,19 @@ test('a focused camera query ranks vision components first', () => {
   assert.equal(results[0].entry.domain, 'vision');
   assert.ok(results.slice(0, 5).filter(r => r.entry.domain === 'vision').length >= 3, results.slice(0, 5).map(r => r.entry.id).join(','));
 });
+
+test('newer domains are reachable from plain-language needs', () => {
+  const cases: [string, string][] = [
+    ['spiking neural network on a chip', 'neuromorphic'],
+    ['call dna variants from sequencing reads', 'genomics'],
+    ['recommend products to users', 'recommendation'],
+    ['detect wildfires from a camera', 'environment'],
+    ['federated training across hospitals', 'federated-learning'],
+    ['virtual try-on for clothes', 'fashion'],
+    ['predict river streamflow', 'hydrology'],
+  ];
+  for (const [query, domain] of cases) {
+    const { results } = matchNeeds(entries, query, { limit: 20 });
+    assert.ok(results.some(r => r.entry.domain === domain), `${query} -> ${domain}: ${results.slice(0, 8).map(r => r.entry.id).join(',')}`);
+  }
+});
