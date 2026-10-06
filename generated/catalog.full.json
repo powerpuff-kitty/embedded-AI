@@ -9461,7 +9461,7 @@
       },
       "license": {
         "code": "unknown",
-        "weights": "unknown"
+        "weights": "Apache-2.0"
       },
       "deployment": {
         "offline": true,
@@ -11136,7 +11136,7 @@
       },
       "license": {
         "code": "unknown",
-        "weights": "unknown"
+        "weights": "Apache-2.0"
       },
       "deployment": {
         "offline": true,

@@ -291,7 +291,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [GPT4All](pipelines/language/gpt4all.yaml) · [upstream](<https://github.com/nomic-ai/gpt4all>) | toolkit / companion | on-device-llm, text-generation, local-chat | — | — | llama-cpp-native, gguf | desktop | MIT / not-provided | unknown |
 | [SmolLM](catalog/language/on-device/smollm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolLM2-135M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
 | [TinyLlama](catalog/language/on-device/tinyllama.yaml) · [upstream](<https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>) | collection / pretrained | text-generation, on-device-llm | 1.1B | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
-| [Needle 3](catalog/language/tool-calling/needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / unknown | unknown |
+| [Needle 3](catalog/language/tool-calling/needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / Apache-2.0 | unknown |
 
 <a id="catalogue-mapping"></a>
 
@@ -347,7 +347,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Nav2](primitives/robotics/navigation2.yaml) · [upstream](<https://github.com/ros-navigation/navigation2>) | primitive / companion | path-planning, robot-navigation, obstacle-avoidance | — | — | ros2, native-cpp | edge, desktop, robot | Apache-2.0 / not-applicable | unknown |
 | [LeRobot](pipelines/robotics/lerobot.yaml) · [upstream](<https://github.com/huggingface/lerobot>) | toolkit / requires-training | robot-learning, imitation-learning, robot-policy-training, teleoperation | — | — | pytorch, pytorch-checkpoint, onnx | desktop, edge, robot | Apache-2.0 / Apache-2.0 | unknown |
 | [Octo](catalog/robotics/policies/octo.yaml) · [upstream](<https://huggingface.co/rail-berkeley/octo-small>) | collection / pretrained | robot-policy-learning, robot-manipulation | — | — | jax, pytorch, transformers, safetensors | desktop, server | MIT / MIT | unknown |
-| [EdgeVLA-Tiny](catalog/robotics/vla/edgevla-tiny.yaml) · [upstream](<https://huggingface.co/enfuse/edgevla-tiny-fmb>) | model / unknown | vision-language-action | 164M | — | — | edge | unknown / unknown | unknown |
+| [EdgeVLA-Tiny](catalog/robotics/vla/edgevla-tiny.yaml) · [upstream](<https://huggingface.co/enfuse/edgevla-tiny-fmb>) | model / unknown | vision-language-action | 164M | — | — | edge | unknown / Apache-2.0 | unknown |
 | [OpenVLA](catalog/robotics/vla/openvla.yaml) · [upstream](<https://huggingface.co/openvla/openvla-7b>) | collection / pretrained | vision-language-action, robot-manipulation | 7B | — | pytorch, transformers, safetensors | server, desktop | MIT / MIT | unknown |
 
 <a id="catalogue-runtime"></a>

@@ -6,7 +6,7 @@ class: small-specialized-model
 description: ""
 links: { repository: "https://huggingface.co/Cactus-Compute/needle3", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
+license: { code: unknown, weights: Apache-2.0 }
 deployment: { offline: true, targets: [edge], accelerators: [] }
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
