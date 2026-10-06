@@ -1,0 +1,23 @@
+id: tensorflow-quantum
+name: TensorFlow Quantum
+domain: quantum
+tasks: [quantum-machine-learning, hybrid-quantum-classical-models]
+class: quantum-ml-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for hybrid quantum-classical machine learning built on TensorFlow and Cirq."
+links: {repository: 'https://github.com/tensorflow/quantum'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulator-first; hardware access via Cirq backends.'}
+runtimes: [tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Trains hybrid models with quantum layers in a TensorFlow graph.', needs_data: 'Quantum datasets and a circuit design.', update_strategy: 'Pin versions; revalidate on the chosen simulator/backend.'}
+data: {inputs: [quantum-data, circuit-parameters], outputs: [predictions], languages: []}
+evaluation: ['Model quality and simulator/hardware cost.']
+limitations: ['Simulation cost grows quickly with qubit count.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/quantum', notes: 'TensorFlow Quantum.'}]
+reviewed: '2026-10-06'
+tags: [quantum, tensorflow, cirq, hybrid]

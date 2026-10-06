@@ -19,7 +19,7 @@ A machine-readable catalogue of AI/ML models for local and resource-constrained 
 - Generate the complete human-facing catalogue and JSON exports from YAML.
 
 ## Domains
-36 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety.
+40 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine.
 
 ## Structure
 ```text
@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**323 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**337 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -86,7 +86,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [event-vision](#catalogue-event-vision) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [event-vision](#catalogue-event-vision) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-administrative"></a>
 
@@ -266,6 +266,18 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Tonic](pipelines/event-vision/tonic.yaml) · [upstream](<https://github.com/neuromorphs/tonic>) | toolkit / companion | event-datasets, event-transforms, event-based-vision | — | — | python | desktop | GPL-3.0 / not-applicable | unknown |
 | [E2VID (event-to-video)](pipelines/event-vision/rpg-e2vid.yaml) · [upstream](<https://github.com/uzh-rpg/rpg_e2vid>) | pipeline / pretrained | event-to-video, image-reconstruction, low-latency-perception | — | — | pytorch, pytorch-checkpoint | desktop, edge | GPL-3.0 / unknown | unknown |
 
+<a id="catalogue-federated-learning"></a>
+
+### Federated learning
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [FATE](pipelines/federated-learning/fate.yaml) · [upstream](<https://github.com/FederatedAI/FATE>) | toolkit / companion | federated-learning, privacy-preserving-training, secure-multi-party-computation | — | — | python | server | Apache-2.0 / not-provided | unknown |
+| [FedML](pipelines/federated-learning/fedml.yaml) · [upstream](<https://github.com/FedML-AI/FedML>) | toolkit / companion | federated-learning, distributed-training, privacy-preserving-training | — | — | pytorch | server, desktop, edge, mobile | Apache-2.0 / not-provided | unknown |
+| [Flower](pipelines/federated-learning/flower.yaml) · [upstream](<https://github.com/flwrlabs/flower>) | toolkit / companion | federated-learning, privacy-preserving-training | — | — | python | server, desktop, edge, mobile | Apache-2.0 / not-provided | unknown |
+| [OpenFL](pipelines/federated-learning/openfl.yaml) · [upstream](<https://github.com/securefederatedai/openfederatedlearning>) | toolkit / companion | federated-learning, privacy-preserving-training | — | — | python, pytorch, tensorflow | server, desktop | Apache-2.0 / not-provided | unknown |
+| [PySyft](pipelines/federated-learning/pysyft.yaml) · [upstream](<https://github.com/OpenMined/PySyft>) | toolkit / companion | privacy-preserving-computation, secure-multi-party-computation, federated-learning | — | — | python, pytorch | server, desktop | Apache-2.0 / not-provided | unknown |
+
 <a id="catalogue-finance"></a>
 
 ### Finance
@@ -299,6 +311,17 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Stable-Baselines3](pipelines/gaming/stable-baselines3.yaml) · [upstream](<https://github.com/DLR-RM/stable-baselines3>) | toolkit / requires-training | reinforcement-learning, policy-training, game-agent-training | — | — | pytorch, onnxruntime, onnx | desktop, server | MIT / not-provided | unknown |
 | [Unity ML-Agents](pipelines/gaming/ml-agents.yaml) · [upstream](<https://github.com/Unity-Technologies/ml-agents>) | toolkit / requires-training | reinforcement-learning, imitation-learning, game-agent-training | — | — | pytorch, onnxruntime, onnx | desktop, mobile | Apache-2.0 / not-provided | unknown |
 | [Stable Retro](pipelines/gaming/stable-retro.yaml) · [upstream](<https://github.com/Farama-Foundation/stable-retro>) | toolkit / companion | retro-game-reinforcement-learning, environment-emulation | — | — | python | desktop | MIT / not-applicable | unknown |
+
+<a id="catalogue-genomics"></a>
+
+### Genomics
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [DeepVariant](pipelines/genomics/deepvariant.yaml) · [upstream](<https://github.com/google/deepvariant>) | pipeline / pretrained | genetic-variant-calling, genome-sequencing-analysis | — | — | tensorflow | server, desktop | BSD-3-Clause / unknown | unknown |
+| [Nucleotide Transformer](catalog/genomics/nucleotide-transformer.yaml) · [upstream](<https://github.com/instadeepai/nucleotide-transformer>) | collection / pretrained | genomic-language-modelling, dna-embeddings, regulatory-element-prediction | — | — | pytorch, transformers, pytorch-checkpoint, safetensors | server, desktop | unknown / unknown | unknown |
+| [AlphaGenome](catalog/genomics/alphagenome.yaml) · [upstream](<https://github.com/google-deepmind/alphagenome>) | collection / pretrained | regulatory-genomics, variant-effect-prediction, gene-expression-prediction | — | — | jax | server | Apache-2.0 / unknown | unknown |
+| [scGPT](catalog/genomics/scgpt.yaml) · [upstream](<https://github.com/bowang-lab/scGPT>) | collection / pretrained | single-cell-embeddings, cell-type-annotation, gene-expression-integration | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
 
 <a id="catalogue-geospatial"></a>
 
@@ -375,6 +398,14 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [COLMAP](pipelines/reconstruction/colmap.yaml) · [upstream](<https://github.com/colmap/colmap>) | pipeline / unknown | structure-from-motion, multi-view-stereo | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
 | [ORB-SLAM3](pipelines/mapping/orb-slam3.yaml) · [upstream](<https://github.com/UZ-SLAMLab/ORB_SLAM3>) | pipeline / unknown | visual-slam, camera-localization | — | — | native-cpp | desktop | GPL-3.0 / not-applicable | luckfox-rv1106: unknown |
 
+<a id="catalogue-marine"></a>
+
+### Marine
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [PAMGuard](pipelines/marine/pamguard.yaml) · [upstream](<https://github.com/PAMGuard/PAMGuard>) | pipeline / companion | passive-acoustic-monitoring, marine-mammal-detection, bioacoustics | — | — | java | desktop, edge | GPL-3.0 / unknown | unknown |
+
 <a id="catalogue-music"></a>
 
 ### Music
@@ -411,6 +442,17 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [SpikingJelly](pipelines/neuromorphic/spikingjelly.yaml) · [upstream](<https://github.com/fangwei123456/spikingjelly>) | toolkit / requires-training | spiking-neural-networks, neuromorphic-inference, snn-training | — | — | pytorch | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [sinabs](pipelines/neuromorphic/sinabs.yaml) · [upstream](<https://github.com/synsense/sinabs>) | toolkit / requires-training | spiking-neural-networks, snn-training, neuromorphic-inference | — | — | pytorch | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [snnTorch](pipelines/neuromorphic/snntorch.yaml) · [upstream](<https://github.com/jeshraghian/snntorch>) | toolkit / requires-training | spiking-neural-networks, snn-training, on-device-learning | — | — | pytorch | desktop, server, edge | MIT / not-provided | unknown |
+
+<a id="catalogue-quantum"></a>
+
+### Quantum
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [PennyLane](pipelines/quantum/pennylane.yaml) · [upstream](<https://github.com/PennyLaneAI/pennylane>) | toolkit / companion | quantum-machine-learning, variational-quantum-circuits, quantum-differentiation | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
+| [Qiskit Machine Learning](pipelines/quantum/qiskit-machine-learning.yaml) · [upstream](<https://github.com/qiskit-community/qiskit-machine-learning>) | toolkit / companion | quantum-machine-learning, quantum-kernels, variational-algorithms | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
+| [TensorFlow Quantum](pipelines/quantum/tensorflow-quantum.yaml) · [upstream](<https://github.com/tensorflow/quantum>) | toolkit / companion | quantum-machine-learning, hybrid-quantum-classical-models | — | — | tensorflow | desktop, server | Apache-2.0 / not-provided | unknown |
+| [TorchQuantum](pipelines/quantum/torchquantum.yaml) · [upstream](<https://github.com/mit-han-lab/torchquantum>) | toolkit / companion | quantum-machine-learning, quantum-circuit-simulation | — | — | pytorch | desktop, server | MIT / not-provided | unknown |
 
 <a id="catalogue-reasoning"></a>
 

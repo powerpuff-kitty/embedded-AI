@@ -1,0 +1,23 @@
+id: openfl
+name: OpenFL
+domain: federated-learning
+tasks: [federated-learning, privacy-preserving-training]
+class: federated-learning-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Intel's federated learning framework for cross-silo training with an emphasis on governance."
+links: {repository: 'https://github.com/securefederatedai/openfederatedlearning'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Cross-silo federation with a central aggregator.'}
+runtimes: [python, pytorch, tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Coordinates federated experiments with defined collaborators.', needs_data: 'Silo datasets and an aggregation plan.', update_strategy: 'Pin version; review privacy and access policy per federation.'}
+data: {inputs: [client-model-updates], outputs: [global-model], languages: []}
+evaluation: ['Convergence and security review objectives per federation.']
+limitations: ['Requires agreement between data owners; privacy needs explicit mechanisms.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/securefederatedai/openfederatedlearning', notes: 'OpenFL framework.'}]
+reviewed: '2026-10-06'
+tags: [federated-learning, cross-silo, intel]

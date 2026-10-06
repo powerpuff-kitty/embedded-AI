@@ -1,0 +1,23 @@
+id: pennylane
+name: PennyLane
+domain: quantum
+tasks: [quantum-machine-learning, variational-quantum-circuits, quantum-differentiation]
+class: quantum-ml-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Cross-platform Python library for differentiable quantum computing and hybrid quantum-classical models."
+links: {repository: 'https://github.com/PennyLaneAI/pennylane', homepage: 'https://pennylane.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Runs on simulators or real quantum hardware backends.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Builds and trains variational circuits; hybrid with classical optimisers.', needs_data: 'A circuit ansatz, data encoding and a target backend.', update_strategy: 'Pin library and plugin versions; revalidate on the target backend.'}
+data: {inputs: [data-encodings, circuit-parameters], outputs: [expectation-values, predictions], languages: []}
+evaluation: ['Optimisation quality and simulation/hardware cost.']
+limitations: ['Real quantum advantage is problem- and hardware-dependent.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PennyLaneAI/pennylane', notes: 'PennyLane quantum ML library.'}]
+reviewed: '2026-10-06'
+tags: [quantum, differentiable-programming, hybrid]
