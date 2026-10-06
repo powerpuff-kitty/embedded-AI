@@ -1,0 +1,23 @@
+id: fsdl-deforestation
+name: FSDL Deforestation Detection
+domain: forestry
+tasks: [deforestation-detection, satellite-image-segmentation]
+class: forestry-segmentation
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Segmentation pipeline that detects deforestation in satellite imagery."
+links: {repository: 'https://github.com/karthikraja95/fsdl_deforestation_detection'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training notebooks; inference can be batched over tiles.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains segmentation models on labelled forest-loss tiles.', needs_data: 'Satellite tiles with forest-loss masks.', update_strategy: 'Revalidate per region and season; track imagery source versions.'}
+data: {inputs: [satellite-image], outputs: [forest-loss-mask], languages: []}
+evaluation: ['IoU/Dice on spatially blocked held-out tiles.']
+limitations: ['Cloud cover and seasonal effects degrade results; region-specific.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/karthikraja95/fsdl_deforestation_detection', notes: 'Deforestation segmentation pipeline.'}]
+reviewed: '2026-10-06'
+tags: [forestry, deforestation, segmentation, geospatial]

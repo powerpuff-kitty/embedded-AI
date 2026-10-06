@@ -9004,6 +9004,167 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "fsdl-deforestation",
+      "name": "FSDL Deforestation Detection",
+      "domain": "forestry",
+      "tasks": [
+        "deforestation-detection",
+        "satellite-image-segmentation"
+      ],
+      "class": "forestry-segmentation",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Segmentation pipeline that detects deforestation in satellite imagery.",
+      "links": {
+        "repository": "https://github.com/karthikraja95/fsdl_deforestation_detection"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training notebooks; inference can be batched over tiles."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains segmentation models on labelled forest-loss tiles.",
+        "needs_data": "Satellite tiles with forest-loss masks.",
+        "update_strategy": "Revalidate per region and season; track imagery source versions."
+      },
+      "data": {
+        "inputs": [
+          "satellite-image"
+        ],
+        "outputs": [
+          "forest-loss-mask"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "IoU/Dice on spatially blocked held-out tiles."
+      ],
+      "limitations": [
+        "Cloud cover and seasonal effects degrade results; region-specific."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/karthikraja95/fsdl_deforestation_detection",
+          "notes": "Deforestation segmentation pipeline."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "forestry",
+        "deforestation",
+        "segmentation",
+        "geospatial"
+      ],
+      "path": "pipelines/forestry/fsdl-deforestation.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "illegal-logging-drones",
+      "name": "Illegal Logging Detection with Drones",
+      "domain": "forestry",
+      "tasks": [
+        "deforestation-detection",
+        "aerial-image-classification"
+      ],
+      "class": "forestry-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Computer-vision system that uses drone imagery to detect deforestation and illegal logging.",
+      "links": {
+        "repository": "https://github.com/Beckybams/Illegal-Logging-Detection-with-Drones"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop"
+        ],
+        "notes": "Drone/edge imagery processing; onboard inference needs measurement."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains classifiers/detectors on aerial forest imagery.",
+        "needs_data": "Labelled aerial/drone imagery of logging activity.",
+        "update_strategy": "Retrain per region; revalidate false positives."
+      },
+      "data": {
+        "inputs": [
+          "aerial-image"
+        ],
+        "outputs": [
+          "logging-detections"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Detection recall and false-alarm rate on regional patrol imagery."
+      ],
+      "limitations": [
+        "License not stated; field validation and legal governance required."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Beckybams/Illegal-Logging-Detection-with-Drones",
+          "notes": "Illegal logging detection with drones."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "forestry",
+        "deforestation",
+        "drones"
+      ],
+      "path": "pipelines/forestry/illegal-logging-drones.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "fraud-detection-handbook",
       "name": "Fraud Detection Handbook",
       "domain": "fraud-detection",
@@ -11972,6 +12133,166 @@
       ],
       "path": "pipelines/healthcare/neurokit2.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "hydrodhm",
+      "name": "HydroDHM",
+      "domain": "hydrology",
+      "tasks": [
+        "streamflow-prediction",
+        "rainfall-runoff-modelling"
+      ],
+      "class": "hydrological-model",
+      "kind": "model",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Differentiable hydrological model for daily streamflow prediction in data-scarce basins.",
+      "links": {
+        "repository": "https://github.com/OuyangWenyu/HydroDHM"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/simulation; inputs are catchment forcings and attributes."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a differentiable rainfall-runoff model per basin.",
+        "needs_data": "Meteorological forcings, catchment attributes and observed discharge.",
+        "update_strategy": "Revalidate per basin and gauge; watch for regime change."
+      },
+      "data": {
+        "inputs": [
+          "meteorological-forcings",
+          "catchment-attributes"
+        ],
+        "outputs": [
+          "streamflow"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "NSE/KGE on held-out periods and ungauged basins."
+      ],
+      "limitations": [
+        "Hydrological skill is basin-specific; extrapolation to ungauged basins is uncertain."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OuyangWenyu/HydroDHM",
+          "notes": "HydroDHM differentiable hydrology."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "hydrology",
+        "streamflow",
+        "pytorch"
+      ],
+      "path": "catalog/hydrology/hydrodhm.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "streamflow-predictions",
+      "name": "Streamflow Predictions",
+      "domain": "hydrology",
+      "tasks": [
+        "streamflow-prediction",
+        "time-series-forecasting"
+      ],
+      "class": "hydrological-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Notebook pipelines for forecasting river streamflow from historical gauges.",
+      "links": {
+        "repository": "https://github.com/willstauffer/streamflow_predictions"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Analysis notebooks; not a deployed forecasting service."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains regression/sequence models on gauge records.",
+        "needs_data": "Historical discharge and rainfall series.",
+        "update_strategy": "Revalidate with rolling backtests per gauge."
+      },
+      "data": {
+        "inputs": [
+          "historical-discharge",
+          "rainfall"
+        ],
+        "outputs": [
+          "streamflow-forecast"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin NSE/RMSE versus a persistence baseline."
+      ],
+      "limitations": [
+        "License not stated; a notebook project rather than a maintained service."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/willstauffer/streamflow_predictions",
+          "notes": "Streamflow prediction notebooks."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "hydrology",
+        "forecasting",
+        "notebooks"
+      ],
+      "path": "pipelines/hydrology/streamflow-predictions.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "merlion",
@@ -22033,6 +22354,252 @@
       ],
       "path": "pipelines/space/astronn.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "pose2sim",
+      "name": "Pose2Sim",
+      "domain": "sports",
+      "tasks": [
+        "markerless-motion-capture",
+        "sports-biomechanics",
+        "3d-pose-estimation"
+      ],
+      "class": "sports-motion-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Markerless kinematics pipeline that turns 2D pose estimates into 3D OpenSim motion.",
+      "links": {
+        "repository": "https://github.com/perfanalytics/pose2sim",
+        "homepage": "https://pose2sim.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Multi-camera calibration and triangulation; CPU/GPU depending on pose backend."
+      },
+      "runtimes": [
+        "python",
+        "onnxruntime"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Pipeline over pose models; the pose estimators are pretrained separately.",
+        "needs_data": "Synchronised multi-camera video and calibration.",
+        "update_strategy": "Pin pose backends and calibration; revalidate against reference motion."
+      },
+      "data": {
+        "inputs": [
+          "multi-camera-video",
+          "calibration"
+        ],
+        "outputs": [
+          "3d-joint-kinematics"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Agreement with reference motion-capture within measurement error."
+      ],
+      "limitations": [
+        "Accuracy depends on calibration and pose backends; not a certified biomechanics system."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/perfanalytics/pose2sim",
+          "notes": "Pose2Sim markerless kinematics."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "sports",
+        "motion-capture",
+        "pose",
+        "biomechanics"
+      ],
+      "path": "pipelines/sports/pose2sim.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "basketball-analytics",
+      "name": "Basketball Analytics",
+      "domain": "sports",
+      "tasks": [
+        "sports-analytics",
+        "player-tracking",
+        "event-detection"
+      ],
+      "class": "sports-analytics-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Scripts and tools for basketball statistics, tracking and event analysis.",
+      "links": {
+        "repository": "https://github.com/danchyy/Basketball_Analytics"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Analysis notebooks and scripts; not a production system."
+      },
+      "runtimes": [
+        "python",
+        "opencv"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Analysis tooling; some components use pose/detection models.",
+        "needs_data": "Basketball video and/or play-by-play data.",
+        "update_strategy": "Pin version; revalidate tracking/event accuracy per footage."
+      },
+      "data": {
+        "inputs": [
+          "basketball-video",
+          "event-data"
+        ],
+        "outputs": [
+          "tracking",
+          "statistics"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Tracking/event accuracy against manual annotation."
+      ],
+      "limitations": [
+        "License not stated; broadcast-dependent and research-grade."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/danchyy/Basketball_Analytics",
+          "notes": "Basketball analytics tools."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "sports",
+        "basketball",
+        "tracking",
+        "analytics"
+      ],
+      "path": "pipelines/sports/basketball-analytics.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "sport-analytics-tools",
+      "name": "Sport Analytics Tools",
+      "domain": "sports",
+      "tasks": [
+        "sports-analytics",
+        "data-processing"
+      ],
+      "class": "sports-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python utilities for sports data scientists covering stats, parsing and visualisation.",
+      "links": {
+        "repository": "https://github.com/shufinskiy/sport_analytics_tools"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Data tooling; not a learned model."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Deterministic tools; models are built by the user.",
+        "needs_data": "Sports datasets in supported formats.",
+        "update_strategy": "Pin version; validate against source data conventions."
+      },
+      "data": {
+        "inputs": [
+          "sports-data"
+        ],
+        "outputs": [
+          "processed-stats",
+          "features"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Correctness against source statistics and reproducibility."
+      ],
+      "limitations": [
+        "Tooling, not a predictive model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shufinskiy/sport_analytics_tools",
+          "notes": "Sports analytics utilities."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "sports",
+        "data-tools",
+        "analytics"
+      ],
+      "path": "pipelines/sports/sport-analytics-tools.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "torchsig",

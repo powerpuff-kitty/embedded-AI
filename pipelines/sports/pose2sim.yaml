@@ -1,0 +1,23 @@
+id: pose2sim
+name: Pose2Sim
+domain: sports
+tasks: [markerless-motion-capture, sports-biomechanics, 3d-pose-estimation]
+class: sports-motion-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Markerless kinematics pipeline that turns 2D pose estimates into 3D OpenSim motion."
+links: {repository: 'https://github.com/perfanalytics/pose2sim', homepage: 'https://pose2sim.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Multi-camera calibration and triangulation; CPU/GPU depending on pose backend.'}
+runtimes: [python, onnxruntime]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Pipeline over pose models; the pose estimators are pretrained separately.', needs_data: 'Synchronised multi-camera video and calibration.', update_strategy: 'Pin pose backends and calibration; revalidate against reference motion.'}
+data: {inputs: [multi-camera-video, calibration], outputs: [3d-joint-kinematics], languages: []}
+evaluation: ['Agreement with reference motion-capture within measurement error.']
+limitations: ['Accuracy depends on calibration and pose backends; not a certified biomechanics system.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/perfanalytics/pose2sim', notes: 'Pose2Sim markerless kinematics.'}]
+reviewed: '2026-10-06'
+tags: [sports, motion-capture, pose, biomechanics]
