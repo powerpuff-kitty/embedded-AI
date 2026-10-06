@@ -5,6 +5,7 @@ This milestone turns the existing 95-entry catalogue into a local explorer and r
 ## Implemented capabilities
 
 - Static search/filtering, source details and comparison of up to four components, plus a deterministic offline need matcher that ranks entries from a plain-language description and shows why each entry matched (see [the need matcher guide](NEED-MATCHER.md)). Exact-environment RAM observations are separated from untested candidates.
+- Localised interface chrome in 12 major languages (English, Spanish, French, German, Portuguese, Italian, Russian, Simplified Chinese, Japanese, Korean, Arabic with RTL, Hindi) through a dependency-free i18n layer. Catalogue data stays in its source language; icons are inlined Font Awesome-free SVG paths, so there is no CDN or font download.
 - Local COCO-17 skeleton JSONL replay with play/pause, scrubbing, missing joints and synthetic-input disclosure.
 - Isolated benchmark adapters for NumPy DLinear, Silero ONNX and RTMPose-S through rtmlib. Records include raw latency samples, artifact/source hashes and the actual execution environment.
 - Three runnable recipes with generated sample inputs, explicit acquisition and baseline evaluation. VAD/pose synthetic fixtures test plumbing, not accuracy.
