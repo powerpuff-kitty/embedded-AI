@@ -67,7 +67,14 @@ const SYNONYMS = {
   realtime: ['real-time','low-latency','streaming'],
   camera: ['vision','image','video','rgb'],
   image: ['vision','picture','photo','rgb'],
-  video: ['video','stream','frames']
+  video: ['video','stream','frames'],
+  recognise: ['recognition','classification'],
+  recognize: ['recognition','classification'],
+  recognition: ['recognise','recognize','classification'],
+  identify: ['identification','recognition','classification'],
+  translate: ['translation'],
+  generate: ['generation','synthesis'],
+  synthesis: ['generation','generative']
 };
 
 const FIELD_WEIGHTS = { name: 9, id: 7, task: 7, tag: 5, domain: 4, class: 4, description: 2, io: 2, training: 1 };
@@ -78,9 +85,25 @@ export function normalize(value) {
 
 export function tokenize(query) {
   const base = normalize(query).split(/\s+/).filter(token => token && !STOPWORDS.has(token));
-  const expanded = new Set(base);
-  for (const token of base) for (const synonym of SYNONYMS[token] ?? []) expanded.add(synonym);
+  const expanded = new Set();
+  for (const token of base) {
+    const stemmed = stem(token);
+    for (const form of new Set([token, stemmed])) {
+      expanded.add(form);
+      for (const synonym of SYNONYMS[form] ?? []) expanded.add(synonym);
+    }
+  }
   return [...expanded];
+}
+
+/** Conservative suffix stripping so word-form variants match without hand-listing every form. */
+export function stem(word) {
+  if (word.length < 5) return word;
+  for (const suffix of ['ing', 'ions', 'ion', 'ers', 'er', 'ed', 'ive', 'ly', 'ment', 'ness']) {
+    if (word.endsWith(suffix) && word.length - suffix.length >= 4) return word.slice(0, -suffix.length);
+  }
+  if (word.endsWith('s') && word.length >= 5) return word.slice(0, -1);
+  return word;
 }
 
 export function interpret(query) {

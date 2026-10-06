@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { tokenize, interpret, matchNeeds, describeIntent, applyNeedConstraints, shortlistMarkdown, upstreamOf } from '../site/needs.mjs';
+import { tokenize, interpret, matchNeeds, describeIntent, applyNeedConstraints, shortlistMarkdown, upstreamOf, stem } from '../site/needs.mjs';
 import { loadEntries } from '../scripts/catalog.ts';
 const entries = await loadEntries();
 
@@ -65,4 +65,16 @@ test('shortlist markdown names tasks and sources', () => {
   assert.ok(markdown.includes(sample.name));
   assert.ok(markdown.includes(sample.path));
   assert.equal(upstreamOf(sample), sample.links.model || sample.links.repository || sample.links.homepage || sample.links.paper);
+});
+
+test('light stemming connects word forms', () => {
+  assert.equal(stem('detecting'), 'detect');
+  assert.equal(stem('classifying'), 'classify');
+  assert.equal(stem('objects'), 'object');
+  assert.ok(tokenize('detecting people').includes('detect'));
+});
+
+test('a gerund query still surfaces detection components', () => {
+  const { results } = matchNeeds(entries, 'detecting objects in images');
+  assert.ok(results.some(r => (r.entry.tasks || []).some(task => task.includes('detection'))), results.slice(0, 8).map(r => r.entry.id).join(','));
 });

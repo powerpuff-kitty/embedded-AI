@@ -22,9 +22,10 @@ unchanged.
 
 ## How ranking works (`site/needs.mjs`)
 
-- **Tokenize** the query, drop stopwords, and expand synonyms
-  (`people` → `person`, `human`, `face`, `crowd`; `speech` → `voice`, `asr`,
-  `whisper`; `mcu` → `tinyml`, `esp32`, `embedded`).
+- **Tokenize** the query, drop stopwords, apply light suffix stemming (so
+  *detecting*/*detection* and *objects*/*object* map together), and expand
+  synonyms (`people` → `person`, `human`, `face`, `crowd`; `speech` → `voice`,
+  `asr`, `whisper`; `mcu` → `tinyml`, `esp32`, `embedded`).
 - **Interpret intent**: pretrained vs train-on-your-data, offline/edge, and
   model vs toolkit.
 - **Score** each entry across `name`, `id`, `tasks`, `tags`, `domain`, `class`,
