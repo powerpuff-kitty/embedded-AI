@@ -1,0 +1,23 @@
+id: detoxify
+name: Detoxify
+domain: trust-and-safety
+tasks: [toxic-content-detection, content-moderation]
+class: toxicity-classifier-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Trained models that score comments for toxicity on the Jigsaw toxic-comment tasks."
+links: {repository: 'https://github.com/unitaryai/detoxify'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Transformer models sized for server inference; GPU optional.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released classifiers; fine-tuning needs labelled moderation data.', needs_data: 'Comment text; labelled data for evaluation and thresholds.', update_strategy: 'Recalibrate thresholds per community; audit bias and false positives.'}
+data: {inputs: [text], outputs: [toxicity-scores], languages: [en]}
+evaluation: ['Precision/recall at the operating threshold; subgroup and bias review.']
+limitations: ['Toxicity is context-dependent; false positives can silence legitimate speech.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/unitaryai/detoxify', notes: 'Detoxify models.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, moderation, transformers]

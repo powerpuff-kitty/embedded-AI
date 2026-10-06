@@ -1,0 +1,23 @@
+id: rvt
+name: RVT (Recurrent Vision Transformer)
+domain: event-vision
+tasks: [event-based-object-detection, low-latency-perception]
+class: event-detector
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Recurrent vision transformer for object detection with event cameras."
+links: {repository: 'https://github.com/uzh-rpg/RVT', paper: 'https://arxiv.org/abs/2303.05011'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge], notes: 'GPU training; inference can target edge with optimization.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released checkpoints; fine-tuning on event data is possible.', needs_data: 'Event streams with detection labels.', update_strategy: 'Verify weight terms; revalidate mAP and latency per sensor.'}
+data: {inputs: [event-stream], outputs: [detection-boxes, classes], languages: []}
+evaluation: ['Detection mAP and latency on event-camera data.']
+limitations: ['Weight terms not stated; trained largely on specific event-camera datasets.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/uzh-rpg/RVT', notes: 'RVT event-camera detector.'}, {type: paper, url: 'https://arxiv.org/abs/2303.05011', notes: 'Recurrent Vision Transformers for event-camera detection.'}]
+reviewed: '2026-10-06'
+tags: [event-vision, detection, transformer, neuromorphic]

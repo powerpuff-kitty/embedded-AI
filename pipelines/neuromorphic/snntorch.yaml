@@ -1,0 +1,23 @@
+id: snntorch
+name: snnTorch
+domain: neuromorphic
+tasks: [spiking-neural-networks, snn-training, on-device-learning]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python library for deep and online learning with spiking neural networks, built on PyTorch."
+links: {repository: 'https://github.com/jeshraghian/snntorch'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Training on desktop/GPU; SNNs suit low-power inference.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains and fine-tunes SNNs; supports online learning recipes.', needs_data: 'Task data (frames or events) and a timestep budget.', update_strategy: 'Pin version; revalidate accuracy and latency after changes.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Accuracy and latency at the chosen timestep count.']
+limitations: ['A library; hardware-specific mapping is the deployer’s job.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/jeshraghian/snntorch', notes: 'snnTorch library.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, pytorch]

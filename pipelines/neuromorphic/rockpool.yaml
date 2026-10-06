@@ -1,0 +1,23 @@
+id: rockpool
+name: Rockpool
+domain: neuromorphic
+tasks: [spiking-neural-networks, snn-training, neuromorphic-deployment]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Spiking neural network library with PyTorch and JAX pipelines and deployment to neuromorphic hardware."
+links: {repository: 'https://github.com/synsense/rockpool'}
+model: {parameters: null, file_size_mb: null}
+license: {code: AGPL-3.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Supports training and deployment to SynSense devices.'}
+runtimes: [pytorch, jax]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains SNNs with PyTorch/JAX and deploys to hardware.', needs_data: 'Task data and a target-device configuration.', update_strategy: 'Pin version and device; revalidate after upgrades.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Accuracy and device cost per inference.']
+limitations: ['AGPL-3.0 copyleft; hardware benefit depends on SynSense devices.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/synsense/rockpool', notes: 'Rockpool library.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, pytorch, jax]

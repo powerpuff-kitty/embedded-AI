@@ -1,0 +1,23 @@
+id: tonic
+name: Tonic
+domain: event-vision
+tasks: [event-datasets, event-transforms, event-based-vision]
+class: event-data-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library of event-based datasets, transforms and loaders for neuromorphic vision research."
+links: {repository: 'https://github.com/neuromorphs/tonic'}
+model: {parameters: null, file_size_mb: null}
+license: {code: GPL-3.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Data tooling; pairs with a training framework.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Loads/transforms event datasets for training.', needs_data: 'Event datasets in supported formats.', update_strategy: 'Pin version and dataset revisions; cache prepared data.'}
+data: {inputs: [event-dataset], outputs: [batched-events, tensors], languages: []}
+evaluation: ['Transform correctness and data-loading throughput.']
+limitations: ['GPL-3.0 copyleft; a data library, not a model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/neuromorphs/tonic', notes: 'Tonic event-data library.'}]
+reviewed: '2026-10-06'
+tags: [event-vision, datasets, neuromorphic]
