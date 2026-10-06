@@ -6,7 +6,7 @@ class: navigation-primitive
 kind: primitive
 catalogue_batch: expansion-2026-10-06
 description: "ROS 2 navigation stack providing planning, control and behaviour primitives for mobile robots."
-links: {repository: 'https://github.com/ros-navigation/navigation2', homepage: 'https://navigation.ros.org/'}
+links: {repository: 'https://github.com/ros-navigation/navigation2', homepage: 'https://docs.nav2.org/'}
 model: {parameters: null, file_size_mb: null}
 license: {code: Apache-2.0, weights: not-applicable}
 deployment: {offline: true, targets: [edge, desktop, robot], notes: 'Runs on robot-class Linux compute; not itself a learned model.'}

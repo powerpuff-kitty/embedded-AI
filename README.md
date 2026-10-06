@@ -48,6 +48,7 @@ npm ci --ignore-scripts
 npm run search -- --domain finance --usage pretrained
 npm run search -- --query anomaly --json
 npm run need -- "detect people offline with a tiny model"
+npm run links
 npm run index
 npm run check
 ```

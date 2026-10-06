@@ -6,7 +6,7 @@ class: federated-learning-framework
 kind: toolkit
 catalogue_batch: expansion-2026-10-06
 description: "Industrial federated learning framework supporting secure computation across organisations."
-links: {repository: 'https://github.com/FederatedAI/FATE', homepage: 'https://fate.fedai.org/'}
+links: {repository: 'https://github.com/FederatedAI/FATE'}
 model: {parameters: null, file_size_mb: null}
 license: {code: Apache-2.0, weights: not-provided}
 deployment: {offline: true, targets: [server], notes: 'Cluster deployment for cross-organisation federation.'}

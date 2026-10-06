@@ -6,7 +6,7 @@ class: neural-cellular-automaton
 kind: collection
 catalogue_batch: expansion-2026-10-06
 description: "Distill article code for controllable, self-organising neural cellular automata textures."
-links: {repository: 'https://github.com/distillpub/post--selforg-textures', paper: 'https://distill.pub/2021/selforg/'}
+links: {repository: 'https://github.com/distillpub/post--selforg-textures'}
 model: {parameters: null, file_size_mb: null}
 license: {code: CC-BY-4.0, weights: not-provided}
 deployment: {offline: true, targets: [desktop, browser], notes: 'Notebooks and interactive demos for NCA texture generation.'}
@@ -18,6 +18,6 @@ data: {inputs: [reference-texture, initial-state], outputs: [synthesised-texture
 evaluation: ['Texture fidelity and controllability (rotation, scale, boundary).']
 limitations: ['Article companion code; CC-BY-4.0 terms apply to the repository.']
 compatibility: []
-evidence: [{type: official, url: 'https://github.com/distillpub/post--selforg-textures', notes: 'Self-Organising Textures code.'}, {type: paper, url: 'https://distill.pub/2021/selforg/', notes: 'Self-Organising Textures article.'}]
+evidence: [{type: official, url: 'https://github.com/distillpub/post--selforg-textures', notes: 'Self-Organising Textures code. The original distill.pub article URL no longer resolves.'}]
 reviewed: '2026-10-06'
 tags: [artificial-life, neural-cellular-automata, texture-synthesis, jax]

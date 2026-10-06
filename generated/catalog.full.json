@@ -2406,8 +2406,7 @@
       "catalogue_batch": "expansion-2026-10-06",
       "description": "Distill article code for controllable, self-organising neural cellular automata textures.",
       "links": {
-        "repository": "https://github.com/distillpub/post--selforg-textures",
-        "paper": "https://distill.pub/2021/selforg/"
+        "repository": "https://github.com/distillpub/post--selforg-textures"
       },
       "model": {
         "parameters": null,
@@ -2462,12 +2461,7 @@
         {
           "type": "official",
           "url": "https://github.com/distillpub/post--selforg-textures",
-          "notes": "Self-Organising Textures code."
-        },
-        {
-          "type": "paper",
-          "url": "https://distill.pub/2021/selforg/",
-          "notes": "Self-Organising Textures article."
+          "notes": "Self-Organising Textures code. The original distill.pub article URL no longer resolves."
         }
       ],
       "reviewed": "2026-10-06",
@@ -8049,8 +8043,7 @@
       "catalogue_batch": "expansion-2026-10-06",
       "description": "Industrial federated learning framework supporting secure computation across organisations.",
       "links": {
-        "repository": "https://github.com/FederatedAI/FATE",
-        "homepage": "https://fate.fedai.org/"
+        "repository": "https://github.com/FederatedAI/FATE"
       },
       "model": {
         "parameters": null,
@@ -10508,7 +10501,7 @@
       "description": "Google pipeline that calls genetic variants from DNA sequencing data with a deep neural network.",
       "links": {
         "repository": "https://github.com/google/deepvariant",
-        "paper": "https://www.nature.com/articles/s41587-018-0005-9"
+        "paper": "https://www.nature.com/articles/nbt.4235"
       },
       "model": {
         "parameters": null,
@@ -11893,8 +11886,7 @@
       "catalogue_batch": "expansion-2026-10-06",
       "description": "PyTorch framework for medical imaging with training, transforms and deployable inference.",
       "links": {
-        "repository": "https://github.com/Project-MONAI/MONAI",
-        "homepage": "https://monai.io/"
+        "repository": "https://github.com/Project-MONAI/MONAI"
       },
       "model": {
         "parameters": null,
@@ -16956,7 +16948,7 @@
       "description": "ROS 2 navigation stack providing planning, control and behaviour primitives for mobile robots.",
       "links": {
         "repository": "https://github.com/ros-navigation/navigation2",
-        "homepage": "https://navigation.ros.org/"
+        "homepage": "https://docs.nav2.org/"
       },
       "model": {
         "parameters": null,

@@ -9,6 +9,7 @@
     "index": "tsx scripts/generate-index.ts",
     "search": "tsx scripts/search.ts",
     "need": "tsx scripts/need.ts",
+    "links": "tsx scripts/links.ts",
     "test": "tsx --test tests/*.test.ts",
     "check": "npm run validate && npm test && npm run index -- --check",
     "site:build": "tsx scripts/build-site.ts",
