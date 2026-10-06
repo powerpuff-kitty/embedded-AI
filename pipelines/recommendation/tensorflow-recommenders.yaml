@@ -1,0 +1,23 @@
+id: tensorflow-recommenders
+name: TensorFlow Recommenders
+domain: recommendation
+tasks: [recommendation, retrieval, ranking]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for building recommendation and retrieval models in TensorFlow."
+links: {repository: 'https://github.com/tensorflow/recommenders', homepage: 'https://www.tensorflow.org/recommenders'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Training/serving library; deployed models can be exported.'}
+runtimes: [tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains two-tower retrieval and ranking models from interaction data.', needs_data: 'User-item interaction logs with a leakage-free split.', update_strategy: 'Retrain on a schedule; monitor popularity and feedback loops.'}
+data: {inputs: [interaction-data, features], outputs: [ranked-recommendations], languages: []}
+evaluation: ['Recall@k/NDCG offline plus online business metrics.']
+limitations: ['Feedback loops and popularity bias require careful monitoring.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/recommenders', notes: 'TensorFlow Recommenders.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, tensorflow, retrieval, ranking]

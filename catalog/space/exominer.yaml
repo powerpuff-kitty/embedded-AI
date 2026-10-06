@@ -1,0 +1,23 @@
+id: exominer
+name: ExoMiner
+domain: space
+tasks: [exoplanet-detection, time-series-classification]
+class: astronomy-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "NASA deep-learning model that vets exoplanet candidates from Kepler and TESS photometry."
+links: {repository: 'https://github.com/nasa/ExoMiner', paper: 'https://iopscience.iop.org/article/10.3847/1538-4357/ac3140'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Trains/classifies on light curves; CPU-feasible for inference.'}
+runtimes: [tensorflow]
+formats: [tensorflow-savedmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained vetting models; retraining needs labelled transit signals.', needs_data: 'Light curves with candidate signals.', update_strategy: 'Verify licence; revalidate against new survey data.'}
+data: {inputs: [light-curve], outputs: [planet-candidate-probability], languages: []}
+evaluation: ['Precision/recall against confirmed planets and false positives.']
+limitations: ['License not stated; survey-specific and imbalanced labels.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/nasa/ExoMiner', notes: 'NASA ExoMiner.'}]
+reviewed: '2026-10-06'
+tags: [space, astronomy, exoplanets, nasa]

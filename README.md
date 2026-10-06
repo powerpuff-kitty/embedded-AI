@@ -19,7 +19,7 @@ A machine-readable catalogue of AI/ML models for local and resource-constrained 
 - Generate the complete human-facing catalogue and JSON exports from YAML.
 
 ## Domains
-44 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment.
+48 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space.
 
 ## Structure
 ```text
@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**346 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**358 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -86,7 +86,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[accessibility](#catalogue-accessibility) · [administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [drug-discovery](#catalogue-drug-discovery) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [environment](#catalogue-environment) · [event-vision](#catalogue-event-vision) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [manufacturing](#catalogue-manufacturing) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[accessibility](#catalogue-accessibility) · [administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [drug-discovery](#catalogue-drug-discovery) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [environment](#catalogue-environment) · [event-vision](#catalogue-event-vision) · [fashion](#catalogue-fashion) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [fraud-detection](#catalogue-fraud-detection) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [manufacturing](#catalogue-manufacturing) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [recommendation](#catalogue-recommendation) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [space](#catalogue-space) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-accessibility"></a>
 
@@ -293,6 +293,16 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Tonic](pipelines/event-vision/tonic.yaml) · [upstream](<https://github.com/neuromorphs/tonic>) | toolkit / companion | event-datasets, event-transforms, event-based-vision | — | — | python | desktop | GPL-3.0 / not-applicable | unknown |
 | [E2VID (event-to-video)](pipelines/event-vision/rpg-e2vid.yaml) · [upstream](<https://github.com/uzh-rpg/rpg_e2vid>) | pipeline / pretrained | event-to-video, image-reconstruction, low-latency-perception | — | — | pytorch, pytorch-checkpoint | desktop, edge | GPL-3.0 / unknown | unknown |
 
+<a id="catalogue-fashion"></a>
+
+### Fashion
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [MMFashion](pipelines/fashion/mmfashion.yaml) · [upstream](<https://github.com/open-mmlab/mmfashion>) | toolkit / pretrained | fashion-attribute-prediction, fashion-retrieval, fashion-landmark-detection | — | — | pytorch, pytorch-checkpoint, onnx | server, desktop, edge | Apache-2.0 / not-provided | unknown |
+| [IDM-VTON](catalog/fashion/idm-vton.yaml) · [upstream](<https://github.com/yisol/IDM-VTON>) | collection / pretrained | virtual-try-on, image-generation | — | — | pytorch, pytorch-checkpoint, safetensors | server, desktop | unknown / unknown | unknown |
+| [OOTDiffusion](catalog/fashion/ootdiffusion.yaml) · [upstream](<https://github.com/levihsu/OOTDiffusion>) | collection / pretrained | virtual-try-on, image-generation | — | — | pytorch, pytorch-checkpoint, safetensors | server, desktop | unknown / unknown | unknown |
+
 <a id="catalogue-federated-learning"></a>
 
 ### Federated learning
@@ -317,6 +327,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [hmmlearn](pipelines/finance/hmmlearn.yaml) · [upstream](<https://github.com/hmmlearn/hmmlearn>) | toolkit / requires-training | hidden-state-estimation, sequence-modelling | — | — | python, numpy | desktop, server | BSD-3-Clause / not-provided | unknown |
 | [Qlib](pipelines/finance/qlib.yaml) · [upstream](<https://github.com/microsoft/qlib>) | toolkit / companion | quantitative-research, model-evaluation, backtesting | — | — | python | desktop, server | MIT / configuration-dependent | unknown |
 | [FinRL](pipelines/finance/finrl.yaml) · [upstream](<https://github.com/AI4Finance-Foundation/FinRL>) | toolkit / requires-training | reinforcement-learning, portfolio-allocation, trading | — | — | python, pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+
+<a id="catalogue-fraud-detection"></a>
+
+### Fraud detection
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Fraud Detection Handbook](pipelines/fraud-detection/fraud-detection-handbook.yaml) · [upstream](<https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook>) | pipeline / requires-training | credit-card-fraud-detection, anomaly-detection | — | — | python, scikit-learn | server, desktop | unknown / not-provided | unknown |
+| [FraudShield](pipelines/fraud-detection/fraudshield.yaml) · [upstream](<https://github.com/shxu7788/FraudShield>) | pipeline / requires-training | credit-card-fraud-detection, anomaly-detection | — | — | python, scikit-learn | server, desktop | Apache-2.0 / not-provided | unknown |
 
 <a id="catalogue-gaming"></a>
 
@@ -499,6 +518,17 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Tiny Recursive Model](catalog/reasoning/trm.yaml) · [upstream](<https://github.com/SamsungSAILMontreal/TinyRecursiveModels>) | model / unknown | structured-reasoning | 7M | — | pytorch | edge | MIT / unknown | unknown |
 
+<a id="catalogue-recommendation"></a>
+
+### Recommendation
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [DeepCTR](pipelines/recommendation/deepctr.yaml) · [upstream](<https://github.com/shenweichen/DeepCTR>) | toolkit / requires-training | click-through-rate-prediction, ranking | — | — | tensorflow | server | Apache-2.0 / not-provided | unknown |
+| [implicit](pipelines/recommendation/implicit.yaml) · [upstream](<https://github.com/benfred/implicit>) | toolkit / requires-training | collaborative-filtering, recommendation | — | — | python, numpy | server, desktop | MIT / not-provided | unknown |
+| [RecBole](pipelines/recommendation/recbole.yaml) · [upstream](<https://github.com/RUCAIBox/RecBole>) | toolkit / requires-training | recommendation, benchmarking | — | — | pytorch, pytorch-checkpoint | server, desktop | MIT / not-provided | unknown |
+| [TensorFlow Recommenders](pipelines/recommendation/tensorflow-recommenders.yaml) · [upstream](<https://github.com/tensorflow/recommenders>) | toolkit / requires-training | recommendation, retrieval, ranking | — | — | tensorflow | server, desktop | Apache-2.0 / not-provided | unknown |
+
 <a id="catalogue-robotics"></a>
 
 ### Robotics
@@ -605,6 +635,16 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Isaac Lab](pipelines/simulation/isaac-lab.yaml) · [upstream](<https://github.com/isaac-sim/IsaacLab>) | pipeline / companion | robot-learning, reinforcement-learning, simulation | — | — | pytorch, omni-isaac | desktop, server | BSD-3-Clause / not-applicable | unknown |
 | [robosuite](pipelines/simulation/robosuite.yaml) · [upstream](<https://github.com/ARISE-Initiative/robosuite>) | pipeline / companion | robot-manipulation, simulation, reinforcement-learning | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
 | [Genesis](pipelines/simulation/genesis.yaml) · [upstream](<https://github.com/Genesis-Embodied-AI/Genesis>) | pipeline / companion | robotics-simulation, physics-simulation, reinforcement-learning | — | — | python, native-cpp | desktop, server | Apache-2.0 / not-applicable | unknown |
+
+<a id="catalogue-space"></a>
+
+### Space
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [deepCR](catalog/space/deepcr.yaml) · [upstream](<https://github.com/profjsb/deepCR>) | collection / pretrained | cosmic-ray-removal, image-restoration | — | — | pytorch, pytorch-checkpoint | desktop, server | BSD-3-Clause / unknown | unknown |
+| [ExoMiner](catalog/space/exominer.yaml) · [upstream](<https://github.com/nasa/ExoMiner>) | collection / pretrained | exoplanet-detection, time-series-classification | — | — | tensorflow, tensorflow-savedmodel | server, desktop | unknown / unknown | unknown |
+| [astroNN](pipelines/space/astronn.yaml) · [upstream](<https://github.com/henrysky/astroNN>) | toolkit / requires-training | stellar-parameter-estimation, astronomical-classification, spectral-analysis | — | — | tensorflow | desktop, server | MIT / not-provided | unknown |
 
 <a id="catalogue-telecom"></a>
 

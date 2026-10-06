@@ -1,0 +1,23 @@
+id: idm-vton
+name: IDM-VTON
+domain: fashion
+tasks: [virtual-try-on, image-generation]
+class: diffusion-tryon-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Diffusion model for authentic virtual try-on in the wild with identity preservation."
+links: {repository: 'https://github.com/yisol/IDM-VTON', paper: 'https://arxiv.org/abs/2403.05139'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'GPU inference; diffusion models are large.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released weights; fine-tuning is data-heavy.', needs_data: 'Person and garment images.', update_strategy: 'Verify licence; assess identity and consent handling.'}
+data: {inputs: [person-image, garment-image], outputs: [try-on-image], languages: []}
+evaluation: ['Texture fidelity and identity preservation on held-out pairs.']
+limitations: ['License not stated; potential for misuse with real people.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/yisol/IDM-VTON', notes: 'IDM-VTON try-on model.'}, {type: paper, url: 'https://arxiv.org/abs/2403.05139', notes: 'Improving diffusion models for authentic virtual try-on.'}]
+reviewed: '2026-10-06'
+tags: [fashion, diffusion, virtual-try-on]
