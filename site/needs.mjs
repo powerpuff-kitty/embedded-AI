@@ -160,3 +160,42 @@ export function describeIntent(intent) {
   if (intent.wantsTool) notes.push('looking for a toolkit/pipeline');
   return notes;
 }
+
+/**
+ * Apply explicit, user-chosen hard constraints to ranked matches. Returns the
+ * kept results plus the excluded ones with a plain-language reason, so the UI
+ * can explain why a plausible entry disappeared rather than hiding it silently.
+ */
+export function applyNeedConstraints(results, constraints = {}) {
+  const kept = [], excluded = [];
+  for (const result of results) {
+    const entry = result.entry;
+    const mode = entry.usage?.mode ?? 'unknown';
+    if (constraints.offline && entry.deployment?.offline !== true) { excluded.push({ ...result, reason: 'offline operation is not documented' }); continue; }
+    if (constraints.pretrained && mode !== 'pretrained') { excluded.push({ ...result, reason: `use mode is ${mode}, not pretrained` }); continue; }
+    if (constraints.model && !['model', 'collection'].includes(entry.kind)) { excluded.push({ ...result, reason: `${entry.kind} is not a model or collection` }); continue; }
+    if (constraints.permissiveWeights && ['unknown', 'not-provided', 'not-applicable'].includes(entry.license?.weights)) { excluded.push({ ...result, reason: `weights terms are ${entry.license?.weights}` }); continue; }
+    kept.push(result);
+  }
+  return { kept, excluded };
+}
+
+export function upstreamOf(entry) {
+  const links = entry.links ?? {};
+  return links.model || links.repository || links.homepage || links.paper || '';
+}
+
+/** Markdown shortlist for the current selection, suitable for a chat or issue. */
+export function shortlistMarkdown(entries) {
+  const lines = ['# embedded-AI shortlist', ''];
+  for (const entry of entries) {
+    const upstream = upstreamOf(entry);
+    lines.push(`- **${entry.name}** — ${entry.kind} / ${entry.usage?.mode ?? 'unknown'}`);
+    lines.push(`  - tasks: ${(entry.tasks ?? []).join(', ') || 'unknown'}`);
+    lines.push(`  - manifest: ${entry.path}`);
+    if (upstream) lines.push(`  - upstream: ${upstream}`);
+  }
+  return lines.join('\n') + '\n';
+}
+
+

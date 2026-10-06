@@ -1,5 +1,5 @@
 import { partition, safeURL, format } from './catalogue.mjs';
-import { matchNeeds, describeIntent } from './needs.mjs';
+import { matchNeeds, describeIntent, applyNeedConstraints, shortlistMarkdown } from './needs.mjs';
 const $ = selector => document.querySelector(selector);
 const el = (tag,text,className) => { const node=document.createElement(tag); if(text!==undefined)node.textContent=String(text); if(className)node.className=className; return node; };
 const form=$('#filters'), selected=new Set();
@@ -58,17 +58,21 @@ function rankedTable(results,container){
   table.append(body);wrapper.append(table);container.append(wrapper);
 }
 function filters(){const data=Object.fromEntries(new FormData(form));return {...data,offline:!!data.offline,candidates:!!data.candidates};}
-function updateCompare(){$('#compare').disabled=selected.size<2;$('#compare').textContent=`Compare (${selected.size}/4)`;}
+function updateCompare(){$('#compare').disabled=selected.size<2;$('#compare').textContent=`Compare (${selected.size}/4)`;$('#shortlist').disabled=selected.size<1;}
 function render(){
   $('#error').textContent='';
   if(needQuery){
-    const {intent,results}=matchNeeds(entries,needQuery,{limit:60});
-    $('#count').textContent=`${results.length} matching component(s) for your need`;
+    const constraints={offline:$('#need-offline').checked,pretrained:$('#need-pretrained').checked,model:$('#need-model').checked};
+    const {intent,results}=matchNeeds(entries,needQuery,{limit:100});
+    const {kept,excluded}=applyNeedConstraints(results,constraints);
+    $('#count').textContent=`${kept.length} matching component(s) for your need`;
     $('#need-hint').textContent=[`Interpreted tokens: ${intent.tokens.slice(0,12).join(', ')||'none'}`,...describeIntent(intent)].join(' · ');
-    $('#candidates-section').hidden=true;rankedTable(results,$('#entries'));
+    const excludedBox=$('#need-excluded');excludedBox.replaceChildren();
+    if(excluded.length){const reasons=[...new Set(excluded.map(x=>x.reason))].slice(0,3);excludedBox.append(el('p',`${excluded.length} ranked match(es) hidden by your constraints: ${reasons.join('; ')}.`,undefined));excludedBox.className='fine';}
+    $('#candidates-section').hidden=true;rankedTable(kept,$('#entries'));
     history.replaceState(null,'',location.pathname+'?need='+encodeURIComponent(needQuery));return;
   }
-  $('#need-hint').textContent='';
+  $('#need-hint').textContent='';$('#need-excluded').replaceChildren();
   const f=filters(),result=partition(entries,f,runs);$('#count').textContent=`${result.matching.length} matching components`;
   if(f.ram&&!f.target)$('#error').textContent='Choose an exact target before applying a measured-memory budget. Unknowns are not confirmed fits.';
   table(result.matching,$('#entries'));$('#candidates-section').hidden=!result.candidates.length;table(result.candidates,$('#candidates'));
@@ -84,6 +88,8 @@ $('#compare').onclick=()=>{
   const fields=[['Name',e=>e.name],['Kind / use',e=>`${e.kind} / ${e.usage?.mode||'unknown'}`],['Tasks',e=>e.tasks.join(', ')],['Params',e=>format(e.model.parameters)],['File MB',e=>format(e.model.file_size_mb)],['Size scope',e=>e.model.measurement_scope||'Unknown'],['Code / weights',e=>`${e.license.code} / ${e.license.weights}`],['Measured environments',e=>runs.filter(r=>r.entry_id===e.id).map(r=>`${r.hardware.id}: ${format(r.process_peak_rss_mb)} MB`).join('; ')||'None'],['Limitations',e=>(e.limitations||[]).join('; ')||'Not reviewed']];
   for(const[label,value]of fields){const row=el('tr');row.append(el('th',label));for(const e of items)row.append(el('td',value(e)));t.append(row);}wrapper.append(t);box.append(wrapper);show(box);
 };
+$('#shortlist').onclick=async()=>{const items=entries.filter(e=>selected.has(e.id)),text=shortlistMarkdown(items);try{await navigator.clipboard.writeText(text);$('#error').textContent=`Copied ${items.length} component(s) to the clipboard as Markdown.`;}catch{$('#error').textContent='Clipboard unavailable; shortlist was not copied.';}};
+for(const id of ['#need-offline','#need-pretrained','#need-model'])$(id).addEventListener('input',()=>{if(needQuery)render();});
 form.addEventListener('input',render);form.addEventListener('reset',()=>setTimeout(render,0));
 function options(name,values){const select=form.elements.namedItem(name);for(const value of [...new Set(values)].filter(Boolean).sort()) {const o=el('option',value);o.value=value;select.append(o);}}
 try{

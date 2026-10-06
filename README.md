@@ -53,7 +53,7 @@ npm run site:build
 npm run site:serve
 ```
 
-The static explorer supports search, filters, source details and comparison, plus a deterministic offline need matcher that ranks entries from a plain-language description with visible reasons. The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally and, on `main`, published read-only to GitHub Pages by `.github/workflows/pages.yml`; no analytics or upload endpoints are used.
+The static explorer supports search, filters, source details and comparison, plus a deterministic offline need matcher that ranks entries from a plain-language description with visible reasons (see the [need matcher guide](docs/NEED-MATCHER.md)). The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally and, on `main`, published read-only to GitHub Pages by `.github/workflows/pages.yml`; no analytics or upload endpoints are used.
 
 This is a growing curated catalogue, not an exhaustive list or a guarantee that all entries fit small devices. Unknown fields remain visible.
 
