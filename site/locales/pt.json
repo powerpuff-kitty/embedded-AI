@@ -1,6 +1,7 @@
 {
   "ui": {
     "language": "Idioma",
+    "skip": "Ir para os resultados",
     "h1a": "Inteligência pequena.",
     "h1b": "Evidência visível.",
     "intro": "Descreva o que precisa em linguagem simples ou filtre o catálogo. Modelos, toolkits e complementos não-IA são rotulados separadamente com as respetivas evidências.",

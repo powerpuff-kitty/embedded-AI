@@ -1,6 +1,7 @@
 {
   "ui": {
     "language": "Language",
+    "skip": "Skip to results",
     "h1a": "Small intelligence.",
     "h1b": "Visible evidence.",
     "intro": "Describe what you need in plain language, or filter the catalogue. Models, toolkits and non-AI companions are labelled separately with their evidence.",

@@ -1,6 +1,7 @@
 {
   "ui": {
     "language": "Langue",
+    "skip": "Aller aux résultats",
     "h1a": "Petite intelligence.",
     "h1b": "Preuves visibles.",
     "intro": "Décrivez votre besoin en langage courant, ou filtrez le catalogue. Les modèles, boîtes à outils et compléments non-IA sont étiquetés séparément avec leurs preuves.",

@@ -1,6 +1,7 @@
 {
   "ui": {
     "language": "Lingua",
+    "skip": "Vai ai risultati",
     "h1a": "Piccola intelligenza.",
     "h1b": "Prove visibili.",
     "intro": "Descrivi ciò che ti serve in linguaggio semplice o filtra il catalogo. Modelli, toolkit e complementi non-AI sono etichettati separatamente con le loro prove.",
