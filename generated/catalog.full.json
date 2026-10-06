@@ -2658,7 +2658,7 @@
         "keyword-spotting"
       ],
       "class": "tinyml",
-      "description": "",
+      "description": "Depthwise-separable CNN keyword-spotting model trained at 24 kHz for edge targets.",
       "links": {
         "repository": "https://github.com/prarabdhmisra/edge-tinyml",
         "model": null,
@@ -2701,7 +2701,7 @@
         "tinyml",
         "int8"
       ],
-      "path": "catalog/audio/keyword-spotting/ds-cnn-24k.yaml",
+      "path": "catalog/audio/keyword-spotting/ds-cnn-kws-24k.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -2796,7 +2796,7 @@
         "keyword-spotting"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "NVIDIA MatchboxNet family of compact 1D-convolutional keyword-spotting models.",
       "links": {
         "repository": "https://github.com/NVIDIA/NeMo",
         "model": null,
@@ -3915,7 +3915,7 @@
         "speech-to-text"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Cactus Compute speech-to-text model packaged for on-device use.",
       "links": {
         "repository": "https://huggingface.co/Cactus-Compute/whistle",
         "model": null,
@@ -3958,7 +3958,7 @@
         "offline",
         "speech"
       ],
-      "path": "catalog/audio/speech-to-text/whistle.yaml",
+      "path": "catalog/audio/speech-to-text/cactus-whistle.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -4613,7 +4613,7 @@
         "wake-word-detection"
       ],
       "class": "tinyml",
-      "description": "",
+      "description": "Micro wake-word models for ESP32/ESPHome that fit in tens of kilobytes.",
       "links": {
         "repository": "https://github.com/OHF-Voice/micro-wake-word",
         "model": null,
@@ -5928,7 +5928,7 @@
         "adaptive-locomotion"
       ],
       "class": "bio-inspired-controller",
-      "description": "",
+      "description": "Bio-inspired flocking and adaptive-locomotion controller for edge robots.",
       "links": {
         "repository": "https://github.com/MarcHesse/mhflocke",
         "model": null,
@@ -5985,7 +5985,7 @@
         "emg-to-servo-control"
       ],
       "class": "tinyml",
-      "description": "",
+      "description": "EMG-driven control mapping for a servo-actuated prosthetic-style arm.",
       "links": {
         "repository": "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm",
         "model": null,
@@ -6042,7 +6042,7 @@
         "gait-generation"
       ],
       "class": "neural-oscillator",
-      "description": "",
+      "description": "Central pattern generator for quadruped gait generation on embedded controllers.",
       "links": {
         "repository": "https://github.com/Tatonta/Quadruped-Robot",
         "model": null,
@@ -6099,7 +6099,7 @@
         "locomotion"
       ],
       "class": "reinforcement-learning-policy",
-      "description": "",
+      "description": "Trained locomotion policies for a small quadruped robot.",
       "links": {
         "repository": "https://github.com/jackyrx/NX_microduck",
         "model": null,
@@ -6144,7 +6144,7 @@
         "servo",
         "robotics"
       ],
-      "path": "catalog/control/locomotion/microduck.yaml",
+      "path": "catalog/control/locomotion/microduck-locomotion.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -6330,7 +6330,7 @@
         "motor-servo-control"
       ],
       "class": "reinforcement-learning-policy",
-      "description": "",
+      "description": "Neural control mixer for ArduPilot motor outputs.",
       "links": {
         "repository": "https://github.com/virtualrobotix/Ardupilot-Neural-Mixer",
         "model": null,
@@ -6559,7 +6559,7 @@
         "quadruped-locomotion"
       ],
       "class": "reinforcement-learning-policy",
-      "description": "",
+      "description": "Locomotion policy for the OpenDoge quadruped platform.",
       "links": {
         "repository": "https://github.com/OpenDogeRobotics/OpenDoge_origin",
         "model": null,
@@ -6604,7 +6604,7 @@
         "quadruped",
         "onnx"
       ],
-      "path": "catalog/control/locomotion/opendoge.yaml",
+      "path": "catalog/control/locomotion/opendoge-locomotion.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -7127,7 +7127,7 @@
         "cad-action-selection"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Compact model that selects parametric CAD operations from design context.",
       "links": {
         "repository": "https://github.com/shhivv/taiga-s1",
         "model": null,
@@ -8544,7 +8544,7 @@
         "artifact_integrity": "not-acquired-in-documentation-review",
         "remaining": "Clarify weight terms and acquire/hash the exact checkpoint before deployment."
       },
-      "path": "catalog/finance/sentiment/finbert.yaml",
+      "path": "catalog/finance/sentiment/finbert-prosus.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -10997,7 +10997,7 @@
         "earth-observation-embedding"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Tiny earth-observation embedding model from the OlmoEarth family.",
       "links": {
         "repository": "https://huggingface.co/allenai/OlmoEarth-v1-Nano",
         "model": null,
@@ -11043,7 +11043,7 @@
         "satellite",
         "earth-observation"
       ],
-      "path": "catalog/geospatial/earth-observation/olmoearth-nano.yaml",
+      "path": "catalog/geospatial/earth-observation/olmoearth-v1-nano.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -11055,7 +11055,7 @@
         "earth-observation-embedding"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Small earth-observation embedding model from the OlmoEarth family.",
       "links": {
         "repository": "https://huggingface.co/allenai/OlmoEarth-v1-Tiny",
         "model": null,
@@ -11101,7 +11101,7 @@
         "satellite",
         "earth-observation"
       ],
-      "path": "catalog/geospatial/earth-observation/olmoearth-tiny.yaml",
+      "path": "catalog/geospatial/earth-observation/olmoearth-v1-tiny.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -13550,7 +13550,7 @@
         "embeddings"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Small tool-calling and structured-extraction model for on-device automation.",
       "links": {
         "repository": "https://huggingface.co/Cactus-Compute/needle3",
         "model": null,
@@ -13593,7 +13593,7 @@
         "tool-calling",
         "offline"
       ],
-      "path": "catalog/language/tool-calling/needle3.yaml",
+      "path": "catalog/language/tool-calling/cactus-needle3.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -16302,7 +16302,7 @@
         "structured-reasoning"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Small recursive model for structured reasoning tasks.",
       "links": {
         "repository": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
         "model": null,
@@ -16348,7 +16348,7 @@
         "reasoning",
         "research"
       ],
-      "path": "catalog/reasoning/trm.yaml",
+      "path": "catalog/reasoning/tiny-recursive-model.yaml",
       "kind": "model",
       "usage_mode": "unknown"
     },
@@ -17204,7 +17204,7 @@
         "vision-language-action"
       ],
       "class": "compact-vla",
-      "description": "",
+      "description": "Compact vision-language-action model for edge robotics.",
       "links": {
         "repository": "https://huggingface.co/enfuse/edgevla-tiny-fmb",
         "model": null,
@@ -19867,7 +19867,7 @@
         "atomistic-potential"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Small machine-learned interatomic potential for atomistic simulation.",
       "links": {
         "repository": "https://github.com/microsoft/mattersim",
         "model": null,
@@ -21013,7 +21013,7 @@
         "imu-gesture-recognition"
       ],
       "class": "tinyml",
-      "description": "",
+      "description": "TensorFlow Lite Micro gesture example recognising wand-like IMU motions.",
       "links": {
         "repository": "https://github.com/tensorflow/tflite-micro",
         "model": null,
@@ -21329,7 +21329,7 @@
         "radar-classification"
       ],
       "class": "model-collection",
-      "description": "",
+      "description": "Texas Instruments TinyML model zoo for time-series, audio, vision and radar tasks.",
       "links": {
         "repository": "https://github.com/TexasInstruments/tinyml-modelzoo",
         "model": null,
@@ -21385,7 +21385,7 @@
         "vibration-anomaly-detection"
       ],
       "class": "tinyml",
-      "description": "",
+      "description": "Vibration anomaly-detection model for predictive maintenance on edge sensors.",
       "links": {
         "repository": "https://github.com/Ayushkothari96/pulse",
         "model": null,
@@ -24240,7 +24240,7 @@
           "url": "https://github.com/PeterL1n/RobustVideoMatting"
         }
       ],
-      "path": "catalog/video/matting/robust-video-matting.yaml",
+      "path": "catalog/video/matting/robust-video-matting-mobilenetv3.yaml",
       "usage_mode": "unknown"
     },
     {
@@ -25243,7 +25243,7 @@
         "face-detection"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Lightweight MediaPipe face detector for mobile and edge devices.",
       "links": {
         "repository": "https://github.com/google-ai-edge/mediapipe",
         "model": null,
@@ -26090,7 +26090,7 @@
         "feature-extraction"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "MobileNetV3-Small image classifier and backbone for mobile and embedded vision.",
       "links": {
         "repository": "https://github.com/tensorflow/models",
         "model": null,
@@ -26492,7 +26492,7 @@
         "artifact_integrity": "not-acquired-in-documentation-review",
         "remaining": "Pin/hash weights and verify their separate terms before product deployment."
       },
-      "path": "catalog/vision/segmentation/mobilesam.yaml",
+      "path": "catalog/vision/segmentation/mobile-sam.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -26821,7 +26821,7 @@
         "descriptor-extraction"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Self-supervised keypoint detector and descriptor for geometry tasks.",
       "links": {
         "repository": "https://github.com/magicleap/SuperPointPretrainedNetwork",
         "model": null,
@@ -27203,7 +27203,7 @@
         "monocular-depth-estimation"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "Compact encoder-decoder network for monocular depth estimation on embedded hardware.",
       "links": {
         "repository": "https://github.com/dwofk/fast-depth",
         "model": null,
@@ -27472,7 +27472,7 @@
         "multi-object-tracking"
       ],
       "class": "tracking-system",
-      "description": "",
+      "description": "Tracking-by-detection method with low-score box association for multi-object tracking.",
       "links": {
         "repository": "https://github.com/ifzhang/ByteTrack",
         "model": null,
@@ -28001,7 +28001,7 @@
         "object-detection"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "TFLite EfficientDet-Lite0 object detector for mobile and edge inference.",
       "links": {
         "repository": "https://www.tensorflow.org/lite/examples/object_detection/overview",
         "model": null,
@@ -28782,7 +28782,7 @@
         "ocr"
       ],
       "class": "small-specialized-model",
-      "description": "",
+      "description": "PaddleOCR PP-OCRv6 tiny text-detection and recognition model for edge OCR.",
       "links": {
         "repository": "https://github.com/PaddlePaddle/PaddleOCR",
         "model": null,

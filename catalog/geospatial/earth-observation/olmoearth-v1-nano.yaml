@@ -3,7 +3,7 @@ name: OlmoEarth v1 Nano
 domain: geospatial
 tasks: [earth-observation-embedding]
 class: small-specialized-model
-description: ""
+description: "Tiny earth-observation embedding model from the OlmoEarth family."
 links: { repository: "https://huggingface.co/allenai/OlmoEarth-v1-Nano", model: null, paper: null, homepage: null }
 model: { parameters: 1400000, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: Apache-2.0 }

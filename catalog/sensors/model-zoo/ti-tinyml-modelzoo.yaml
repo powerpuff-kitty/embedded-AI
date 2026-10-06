@@ -3,7 +3,7 @@ name: TI TinyML Model Zoo
 domain: sensors
 tasks: [time-series-classification, forecasting, anomaly-detection, audio-classification, image-classification, radar-classification]
 class: model-collection
-description: ""
+description: "Texas Instruments TinyML model zoo for time-series, audio, vision and radar tasks."
 links: { repository: "https://github.com/TexasInstruments/tinyml-modelzoo", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }

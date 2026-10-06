@@ -3,7 +3,7 @@ name: SuperPoint
 domain: vision
 tasks: [keypoint-detection, descriptor-extraction]
 class: small-specialized-model
-description: ""
+description: "Self-supervised keypoint detector and descriptor for geometry tasks."
 links: { repository: "https://github.com/magicleap/SuperPointPretrainedNetwork", model: null, paper: null, homepage: null }
 model: { parameters: 1300000, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }

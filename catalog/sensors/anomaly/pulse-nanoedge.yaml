@@ -3,7 +3,7 @@ name: Pulse / NanoEdge vibration anomaly detector
 domain: sensors
 tasks: [vibration-anomaly-detection]
 class: tinyml
-description: ""
+description: "Vibration anomaly-detection model for predictive maintenance on edge sensors."
 links: { repository: "https://github.com/Ayushkothari96/pulse", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

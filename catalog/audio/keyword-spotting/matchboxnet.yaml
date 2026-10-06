@@ -3,7 +3,7 @@ name: MatchboxNet
 domain: audio
 tasks: [keyword-spotting]
 class: small-specialized-model
-description: ""
+description: "NVIDIA MatchboxNet family of compact 1D-convolutional keyword-spotting models."
 links: { repository: "https://github.com/NVIDIA/NeMo", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

@@ -3,7 +3,7 @@ name: ByteTrack
 domain: vision
 tasks: [multi-object-tracking]
 class: tracking-system
-description: ""
+description: "Tracking-by-detection method with low-score box association for multi-object tracking."
 links: { repository: "https://github.com/ifzhang/ByteTrack", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

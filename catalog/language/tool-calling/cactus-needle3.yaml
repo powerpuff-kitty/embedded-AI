@@ -3,7 +3,7 @@ name: Needle 3
 domain: language
 tasks: [tool-calling, structured-extraction, embeddings]
 class: small-specialized-model
-description: ""
+description: "Small tool-calling and structured-extraction model for on-device automation."
 links: { repository: "https://huggingface.co/Cactus-Compute/needle3", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: Apache-2.0 }

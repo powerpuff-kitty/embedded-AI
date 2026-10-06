@@ -3,7 +3,7 @@ name: MicroDuck locomotion policies
 domain: control
 tasks: [locomotion]
 class: reinforcement-learning-policy
-description: ""
+description: "Trained locomotion policies for a small quadruped robot."
 links: { repository: "https://github.com/jackyrx/NX_microduck", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }

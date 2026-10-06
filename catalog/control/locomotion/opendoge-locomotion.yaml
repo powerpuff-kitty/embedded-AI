@@ -3,7 +3,7 @@ name: OpenDoge locomotion policy
 domain: control
 tasks: [quadruped-locomotion]
 class: reinforcement-learning-policy
-description: ""
+description: "Locomotion policy for the OpenDoge quadruped platform."
 links: { repository: "https://github.com/OpenDogeRobotics/OpenDoge_origin", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }

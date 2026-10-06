@@ -3,7 +3,7 @@ name: Quadruped CPG Controller
 domain: control
 tasks: [gait-generation]
 class: neural-oscillator
-description: ""
+description: "Central pattern generator for quadruped gait generation on embedded controllers."
 links: { repository: "https://github.com/Tatonta/Quadruped-Robot", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }

@@ -3,7 +3,7 @@ name: EMG Winter Soldier Arm
 domain: control
 tasks: [emg-to-servo-control]
 class: tinyml
-description: ""
+description: "EMG-driven control mapping for a servo-actuated prosthetic-style arm."
 links: { repository: "https://github.com/SuryaUT/EMG-Winter-Soldier-Arm", model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }

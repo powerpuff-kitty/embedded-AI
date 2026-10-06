@@ -3,7 +3,7 @@ name: MatterSim Small
 domain: science
 tasks: [atomistic-potential]
 class: small-specialized-model
-description: ""
+description: "Small machine-learned interatomic potential for atomistic simulation."
 links: { repository: "https://github.com/microsoft/mattersim", model: null, paper: null, homepage: null }
 model: { parameters: 1000000, file_size_mb: null, architecture: null, precision: null }
 license: { code: MIT, weights: unknown }
