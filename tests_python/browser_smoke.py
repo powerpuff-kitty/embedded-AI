@@ -19,7 +19,7 @@ try:
         page.locator('[name=domain]').select_option('finance')
         finance_rows=page.locator('tbody tr').count()
         assert 0<finance_rows<total_rows
-        assert 'finance' in page.locator('#entries').inner_text()
+        assert 'finance' in page.locator('#entries').inner_text().lower()
         page.locator('tbody input').nth(0).check();page.locator('tbody input').nth(1).check()
         page.locator('#compare').click();assert page.locator('#details').is_visible();page.keyboard.press('Escape')
         page.locator('[name=target]').select_option('luckfox-rv1106')
