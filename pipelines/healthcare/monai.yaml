@@ -6,7 +6,7 @@ class: medical-imaging-toolkit
 kind: toolkit
 catalogue_batch: expansion-2026-10-06
 description: "PyTorch framework for medical imaging with training, transforms and deployable inference."
-links: {repository: 'https://github.com/Project-MONAI/MONAI', homepage: 'https://monai.io/'}
+links: {repository: 'https://github.com/Project-MONAI/MONAI'}
 model: {parameters: null, file_size_mb: null}
 license: {code: Apache-2.0, weights: not-provided}
 deployment: {offline: true, targets: [server, desktop, edge], notes: 'Inference bundles can target constrained hardware; fit depends on the imaging model.'}

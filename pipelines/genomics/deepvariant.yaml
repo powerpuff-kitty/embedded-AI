@@ -6,7 +6,7 @@ class: genomics-pipeline
 kind: pipeline
 catalogue_batch: expansion-2026-10-06
 description: "Google pipeline that calls genetic variants from DNA sequencing data with a deep neural network."
-links: {repository: 'https://github.com/google/deepvariant', paper: 'https://www.nature.com/articles/s41587-018-0005-9'}
+links: {repository: 'https://github.com/google/deepvariant', paper: 'https://www.nature.com/articles/nbt.4235'}
 model: {parameters: null, file_size_mb: null}
 license: {code: BSD-3-Clause, weights: unknown}
 deployment: {offline: true, targets: [server, desktop], notes: 'CPU/GPU pipelines; sequencing inputs and reference genomes dominate storage.'}
