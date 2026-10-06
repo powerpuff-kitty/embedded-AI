@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**294 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**304 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -117,15 +117,24 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [3D Artefacts NCA](pipelines/artificial-life/nca-3d-artefacts.yaml) · [upstream](<https://github.com/real-itu/3d-artefacts-nca>) | pipeline / requires-training | 3d-artefact-generation, morphogenesis, self-organising-pattern-generation | — | — | pytorch | desktop | MIT / not-provided | unknown |
+| [3D Growing NCA (Aadityaza)](pipelines/artificial-life/3d-growing-nca.yaml) · [upstream](<https://github.com/Aadityaza/3d-Growing-neural-cellular-automata>) | pipeline / requires-training | 3d-artefact-generation, morphogenesis | — | — | pytorch | desktop | MIT / not-provided | unknown |
+| [3D Neural Cellular Automata (Monash)](pipelines/artificial-life/3d-nca-monash.yaml) · [upstream](<https://github.com/MonashDeepNeuron/3D-Neural-Cellular-Automata>) | pipeline / requires-training | 3d-artefact-generation, morphogenesis, self-organising-pattern-generation | — | — | pytorch | desktop | MIT / not-provided | unknown |
+| [ASAL (Automating the Search for Artificial Life)](pipelines/artificial-life/asal.yaml) · [upstream](<https://github.com/SakanaAI/asal>) | pipeline / companion | artificial-life-search, evolutionary-search, foundation-model-guided-search | — | — | pytorch | desktop, server | Apache-2.0 / not-provided | unknown |
+| [ASAL (PyTorch reimplementation)](pipelines/artificial-life/asal-pytorch.yaml) · [upstream](<https://github.com/fredericowieser/ASAL-PyTorch>) | pipeline / companion | artificial-life-search, evolutionary-search | — | — | pytorch | desktop | unknown / not-provided | unknown |
 | [Convoca](pipelines/artificial-life/convoca.yaml) · [upstream](<https://github.com/williamgilpin/convoca>) | toolkit / requires-training | cellular-automata-prediction, neural-cellular-automata-analysis | — | — | pytorch | desktop | unknown / not-provided | unknown |
+| [CAPOW (Continuous Cellular Automata)](primitives/artificial-life/capow.yaml) · [upstream](<https://github.com/rudyrucker/capow>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | native-cpp | desktop | GPL-3.0 / not-applicable | unknown |
 | [FlowLenia](primitives/artificial-life/flow-lenia.yaml) · [upstream](<https://github.com/erwanplantec/FlowLenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation, evolutionary-search | — | — | python | desktop | unknown / not-applicable | unknown |
 | [Lenia](primitives/artificial-life/lenia.yaml) · [upstream](<https://github.com/Chakazul/Lenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | python, javascript | desktop, browser | MIT / not-applicable | unknown |
+| [Lenia Tutorial](catalog/artificial-life/lenia-tutorial.yaml) · [upstream](<https://github.com/lenia-org/Lenia-Tutorial>) | collection / companion | continuous-cellular-automata, artificial-life-simulation | — | — | jupyter, python | desktop, browser | MIT / not-applicable | unknown |
 | [Real-time Flow-Lenia](primitives/artificial-life/realtime-flowlenia.yaml) · [upstream](<https://github.com/ochyai/realtime-flowlenia>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | pytorch | desktop | MIT / not-applicable | unknown |
 | [lenia_ca (Rust)](primitives/artificial-life/lenia-ca.yaml) · [upstream](<https://github.com/BirdbrainEngineer/lenia_ca>) | primitive / companion | continuous-cellular-automata, artificial-life-simulation | — | — | rust, wasm | browser, desktop, edge | MIT / not-applicable | unknown |
+| [Adaptive Particle Lenia](primitives/artificial-life/adaptive-particle-lenia.yaml) · [upstream](<https://github.com/KazuyaHoribe/AdaptiveParticleLenia>) | primitive / companion | particle-simulation, artificial-life-simulation, evolutionary-search | — | — | python | desktop | unknown / not-applicable | unknown |
 | [Particle Lenia](primitives/artificial-life/particle-lenia.yaml) · [upstream](<https://github.com/silvernio/particle-lenia>) | primitive / companion | particle-simulation, artificial-life-simulation | — | — | typescript, webgpu | browser | unknown / not-applicable | unknown |
+| [Reaction-Diffusion Playground](primitives/artificial-life/reaction-diffusion-playground.yaml) · [upstream](<https://github.com/jasonwebb/reaction-diffusion-playground>) | primitive / companion | reaction-diffusion-simulation, pattern-formation | — | — | javascript, webgl | browser | unknown / not-applicable | unknown |
 | [Growing NCA (PyTorch, PWhiddy)](pipelines/artificial-life/growing-nca-pytorch.yaml) · [upstream](<https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch>) | pipeline / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | pytorch | desktop, browser | Apache-2.0 / not-provided | unknown |
 | [Growing NCA Reproduction (PyTorch)](pipelines/artificial-life/growing-nca-repro.yaml) · [upstream](<https://github.com/chenmingxiang110/Growing-Neural-Cellular-Automata>) | pipeline / requires-training | self-organising-pattern-generation, morphogenesis | — | — | pytorch | desktop | MIT / not-provided | unknown |
 | [Growing Neural Cellular Automata](catalog/artificial-life/growing-nca.yaml) · [upstream](<https://github.com/google-research/self-organising-systems>) | collection / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | jax | desktop | Apache-2.0 / not-provided | unknown |
+| [Self-Organising Textures](catalog/artificial-life/selforg-textures.yaml) · [upstream](<https://github.com/distillpub/post--selforg-textures>) | collection / requires-training | texture-synthesis, self-organising-pattern-generation | — | — | jax | desktop, browser | CC-BY-4.0 / not-provided | unknown |
 
 <a id="catalogue-audio"></a>
 
@@ -487,6 +496,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [CURIE](pipelines/time-series/curie.yaml) · [upstream](<https://github.com/TxusLopez/CURIE>) | toolkit / requires-training | concept-drift-detection, streaming-classification | — | — | python | desktop, server, edge | MIT / not-provided | unknown |
 | [tsfresh](pipelines/time-series/tsfresh.yaml) · [upstream](<https://github.com/blue-yonder/tsfresh>) | toolkit / companion | feature-extraction, time-series-classification | — | — | python, scikit-learn | desktop, server, edge | MIT / not-provided | unknown |
 | [Chronos-Bolt Tiny](catalog/time-series/forecasting/chronos-bolt-tiny.yaml) · [upstream](<https://huggingface.co/amazon/chronos-bolt-tiny>) | model / pretrained | forecasting | 9M | — | chronos-forecasting, pytorch, safetensors | edge | Apache-2.0 / Apache-2.0 | unknown |
 | [DLinear](catalog/time-series/forecasting/dlinear.yaml) · [upstream](<https://github.com/cure-lab/LTSF-Linear>) | model / requires-training | forecasting | — | — | numpy, pytorch, npz | desktop, edge | Apache-2.0 / not-provided | local-process-darwin-arm64-ddf7ff5ebd: reproduced |

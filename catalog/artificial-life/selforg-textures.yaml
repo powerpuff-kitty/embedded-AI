@@ -1,0 +1,23 @@
+id: selforg-textures
+name: Self-Organising Textures
+domain: artificial-life
+tasks: [texture-synthesis, self-organising-pattern-generation]
+class: neural-cellular-automaton
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Distill article code for controllable, self-organising neural cellular automata textures."
+links: {repository: 'https://github.com/distillpub/post--selforg-textures', paper: 'https://distill.pub/2021/selforg/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: CC-BY-4.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, browser], notes: 'Notebooks and interactive demos for NCA texture generation.'}
+runtimes: [jax]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains NCA texture generators with rotation/scale invariance tricks.', needs_data: 'A reference texture and a training harness.', update_strategy: 'Retrain per texture; keep augmentation settings and seeds.'}
+data: {inputs: [reference-texture, initial-state], outputs: [synthesised-texture], languages: []}
+evaluation: ['Texture fidelity and controllability (rotation, scale, boundary).']
+limitations: ['Article companion code; CC-BY-4.0 terms apply to the repository.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/distillpub/post--selforg-textures', notes: 'Self-Organising Textures code.'}, {type: paper, url: 'https://distill.pub/2021/selforg/', notes: 'Self-Organising Textures article.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, neural-cellular-automata, texture-synthesis, jax]

@@ -1,0 +1,23 @@
+id: capow
+name: CAPOW (Continuous Cellular Automata)
+domain: artificial-life
+tasks: [continuous-cellular-automata, artificial-life-simulation]
+class: continuous-cellular-automaton
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Rudy Rucker's CAPOW explorer for continuous-valued cellular automata."
+links: {repository: 'https://github.com/rudyrucker/capow'}
+model: {parameters: null, file_size_mb: null}
+license: {code: GPL-3.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Native C++ application for exploring continuous CA rules.'}
+runtimes: [native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Rule exploration; not a learned model.', needs_data: 'A rule and initial field.', update_strategy: 'Pin version; export and version any interesting rules.'}
+data: {inputs: [initial-field, rule], outputs: [evolved-fields], languages: []}
+evaluation: ['Stability and richness of patterns for a given rule.']
+limitations: ['GPL-3.0 copyleft; a creative exploration tool.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/rudyrucker/capow', notes: 'CAPOW continuous CA.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, cellular-automata, continuous, native]

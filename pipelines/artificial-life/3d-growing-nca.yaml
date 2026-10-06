@@ -1,0 +1,23 @@
+id: 3d-growing-nca
+name: 3D Growing NCA (Aadityaza)
+domain: artificial-life
+tasks: [3d-artefact-generation, morphogenesis]
+class: neural-cellular-automaton
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "3D growing neural cellular automata implementation in notebooks."
+links: {repository: 'https://github.com/Aadityaza/3d-Growing-neural-cellular-automata', paper: 'https://distill.pub/2020/growing-ca/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Voxel NCA; GPU recommended for 3D rollouts.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a 3D local rule to grow a voxel target.', needs_data: 'A voxel target and a training harness.', update_strategy: 'Retrain per target; record seeds and grid size.'}
+data: {inputs: [voxel-target, initial-state], outputs: [grown-3d-structure], languages: []}
+evaluation: ['Structural fidelity to the voxel target and stability.']
+limitations: ['Educational implementation; 3D memory grows cubically.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Aadityaza/3d-Growing-neural-cellular-automata', notes: '3D growing NCA notebooks.'}]
+reviewed: '2026-10-06'
+tags: [artificial-life, neural-cellular-automata, 3d]
