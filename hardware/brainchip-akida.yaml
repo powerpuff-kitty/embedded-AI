@@ -1,0 +1,4 @@
+id: brainchip-akida
+name: BrainChip Akida
+class: neuromorphic
+notes: Event-based edge neural processor. Record the device (Akida IP, AKD1000, Akida 2) and the model conversion path.

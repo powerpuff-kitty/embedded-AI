@@ -1,0 +1,4 @@
+id: intel-loihi
+name: Intel Loihi
+class: neuromorphic
+notes: Intel research neuromorphic processor. Program with Lava/Lava-DL; record the exact board (e.g. Kapoho Point, Hala Point) and core count.

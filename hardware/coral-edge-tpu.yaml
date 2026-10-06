@@ -1,0 +1,4 @@
+id: coral-edge-tpu
+name: Google Coral Edge TPU
+class: npu
+notes: Requires full-integer quantized TensorFlow Lite models; record host (USB/M.2/Dev Board) and TPU runtime version.

@@ -1,8 +1,16 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
+import YAML from 'yaml';
 import { loadEntries, kindOf } from './catalog.ts';
 const entries = await loadEntries();
+const hardware: any[] = [];
+for(const file of await fs.readdir('hardware').catch(() => [])){
+  if(!file.endsWith('.yaml')) continue;
+  const doc = YAML.parse(await fs.readFile(path.join('hardware', file), 'utf8'));
+  if(doc?.id) hardware.push({id:doc.id,name:doc.name,class:doc.class,notes:doc.notes});
+}
+hardware.sort((a,b)=>a.id.localeCompare(b.id));
 const records: any[] = [];
 const schema = JSON.parse(await fs.readFile('schema/benchmark.schema.json','utf8'));
 const validate = new Ajv2020({allErrors:true,strict:false}).compile(schema);
@@ -24,7 +32,7 @@ await fs.mkdir('dist/data',{recursive:true});
 for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
 await fs.mkdir('dist/locales',{recursive:true});
 for(const name of await fs.readdir('site/locales'))await fs.copyFile(path.join('site','locales',name),path.join('dist','locales',name));
-await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records}));
+await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records,hardware}));
 await fs.writeFile('dist/.nojekyll','');
 const BASE='https://powerpuff-kitty.github.io/embedded-AI';
 const domains=[...new Set(entries.map(e=>e.domain))].sort();

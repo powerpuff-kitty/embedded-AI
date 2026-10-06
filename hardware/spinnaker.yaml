@@ -1,0 +1,4 @@
+id: spinnaker
+name: SpiNNaker
+class: neuromorphic
+notes: Manchester many-core spiking platform. Program via PyNN/sPyNNaker; record board generation (SpiNNaker-1/2) and core budget.
