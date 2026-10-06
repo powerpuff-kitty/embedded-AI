@@ -1,0 +1,23 @@
+id: pettingzoo
+name: PettingZoo
+domain: gaming
+tasks: [multi-agent-environments, reinforcement-learning, environment-api]
+class: multi-agent-environment-api
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Farama standard API and environment suite for multi-agent reinforcement learning."
+links: {repository: 'https://github.com/Farama-Foundation/PettingZoo', homepage: 'https://pettingzoo.farama.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Interface standard and environment suite; not a model or runtime.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Environment API for multi-agent RL experiments.', needs_data: 'An environment and multi-agent task definition.', update_strategy: 'Pin API version when persisting trained policies.'}
+data: {inputs: [joint-actions], outputs: [observations, rewards, termination], languages: []}
+evaluation: ['Environment correctness, determinism and reward design review.']
+limitations: ['An API confers no task competence or hardware fitness.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Farama-Foundation/PettingZoo', notes: 'Documentation review of multi-agent environment API and MIT licence.'}]
+reviewed: '2026-10-06'
+tags: [gaming, multi-agent, reinforcement-learning, primitive]

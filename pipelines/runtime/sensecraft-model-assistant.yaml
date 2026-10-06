@@ -1,0 +1,23 @@
+id: sensecraft-model-assistant
+name: Seeed SenseCraft Model Assistant
+domain: runtime
+tasks: [embedded-model-training, model-deployment, edge-vision]
+class: embedded-ai-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Open-source Seeed toolkit for training and deploying embedded vision models to edge boards."
+links: {repository: 'https://github.com/Seeed-Studio/ModelAssistant'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [edge, mobile, desktop], notes: 'Exports via ONNX/TFLite/NCNN; target boards and accelerators vary.'}
+runtimes: [python, onnxruntime, tflite, ncnn]
+formats: [onnx, tflite, ncnn]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Training/fine-tuning and model export for embedded targets.', needs_data: 'Task-specific labelled data and a chosen target board.', update_strategy: 'Re-export and re-benchmark after datasets, toolkits or target firmware change.'}
+data: {inputs: [labelled-dataset], outputs: [exported-model, predictions], languages: []}
+evaluation: ['Accuracy after export/quantization and latency on the target board.']
+limitations: ['License not stated in the reviewed README; verify before commercial use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Seeed-Studio/ModelAssistant', notes: 'Documentation review of training/export pipeline and target classes; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, edge-vision, export]

@@ -1,0 +1,23 @@
+id: ml-agents
+name: Unity ML-Agents
+domain: gaming
+tasks: [reinforcement-learning, imitation-learning, game-agent-training]
+class: game-rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Unity toolkit for training intelligent game agents with reinforcement and imitation learning."
+links: {repository: 'https://github.com/Unity-Technologies/ml-agents', homepage: 'https://unity.com/products/machine-learning-agents'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, mobile], notes: 'Training on desktop; trained models can be embedded via the Unity runtime and ONNX (Barracuda/Sentis).'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains policies via RL/IL and exports them to ONNX for in-game use.', needs_data: 'A Unity scene with agent sensors, actions and rewards; demonstrations for IL.', update_strategy: 'Retrain when the game changes; measure exported-policy latency on the target platform.'}
+data: {inputs: [agent-observations], outputs: [agent-actions, trained-policy], languages: []}
+evaluation: ['Episode reward, generalisation across levels and inference cost on target.']
+limitations: ['A policy trained in one scene may not transfer to a different game.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Unity-Technologies/ml-agents', notes: 'Documentation review of RL/IL workflows and ONNX export; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, unity, onnx]

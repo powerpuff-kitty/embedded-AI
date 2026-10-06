@@ -1,0 +1,23 @@
+id: esp-dl
+name: ESP-DL
+domain: runtime
+tasks: [mcu-inference, esp32-deployment]
+class: mcu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Espressif deep-learning library for deploying neural networks on ESP32 series chips."
+links: {repository: 'https://github.com/espressif/esp-dl'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Targets ESP32-S3/P4 and similar; model support depends on operators and accelerators.'}
+runtimes: [esp-dl-native, tflite]
+formats: [onnx, esp-dl]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; models are trained and quantized externally.', needs_data: 'A converted/quantized model and ESP-IDF toolchain.', update_strategy: 'Pin library and model; re-measure RAM/flash and latency per chip.'}
+data: {inputs: [converted-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Flash/RAM use, latency and accuracy on the specific ESP32 variant.']
+limitations: ['Operator coverage and accelerator use vary by chip family.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/espressif/esp-dl', notes: 'Documentation review of ESP32 deployment scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mcu, esp32, tinyml]

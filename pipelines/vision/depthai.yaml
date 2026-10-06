@@ -1,0 +1,23 @@
+id: depthai
+name: DepthAI
+domain: vision
+tasks: [edge-vision, depth-estimation, object-detection, spatial-inference]
+class: edge-vision-pipeline
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Luxonis pipeline and SDK that runs depth and neural inference on OAK camera modules."
+links: {repository: 'https://github.com/luxonis/depthai', homepage: 'https://docs.luxonis.com/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge, robot], notes: 'Targets Luxonis OAK hardware with on-camera inference; model support is per device.'}
+runtimes: [depthai-native, openvino]
+formats: [blob, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/pipeline plus model conversion; models are trained externally.', needs_data: 'OAK device, converted models and a pipeline configuration.', update_strategy: 'Convert and validate models against the specific OAK device firmware.'}
+data: {inputs: [stereo-or-rgb-frames], outputs: [depth-map, detections, spatial-coordinates], languages: []}
+evaluation: ['Depth accuracy, detection accuracy and throughput on the specific OAK module.']
+limitations: ['Tied to Luxonis hardware; conversion compatibility varies per model and firmware.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/luxonis/depthai', notes: 'Documentation review of edge-vision pipeline scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, depth, edge, openvino]

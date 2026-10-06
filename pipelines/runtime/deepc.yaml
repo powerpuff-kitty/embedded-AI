@@ -1,0 +1,23 @@
+id: deepc
+name: deepC
+domain: runtime
+tasks: [mcu-inference, model-compilation, embedded-deployment]
+class: mcu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Vendor-independent TinyML library, compiler and inference framework for microcontrollers."
+links: {repository: 'https://github.com/ai-techsystems/deepC'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Upstream lists ESP32, STM32, RP2040 and Arduino-class boards as targets.'}
+runtimes: [deepc-native, onnx]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Compiler/runtime; models originate from ONNX export.', needs_data: 'An ONNX model and a target MCU toolchain.', update_strategy: 'Pin the compiler and re-validate generated artifacts per target.'}
+data: {inputs: [onnx-model], outputs: [compiled-inference-code, predictions], languages: []}
+evaluation: ['Flash/RAM fit, latency and numerical parity on the target board.']
+limitations: ['Code licence is Apache-2.0; verify generated-artifact terms before commercial use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ai-techsystems/deepC', notes: 'Documentation review of compiler, supported boards and framework scope; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mcu, tinyml, onnx]

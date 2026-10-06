@@ -1,0 +1,23 @@
+id: sample-factory
+name: Sample Factory
+domain: gaming
+tasks: [reinforcement-learning, high-throughput-policy-training]
+class: rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "High-throughput asynchronous reinforcement-learning library for single-machine training."
+links: {repository: 'https://github.com/alex-petrenko/sample-factory'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training framework; trained policies can be exported.'}
+runtimes: [pytorch]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Asynchronous sampling for fast RL training on one machine.', needs_data: 'A vectorized environment and task reward.', update_strategy: 'Pin version and hardware config; revalidate throughput and reward.'}
+data: {inputs: [environment-interactions], outputs: [trained-policy], languages: []}
+evaluation: ['Throughput, sample efficiency and final reward on the target hardware.']
+limitations: ['Throughput claims are hardware-specific.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/alex-petrenko/sample-factory', notes: 'Documentation review of asynchronous RL scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, throughput]

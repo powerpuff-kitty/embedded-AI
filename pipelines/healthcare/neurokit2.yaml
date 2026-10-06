@@ -1,0 +1,23 @@
+id: neurokit2
+name: NeuroKit2
+domain: healthcare
+tasks: [physiological-signal-processing, ecg-analysis, eda-analysis, signal-quality-assessment]
+class: biosignal-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python toolbox for processing and analysing physiological signals such as ECG, PPG and EDA."
+links: {repository: 'https://github.com/neuropsychology/NeuroKit', homepage: 'https://neuropsychology.github.io/NeuroKit/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Signal-processing toolbox; lightweight enough for near-sensor use depending on pipelines.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Mostly deterministic signal processing; some methods use fitted components.', needs_data: 'Physiological signals with known sampling rate and acquisition context.', update_strategy: 'Pin version and revalidate peak-detection thresholds on the target sensor.'}
+data: {inputs: [physiological-signal], outputs: [features, event-markers, quality-indices], languages: []}
+evaluation: ['Agreement with reference annotations and robustness to noise/motion artefacts.']
+limitations: ['Not a diagnostic tool; feature interpretation needs domain expertise.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/neuropsychology/NeuroKit', notes: 'Documentation review of biosignal scope and MIT licence; not a clinical benchmark.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, biosignals, signal-processing]

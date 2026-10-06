@@ -1,0 +1,23 @@
+id: tinyllama
+name: TinyLlama
+domain: language
+tasks: [text-generation, on-device-llm]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Compact 1.1B-parameter Llama-style language model trained for efficiency experiments."
+links: {repository: 'https://github.com/jzhang38/TinyLlama', model: 'https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0'}
+model: {parameters: 1100000000, file_size_mb: null, measurement_scope: 'Approximate 1.1B parameter count; not a RAM budget and quantization changes memory.'}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Runs on desktop CPUs; edge fit requires quantization and measurement.'}
+runtimes: [transformers, llama-cpp]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained checkpoints; continued pretraining/SFT is documented.', needs_data: 'Prompts for inference; task data for evaluation or fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en]}
+evaluation: ['Benchmark and task quality at the chosen quantization plus latency/memory.']
+limitations: ['Knowledge and reasoning are limited relative to larger models.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/jzhang38/TinyLlama', notes: 'Documentation review of model size, training approach and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, compact, pretrained]

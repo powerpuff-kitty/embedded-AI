@@ -1,0 +1,23 @@
+id: moment
+name: MOMENT
+domain: time-series
+tasks: [forecasting, classification, anomaly-detection, imputation]
+class: time-series-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Family of open time-series foundation models covering forecasting, classification and anomaly tasks."
+links: {repository: 'https://github.com/moment-timeseries-foundation-model/moment', paper: 'https://arxiv.org/abs/2402.03885'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Small and base variants exist; embedded fit depends on variant and context length.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained backbones; task heads and fine-tuning are recommended for accuracy.', needs_data: 'Time-series windows with task labels or a validation split.', update_strategy: 'Pin checkpoint; backtest on rolling windows before deployment.'}
+data: {inputs: [time-series-window], outputs: [forecast, class, anomaly-score, imputed-values], languages: []}
+evaluation: ['Rolling-origin backtests and per-regime error analysis.']
+limitations: ['Foundation-model priors can mislead on unusual series without fine-tuning.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/moment-timeseries-foundation-model/moment', notes: 'Documentation review of task coverage, variants and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [time-series, foundation-model, pretrained]

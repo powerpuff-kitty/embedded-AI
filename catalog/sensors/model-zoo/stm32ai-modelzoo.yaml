@@ -1,0 +1,23 @@
+id: stm32ai-modelzoo
+name: STM32 AI Model Zoo
+domain: sensors
+tasks: [keyword-spotting, image-classification, human-activity-recognition, anomaly-detection]
+class: embedded-model-zoo
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "ST collection of ready-to-use models and application examples for STM32 microcontrollers."
+links: {repository: 'https://github.com/STMicroelectronics/stm32ai-modelzoo'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [edge], notes: 'Targets STM32 MCUs and STM32Cube.AI tooling; models are pre-converted for those targets.'}
+runtimes: [tflite, onnx, stm32cube-ai]
+formats: [tflite, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained application models with optional retraining workflows.', needs_data: 'Target application data for retraining/evaluation.', update_strategy: 'Verify licence per model; re-measure flash/RAM and accuracy after any retrain.'}
+data: {inputs: [sensor-or-image-data], outputs: [class-or-score], languages: []}
+evaluation: ['Accuracy and flash/RAM/latency on the specific STM32 target.']
+limitations: ['Licences are not stated in the reviewed README and can differ per model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/STMicroelectronics/stm32ai-modelzoo', notes: 'Documentation review of model categories and STM32 targets; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [sensors, model-zoo, stm32, embedded]

@@ -1,0 +1,23 @@
+id: orbit
+name: Orbit
+domain: time-series
+tasks: [forecasting, changepoint-detection]
+class: time-series-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Bayesian time-series forecasting library with exponential smoothing and seasonality models."
+links: {repository: 'https://github.com/uber/orbit'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis toolkit; fitted models can be serialized but are not an embedded runtime.'}
+runtimes: [python, stan, pytorch]
+formats: [pickle]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits Bayesian forecasting models per series.', needs_data: 'Historical series with correct temporal validation.', update_strategy: 'Backtest on rolling windows; refit as data drifts.'}
+data: {inputs: [historical-time-series, regressors], outputs: [forecast, uncertainty-intervals], languages: []}
+evaluation: ['Rolling-origin accuracy and uncertainty calibration.']
+limitations: ['License not stated in the reviewed README; sampling can be slow on large data.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/uber/orbit', notes: 'Documentation review of Bayesian forecasting scope; licence not confirmed.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, bayesian]

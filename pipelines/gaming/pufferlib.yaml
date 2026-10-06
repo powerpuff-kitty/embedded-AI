@@ -1,0 +1,23 @@
+id: pufferlib
+name: PufferLib
+domain: gaming
+tasks: [reinforcement-learning, environment-vectorization, policy-training]
+class: rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Reinforcement-learning library focused on fast vectorized training across many environments."
+links: {repository: 'https://github.com/PufferAI/PufferLib', homepage: 'https://puffer.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training framework with wrappers for many game and benchmark environments.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Scales RL training across vectorized environments and algorithms.', needs_data: 'A wrapped environment and reward design.', update_strategy: 'Pin environment versions; revalidate throughput and reward after upgrades.'}
+data: {inputs: [environment-interactions], outputs: [trained-policy], languages: []}
+evaluation: ['Throughput, sample efficiency and final reward.']
+limitations: ['Performance claims depend on the host and environment configuration.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PufferAI/PufferLib', notes: 'Documentation review of vectorized RL scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, vectorized]

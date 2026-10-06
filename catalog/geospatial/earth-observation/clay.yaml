@@ -1,0 +1,23 @@
+id: clay
+name: Clay
+domain: geospatial
+tasks: [earth-observation-embedding, geospatial-feature-extraction]
+class: earth-observation-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Open earth-observation foundation model that turns satellite imagery into general embeddings."
+links: {repository: 'https://github.com/Clay-foundation/model', homepage: 'https://clay-foundation.github.io/model/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server], notes: 'Embedding model; downstream tasks use lightweight heads.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained encoder; task heads are trained on smaller labelled sets.', needs_data: 'Earth-observation imagery with task labels for the downstream head.', update_strategy: 'Pin model version; revalidate embeddings and heads per region.'}
+data: {inputs: [earth-observation-imagery], outputs: [embeddings, downstream-predictions], languages: []}
+evaluation: ['Embedding quality via downstream task accuracy on held-out regions.']
+limitations: ['Embedding usefulness varies by sensor and task; not a turnkey product.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Clay-foundation/model', notes: 'Documentation review of embedding model scope and Apache-2.0 licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, foundation-model, embeddings, pretrained]

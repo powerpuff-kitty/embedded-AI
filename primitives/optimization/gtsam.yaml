@@ -1,0 +1,23 @@
+id: gtsam
+name: GTSAM
+domain: mapping
+tasks: [factor-graph-optimization, slam, sensor-fusion]
+class: optimization-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Georgia Tech smoothing-and-mapping library for factor-graph inference and SLAM."
+links: {repository: 'https://github.com/borglab/gtsam', homepage: 'https://gtsam.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge, robot], notes: 'C++ library used in robotics; embedded feasibility depends on problem size.'}
+runtimes: [native-cpp, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Inference/optimization primitive; factors are supplied by the user.', needs_data: 'A factor graph with measurements and noise models.', update_strategy: 'Revalidate graph structure, outliers and timing per deployment.'}
+data: {inputs: [factor-graph, measurements], outputs: [estimates, covariances], languages: []}
+evaluation: ['Estimation accuracy and solve time on representative robot data.']
+limitations: ['Requires careful factor/noise modelling; outliers degrade estimates.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/borglab/gtsam', notes: 'Documentation review of factor-graph scope and BSD-3-Clause licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [mapping, slam, sensor-fusion, primitive]

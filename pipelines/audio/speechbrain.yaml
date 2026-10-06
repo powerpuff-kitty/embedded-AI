@@ -1,0 +1,23 @@
+id: speechbrain
+name: SpeechBrain
+domain: audio
+tasks: [speech-recognition, speaker-recognition, speech-enhancement, text-to-speech]
+class: speech-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch speech toolkit covering recognition, speaker, enhancement and diarization recipes."
+links: {repository: 'https://github.com/speechbrain/speechbrain', homepage: 'https://speechbrain.github.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Training-focused; some pretrained models can be exported for constrained inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains and fine-tunes speech models with documented recipes.', needs_data: 'Task audio with labels and a defined sampling/evaluation protocol.', update_strategy: 'Pin recipe and model revisions; re-measure WER/EER after updates.'}
+data: {inputs: [audio-waveform], outputs: [transcript, speaker-labels, enhanced-audio], languages: [multilingual-recipes]}
+evaluation: ['WER, EER or enhancement metrics on representative held-out audio.']
+limitations: ['Recipe results assume specific data and compute; not a device guarantee.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/speechbrain/speechbrain', notes: 'Documentation review of task coverage and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech, toolkit, pytorch]

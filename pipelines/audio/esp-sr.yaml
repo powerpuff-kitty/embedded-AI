@@ -1,0 +1,23 @@
+id: esp-sr
+name: ESP-SR
+domain: audio
+tasks: [wake-word-detection, speech-recognition, voice-activity-detection]
+class: embedded-speech-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Espressif speech recognition suite for ESP32 with wake-word, VAD and command models."
+links: {repository: 'https://github.com/espressif/esp-sr'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], notes: 'Runs on ESP32 audio boards; wake-word and command sets are component-specific.'}
+runtimes: [esp-sr-native]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained wake-word/command models; custom wake words need vendor tooling.', needs_data: 'Audio from the target microphone and a chosen wake word.', update_strategy: 'Pin component versions; re-measure false-accept/reject in the target acoustic environment.'}
+data: {inputs: [microphone-audio], outputs: [wake-word-events, commands], languages: [multilingual-models]}
+evaluation: ['Wake rate, false-accepts and latency on the target board and microphone.']
+limitations: ['Component weight terms vary; accuracy depends strongly on acoustics and mic.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/espressif/esp-sr', notes: 'Documentation review of embedded speech scope and Apache-2.0 code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, wake-word, esp32, embedded]

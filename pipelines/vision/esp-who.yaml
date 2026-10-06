@@ -1,0 +1,23 @@
+id: esp-who
+name: ESP-WHO
+domain: vision
+tasks: [face-detection, face-recognition, esp32-vision]
+class: embedded-vision-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Espressif face-detection/recognition framework for ESP32 camera boards."
+links: {repository: 'https://github.com/espressif/esp-who'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [edge], notes: 'Targets ESP32 camera modules; model variants trade accuracy for memory.'}
+runtimes: [esp-dl, tflite]
+formats: [esp-dl]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained face models; enrollment drives recognition.', needs_data: 'Camera frames from the target module; face images with consent for enrollment.', update_strategy: 'Revalidate accuracy/bias and memory per ESP32 variant.'}
+data: {inputs: [camera-frames], outputs: [face-boxes, identity-match], languages: []}
+evaluation: ['Detection/recognition accuracy and bias review plus memory/latency on the board.']
+limitations: ['Biometric privacy concerns; weight terms vary; accuracy depends on lighting/pose.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/espressif/esp-who', notes: 'Documentation review of ESP32 face toolkit and Apache-2.0 code licence; not a bias or board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, face, esp32, embedded]

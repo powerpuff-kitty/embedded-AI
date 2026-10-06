@@ -1,0 +1,23 @@
+id: executorch
+name: ExecuTorch
+domain: runtime
+tasks: [on-device-inference, mcu-deployment, model-export]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch-native inference stack spanning phones, embedded systems and microcontrollers."
+links: {repository: 'https://github.com/pytorch/executorch', homepage: 'https://docs.pytorch.org/executorch/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop, browser], notes: 'Backends include Cortex-M, Ethos-U, NXP, Zephyr, Arduino and Pico; compatibility is per backend.'}
+runtimes: [executorch-native, pytorch]
+formats: [pte]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/export stack; models are trained in PyTorch.', needs_data: 'An exported .pte program produced from a torch.export graph.', update_strategy: 'Pin the runtime release; a .pte is only guaranteed for a limited release window.'}
+data: {inputs: [pte-program, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Numerical parity, memory and latency on the selected backend and device.']
+limitations: ['A .pte built for one hardware delegate is not portable to another target.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pytorch/executorch', notes: 'Documentation review of export flow, backends and compatibility policy; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, pytorch, mcu, on-device]

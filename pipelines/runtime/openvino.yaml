@@ -1,0 +1,23 @@
+id: openvino
+name: OpenVINO
+domain: runtime
+tasks: [on-device-inference, model-optimization, model-compilation]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Intel toolkit that optimizes and runs models on CPU, integrated GPU, discrete GPU and NPU."
+links: {repository: 'https://github.com/openvinotoolkit/openvino', homepage: 'https://docs.openvino.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Backends include x86 CPUs, Intel GPUs and NPUs; ARM support exists but is narrower.'}
+runtimes: [openvino-native, onnxruntime]
+formats: [onnx, openvino-ir]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/optimizer; converts and compiles externally trained models.', needs_data: 'A source model and a target device/profile.', update_strategy: 'Reconvert per device and re-measure after version upgrades.'}
+data: {inputs: [source-model, input-tensors], outputs: [compiled-model, inference-results], languages: []}
+evaluation: ['Latency, memory and numerical parity on the chosen Intel device.']
+limitations: ['Best-supported accelerators are Intel-specific; other vendors need different runtimes.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/openvinotoolkit/openvino', notes: 'Documentation review of supported devices, flows and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, intel, inference, compiler]

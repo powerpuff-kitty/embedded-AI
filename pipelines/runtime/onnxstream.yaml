@@ -1,0 +1,23 @@
+id: onnxstream
+name: OnnxStream
+domain: runtime
+tasks: [on-device-inference, onnx-execution]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight C++ ONNX inference library that streams weights to cut peak memory."
+links: {repository: 'https://github.com/vitoplantamura/OnnxStream'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge, desktop, browser], notes: 'Upstream reports ARM, x86, WASM and RISC-V, accelerated by XNNPACK.'}
+runtimes: [onnxstream-native, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; runs pre-exported ONNX graphs.', needs_data: 'An ONNX model file.', update_strategy: 'Pin the library version and re-measure peak memory on the target.'}
+data: {inputs: [onnx-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Peak memory and latency on the actual device, including disk-backed weight streaming.']
+limitations: ['Streaming trades speed for memory; upstream examples are not device guarantees.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/vitoplantamura/OnnxStream', notes: 'Documentation review of streaming design, backends and ONNX support; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, onnx, memory-efficient, edge]

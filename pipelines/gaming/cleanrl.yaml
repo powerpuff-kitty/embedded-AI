@@ -1,0 +1,23 @@
+id: cleanrl
+name: CleanRL
+domain: gaming
+tasks: [reinforcement-learning, policy-training]
+class: rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Single-file reinforcement-learning implementations favoured for clarity and reproducibility."
+links: {repository: 'https://github.com/vwxyzjn/cleanrl'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training reference; trained policies can be exported for inference.'}
+runtimes: [pytorch]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains PPO, SAC, DQN and related algorithms from single-file scripts.', needs_data: 'A Gymnasium/Atari environment and task reward.', update_strategy: 'Pin scripts and seeds; revalidate reward across seeds.'}
+data: {inputs: [environment-interactions], outputs: [trained-policy], languages: []}
+evaluation: ['Reproducibility across seeds, sample efficiency and final reward.']
+limitations: ['Reference implementations prioritise clarity over maximum performance.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/vwxyzjn/cleanrl', notes: 'Documentation review of single-file RL scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, reproducibility]

@@ -1,0 +1,23 @@
+id: robosuite
+name: robosuite
+domain: simulation
+tasks: [robot-manipulation, simulation, reinforcement-learning]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "MuJoCo-based simulation framework and benchmark suite for robot manipulation research."
+links: {repository: 'https://github.com/ARISE-Initiative/robosuite', paper: 'https://arxiv.org/abs/2009.12293'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation environment for training/evaluating manipulation policies.'}
+runtimes: [python, mujoco]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulation environment; policies are learned with external RL libraries.', needs_data: 'Task definition, robot model and reward specification.', update_strategy: 'Pin simulator version; validate sim-to-real transfer before hardware.'}
+data: {inputs: [control-actions], outputs: [observations, rewards], languages: []}
+evaluation: ['Task success and robustness plus sim-to-real transfer.']
+limitations: ['Simulation fidelity limits transfer; not a safety proof for real robots.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ARISE-Initiative/robosuite', notes: 'Documentation review of manipulation simulation scope and MIT licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, robotics, manipulation, mujoco]

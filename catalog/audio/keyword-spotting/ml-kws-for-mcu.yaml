@@ -1,0 +1,23 @@
+id: ml-kws-for-mcu
+name: ML-KWS-for-MCU
+domain: audio
+tasks: [keyword-spotting, mcu-inference]
+class: keyword-spotting-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Arm reference keyword-spotting models and training code targeting Cortex-M microcontrollers."
+links: {repository: 'https://github.com/ARM-software/ML-KWS-for-MCU'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge], notes: 'Reference models designed for MCU deployment; retraining for custom keywords is expected.'}
+runtimes: [tensorflow, tflite, cmsis-nn]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains keyword models (DS-CNN and variants) on speech-command data.', needs_data: 'Keyword audio with positives/negatives for the target vocabulary.', update_strategy: 'Retrain per keyword set; re-measure false accept/reject and MCU footprint.'}
+data: {inputs: [audio-frame-features], outputs: [keyword-class], languages: []}
+evaluation: ['Accuracy and false-accept rate per keyword plus flash/RAM on the target MCU.']
+limitations: ['Reference vocabulary may not match production needs; custom training required.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ARM-software/ML-KWS-for-MCU', notes: 'Documentation review of MCU keyword-spotting models and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, keyword-spotting, mcu, tinyml]

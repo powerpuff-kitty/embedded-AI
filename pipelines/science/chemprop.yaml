@@ -1,0 +1,23 @@
+id: chemprop
+name: Chemprop
+domain: science
+tasks: [molecular-property-prediction, molecular-representation]
+class: scientific-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Directed message-passing neural network toolkit for molecular property prediction."
+links: {repository: 'https://github.com/chemprop/chemprop', homepage: 'https://chemprop.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research toolkit; trained models can be exported but are not an embedded runtime.'}
+runtimes: [pytorch, python]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains message-passing models on molecular datasets.', needs_data: 'Curated molecular structures and property labels with proper splits.', update_strategy: 'Use scaffold/group splits and track data provenance; revalidate on new chemical space.'}
+data: {inputs: [molecular-graph], outputs: [property-prediction], languages: []}
+evaluation: ['Scaffold-split MAE/RMSE, uncertainty calibration and applicability-domain checks.']
+limitations: ['Random splits overstate generalisation to novel chemistry.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/chemprop/chemprop', notes: 'Documentation review of message-passing scope and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, chemistry, molecular, classical-ml]

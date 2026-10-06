@@ -1,0 +1,23 @@
+id: airsim
+name: AirSim
+domain: simulation
+tasks: [drone-simulation, autonomous-vehicle-simulation, reinforcement-learning]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Unreal/Unity-based simulator for drones and cars used to develop and test autonomy."
+links: {repository: 'https://github.com/microsoft/AirSim', homepage: 'https://microsoft.github.io/AirSim/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop], notes: 'Desktop simulator with Python/C++ APIs and reinforcement-learning wrappers.'}
+runtimes: [python, native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Simulation environment for training and testing control/perception policies.', needs_data: 'A scene, vehicle configuration and task definition.', update_strategy: 'Pin simulator version; validate sim-to-real transfer before hardware use.'}
+data: {inputs: [simulated-sensors, control-commands], outputs: [simulated-observations, rewards], languages: []}
+evaluation: ['Fidelity of simulated sensors and achieved sim-to-real transfer.']
+limitations: ['Simulation results do not guarantee real-world performance or safety.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/AirSim', notes: 'Documentation review of simulation scope and MIT licence; not a real-hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, drones, autonomous-driving]

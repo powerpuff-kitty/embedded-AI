@@ -1,0 +1,23 @@
+id: maixpy
+name: MaixPy
+domain: runtime
+tasks: [edge-ai-deployment, embedded-vision]
+class: edge-ai-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Sipeed Micropython/Python runtime for AI vision on K210 and MaixCam-class edge devices."
+links: {repository: 'https://github.com/sipeed/MaixPy', homepage: 'https://wiki.sipeed.com/maixpy/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Targets Sipeed Maix hardware with on-device NPUs.'}
+runtimes: [maixpy-native, nncase]
+formats: [kmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime plus conversion workflow; models are trained externally.', needs_data: 'Sipeed device, converted model and a task script.', update_strategy: 'Match model conversion to the device NPU toolchain; re-benchmark per device.'}
+data: {inputs: [camera-frames, converted-model], outputs: [detections, inference-results], languages: []}
+evaluation: ['Throughput, memory and accuracy on the specific Sipeed module.']
+limitations: ['Tied to Sipeed hardware and its NPU conversion toolchain.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sipeed/MaixPy', notes: 'Documentation review of edge runtime scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, edge, k210, vision]

@@ -1,0 +1,23 @@
+id: segment-geospatial
+name: segment-geospatial
+domain: geospatial
+tasks: [geospatial-segmentation, interactive-segmentation]
+class: geospatial-segmentation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Segment Anything tooling adapted for satellite and aerial imagery, with samgeo interfaces."
+links: {repository: 'https://github.com/opengeos/segment-geospatial', homepage: 'https://samgeo.gishub.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Wraps Segment Anything models; checkpoint choice drives memory needs.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Uses pretrained SAM-style checkpoints; point-prompted segmentation on geospatial rasters.', needs_data: 'Georeferenced rasters and prompts (points/boxes) or text where supported.', update_strategy: 'Verify checkpoint licences and re-tile/re-validate per dataset.'}
+data: {inputs: [geospatial-raster, prompts], outputs: [segmentation-masks], languages: []}
+evaluation: ['Mask quality on representative tiles and georeferencing correctness.']
+limitations: ['Underlying SAM checkpoints carry their own licences; large rasters require tiling.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/opengeos/segment-geospatial', notes: 'Documentation review of geospatial SAM tooling and MIT code licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, segmentation, sam]

@@ -1,0 +1,23 @@
+id: megadetector-v6
+name: MegaDetector V6
+domain: vision
+tasks: [wildlife-detection, object-detection]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Camera-trap detector for animals, people and vehicles, with compact edge-oriented variants."
+links: {repository: 'https://github.com/microsoft/MegaDetector', homepage: 'https://microsoft.github.io/MegaDetector/'}
+model: {parameters: 2300000, file_size_mb: null, measurement_scope: 'Compact YOLOv10 variant; other variants range from about 9.7M to 76M parameters.'}
+license: {code: MIT, weights: 'MIT, Apache-2.0 or AGPL-3.0 per variant'}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'Upstream states compact variants run on CPU and power the solar SPARROW field unit.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released weights plus a fine-tuning pipeline for local datasets.', needs_data: 'Camera-trap images; labelled crops for fine-tuning or evaluation.', update_strategy: 'Check the licence of the exact variant before deployment and re-measure per target.'}
+data: {inputs: [camera-trap-image], outputs: [detection-boxes, category-scores], languages: []}
+evaluation: ['Animal recall, mAP and throughput on representative field imagery and target hardware.']
+limitations: ['Detects animal/person/vehicle, not species; small or camouflaged animals are harder.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/MegaDetector', notes: 'Documentation review of variant sizes, licences and edge claims; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, conservation, edge]

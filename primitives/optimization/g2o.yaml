@@ -1,0 +1,23 @@
+id: g2o
+name: g2o
+domain: mapping
+tasks: [graph-optimization, slam]
+class: optimization-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "General graph-optimization framework widely used as a SLAM back-end."
+links: {repository: 'https://github.com/RainerKuemmerle/g2o'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'C++ library; CPU-oriented and used inside larger SLAM systems.'}
+runtimes: [native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Graph-optimization primitive; vertices/edges are user-defined.', needs_data: 'A pose-graph or factor-graph formulation with initial estimates.', update_strategy: 'Re-check convergence and robustness after changes.'}
+data: {inputs: [pose-graph, constraints], outputs: [optimized-trajectory], languages: []}
+evaluation: ['Trajectory error and solve time on representative sequences.']
+limitations: ['License not stated in the reviewed README; sensitive to initialization and outliers.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/RainerKuemmerle/g2o', notes: 'Documentation review of graph-optimization scope; licence not confirmed.'}]
+reviewed: '2026-10-06'
+tags: [mapping, slam, optimization, primitive]

@@ -1,0 +1,23 @@
+id: robomimic
+name: robomimic
+domain: robotics
+tasks: [imitation-learning, robot-manipulation, offline-rl]
+class: robot-learning-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework for robot learning from demonstrations, spanning datasets, algorithms and evaluation."
+links: {repository: 'https://github.com/ARISE-Initiative/robomimic', paper: 'https://arxiv.org/abs/2108.03298'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/evaluation framework; deployment to real robots is a separate step.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains imitation/offline-RL policies from demonstrations.', needs_data: 'Demonstration datasets and a task/evaluation protocol.', update_strategy: 'Revalidate on the target robot; add safety supervision on actions.'}
+data: {inputs: [demonstrations, observations], outputs: [policies, actions], languages: []}
+evaluation: ['Task success and robustness under perturbation on held-out tasks.']
+limitations: ['Offline data coverage limits generalisation; real-robot safety must be enforced.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ARISE-Initiative/robomimic', notes: 'Documentation review of robot-learning framework and MIT licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [robotics, imitation-learning, manipulation, offline-rl]

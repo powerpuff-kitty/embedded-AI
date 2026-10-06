@@ -1,0 +1,23 @@
+id: raster-vision
+name: Raster Vision
+domain: geospatial
+tasks: [geospatial-object-detection, geospatial-semantic-segmentation, geospatial-classification]
+class: geospatial-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework for building computer-vision models on satellite and aerial imagery."
+links: {repository: 'https://github.com/azavea/raster-vision', homepage: 'https://docs.rastervision.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Training/analysis pipeline; supports export and deployment workflows.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains segmentation/detection models on georeferenced imagery.', needs_data: 'Geo-referenced imagery and labels with clear spatial splits.', update_strategy: 'Revalidate per region/season; track imagery source versions.'}
+data: {inputs: [geospatial-raster, labels], outputs: [geospatial-predictions, trained-model], languages: []}
+evaluation: ['Spatially blocked cross-validation and per-region error analysis.']
+limitations: ['Model performance is highly dependent on imagery source and geography.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/azavea/raster-vision', notes: 'Documentation review of geospatial CV scope and Apache-2.0 licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, remote-sensing, segmentation]

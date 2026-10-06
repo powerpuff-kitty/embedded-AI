@@ -1,0 +1,23 @@
+id: sherpa-onnx
+name: sherpa-onnx
+domain: audio
+tasks: [speech-to-text, text-to-speech, keyword-spotting, speaker-diarization]
+class: asr-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "k2-fsa ONNX runtime for streaming and offline speech, TTS and speaker tasks without PyTorch."
+links: {repository: 'https://github.com/k2-fsa/sherpa-onnx'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [mobile, edge, desktop, browser], notes: 'Upstream lists Android, iOS, Raspberry Pi, WASM and embedded targets.'}
+runtimes: [sherpa-onnx-native, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime; accepts exported ONNX models and pretrained bundles.', needs_data: 'A compatible ONNX model or service bundle and 16 kHz audio.', update_strategy: 'Pin model bundle and version; re-measure latency per target.'}
+data: {inputs: [onnx-model, audio-input, text-input], outputs: [transcript, speech-audio, speaker-labels], languages: [multilingual-models]}
+evaluation: ['Real-time factor, memory and task metrics for the chosen model bundle.']
+limitations: ['Bundle quality and licence vary per uploaded model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/k2-fsa/sherpa-onnx', notes: 'Documentation review of tasks, backends and platform targets; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech, onnx, embedded]

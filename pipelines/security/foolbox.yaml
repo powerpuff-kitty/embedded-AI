@@ -1,0 +1,23 @@
+id: foolbox
+name: Foolbox
+domain: security
+tasks: [adversarial-attacks, robustness-evaluation]
+class: ml-security-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python library of adversarial attacks for benchmarking the robustness of neural networks."
+links: {repository: 'https://github.com/bethgelab/foolbox'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Evaluation library; not an embedded runtime.'}
+runtimes: [pytorch, tensorflow, jax]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Attack/evaluation primitive; not a task-model trainer.', needs_data: 'A target model and dataset with a defined perturbation budget.', update_strategy: 'Re-run evaluations when the model or dataset changes.'}
+data: {inputs: [model, input-samples], outputs: [adversarial-examples, robustness-metrics], languages: []}
+evaluation: ['Robust accuracy under specified attack budgets and success rates.']
+limitations: ['Robustness is attack- and budget-specific; passing is not a guarantee.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/bethgelab/foolbox', notes: 'Documentation review of attack library scope and MIT licence; not a deployment benchmark.'}]
+reviewed: '2026-10-06'
+tags: [security, adversarial-ml, robustness]

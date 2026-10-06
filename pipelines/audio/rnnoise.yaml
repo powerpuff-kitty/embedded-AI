@@ -1,0 +1,23 @@
+id: rnnoise
+name: RNNoise
+domain: audio
+tasks: [noise-suppression, speech-enhancement]
+class: realtime-noise-suppression
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Very small recurrent noise-suppression library designed for real-time embedded audio."
+links: {repository: 'https://github.com/xiph/rnnoise'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: BSD-3-Clause}
+deployment: {offline: true, targets: [edge, mobile, desktop], notes: 'Runs at low sample rates with a tiny model; classic embedded noise suppressor.'}
+runtimes: [native-c]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained model plus an optional training pipeline.', needs_data: 'Speech and noise recordings for retraining/evaluation.', update_strategy: 'Pin model revision; re-measure CPU cost and audio quality.'}
+data: {inputs: [48khz-16bit-audio-frame], outputs: [denoised-audio, voice-probability], languages: []}
+evaluation: ['CPU cost, real-time factor and quality/artifact review on target audio.']
+limitations: ['Primarily speech-oriented; can degrade music or non-speech audio.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/xiph/rnnoise', notes: 'Documentation review of embedded real-time design and BSD-3-Clause licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, noise-suppression, embedded, realtime]

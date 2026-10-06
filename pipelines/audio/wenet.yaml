@@ -1,0 +1,23 @@
+id: wenet
+name: WeNet
+domain: audio
+tasks: [speech-to-text, streaming-asr]
+class: asr-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Production-oriented end-to-end speech-recognition toolkit with streaming runtime support."
+links: {repository: 'https://github.com/wenet-e2e/wenet', homepage: 'https://wenet.org.cn/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [mobile, desktop, server], notes: 'Provides a lightweight runtime and documented on-device deployment.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains streaming/non-streaming ASR models from recipes.', needs_data: 'Speech audio with transcripts and a target latency budget.', update_strategy: 'Pin recipe and runtime; re-measure WER and latency per device.'}
+data: {inputs: [audio-stream], outputs: [partial-and-final-transcript], languages: [multilingual-recipes]}
+evaluation: ['Streaming WER and latency on the target device.']
+limitations: ['On-device feasibility depends on model size and runtime build.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/wenet-e2e/wenet', notes: 'Documentation review of streaming ASR toolkit and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, asr, streaming, on-device]

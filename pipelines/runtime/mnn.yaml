@@ -1,0 +1,23 @@
+id: mnn
+name: MNN
+domain: runtime
+tasks: [mobile-inference, on-device-inference, model-conversion]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Alibaba lightweight inference engine for mobile, embedded and server deployment."
+links: {repository: 'https://github.com/alibaba/MNN'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Supports CPU, OpenCL, Vulkan and vendor NPU backends.'}
+runtimes: [mnn-native, opencl, vulkan]
+formats: [mnn, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/converter; models are trained externally.', needs_data: 'A supported model and a target backend.', update_strategy: 'Pin version and backend; re-benchmark per device.'}
+data: {inputs: [converted-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and accuracy for the selected backend.']
+limitations: ['Backend quality varies by vendor device and driver.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/alibaba/MNN', notes: 'Documentation review of backends, conversion and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mobile, mnn, inference]

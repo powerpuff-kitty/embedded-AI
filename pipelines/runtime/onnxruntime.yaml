@@ -1,0 +1,23 @@
+id: onnxruntime
+name: ONNX Runtime
+domain: runtime
+tasks: [on-device-inference, cross-platform-execution]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Cross-platform ONNX inference engine with CPU, GPU, mobile and embedded execution providers."
+links: {repository: 'https://github.com/microsoft/onnxruntime', homepage: 'https://onnxruntime.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, mobile, edge, browser], notes: 'Execution providers target many accelerators; runtime size depends on included providers.'}
+runtimes: [onnxruntime-native]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; loads ONNX graphs produced elsewhere.', needs_data: 'An ONNX model and an appropriate execution provider.', update_strategy: 'Pin runtime and provider versions; revalidate per target.'}
+data: {inputs: [onnx-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and parity for the selected execution provider.']
+limitations: ['Provider availability varies by platform; not every operator is supported everywhere.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/onnxruntime', notes: 'Documentation review of providers, platforms and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, onnx, cross-platform]

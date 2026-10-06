@@ -1,0 +1,23 @@
+id: torchgeo
+name: TorchGeo
+domain: geospatial
+tasks: [geospatial-dataset-management, earth-observation-segmentation, earth-observation-classification]
+class: geospatial-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch library of geospatial datasets, samplers and transforms for remote sensing."
+links: {repository: 'https://github.com/microsoft/torchgeo', homepage: 'https://torchgeo.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/analysis toolkit; deployment depends on the chosen model and export.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Data loading plus training utilities for remote-sensing models.', needs_data: 'Georeferenced imagery with labels and correct CRS/band metadata.', update_strategy: 'Pin dataset versions; revalidate across regions and seasons.'}
+data: {inputs: [geospatial-raster, labels], outputs: [trained-model, geospatial-predictions], languages: []}
+evaluation: ['Spatial cross-validation, not random splits, plus per-region error analysis.']
+limitations: ['Random splits leak spatial autocorrelation and inflate accuracy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/torchgeo', notes: 'Documentation review of datasets, samplers and MIT licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, remote-sensing, pytorch]

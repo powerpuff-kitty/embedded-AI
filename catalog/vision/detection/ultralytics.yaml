@@ -1,0 +1,23 @@
+id: ultralytics
+name: Ultralytics YOLO
+domain: vision
+tasks: [object-detection, instance-segmentation, pose-estimation, image-classification]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Industry-standard YOLO family (v8/11) with detection, segmentation, pose and export tooling."
+links: {repository: 'https://github.com/ultralytics/ultralytics'}
+model: {parameters: null, file_size_mb: null}
+license: {code: AGPL-3.0, weights: AGPL-3.0}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Nano/small variants and ONNX/TFLite/OpenVINO export target edge; AGPL affects commercial distribution.'}
+runtimes: [pytorch, onnxruntime, tflite, openvino]
+formats: [pytorch-checkpoint, onnx, tflite, openvino-ir]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained models and a full training/fine-tuning pipeline.', needs_data: 'Labelled detection/segmentation data for the target classes.', update_strategy: 'Re-export and re-benchmark per target; review AGPL obligations before shipping.'}
+data: {inputs: [rgb-image], outputs: [boxes, masks, keypoints, classes], languages: []}
+evaluation: ['mAP/keypoint metrics plus post-export latency on the target.']
+limitations: ['AGPL-3.0 is strongly copyleft; commercial deployment needs a licence or compliance review.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ultralytics/ultralytics', notes: 'Documentation review of model family, export options and AGPL-3.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, yolo, agpl]

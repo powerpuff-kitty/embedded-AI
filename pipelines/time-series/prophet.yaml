@@ -1,0 +1,23 @@
+id: prophet
+name: Prophet
+domain: time-series
+tasks: [forecasting]
+class: forecasting-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Meta forecasting procedure for business time series with seasonality, holidays and changepoints."
+links: {repository: 'https://github.com/facebook/prophet', homepage: 'https://facebook.github.io/prophet/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Fitted models can be serialized; not an embedded runtime.'}
+runtimes: [python, r, stan]
+formats: [pickle, json]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits additive models per series from historical data.', needs_data: 'Historical series with dates, and known holidays/regressors.', update_strategy: 'Refit on a schedule; backtest on rolling windows.'}
+data: {inputs: [historical-time-series, regressors], outputs: [forecast, uncertainty-intervals], languages: []}
+evaluation: ['Rolling-origin error metrics and uncertainty calibration.']
+limitations: ['Assumes additive structure; can miss complex non-seasonal dynamics.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebook/prophet', notes: 'Documentation review of forecasting scope and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, business]

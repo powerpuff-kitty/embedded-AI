@@ -1,0 +1,23 @@
+id: llama-cpp
+name: llama.cpp
+domain: runtime
+tasks: [on-device-llm-inference, text-generation, quantization]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Widely used C/C++ LLM inference engine with quantized GGUF weights across CPU, GPU and mobile."
+links: {repository: 'https://github.com/ggml-org/llama.cpp'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, mobile, edge, browser], notes: 'Backends include CPU, Metal, CUDA, Vulkan and WebGPU; runtime fit depends on the chosen quantization.'}
+runtimes: [llama-cpp-native, ggml]
+formats: [gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; loads GGUF-converted checkpoints.', needs_data: 'A GGUF model and enough memory for the selected quantization and context.', update_strategy: 'Pin runtime and quantization; re-measure memory per context length on the target.'}
+data: {inputs: [gguf-model, text-prompt], outputs: [generated-text], languages: []}
+evaluation: ['Tokens-per-second, peak memory and quality at the chosen quantization.']
+limitations: ['Quantization quality is task-dependent; stock benchmarks are not device guarantees.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ggml-org/llama.cpp', notes: 'Documentation review of quantization, backends and GGUF format; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, llm, gguf, quantization]

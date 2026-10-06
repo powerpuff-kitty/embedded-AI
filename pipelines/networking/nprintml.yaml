@@ -1,0 +1,23 @@
+id: nprintml
+name: nPrintML
+domain: networking
+tasks: [network-traffic-classification, packet-analysis, traffic-anomaly-detection]
+class: network-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Toolkit that turns packets into machine-learning features for traffic classification and analysis."
+links: {repository: 'https://github.com/nprint/nprintml', paper: 'https://arxiv.org/abs/2203.12410'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Feature extraction and classic-ML training; not itself an embedded runtime.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Extracts packet features and trains classifiers on captures.', needs_data: 'Packet captures with labels and a defined traffic task.', update_strategy: 'Retrain as traffic patterns evolve; handle privacy and payload data carefully.'}
+data: {inputs: [packet-capture], outputs: [traffic-labels, features], languages: []}
+evaluation: ['Classification metrics on held-out captures and robustness to changed traffic.']
+limitations: ['Packet data can contain sensitive content; the code licence is Apache-2.0.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/nprint/nprintml', notes: 'Documentation review of packet-feature ML scope; not a deployment benchmark.'}]
+reviewed: '2026-10-06'
+tags: [networking, traffic-analysis, ids]

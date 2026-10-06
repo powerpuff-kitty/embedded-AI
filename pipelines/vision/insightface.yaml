@@ -1,0 +1,23 @@
+id: insightface
+name: InsightFace
+domain: vision
+tasks: [face-detection, face-recognition, face-alignment]
+class: face-analysis-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Face analysis toolkit with detection, recognition and alignment models including lightweight variants."
+links: {repository: 'https://github.com/deepinsight/insightface'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Includes small detectors and mobile-friendly recognition models.'}
+runtimes: [onnxruntime, pytorch, mxnet]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained detection/recognition models; fine-tuning is possible.', needs_data: 'Face images with consent; identity labels for evaluation.', update_strategy: 'Verify model terms, bias and consent; revalidate per population.'}
+data: {inputs: [rgb-image], outputs: [face-boxes, landmarks, identity-embeddings], languages: []}
+evaluation: ['Detection recall, verification FAR/FRR and demographic bias review.']
+limitations: ['Biometric use raises privacy, consent and regulatory concerns; weights terms vary.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/deepinsight/insightface', notes: 'Documentation review of toolkit scope and MIT code licence; not a board or bias benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, face, biometrics, onnx]

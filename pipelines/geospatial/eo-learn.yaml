@@ -1,0 +1,23 @@
+id: eo-learn
+name: eo-learn
+domain: geospatial
+tasks: [earth-observation-processing, geospatial-feature-extraction]
+class: geospatial-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python framework for building earth-observation processing pipelines over satellite data."
+links: {repository: 'https://github.com/sentinel-hub/eo-learn', homepage: 'https://eo-learn.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Pipeline/framework; learned models are plugged in separately.'}
+runtimes: [python, numpy]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Processing pipeline primitive; ML steps are user-supplied.', needs_data: 'Satellite imagery sources and a task definition.', update_strategy: 'Pin data sources and processing versions; revalidate outputs.'}
+data: {inputs: [satellite-imagery], outputs: [features, raster-masks], languages: []}
+evaluation: ['Pipeline correctness and downstream model accuracy on held-out regions.']
+limitations: ['Not itself a model; depends on external data services and models.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sentinel-hub/eo-learn', notes: 'Documentation review of earth-observation pipeline scope and MIT licence; not a field benchmark.'}]
+reviewed: '2026-10-06'
+tags: [geospatial, pipeline, remote-sensing]

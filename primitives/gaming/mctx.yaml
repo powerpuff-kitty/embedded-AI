@@ -1,0 +1,23 @@
+id: mctx
+name: mctx
+domain: gaming
+tasks: [monte-carlo-tree-search, planning, game-search]
+class: search-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "JAX library providing Monte Carlo tree search and AlphaZero/Gumbel MuZero-style search."
+links: {repository: 'https://github.com/google-deepmind/mctx', paper: 'https://arxiv.org/abs/1911.08265'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Accelerator-oriented JAX library; a companion primitive rather than a learned model.'}
+runtimes: [jax]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Search primitive; the evaluator/policy is trained separately.', needs_data: 'A model/evaluator and a game or planning environment.', update_strategy: 'Pin library version; revalidate tree-search budget and strength after upgrades.'}
+data: {inputs: [state, action-space, evaluator], outputs: [action-statistics, selected-action], languages: []}
+evaluation: ['Search strength per unit compute and decision latency on the target.']
+limitations: ['Not itself a learned model; search cost scales with simulation budget.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-deepmind/mctx', notes: 'Documentation review of MCTS/AlphaZero search scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, search, planning, primitive]

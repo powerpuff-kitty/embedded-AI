@@ -1,0 +1,23 @@
+id: px4-autopilot
+name: PX4 Autopilot
+domain: robotics
+tasks: [flight-control, autonomous-vehicle-control, sensor-fusion]
+class: autopilot-pipeline
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Open flight-control stack for drones and autonomous vehicles with sensor fusion and safety layers."
+links: {repository: 'https://github.com/PX4/PX4-Autopilot', homepage: 'https://px4.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [edge, robot], notes: 'Runs on dedicated flight-controller hardware; deterministic control, not a learned model.'}
+runtimes: [native-cpp, nuttx]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic autopilot foundation; learned modules can be layered on top.', needs_data: 'Airframe configuration, sensors and calibration.', update_strategy: 'Follow the upstream safety process; never fly unreviewed changes.'}
+data: {inputs: [sensor-fusion-state, pilot-or-autonomy-commands], outputs: [actuator-commands, vehicle-state], languages: []}
+evaluation: ['Flight-test validation, failsafe behaviour and estimator health on the airframe.']
+limitations: ['Safety-critical; requires certification-grade processes beyond code inspection.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/PX4/PX4-Autopilot', notes: 'Documentation review of autopilot scope, hardware targets and BSD-3-Clause licence; not a flight or board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [robotics, autopilot, control, drones]

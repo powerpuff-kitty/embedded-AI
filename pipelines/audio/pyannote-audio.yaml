@@ -1,0 +1,23 @@
+id: pyannote-audio
+name: pyannote-audio
+domain: audio
+tasks: [speaker-diarization, speaker-verification, voice-activity-detection]
+class: speaker-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Neural speaker-diarization and speech-processing toolkit with pretrained pipelines."
+links: {repository: 'https://github.com/pyannote/pyannote-audio', homepage: 'https://www.pyannote.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'CPU possible but GPU recommended; on-device use needs distillation.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained diarization pipelines; fine-tuning is supported.', needs_data: 'Multi-speaker audio with speaker labels for evaluation.', update_strategy: 'Check gated model access and terms; re-measure DER and latency.'}
+data: {inputs: [multi-speaker-audio], outputs: [speaker-segments, embeddings], languages: [multilingual-models]}
+evaluation: ['Diarization error rate and speaker-attribution accuracy on target audio.']
+limitations: ['Some pretrained weights are gated and terms-limited; overlapping speech is hard.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pyannote/pyannote-audio', notes: 'Documentation review of diarization toolkit and MIT code licence; weight terms vary.'}]
+reviewed: '2026-10-06'
+tags: [audio, diarization, speaker, pretrained]

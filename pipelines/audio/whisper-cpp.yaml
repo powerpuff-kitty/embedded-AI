@@ -1,0 +1,23 @@
+id: whisper-cpp
+name: whisper.cpp
+domain: audio
+tasks: [speech-to-text, voice-activity-detection]
+class: asr-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Dependency-free C/C++ Whisper inference with integer quantization and Core ML/Vulkan backends."
+links: {repository: 'https://github.com/ggml-org/whisper.cpp'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [mobile, edge, desktop, browser], notes: 'Runs on iOS, Android, Raspberry Pi and WASM; memory depends on the selected model.'}
+runtimes: [ggml, whisper-cpp-native]
+formats: [ggml]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Inference runtime; converts Whisper checkpoints to ggml.', needs_data: '16 kHz WAV audio and a downloaded ggml model.', update_strategy: 'Pin model quantization; re-measure memory and real-time factor per target.'}
+data: {inputs: [wav-audio, ggml-model], outputs: [transcript, timestamps], languages: [multilingual]}
+evaluation: ['Real-time factor, memory and WER at the chosen quantization on target hardware.']
+limitations: ['Inference only; larger models exceed small-device memory.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ggml-org/whisper.cpp', notes: 'Documentation review of quantization, backends and platform support; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, speech-to-text, ggml, quantization]

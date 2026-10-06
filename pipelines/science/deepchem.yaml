@@ -1,0 +1,23 @@
+id: deepchem
+name: DeepChem
+domain: science
+tasks: [molecular-property-prediction, drug-discovery, materials-informatics]
+class: scientific-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python library that applies deep learning to chemistry, materials and biology datasets."
+links: {repository: 'https://github.com/deepchem/deepchem', homepage: 'https://deepchem.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research toolkit; inference can be exported but is not an embedded runtime.'}
+runtimes: [pytorch, tensorflow, python]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains molecular property and structure models on scientific datasets.', needs_data: 'Curated, split-correct molecular or materials datasets.', update_strategy: 'Revalidate on scaffold/series splits; track data provenance rigorously.'}
+data: {inputs: [molecular-structure, features], outputs: [property-predictions], languages: []}
+evaluation: ['Scaffold/group-split metrics, not random splits, plus uncertainty estimates.']
+limitations: ['Random splits overstate generalisation on novel molecules.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/deepchem/deepchem', notes: 'Documentation review of scientific ML scope and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, chemistry, materials, classical-ml]

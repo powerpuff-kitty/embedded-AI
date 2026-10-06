@@ -1,0 +1,23 @@
+id: navigation2
+name: Nav2
+domain: robotics
+tasks: [path-planning, robot-navigation, obstacle-avoidance]
+class: navigation-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "ROS 2 navigation stack providing planning, control and behaviour primitives for mobile robots."
+links: {repository: 'https://github.com/ros-navigation/navigation2', homepage: 'https://navigation.ros.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [edge, desktop, robot], notes: 'Runs on robot-class Linux compute; not itself a learned model.'}
+runtimes: [ros2, native-cpp]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic planning/control stack; can incorporate learned costmaps.', needs_data: 'Robot model, sensors and map/costmap configuration.', update_strategy: 'Tune and validate per robot; add safety supervision outside the planner.'}
+data: {inputs: [map, sensor-observations, goal], outputs: [velocity-commands, path], languages: []}
+evaluation: ['Navigation success rate, safety stops and recovery behaviour on the robot.']
+limitations: ['A planning stack is not a learned model and needs safety supervision for real robots.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ros-navigation/navigation2', notes: 'Documentation review of navigation scope and Apache-2.0 licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [robotics, navigation, planning, primitive]

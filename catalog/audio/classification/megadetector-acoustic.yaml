@@ -1,0 +1,23 @@
+id: megadetector-acoustic
+name: MegaDetector-Acoustic
+domain: audio
+tasks: [bioacoustic-classification, species-identification]
+class: bioacoustic-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Bioacoustic AI from Microsoft AI for Good for classifying wildlife from sound recordings."
+links: {repository: 'https://github.com/microsoft/MegaDetector-Acoustic', homepage: 'https://microsoft.github.io/Biodiversity/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'Designed to pair with the solar SPARROW field recorder for remote deployments.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released weights with adaptation to local acoustic datasets.', needs_data: 'Audio recordings with labelled species/events.', update_strategy: 'Revalidate on local soundscapes; verify weights licence before deployment.'}
+data: {inputs: [audio-recording], outputs: [species-or-event-labels], languages: []}
+evaluation: ['Precision/recall by species and false-positive rate on local soundscapes.']
+limitations: ['Acoustic models generalise poorly across regions and recording hardware.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/MegaDetector-Acoustic', notes: 'Documentation review of bioacoustic scope and ecosystem role; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, bioacoustics, conservation]

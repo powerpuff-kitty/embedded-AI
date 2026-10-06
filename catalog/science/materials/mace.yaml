@@ -1,0 +1,23 @@
+id: mace
+name: MACE
+domain: science
+tasks: [atomistic-potential, molecular-dynamics]
+class: atomistic-potential-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Machine-learned interatomic potential framework using equivariant message passing for atomistic simulation."
+links: {repository: 'https://github.com/ACEsuit/mace', homepage: 'https://mace-docs.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation-oriented; small models can accelerate inference but full MD runs on servers.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains interatomic potentials from quantum-chemistry reference data.', needs_data: 'Reference energies/forces for the target chemistries and conditions.', update_strategy: 'Validate extrapolation and uncertainty; do not trust outside the training domain.'}
+data: {inputs: [atomic-configuration], outputs: [energy, forces], languages: []}
+evaluation: ['Energy/force errors and stability in molecular-dynamics trajectories.']
+limitations: ['Potentials extrapolate poorly outside their training distribution; validation is essential.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ACEsuit/mace', notes: 'Documentation review of equivariant potential scope and MIT licence; not a scientific benchmark.'}]
+reviewed: '2026-10-06'
+tags: [science, materials, atomistic, potential]

@@ -21,7 +21,13 @@ async function visit(dir: string): Promise<void> {
 }
 await visit('benchmarks/results');
 await fs.mkdir('dist/data',{recursive:true});
-for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
+for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
 await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records}));
 await fs.writeFile('dist/.nojekyll','');
-console.log(`Built static explorer: ${entries.length} entries, ${records.length} measured runs. No public deployment performed.`);
+const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','skeleton.html','skeleton.mjs','data/catalog.json','.nojekyll'];
+for(const name of required) await fs.access(path.join('dist',name));
+const built=JSON.parse(await fs.readFile('dist/data/catalog.json','utf8'));
+if(!Array.isArray(built.entries)||!built.entries.length) throw new Error('dist/data/catalog.json has no entries');
+const html=await fs.readFile('dist/index.html','utf8');
+if(!html.includes('app.mjs')||!html.includes('id="need"')) throw new Error('dist/index.html is missing the explorer or need matcher');
+console.log(`Built static explorer: ${entries.length} entries, ${records.length} measured runs. Verified ${required.length} assets. No public deployment performed.`);

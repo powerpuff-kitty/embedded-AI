@@ -1,0 +1,23 @@
+id: deepface
+name: DeepFace
+domain: vision
+tasks: [face-recognition, face-attribute-analysis, face-verification]
+class: face-analysis-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight face recognition and attribute analysis framework wrapping multiple models."
+links: {repository: 'https://github.com/serengil/deepface'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Several small backends; embedded fit depends on the chosen detector/recognizer.'}
+runtimes: [tensorflow, onnxruntime, pytorch]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained recognition/attribute models; custom training is possible.', needs_data: 'Face images with consent; identity labels for evaluation.', update_strategy: 'Verify per-model licences and bias; revalidate per population.'}
+data: {inputs: [rgb-image], outputs: [identity-match, demographics, embeddings], languages: []}
+evaluation: ['Verification FAR/FRR, attribute accuracy and demographic bias review.']
+limitations: ['Biometric use raises privacy/consent concerns; weights terms vary and attributes can be biased.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/serengil/deepface', notes: 'Documentation review of face-analysis scope and MIT code licence; not a bias or board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, face, biometrics, toolkit]

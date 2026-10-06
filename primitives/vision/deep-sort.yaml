@@ -1,0 +1,23 @@
+id: deep-sort
+name: Deep SORT
+domain: vision
+tasks: [multi-object-tracking]
+class: tracking-primitive
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Tracking-by-detection algorithm adding a deep appearance descriptor to SORT association."
+links: {repository: 'https://github.com/nwojke/deep_sort', paper: 'https://arxiv.org/abs/1703.07402'}
+model: {parameters: null, file_size_mb: null}
+license: {code: GPL-3.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Needs a detector plus an appearance embedding model; costlier than SORT.'}
+runtimes: [python, tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Association primitive with a pretrained re-identification embedding.', needs_data: 'Per-frame detections and an appearance embedding model.', update_strategy: 'Re-tune association and revalidate ID metrics per scene.'}
+data: {inputs: [per-frame-detections, appearance-features], outputs: [track-ids, trajectories], languages: []}
+evaluation: ['MOTA/IDF1 and ID-switch rates; measure embedding overhead.']
+limitations: ['GPL-3.0 copyleft; appearance model is dataset-dependent.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/nwojke/deep_sort', notes: 'Documentation review of tracking algorithm and GPL-3.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, tracking, reid, primitive]

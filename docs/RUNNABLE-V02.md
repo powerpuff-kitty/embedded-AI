@@ -4,7 +4,7 @@ This milestone turns the existing 95-entry catalogue into a local explorer and r
 
 ## Implemented capabilities
 
-- Static search/filtering, source details and comparison of up to four components. Exact-environment RAM observations are separated from untested candidates.
+- Static search/filtering, source details and comparison of up to four components, plus a deterministic offline need matcher that ranks entries from a plain-language description and shows why each entry matched (see [the need matcher guide](NEED-MATCHER.md)). Exact-environment RAM observations are separated from untested candidates.
 - Local COCO-17 skeleton JSONL replay with play/pause, scrubbing, missing joints and synthetic-input disclosure.
 - Isolated benchmark adapters for NumPy DLinear, Silero ONNX and RTMPose-S through rtmlib. Records include raw latency samples, artifact/source hashes and the actual execution environment.
 - Three runnable recipes with generated sample inputs, explicit acquisition and baseline evaluation. VAD/pose synthetic fixtures test plumbing, not accuracy.
@@ -22,7 +22,7 @@ npm run site:build
 npm run site:serve
 ```
 
-Open the local HTTP server on port 4173. `dist/` is a static deployment directory but **is not automatically published**. Follow [the recipes](../recipes/README.md) for inference and [the benchmark guide](../benchmarks/README.md) for measurements.
+Open the local HTTP server on port 4173. `dist/` is the static deployment directory. On `main` it is published read-only to GitHub Pages by `.github/workflows/pages.yml`; enable **Settings → Pages → Source: GitHub Actions** once in the repository. Follow [the recipes](../recipes/README.md) for inference and [the benchmark guide](../benchmarks/README.md) for measurements.
 
 ## Evidence boundaries
 

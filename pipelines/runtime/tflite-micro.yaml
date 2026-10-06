@@ -1,0 +1,23 @@
+id: tflite-micro
+name: TensorFlow Lite for Microcontrollers
+domain: runtime
+tasks: [mcu-inference, tinyml-deployment]
+class: mcu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "TensorFlow Lite runtime for microcontrollers, part of the reference TinyML software stack."
+links: {repository: 'https://github.com/tensorflow/tflite-micro', homepage: 'https://www.tensorflow.org/lite/microcontrollers'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'No operating system required; targets a wide range of MCUs.'}
+runtimes: [tflite-micro-native, cmsis-nn]
+formats: [tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime only; models are trained and converted to TensorFlow Lite elsewhere.', needs_data: 'A converted .tflite model and an MCU toolchain.', update_strategy: 'Pin the runtime and re-measure arena size per model after upgrades.'}
+data: {inputs: [tflite-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Tensor arena size, flash use and latency on the target MCU.']
+limitations: ['Only a subset of TensorFlow operators are implemented for microcontrollers.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/tflite-micro', notes: 'Documentation review of MCU scope, operator subset and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [runtime, mcu, tinyml, tflite]

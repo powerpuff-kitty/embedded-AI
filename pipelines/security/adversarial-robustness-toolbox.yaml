@@ -1,0 +1,23 @@
+id: adversarial-robustness-toolbox
+name: Adversarial Robustness Toolbox
+domain: security
+tasks: [adversarial-attack-testing, model-hardening, poisoning-detection]
+class: ml-security-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "IBM library for testing and defending machine-learning models against adversarial threats."
+links: {repository: 'https://github.com/Trusted-AI/adversarial-robustness-toolbox', homepage: 'https://adversarial-robustness-toolbox.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis/defence toolkit; not an embedded runtime by itself.'}
+runtimes: [python, pytorch, tensorflow]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Evaluates and hardens models; does not train task models.', needs_data: 'A target model plus representative inputs and threat model.', update_strategy: 'Re-run robustness tests whenever the model or data changes.'}
+data: {inputs: [model, input-samples], outputs: [attack-results, hardened-model, metrics], languages: []}
+evaluation: ['Robustness under defined threat models and evasion/poisoning budgets.']
+limitations: ['Robustness is threat-model-specific; passing tests is not a security guarantee.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Trusted-AI/adversarial-robustness-toolbox', notes: 'Documentation review of attack/defence scope and MIT licence; not a deployment benchmark.'}]
+reviewed: '2026-10-06'
+tags: [security, adversarial-ml, robustness]

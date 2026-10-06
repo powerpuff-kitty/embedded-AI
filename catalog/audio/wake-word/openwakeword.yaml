@@ -1,0 +1,23 @@
+id: openwakeword
+name: openWakeWord
+domain: audio
+tasks: [wake-word-detection]
+class: wake-word-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Open-source wake-word pipeline and pretrained models for always-on voice interfaces."
+links: {repository: 'https://github.com/dscripka/openWakeWord'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'Runs on CPU and Raspberry Pi; custom wake words can be trained.'}
+runtimes: [onnxruntime, tflite]
+formats: [onnx, tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained wake words available; custom words require training.', needs_data: '16 kHz mono audio plus positive/negative data for custom words.', update_strategy: 'Re-measure false-accept/false-reject rates per environment after updates.'}
+data: {inputs: [audio-stream], outputs: [wake-word-scores], languages: [en]}
+evaluation: ['False-accept and false-reject rates at the operating threshold on target audio.']
+limitations: ['Wake-word accuracy is sensitive to microphone, noise and threshold.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dscripka/openWakeWord', notes: 'Documentation review of pipeline, pretrained models and licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, wake-word, offline]

@@ -1,0 +1,23 @@
+id: deepcad
+name: DeepCAD
+domain: engineering
+tasks: [cad-generation, cad-autoencoding, parametric-shape-modelling]
+class: cad-generation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Deep generative model for computer-aided design sequences and parametric shapes."
+links: {repository: 'https://github.com/ChrisWu1997/DeepCAD', paper: 'https://arxiv.org/abs/2105.09492'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research model; not an embedded target without significant work.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained CAD models; retraining needs CAD command datasets.', needs_data: 'CAD construction-sequence data for training/evaluation.', update_strategy: 'Revalidate geometric validity; verify model terms.'}
+data: {inputs: [cad-command-sequence], outputs: [generated-cad-shape, latent-code], languages: []}
+evaluation: ['Geometric validity and reconstruction fidelity on held-out CAD models.']
+limitations: ['Research scope; outputs may be invalid and need CAD validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ChrisWu1997/DeepCAD', notes: 'Documentation review of CAD-generation scope and MIT code licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [engineering, cad, generative, 3d]

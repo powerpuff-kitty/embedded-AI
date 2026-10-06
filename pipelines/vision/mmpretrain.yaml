@@ -1,0 +1,23 @@
+id: mmpretrain
+name: MMPreTrain
+domain: vision
+tasks: [image-classification, feature-extraction, self-supervised-learning]
+class: classification-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "OpenMMLab pre-training toolbox with a large classification and backbone model zoo."
+links: {repository: 'https://github.com/open-mmlab/mmpretrain', homepage: 'https://mmpretrain.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Includes MobileNet, EfficientNet and other compact backbones with export support.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains/fine-tunes classifiers and backbones; pretrained weights available.', needs_data: 'Task-labelled images for the target classes.', update_strategy: 'Re-export and re-benchmark; verify per-model weight licences.'}
+data: {inputs: [rgb-image], outputs: [class-scores, features], languages: []}
+evaluation: ['Top-1 accuracy plus exported-model latency/memory on the target.']
+limitations: ['Model-zoo weights carry their own licences; not all backbones are mobile-friendly.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/open-mmlab/mmpretrain', notes: 'Documentation review of pre-training toolbox scope and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, classification, openmmlab, backbones]

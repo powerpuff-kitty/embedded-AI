@@ -1,0 +1,23 @@
+id: face-recognition
+name: face_recognition
+domain: vision
+tasks: [face-recognition, face-detection, face-encoding]
+class: face-analysis-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Widely used Python wrapper around dlib for face detection and recognition encodings."
+links: {repository: 'https://github.com/ageitgey/face_recognition'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Depends on dlib; small CNN/HOG detectors exist but embedded fit needs measurement.'}
+runtimes: [python, dlib]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Uses dlib pretrained models; enrollment data drives recognition.', needs_data: 'Face images with consent and enrolled identities for matching.', update_strategy: 'Verify dlib model terms; revalidate accuracy and bias per population.'}
+data: {inputs: [rgb-image], outputs: [face-locations, face-encodings, matches], languages: []}
+evaluation: ['Verification FAR/FRR and demographic bias review on representative data.']
+limitations: ['Biometric privacy concerns; dlib build and model terms must be checked.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ageitgey/face_recognition', notes: 'Documentation review of face recognition workflow and MIT code licence; not a bias or board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [vision, face, biometrics, dlib]

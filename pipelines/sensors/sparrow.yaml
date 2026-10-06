@@ -1,0 +1,23 @@
+id: sparrow
+name: SPARROW
+domain: sensors
+tasks: [remote-wildlife-monitoring, edge-inference]
+class: edge-device-pipeline
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Solar-powered acoustic and remote recording edge device that runs conservation models in the field."
+links: {repository: 'https://github.com/microsoft/SPARROW', homepage: 'https://microsoft.github.io/Biodiversity/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge], notes: 'Field-hardened hardware reference; component and power budgets are project-specific.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Hardware/pipeline reference; models are provided separately.', needs_data: 'Target models, sensors and deployment configuration.', update_strategy: 'Revalidate power, storage and model fit before each field deployment.'}
+data: {inputs: [sensor-and-audio-capture], outputs: [stored-detections, telemetry], languages: []}
+evaluation: ['Field uptime, power budget, storage limits and model accuracy in situ.']
+limitations: ['A reference design does not guarantee fit for a different site or sensor set.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/SPARROW', notes: 'Documentation review of edge device role and deployment context; not a unit benchmark.'}]
+reviewed: '2026-10-06'
+tags: [sensors, edge, conservation, hardware]

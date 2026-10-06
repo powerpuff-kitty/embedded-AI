@@ -1,0 +1,23 @@
+id: stable-baselines3
+name: Stable-Baselines3
+domain: gaming
+tasks: [reinforcement-learning, policy-training, game-agent-training]
+class: rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Reliable PyTorch reinforcement-learning algorithms used to train game and control agents."
+links: {repository: 'https://github.com/DLR-RM/stable-baselines3', homepage: 'https://stable-baselines3.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training framework; trained policies export to ONNX for embedded inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains PPO, SAC, DQN and related algorithms on Gymnasium environments.', needs_data: 'An environment with observation/action/reward contract.', update_strategy: 'Pin algorithm and hyperparameters; revalidate reward and exported-policy latency.'}
+data: {inputs: [environment-interactions], outputs: [trained-policy], languages: []}
+evaluation: ['Sample efficiency, final reward and stability across seeds.']
+limitations: ['Reward hacking and brittle policies are common without careful environment design.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/DLR-RM/stable-baselines3', notes: 'Documentation review of supported algorithms and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [gaming, reinforcement-learning, pytorch]

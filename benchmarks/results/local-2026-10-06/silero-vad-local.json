@@ -1,0 +1,120 @@
+{
+  "adapter": "silero-vad",
+  "entry_id": "silero-vad",
+  "config": {
+    "model": ".models/silero.onnx"
+  },
+  "model": {
+    "artifact_sha256": "1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3",
+    "precision": "float32",
+    "shape": [
+      1,
+      576
+    ],
+    "runtime": "onnxruntime-cpu",
+    "scope": "512 new samples plus 64 context samples at 16 kHz; stateful stream",
+    "input": "synthetic silence"
+  },
+  "adapter_sha256": "410f0052def74aa8a49b76da4ce275ceeb1d88409ed048c4da3279dbb7328f6b",
+  "load_ms": 98.0365,
+  "first_inference_ms": 0.502041,
+  "warmup": 5,
+  "samples": 30,
+  "latency_samples_ms": [
+    0.121334,
+    0.1275,
+    0.121875,
+    0.124875,
+    0.120167,
+    0.119959,
+    0.119458,
+    0.119542,
+    0.119458,
+    0.231041,
+    0.122041,
+    0.168042,
+    0.151417,
+    0.127542,
+    0.1215,
+    0.120875,
+    0.120917,
+    0.120084,
+    0.119,
+    0.119875,
+    0.119291,
+    0.120292,
+    0.12075,
+    0.121167,
+    0.118958,
+    0.115042,
+    0.115083,
+    0.115708,
+    0.114792,
+    0.11475
+  ],
+  "latency_ms": {
+    "p50": 0.12022949999999999,
+    "p95": 0.16056074999999995,
+    "p99": 0.21277129000000006
+  },
+  "throughput_calls_per_second": 7910.693543687465,
+  "process_peak_rss_mb": 76.34944,
+  "rss_method": "resource.getrusage(RUSAGE_SELF).ru_maxrss; lifetime high-water mark",
+  "output_check": {
+    "finite_probability": true,
+    "probability": 0.0016698241233825684,
+    "quality_evaluated": false
+  },
+  "schema_version": 1,
+  "record_type": "measured-run",
+  "recorded_at": "2026-10-06T12:44:11.699925+00:00",
+  "hardware": {
+    "id": "local-process-darwin-arm64-ddf7ff5ebd",
+    "os": "Darwin",
+    "os_release": "25.6.0",
+    "architecture": "arm64",
+    "cpu": "arm",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    },
+    "python": "3.11.14",
+    "packages": {
+      "numpy": "2.2.6",
+      "onnxruntime": "1.22.1",
+      "psutil": "7.0.0"
+    },
+    "environment": "local-process"
+  },
+  "process_wall_ms": 388.33104190416634,
+  "sampled_process_tree_peak_rss_mb": 76.34944,
+  "rss_poll_interval_ms": 10.0,
+  "rss_poll_samples": 14,
+  "sampled_cpu_seconds": 0.157989,
+  "power_watts": null,
+  "accelerator_memory_mb": null,
+  "notes": [
+    "RSS includes the interpreter, imports, inputs and runtime.",
+    "Process-tree RSS is sampled, can miss short peaks and can double-count shared pages.",
+    "Host result only; not a Mac, MCU or RV1106 compatibility certification.",
+    "Synthetic inputs are smoke/performance fixtures, not quality validation."
+  ],
+  "source_files": {
+    "bench/__init__.py": "bda8d862c727b27b11cd4f4b72b392611d47b25db58ae715263ed7792fb98bff",
+    "bench/adapters.py": "410f0052def74aa8a49b76da4ce275ceeb1d88409ed048c4da3279dbb7328f6b",
+    "bench/coexist.py": "f13e551aab8a1488474d46167203ebbff779e764749314f5096a8544de01c3d6",
+    "bench/runner.py": "074a22c366a517a059ac5aadc5c5b7974dfd95be16938bf82276131cc2a3c00e",
+    "bench/worker.py": "949bd2e3bbccae7a605ea9258086ecee335c7bf6e5dd6dc202802fa0f30b1522",
+    "recipes/__init__.py": "1c6dc5f1a15be8e9adc7ab307b9f6ad81d23fb42ace08b650895431354646b33",
+    "recipes/download.py": "e5a457524fea6ba475b2ee93e436e523755a64cce2acd917de80e015fb498830",
+    "recipes/forecast.py": "32d513b00f2a275dbc14a2719432db42d02c02188068cc7e10ca01c3cac6ccc2",
+    "recipes/pose.py": "845d6174189c98b305667a63ea29858bcb2b5b6c8fdb1459ecd93b1001b5d404",
+    "recipes/samples.py": "255c8e709c2bce501695e0228ea777a37b7b105ddb852e4b6aedcfeaea597cbc",
+    "recipes/vad.py": "900d50b6698f2928487e00f56ea9250959ddb1743c56fc0ee6c25a491fb65879"
+  },
+  "scope": "synthetic-smoke-performance; not task quality or full application capacity",
+  "source_dirty": false,
+  "source_commit": "572614e5c88488827316bca4ff1ef1f25c505cd0"
+}

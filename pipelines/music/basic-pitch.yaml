@@ -1,0 +1,23 @@
+id: basic-pitch
+name: Basic Pitch
+domain: music
+tasks: [automatic-music-transcription, pitch-estimation]
+class: lightweight-amt-model
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight instrument-agnostic automatic music transcription model exported to CoreML, TFLite and ONNX."
+links: {repository: 'https://github.com/spotify/basic-pitch', paper: 'https://arxiv.org/abs/2203.09893'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, desktop, browser], notes: 'Upstream ships CoreML, TensorFlowLite and ONNX model formats for on-device use.'}
+runtimes: [tensorflow, coreml, tflite, onnxruntime]
+formats: [coreml, tflite, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Published pretrained model; the runtime transcribes audio to MIDI.', needs_data: 'Audio input; labelled note data for any fine-tuning or evaluation.', update_strategy: 'Pin model format and version; re-measure real-time factor on the target.'}
+data: {inputs: [audio], outputs: [note-events, midi], languages: []}
+evaluation: ['Note precision/recall and real-time factor for the chosen export format.']
+limitations: ['Works best on one instrument at a time; polyphony and timbre affect accuracy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/spotify/basic-pitch', notes: 'Documentation review of exports, task and Apache-2.0 licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [music, transcription, on-device, tflite]

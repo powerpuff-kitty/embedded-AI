@@ -1,0 +1,23 @@
+id: bearing-fault-detection
+name: Bearing Fault Detection
+domain: sensors
+tasks: [bearing-fault-detection, predictive-maintenance, anomaly-detection]
+class: small-specialized-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "RNN-based induction-motor bearing fault detection intended for smart vibration sensors."
+links: {repository: 'https://github.com/malyvsen/bearing-fault-detection'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [edge], notes: 'Upstream target is embedded smart sensors reporting motor-bearing faults.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Train recurrent models on labelled vibration/fault data.', needs_data: 'Vibration signals with fault labels and representative operating conditions.', update_strategy: 'Retrain per machine and revalidate on held-out fault classes.'}
+data: {inputs: [vibration-signal], outputs: [fault-class-or-score], languages: []}
+evaluation: ['Fault classification metrics and false-alarm rate across speeds and loads.']
+limitations: ['Code licence is MIT; validate on target machines and fault classes.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/malyvsen/bearing-fault-detection', notes: 'Documentation review of task, smart-sensor intent and RNN approach; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [sensors, predictive-maintenance, vibration]

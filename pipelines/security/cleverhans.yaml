@@ -1,0 +1,23 @@
+id: cleverhans
+name: CleverHans
+domain: security
+tasks: [adversarial-examples, robustness-evaluation]
+class: ml-security-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Reference implementations of adversarial example attacks used to benchmark model robustness."
+links: {repository: 'https://github.com/tensorflow/cleverhans'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research library; upstream repository is no longer actively maintained.'}
+runtimes: [python, tensorflow, pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Provides attacks and evaluation utilities; not a task model trainer.', needs_data: 'A target model and dataset.', update_strategy: 'Prefer actively maintained alternatives for new projects; pin version if reused.'}
+data: {inputs: [model, input-samples], outputs: [adversarial-examples, robustness-metrics], languages: []}
+evaluation: ['Attack success rate and accuracy under perturbation budgets.']
+limitations: ['Repository is unmaintained; treat as a reference rather than a live dependency.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/cleverhans', notes: 'Documentation review of attack implementations and MIT licence; upkeep status noted.'}]
+reviewed: '2026-10-06'
+tags: [security, adversarial-ml, reference]

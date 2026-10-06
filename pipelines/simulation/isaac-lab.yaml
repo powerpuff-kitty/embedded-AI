@@ -1,0 +1,23 @@
+id: isaac-lab
+name: Isaac Lab
+domain: simulation
+tasks: [robot-learning, reinforcement-learning, simulation]
+class: simulation-platform
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "GPU-accelerated framework for robot learning built on NVIDIA Isaac Sim."
+links: {repository: 'https://github.com/isaac-sim/IsaacLab', homepage: 'https://isaac-sim.github.io/IsaacLab/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Requires NVIDIA GPU and Isaac Sim; heavy simulation stack, not an on-device runtime.'}
+runtimes: [pytorch, omni-isaac]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Massively parallel simulation for training robot policies.', needs_data: 'Robot assets, scenes and task/reward definitions.', update_strategy: 'Pin simulator version; document sim-to-real gaps and validate on hardware.'}
+data: {inputs: [scene-config, control-actions], outputs: [simulated-observations, rewards], languages: []}
+evaluation: ['Sim-to-real transfer and policy robustness on the target robot.']
+limitations: ['Heavy GPU dependency; simulation is not a hardware safety proof.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/isaac-sim/IsaacLab', notes: 'Documentation review of robot-learning simulation scope and BSD-3-Clause licence; not a hardware benchmark.'}]
+reviewed: '2026-10-06'
+tags: [simulation, robotics, gpu, reinforcement-learning]

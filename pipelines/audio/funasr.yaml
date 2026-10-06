@@ -1,0 +1,23 @@
+id: funasr
+name: FunASR
+domain: audio
+tasks: [speech-recognition, voice-activity-detection, punctuation-restoration, speaker-diarization]
+class: speech-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "ModelScope speech toolkit with ASR, VAD, punctuation and diarization pipelines."
+links: {repository: 'https://github.com/modelscope/FunASR', homepage: 'https://www.funasr.com/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Several pretrained pipelines; smaller models may fit constrained inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [onnx, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained pipelines for ASR and related tasks; fine-tuning is supported.', needs_data: 'Audio for inference; labelled speech for fine-tuning/evaluation.', update_strategy: 'Pin pipeline versions and verify per-model terms; re-measure latency.'}
+data: {inputs: [audio-waveform], outputs: [transcript, punctuation, speaker-labels], languages: [multilingual-models]}
+evaluation: ['WER and task metrics on target audio plus latency.']
+limitations: ['Per-model licences and quality vary; some pipelines are desktop-scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/modelscope/FunASR', notes: 'Documentation review of speech pipelines and MIT code licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [audio, asr, vad, diarization]

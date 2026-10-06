@@ -1,0 +1,23 @@
+id: apple-fastvit
+name: FastViT
+domain: vision
+tasks: [image-classification, feature-extraction]
+class: efficient-backbone-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Apple hybrid vision transformer family targeting low-latency mobile inference."
+links: {repository: 'https://github.com/apple/ml-fastvit', paper: 'https://arxiv.org/abs/2303.14189'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'Latency claims target mobile hardware; other targets need measurement.'}
+runtimes: [pytorch, coreml]
+formats: [pytorch-checkpoint, coreml]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained classifiers/backbones; fine-tuning for target tasks.', needs_data: 'Task-labelled images for fine-tuning/evaluation.', update_strategy: 'Verify licence terms; re-measure latency/accuracy on the target.'}
+data: {inputs: [rgb-image], outputs: [class-scores, features], languages: []}
+evaluation: ['Top-1 accuracy and latency/memory on the target device and runtime.']
+limitations: ['Code and weight licences are not stated in the reviewed README; verify before use.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/apple/ml-fastvit', notes: 'Documentation review of efficient backbone variants; licence not confirmed.'}]
+reviewed: '2026-10-06'
+tags: [vision, classification, mobile, backbone]

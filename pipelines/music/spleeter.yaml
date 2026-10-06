@@ -1,0 +1,23 @@
+id: spleeter
+name: Spleeter
+domain: music
+tasks: [music-source-separation]
+class: source-separation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Deezer source-separation toolkit with 2, 4 and 5 stem pretrained models."
+links: {repository: 'https://github.com/deezer/spleeter'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server], notes: 'CPU or GPU separation; smallest models are the practical constrained-inference option.'}
+runtimes: [tensorflow, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained stem models; custom training is possible but data-heavy.', needs_data: 'Music audio for inference; multi-stem data for training.', update_strategy: 'Pin model revision; re-measure separation quality and latency.'}
+data: {inputs: [music-audio], outputs: [separated-stems], languages: []}
+evaluation: ['Separation quality and real-time factor per stem configuration.']
+limitations: ['Stem count and quality are fixed by the chosen pretrained model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/deezer/spleeter', notes: 'Documentation review of stem models and MIT licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [music, source-separation, pretrained]
