@@ -1,0 +1,23 @@
+id: nucleotide-transformer
+name: Nucleotide Transformer
+domain: genomics
+tasks: [genomic-language-modelling, dna-embeddings, regulatory-element-prediction]
+class: genomic-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "InstaDeep foundation models for genomics and transcriptomics across multiple species."
+links: {repository: 'https://github.com/instadeepai/nucleotide-transformer', paper: 'https://www.biorxiv.org/content/10.1101/2023.01.11.523679v2'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Transformer models; large variants need GPU memory.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained DNA language models; task heads are fine-tuned.', needs_data: 'Genomic sequences and task labels.', update_strategy: 'Verify license and revalidate per genome/assay.'}
+data: {inputs: [dna-sequence], outputs: [embeddings, predictions], languages: []}
+evaluation: ['Downstream task metrics on held-out genomic regions.']
+limitations: ['License not stated by the repository; not a clinical tool.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/instadeepai/nucleotide-transformer', notes: 'Nucleotide Transformer models.'}]
+reviewed: '2026-10-06'
+tags: [genomics, foundation-model, transformers]

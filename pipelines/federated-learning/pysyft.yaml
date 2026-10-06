@@ -1,0 +1,23 @@
+id: pysyft
+name: PySyft
+domain: federated-learning
+tasks: [privacy-preserving-computation, secure-multi-party-computation, federated-learning]
+class: privacy-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for data-science and learning on data that stays remote, with privacy-enhancing techniques."
+links: {repository: 'https://github.com/OpenMined/PySyft', homepage: 'https://openmined.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Remote data-owner architecture; not a single-device runtime.'}
+runtimes: [python, pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Provides privacy primitives (SMPC, differential privacy) and remote execution.', needs_data: 'Remote datasets owned by separate parties.', update_strategy: 'Pin version; have privacy guarantees reviewed by experts.'}
+data: {inputs: [remote-dataset, computation], outputs: [results, models], languages: []}
+evaluation: ['Correctness and the claimed privacy guarantees under the threat model.']
+limitations: ['Privacy claims are threat-model-specific and need expert review.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/OpenMined/PySyft', notes: 'PySyft privacy-preserving library.'}]
+reviewed: '2026-10-06'
+tags: [federated-learning, privacy, smpc, openmined]

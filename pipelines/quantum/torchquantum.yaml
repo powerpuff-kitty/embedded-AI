@@ -1,0 +1,23 @@
+id: torchquantum
+name: TorchQuantum
+domain: quantum
+tasks: [quantum-machine-learning, quantum-circuit-simulation]
+class: quantum-ml-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Differentiable quantum-circuit simulator and library built on PyTorch."
+links: {repository: 'https://github.com/mit-han-lab/torchquantum', paper: 'https://arxiv.org/abs/2211.16327'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'GPU-accelerated simulation; not quantum hardware.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Trains parameterised quantum circuits via PyTorch autograd.', needs_data: 'Circuit designs and data encodings.', update_strategy: 'Pin version; revalidate numerics after upgrades.'}
+data: {inputs: [circuit-parameters, data], outputs: [expectation-values], languages: []}
+evaluation: ['Simulation fidelity and training quality on the target task.']
+limitations: ['A simulator; state-vector memory grows exponentially with qubits.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mit-han-lab/torchquantum', notes: 'TorchQuantum library.'}]
+reviewed: '2026-10-06'
+tags: [quantum, pytorch, simulation]

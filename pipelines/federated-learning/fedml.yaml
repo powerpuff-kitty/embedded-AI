@@ -1,0 +1,23 @@
+id: fedml
+name: FedML
+domain: federated-learning
+tasks: [federated-learning, distributed-training, privacy-preserving-training]
+class: federated-learning-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Unified library for distributed and federated training, serving and on-device learning."
+links: {repository: 'https://github.com/FedML-AI/FedML', homepage: 'https://fedml.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop, edge, mobile], notes: 'Supports cross-device and cross-silo federation.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runs federated and distributed training topologies.', needs_data: 'Client data/processes and an aggregation strategy.', update_strategy: 'Pin version; revalidate privacy and convergence per deployment.'}
+data: {inputs: [client-model-updates], outputs: [global-model], languages: []}
+evaluation: ['Convergence, bandwidth and robustness to stragglers.']
+limitations: ['Cross-device scale adds operational complexity; privacy needs explicit mechanisms.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/FedML-AI/FedML', notes: 'FedML federated learning library.'}]
+reviewed: '2026-10-06'
+tags: [federated-learning, distributed, privacy]

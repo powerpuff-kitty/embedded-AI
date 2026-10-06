@@ -1,0 +1,23 @@
+id: flower
+name: Flower
+domain: federated-learning
+tasks: [federated-learning, privacy-preserving-training]
+class: federated-learning-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework-agnostic federated learning system spanning devices, clients and servers."
+links: {repository: 'https://github.com/flwrlabs/flower', homepage: 'https://flower.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop, edge, mobile], notes: 'Clients can run on embedded/mobile; server orchestrates rounds.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Orchestrates federated training/aggregation; models come from any framework.', needs_data: 'Client datasets and an aggregation strategy.', update_strategy: 'Pin version; revalidate privacy and convergence per deployment.'}
+data: {inputs: [client-model-updates], outputs: [global-model], languages: []}
+evaluation: ['Convergence, communication cost and privacy guarantees per round.']
+limitations: ['Federation does not by itself guarantee privacy; combine with secure aggregation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/flwrlabs/flower', notes: 'Flower federated learning framework.'}]
+reviewed: '2026-10-06'
+tags: [federated-learning, privacy, distributed]
