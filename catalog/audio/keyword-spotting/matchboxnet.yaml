@@ -8,6 +8,7 @@ links: { repository: "https://github.com/NVIDIA/NeMo", model: null, paper: null,
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
+runtimes: [pytorch]
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []

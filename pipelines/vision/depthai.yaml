@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Runtime/pipeline plus model conversion; mode
 data: {inputs: [stereo-or-rgb-frames], outputs: [depth-map, detections, spatial-coordinates], languages: []}
 evaluation: ['Depth accuracy, detection accuracy and throughput on the specific OAK module.']
 limitations: ['Tied to Luxonis hardware; conversion compatibility varies per model and firmware.']
-compatibility: []
+compatibility:
+  - {target: luxonis-oak, status: reported, evidence: 'https://github.com/luxonis/depthai', notes: 'Upstream targets Luxonis OAK camera modules; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/luxonis/depthai', notes: 'Documentation review of edge-vision pipeline scope and MIT licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [vision, depth, edge, openvino]

@@ -17,7 +17,8 @@ usage: {mode: companion, training: 'Runtime plus conversion workflow; models are
 data: {inputs: [camera-frames, converted-model], outputs: [detections, inference-results], languages: []}
 evaluation: ['Throughput, memory and accuracy on the specific Sipeed module.']
 limitations: ['Tied to Sipeed hardware and its NPU conversion toolchain.']
-compatibility: []
+compatibility:
+  - {target: k210, status: reported, evidence: 'https://github.com/sipeed/MaixPy', notes: 'Upstream runs on K210/MaixCAM hardware; not benchmarked by this catalogue.'}
 evidence: [{type: official, url: 'https://github.com/sipeed/MaixPy', notes: 'Documentation review of edge runtime scope and MIT licence; not a board benchmark.'}]
 reviewed: '2026-10-06'
 tags: [runtime, edge, k210, vision]

@@ -8,7 +8,8 @@ links: { repository: "https://www.tensorflow.org/lite/examples/object_detection/
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
+runtimes: [tflite]
+formats: [tflite]
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []
 evidence: [{ type: official, url: "https://www.tensorflow.org/lite/examples/object_detection/overview", notes: "Primary project/model source; verify deployment metrics separately." }]

@@ -8,6 +8,7 @@ links: { repository: "https://huggingface.co/enfuse/edgevla-tiny-fmb", model: nu
 model: { parameters: 164000000, file_size_mb: null, architecture: null, precision: null }
 license: { code: unknown, weights: Apache-2.0 }
 deployment: { offline: true, targets: [edge], accelerators: [] }
+runtimes: [pytorch, transformers]
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []

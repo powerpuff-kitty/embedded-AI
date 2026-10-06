@@ -8,7 +8,8 @@ links: { repository: "https://github.com/OHF-Voice/micro-wake-word", model: null
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
+runtimes: [tflite-micro]
+formats: [tflite]
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility:
   - {target: esp32, status: reported, evidence: 'https://github.com/OHF-Voice/micro-wake-word', notes: 'Upstream targets ESP32/ESPHome microcontrollers; not benchmarked by this catalogue.'}

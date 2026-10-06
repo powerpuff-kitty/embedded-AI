@@ -8,7 +8,8 @@ links: { repository: "https://github.com/tensorflow/tflite-micro", model: null, 
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
 license: { code: Apache-2.0, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
-formats: []
+runtimes: [tflite-micro]
+formats: [tflite]
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
 compatibility: []
 evidence: [{ type: official, url: "https://github.com/tensorflow/tflite-micro", notes: "Primary project/model source; verify deployment metrics separately." }]
