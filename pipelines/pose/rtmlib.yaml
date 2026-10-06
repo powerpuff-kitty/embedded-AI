@@ -23,6 +23,10 @@ io:
   coordinate_system: model-dependent
 compatibility:
   - {target: luckfox-rv1106, status: unknown, notes: Not tested by this catalogue.}
+  - target: local-process-darwin-arm64-ddf7ff5ebd
+    status: reproduced
+    benchmark: benchmarks/results/local-2026-10-06/rtmpose-s-local.json
+    notes: 'RTMPose-S pose-only whole-frame crop via rtmlib on this exact host; detector, video decoding and accuracy excluded.'
 reviewed: '2026-10-05'
 evidence:
   - {type: official, url: 'https://github.com/Tau-J/rtmlib'}
