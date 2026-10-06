@@ -32,7 +32,11 @@ evaluation: [Compare chronological held-out MAE/RMSE against last-value and seas
 limitations:
   - The NumPy recipe fits ridge least squares rather than the upstream Adam training algorithm.
   - Synthetic-fixture accuracy does not establish real demand or stock forecasting quality.
-compatibility: []
+compatibility:
+  - target: local-process-darwin-arm64-ddf7ff5ebd
+    status: reproduced
+    benchmark: benchmarks/results/local-2026-10-06/dlinear-numpy-local.json
+    notes: 'NumPy ridge DLinear, one 96-to-24 window, measured on this exact host only; not RV1106, MCU or task-quality evidence.'
 evidence:
   - {type: official, url: 'https://github.com/cure-lab/LTSF-Linear', notes: 'Architecture and upstream training implementation.'}
 related: [neuralforecast, statsforecast, tiny-time-mixer, chronos-bolt-tiny, kronos-mini]
