@@ -194,10 +194,10 @@ export function applyNeedConstraints(results, constraints = {}) {
   for (const result of results) {
     const entry = result.entry;
     const mode = entry.usage?.mode ?? 'unknown';
-    if (constraints.offline && entry.deployment?.offline !== true) { excluded.push({ ...result, reason: 'offline operation is not documented' }); continue; }
-    if (constraints.pretrained && mode !== 'pretrained') { excluded.push({ ...result, reason: `use mode is ${mode}, not pretrained` }); continue; }
-    if (constraints.model && !['model', 'collection'].includes(entry.kind)) { excluded.push({ ...result, reason: `${entry.kind} is not a model or collection` }); continue; }
-    if (constraints.permissiveWeights && ['unknown', 'not-provided', 'not-applicable'].includes(entry.license?.weights)) { excluded.push({ ...result, reason: `weights terms are ${entry.license?.weights}` }); continue; }
+    if (constraints.offline && entry.deployment?.offline !== true) { excluded.push({ ...result, reason: 'offline operation is not documented', reasonKey: 'ui.reasonOffline' }); continue; }
+    if (constraints.pretrained && mode !== 'pretrained') { excluded.push({ ...result, reason: `use mode is ${mode}, not pretrained`, reasonKey: 'ui.reasonNotPretrained', reasonParams: { mode } }); continue; }
+    if (constraints.model && !['model', 'collection'].includes(entry.kind)) { excluded.push({ ...result, reason: `${entry.kind} is not a model or collection`, reasonKey: 'ui.reasonNotModel', reasonParams: { kind: entry.kind } }); continue; }
+    if (constraints.permissiveWeights && ['unknown', 'not-provided', 'not-applicable'].includes(entry.license?.weights)) { excluded.push({ ...result, reason: `weights terms are ${entry.license?.weights}`, reasonKey: 'ui.reasonWeights', reasonParams: { terms: entry.license?.weights } }); continue; }
     kept.push(result);
   }
   return { kept, excluded };

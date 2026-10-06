@@ -15,6 +15,9 @@ try:
         page.goto('http://127.0.0.1:4173');page.wait_for_selector('tbody tr')
         total_rows=page.locator('tbody tr').count()
         assert total_rows>0 and page.locator('#count').inner_text().split(' ')[0].isdigit()
+        assert page.evaluate("getComputedStyle(document.querySelector('aside')).position")=='sticky'
+        page.locator('th .sort').first.click()
+        assert page.locator('th[aria-sort="ascending"], th[aria-sort="descending"]').count()>=1
         page.screenshot(path=str(root/'explorer-desktop.png'))
         page.locator('[name=domain]').select_option('finance')
         finance_rows=page.locator('tbody tr').count()

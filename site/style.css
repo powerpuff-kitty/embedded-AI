@@ -234,3 +234,26 @@ footer { margin-top: var(--space-7); padding: var(--space-7) var(--page-x); font
   h1 { letter-spacing: -2px; }
   dialog { padding: var(--space-4); }
 }
+
+@media (min-width: 901px) {
+  aside { position: sticky; top: var(--space-4); align-self: start; max-height: calc(100vh - var(--space-5)); overflow-y: auto; }
+}
+
+.sort { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.sort:hover { text-decoration: underline; }
+th[aria-sort="ascending"] .sort::after { content: " ↑"; }
+th[aria-sort="descending"] .sort::after { content: " ↓"; }
+
+.sk { padding: var(--space-2) 0; }
+.sk-row { height: 44px; margin: var(--space-2) 0; border-radius: var(--radius); background: linear-gradient(90deg, var(--line), var(--surface), var(--line)); background-size: 200% 100%; animation: sk 1.2s ease-in-out infinite; }
+@keyframes sk { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .sk-row { animation: none; } }
+
+@media print {
+  :root { --paper: #fff; --surface: #fff; --ink: #000; --muted: #333; --line: #bbb; }
+  .topline, .need, aside, .result-head button, #candidates-section, footer, .skip { display: none !important; }
+  .layout { display: block; border: 0; padding: 0; }
+  a { text-decoration: none; }
+  table { font-size: 11px; }
+  tr { break-inside: avoid; }
+}
