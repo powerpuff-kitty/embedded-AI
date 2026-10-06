@@ -49,7 +49,8 @@ export async function initI18n({ root = document, fetchImpl = globalThis.fetch }
 }
 
 export function t(key, params = {}) {
-  const template = messages[key] ?? fallback[key] ?? key;
+  const lookup = (source) => key.split('.').reduce((acc, part) => (acc && typeof acc === 'object' ? acc[part] : undefined), source);
+  const template = lookup(messages) ?? lookup(fallback) ?? key;
   return String(template).replace(/\{(\w+)\}/g, (match, name) => (name in params ? params[name] : match));
 }
 
