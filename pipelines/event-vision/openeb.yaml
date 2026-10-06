@@ -1,0 +1,23 @@
+id: openeb
+name: OpenEB (Prophesee Metavision)
+domain: event-vision
+tasks: [event-camera-processing, event-based-vision]
+class: event-camera-sdk
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Open-source SDK for building applications on event-based (neuromorphic) camera hardware."
+links: {repository: 'https://github.com/prophesee-ai/openeb'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, edge], notes: 'SDK for event sensors; effectiveness depends on event-camera hardware.'}
+runtimes: [native-cpp, python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/SDK for event streams; ML models are separate.', needs_data: 'An event camera and a processing pipeline.', update_strategy: 'Match SDK to sensor and firmware; revalidate per device.'}
+data: {inputs: [event-stream], outputs: [events, frames, features], languages: []}
+evaluation: ['Latency and event-rate handling on the target sensor.']
+limitations: ['License not stated by the repository; requires compatible event hardware.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/prophesee-ai/openeb', notes: 'OpenEB event-camera SDK.'}]
+reviewed: '2026-10-06'
+tags: [event-vision, neuromorphic, sdk, sensors]

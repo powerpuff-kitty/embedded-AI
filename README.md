@@ -19,7 +19,7 @@ A machine-readable catalogue of AI/ML models for local and resource-constrained 
 - Generate the complete human-facing catalogue and JSON exports from YAML.
 
 ## Domains
-30 domains: Audio · Video · Vision · Language · Geospatial · Weather · Time series · Engineering/CAD · Robotics · Control · Science · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark.
+36 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Finance · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety.
 
 ## Structure
 ```text
@@ -74,7 +74,7 @@ This is a growing curated catalogue, not an exhaustive list or a guarantee that 
 
 ## Full catalogue
 
-**304 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**323 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -86,7 +86,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [control](#catalogue-control) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [event-vision](#catalogue-event-vision) · [finance](#catalogue-finance) · [gaming](#catalogue-gaming) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [mapping](#catalogue-mapping) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [reasoning](#catalogue-reasoning) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-administrative"></a>
 
@@ -203,6 +203,14 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [TabPFN model family](catalog/business/tabular/tabpfn.yaml) · [upstream](<https://github.com/PriorLabs/TabPFN>) | collection / pretrained | tabular-classification, tabular-regression | — | — | pytorch, tabpfn | desktop, server | Apache-2.0 / version-dependent-restricted | unknown |
 | [XGBoost](pipelines/business/tabular/xgboost.yaml) · [upstream](<https://github.com/dmlc/xgboost>) | toolkit / requires-training | tabular-classification, tabular-regression, ranking | — | — | xgboost-native, python | desktop, server | Apache-2.0 / not-provided | unknown |
 
+<a id="catalogue-climate"></a>
+
+### Climate
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [ClimateLearn](pipelines/climate/climate-learn.yaml) · [upstream](<https://github.com/aditya-grover/climate-learn>) | toolkit / requires-training | climate-forecasting, downscaling, climate-model-evaluation | — | — | pytorch | server, desktop | MIT / not-provided | unknown |
+
 <a id="catalogue-control"></a>
 
 ### Control
@@ -219,6 +227,14 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [CasADi](primitives/control/casadi.yaml) · [upstream](<https://github.com/casadi/casadi>) | primitive / companion | nonlinear-optimization, model-predictive-control, automatic-differentiation | — | — | python, native-cpp, c-source | desktop, server, edge | LGPL-3.0 / not-applicable | unknown |
 | [OSQP](primitives/control/osqp.yaml) · [upstream](<https://github.com/osqp/osqp>) | primitive / companion | quadratic-programming, convex-optimization | — | — | native-c, c-source | desktop, server, edge | Apache-2.0 / not-applicable | unknown |
 | [OpenDoge locomotion policy](catalog/control/locomotion/opendoge.yaml) · [upstream](<https://github.com/OpenDogeRobotics/OpenDoge_origin>) | model / unknown | quadruped-locomotion | — | — | — | edge, robot | unknown / unknown | unknown |
+
+<a id="catalogue-education"></a>
+
+### Education
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [pyKT](pipelines/education/pykt.yaml) · [upstream](<https://github.com/pykt-team/pykt-toolkit>) | toolkit / requires-training | knowledge-tracing, student-modelling | — | — | pytorch | server, desktop | MIT / not-provided | unknown |
 
 <a id="catalogue-energy"></a>
 
@@ -238,6 +254,17 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
 | [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+
+<a id="catalogue-event-vision"></a>
+
+### Event vision
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [RVT (Recurrent Vision Transformer)](catalog/event-vision/rvt.yaml) · [upstream](<https://github.com/uzh-rpg/RVT>) | collection / pretrained | event-based-object-detection, low-latency-perception | — | — | pytorch, pytorch-checkpoint | desktop, edge | MIT / unknown | unknown |
+| [OpenEB (Prophesee Metavision)](pipelines/event-vision/openeb.yaml) · [upstream](<https://github.com/prophesee-ai/openeb>) | toolkit / companion | event-camera-processing, event-based-vision | — | — | native-cpp, python | desktop, edge | unknown / not-applicable | unknown |
+| [Tonic](pipelines/event-vision/tonic.yaml) · [upstream](<https://github.com/neuromorphs/tonic>) | toolkit / companion | event-datasets, event-transforms, event-based-vision | — | — | python | desktop | GPL-3.0 / not-applicable | unknown |
+| [E2VID (event-to-video)](pipelines/event-vision/rpg-e2vid.yaml) · [upstream](<https://github.com/uzh-rpg/rpg_e2vid>) | pipeline / pretrained | event-to-video, image-reconstruction, low-latency-perception | — | — | pytorch, pytorch-checkpoint | desktop, edge | GPL-3.0 / unknown | unknown |
 
 <a id="catalogue-finance"></a>
 
@@ -365,6 +392,25 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [nPrintML](pipelines/networking/nprintml.yaml) · [upstream](<https://github.com/nprint/nprintml>) | toolkit / requires-training | network-traffic-classification, packet-analysis, traffic-anomaly-detection | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
+
+<a id="catalogue-neuromorphic"></a>
+
+### Neuromorphic
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Intel Lava](pipelines/neuromorphic/intel-lava.yaml) · [upstream](<https://github.com/lava-nc/lava>) | toolkit / companion | neuromorphic-inference, snn-deployment, on-chip-learning | — | — | python | desktop, edge | unknown / not-applicable | unknown |
+| [Lava-DL](pipelines/neuromorphic/lava-dl.yaml) · [upstream](<https://github.com/lava-nc/lava-dl>) | toolkit / requires-training | neuromorphic-inference, snn-training, snn-deployment | — | — | pytorch | desktop, edge | BSD-3-Clause / not-provided | unknown |
+| [NIR (Neuromorphic Intermediate Representation)](pipelines/neuromorphic/nir.yaml) · [upstream](<https://github.com/neuromorphs/NIR>) | toolkit / companion | neuromorphic-inference, model-exchange | — | — | python, nir | desktop, edge | BSD-3-Clause / not-applicable | unknown |
+| [BindsNET](pipelines/neuromorphic/bindsnet.yaml) · [upstream](<https://github.com/BindsNET/bindsnet>) | toolkit / requires-training | spiking-neural-networks, snn-training, reinforcement-learning | — | — | pytorch | desktop, server | AGPL-3.0 / not-provided | unknown |
+| [Brian2](pipelines/neuromorphic/brian2.yaml) · [upstream](<https://github.com/brian-team/brian2>) | toolkit / companion | spiking-neural-networks, computational-neuroscience, snn-simulation | — | — | python | desktop, server | unknown / not-provided | unknown |
+| [Nengo](pipelines/neuromorphic/nengo.yaml) · [upstream](<https://github.com/nengo/nengo>) | toolkit / companion | spiking-neural-networks, brain-modelling, snn-simulation | — | — | python | desktop, server | unknown / not-provided | unknown |
+| [Norse](pipelines/neuromorphic/norse.yaml) · [upstream](<https://github.com/norse/norse>) | toolkit / requires-training | spiking-neural-networks, snn-training | — | — | pytorch | desktop, server | LGPL-3.0 / not-provided | unknown |
+| [PyNN](pipelines/neuromorphic/pynn.yaml) · [upstream](<https://github.com/NeuralEnsemble/PyNN>) | toolkit / companion | spiking-neural-networks, snn-simulation, simulator-abstraction | — | — | python | desktop, server, edge | unknown / not-provided | unknown |
+| [Rockpool](pipelines/neuromorphic/rockpool.yaml) · [upstream](<https://github.com/synsense/rockpool>) | toolkit / requires-training | spiking-neural-networks, snn-training, neuromorphic-deployment | — | — | pytorch, jax | desktop, server, edge | AGPL-3.0 / not-provided | unknown |
+| [SpikingJelly](pipelines/neuromorphic/spikingjelly.yaml) · [upstream](<https://github.com/fangwei123456/spikingjelly>) | toolkit / requires-training | spiking-neural-networks, neuromorphic-inference, snn-training | — | — | pytorch | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [sinabs](pipelines/neuromorphic/sinabs.yaml) · [upstream](<https://github.com/synsense/sinabs>) | toolkit / requires-training | spiking-neural-networks, snn-training, neuromorphic-inference | — | — | pytorch | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [snnTorch](pipelines/neuromorphic/snntorch.yaml) · [upstream](<https://github.com/jeshraghian/snntorch>) | toolkit / requires-training | spiking-neural-networks, snn-training, on-device-learning | — | — | pytorch | desktop, server, edge | MIT / not-provided | unknown |
 
 <a id="catalogue-reasoning"></a>
 
@@ -510,6 +556,14 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [NeuralForecast](pipelines/time-series/neuralforecast.yaml) · [upstream](<https://github.com/Nixtla/neuralforecast>) | toolkit / requires-training | neural-forecasting, forecast-model-evaluation | — | — | python, pytorch | desktop, server | Apache-2.0 / configuration-dependent | unknown |
 | [StatsForecast](pipelines/time-series/statsforecast.yaml) · [upstream](<https://github.com/Nixtla/statsforecast>) | toolkit / requires-training | statistical-forecasting, baseline-evaluation | — | — | python | desktop, server | Apache-2.0 / not-provided | unknown |
 | [sktime](pipelines/time-series/sktime.yaml) · [upstream](<https://github.com/sktime/sktime>) | toolkit / requires-training | time-series-classification, forecasting, time-series-transformation | — | — | python, scikit-learn, numpy, pickle | desktop, server, edge | BSD-3-Clause / not-provided | unknown |
+
+<a id="catalogue-trust-and-safety"></a>
+
+### Trust and safety
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Detoxify](catalog/trust-and-safety/detoxify.yaml) · [upstream](<https://github.com/unitaryai/detoxify>) | collection / pretrained | toxic-content-detection, content-moderation | — | — | pytorch, transformers, pytorch-checkpoint | server, desktop | Apache-2.0 / unknown | unknown |
 
 <a id="catalogue-video"></a>
 

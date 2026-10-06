@@ -1,0 +1,23 @@
+id: bindsnet
+name: BindsNET
+domain: neuromorphic
+tasks: [spiking-neural-networks, snn-training, reinforcement-learning]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python package for simulating spiking neural networks with a focus on machine-learning applications."
+links: {repository: 'https://github.com/BindsNET/bindsnet', paper: 'https://arxiv.org/abs/1707.01318'}
+model: {parameters: null, file_size_mb: null}
+license: {code: AGPL-3.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Simulation framework; supports GPU acceleration.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Simulates and trains SNNs, including reinforcement-learning setups.', needs_data: 'Task data or an environment.', update_strategy: 'Pin version; revalidate simulations after changes.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Task accuracy and simulation cost per timestep.']
+limitations: ['AGPL-3.0 copyleft; research-focused.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/BindsNET/bindsnet', notes: 'BindsNET SNN simulation.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, simulation]

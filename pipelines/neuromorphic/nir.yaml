@@ -1,0 +1,23 @@
+id: nir
+name: NIR (Neuromorphic Intermediate Representation)
+domain: neuromorphic
+tasks: [neuromorphic-inference, model-exchange]
+class: neuromorphic-ir
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Intermediate representation that moves trained spiking models between neuromorphic frameworks and hardware."
+links: {repository: 'https://github.com/neuromorphs/NIR', paper: 'https://arxiv.org/abs/2311.14641'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Format/IR; execution depends on source and target frameworks.'}
+runtimes: [python]
+formats: [nir]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Interchange format plus converters; not a trainer.', needs_data: 'A source model in a supported framework.', update_strategy: 'Pin NIR version; validate conversion fidelity per pair of frameworks.'}
+data: {inputs: [source-model], outputs: [nir-graph], languages: []}
+evaluation: ['Numerical fidelity of conversion between frameworks.']
+limitations: ['Operator coverage varies between source and target frameworks.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/neuromorphs/NIR', notes: 'NIR reference implementation.'}, {type: paper, url: 'https://arxiv.org/abs/2311.14641', notes: 'Neuromorphic Intermediate Representation.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, interchange-format]

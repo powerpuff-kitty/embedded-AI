@@ -1,0 +1,23 @@
+id: sinabs
+name: sinabs
+domain: neuromorphic
+tasks: [spiking-neural-networks, snn-training, neuromorphic-inference]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch-based spiking neural network library focused on fast training and neuromorphic inference."
+links: {repository: 'https://github.com/synsense/sinabs'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Supports export to SynSense neuromorphic hardware.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains SNNs and converts them for neuromorphic inference.', needs_data: 'Task data and a layer/timestep configuration.', update_strategy: 'Pin version and target hardware; revalidate after conversion.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Accuracy and estimated on-chip cost after conversion.']
+limitations: ['Hardware benefit depends on SynSense devices.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/synsense/sinabs', notes: 'sinabs library.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, pytorch]

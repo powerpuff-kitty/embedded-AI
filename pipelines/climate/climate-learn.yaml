@@ -1,0 +1,23 @@
+id: climate-learn
+name: ClimateLearn
+domain: climate
+tasks: [climate-forecasting, downscaling, climate-model-evaluation]
+class: climate-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library that standardises data loading and benchmarking for machine-learning climate forecasting."
+links: {repository: 'https://github.com/aditya-grover/climate-learn', paper: 'https://arxiv.org/abs/2307.01909'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Training/benchmarking; large climate datasets dominate cost.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains and benchmarks forecasting/downscaling models.', needs_data: 'Reanalysis/forecast datasets with standard splits.', update_strategy: 'Pin dataset versions; revalidate against physical baselines.'}
+data: {inputs: [climate-fields], outputs: [forecast-fields], languages: []}
+evaluation: ['Skill versus numerical and persistence baselines; physical consistency.']
+limitations: ['Research toolkit; not an operational forecasting system.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/aditya-grover/climate-learn', notes: 'ClimateLearn toolkit.'}]
+reviewed: '2026-10-06'
+tags: [climate, forecasting, pytorch]

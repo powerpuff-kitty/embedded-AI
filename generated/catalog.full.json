@@ -5680,6 +5680,87 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "climate-learn",
+      "name": "ClimateLearn",
+      "domain": "climate",
+      "tasks": [
+        "climate-forecasting",
+        "downscaling",
+        "climate-model-evaluation"
+      ],
+      "class": "climate-ml-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library that standardises data loading and benchmarking for machine-learning climate forecasting.",
+      "links": {
+        "repository": "https://github.com/aditya-grover/climate-learn",
+        "paper": "https://arxiv.org/abs/2307.01909"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/benchmarking; large climate datasets dominate cost."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains and benchmarks forecasting/downscaling models.",
+        "needs_data": "Reanalysis/forecast datasets with standard splits.",
+        "update_strategy": "Pin dataset versions; revalidate against physical baselines."
+      },
+      "data": {
+        "inputs": [
+          "climate-fields"
+        ],
+        "outputs": [
+          "forecast-fields"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Skill versus numerical and persistence baselines; physical consistency."
+      ],
+      "limitations": [
+        "Research toolkit; not an operational forecasting system."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/aditya-grover/climate-learn",
+          "notes": "ClimateLearn toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "climate",
+        "forecasting",
+        "pytorch"
+      ],
+      "path": "pipelines/climate/climate-learn.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "mhflocke",
       "name": "MH-FLOCKE",
       "domain": "control",
@@ -6368,6 +6449,86 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "pykt",
+      "name": "pyKT",
+      "domain": "education",
+      "tasks": [
+        "knowledge-tracing",
+        "student-modelling"
+      ],
+      "class": "education-ml-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Benchmark library for deep-learning knowledge-tracing models that predict student performance.",
+      "links": {
+        "repository": "https://github.com/pykt-team/pykt-toolkit",
+        "paper": "https://arxiv.org/abs/2306.03344"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/analysis toolkit for learning data."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains and evaluates knowledge-tracing models on interaction logs.",
+        "needs_data": "Anonymised student-interaction sequences with split protocols.",
+        "update_strategy": "Revalidate on your population; watch for privacy and bias."
+      },
+      "data": {
+        "inputs": [
+          "student-interaction-sequence"
+        ],
+        "outputs": [
+          "performance-prediction"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "AUC/accuracy under the documented leakage-free splits."
+      ],
+      "limitations": [
+        "Educational data is sensitive; predictions can entrench bias."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pykt-team/pykt-toolkit",
+          "notes": "pyKT knowledge-tracing benchmark."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "education",
+        "knowledge-tracing",
+        "pytorch"
+      ],
+      "path": "pipelines/education/pykt.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "citylearn",
       "name": "CityLearn",
       "domain": "energy",
@@ -6771,6 +6932,346 @@
         "3d"
       ],
       "path": "catalog/engineering/cad/deepcad.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "rvt",
+      "name": "RVT (Recurrent Vision Transformer)",
+      "domain": "event-vision",
+      "tasks": [
+        "event-based-object-detection",
+        "low-latency-perception"
+      ],
+      "class": "event-detector",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Recurrent vision transformer for object detection with event cameras.",
+      "links": {
+        "repository": "https://github.com/uzh-rpg/RVT",
+        "paper": "https://arxiv.org/abs/2303.05011"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "GPU training; inference can target edge with optimization."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released checkpoints; fine-tuning on event data is possible.",
+        "needs_data": "Event streams with detection labels.",
+        "update_strategy": "Verify weight terms; revalidate mAP and latency per sensor."
+      },
+      "data": {
+        "inputs": [
+          "event-stream"
+        ],
+        "outputs": [
+          "detection-boxes",
+          "classes"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Detection mAP and latency on event-camera data."
+      ],
+      "limitations": [
+        "Weight terms not stated; trained largely on specific event-camera datasets."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/uzh-rpg/RVT",
+          "notes": "RVT event-camera detector."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2303.05011",
+          "notes": "Recurrent Vision Transformers for event-camera detection."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "event-vision",
+        "detection",
+        "transformer",
+        "neuromorphic"
+      ],
+      "path": "catalog/event-vision/rvt.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "openeb",
+      "name": "OpenEB (Prophesee Metavision)",
+      "domain": "event-vision",
+      "tasks": [
+        "event-camera-processing",
+        "event-based-vision"
+      ],
+      "class": "event-camera-sdk",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Open-source SDK for building applications on event-based (neuromorphic) camera hardware.",
+      "links": {
+        "repository": "https://github.com/prophesee-ai/openeb"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "SDK for event sensors; effectiveness depends on event-camera hardware."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime/SDK for event streams; ML models are separate.",
+        "needs_data": "An event camera and a processing pipeline.",
+        "update_strategy": "Match SDK to sensor and firmware; revalidate per device."
+      },
+      "data": {
+        "inputs": [
+          "event-stream"
+        ],
+        "outputs": [
+          "events",
+          "frames",
+          "features"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency and event-rate handling on the target sensor."
+      ],
+      "limitations": [
+        "License not stated by the repository; requires compatible event hardware."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/prophesee-ai/openeb",
+          "notes": "OpenEB event-camera SDK."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "event-vision",
+        "neuromorphic",
+        "sdk",
+        "sensors"
+      ],
+      "path": "pipelines/event-vision/openeb.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "tonic",
+      "name": "Tonic",
+      "domain": "event-vision",
+      "tasks": [
+        "event-datasets",
+        "event-transforms",
+        "event-based-vision"
+      ],
+      "class": "event-data-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library of event-based datasets, transforms and loaders for neuromorphic vision research.",
+      "links": {
+        "repository": "https://github.com/neuromorphs/tonic"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Data tooling; pairs with a training framework."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Loads/transforms event datasets for training.",
+        "needs_data": "Event datasets in supported formats.",
+        "update_strategy": "Pin version and dataset revisions; cache prepared data."
+      },
+      "data": {
+        "inputs": [
+          "event-dataset"
+        ],
+        "outputs": [
+          "batched-events",
+          "tensors"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Transform correctness and data-loading throughput."
+      ],
+      "limitations": [
+        "GPL-3.0 copyleft; a data library, not a model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/neuromorphs/tonic",
+          "notes": "Tonic event-data library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "event-vision",
+        "datasets",
+        "neuromorphic"
+      ],
+      "path": "pipelines/event-vision/tonic.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "rpg-e2vid",
+      "name": "E2VID (event-to-video)",
+      "domain": "event-vision",
+      "tasks": [
+        "event-to-video",
+        "image-reconstruction",
+        "low-latency-perception"
+      ],
+      "class": "event-to-video-model",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Recurrent network that reconstructs intensity video from high-speed event-camera streams.",
+      "links": {
+        "repository": "https://github.com/uzh-rpg/rpg_e2vid",
+        "paper": "https://arxiv.org/abs/1906.08281"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "GPU recommended; edge use needs optimization."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released models; retraining needs paired event/intensity data.",
+        "needs_data": "Event streams; paired frames for evaluation.",
+        "update_strategy": "Verify weight terms; revalidate reconstruction quality and latency."
+      },
+      "data": {
+        "inputs": [
+          "event-stream"
+        ],
+        "outputs": [
+          "intensity-video"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Reconstruction error and latency at the event rate."
+      ],
+      "limitations": [
+        "GPL-3.0 copyleft; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/uzh-rpg/rpg_e2vid",
+          "notes": "E2VID reconstruction."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/1906.08281",
+          "notes": "High Speed and High Dynamic Range Video with an Event Camera."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "event-vision",
+        "reconstruction",
+        "neuromorphic"
+      ],
+      "path": "pipelines/event-vision/rpg-e2vid.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -12155,6 +12656,997 @@
         "ids"
       ],
       "path": "pipelines/networking/nprintml.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "intel-lava",
+      "name": "Intel Lava",
+      "domain": "neuromorphic",
+      "tasks": [
+        "neuromorphic-inference",
+        "snn-deployment",
+        "on-chip-learning"
+      ],
+      "class": "neuromorphic-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Intel's open-source software framework for programming neuromorphic hardware.",
+      "links": {
+        "repository": "https://github.com/lava-nc/lava"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Targets Loihi-class neuromorphic processors and CPU simulation."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime/compiler for neuromorphic programs; models trained elsewhere.",
+        "needs_data": "A process graph and target hardware or simulator.",
+        "update_strategy": "Match framework and hardware versions; revalidate per device."
+      },
+      "data": {
+        "inputs": [
+          "process-graph",
+          "spikes"
+        ],
+        "outputs": [
+          "spikes",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency, energy and accuracy on the target neuromorphic processor."
+      ],
+      "limitations": [
+        "License not stated by the repository; real benefit requires neuromorphic hardware."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lava-nc/lava",
+          "notes": "Intel Lava framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "runtime",
+        "intel-loihi"
+      ],
+      "path": "pipelines/neuromorphic/intel-lava.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "lava-dl",
+      "name": "Lava-DL",
+      "domain": "neuromorphic",
+      "tasks": [
+        "neuromorphic-inference",
+        "snn-training",
+        "snn-deployment"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Deep-learning library for Intel Lava that trains SNNs and exports them to neuromorphic hardware.",
+      "links": {
+        "repository": "https://github.com/lava-nc/lava-dl"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Training on GPU; deployment targets Loihi via Lava."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains SNNs in PyTorch and maps them to Lava processes.",
+        "needs_data": "Task data and a target layer configuration.",
+        "update_strategy": "Pin library and hardware versions; revalidate after mapping changes."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy and on-chip cost after training-to-hardware mapping."
+      ],
+      "limitations": [
+        "Tied to the Lava/Loihi ecosystem."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lava-nc/lava-dl",
+          "notes": "Lava-DL library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "lava",
+        "pytorch"
+      ],
+      "path": "pipelines/neuromorphic/lava-dl.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "nir",
+      "name": "NIR (Neuromorphic Intermediate Representation)",
+      "domain": "neuromorphic",
+      "tasks": [
+        "neuromorphic-inference",
+        "model-exchange"
+      ],
+      "class": "neuromorphic-ir",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Intermediate representation that moves trained spiking models between neuromorphic frameworks and hardware.",
+      "links": {
+        "repository": "https://github.com/neuromorphs/NIR",
+        "paper": "https://arxiv.org/abs/2311.14641"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Format/IR; execution depends on source and target frameworks."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "nir"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Interchange format plus converters; not a trainer.",
+        "needs_data": "A source model in a supported framework.",
+        "update_strategy": "Pin NIR version; validate conversion fidelity per pair of frameworks."
+      },
+      "data": {
+        "inputs": [
+          "source-model"
+        ],
+        "outputs": [
+          "nir-graph"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Numerical fidelity of conversion between frameworks."
+      ],
+      "limitations": [
+        "Operator coverage varies between source and target frameworks."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/neuromorphs/NIR",
+          "notes": "NIR reference implementation."
+        },
+        {
+          "type": "paper",
+          "url": "https://arxiv.org/abs/2311.14641",
+          "notes": "Neuromorphic Intermediate Representation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "interchange-format"
+      ],
+      "path": "pipelines/neuromorphic/nir.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "bindsnet",
+      "name": "BindsNET",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-training",
+        "reinforcement-learning"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python package for simulating spiking neural networks with a focus on machine-learning applications.",
+      "links": {
+        "repository": "https://github.com/BindsNET/bindsnet",
+        "paper": "https://arxiv.org/abs/1707.01318"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "AGPL-3.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Simulation framework; supports GPU acceleration."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Simulates and trains SNNs, including reinforcement-learning setups.",
+        "needs_data": "Task data or an environment.",
+        "update_strategy": "Pin version; revalidate simulations after changes."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task accuracy and simulation cost per timestep."
+      ],
+      "limitations": [
+        "AGPL-3.0 copyleft; research-focused."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/BindsNET/bindsnet",
+          "notes": "BindsNET SNN simulation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "simulation"
+      ],
+      "path": "pipelines/neuromorphic/bindsnet.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "brian2",
+      "name": "Brian2",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "computational-neuroscience",
+        "snn-simulation"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Simulator for spiking neural networks and biological neuron models with an equation-based interface.",
+      "links": {
+        "repository": "https://github.com/brian-team/brian2",
+        "homepage": "https://brian2.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU simulator; not a deployment runtime."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Simulates neuron/synapse models; supports plasticity rules.",
+        "needs_data": "Model equations and input stimuli.",
+        "update_strategy": "Pin version; re-run validation scripts after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "stimuli",
+          "neuron-model"
+        ],
+        "outputs": [
+          "spike-trains",
+          "state-variables"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Numerical agreement with reference models and simulation cost."
+      ],
+      "limitations": [
+        "License not stated by the repository; a simulator, not an ML deployment stack."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/brian-team/brian2",
+          "notes": "Brian2 simulator."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "neuroscience",
+        "simulation"
+      ],
+      "path": "pipelines/neuromorphic/brian2.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "nengo",
+      "name": "Nengo",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "brain-modelling",
+        "snn-simulation"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python library for building and simulating large-scale spiking neural models.",
+      "links": {
+        "repository": "https://github.com/nengo/nengo",
+        "homepage": "https://www.nengo.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Simulation and modelling; backends can target neuromorphic hardware."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds and simulates neural models; can use learned decoders.",
+        "needs_data": "A model specification and inputs.",
+        "update_strategy": "Pin version and backend; revalidate model behaviour."
+      },
+      "data": {
+        "inputs": [
+          "stimuli"
+        ],
+        "outputs": [
+          "spike-trains",
+          "decoded-signals"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Model behaviour and simulation cost."
+      ],
+      "limitations": [
+        "License not stated by the repository; primarily modelling."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/nengo/nengo",
+          "notes": "Nengo modelling library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "modelling"
+      ],
+      "path": "pipelines/neuromorphic/nengo.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "norse",
+      "name": "Norse",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-training"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Deep learning with spiking neural networks in PyTorch, with bio-inspired neuron models.",
+      "links": {
+        "repository": "https://github.com/norse/norse"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "LGPL-3.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Research framework; inference SNNs can target low-power hardware."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains SNNs with PyTorch autograd and surrogate gradients.",
+        "needs_data": "Task data and a timestep/neuron configuration.",
+        "update_strategy": "Pin version; revalidate behaviour after neuron-model changes."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy and synaptic-operation cost on the target task."
+      ],
+      "limitations": [
+        "LGPL-3.0 copyleft; research-oriented."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/norse/norse",
+          "notes": "Norse SNN framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "pytorch"
+      ],
+      "path": "pipelines/neuromorphic/norse.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "pynn",
+      "name": "PyNN",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-simulation",
+        "simulator-abstraction"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Simulator-independent API for specifying spiking neural network models across many backends.",
+      "links": {
+        "repository": "https://github.com/NeuralEnsemble/PyNN"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Abstraction over simulators and neuromorphic backends like SpiNNaker."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Specifies models in a backend-independent way; training happens in the backend.",
+        "needs_data": "A network specification and a chosen simulator.",
+        "update_strategy": "Pin version and backend; revalidate across backends."
+      },
+      "data": {
+        "inputs": [
+          "network-specification"
+        ],
+        "outputs": [
+          "spike-trains"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Consistency of results across backends."
+      ],
+      "limitations": [
+        "License not stated by the repository; depends on external simulators."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NeuralEnsemble/PyNN",
+          "notes": "PyNN simulator-independent API."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "spinnaker",
+        "simulation"
+      ],
+      "path": "pipelines/neuromorphic/pynn.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "rockpool",
+      "name": "Rockpool",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-training",
+        "neuromorphic-deployment"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Spiking neural network library with PyTorch and JAX pipelines and deployment to neuromorphic hardware.",
+      "links": {
+        "repository": "https://github.com/synsense/rockpool"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "AGPL-3.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Supports training and deployment to SynSense devices."
+      },
+      "runtimes": [
+        "pytorch",
+        "jax"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains SNNs with PyTorch/JAX and deploys to hardware.",
+        "needs_data": "Task data and a target-device configuration.",
+        "update_strategy": "Pin version and device; revalidate after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy and device cost per inference."
+      ],
+      "limitations": [
+        "AGPL-3.0 copyleft; hardware benefit depends on SynSense devices."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/synsense/rockpool",
+          "notes": "Rockpool library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "pytorch",
+        "jax"
+      ],
+      "path": "pipelines/neuromorphic/rockpool.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "spikingjelly",
+      "name": "SpikingJelly",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "neuromorphic-inference",
+        "snn-training"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch-based deep-learning framework for spiking neural networks with a range of neuron and surrogate-gradient implementations.",
+      "links": {
+        "repository": "https://github.com/fangwei123456/spikingjelly"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Training on GPU; trained SNNs are candidates for neuromorphic or low-power edge inference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains SNNs with surrogate gradients in PyTorch.",
+        "needs_data": "Frame- or event-based datasets for the target task.",
+        "update_strategy": "Pin version; revalidate accuracy and timestep budgets after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy versus timestep/synaptic-operation budget on the target hardware."
+      ],
+      "limitations": [
+        "A framework; deployment to specific neuromorphic chips is not automatic."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/fangwei123456/spikingjelly",
+          "notes": "SpikingJelly framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "pytorch"
+      ],
+      "path": "pipelines/neuromorphic/spikingjelly.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "sinabs",
+      "name": "sinabs",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-training",
+        "neuromorphic-inference"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch-based spiking neural network library focused on fast training and neuromorphic inference.",
+      "links": {
+        "repository": "https://github.com/synsense/sinabs"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Supports export to SynSense neuromorphic hardware."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains SNNs and converts them for neuromorphic inference.",
+        "needs_data": "Task data and a layer/timestep configuration.",
+        "update_strategy": "Pin version and target hardware; revalidate after conversion."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy and estimated on-chip cost after conversion."
+      ],
+      "limitations": [
+        "Hardware benefit depends on SynSense devices."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/synsense/sinabs",
+          "notes": "sinabs library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "pytorch"
+      ],
+      "path": "pipelines/neuromorphic/sinabs.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "snntorch",
+      "name": "snnTorch",
+      "domain": "neuromorphic",
+      "tasks": [
+        "spiking-neural-networks",
+        "snn-training",
+        "on-device-learning"
+      ],
+      "class": "snn-framework",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python library for deep and online learning with spiking neural networks, built on PyTorch.",
+      "links": {
+        "repository": "https://github.com/jeshraghian/snntorch"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Training on desktop/GPU; SNNs suit low-power inference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains and fine-tunes SNNs; supports online learning recipes.",
+        "needs_data": "Task data (frames or events) and a timestep budget.",
+        "update_strategy": "Pin version; revalidate accuracy and latency after changes."
+      },
+      "data": {
+        "inputs": [
+          "frames-or-events"
+        ],
+        "outputs": [
+          "spike-trains",
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy and latency at the chosen timestep count."
+      ],
+      "limitations": [
+        "A library; hardware-specific mapping is the deployer’s job."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jeshraghian/snntorch",
+          "notes": "snnTorch library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "snn",
+        "pytorch"
+      ],
+      "path": "pipelines/neuromorphic/snntorch.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -19032,6 +20524,90 @@
       ],
       "path": "pipelines/time-series/sktime.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "detoxify",
+      "name": "Detoxify",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "toxic-content-detection",
+        "content-moderation"
+      ],
+      "class": "toxicity-classifier-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Trained models that score comments for toxicity on the Jigsaw toxic-comment tasks.",
+      "links": {
+        "repository": "https://github.com/unitaryai/detoxify"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Transformer models sized for server inference; GPU optional."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Released classifiers; fine-tuning needs labelled moderation data.",
+        "needs_data": "Comment text; labelled data for evaluation and thresholds.",
+        "update_strategy": "Recalibrate thresholds per community; audit bias and false positives."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "toxicity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Precision/recall at the operating threshold; subgroup and bias review."
+      ],
+      "limitations": [
+        "Toxicity is context-dependent; false positives can silence legitimate speech."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/unitaryai/detoxify",
+          "notes": "Detoxify models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "moderation",
+        "transformers"
+      ],
+      "path": "catalog/trust-and-safety/detoxify.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "mmaction2",

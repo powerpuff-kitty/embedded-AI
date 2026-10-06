@@ -1,0 +1,23 @@
+id: norse
+name: Norse
+domain: neuromorphic
+tasks: [spiking-neural-networks, snn-training]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Deep learning with spiking neural networks in PyTorch, with bio-inspired neuron models."
+links: {repository: 'https://github.com/norse/norse'}
+model: {parameters: null, file_size_mb: null}
+license: {code: LGPL-3.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research framework; inference SNNs can target low-power hardware.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains SNNs with PyTorch autograd and surrogate gradients.', needs_data: 'Task data and a timestep/neuron configuration.', update_strategy: 'Pin version; revalidate behaviour after neuron-model changes.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Accuracy and synaptic-operation cost on the target task.']
+limitations: ['LGPL-3.0 copyleft; research-oriented.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/norse/norse', notes: 'Norse SNN framework.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, pytorch]

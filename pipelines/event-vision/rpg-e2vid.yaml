@@ -1,0 +1,23 @@
+id: rpg-e2vid
+name: E2VID (event-to-video)
+domain: event-vision
+tasks: [event-to-video, image-reconstruction, low-latency-perception]
+class: event-to-video-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Recurrent network that reconstructs intensity video from high-speed event-camera streams."
+links: {repository: 'https://github.com/uzh-rpg/rpg_e2vid', paper: 'https://arxiv.org/abs/1906.08281'}
+model: {parameters: null, file_size_mb: null}
+license: {code: GPL-3.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge], notes: 'GPU recommended; edge use needs optimization.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Released models; retraining needs paired event/intensity data.', needs_data: 'Event streams; paired frames for evaluation.', update_strategy: 'Verify weight terms; revalidate reconstruction quality and latency.'}
+data: {inputs: [event-stream], outputs: [intensity-video], languages: []}
+evaluation: ['Reconstruction error and latency at the event rate.']
+limitations: ['GPL-3.0 copyleft; weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/uzh-rpg/rpg_e2vid', notes: 'E2VID reconstruction.'}, {type: paper, url: 'https://arxiv.org/abs/1906.08281', notes: 'High Speed and High Dynamic Range Video with an Event Camera.'}]
+reviewed: '2026-10-06'
+tags: [event-vision, reconstruction, neuromorphic]

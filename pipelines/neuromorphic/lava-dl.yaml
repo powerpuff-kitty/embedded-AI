@@ -1,0 +1,23 @@
+id: lava-dl
+name: Lava-DL
+domain: neuromorphic
+tasks: [neuromorphic-inference, snn-training, snn-deployment]
+class: snn-framework
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Deep-learning library for Intel Lava that trains SNNs and exports them to neuromorphic hardware."
+links: {repository: 'https://github.com/lava-nc/lava-dl'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Training on GPU; deployment targets Loihi via Lava.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains SNNs in PyTorch and maps them to Lava processes.', needs_data: 'Task data and a target layer configuration.', update_strategy: 'Pin library and hardware versions; revalidate after mapping changes.'}
+data: {inputs: [frames-or-events], outputs: [spike-trains, predictions], languages: []}
+evaluation: ['Accuracy and on-chip cost after training-to-hardware mapping.']
+limitations: ['Tied to the Lava/Loihi ecosystem.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/lava-nc/lava-dl', notes: 'Lava-DL library.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, snn, lava, pytorch]
