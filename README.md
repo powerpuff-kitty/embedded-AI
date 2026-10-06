@@ -58,7 +58,7 @@ Compatibility levels are `unsupported`, `theoretical`, `reported`, `reproduced` 
 
 ## Runnable Catalogue v0.2
 
-Read the [v0.2 guide](docs/RUNNABLE-V02.md), [runnable recipes](recipes/README.md), [benchmark methodology](benchmarks/README.md) and [dependency review](docs/SECURITY-REVIEW-V02.md).
+Read the [v0.2 guide](docs/RUNNABLE-V02.md), [runnable recipes](recipes/README.md), [benchmark methodology](benchmarks/README.md), [design system](docs/DESIGN.md) and [dependency review](docs/SECURITY-REVIEW-V02.md).
 
 ```sh
 npm run reviews:check
