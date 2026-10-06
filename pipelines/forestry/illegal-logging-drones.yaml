@@ -1,0 +1,23 @@
+id: illegal-logging-drones
+name: Illegal Logging Detection with Drones
+domain: forestry
+tasks: [deforestation-detection, aerial-image-classification]
+class: forestry-model
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Computer-vision system that uses drone imagery to detect deforestation and illegal logging."
+links: {repository: 'https://github.com/Beckybams/Illegal-Logging-Detection-with-Drones'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [edge, desktop], notes: 'Drone/edge imagery processing; onboard inference needs measurement.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains classifiers/detectors on aerial forest imagery.', needs_data: 'Labelled aerial/drone imagery of logging activity.', update_strategy: 'Retrain per region; revalidate false positives.'}
+data: {inputs: [aerial-image], outputs: [logging-detections], languages: []}
+evaluation: ['Detection recall and false-alarm rate on regional patrol imagery.']
+limitations: ['License not stated; field validation and legal governance required.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Beckybams/Illegal-Logging-Detection-with-Drones', notes: 'Illegal logging detection with drones.'}]
+reviewed: '2026-10-06'
+tags: [forestry, deforestation, drones]

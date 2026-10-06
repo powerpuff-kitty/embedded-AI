@@ -1,0 +1,23 @@
+id: hydrodhm
+name: HydroDHM
+domain: hydrology
+tasks: [streamflow-prediction, rainfall-runoff-modelling]
+class: hydrological-model
+kind: model
+catalogue_batch: expansion-2026-10-06
+description: "Differentiable hydrological model for daily streamflow prediction in data-scarce basins."
+links: {repository: 'https://github.com/OuyangWenyu/HydroDHM'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/simulation; inputs are catchment forcings and attributes.'}
+runtimes: [pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a differentiable rainfall-runoff model per basin.', needs_data: 'Meteorological forcings, catchment attributes and observed discharge.', update_strategy: 'Revalidate per basin and gauge; watch for regime change.'}
+data: {inputs: [meteorological-forcings, catchment-attributes], outputs: [streamflow], languages: []}
+evaluation: ['NSE/KGE on held-out periods and ungauged basins.']
+limitations: ['Hydrological skill is basin-specific; extrapolation to ungauged basins is uncertain.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/OuyangWenyu/HydroDHM', notes: 'HydroDHM differentiable hydrology.'}]
+reviewed: '2026-10-06'
+tags: [hydrology, streamflow, pytorch]

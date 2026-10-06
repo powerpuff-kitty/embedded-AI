@@ -1,0 +1,23 @@
+id: basketball-analytics
+name: Basketball Analytics
+domain: sports
+tasks: [sports-analytics, player-tracking, event-detection]
+class: sports-analytics-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Scripts and tools for basketball statistics, tracking and event analysis."
+links: {repository: 'https://github.com/danchyy/Basketball_Analytics'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [desktop], notes: 'Analysis notebooks and scripts; not a production system.'}
+runtimes: [python, opencv]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Analysis tooling; some components use pose/detection models.', needs_data: 'Basketball video and/or play-by-play data.', update_strategy: 'Pin version; revalidate tracking/event accuracy per footage.'}
+data: {inputs: [basketball-video, event-data], outputs: [tracking, statistics], languages: []}
+evaluation: ['Tracking/event accuracy against manual annotation.']
+limitations: ['License not stated; broadcast-dependent and research-grade.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/danchyy/Basketball_Analytics', notes: 'Basketball analytics tools.'}]
+reviewed: '2026-10-06'
+tags: [sports, basketball, tracking, analytics]

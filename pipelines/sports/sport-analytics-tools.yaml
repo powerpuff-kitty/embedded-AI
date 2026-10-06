@@ -1,0 +1,23 @@
+id: sport-analytics-tools
+name: Sport Analytics Tools
+domain: sports
+tasks: [sports-analytics, data-processing]
+class: sports-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python utilities for sports data scientists covering stats, parsing and visualisation."
+links: {repository: 'https://github.com/shufinskiy/sport_analytics_tools'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'Data tooling; not a learned model.'}
+runtimes: [python]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Deterministic tools; models are built by the user.', needs_data: 'Sports datasets in supported formats.', update_strategy: 'Pin version; validate against source data conventions.'}
+data: {inputs: [sports-data], outputs: [processed-stats, features], languages: []}
+evaluation: ['Correctness against source statistics and reproducibility.']
+limitations: ['Tooling, not a predictive model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/shufinskiy/sport_analytics_tools', notes: 'Sports analytics utilities.'}]
+reviewed: '2026-10-06'
+tags: [sports, data-tools, analytics]
