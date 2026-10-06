@@ -1,0 +1,4 @@
+id: hailo-8
+name: Hailo-8
+class: npu
+notes: Edge AI accelerator; requires conversion to Hailo's toolchain. Record module (M.2/PCIe) and SDK version.

@@ -1,0 +1,4 @@
+id: nvidia-jetson
+name: NVIDIA Jetson
+class: sbc
+notes: GPU-accelerated edge SoC. Record the exact module (Nano/Xavier/Orin), RAM, JetPack version and power mode.

@@ -4,7 +4,7 @@ import { initI18n, t, LOCALE_NAMES, getLocale, loadLocale, applyStatic } from '.
 const $ = selector => document.querySelector(selector);
 const el = (tag,text,className) => { const node=document.createElement(tag); if(text!==undefined)node.textContent=String(text); if(className)node.className=className; return node; };
 const form=$('#filters'), selected=new Set();
-let entries=[],runs=[],needQuery='',sortKey=null,sortDir='asc';
+let entries=[],runs=[],needQuery='',sortKey=null,sortDir='asc',hardware=[];
 const tr=(group,value)=>{const key=`${group}.${value}`;const rendered=t(key);return rendered===key?String(value):rendered;};
 const groupText=(name,value)=>['domain','kind','usage'].includes(name)?tr(name,value):value;
 const localizeReason=item=>item.reasonKey?t(item.reasonKey,item.reasonParams||{}):item.reason;
@@ -127,13 +127,13 @@ for(const id of ['#need-offline','#need-pretrained','#need-model'])$(id).addEven
 form.addEventListener('input',render);form.addEventListener('reset',()=>setTimeout(render,0));
 function options(name,values){const select=form.elements.namedItem(name);[...select.querySelectorAll('option')].forEach(o=>{if(o.value)o.remove();});for(const value of [...new Set(values)].filter(Boolean).sort()){const o=el('option',groupText(name,value));o.value=value;select.append(o);}}
 function populate(){
-  options('domain',entries.map(e=>e.domain));options('task',entries.flatMap(e=>e.tasks));options('kind',entries.map(e=>e.kind));options('usage',entries.map(e=>e.usage?.mode||'unknown'));options('runtime',entries.flatMap(e=>[...(e.runtimes||[]),...(e.formats||[])]));options('license',entries.map(e=>e.license.weights));options('target',['luckfox-rv1106','esp32',...runs.map(r=>r.hardware.id),...entries.flatMap(e=>(e.compatibility||[]).map(c=>c.target))]);
+  options('domain',entries.map(e=>e.domain));options('task',entries.flatMap(e=>e.tasks));options('kind',entries.map(e=>e.kind));options('usage',entries.map(e=>e.usage?.mode||'unknown'));options('runtime',entries.flatMap(e=>[...(e.runtimes||[]),...(e.formats||[])]));options('license',entries.map(e=>e.license.weights));  options('target',['luckfox-rv1106','esp32',...runs.map(r=>r.hardware.id),...hardware.map(h=>h.id),...entries.flatMap(e=>(e.compatibility||[]).map(c=>c.target))]);
   const stats=$('#stats');stats.replaceChildren();
   for(const [value,label]of [[entries.length,t('ui.statsComponents')],[new Set(entries.map(e=>e.domain)).size,t('ui.statsDomains')],[entries.filter(e=>e.reviewed).length,t('ui.statsReviews')],[runs.length,t('ui.statsRuns')]]){const stat=el('div',undefined,'stat');stat.append(el('strong',value),el('span',label));stats.append(stat);}
 }
 try{
   await initI18n();
-  const response=await fetch('./data/catalog.json');if(!response.ok)throw new Error(`Catalogue HTTP ${response.status}`);const data=await response.json();entries=data.entries;runs=data.benchmarks||[];
+  const response=await fetch('./data/catalog.json');if(!response.ok)throw new Error(`Catalogue HTTP ${response.status}`);const data=await response.json();entries=data.entries;runs=data.benchmarks||[];hardware=data.hardware||[];
   const localeSelect=$('#locale');for(const code of Object.keys(LOCALE_NAMES)){const opt=el('option',LOCALE_NAMES[code]);opt.value=code;localeSelect.append(opt);}localeSelect.value=getLocale();
   localeSelect.addEventListener('change',async()=>{try{await loadLocale(localeSelect.value);localStorage.setItem('locale',localeSelect.value);}catch{}applyStatic(document);populate();updateCompare();render();});
   for(const [key,value]of new URLSearchParams(location.search)){const input=form.elements.namedItem(key);if(input){if(input.type==='checkbox')input.checked=value==='1';else input.value=value;}}

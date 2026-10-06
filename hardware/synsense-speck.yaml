@@ -1,0 +1,4 @@
+id: synsense-speck
+name: SynSense Speck
+class: neuromorphic
+notes: Low-power neuromorphic vision SoC with an integrated event sensor. Record model conversion and on-chip constraints.
