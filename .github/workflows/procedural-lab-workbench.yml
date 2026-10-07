@@ -1,34 +1,73 @@
-name: procedural lab workbench
+name: materialize procedural lab sources
 on:
   push:
     branches: [feat/procedural-lab]
-    paths: ['.github/workflows/procedural-lab-workbench.yml']
+    paths: ['.github/procedural-lab-capsule.*', '.github/workflows/procedural-lab-workbench.yml']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: procedural-lab-materialization
+  cancel-in-progress: false
 jobs:
-  source:
+  apply:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with: {persist-credentials: false}
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with: {node-version: 22, package-manager-cache: false}
-      - run: npm ci --ignore-scripts
-      - name: Acquire exact optional demo dependencies without lifecycle scripts
+      - name: Verify and materialize locally tested sources
         run: |
-          mkdir -p /tmp/procedural-lab-deps
-          cd /tmp/procedural-lab-deps
-          npm init -y
-          npm install --ignore-scripts --save-exact simplex-noise@4.0.3 roughjs@4.6.6 @dgreenheck/ez-tree@1.1.0 three@0.169.0 zzfx@1.4.0
-      - name: Export sources and test dependencies without Git credentials
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma
+          from pathlib import Path, PurePosixPath
+          raw = base64.b64decode(''.join(Path(f'.github/procedural-lab-capsule.{i}').read_text().strip() for i in range(3)), validate=True)
+          assert hashlib.sha256(raw).hexdigest() == 'f109418f4142d518d7c949f0d1c725352633645da0171106ad1453e4cab8cccc', 'Transport checksum mismatch'
+          changes = json.loads(lzma.decompress(raw))
+          assert len(changes) == 42
+          seen = set()
+          allowed = {'README.md', 'CHANGELOG.md', 'package.json', 'package-lock.json'}
+          roots = {'docs', 'primitives', 'recipes', 'schema', 'scripts', 'site', 'tests', 'tests_python'}
+          for change in changes:
+              name = change['path']
+              pure = PurePosixPath(name)
+              assert not pure.is_absolute() and '..' not in pure.parts and name not in seen
+              assert name in allowed or pure.parts[0] in roots, name
+              seen.add(name)
+              p = Path(name)
+              assert not any(parent.is_symlink() for parent in [p, *p.parents])
+              if 'content' in change:
+                  assert not p.exists(), f'New path already exists: {name}'
+                  text = change['content']
+              else:
+                  text = p.read_text(encoding='utf-8')
+                  assert hashlib.sha256(text.encode()).hexdigest() == change['base'], f'Base changed: {name}'
+                  end = len(text)
+                  for start, stop, replacement in reversed(change['edits']):
+                      assert 0 <= start <= stop <= end
+                      text = text[:start] + replacement + text[stop:]
+                      end = start
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(text, encoding='utf-8')
+          print(f'Materialized {len(changes)} verified source files')
+          PY
+      - run: npm ci --ignore-scripts && npm run lab:install
+      - run: npm run index && npm run check && npm run test:coverage
+      - run: npm run audit -- --strict && npm run reviews:check
+      - run: npm run site:build && npm run lab:build && npm run lab:test
+      - name: Commit validated catalogue and fixtures, without workflow edits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p /tmp/procedural-lab-workbench
-          git archive --format=tar HEAD | gzip > /tmp/procedural-lab-workbench/source.tar.gz
-          tar -czf /tmp/procedural-lab-workbench/catalog-dependencies.tar.gz node_modules
-          tar -czf /tmp/procedural-lab-workbench/lab-dependencies.tar.gz -C /tmp/procedural-lab-deps .
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        with:
-          name: procedural-lab-workbench
-          retention-days: 1
-          path: /tmp/procedural-lab-workbench/
+          git add --all
+          if git diff --cached --name-only | grep -q '^.github/workflows/'; then
+            echo 'Workflow edits must use the separate authorized connector'; exit 1
+          fi
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: add four pinned procedural browser fixtures and 14 sourced components'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/procedural-lab
+          git rev-parse HEAD
