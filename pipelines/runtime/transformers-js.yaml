@@ -1,0 +1,23 @@
+id: transformers-js
+name: Transformers.js
+domain: runtime
+tasks: [in-browser-inference, on-device-inference]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Run Hugging Face Transformers models directly in the browser or Node.js via ONNX."
+links: {repository: 'https://github.com/huggingface/transformers.js', homepage: 'https://huggingface.co/docs/transformers.js'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [browser, desktop], notes: 'WebGPU/WASM backends; model weights are fetched at runtime.'}
+runtimes: [onnxruntime, wasm, webgpu]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime; uses ONNX-exported models.', needs_data: 'An ONNX model and a web/Node environment.', update_strategy: 'Pin library and model; re-measure per browser/device.'}
+data: {inputs: [onnx-model, input-data], outputs: [predictions], languages: []}
+evaluation: ['Latency and accuracy on the target browser and model size.']
+limitations: ['Model coverage is limited to supported ONNX exports; first load downloads weights.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/transformers.js', notes: 'Transformers.js web runtime.'}]
+reviewed: '2026-10-06'
+tags: [runtime, browser, onnx, transformers]

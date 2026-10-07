@@ -62,7 +62,7 @@ test('filters distinguish pretrained finance from tools that require fitting', (
   assert.deepEqual(filterEntries(entries, { domain: 'finance', usage: 'pretrained' }).map(e => e.id).sort(),
     ['finbert-prosus', 'kronos-mini', 'kronos-small']);
   const trained = filterEntries(entries, { domain: 'infrastructure', usage: 'requires-training' });
-  assert.equal(trained.length, 5);
+  assert.equal(trained.length, 6);
   assert.ok(trained.every(e => usageOf(e) === 'requires-training'));
   assert.ok(filterEntries(entries, { query: 'ANOMALY' }).some(e => e.id === 'kitnet'));
   assert.equal(filterEntries(entries, { task: 'constraint-optimization', kind: 'primitive' })[0].id, 'or-tools');

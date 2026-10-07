@@ -1,0 +1,23 @@
+id: open-clip
+name: OpenCLIP
+domain: vision
+tasks: [image-text-similarity, zero-shot-image-classification, embeddings]
+class: vision-language-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Open-source implementation of CLIP with many pretrained image-text checkpoint families."
+links: {repository: 'https://github.com/mlfoundations/open_clip'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Includes small ViT-B and distilled variants; larger checkpoints need GPU.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Zero-shot use or fine-tuning; text embeddings can be precomputed for fixed labels.', needs_data: 'Images plus class prompts; labelled data for fine-tuning/evaluation.', update_strategy: 'Pin checkpoint; revalidate on target distribution.'}
+data: {inputs: [rgb-image, text], outputs: [embeddings, similarity-scores], languages: [en]}
+evaluation: ['Zero-shot top-1 or retrieval recall on the target data.']
+limitations: ['Code licence ambiguous (NOASSERTION) and weight terms vary per checkpoint.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mlfoundations/open_clip', notes: 'OpenCLIP checkpoints and training code.'}]
+reviewed: '2026-10-06'
+tags: [vision, clip, embeddings, zero-shot]

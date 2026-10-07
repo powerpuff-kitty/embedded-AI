@@ -1,0 +1,23 @@
+id: diffusion-policy
+name: Diffusion Policy
+domain: robotics
+tasks: [visuomotor-policy, imitation-learning, robot-manipulation]
+class: robot-policy-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Visuomotor policy that represents robot actions as a learned diffusion process."
+links: {repository: 'https://github.com/real-stanford/diffusion_policy', paper: 'https://arxiv.org/abs/2303.04137'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Trains on demonstrations; deployment to real robots is a separate step.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains diffusion policies from demonstration datasets.', needs_data: 'Robot demonstrations with synchronized observations/actions.', update_strategy: 'Revalidate on the target robot; enforce safety limits.'}
+data: {inputs: [camera-observations, robot-state], outputs: [action-trajectories], languages: []}
+evaluation: ['Task success on the target robot plus control-rate latency.']
+limitations: ['Policies are embodiment-specific; real-robot safety must be enforced.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/real-stanford/diffusion_policy', notes: 'Diffusion Policy robot learning.'}]
+reviewed: '2026-10-06'
+tags: [robotics, imitation-learning, diffusion, manipulation]

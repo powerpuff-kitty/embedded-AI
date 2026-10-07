@@ -1,0 +1,23 @@
+id: clap
+name: CLAP (Contrastive Language-Audio Pretraining)
+domain: audio
+tasks: [audio-text-similarity, zero-shot-audio-classification]
+class: audio-language-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Contrastive language-audio model that enables zero-shot audio classification from text."
+links: {repository: 'https://github.com/LAION-AI/CLAP', paper: 'https://arxiv.org/abs/2206.04769'}
+model: {parameters: null, file_size_mb: null}
+license: {code: CC0-1.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Audio-encoder scale; not a microcontroller model.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Zero-shot or fine-tuned audio-text matching.', needs_data: 'Audio plus text labels for evaluation/adaptation.', update_strategy: 'Verify weight terms; revalidate on target audio.'}
+data: {inputs: [audio, text], outputs: [embeddings, similarity-scores], languages: [en]}
+evaluation: ['Zero-shot classification/retrieval on target audio.']
+limitations: ['Weight terms not stated; text prompts are English-centric.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/LAION-AI/CLAP', notes: 'CLAP audio-text model.'}]
+reviewed: '2026-10-06'
+tags: [audio, clip, zero-shot, embeddings]

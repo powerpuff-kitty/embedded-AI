@@ -1,0 +1,23 @@
+id: ast
+name: AST (Audio Spectrogram Transformer)
+domain: audio
+tasks: [audio-classification]
+class: audio-classification-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Transformer that classifies audio directly from spectrograms, with AudioSet-pretrained weights."
+links: {repository: 'https://github.com/YuanGongND/ast', paper: 'https://arxiv.org/abs/2104.01778'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Transformer-scale; not a tiny embedded model.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained classifier; fine-tuning on target audio is expected.', needs_data: 'Labelled audio for the target classes.', update_strategy: 'Verify weight terms; revalidate on target audio.'}
+data: {inputs: [audio-spectrogram], outputs: [class-scores], languages: []}
+evaluation: ['Accuracy/mAP on target classes.']
+limitations: ['Weight terms not stated; transformer compute is desktop-scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/YuanGongND/ast', notes: 'AST audio classification.'}]
+reviewed: '2026-10-06'
+tags: [audio, classification, transformer]

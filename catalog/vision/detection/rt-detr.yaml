@@ -1,0 +1,23 @@
+id: rt-detr
+name: RT-DETR
+domain: vision
+tasks: [object-detection, real-time-detection]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Real-time detection transformer family with compact variants for edge inference."
+links: {repository: 'https://github.com/lyuwenyu/RT-DETR', paper: 'https://arxiv.org/abs/2304.08069'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Includes R18/R34 compact models and export to ONNX/TensorRT.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained detectors; fine-tuning on custom classes is typical.', needs_data: 'Labelled detection data for the target classes.', update_strategy: 'Re-export and re-benchmark; verify weight terms.'}
+data: {inputs: [rgb-image], outputs: [detection-boxes, classes], languages: []}
+evaluation: ['mAP on target classes plus post-export latency.']
+limitations: ['Weight terms not stated; transformer detectors need more compute than tiny CNNs.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/lyuwenyu/RT-DETR', notes: 'RT-DETR detectors.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, transformer, realtime]

@@ -1,0 +1,23 @@
+id: burn
+name: Burn
+domain: runtime
+tasks: [rust-deep-learning, on-device-inference, model-training]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Rust deep-learning framework with portable backends and ONNX import/export."
+links: {repository: 'https://github.com/tracel-ai/burn', homepage: 'https://burn.dev/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge, browser], notes: 'Backends include ndarray (CPU), WGPU, CUDA and LibTorch; portable to embedded Rust.'}
+runtimes: [burn-native, wasm]
+formats: [onnx, burn]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Supports training and inference in Rust.', needs_data: 'A model definition or imported ONNX graph.', update_strategy: 'Pin version/backend; re-measure per target.'}
+data: {inputs: [model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and accuracy on the selected backend.']
+limitations: ['Model coverage depends on the ONNX import path.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tracel-ai/burn', notes: 'Burn Rust DL framework.'}]
+reviewed: '2026-10-06'
+tags: [runtime, rust, on-device, onnx]

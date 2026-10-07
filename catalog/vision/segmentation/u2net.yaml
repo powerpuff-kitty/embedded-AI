@@ -1,0 +1,23 @@
+id: u2net
+name: U^2-Net
+domain: vision
+tasks: [salient-object-detection, background-removal, image-segmentation]
+class: saliency-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Nested U-structure network for salient object detection and background removal."
+links: {repository: 'https://github.com/xuebinqin/U-2-Net', paper: 'https://arxiv.org/abs/2005.09007'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge], notes: 'Widely used for on-device background removal; small variant exists.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained saliency models; fine-tuning on domain data is possible.', needs_data: 'Images; masks for evaluation.', update_strategy: 'Verify weight terms; re-measure latency and edge quality.'}
+data: {inputs: [rgb-image], outputs: [saliency-mask], languages: []}
+evaluation: ['Mask edge quality and latency on representative images.']
+limitations: ['Weight terms not stated; quality degrades on complex or transparent subjects.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/xuebinqin/U-2-Net', notes: 'U^2-Net saliency models.'}]
+reviewed: '2026-10-06'
+tags: [vision, saliency, segmentation, background-removal]

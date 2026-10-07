@@ -1,0 +1,23 @@
+id: sam2
+name: SAM 2
+domain: vision
+tasks: [video-segmentation, promptable-segmentation, object-tracking]
+class: segmentation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Meta Segment Anything Model 2 for promptable segmentation in images and video."
+links: {repository: 'https://github.com/facebookresearch/sam2', paper: 'https://arxiv.org/abs/2408.00714'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Tiny/Small variants exist; larger models need GPU.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained segmentation models; fine-tuning on domain data is optional.', needs_data: 'Images/video and prompts; labelled masks for evaluation.', update_strategy: 'Pin checkpoint; revalidate masks and latency per target.'}
+data: {inputs: [image-or-video, prompts], outputs: [segmentation-masks], languages: []}
+evaluation: ['Mask IoU against references plus prompt latency on the target.']
+limitations: ['Compute-heavy for small devices; not a semantic labeller by itself.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/sam2', notes: 'SAM 2 models and inference.'}]
+reviewed: '2026-10-06'
+tags: [vision, segmentation, video, promptable]
