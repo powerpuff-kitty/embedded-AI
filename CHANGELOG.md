@@ -25,6 +25,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Dependabot ignores `numpy >= 2.5` for the recipes requirements: those releases
   require Python >= 3.12, while the recipes CI pins Python 3.11.
 
+### Fixed
+- `embedded-ai-catalog-mcp` 0.2.1: declare `embedded-ai-catalog` as a regular
+  dependency (not an optional peer) so the server resolves the catalogue on
+  install, and mark `mcp/server.mjs` executable so npm keeps the `bin` entry
+  (0.2.0 published without a working command).
+
 ### Security
 - Pin every GitHub Action to a full commit SHA (with a version comment);
   Dependabot's `github-actions` updater keeps the pins current.

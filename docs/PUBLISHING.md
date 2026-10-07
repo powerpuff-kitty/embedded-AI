@@ -7,9 +7,12 @@ Two npm packages are published from this repository:
 | `embedded-ai-catalog` | `/` | The catalogue data + need matcher API (`lib/index.mjs`). |
 | `embedded-ai-catalog-mcp` | `/mcp` | An MCP server exposing the catalogue to Claude, Cursor, etc. |
 
-Publish **`embedded-ai-catalog` first**: the MCP package declares it as an
-optional peer dependency, so installing the MCP server picks up the catalogue
-once it exists on the registry.
+Publish **`embedded-ai-catalog` first**: the MCP package depends on it, so
+installing the MCP server pulls in the catalogue from the registry. (The MCP
+server falls back to the sibling `lib/` only when run from a repo checkout.)
+
+Note: `mcp/server.mjs` must stay executable (mode `100755`) — npm strips a
+`bin` entry whose target is not executable.
 
 ## Preflight
 

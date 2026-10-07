@@ -1,27 +1,41 @@
 {
   "name": "embedded-ai-catalog-mcp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MCP server exposing the embedded-ai-catalog need matcher and metadata search to Claude, Cursor and other MCP clients.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://powerpuff-kitty.github.io/embedded-AI/",
-  "repository": {"type": "git", "url": "git+https://github.com/powerpuff-kitty/embedded-AI.git", "directory": "mcp"},
-  "keywords": ["mcp", "model-context-protocol", "edge-ai", "embedded-ai", "on-device-ml", "tinyml"],
-  "engines": {"node": ">=18.17"},
-  "bin": {"embedded-ai-catalog-mcp": "./server.mjs"},
-  "files": ["server.mjs", "tools.mjs", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerpuff-kitty/embedded-AI.git",
+    "directory": "mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "edge-ai",
+    "embedded-ai",
+    "on-device-ml",
+    "tinyml"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "bin": {
+    "embedded-ai-catalog-mcp": "server.mjs"
+  },
+  "files": [
+    "server.mjs",
+    "tools.mjs",
+    "README.md"
+  ],
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test test.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
+    "embedded-ai-catalog": "^0.2.0",
     "zod": "^3.23.8"
-  },
-  "peerDependencies": {
-    "embedded-ai-catalog": "^0.2.0"
-  },
-  "peerDependenciesMeta": {
-    "embedded-ai-catalog": {"optional": true}
   }
 }
