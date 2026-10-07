@@ -1,11 +1,15 @@
 import fs from 'node:fs/promises';
-import { loadEntries, renderCatalogue, renderIndex, renderFullIndex, renderCoverage, updateReadme } from './catalog.ts';
+import { loadEntries, renderCatalogue, renderIndex, renderFullIndex, renderCoverage, renderAtAGlance, renderDomains, updateReadme, replaceBlock } from './catalog.ts';
 try {
   const args = process.argv.slice(2);
   if (args.some(a => a !== '--check')) throw new Error('Usage: npm run index -- [--check]');
   const entries = await loadEntries();
+  const readme = await fs.readFile('README.md', 'utf8');
+  const withCatalogue = updateReadme(readme, renderCatalogue(entries));
+  const withGlance = replaceBlock(withCatalogue, '<!-- AT-A-GLANCE:START -->', '<!-- AT-A-GLANCE:END -->', renderAtAGlance(entries));
+  const withDomains = replaceBlock(withGlance, '<!-- DOMAINS:START -->', '<!-- DOMAINS:END -->', renderDomains(entries));
   const outputs = new Map([
-    ['README.md', updateReadme(await fs.readFile('README.md', 'utf8'), renderCatalogue(entries))],
+    ['README.md', withDomains],
     ['generated/catalog.json', renderIndex(entries)],
     ['generated/catalog.full.json', renderFullIndex(entries)],
     ['generated/coverage.json', renderCoverage(entries)],

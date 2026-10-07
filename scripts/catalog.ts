@@ -94,13 +94,34 @@ export function renderCatalogue(entries: Entry[]): string {
   }
   return out;
 }
-export function updateReadme(readme: string, catalogue: string): string {
-  const start = '<!-- CATALOG:START -->', end = '<!-- CATALOG:END -->';
+export function renderAtAGlance(entries: Entry[]): string {
+  const domains = new Set(entries.map(e => e.domain)).size;
+  const kinds = new Set(entries.map(kindOf)).size;
+  return [
+    '| | |',
+    '|---|---|',
+    `| **${entries.length} entries** | models, collections, pipelines, toolkits and primitives |`,
+    `| **${domains} domains** | vision, audio, language, robotics, gaming, genomics and more |`,
+    `| **${kinds} kinds** | model · collection · pipeline · toolkit · primitive |`,
+  ].join('\n');
+}
+const DOMAIN_ORDER = ['audio', 'video', 'vision', 'language', 'geospatial', 'weather', 'climate', 'time-series', 'engineering', 'robotics', 'control', 'science', 'genomics', 'drug-discovery', 'sensors', 'mapping', 'simulation', 'gaming', 'music', 'healthcare', 'agriculture', 'automotive', 'manufacturing', 'finance', 'fraud-detection', 'recommendation', 'administrative', 'business', 'infrastructure', 'energy', 'security', 'runtime', 'telecom', 'networking', 'benchmark', 'artificial-life', 'neuromorphic', 'event-vision', 'education', 'trust-and-safety', 'federated-learning', 'quantum', 'marine', 'accessibility', 'environment', 'fashion', 'space', 'hydrology', 'forestry', 'sports', 'graph', 'retrieval', 'agents', 'reasoning'];
+const DOMAIN_TITLES: Record<string, string> = { 'time-series': 'Time series', engineering: 'Engineering/CAD', 'drug-discovery': 'Drug discovery', administrative: 'Administration', infrastructure: 'IT infrastructure', 'artificial-life': 'Artificial life', 'event-vision': 'Event vision', 'trust-and-safety': 'Trust & safety', 'federated-learning': 'Federated learning', 'fraud-detection': 'Fraud detection' };
+const domainTitle = (d: string): string => DOMAIN_TITLES[d] ?? d.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+export function renderDomains(entries: Entry[]): string {
+  const domains = [...new Set(entries.map(e => e.domain))];
+  const ordered = [...DOMAIN_ORDER.filter(d => domains.includes(d)), ...domains.filter(d => !DOMAIN_ORDER.includes(d)).sort(cmp)];
+  return `${domains.length} domains: ${ordered.map(domainTitle).join(' · ')}.`;
+}
+export function replaceBlock(readme: string, start: string, end: string, body: string): string {
   const starts = readme.split(start).length - 1, ends = readme.split(end).length - 1;
-  const block = `${start}\n\n${catalogue}${end}`;
+  const block = `${start}\n${body.trimEnd()}\n${end}`;
   if (!starts && !ends) return readme.trimEnd() + '\n\n' + block + '\n';
-  if (starts !== 1 || ends !== 1 || readme.indexOf(start) > readme.indexOf(end)) throw new Error('README catalogue markers are missing, duplicated or reversed');
+  if (starts !== 1 || ends !== 1 || readme.indexOf(start) > readme.indexOf(end)) throw new Error(`README markers ${start} / ${end} are missing, duplicated or reversed`);
   return readme.slice(0, readme.indexOf(start)) + block + readme.slice(readme.indexOf(end) + end.length);
+}
+export function updateReadme(readme: string, catalogue: string): string {
+  return replaceBlock(readme, '<!-- CATALOG:START -->', '<!-- CATALOG:END -->', catalogue);
 }
 export function renderIndex(entries: Entry[]): string {
   return '[\n' + entries.map(e => '  ' + JSON.stringify({ id: e.id, name: e.name, domain: e.domain, tasks: e.tasks, class: e.class,

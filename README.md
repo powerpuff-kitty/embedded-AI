@@ -7,6 +7,8 @@
 [![catalog](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/catalog.yml?label=validate)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
 [![recipes](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/recipes.yml?label=recipes)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml)
 [![entries](https://img.shields.io/badge/dynamic/json?color=blue&label=entries&query=%24.total&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](generated/coverage.json)
+[![code license: MIT](https://img.shields.io/badge/code_license-MIT-blue.svg)](LICENSE)
+[![data license: CC BY 4.0](https://img.shields.io/badge/data_license-CC_BY_4.0-lightgrey.svg)](LICENSE-DATA)
 
 **Explore it live** — <a href="https://powerpuff-kitty.github.io/embedded-AI/" target="_blank" rel="noopener">powerpuff-kitty.github.io/embedded-AI</a> · no install, no account, no tracking.
 
@@ -45,15 +47,19 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 ## At a glance
 
+<!-- AT-A-GLANCE:START -->
 | | |
 |---|---|
 | **539 entries** | models, collections, pipelines, toolkits and primitives |
 | **54 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
+<!-- AT-A-GLANCE:END -->
 
 ## Domains
 
-51 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports · Graph · Retrieval · Agents.
+<!-- DOMAINS:START -->
+54 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust & safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports · Graph · Retrieval · Agents · Reasoning.
+<!-- DOMAINS:END -->
 
 ## Documentation
 
@@ -88,10 +94,15 @@ generated/     # summary, full metadata and coverage JSON
 
 Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTING.md); run `npm run check`, `npm run audit -- --strict` and `npm run links` before opening a pull request.
 
+## License
+
+- **Code** — schemas, scripts, site, workflows and tests are under the [MIT License](LICENSE).
+- **Catalogue data** — the YAML manifests, generated JSON exports and derived tables are under [CC BY 4.0](LICENSE-DATA); reuse freely with attribution.
+- **Upstream projects** — models, toolkits and primitives referenced or described by entries remain under their own licenses; the code/weights terms recorded per entry are upstream facts, not a grant from this repository.
+
 ---
 
 <!-- CATALOG:START -->
-
 ## Full catalogue
 
 **539 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
@@ -1024,5 +1035,4 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [GraphCast](catalog/weather/forecasting/graphcast.yaml) · [upstream](<https://github.com/google-deepmind/graphcast>) | collection / pretrained | weather-forecasting, medium-range-forecasting | — | — | jax, haiku | desktop, server | Apache-2.0 / unknown | unknown |
-
 <!-- CATALOG:END -->
