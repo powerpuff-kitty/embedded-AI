@@ -47,7 +47,7 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 | | |
 |---|---|
-| **497 entries** | models, collections, pipelines, toolkits and primitives |
+| **512 entries** | models, collections, pipelines, toolkits and primitives |
 | **54 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
@@ -94,7 +94,7 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 
 ## Full catalogue
 
-**497 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**512 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -194,12 +194,16 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [RNNoise](pipelines/audio/rnnoise.yaml) · [upstream](<https://github.com/xiph/rnnoise>) | pipeline / pretrained | noise-suppression, speech-enhancement | — | — | native-c, c-source | edge, mobile, desktop | BSD-3-Clause / BSD-3-Clause | unknown |
 | [YAMNet](catalog/audio/classification/yamnet.yaml) · [upstream](<https://storage.googleapis.com/audioset/yamnet.h5>) | model / pretrained | sound-classification | 3.7M | — | tensorflow, tf-keras, hdf5 | edge | Apache-2.0 / unknown | unknown |
 | [pyannote-audio](pipelines/audio/pyannote-audio.yaml) · [upstream](<https://github.com/pyannote/pyannote-audio>) | toolkit / pretrained | speaker-diarization, speaker-verification, voice-activity-detection | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | MIT / unknown | unknown |
+| [DTLN](catalog/audio/enhancement/dtln.yaml) · [upstream](<https://huggingface.co/breizhn/DTLN>) | collection / pretrained | speech-enhancement, noise-suppression, real-time-audio | — | — | tensorflow, onnxruntime, tflite, onnx, savedmodel | embedded, mobile, edge, desktop | MIT / unknown | unknown |
 | [DeepFilterNet](pipelines/audio/deepfilternet.yaml) · [upstream](<https://github.com/Rikorose/DeepFilterNet>) | pipeline / pretrained | speech-enhancement, noise-suppression | — | — | pytorch, onnxruntime, onnx | edge, mobile, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [Resemble Enhance](pipelines/audio/resemble-enhance.yaml) · [upstream](<https://huggingface.co/ResembleAI/resemble-enhance>) | collection / pretrained | speech-enhancement, speech-restoration | — | — | pytorch, onnxruntime, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
 | [ESPnet](pipelines/audio/espnet.yaml) · [upstream](<https://github.com/espnet/espnet>) | toolkit / requires-training | speech-recognition, text-to-speech, speech-translation, speech-enhancement | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | Apache-2.0 / not-provided | unknown |
 | [FunASR](pipelines/audio/funasr.yaml) · [upstream](<https://github.com/modelscope/FunASR>) | toolkit / pretrained | speech-recognition, voice-activity-detection, punctuation-restoration, speaker-diarization | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | MIT / not-provided | unknown |
 | [NVIDIA NeMo](pipelines/audio/nvidia-nemo.yaml) · [upstream](<https://github.com/NVIDIA/NeMo>) | toolkit / requires-training | speech-recognition, text-to-speech, speech-enhancement, speaker-diarization | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [SpeechBrain](pipelines/audio/speechbrain.yaml) · [upstream](<https://github.com/speechbrain/speechbrain>) | toolkit / requires-training | speech-recognition, speaker-recognition, speech-enhancement, text-to-speech | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [wav2vec 2.0](catalog/audio/speech/wav2vec2.yaml) · [upstream](<https://github.com/facebookresearch/fairseq>) | collection / pretrained | speech-recognition, speech-representations | — | — | pytorch, transformers, onnxruntime, pytorch-checkpoint, safetensors, onnx | desktop, server, edge | MIT / unknown | unknown |
+| [VoiceFixer](pipelines/audio/voicefixer.yaml) · [upstream](<https://github.com/haoheliu/voicefixer>) | collection / pretrained | speech-restoration, speech-enhancement | — | — | pytorch, onnxruntime, pytorch-checkpoint | desktop, server, edge | MIT / unknown | unknown |
+| [Asteroid](pipelines/audio/asteroid.yaml) · [upstream](<https://github.com/asteroid-team/asteroid>) | toolkit / companion | speech-separation, speech-enhancement | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server | MIT / not-provided | unknown |
 | [Moonshine](catalog/audio/speech-to-text/moonshine.yaml) · [upstream](<https://github.com/moonshine-ai/moonshine>) | collection / pretrained | speech-to-text | — | — | moonshine-native, onnxruntime | edge, mobile, desktop, browser | MIT / MIT | unknown |
 | [Vosk](pipelines/audio/vosk-api.yaml) · [upstream](<https://github.com/alphacep/vosk-api>) | toolkit / pretrained | speech-to-text | — | — | vosk-native, kaldi | mobile, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
 | [WeNet](pipelines/audio/wenet.yaml) · [upstream](<https://github.com/wenet-e2e/wenet>) | toolkit / requires-training | speech-to-text, streaming-asr | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | mobile, desktop, server | Apache-2.0 / not-provided | unknown |
@@ -360,7 +364,9 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [FATE](pipelines/federated-learning/fate.yaml) · [upstream](<https://github.com/FederatedAI/FATE>) | toolkit / companion | federated-learning, privacy-preserving-training, secure-multi-party-computation | — | — | python | server | Apache-2.0 / not-provided | unknown |
 | [FedML](pipelines/federated-learning/fedml.yaml) · [upstream](<https://github.com/FedML-AI/FedML>) | toolkit / companion | federated-learning, distributed-training, privacy-preserving-training | — | — | pytorch | server, desktop, edge, mobile | Apache-2.0 / not-provided | unknown |
 | [Flower](pipelines/federated-learning/flower.yaml) · [upstream](<https://github.com/flwrlabs/flower>) | toolkit / companion | federated-learning, privacy-preserving-training | — | — | python | server, desktop, edge, mobile | Apache-2.0 / not-provided | unknown |
+| [NVIDIA FLARE](pipelines/federated-learning/nvflare.yaml) · [upstream](<https://github.com/NVIDIA/NVFlare>) | toolkit / requires-training | federated-learning, privacy-preserving-ml, distributed-training | — | — | pytorch, tensorflow, pytorch-checkpoint, savedmodel | server, edge, desktop | Apache-2.0 / not-provided | unknown |
 | [OpenFL](pipelines/federated-learning/openfl.yaml) · [upstream](<https://github.com/securefederatedai/openfederatedlearning>) | toolkit / companion | federated-learning, privacy-preserving-training | — | — | python, pytorch, tensorflow | server, desktop | Apache-2.0 / not-provided | unknown |
+| [TensorFlow Federated](pipelines/federated-learning/tensorflow-federated.yaml) · [upstream](<https://github.com/google-parfait/tensorflow-federated>) | toolkit / requires-training | federated-learning, distributed-training | — | — | tensorflow, savedmodel | server, desktop, mobile | Apache-2.0 / not-provided | unknown |
 | [PySyft](pipelines/federated-learning/pysyft.yaml) · [upstream](<https://github.com/OpenMined/PySyft>) | toolkit / companion | privacy-preserving-computation, secure-multi-party-computation, federated-learning | — | — | python, pytorch | server, desktop | Apache-2.0 / not-provided | unknown |
 
 <a id="catalogue-finance"></a>
@@ -658,13 +664,17 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [MAVSDK](pipelines/robotics/mavsdk.yaml) · [upstream](<https://github.com/mavlink/MAVSDK>) | toolkit / companion | drone-control-sdk, autonomous-vehicle-interface | — | — | native-cpp, python | edge, desktop, robot | BSD-3-Clause / not-applicable | unknown |
 | [PX4 Autopilot](pipelines/robotics/px4-autopilot.yaml) · [upstream](<https://github.com/PX4/PX4-Autopilot>) | pipeline / companion | flight-control, autonomous-vehicle-control, sensor-fusion | — | — | native-cpp, nuttx | edge, robot | BSD-3-Clause / not-applicable | unknown |
+| [ACT (ALOHA)](catalog/robotics/vla/act.yaml) · [upstream](<https://github.com/tonyzhaozh/aloha>) | collection / requires-training | imitation-learning, robot-manipulation, action-chunking | — | — | pytorch, pytorch-checkpoint | edge, desktop | MIT / unknown | unknown |
 | [robomimic](pipelines/robotics/robomimic.yaml) · [upstream](<https://github.com/ARISE-Initiative/robomimic>) | toolkit / requires-training | imitation-learning, robot-manipulation, offline-rl | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server | MIT / not-provided | unknown |
 | [Nav2](primitives/robotics/navigation2.yaml) · [upstream](<https://github.com/ros-navigation/navigation2>) | primitive / companion | path-planning, robot-navigation, obstacle-avoidance | — | — | ros2, native-cpp | edge, desktop, robot | Apache-2.0 / not-applicable | unknown |
+| [SERL](pipelines/robotics/serl.yaml) · [upstream](<https://github.com/rail-berkeley/serl>) | toolkit / requires-training | reinforcement-learning, robot-manipulation, sample-efficient-rl | — | — | jax, pytorch, gym, jax-params, pytorch-checkpoint | server, desktop, edge | Apache-2.0 / not-provided | unknown |
 | [LeRobot](pipelines/robotics/lerobot.yaml) · [upstream](<https://github.com/huggingface/lerobot>) | toolkit / requires-training | robot-learning, imitation-learning, robot-policy-training, teleoperation | — | — | pytorch, pytorch-checkpoint, onnx | desktop, edge, robot | Apache-2.0 / Apache-2.0 | unknown |
 | [OpenPI](catalog/robotics/policies/openpi.yaml) · [upstream](<https://github.com/Physical-Intelligence/openpi>) | collection / pretrained | robot-policy, vision-language-action, robot-manipulation | — | — | jax, pytorch, safetensors | server, desktop | Apache-2.0 / unknown | unknown |
 | [Octo](catalog/robotics/policies/octo.yaml) · [upstream](<https://huggingface.co/rail-berkeley/octo-small>) | collection / pretrained | robot-policy-learning, robot-manipulation | — | — | jax, pytorch, transformers, safetensors | desktop, server | MIT / MIT | unknown |
 | [EdgeVLA-Tiny](catalog/robotics/vla/edgevla-tiny.yaml) · [upstream](<https://huggingface.co/enfuse/edgevla-tiny-fmb>) | model / unknown | vision-language-action | 164M | — | pytorch, transformers | edge | unknown / Apache-2.0 | unknown |
+| [NVIDIA Isaac GR00T](catalog/robotics/vla/isaac-gr00t.yaml) · [upstream](<https://huggingface.co/nvidia/GR00T-N1.5-3B>) | collection / pretrained | vision-language-action, robot-manipulation, imitation-learning | — | — | pytorch, tensorrt, safetensors | edge, server | Apache-2.0 / unknown | unknown |
 | [OpenVLA](catalog/robotics/vla/openvla.yaml) · [upstream](<https://huggingface.co/openvla/openvla-7b>) | collection / pretrained | vision-language-action, robot-manipulation | 7B | — | pytorch, transformers, safetensors | server, desktop | MIT / MIT | unknown |
+| [RT-1](catalog/robotics/vla/rt-1.yaml) · [upstream](<https://github.com/google-research/robotics_transformer>) | collection / pretrained | vision-language-action, robot-manipulation, imitation-learning | — | — | tensorflow, jax, savedmodel | server, edge | Apache-2.0 / unknown | unknown |
 | [Diffusion Policy](catalog/robotics/policies/diffusion-policy.yaml) · [upstream](<https://github.com/real-stanford/diffusion_policy>) | collection / requires-training | visuomotor-policy, imitation-learning, robot-manipulation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
 
 <a id="catalogue-runtime"></a>
@@ -843,6 +853,11 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [Diffprivlib](pipelines/trust-and-safety/diffprivlib.yaml) · [upstream](<https://github.com/IBM/differential-privacy-library>) | toolkit / companion | differential-privacy, private-statistics | — | — | python, scikit-learn, pickle | embedded, edge, desktop, server | MIT / not-provided | unknown |
+| [Opacus](pipelines/trust-and-safety/opacus.yaml) · [upstream](<https://github.com/meta-pytorch/opacus>) | toolkit / companion | differential-privacy, private-training | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / not-provided | unknown |
+| [TensorFlow Privacy](pipelines/trust-and-safety/tensorflow-privacy.yaml) · [upstream](<https://github.com/tensorflow/privacy>) | toolkit / companion | differential-privacy, private-training | — | — | tensorflow, savedmodel | desktop, server | Apache-2.0 / not-provided | unknown |
+| [Concrete ML](pipelines/trust-and-safety/concrete-ml.yaml) · [upstream](<https://github.com/zama-ai/concrete-ml>) | toolkit / companion | homomorphic-encryption, private-inference | — | — | python, onnx | edge, desktop, server | unknown / not-provided | unknown |
+| [TenSEAL](pipelines/trust-and-safety/tenseal.yaml) · [upstream](<https://github.com/OpenMined/TenSEAL>) | toolkit / companion | homomorphic-encryption, private-computation | — | — | python, native-cpp | desktop, server | Apache-2.0 / not-provided | unknown |
 | [LIME](pipelines/trust-and-safety/lime.yaml) · [upstream](<https://github.com/marcotcr/lime>) | toolkit / companion | model-explainability, local-explanation | — | — | python, numpy-model | desktop, server | BSD-2-Clause / not-provided | unknown |
 | [SHAP](pipelines/trust-and-safety/shap.yaml) · [upstream](<https://github.com/shap/shap>) | toolkit / companion | model-explainability, feature-attribution | — | — | python, numpy-model | desktop, server | MIT / not-provided | unknown |
 | [Detoxify](catalog/trust-and-safety/detoxify.yaml) · [upstream](<https://github.com/unitaryai/detoxify>) | collection / pretrained | toxic-content-detection, content-moderation | — | — | pytorch, transformers, pytorch-checkpoint | server, desktop | Apache-2.0 / unknown | unknown |
