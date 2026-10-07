@@ -21,12 +21,19 @@ const safe = (fn) => async (args = {}) => {
   catch (error) { return { content: [{ type: 'text', text: `Error: ${error instanceof Error ? error.message : error}` }], isError: true }; }
 };
 
+const facets = {
+  view: z.enum(['ai', 'procedural', 'hybrid']).optional(),
+  method: z.enum(['learned', 'procedural', 'rule-based', 'physics-based', 'hybrid']).optional(),
+  proceduralCategory: z.enum(['worlds-environments', 'vegetation-ecosystems', 'images-materials', 'motion-behaviour', 'audio-music', 'foundations', 'narrative-text']).optional(),
+};
+
 const server = new McpServer({ name: 'embedded-ai-catalog', version });
 
 server.registerTool('need', {
   title: 'Match a need',
   description: 'Rank on-device and embedded AI components for a plain-language need. Deterministic and offline. Optional hard constraints: offline, pretrained, model.',
   inputSchema: {
+    ...facets,
     query: z.string().describe('What you want to do, e.g. "detect people on a camera offline with a tiny model"'),
     limit: z.number().int().min(1).max(50).optional(),
     offline: z.boolean().optional().describe('only entries with offline operation documented'),
@@ -39,6 +46,7 @@ server.registerTool('search', {
   title: 'Search the catalogue',
   description: 'Metadata search and filtering over id, name, description and tags.',
   inputSchema: {
+    ...facets,
     query: z.string().optional(),
     domain: z.string().optional(),
     task: z.string().optional(),

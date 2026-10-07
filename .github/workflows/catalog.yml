@@ -46,7 +46,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add -- README.md generated/catalog.json generated/catalog.full.json generated/coverage.json
+          git add -- README.md docs/CATALOGUE.md docs/PROCEDURAL.md generated/catalog.json generated/catalog.full.json generated/coverage.json
           if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

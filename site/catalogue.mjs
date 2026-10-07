@@ -1,3 +1,4 @@
+import { matchesFacets } from './methods.mjs';
 /** Pure catalogue queries shared by the browser and Node tests. */
 export const number = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
 export const format = value => number(value) === null ? 'Unknown' : new Intl.NumberFormat('en', { maximumFractionDigits: 2 }).format(value);
@@ -13,6 +14,7 @@ export function partition(entries, filters = {}, runs = []) {
   const matching = [], candidates = [];
   if(filters.ram && (!Number.isFinite(Number(filters.ram)) || Number(filters.ram)<0))return {matching,candidates};
   for (const entry of entries) {
+    if (!matchesFacets(entry, filters)) continue;
     const haystack = [entry.name, entry.id, entry.domain, entry.description, ...(entry.tasks || []), ...(entry.tags || [])].join(' ').toLowerCase();
     if (filters.q && !haystack.includes(filters.q.toLowerCase())) continue;
     if (filters.domain && entry.domain !== filters.domain) continue;

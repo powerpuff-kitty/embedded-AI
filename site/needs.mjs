@@ -5,6 +5,8 @@
  * offline and can be unit-tested in Node.
  */
 
+import { methodsOf, matchesFacets, validateFacets } from './methods.mjs';
+
 export const STOPWORDS = new Set([
   'a','an','the','to','for','of','on','in','with','and','or','my','i','me','we','you','want','need','would','like',
   'that','this','these','those','is','are','be','can','could','it','its','at','by','from','use','using','run','running',
@@ -13,6 +15,13 @@ export const STOPWORDS = new Set([
 ]);
 
 const SYNONYMS = {
+  procedural: ['terrain','generative','noise','simulation','grammar'],
+  terrain: ['heightmap','landscape','world','island'],
+  dungeon: ['roguelike','tilemap','rooms','cave'],
+  vegetation: ['tree','plant','forest','branch'],
+  texture: ['material','shader','pattern','noise'],
+  flocking: ['boids','steering','crowd','motion'],
+  synthesis: ['synthesizer','sound','audio','waveform'],
   person: ['people','human','humans','pedestrian','pedestrians','face','faces','crowd'],
   people: ['person','human','pedestrian','face','crowd'],
   car: ['vehicle','vehicles','automobile','driving'],
@@ -166,6 +175,7 @@ export function interpret(query) {
     wantsOffline: has('offline','local','on-device','ondevice','air-gapped','airgapped','privacy','embedded','edge','privately'),
     wantsEdge: has('edge','embedded','mcu','microcontroller','tinyml','esp32','camera','mobile','wearable','robot'),
     wantsModel: has('model','network','detector','classifier','checkpoint','weights','net'),
+    wantsProcedural: has('procedural','procgen'),
     wantsTool: has('toolkit','library','framework','pipeline','sdk','train','training','convert','export')
   };
 }
@@ -175,7 +185,7 @@ function fieldText(entry) {
     name: normalize(entry.name),
     id: normalize(entry.id),
     task: normalize((entry.tasks ?? []).join(' ')),
-    tag: normalize((entry.tags ?? []).join(' ')),
+    tag: normalize([...(entry.tags ?? []), ...methodsOf(entry), ...(entry.procedural?.categories ?? [])].join(' ')),
     domain: normalize(entry.domain),
     class: normalize(entry.class),
     description: normalize(entry.description),
@@ -208,6 +218,7 @@ export function scoreEntry(entry, intent) {
   if (intent.wantsEdge && targets.some(t => ['edge','mobile','robot','browser'].includes(t))) { score += 2; reasons.push('edge/mobile target class'); }
   if (intent.wantsModel && ['model','collection'].includes(entry.kind)) { score += 3; reasons.push('is a model/collection'); }
   if (intent.wantsTool && ['toolkit','pipeline','primitive'].includes(entry.kind)) { score += 3; reasons.push('is a toolkit/pipeline'); }
+  if (intent.wantsProcedural && methodsOf(entry).includes('procedural')) { score += 12; reasons.push('procedural method'); }
   return { entry, score, reasons: [...new Set(reasons)] };
 }
 
@@ -230,6 +241,7 @@ export function describeIntent(intent) {
   if (intent.wantsEdge) notes.push('targets edge/mobile hardware');
   if (intent.wantsModel) notes.push('looking for a model');
   if (intent.wantsTool) notes.push('looking for a toolkit/pipeline');
+  if (intent.wantsProcedural) notes.push('prefers procedural generation or simulation');
   return notes;
 }
 
@@ -239,9 +251,11 @@ export function describeIntent(intent) {
  * can explain why a plausible entry disappeared rather than hiding it silently.
  */
 export function applyNeedConstraints(results, constraints = {}) {
+  validateFacets(constraints);
   const kept = [], excluded = [];
   for (const result of results) {
     const entry = result.entry;
+    if (!matchesFacets(entry, constraints)) { excluded.push({ ...result, reason: 'outside selected catalogue view, method or procedural category' }); continue; }
     const mode = entry.usage?.mode ?? 'unknown';
     if (constraints.offline && entry.deployment?.offline !== true) { excluded.push({ ...result, reason: 'offline operation is not documented', reasonKey: 'ui.reasonOffline' }); continue; }
     if (constraints.pretrained && mode !== 'pretrained') { excluded.push({ ...result, reason: `use mode is ${mode}, not pretrained`, reasonKey: 'ui.reasonNotPretrained', reasonParams: { mode } }); continue; }

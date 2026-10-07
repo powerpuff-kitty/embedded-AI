@@ -26,3 +26,7 @@ Use primary sources where possible. Unknown values stay unknown; do not infer RA
 
 ## Benchmark records
 Include exact hardware, runtime, model format and precision, input shape, warmup/sample count, peak RSS if measurable, latency distribution, throughput, power measurement method, software versions and date.
+
+## Procedural and hybrid catalogue
+
+See [the integration guide](docs/PROCEDURAL-GUIDE.md) for method/view/category filters, non-learned metadata and canonical hybrid recipe references. `search` and `need` support `view`, `method`, and `proceduralCategory`; kind and method are independent. Design recipes are not executable integrations.

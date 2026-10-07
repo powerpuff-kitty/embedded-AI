@@ -59,3 +59,7 @@ npm run need -- "transcribe speech" --pretrained --json --limit 10
 Add synonyms in `SYNONYMS` or adjust `FIELD_WEIGHTS` in `site/needs.mjs`. Pure
 functions (`tokenize`, `interpret`, `matchNeeds`, `applyNeedConstraints`,
 `shortlistMarkdown`) are covered by `tests/needs.test.ts`.
+
+## Procedural and hybrid catalogue
+
+See [the integration guide](PROCEDURAL-GUIDE.md) for method/view/category filters, non-learned metadata and canonical hybrid recipe references. `search` and `need` support `view`, `method`, and `proceduralCategory`; kind and method are independent. Design recipes are not executable integrations.

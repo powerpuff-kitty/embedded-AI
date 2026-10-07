@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { renderProceduralPage } from './procedural.ts';
 import { loadEntries, renderCatalogueSummary, renderCataloguePage, renderIndex, renderFullIndex, renderCoverage, renderAtAGlance, renderDomains, replaceBlock } from './catalog.ts';
 try {
   const args = process.argv.slice(2);
@@ -11,6 +12,7 @@ try {
   const outputs = new Map([
     ['README.md', withDomains],
     ['docs/CATALOGUE.md', renderCataloguePage(entries)],
+    ['docs/PROCEDURAL.md', renderProceduralPage(entries)],
     ['generated/catalog.json', renderIndex(entries)],
     ['generated/catalog.full.json', renderFullIndex(entries)],
     ['generated/coverage.json', renderCoverage(entries)],
@@ -22,10 +24,10 @@ try {
       if (actual !== expected) stale.push(file);
     }
     if (stale.length) throw new Error(`Stale generated files: ${stale.join(', ')}. Run npm run index and commit the outputs.`);
-    console.log(`README and all JSON exports are current (${entries.length} entries).`);
+    console.log(`README, catalogue guides and JSON exports are current (${entries.length} entries).`);
   } else {
     await fs.mkdir('generated', { recursive: true });
     for (const [file, content] of outputs) await fs.writeFile(file, content);
-    console.log(`Generated README and all JSON exports (${entries.length} entries).`);
+    console.log(`Generated README, catalogue guides and JSON exports (${entries.length} entries).`);
   }
 } catch (error) { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; }

@@ -1,0 +1,79 @@
+id: webgl-noise
+name: webgl-noise
+domain: vision
+tasks:
+- shader-noise-generation
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Self-contained GLSL noise routines without external lookup textures or uniform-array data.
+links:
+  repository: https://github.com/ashima/webgl-noise
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- glsl
+- webgl
+formats: []
+procedural:
+  categories:
+  - images-materials
+  - foundations
+  integration: shader-library
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - shader coordinates
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: shader coordinates.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - shader coordinates
+  outputs:
+  - shader noise values
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Requires a compatible shader pipeline; GPU precision and drivers can affect results. No browser-device
+  benchmark is claimed.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/ashima/webgl-noise
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- images-materials
+- shader-library

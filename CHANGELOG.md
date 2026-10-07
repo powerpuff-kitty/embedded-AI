@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — procedural catalogue
+
+Added 24 researched upstream generators, annotated 5 existing simulations, and added 3 design-only hybrid recipes. Shared method/view/category facets now work across the explorer, CLI, package and MCP. Added strict procedural metadata, recipe reference validation, generated procedural tables, source/unknown distinctions and regression tests. Existing component IDs and paths are retained; no upstream runtime benchmark or npm publication is implied.
+
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

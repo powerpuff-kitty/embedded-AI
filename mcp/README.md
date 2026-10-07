@@ -84,3 +84,7 @@ npm install
 npm test        # end-to-end MCP handshake against a spawned server
 npm start       # run the server on stdio
 ```
+
+## Procedural and hybrid catalogue
+
+See [the integration guide](../docs/PROCEDURAL-GUIDE.md) for method/view/category filters, non-learned metadata and canonical hybrid recipe references. `search` and `need` support `view`, `method`, and `proceduralCategory`; kind and method are independent. Design recipes are not executable integrations.

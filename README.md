@@ -1,6 +1,6 @@
 # embedded-AI
 
-> An embeddable AI catalogue — models, toolkits and non-AI primitives for local and resource-constrained computing.
+> Embeddable intelligence and procedural computing — learned models, generators, simulations and hybrid recipes, with explicit runtime and evidence boundaries.
 
 [![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
 [![pages](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/pages.yml?label=pages)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
@@ -24,8 +24,16 @@ Each entry is a small YAML file. The tables below, the JSON exports, the search 
 
 - **Kinds:** `model`, `collection`, `pipeline`, `toolkit` and `primitive` are labelled separately.
 - **Use:** `pretrained`, `requires-training` and `companion` are recorded per entry.
-- **Domains:** 51 areas, from vision and audio to genomics, gaming and space.
+- **Methods:** learned, procedural, rule-based, physics-based and hybrid; independent of component kind and runtime.
+- **Views:** AI, procedural generation/simulation, hybrid recipes, or all components. Legacy unclassified companions remain visible in All components.
+- **Domains:** see the generated domain coverage below.
 - **One source, many faces:** the same YAML drives the README table, the JSON exports and the explorer.
+
+## Procedural generation & simulation
+
+[Browse procedural components](https://powerpuff-kitty.github.io/embedded-AI/?view=procedural) · [Browse hybrid recipes](https://powerpuff-kitty.github.io/embedded-AI/?view=hybrid) · [AI view](https://powerpuff-kitty.github.io/embedded-AI/?view=ai)
+
+[Full procedural table](docs/PROCEDURAL.md) · [Integration and metadata guide](docs/PROCEDURAL-GUIDE.md). New tools are documented, not benchmarked; the initial hybrid recipes are design-only. Browser/native/shader integration scope is explicit, and non-learned tools have no model weights.
 
 ## Quick start
 
@@ -75,10 +83,10 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 <!-- AT-A-GLANCE:START -->
 | | |
 |---|---|
-| **563 entries** | models, collections, pipelines, toolkits and primitives |
+| **590 entries** | models, collections, pipelines, toolkits and primitives |
 | **55 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
-| **Evidence** | 563 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
+| **Evidence** | 590 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
 <!-- AT-A-GLANCE:END -->
 
 ## Domains
@@ -108,7 +116,8 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 ```text
 catalog/       # learned models, architectures and collections
 pipelines/     # applications and training/integration toolkits
-primitives/    # non-AI optimization and simulation
+primitives/    # non-AI optimization, simulation and procedural generation
+              # procedural/ contains new generators; existing entries retain their paths
 hardware/      # device profiles (MCU, SBC, NPU, neuromorphic)
 runtimes/      # runtime profiles
 schema/        # catalogue and benchmark schemas
@@ -135,5 +144,5 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 ## Catalogue
 
 <!-- CATALOGUE:START -->
-**563 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
+**590 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
 <!-- CATALOGUE:END -->

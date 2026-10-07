@@ -1,0 +1,79 @@
+id: three-terrain
+name: THREE.Terrain
+domain: gaming
+tasks:
+- terrain-generation
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Three.js terrain-generation toolkit for height-based landscapes and configurable terrain
+  geometry.
+links:
+  repository: https://github.com/IceCreamYou/THREE.Terrain
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- threejs
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  integration: browser-library
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - terrain options or source heightmaps
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: terrain options or source heightmaps.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - terrain options or source heightmaps
+  outputs:
+  - terrain mesh and height data
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Three.js integration is version-sensitive; terrain geometry does not itself provide physics, navigation
+  or endless-world persistence.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/IceCreamYou/THREE.Terrain
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- worlds-environments
+- browser-library

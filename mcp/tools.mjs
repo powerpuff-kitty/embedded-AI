@@ -2,12 +2,12 @@
  * Pure tool implementations for the embedded-AI MCP server.
  *
  * Kept free of the MCP SDK so they can be unit-tested directly. Each function
- * returns a Markdown string. Data comes from the `embedded-ai-catalog` package
- * when installed, otherwise from the sibling `../lib/index.mjs` in this repo.
+ * returns a Markdown string. In a checkout, use the sibling catalogue so tests exercise current edits;
+ * installed MCP packages fall back to their embedded-ai-catalog dependency.
  */
 const catalog = await (async () => {
-  try { return await import('embedded-ai-catalog'); }
-  catch { return await import('../lib/index.mjs'); }
+  try { return await import('../lib/index.mjs'); }
+  catch (error) { if (error.code !== 'ERR_MODULE_NOT_FOUND') throw error; return await import('embedded-ai-catalog'); }
 })();
 
 export const version = catalog.version;
@@ -27,9 +27,9 @@ function entryLine(entry, index) {
   ].join('\n');
 }
 
-export function needTool({ query, limit = 10, offline = false, pretrained = false, model = false } = {}) {
+export function needTool({ query, limit = 10, offline = false, pretrained = false, model = false, view, method, proceduralCategory } = {}) {
   if (!query || !String(query).trim()) throw new Error('query is required');
-  const { intent, results, excluded } = catalog.need(query, { limit, constraints: { offline, pretrained, model } });
+  const { intent, results, excluded } = catalog.need(query, { limit, constraints: { offline, pretrained, model, view, method, proceduralCategory } });
   const head = [`# Matches for: ${query}`, '', intent.length ? `Intent: ${intent.join(', ')}` : 'Intent: (none detected)', ''];
   if (!results.length) head.push('No entries matched. Try naming the task, sensor or constraint differently.');
   else head.push(...results.map((r, i) => `${entryLine(r.entry, i + 1)}\n   - rank score: ${r.score}${r.reasons.length ? ` · why: ${r.reasons.slice(0, 4).join('; ')}` : ''}`));
@@ -37,8 +37,8 @@ export function needTool({ query, limit = 10, offline = false, pretrained = fals
   return head.join('\n');
 }
 
-export function searchTool({ query = '', domain, task, kind, usage, limit = 25 } = {}) {
-  const matches = catalog.search(query, { domain, task, kind, usage });
+export function searchTool({ query = '', domain, task, kind, usage, view, method, proceduralCategory, limit = 25 } = {}) {
+  const matches = catalog.search(query, { domain, task, kind, usage, view, method, proceduralCategory });
   const shown = matches.slice(0, limit);
   const head = [`# ${matches.length} matching entries`, ''];
   if (!matches.length) head.push('Nothing matched those filters.');
@@ -68,6 +68,9 @@ export function getTool({ id } = {}) {
     `- upstream: ${upstream(entry)}`,
     `- manifest: \`${entry.path}\``,
   ];
+  if (entry.methods?.length) lines.push(`- methods: ${entry.methods.join(', ')}`);
+  if (entry.procedural) lines.push(`- procedural: ${entry.procedural.categories.join(', ')} / ${entry.procedural.integration}`, `- seed: ${entry.procedural.seed_control}; determinism: ${entry.procedural.determinism}`);
+  if (entry.recipe) lines.push(`- recipe status: ${entry.recipe.status}`, ...entry.recipe.components.map(c => `- component: ${c.id} — ${c.role}`));
   if ((entry.limitations ?? []).length) lines.push('', 'Limitations:', ...entry.limitations.map((l) => `- ${l}`));
   return lines.join('\n');
 }
@@ -86,6 +89,8 @@ export function statsTool() {
     '',
     `- entries: ${c.total}`,
     `- domains: ${Object.keys(c.by_domain).length}`,
+    `- views: ${Object.entries(c.by_view ?? {}).map(([k, n]) => `${k} ${n}`).join(', ')}`,
+    `- methods (overlapping): ${Object.entries(c.by_method ?? {}).map(([k, n]) => `${k} ${n}`).join(', ')}`,
     `- kinds: ${Object.entries(c.by_kind).map(([k, n]) => `${k} ${n}`).join(', ')}`,
     `- entries with a source: ${e.entries_with_source ?? 'unknown'} (${e.entries_official_link_only ?? '?'} official-link only)`,
     `- measured RAM: ${e.measured_ram ?? 0} · reproduced compatibility: ${e.reproduced ?? 0} · reported: ${e.reported ?? 0}`,

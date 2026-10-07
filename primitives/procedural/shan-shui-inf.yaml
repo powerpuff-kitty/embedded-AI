@@ -1,0 +1,78 @@
+id: shan-shui-inf
+name: '{Shan, Shui}*'
+domain: vision
+tasks:
+- svg-landscape-generation
+class: procedural-generator
+kind: primitive
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Mathematical landscape-scroll generator producing layered Chinese-painting-inspired SVG scenery.
+links:
+  repository: https://github.com/LingDong-/shan-shui-inf
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+formats: []
+procedural:
+  categories:
+  - images-materials
+  - worlds-environments
+  integration: browser-reference
+  seed_control: built-in
+  determinism: conditional
+  controls:
+  - seed and scroll position
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: seed and scroll position.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - seed and scroll position
+  outputs:
+  - svg-artwork
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Not 3D geometry, a heightmap, or a navigable simulated world; isolate the standalone implementation
+  before integration.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/LingDong-/shan-shui-inf
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- images-materials
+- browser-reference

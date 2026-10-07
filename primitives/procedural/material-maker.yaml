@@ -1,0 +1,78 @@
+id: material-maker
+name: Material Maker
+domain: vision
+tasks:
+- material-generation
+class: procedural-generator
+kind: primitive
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Node-based procedural material authoring and painting application built with Godot.
+links:
+  repository: https://github.com/RodZill4/material-maker
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - desktop
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- godot
+formats: []
+procedural:
+  categories:
+  - images-materials
+  integration: native-reference
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - material graph and optional source textures
+  assets:
+  - Host application and version-specific scene/material assets.
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: material graph and optional source textures.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - material graph and optional source textures
+  outputs:
+  - material textures
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- An authoring application rather than a drop-in JS generator; reuse exports or adapt algorithms, and
+  inspect third-party asset terms.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/RodZill4/material-maker
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- images-materials
+- native-reference

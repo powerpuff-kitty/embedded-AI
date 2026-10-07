@@ -2,9 +2,9 @@ import { parseArgs } from 'node:util';
 import { loadEntries, filterEntries, kindOf, usageOf } from './catalog.ts';
 try {
   const { values } = parseArgs({ options: { domain: { type: 'string' }, task: { type: 'string' }, kind: { type: 'string' },
-    usage: { type: 'string' }, query: { type: 'string' }, json: { type: 'boolean', default: false }, help: { type: 'boolean' } }, strict: true });
+    view: { type: 'string' }, method: { type: 'string' }, proceduralCategory: { type: 'string' }, usage: { type: 'string' }, query: { type: 'string' }, json: { type: 'boolean', default: false }, help: { type: 'boolean' } }, strict: true });
   if (values.help) {
-    console.log('npm run search -- [--domain DOMAIN] [--task TASK] [--kind KIND] [--usage pretrained|requires-training|companion|unknown] [--query TEXT] [--json]');
+    console.log('npm run search -- [--domain DOMAIN] [--task TASK] [--kind KIND] [--usage pretrained|requires-training|companion|unknown] [--view ai|procedural|hybrid] [--method METHOD] [--proceduralCategory CATEGORY] [--query TEXT] [--json]');
   } else {
     if (values.usage && !['pretrained', 'requires-training', 'companion', 'unknown'].includes(values.usage)) throw new Error('Invalid --usage');
     if (values.kind && !['model', 'collection', 'pipeline', 'toolkit', 'primitive'].includes(values.kind)) throw new Error('Invalid --kind');
