@@ -60,6 +60,16 @@ get("docling").links.repository;                               // lookup by id
 
 The generated JSON also ships directly: `embedded-ai-catalog/catalog.json`, `embedded-ai-catalog/catalog.full.json`, `embedded-ai-catalog/coverage.json`.
 
+## MCP server
+
+The same catalogue and need matcher are available to MCP clients (Claude, Cursor) via [`mcp/`](mcp/README.md):
+
+```json
+{ "mcpServers": { "embedded-ai": { "command": "npx", "args": ["-y", "embedded-ai-catalog-mcp"] } } }
+```
+
+Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `embedded-ai://catalog` and `embedded-ai://coverage` resources.
+
 ## At a glance
 
 <!-- AT-A-GLANCE:START -->
@@ -86,6 +96,7 @@ The generated JSON also ships directly: `embedded-ai-catalog/catalog.json`, `emb
 - [Design system](docs/DESIGN.md) — tokens and components
 - [Taxonomy](docs/TAXONOMY.md) — how components are classified
 - [Building small models](docs/BUILDING-SMALL-MODELS.md) — a practical workflow
+- [MCP server](mcp/README.md) — use the catalogue from Claude, Cursor and other MCP clients
 - [Full catalogue](docs/CATALOGUE.md) — generated tables for all entries
 - [Dependency & security review](docs/SECURITY-REVIEW-V02.md)
 - [Contributing](CONTRIBUTING.md) — entry rules and tooling

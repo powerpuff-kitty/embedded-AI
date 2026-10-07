@@ -15,6 +15,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `npm run test:coverage` (Node's built-in V8 coverage) with a line/function/
   branch gate, enforced on pull requests; CLI tests for `validate`, `audit`,
   `audit --strict` and `search`.
+- `mcp/` — an MCP server (`embedded-ai-catalog-mcp`) exposing `need`, `search`,
+  `get_entry`, `list_domains` and `catalogue_stats` tools, plus
+  `embedded-ai://catalog` and `embedded-ai://coverage` resources. Includes an
+  end-to-end handshake test and its own CI workflow.
 
 ### Security
 - Pin every GitHub Action to a full commit SHA (with a version comment);

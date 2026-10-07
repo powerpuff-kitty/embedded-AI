@@ -25,7 +25,8 @@ In scope:
 
 - The generated explorer (`site/`, `dist/`) — its strict Content-Security-Policy, URL
   sanitisation and the offline need matcher.
-- Build/validation scripts (`scripts/`), the published package (`lib/`) and CI workflows.
+- Build/validation scripts (`scripts/`), the published package (`lib/`), the MCP
+  server (`mcp/`) and CI workflows.
 - The schemas in `schema/`.
 
 Out of scope:
