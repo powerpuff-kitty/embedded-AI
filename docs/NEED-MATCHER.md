@@ -1,5 +1,7 @@
 # Matching a need to a component
 
+> How plain-language search ranks components offline, explains itself, and where it stops.
+
 The explorer at `site/` (built to `dist/`) accepts a plain-language description of
 what you want to do and ranks catalogue entries against it. It is **deterministic
 and offline**: no model weights are bundled or fetched, no third-party runtime is

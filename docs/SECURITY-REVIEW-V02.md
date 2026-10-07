@@ -1,5 +1,7 @@
 # v0.2 dependency review
 
+> What the v0.2 dependency review found, what was removed, and the boundaries of an npm audit.
+
 The original audit (GitHub Actions run 37294187461, job 111711426721) identified one underlying advisory, [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm), affecting braces <=3.0.3. The three high-severity affected dependency nodes were braces, micromatch and fast-glob. They were not three independently established exploits.
 
 The catalogue used fixed developer-supplied glob patterns, not arbitrary user-supplied patterns. Nevertheless, the dependency chain was unnecessary and has been removed. `scripts/discover.ts` walks only the three known roots, skips symlinks/templates, and preserves YAML and duplicate-ID checks.

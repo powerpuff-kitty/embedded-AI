@@ -1,5 +1,7 @@
 # Finance, administration, infrastructure and business AI
 
+> Per-task guides for finance, administration, IT operations, corporate operations and energy — with deployment, data and licence boundaries made explicit.
+
 This expansion adds **32 records** and completes the set discussed on 2026-10-05. The repository contains **95 entries after this batch**, not 95 interchangeable pretrained neural networks. See the [machine-readable batch checklist](batches/business-2026-10-05.json) and [live coverage report](../generated/coverage.json). The catalogue remains open-ended; unknown older metadata is not automatically filled with assumptions.
 
 ## Complete addition list

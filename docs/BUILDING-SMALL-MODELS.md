@@ -1,5 +1,7 @@
 # Creating a small AI model
 
+> A practical, data-first workflow for building a model that actually fits the target device.
+
 Small specialist models are often practical to build because the problem can be tightly bounded. The hard part is usually **data and evaluation**, not writing the neural network.
 
 ## Workflow

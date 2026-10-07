@@ -1,5 +1,7 @@
 # v0.2 validation and first measured runs
 
+> The v0.2 validation record: what was actually executed, on which host, with real artifact hashes and honest noise caveats.
+
 The [integration run 37299920740](https://github.com/powerpuff-kitty/embedded-AI/actions/runs/37299920740) completed real acquisition, inference and browser tests on 2026-10-05. Artifact `11341681090` contains the original result JSON, acquisition receipts, resolved Python inventory, static preview and browser screenshots.
 
 ## Checks completed

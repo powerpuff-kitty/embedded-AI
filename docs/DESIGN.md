@@ -1,5 +1,7 @@
 # Design system
 
+> The tokens and components behind the explorer — one place to restyle and re-theme the whole site.
+
 The explorer is a dependency-free static site. `site/style.css` is organised around design tokens; components consume tokens rather than literal values so the whole UI can be restyled and themed from one place.
 
 ## Tokens
