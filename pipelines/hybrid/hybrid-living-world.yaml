@@ -1,0 +1,85 @@
+id: hybrid-living-world
+name: Hybrid living-world companion
+domain: gaming
+tasks:
+- hybrid-procedural-integration
+class: hybrid-recipe
+kind: pipeline
+learned: true
+methods:
+- learned
+- procedural
+- rule-based
+- hybrid
+catalogue_batch: procedural-2026-10-07
+description: Design-only composition of learned decisions and procedural components. Integration adapters
+  and an end-to-end benchmark are not yet implemented.
+links:
+  homepage: https://github.com/powerpuff-kitty/embedded-AI/blob/main/docs/PROCEDURAL-GUIDE.md
+model:
+  parameters: null
+  file_size_mb: null
+license:
+  code: not-applicable
+  weights: component-specific
+  notes: Catalogue design, not a bundled executable. Each component, checkpoint and asset retains its
+    own licence.
+deployment:
+  offline: null
+  targets: []
+  notes: Intended local-first design; runtime fit depends on checkpoint and integration choices and has
+    not been reproduced.
+runtimes: []
+formats: []
+recipe:
+  status: design
+  components:
+  - id: smollm
+    role: Optional dialogue and bounded action proposals; select a specific checkpoint.
+  - id: ez-tree
+    role: Render vegetation from authoritative world-state parameters.
+  - id: yuka
+    role: Execute non-learned steering and behaviour transitions.
+  contracts:
+  - A simulation ledger owns entity creation, deletion, resources, growth and decay; model output cannot
+    mutate it directly.
+  - Validate model-proposed intents against an allowlisted JSON schema, budgets and current state.
+  - Store initial state, event log, RNG state and component versions; rendering never becomes the source
+    of truth.
+related:
+- smollm
+- ez-tree
+- yuka
+usage:
+  mode: companion
+  training: No model training is implemented by this design.
+  needs_data: Application state, authored constraints and a separately chosen model checkpoint.
+  update_strategy: Pin components and checkpoints; promote to runnable only with an existing entrypoint
+    and tested adapters.
+data:
+  inputs:
+  - world-state
+  - player-message
+  outputs:
+  - validated-action-proposal
+  - rendered-world-state
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Design only; validate component contracts, offline operation and end-to-end resource usage before deployment.
+limitations:
+- Not runnable; no latency, RAM, compatibility or composed-output quality is claimed.
+- A family-level model reference does not select weights, quantization, licence or inference runtime.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/dgreenheck/ez-tree
+  notes: Evidence for the individual procedural component only, not for this proposed integration.
+reviewed: '2026-10-07'
+tags:
+- hybrid
+- procedural
+- design-only

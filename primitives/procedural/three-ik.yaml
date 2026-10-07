@@ -1,0 +1,79 @@
+id: three-ik
+name: THREE.IK
+domain: gaming
+tasks:
+- inverse-kinematics
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Inverse-kinematics library for posing connected Three.js joint chains toward targets.
+links:
+  repository: https://github.com/jsantell/THREE.IK
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- threejs
+formats: []
+procedural:
+  categories:
+  - motion-behaviour
+  integration: browser-library
+  seed_control: not-applicable
+  determinism: unknown
+  controls:
+  - joint chains, constraints and target positions
+  assets:
+  - Application-provided joint graph and targets.
+  incremental: true
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: joint chains, constraints and target positions.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - joint chains, constraints and target positions
+  outputs:
+  - updated joint poses
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Requires an existing rig; does not generate meshes or learn locomotion. Test compatibility with the
+  selected Three.js version.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/jsantell/THREE.IK
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- motion-behaviour
+- browser-library

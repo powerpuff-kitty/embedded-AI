@@ -1,0 +1,77 @@
+id: opensteer
+name: OpenSteer
+domain: gaming
+tasks:
+- steering-behaviour
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: C++ steering-behaviour toolkit for autonomous characters in games and animation.
+links:
+  repository: https://github.com/meshula/OpenSteer
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - desktop
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- cpp
+formats: []
+procedural:
+  categories:
+  - motion-behaviour
+  integration: native-library
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - agent state and steering goals
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: agent state and steering goals.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - agent state and steering goals
+  outputs:
+  - steering forces and motion updates
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Separate the library from its demonstration/rendering environment; no JS/WASM port or hardware performance
+  is assumed.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/meshula/OpenSteer
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- motion-behaviour
+- native-library

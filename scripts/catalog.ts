@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { discoverManifests } from './discover.ts';
 import YAML from 'yaml';
+import { methodsOf, viewOf, matchesFacets, validateFacets } from '../site/methods.mjs';
 import Ajv2020 from 'ajv/dist/2020.js';
 
 export type Entry = Record<string, any> & { id: string; name: string; domain: string; tasks: string[]; path: string };
@@ -27,6 +28,24 @@ export function validateEntries(entries: Entry[], root = process.cwd()): void {
     const candidate: Record<string, unknown> = { ...e };
     delete candidate.path;
     if (!validate(candidate)) { errors.push(`${e.path}: ${ajv.errorsText(validate.errors, { separator: '; ' })}`); continue; }
+    if (e.learned === false && methodsOf(e).includes('learned')) errors.push(`${e.path}: learned false conflicts with learned method`);
+    if (e.learned === true && e.methods && !e.methods.includes('learned')) errors.push(`${e.path}: learned true requires learned method`);
+    if (e.procedural && !methodsOf(e).includes('procedural')) errors.push(`${e.path}: procedural metadata requires procedural method`);
+    if (methodsOf(e).includes('procedural') && !e.procedural && !e.recipe) errors.push(`${e.path}: procedural method requires metadata or recipe`);
+    if (e.learned === false && (e.model.parameters != null || e.model.file_size_mb != null || e.license.weights !== 'not-applicable'))
+      errors.push(`${e.path}: non-learned entries require null model sizes and not-applicable weights`);
+    if (e.procedural?.evidence_level === 'reproduced' && !e.compatibility.some((c: any) => c.status === 'reproduced'))
+      errors.push(`${e.path}: reproduced procedural evidence requires a benchmark-backed compatibility record`);
+    if (e.recipe) {
+      if (kindOf(e) !== 'pipeline' || !['learned', 'procedural', 'hybrid'].every(m => methodsOf(e).includes(m)))
+        errors.push(`${e.path}: hybrid recipe requires pipeline kind and learned, procedural, hybrid methods`);
+      if (e.recipe.status === 'design' && (e.recipe.entrypoint || e.compatibility.some((c: any) => c.status === 'reproduced')))
+        errors.push(`${e.path}: design recipe is not runnable or reproduced`);
+      if (e.recipe.status === 'runnable') {
+        const p = e.recipe.entrypoint;
+        if (!p || p.split('/').includes('..') || !existsSync(path.join(root, p))) errors.push(`${e.path}: runnable recipe requires an existing recipes/ entrypoint`);
+      }
+    }
     if (!Object.values(e.links).some(Boolean)) errors.push(`${e.path}: at least one upstream link is required`);
     if (e.catalogue_batch === 'business-2026-10-05' || e.usage !== undefined) {
       if (!validateBusiness(e)) errors.push(`${e.path}: ${ajv.errorsText(validateBusiness.errors, { separator: '; ' })}`);
@@ -45,7 +64,17 @@ export function validateEntries(entries: Entry[], root = process.cwd()): void {
         errors.push(`${e.path}: ${c.status} compatibility requires evidence`);
     }
   }
+  if (errors.length) throw new Error(errors.join('\n'));
   for (const e of entries) for (const id of e.related ?? []) if (!ids.has(id)) errors.push(`${e.path}: unknown related id ${id}`);
+  const byId = new Map(entries.map(e => [e.id, e]));
+  for (const e of entries) if (e.recipe) {
+    const refs = e.recipe.components.map((c: any) => c.id);
+    if (new Set(refs).size !== refs.length) errors.push(`${e.path}: duplicate recipe component`);
+    for (const id of refs) if (!byId.has(id) || id === e.id || byId.get(id)?.recipe) errors.push(`${e.path}: invalid recipe component ${id}; reference canonical non-recipe entries`);
+    const components = refs.map((id: string) => byId.get(id)).filter(Boolean);
+    if (!components.some((c: Entry) => methodsOf(c).includes('learned')) || !components.some((c: Entry) => methodsOf(c).includes('procedural')))
+      errors.push(`${e.path}: hybrid recipe must reference both learned and procedural components`);
+  }
   if (errors.length) throw new Error(errors.join('\n'));
 }
 export async function loadEntries(root = process.cwd()): Promise<Entry[]> {
@@ -139,10 +168,10 @@ export function updateReadme(readme: string, catalogue: string): string {
 }
 export function renderIndex(entries: Entry[]): string {
   return '[\n' + entries.map(e => '  ' + JSON.stringify({ id: e.id, name: e.name, domain: e.domain, tasks: e.tasks, class: e.class,
-    parameters: e.model.parameters ?? null, file_size_mb: e.model.file_size_mb ?? null, path: e.path, kind: kindOf(e), upstream: upstream(e), usage_mode: usageOf(e) })).join(',\n') + '\n]\n';
+    parameters: e.model.parameters ?? null, file_size_mb: e.model.file_size_mb ?? null, path: e.path, kind: kindOf(e), upstream: upstream(e), usage_mode: usageOf(e), methods: methodsOf(e), view: viewOf(e), procedural_categories: e.procedural?.categories ?? [] })).join(',\n') + '\n]\n';
 }
 export function renderFullIndex(entries: Entry[]): string {
-  return JSON.stringify({ schema_version: 1, entries: entries.map(e => ({ ...e, kind: kindOf(e), usage_mode: usageOf(e) })) }, null, 2) + '\n';
+  return JSON.stringify({ schema_version: 1, entries: entries.map(e => ({ ...e, kind: kindOf(e), usage_mode: usageOf(e), methods: methodsOf(e), view: viewOf(e) })) }, null, 2) + '\n';
 }
 export function renderCoverage(entries: Entry[]): string {
   const countBy = (fn: (e: Entry) => string) => Object.fromEntries([...new Set(entries.map(fn))].sort(cmp).map(key => [key, entries.filter(e => fn(e) === key).length]));
@@ -150,7 +179,8 @@ export function renderCoverage(entries: Entry[]): string {
   const byType = (type: string) => items.filter((ev: any) => ev.type === type).length;
   const compatCount = (status: string) => entries.filter(e => (e.compatibility ?? []).some((c: any) => c.status === status)).length;
   const sourced = entries.filter(e => (e.evidence ?? []).length > 0);
-  return JSON.stringify({ total: entries.length, by_domain: countBy(e => e.domain), by_kind: countBy(kindOf), by_usage: countBy(usageOf),
+  return JSON.stringify({ total: entries.length, by_domain: countBy(e => e.domain), by_kind: countBy(kindOf), by_usage: countBy(usageOf), by_view: countBy(viewOf),
+    by_method: Object.fromEntries([...new Set(entries.flatMap(methodsOf))].sort().map(m => [m, entries.filter(e => methodsOf(e).includes(m)).length])),
     evidence: {
       entries_with_source: sourced.length,
       entries_official_link_only: sourced.filter(e => e.evidence.length === 1 && e.evidence.every((ev: any) => ev.type === 'official')).length,
@@ -166,8 +196,9 @@ export function renderCoverage(entries: Entry[]): string {
     reproduced_entries: entries.filter(e => e.compatibility.some((c: any) => c.status === 'reproduced')).length,
     note: 'Counts describe catalogue coverage, not deployment guarantees. Every entry carries at least one source link, but most stop at an official link with no measured or reproduced evidence. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes.' }, null, 2) + '\n';
 }
-export function filterEntries(entries: Entry[], filters: { domain?: string; task?: string; kind?: string; usage?: string; query?: string } = {}): Entry[] {
-  return entries.filter(e => (!filters.domain || e.domain === filters.domain) && (!filters.task || e.tasks.includes(filters.task)) &&
+export function filterEntries(entries: Entry[], filters: { domain?: string; task?: string; kind?: string; usage?: string; query?: string; view?: string; method?: string; proceduralCategory?: string } = {}): Entry[] {
+  validateFacets(filters);
+  return entries.filter(e => matchesFacets(e, filters) && (!filters.domain || e.domain === filters.domain) && (!filters.task || e.tasks.includes(filters.task)) &&
     (!filters.kind || kindOf(e) === filters.kind) && (!filters.usage || usageOf(e) === filters.usage) &&
-    (!filters.query || [e.id, e.name, e.description ?? '', ...(e.tags ?? [])].join(' ').toLowerCase().includes(filters.query.toLowerCase())));
+    (!filters.query || [e.id, e.name, e.description ?? '', ...e.tasks, ...(e.tags ?? []), ...methodsOf(e), ...(e.procedural?.categories ?? [])].join(' ').toLowerCase().includes(filters.query.toLowerCase())));
 }

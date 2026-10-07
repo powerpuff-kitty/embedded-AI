@@ -1,0 +1,80 @@
+id: infinigen
+name: Infinigen
+domain: gaming
+tasks:
+- scene-generation
+class: procedural-generator
+kind: primitive
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Procedural scene-generation system for building detailed synthetic environments through a
+  Blender-based workflow.
+links:
+  repository: https://github.com/princeton-vl/infinigen
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: BSD-3-Clause
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - desktop
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- python
+- blender
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  integration: native-reference
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - scene configuration and procedural assets
+  assets:
+  - Host application and version-specific scene/material assets.
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: scene configuration and procedural assets.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - scene configuration and procedural assets
+  outputs:
+  - generated scenes and rendered data
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Desktop/offline production reference, not a browser or microcontroller library. Review version-specific
+  installation and compute requirements.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/princeton-vl/infinigen
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- worlds-environments
+- native-reference

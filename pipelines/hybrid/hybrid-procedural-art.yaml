@@ -1,0 +1,84 @@
+id: hybrid-procedural-art
+name: Hybrid procedural-art assistant
+domain: vision
+tasks:
+- hybrid-procedural-integration
+class: hybrid-recipe
+kind: pipeline
+learned: true
+methods:
+- learned
+- procedural
+- rule-based
+- hybrid
+catalogue_batch: procedural-2026-10-07
+description: Design-only composition of learned decisions and procedural components. Integration adapters
+  and an end-to-end benchmark are not yet implemented.
+links:
+  homepage: https://github.com/powerpuff-kitty/embedded-AI/blob/main/docs/PROCEDURAL-GUIDE.md
+model:
+  parameters: null
+  file_size_mb: null
+license:
+  code: not-applicable
+  weights: component-specific
+  notes: Catalogue design, not a bundled executable. Each component, checkpoint and asset retains its
+    own licence.
+deployment:
+  offline: null
+  targets: []
+  notes: Intended local-first design; runtime fit depends on checkpoint and integration choices and has
+    not been reproduced.
+runtimes: []
+formats: []
+recipe:
+  status: design
+  components:
+  - id: smollm
+    role: Translate text into a bounded, validated art-parameter proposal.
+  - id: shan-shui-inf
+    role: Landscape SVG reference requiring an isolated adapter.
+  - id: rough-js
+    role: Sketch rendering of application-supplied geometry.
+  contracts:
+  - Do not execute model-generated JavaScript, SVG scripts or arbitrary filesystem paths.
+  - Persist validated parameters, seed and generator versions; sanitize SVG before embedding.
+  - An adapter chooses the landscape renderer or geometric sketch renderer; these are not automatically
+    compatible scene formats.
+related:
+- smollm
+- shan-shui-inf
+- rough-js
+usage:
+  mode: companion
+  training: No model training is implemented by this design.
+  needs_data: Application state, authored constraints and a separately chosen model checkpoint.
+  update_strategy: Pin components and checkpoints; promote to runnable only with an existing entrypoint
+    and tested adapters.
+data:
+  inputs:
+  - art-brief
+  - bounded-options
+  outputs:
+  - validated-art-parameters
+  - svg-artwork
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Design only; validate component contracts, offline operation and end-to-end resource usage before deployment.
+limitations:
+- Not runnable; no latency, RAM, compatibility or composed-output quality is claimed.
+- A family-level model reference does not select weights, quantization, licence or inference runtime.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/LingDong-/shan-shui-inf
+  notes: Evidence for the individual procedural component only, not for this proposed integration.
+reviewed: '2026-10-07'
+tags:
+- hybrid
+- procedural
+- design-only

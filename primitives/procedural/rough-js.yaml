@@ -1,0 +1,80 @@
+id: rough-js
+name: Rough.js
+domain: vision
+tasks:
+- sketch-rendering
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Procedural sketch-style drawing of geometric primitives and paths to SVG or Canvas.
+links:
+  repository: https://github.com/rough-stuff/rough
+  documentation: https://github.com/rough-stuff/rough/wiki
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+formats: []
+procedural:
+  categories:
+  - images-materials
+  integration: browser-library
+  seed_control: built-in
+  determinism: conditional
+  controls:
+  - geometry and drawing options
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: geometry and drawing options.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - geometry and drawing options
+  outputs:
+  - svg or canvas drawing
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Adds a drawing style to supplied geometry; it does not invent a scene or reconstruct an environment.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/rough-stuff/rough
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+- type: official
+  url: https://github.com/rough-stuff/rough/wiki#seed
+  notes: Optional nonzero numeric seed controls repeated shape generation; pin parameters and implementation.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- images-materials
+- browser-library

@@ -3,6 +3,7 @@ import path from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import YAML from 'yaml';
 import { loadEntries, kindOf } from './catalog.ts';
+import { methodsOf, viewOf } from '../site/methods.mjs';
 const entries = await loadEntries();
 const hardware: any[] = [];
 for(const file of await fs.readdir('hardware').catch(() => [])){
@@ -29,10 +30,10 @@ async function visit(dir: string): Promise<void> {
 }
 await visit('benchmarks/results');
 await fs.mkdir('dist/data',{recursive:true});
-for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','logo.svg','og.png','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
+for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','methods.mjs','i18n.mjs','logo.svg','og.png','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
 await fs.mkdir('dist/locales',{recursive:true});
 for(const name of await fs.readdir('site/locales'))await fs.copyFile(path.join('site','locales',name),path.join('dist','locales',name));
-await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records,hardware}));
+await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e),methods:methodsOf(e),view:viewOf(e)})),benchmarks:records,hardware}));
 await fs.writeFile('dist/.nojekyll','');
 const BASE='https://powerpuff-kitty.github.io/embedded-AI';
 const domains=[...new Set(entries.map(e=>e.domain))].sort();
@@ -52,7 +53,7 @@ for (const entry of entries as any[]) {
   const linkItems = Object.entries(entry.links||{}).filter(([,u])=>u).map(([k,u])=>`<li>${esc(k)}: <a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a></li>`).join('');
   const evidence = (entry.evidence||[]).map((ev:any)=>`<li><a href="${esc(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.notes||ev.type)}</a></li>`).join('') || '<li>Not reviewed.</li>';
   const compat = (entry.compatibility||[]).length ? (entry.compatibility as any[]).map(c=>`<li>${esc(c.target)}: ${esc(c.status)}</li>`).join('') : '<li>unknown (no measured evidence)</li>';
-  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${BASE}/c/${entry.id}.html"><meta name="robots" content="index,follow"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${BASE}/c/${entry.id}.html"><meta property="og:image" content="${BASE}/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${BASE}/og.png"><script type="application/ld+json">${jsonld}</script><link rel="stylesheet" href="../style.css"></head><body><main><p class="eyebrow">${esc(entry.domain)} / ${esc(kindOf(entry))}</p><h1>${esc(entry.name)}</h1><p>${esc(description)}</p><dl><dt>Use</dt><dd>${esc(entry.usage?.mode ?? 'unknown')}</dd><dt>Tasks</dt><dd>${esc((entry.tasks||[]).join(', '))}</dd><dt>Runtimes / formats</dt><dd>${esc([...(entry.runtimes||[]),...(entry.formats||[])].join(', ')||'unknown')}</dd><dt>Code / weights licence</dt><dd>${esc(entry.license?.code)} / ${esc(entry.license?.weights)}</dd><dt>Compatibility</dt><dd><ul>${compat}</ul></dd></dl><h2>Sources</h2><ul>${linkItems||'<li>Not reviewed.</li>'}</ul><h2>Evidence</h2><ul>${evidence}</ul><h2>Limitations</h2><ul>${(entry.limitations||['Not reviewed.']).map((l:string)=>`<li>${esc(l)}</li>`).join('')}</ul><p><a href="../">\u2190 embedded-AI catalogue</a> \u00b7 <a href="../?entry=${entry.id}">open in the explorer</a></p></main></body></html>\n`;
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${BASE}/c/${entry.id}.html"><meta name="robots" content="index,follow"><meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${BASE}/c/${entry.id}.html"><meta property="og:image" content="${BASE}/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${BASE}/og.png"><script type="application/ld+json">${jsonld}</script><link rel="stylesheet" href="../style.css"></head><body><main><p class="eyebrow">${esc(entry.domain)} / ${esc(kindOf(entry))}</p><h1>${esc(entry.name)}</h1><p>${esc(description)}</p><dl><dt>Methods</dt><dd>${esc(methodsOf(entry).join(", ")||"unclassified")}</dd>${entry.procedural?`<dt>Procedural metadata</dt><dd><pre>${esc(JSON.stringify(entry.procedural,null,2))}</pre></dd>`:""}${entry.recipe?`<dt>Recipe — ${esc(entry.recipe.status)}</dt><dd><pre>${esc(JSON.stringify(entry.recipe,null,2))}</pre></dd>`:""}<dt>Use</dt><dd>${esc(entry.usage?.mode ?? 'unknown')}</dd><dt>Tasks</dt><dd>${esc((entry.tasks||[]).join(', '))}</dd><dt>Runtimes / formats</dt><dd>${esc([...(entry.runtimes||[]),...(entry.formats||[])].join(', ')||'unknown')}</dd><dt>Code / weights licence</dt><dd>${esc(entry.license?.code)} / ${esc(entry.license?.weights)}</dd><dt>Compatibility</dt><dd><ul>${compat}</ul></dd></dl><h2>Sources</h2><ul>${linkItems||'<li>Not reviewed.</li>'}</ul><h2>Evidence</h2><ul>${evidence}</ul><h2>Limitations</h2><ul>${(entry.limitations||['Not reviewed.']).map((l:string)=>`<li>${esc(l)}</li>`).join('')}</ul><p><a href="../">\u2190 embedded-AI catalogue</a> \u00b7 <a href="../?entry=${entry.id}">open in the explorer</a></p></main></body></html>\n`;
   await fs.writeFile(`dist/c/${entry.id}.html`, html);
 }
 
@@ -65,7 +66,7 @@ await fs.writeFile('dist/domains.html', domainsHtml);
 
 const sitemapUrls=[`${BASE}/`,`${BASE}/domains.html`,`${BASE}/skeleton.html`,...entries.map(e=>`${BASE}/c/${e.id}.html`),`${BASE}/llms.txt`,`${BASE}/llms-full.txt`];
 await fs.writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(u=>`<url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','logo.svg','og.png','skeleton.html','skeleton.mjs','data/catalog.json','locales/en.json','robots.txt','sitemap.xml','llms.txt','llms-full.txt','.nojekyll'];
+const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','methods.mjs','i18n.mjs','logo.svg','og.png','skeleton.html','skeleton.mjs','data/catalog.json','locales/en.json','robots.txt','sitemap.xml','llms.txt','llms-full.txt','.nojekyll'];
 for(const name of required) await fs.access(path.join('dist',name));
 const built=JSON.parse(await fs.readFile('dist/data/catalog.json','utf8'));
 if(!Array.isArray(built.entries)||!built.entries.length) throw new Error('dist/data/catalog.json has no entries');

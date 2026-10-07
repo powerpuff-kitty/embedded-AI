@@ -16,7 +16,7 @@
     "./catalog.full.json": "./generated/catalog.full.json",
     "./coverage.json": "./generated/coverage.json"
   },
-  "files": ["lib/", "site/needs.mjs", "generated/*.json", "README.md", "LICENSE", "LICENSE-DATA"],
+  "files": ["lib/", "site/needs.mjs", "site/methods.mjs", "generated/*.json", "README.md", "LICENSE", "LICENSE-DATA"],
   "sideEffects": false,
   "publishConfig": {"access": "public"},
   "scripts": {

@@ -1,0 +1,78 @@
+id: zzfx
+name: ZzFX
+domain: audio
+tasks:
+- sound-effect-synthesis
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Parameter-driven JavaScript synthesizer for compact procedural game sound effects.
+links:
+  repository: https://github.com/KilledByAPixel/ZzFX
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- web-audio
+formats: []
+procedural:
+  categories:
+  - audio-music
+  integration: browser-library
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - sound-synthesis parameters
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: sound-synthesis parameters.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - sound-synthesis parameters
+  outputs:
+  - synthesized audio
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Randomized parameters can vary output; bound duration and volume, and account for browser audio activation
+  requirements.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/KilledByAPixel/ZzFX
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- audio-music
+- browser-library

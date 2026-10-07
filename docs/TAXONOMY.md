@@ -35,3 +35,7 @@ A useful embedded system can be described as:
 SENSE → PERCEIVE → ESTIMATE → DECIDE/PLAN → CONTROL → ACT
 
 This lets the catalogue eventually compose compatible components into complete recipes.
+
+## Procedural and hybrid catalogue
+
+See [the integration guide](PROCEDURAL-GUIDE.md) for method/view/category filters, non-learned metadata and canonical hybrid recipe references. `search` and `need` support `view`, `method`, and `proceduralCategory`; kind and method are independent. Design recipes are not executable integrations.

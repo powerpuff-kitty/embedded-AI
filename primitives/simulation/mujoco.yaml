@@ -1,19 +1,70 @@
-id: "mujoco"
-name: "MuJoCo"
-kind: "primitive"
-domain: "simulation"
-tasks: ["articulated-physics-simulation"]
-class: "physics-simulator"
-description: "Rigid-body and contact dynamics simulator for articulated systems."
-links: {"repository": "https://github.com/google-deepmind/mujoco"}
-model: {"parameters": null, "file_size_mb": null}
-license: {"code": "Apache-2.0", "weights": "not-applicable"}
-deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
-runtimes: ["native-c-cpp", "python"]
+id: mujoco
+name: MuJoCo
+kind: primitive
+domain: simulation
+tasks:
+- articulated-physics-simulation
+class: physics-simulator
+description: Rigid-body and contact dynamics simulator for articulated systems.
+links:
+  repository: https://github.com/google-deepmind/mujoco
+model:
+  parameters: null
+  file_size_mb: null
+license:
+  code: Apache-2.0
+  weights: not-applicable
+deployment:
+  offline: true
+  targets:
+  - desktop
+  notes: Upstream target classes, not hardware results reproduced by this catalogue.
+runtimes:
+- native-c-cpp
+- python
 formats: []
-requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
-io: {"inputs": ["body-model", "joint-state", "control-inputs"], "outputs": ["simulated-state", "contacts"], "camera_setup": "none required", "temporal_mode": "not-applicable", "coordinate_system": "simulation-world"}
-compatibility: [{"target": "luckfox-rv1106", "status": "unknown", "notes": "Not tested by this catalogue."}]
-notes: "Not a trained AI model, pose detector or motion-capture system. Physics simulation requires bodies, constraints and controls; stickman replay can instead directly render measured joint trajectories."
-reviewed: "2026-10-05"
-evidence: [{"type": "official", "url": "https://github.com/google-deepmind/mujoco"}]
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+io:
+  inputs:
+  - body-model
+  - joint-state
+  - control-inputs
+  outputs:
+  - simulated-state
+  - contacts
+  camera_setup: none required
+  temporal_mode: not-applicable
+  coordinate_system: simulation-world
+compatibility:
+- target: luckfox-rv1106
+  status: unknown
+  notes: Not tested by this catalogue.
+notes: Not a trained AI model, pose detector or motion-capture system. Physics simulation requires bodies,
+  constraints and controls; stickman replay can instead directly render measured joint trajectories.
+reviewed: '2026-10-07'
+evidence:
+- type: official
+  url: https://github.com/google-deepmind/mujoco
+learned: false
+methods:
+- procedural
+- physics-based
+procedural:
+  categories:
+  - motion-behaviour
+  integration: native-library
+  seed_control: not-applicable
+  determinism: unknown
+  controls:
+  - Articulated model, contacts and control inputs
+  assets:
+  - Initial state and configuration supplied by the application.
+  incremental: true
+  serialization: unknown
+  evidence_level: documented
+limitations:
+- Physics simulation is not a learned policy, validated controller, or promise of cross-platform replay.
+  No resource usage was measured in this review.

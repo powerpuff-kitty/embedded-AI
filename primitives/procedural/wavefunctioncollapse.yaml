@@ -1,0 +1,78 @@
+id: wavefunctioncollapse
+name: WaveFunctionCollapse
+domain: gaming
+tasks:
+- constraint-based-generation
+class: procedural-generator
+kind: primitive
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-2026-10-07
+description: Example-based bitmap and tilemap generation through local pattern constraints and propagation.
+links:
+  repository: https://github.com/mxgmn/WaveFunctionCollapse
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - desktop
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- csharp
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  integration: native-reference
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - sample images or tiles and constraints
+  assets:
+  - User-supplied examples, tiles or rewrite programs; verify their rights separately.
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: sample images or tiles and constraints.
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - sample images or tiles and constraints
+  outputs:
+  - bitmaps and tilemaps
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Constraints can contradict; generated maps still need gameplay validation. Upstream sample images and
+  tiles are explicitly excluded from the software licence.
+- Unknown determinism/serialization fields are not guarantees; numeric model sizes are not applicable.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/mxgmn/WaveFunctionCollapse
+  notes: Upstream README and licence reviewed for capabilities and integration scope; not a reproduced
+    benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- worlds-environments
+- native-reference
