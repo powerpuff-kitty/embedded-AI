@@ -1,0 +1,23 @@
+id: chroma
+name: Chroma
+domain: retrieval
+tasks: [vector-search, rag-store]
+class: retrieval-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Open-source embedding database popular for local RAG prototypes and applications."
+links: {repository: 'https://github.com/chroma-core/chroma', homepage: 'https://www.trychroma.com/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Runs in-process or as a service; local persistence supported.'}
+runtimes: [python, javascript]
+formats: [sqlite-db, hnsw-index]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Manages collections of vectors/metadata; no training.', needs_data: 'Embedded documents plus metadata.', update_strategy: 'Persist/back up collections; re-index as data grows.'}
+data: {inputs: [embedding-vectors, documents], outputs: [nearest-neighbours, rows], languages: []}
+evaluation: ['Recall and latency at the target data size.']
+limitations: ['Larger deployments need a server and tuning.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/chroma-core/chroma', notes: 'Chroma embedding database.'}]
+reviewed: '2026-10-06'
+tags: [retrieval, vector-search, rag]

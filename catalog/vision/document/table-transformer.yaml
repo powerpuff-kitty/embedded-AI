@@ -1,0 +1,23 @@
+id: table-transformer
+name: Table Transformer
+domain: vision
+tasks: [table-detection, table-structure-recognition, document-understanding]
+class: document-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "DETR-based model that detects tables and their rows/columns in document images."
+links: {repository: 'https://github.com/microsoft/table-transformer', model: 'https://huggingface.co/microsoft/table-transformer-detection', paper: 'https://arxiv.org/abs/2110.00061'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'DETR-based; export to ONNX; GPU helps for many pages.'}
+runtimes: [transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained detection/structure models; fine-tune per layout.', needs_data: 'Annotated document images for fine-tuning/evaluation.', update_strategy: 'Pin checkpoint; revalidate on new table layouts.'}
+data: {inputs: [document-image], outputs: [table-boxes, cell-structure], languages: []}
+evaluation: ['Table-detection and structure F1 on target documents.']
+limitations: ['Complex/merged cells are hard; results vary by layout.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/table-transformer', notes: 'Table Transformer.'}]
+reviewed: '2026-10-06'
+tags: [vision, document-ai, tables, detection]

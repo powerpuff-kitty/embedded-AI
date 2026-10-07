@@ -47,7 +47,7 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 | | |
 |---|---|
-| **526 entries** | models, collections, pipelines, toolkits and primitives |
+| **539 entries** | models, collections, pipelines, toolkits and primitives |
 | **54 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
@@ -94,7 +94,7 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 
 ## Full catalogue
 
-**526 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**539 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -608,6 +608,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [Lava](pipelines/neuromorphic/lava.yaml) · [upstream](<https://github.com/lava-nc/lava>) | toolkit / companion | neuromorphic-computing, spiking-neural-networks, event-based-processing | — | — | lava, python, lava-process | neuromorphic, edge, embedded | unknown / not-provided | intel-loihi: unknown |
 | [Intel Lava](pipelines/neuromorphic/intel-lava.yaml) · [upstream](<https://github.com/lava-nc/lava>) | toolkit / companion | neuromorphic-inference, snn-deployment, on-chip-learning | — | — | python | desktop, edge | mixed BSD-3-Clause / LGPL-2.1-or-later / not-applicable | unknown |
 | [Lava-DL](pipelines/neuromorphic/lava-dl.yaml) · [upstream](<https://github.com/lava-nc/lava-dl>) | toolkit / requires-training | neuromorphic-inference, snn-training, snn-deployment | — | — | pytorch | desktop, edge | BSD-3-Clause / not-provided | unknown |
 | [NIR (Neuromorphic Intermediate Representation)](pipelines/neuromorphic/nir.yaml) · [upstream](<https://github.com/neuromorphs/NIR>) | toolkit / companion | neuromorphic-inference, model-exchange | — | — | python, nir | desktop, edge | BSD-3-Clause / not-applicable | unknown |
@@ -665,6 +666,11 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Annoy](pipelines/retrieval/annoy.yaml) · [upstream](<https://github.com/spotify/annoy>) | toolkit / companion | approximate-nearest-neighbor, vector-search | — | — | native-cpp, python, annoy-index | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
 | [FAISS](pipelines/retrieval/faiss.yaml) · [upstream](<https://github.com/facebookresearch/faiss>) | toolkit / companion | approximate-nearest-neighbor, vector-search, clustering | — | — | native-cpp, python, cuda, faiss-index | embedded, mobile, edge, desktop, server | MIT / not-provided | unknown |
 | [hnswlib](pipelines/retrieval/hnswlib.yaml) · [upstream](<https://github.com/nmslib/hnswlib>) | toolkit / companion | approximate-nearest-neighbor, vector-search | — | — | native-cpp, python, hnsw-index | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
+| [Chroma](pipelines/retrieval/chroma.yaml) · [upstream](<https://github.com/chroma-core/chroma>) | toolkit / companion | vector-search, rag-store | — | — | python, javascript, sqlite-db, hnsw-index | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [LanceDB](pipelines/retrieval/lancedb.yaml) · [upstream](<https://github.com/lancedb/lancedb>) | toolkit / companion | vector-search, embedded-database | — | — | python, rust, javascript, lance | desktop, edge, server | Apache-2.0 / not-provided | unknown |
+| [Qdrant](pipelines/retrieval/qdrant.yaml) · [upstream](<https://github.com/qdrant/qdrant>) | toolkit / companion | vector-search, rag-store | — | — | rust, python, qdrant-storage | desktop, server, edge | Apache-2.0 / not-provided | unknown |
+| [USearch](pipelines/retrieval/usearch.yaml) · [upstream](<https://github.com/unum-cloud/usearch>) | toolkit / companion | vector-search, approximate-nearest-neighbor | — | — | native-cpp, python, rust, usearch-index | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
+| [sqlite-vec](pipelines/retrieval/sqlite-vec.yaml) · [upstream](<https://github.com/asg017/sqlite-vec>) | toolkit / companion | vector-search, embedded-database | — | — | sqlite, sqlite-db | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
 
 <a id="catalogue-robotics"></a>
 
@@ -705,6 +711,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [ExLlamaV2](pipelines/runtime/exllamav2.yaml) · [upstream](<https://github.com/turboderp-org/exllamav2>) | toolkit / companion | llm-inference, quantisation | — | — | pytorch, cuda, exl2, gptq, safetensors | desktop, server | MIT / not-provided | unknown |
 | [ONNX Runtime GenAI](pipelines/runtime/onnxruntime-genai.yaml) · [upstream](<https://github.com/microsoft/onnxruntime-genai>) | toolkit / companion | llm-inference, vlm-inference, on-device-inference | — | — | onnxruntime, onnx | mobile, embedded, edge, desktop, server | MIT / not-provided | unknown |
 | [llama-cpp-python](pipelines/runtime/llama-cpp-python.yaml) · [upstream](<https://github.com/abetlen/llama-cpp-python>) | toolkit / companion | llm-inference, gguf-inference | — | — | llama.cpp, python, gguf | embedded, mobile, edge, desktop, server | MIT / not-provided | unknown |
+| [LocalAI](pipelines/runtime/localai.yaml) · [upstream](<https://github.com/mudler/LocalAI>) | toolkit / companion | llm-serving, offline-serving, multimodal-serving | — | — | llama-cpp, transformers, diffusers, gguf, safetensors | desktop, server, edge | MIT / not-provided | unknown |
+| [Text Generation Inference (TGI)](pipelines/runtime/text-generation-inference.yaml) · [upstream](<https://github.com/huggingface/text-generation-inference>) | toolkit / companion | llm-serving, model-serving | — | — | pytorch, cuda, rocm, safetensors, gptq | server, desktop | Apache-2.0 / not-provided | unknown |
 | [vLLM](pipelines/runtime/vllm.yaml) · [upstream](<https://github.com/vllm-project/vllm>) | toolkit / companion | llm-serving, high-throughput-inference | — | — | pytorch, cuda, safetensors, gguf | server | Apache-2.0 / not-applicable | unknown |
 | [Ollama](pipelines/runtime/ollama.yaml) · [upstream](<https://github.com/ollama/ollama>) | toolkit / companion | local-llm-serving, text-generation | — | — | llama-cpp-native, ggml, gguf | desktop, server | MIT / not-applicable | unknown |
 | [micromlgen](pipelines/runtime/micromlgen.yaml) · [upstream](<https://github.com/eloquentarduino/micromlgen>) | toolkit / companion | mcu-deployment, model-conversion | — | — | python, native-cpp, c-source | embedded, edge | MIT / not-provided | unknown |
@@ -722,6 +730,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [ncnn](pipelines/runtime/ncnn.yaml) · [upstream](<https://github.com/Tencent/ncnn>) | toolkit / companion | mobile-inference, on-device-inference | — | — | ncnn-native, vulkan, onnx | mobile, edge, desktop | BSD-3-Clause / not-applicable | unknown |
 | [Apache TVM](pipelines/runtime/apache-tvm.yaml) · [upstream](<https://github.com/apache/tvm>) | toolkit / companion | model-compilation, on-device-inference, autotuning | — | — | tvm-native, relay, tvm-ffi | desktop, mobile, edge | Apache-2.0 / not-applicable | unknown |
 | [ONNX](pipelines/runtime/onnx.yaml) · [upstream](<https://github.com/onnx/onnx>) | toolkit / companion | model-interchange, model-format | — | — | onnxruntime, openvino, ncnn, onnx | desktop, server, mobile, edge | Apache-2.0 / not-applicable | unknown |
+| [Triton Inference Server](pipelines/runtime/triton-inference-server.yaml) · [upstream](<https://github.com/triton-inference-server/server>) | toolkit / companion | model-serving, multi-framework-serving | — | — | tensorrt, onnxruntime, pytorch, tensorflow, onnx, tensorrt-engine, savedmodel | server, edge | BSD-3-Clause / not-provided | unknown |
 | [ONNX Model Zoo](catalog/runtime/model-zoo/onnx-model-zoo.yaml) · [upstream](<https://github.com/onnx/models>) | collection / pretrained | model-zoo, benchmarking, model-interchange | — | — | onnxruntime, onnx | desktop, server, mobile, edge | Apache-2.0 / unknown | unknown |
 | [Cactus](pipelines/runtime/cactus.yaml) · [upstream](<https://github.com/cactus-compute/cactus>) | toolkit / companion | on-device-inference, model-quantization, mobile-deployment | — | — | cactus-native | mobile, edge, robot | custom-restricted / not-applicable | unknown |
 | [ExecuTorch](pipelines/runtime/executorch.yaml) · [upstream](<https://github.com/pytorch/executorch>) | toolkit / companion | on-device-inference, mcu-deployment, model-export | — | — | executorch-native, pytorch, pte | mobile, edge, desktop, browser | BSD-3-Clause / not-applicable | unknown |
@@ -860,6 +869,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [sktime](pipelines/time-series/sktime.yaml) · [upstream](<https://github.com/sktime/sktime>) | toolkit / requires-training | time-series-classification, forecasting, time-series-transformation | — | — | python, scikit-learn, numpy, pickle | desktop, server, edge | BSD-3-Clause / not-provided | unknown |
 | [Chronos](catalog/time-series/forecasting/chronos.yaml) · [upstream](<https://huggingface.co/amazon/chronos-t5-small>) | collection / pretrained | time-series-forecasting, zero-shot-forecasting | — | — | pytorch, transformers, onnxruntime, safetensors, onnx | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
 | [N-BEATS](catalog/time-series/forecasting/n-beats.yaml) · [upstream](<https://github.com/ServiceNow/N-BEATS>) | collection / requires-training | time-series-forecasting | — | — | pytorch, pytorch-checkpoint | embedded, edge, desktop, server | unknown / unknown | unknown |
+| [PyTorch Forecasting](pipelines/time-series/pytorch-forecasting.yaml) · [upstream](<https://github.com/sktime/pytorch-forecasting>) | toolkit / requires-training | time-series-forecasting, probabilistic-forecasting | — | — | pytorch, lightning, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
 
 <a id="catalogue-trust-and-safety"></a>
 
@@ -903,6 +913,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [MMPose](pipelines/vision/mmpose.yaml) · [upstream](<https://github.com/open-mmlab/mmpose>) | toolkit / requires-training | body-pose-estimation, hand-pose-estimation, face-landmark | — | — | pytorch, onnxruntime, openvino, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [MediaPipe Pose Landmarker Lite](catalog/vision/pose/mediapipe-pose-lite.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | body-pose-estimation | — | — | mediapipe, tflite, mediapipe-task | mobile, browser, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
 | [RTMPose-t](catalog/vision/pose/rtmpose-t.yaml) · [upstream](<https://github.com/open-mmlab/mmpose/tree/main/projects/rtmpose>) | model / pretrained | body-pose-estimation | 3.34M | — | mmpose, onnxruntime, pytorch-checkpoint, onnx | edge, desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown |
+| [Donut](catalog/vision/document/donut.yaml) · [upstream](<https://huggingface.co/naver-clova-ix/donut-base>) | collection / pretrained | document-understanding, ocr-free-parsing, information-extraction | — | — | transformers, onnxruntime, safetensors, onnx | desktop, server | MIT / MIT | unknown |
+| [LayoutLMv3](catalog/vision/document/layoutlmv3.yaml) · [upstream](<https://huggingface.co/microsoft/layoutlmv3-base>) | collection / pretrained | document-understanding, form-parsing, information-extraction | — | — | transformers, onnxruntime, safetensors, onnx | desktop, server, edge | MIT / MIT | unknown |
 | [Coral Edge TPU Examples](pipelines/vision/coral-edge-tpu.yaml) · [upstream](<https://github.com/google-coral/tflite>) | toolkit / companion | edge-tpu-inference, image-classification, object-detection | — | — | tflite, edgetpu | edge | Apache-2.0 / not-applicable | unknown |
 | [DepthAI](pipelines/vision/depthai.yaml) · [upstream](<https://github.com/luxonis/depthai>) | pipeline / companion | edge-vision, depth-estimation, object-detection, spatial-inference | — | — | depthai-native, openvino, blob, onnx | edge, robot | MIT / not-applicable | luxonis-oak: reported |
 | [BlazeFace](catalog/vision/face/blazeface.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | model / unknown | face-detection | — | — | mediapipe, tflite | edge | Apache-2.0 / unknown | unknown |
@@ -988,6 +1000,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [MegaDetector-Classifier](pipelines/vision/megadetector-classifier.yaml) · [upstream](<https://github.com/microsoft/MegaDetector-Classifier>) | toolkit / requires-training | species-classification, model-fine-tuning | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
 | [SpeciesNet](catalog/vision/classification/speciesnet.yaml) · [upstream](<https://github.com/google/cameratrapai>) | collection / pretrained | species-classification, wildlife-detection | — | — | pytorch, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / unknown | unknown |
 | [LightStereo (OpenStereo)](catalog/vision/depth/lightstereo.yaml) · [upstream](<https://github.com/XiandaGuo/OpenStereo>) | model / unknown | stereo-depth-estimation | — | — | pytorch | desktop | academic-noncommercial-only / unknown | luckfox-rv1106: unknown |
+| [Table Transformer](catalog/vision/document/table-transformer.yaml) · [upstream](<https://huggingface.co/microsoft/table-transformer-detection>) | collection / pretrained | table-detection, table-structure-recognition, document-understanding | — | — | transformers, onnxruntime, safetensors, onnx | desktop, server, edge | MIT / MIT | unknown |
 | [CosmoEdge](pipelines/vision/cosmo-edge.yaml) · [upstream](<https://github.com/cosmo-wander-ai/cosmo-edge>) | pipeline / companion | video-analytics, on-device-vlm, object-detection | — | — | native-cpp, rknn, onnx | edge | Apache-2.0 / not-applicable | unknown |
 | [SAM 2](catalog/vision/segmentation/sam2.yaml) · [upstream](<https://github.com/facebookresearch/sam2>) | collection / pretrained | video-segmentation, promptable-segmentation, object-tracking | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
 | [Anomalib](pipelines/vision/anomalib.yaml) · [upstream](<https://github.com/openvinotoolkit/anomalib>) | toolkit / requires-training | visual-anomaly-detection, defect-detection | — | — | pytorch, openvino, onnxruntime, onnx, openvino-ir | desktop, server, edge | Apache-2.0 / not-provided | unknown |

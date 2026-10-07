@@ -1,0 +1,23 @@
+id: usearch
+name: USearch
+domain: retrieval
+tasks: [vector-search, approximate-nearest-neighbor]
+class: retrieval-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Compact single-file vector search engine small enough for edge and mobile apps."
+links: {repository: 'https://github.com/unum-cloud/usearch'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Small footprint with SIMD; indexes can be memory-mapped.'}
+runtimes: [native-cpp, python, rust]
+formats: [usearch-index]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Builds/loads ANN indexes from embeddings; no training.', needs_data: 'Embedded vectors plus queries.', update_strategy: 'Re-tune connectivity/expansion on drift; refresh indexes.'}
+data: {inputs: [embedding-vectors], outputs: [nearest-neighbours], languages: []}
+evaluation: ['Recall@k vs brute force plus memory and latency.']
+limitations: ['ANN trade-offs; index updates strategy matters at scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/unum-cloud/usearch', notes: 'USearch vector search.'}]
+reviewed: '2026-10-06'
+tags: [retrieval, vector-search, on-device, ann]

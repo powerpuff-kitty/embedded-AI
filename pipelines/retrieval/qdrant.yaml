@@ -1,0 +1,23 @@
+id: qdrant
+name: Qdrant
+domain: retrieval
+tasks: [vector-search, rag-store]
+class: retrieval-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Vector similarity search engine with filtering, used for production RAG and matching."
+links: {repository: 'https://github.com/qdrant/qdrant', homepage: 'https://qdrant.tech/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Runs as a service; local/offline mode available.'}
+runtimes: [rust, python]
+formats: [qdrant-storage]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Stores/searches vectors with payload filters; no training.', needs_data: 'Embedded vectors plus payloads.', update_strategy: 'Snapshot/back up; tune HNSW per data size.'}
+data: {inputs: [embedding-vectors, payloads], outputs: [nearest-neighbours], languages: []}
+evaluation: ['Recall and filtered-latency at the target data size.']
+limitations: ['Service-oriented; heavier than embedded stores.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/qdrant/qdrant', notes: 'Qdrant vector engine.'}]
+reviewed: '2026-10-06'
+tags: [retrieval, vector-search, rag]

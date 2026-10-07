@@ -1,0 +1,23 @@
+id: triton-inference-server
+name: Triton Inference Server
+domain: runtime
+tasks: [model-serving, multi-framework-serving]
+class: serving-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "NVIDIA's inference server that serves models from many frameworks on CPU and GPU."
+links: {repository: 'https://github.com/triton-inference-server/server', homepage: 'https://developer.nvidia.com/triton-inference-server'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [server, edge], notes: 'Can run on Jetson for edge fleets; dynamic batching supported.'}
+runtimes: [tensorrt, onnxruntime, pytorch, tensorflow]
+formats: [onnx, tensorrt-engine, savedmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Serves exported models; no training.', needs_data: 'A model repository plus request clients.', update_strategy: 'Pin server/model versions; re-benchmark per backend.'}
+data: {inputs: [input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Throughput/latency and concurrency on the target.']
+limitations: ['Operationally heavy; model repository layout required.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/triton-inference-server/server', notes: 'Triton Inference Server.'}]
+reviewed: '2026-10-06'
+tags: [runtime, serving, nvidia, multi-framework]
