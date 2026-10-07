@@ -1,0 +1,23 @@
+id: pyserini
+name: Pyserini
+domain: search
+tasks: [lexical-search, dense-retrieval, information-retrieval]
+class: ir-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Python toolkit wrapping Lucene/Anserini for reproducible sparse and dense retrieval."
+links: {repository: 'https://github.com/castorini/pyserini', homepage: 'https://pyserini.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Java/Lucene backend; server-class for large collections.'}
+runtimes: [python, java, lucene]
+formats: [lucene-index]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Builds/searches indexes; can host learned sparse/dense retrievers.', needs_data: 'A corpus plus queries/qrels for evaluation.', update_strategy: 'Rebuild indexes; re-evaluate nDCG on the target collection.'}
+data: {inputs: [query, documents], outputs: [ranked-documents], languages: [multilingual, en]}
+evaluation: ['nDCG/MAP/recall on standard or target collections.']
+limitations: ['JVM dependency and index-building cost; not embedded-scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/castorini/pyserini', notes: 'Pyserini IR toolkit.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, information-retrieval, lucene]

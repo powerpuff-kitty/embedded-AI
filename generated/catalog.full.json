@@ -16248,6 +16248,99 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "flan-t5",
+      "name": "FLAN-T5",
+      "domain": "language",
+      "tasks": [
+        "instruction-following",
+        "summarisation",
+        "translation",
+        "question-answering"
+      ],
+      "class": "seq2seq-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Instruction-tuned T5 with strong zero/few-shot performance, including small on-device sizes.",
+      "links": {
+        "repository": "https://github.com/google-research/FLAN",
+        "model": "https://huggingface.co/google/flan-t5-base",
+        "paper": "https://arxiv.org/abs/2210.11416"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Small/base variants run on CPU; export to ONNX/TFLite."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "tflite"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Instruction-tuned; fine-tuning supported.",
+        "needs_data": "Instructions/tasks for evaluation; data for fine-tuning.",
+        "update_strategy": "Pin checkpoint; evaluate instruction following on target prompts."
+      },
+      "data": {
+        "inputs": [
+          "text-instruction"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Task/instruction metrics plus safety review."
+      ],
+      "limitations": [
+        "Encoder-decoder; weaker reasoning than modern LLMs; can hallucinate."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/FLAN",
+          "notes": "FLAN-T5 models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "seq2seq",
+        "instruction-tuning",
+        "on-device"
+      ],
+      "path": "catalog/language/generation/flan-t5.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "fasttext-lid176",
       "name": "fastText lid.176",
       "kind": "model",
@@ -16689,6 +16782,186 @@
       ],
       "path": "pipelines/language/gpt4all.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "bart",
+      "name": "BART",
+      "domain": "language",
+      "tasks": [
+        "summarisation",
+        "text-generation",
+        "translation"
+      ],
+      "class": "seq2seq-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Denoising sequence-to-sequence model widely used for summarisation and generation.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fairseq",
+        "model": "https://huggingface.co/facebook/bart-large-cnn",
+        "paper": "https://arxiv.org/abs/1910.13461"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Distilled variants exist; large model needs GPU for latency."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained summariser; fine-tune per domain.",
+        "needs_data": "Document-summary pairs for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; evaluate factuality and length control."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "summary",
+          "text"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "ROUGE plus factuality and length checks."
+      ],
+      "limitations": [
+        "Can hallucinate facts; long inputs must be chunked."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/facebook/bart-large-cnn",
+          "notes": "BART model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "summarisation",
+        "seq2seq",
+        "generation"
+      ],
+      "path": "catalog/language/generation/bart.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "pegasus",
+      "name": "PEGASUS",
+      "domain": "language",
+      "tasks": [
+        "summarisation",
+        "abstractive-summarisation"
+      ],
+      "class": "seq2seq-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Pre-trained summarisation model using gap-sentence objectives, strong on news-like text.",
+      "links": {
+        "repository": "https://github.com/google-research/pegasus",
+        "model": "https://huggingface.co/google/pegasus-xsum",
+        "paper": "https://arxiv.org/abs/1912.08777"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Large models; fine-tune per domain for best results."
+      },
+      "runtimes": [
+        "transformers",
+        "tensorflow"
+      ],
+      "formats": [
+        "safetensors",
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained summariser; domain fine-tuning recommended.",
+        "needs_data": "Document-summary pairs for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; evaluate factuality and length control."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "summary"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "ROUGE plus factuality review."
+      ],
+      "limitations": [
+        "Best on news-like text; can hallucinate; large."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/pegasus",
+          "notes": "PEGASUS models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "summarisation",
+        "seq2seq"
+      ],
+      "path": "catalog/language/generation/pegasus.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "bert",
@@ -19409,6 +19682,99 @@
         "pretrained"
       ],
       "path": "catalog/language/on-device/tinyllama.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "t5",
+      "name": "T5",
+      "domain": "language",
+      "tasks": [
+        "text-to-text",
+        "summarisation",
+        "translation",
+        "classification"
+      ],
+      "class": "seq2seq-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Text-to-Text Transfer Transformer that casts every NLP task as text generation.",
+      "links": {
+        "repository": "https://github.com/google-research/text-to-text-transfer-transformer",
+        "model": "https://huggingface.co/google-t5/t5-base",
+        "paper": "https://arxiv.org/abs/1910.10683"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small/base/large sizes; small variants suit edge."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "t5x"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained multi-task model; fine-tune per task.",
+        "needs_data": "Task-formatted text pairs for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint and task prefix; evaluate on target tasks."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "text"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Task metrics (ROUGE/F1/BLEU) with correct prefixes."
+      ],
+      "limitations": [
+        "Task prefix formatting matters; can hallucinate."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/text-to-text-transfer-transformer",
+          "notes": "T5."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "seq2seq",
+        "multi-task",
+        "text-to-text"
+      ],
+      "path": "catalog/language/generation/t5.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -31103,6 +31469,895 @@
       ],
       "path": "pipelines/science/statsmodels.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "keybert",
+      "name": "KeyBERT",
+      "domain": "search",
+      "tasks": [
+        "keyword-extraction",
+        "keyphrase-extraction"
+      ],
+      "class": "keyword-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Extracts keywords/keyphrases by ranking embedding similarity to the document itself.",
+      "links": {
+        "repository": "https://github.com/MaartenGr/KeyBERT",
+        "homepage": "https://maartengr.github.io/KeyBERT/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Lightweight; runs with a local sentence-transformer."
+      },
+      "runtimes": [
+        "sentence-transformers",
+        "scikit-learn"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Uses an embedding model to score candidate phrases; no training.",
+        "needs_data": "Documents plus a local embedding model.",
+        "update_strategy": "Swap embedding model to fit the domain; revalidate keywords."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "keywords",
+          "keyphrases"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Keyword relevance/precision against an annotated set."
+      ],
+      "limitations": [
+        "Quality depends on the embedding model; no training of its own."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MaartenGr/KeyBERT",
+          "notes": "KeyBERT."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "keywords",
+        "nlp"
+      ],
+      "path": "pipelines/search/keybert.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "yake",
+      "name": "YAKE",
+      "domain": "search",
+      "tasks": [
+        "keyword-extraction",
+        "unsupervised-keyphrase-extraction"
+      ],
+      "class": "keyword-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Unsupervised, language-independent keyword extractor using statistical features.",
+      "links": {
+        "repository": "https://github.com/INESCTEC/yake",
+        "paper": "https://arxiv.org/abs/1609.02728"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "No model weights; pure-statistics, very lightweight."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Extracts keywords without training; statistical only.",
+        "needs_data": "Documents; annotated keywords for evaluation.",
+        "update_strategy": "Tune hyperparameters per language/domain; revalidate."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "keywords"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Keyword precision/recall against an annotated set."
+      ],
+      "limitations": [
+        "Custom licence (YAKE License Agreement); no semantic understanding."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/INESCTEC/yake",
+          "notes": "YAKE keyword extraction."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "keywords",
+        "unsupervised"
+      ],
+      "path": "pipelines/search/yake.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "pke",
+      "name": "pke",
+      "domain": "search",
+      "tasks": [
+        "keyword-extraction",
+        "keyphrase-extraction"
+      ],
+      "class": "keyword-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Toolkit of unsupervised and supervised keyphrase-extraction models with a unified API.",
+      "links": {
+        "repository": "https://github.com/boudinfl/pke"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "GPL-3.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Classical extractors; lightweight."
+      },
+      "runtimes": [
+        "python",
+        "spacy",
+        "nltk"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runs extractors without training; some supervised models available.",
+        "needs_data": "Documents; annotated keyphrases for evaluation.",
+        "update_strategy": "Pick the extractor per language; revalidate on domain text."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "keyphrases"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "F1 on annotated keyphrases."
+      ],
+      "limitations": [
+        "GPL-3.0 licence; classical models; language coverage varies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/boudinfl/pke",
+          "notes": "pke toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "keyphrases",
+        "nlp"
+      ],
+      "path": "pipelines/search/pke.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "tensorflow-ranking",
+      "name": "TensorFlow Ranking",
+      "domain": "search",
+      "tasks": [
+        "learning-to-rank",
+        "ranking",
+        "relevance"
+      ],
+      "class": "ranking-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for learning-to-rank models (pointwise, pairwise, listwise) in TensorFlow.",
+      "links": {
+        "repository": "https://github.com/tensorflow/ranking",
+        "homepage": "https://www.tensorflow.org/ranking"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/serving LTR models; export for lightweight inference."
+      },
+      "runtimes": [
+        "tensorflow",
+        "tflite"
+      ],
+      "formats": [
+        "savedmodel",
+        "tflite"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains ranking models on labelled query-document data.",
+        "needs_data": "Graded relevance labels plus features.",
+        "update_strategy": "Retrain on new click/relevance data; watch feedback bias."
+      },
+      "data": {
+        "inputs": [
+          "query-document-features"
+        ],
+        "outputs": [
+          "relevance-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "nDCG/MRR/MAP on held-out queries plus bias review."
+      ],
+      "limitations": [
+        "Needs relevance labels; click data can encode position bias."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/ranking",
+          "notes": "TensorFlow Ranking."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "learning-to-rank",
+        "ranking"
+      ],
+      "path": "pipelines/search/tensorflow-ranking.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "pyserini",
+      "name": "Pyserini",
+      "domain": "search",
+      "tasks": [
+        "lexical-search",
+        "dense-retrieval",
+        "information-retrieval"
+      ],
+      "class": "ir-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python toolkit wrapping Lucene/Anserini for reproducible sparse and dense retrieval.",
+      "links": {
+        "repository": "https://github.com/castorini/pyserini",
+        "homepage": "https://pyserini.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Java/Lucene backend; server-class for large collections."
+      },
+      "runtimes": [
+        "python",
+        "java",
+        "lucene"
+      ],
+      "formats": [
+        "lucene-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds/searches indexes; can host learned sparse/dense retrievers.",
+        "needs_data": "A corpus plus queries/qrels for evaluation.",
+        "update_strategy": "Rebuild indexes; re-evaluate nDCG on the target collection."
+      },
+      "data": {
+        "inputs": [
+          "query",
+          "documents"
+        ],
+        "outputs": [
+          "ranked-documents"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "nDCG/MAP/recall on standard or target collections."
+      ],
+      "limitations": [
+        "JVM dependency and index-building cost; not embedded-scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/castorini/pyserini",
+          "notes": "Pyserini IR toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "information-retrieval",
+        "lucene"
+      ],
+      "path": "pipelines/search/pyserini.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "rank-bm25",
+      "name": "rank_bm25",
+      "domain": "search",
+      "tasks": [
+        "lexical-search",
+        "keyword-ranking",
+        "retrieval"
+      ],
+      "class": "lexical-search-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Pure-Python BM25 implementation for keyword retrieval over a document collection.",
+      "links": {
+        "repository": "https://github.com/dorianbrown/rank_bm25"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "No model weights; small corpora fit edge devices."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds a BM25 index from a corpus; no training.",
+        "needs_data": "A tokenised corpus plus queries.",
+        "update_strategy": "Rebuild the index as documents change."
+      },
+      "data": {
+        "inputs": [
+          "query",
+          "documents"
+        ],
+        "outputs": [
+          "ranked-documents"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Recall/nDCG vs a hybrid/vector baseline."
+      ],
+      "limitations": [
+        "Lexical only; no semantics; Python implementation is not for huge corpora."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dorianbrown/rank_bm25",
+          "notes": "rank_bm25."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "bm25",
+        "lexical"
+      ],
+      "path": "pipelines/search/rank-bm25.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "doc2query",
+      "name": "doc2query (DocT5Query)",
+      "domain": "search",
+      "tasks": [
+        "query-expansion",
+        "document-expansion",
+        "retrieval"
+      ],
+      "class": "query-expansion-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Generates likely search queries for a document to improve its lexical retrievability.",
+      "links": {
+        "repository": "https://github.com/castorini/docTTTTTquery",
+        "model": "https://huggingface.co/castorini/doc2query-t5-base-msmarco",
+        "paper": "https://arxiv.org/abs/1904.08375"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Fine-tuned T5; predicts queries at index time."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained query generation; fine-tuning possible.",
+        "needs_data": "A document corpus; qrels for end-to-end evaluation.",
+        "update_strategy": "Append expansions at index time; re-evaluate recall."
+      },
+      "data": {
+        "inputs": [
+          "document"
+        ],
+        "outputs": [
+          "predicted-queries"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Retrieval recall/nDCG before vs after expansion."
+      ],
+      "limitations": [
+        "English-focused; expansions can add noise to the index."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/castorini/docTTTTTquery",
+          "notes": "doc2query/DocT5Query."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "query-expansion",
+        "retrieval"
+      ],
+      "path": "pipelines/search/doc2query.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "bge-reranker",
+      "name": "BGE Reranker",
+      "domain": "search",
+      "tasks": [
+        "reranking",
+        "relevance-scoring",
+        "retrieval"
+      ],
+      "class": "reranker-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "BAAI cross-encoder rerankers that re-score a shortlist of documents by relevance.",
+      "links": {
+        "repository": "https://github.com/FlagOpen/FlagEmbedding",
+        "model": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+        "paper": "https://arxiv.org/abs/2402.03216"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Cross-encoders are heavier than embeddings; ONNX/quantisation help."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "flagembedding"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained reranker; fine-tuning supported.",
+        "needs_data": "Query-passage pairs for evaluation/fine-tuning.",
+        "update_strategy": "Re-rank only top-k; re-evaluate nDCG and latency."
+      },
+      "data": {
+        "inputs": [
+          "query",
+          "passages"
+        ],
+        "outputs": [
+          "relevance-scores"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "nDCG/MRR improvement over the first-stage retriever plus latency."
+      ],
+      "limitations": [
+        "Cross-encoder cost scales with candidates; not for full-corpus scans."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/FlagOpen/FlagEmbedding",
+          "notes": "BGE rerankers."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "reranking",
+        "retrieval"
+      ],
+      "path": "catalog/search/reranking/bge-reranker.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "rerankers",
+      "name": "rerankers",
+      "domain": "search",
+      "tasks": [
+        "reranking",
+        "relevance-scoring",
+        "retrieval"
+      ],
+      "class": "reranker-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Unified API to many reranking models, including local cross-encoders and hosted ones.",
+      "links": {
+        "repository": "https://github.com/AnswerDotAI/rerankers"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Wraps local models (e.g. MiniLM cross-encoders) and hosted APIs."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Loads and applies rerankers; no training.",
+        "needs_data": "A first-stage shortlist plus queries.",
+        "update_strategy": "Pick a reranker per latency budget; re-evaluate nDCG."
+      },
+      "data": {
+        "inputs": [
+          "query",
+          "passages"
+        ],
+        "outputs": [
+          "relevance-scores"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "nDCG/MRR improvement plus latency."
+      ],
+      "limitations": [
+        "Convenience layer; inherits limits of the wrapped model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/AnswerDotAI/rerankers",
+          "notes": "rerankers library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "reranking",
+        "retrieval"
+      ],
+      "path": "pipelines/search/rerankers.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "bertopic",
+      "name": "BERTopic",
+      "domain": "search",
+      "tasks": [
+        "topic-modelling",
+        "document-clustering",
+        "content-analysis"
+      ],
+      "class": "topic-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Creates interpretable topic clusters from documents via embeddings, UMAP and HDBSCAN.",
+      "links": {
+        "repository": "https://github.com/MaartenGr/BERTopic",
+        "homepage": "https://maartengr.github.io/BERTopic/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Analysis tooling; scales with corpus size."
+      },
+      "runtimes": [
+        "sentence-transformers",
+        "scikit-learn",
+        "umap"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Fits a topic model over a document corpus.",
+        "needs_data": "A document corpus; optional labels for evaluation.",
+        "update_strategy": "Refit on new corpora; review topic stability."
+      },
+      "data": {
+        "inputs": [
+          "documents"
+        ],
+        "outputs": [
+          "topics",
+          "topic-words"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Topic coherence and human review of clusters."
+      ],
+      "limitations": [
+        "Clusters shift with the corpus and hyperparameters."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MaartenGr/BERTopic",
+          "notes": "BERTopic."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "search",
+        "seo",
+        "topics",
+        "clustering"
+      ],
+      "path": "pipelines/search/bertopic.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "adversarial-robustness-toolbox",

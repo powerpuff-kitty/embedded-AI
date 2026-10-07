@@ -1,0 +1,23 @@
+id: bge-reranker
+name: BGE Reranker
+domain: search
+tasks: [reranking, relevance-scoring, retrieval]
+class: reranker-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "BAAI cross-encoder rerankers that re-score a shortlist of documents by relevance."
+links: {repository: 'https://github.com/FlagOpen/FlagEmbedding', model: 'https://huggingface.co/BAAI/bge-reranker-v2-m3', paper: 'https://arxiv.org/abs/2402.03216'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Cross-encoders are heavier than embeddings; ONNX/quantisation help.'}
+runtimes: [transformers, onnxruntime, flagembedding]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained reranker; fine-tuning supported.', needs_data: 'Query-passage pairs for evaluation/fine-tuning.', update_strategy: 'Re-rank only top-k; re-evaluate nDCG and latency.'}
+data: {inputs: [query, passages], outputs: [relevance-scores], languages: [multilingual]}
+evaluation: ['nDCG/MRR improvement over the first-stage retriever plus latency.']
+limitations: ['Cross-encoder cost scales with candidates; not for full-corpus scans.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/FlagOpen/FlagEmbedding', notes: 'BGE rerankers.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, reranking, retrieval]

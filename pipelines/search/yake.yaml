@@ -1,0 +1,23 @@
+id: yake
+name: YAKE
+domain: search
+tasks: [keyword-extraction, unsupervised-keyphrase-extraction]
+class: keyword-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Unsupervised, language-independent keyword extractor using statistical features."
+links: {repository: 'https://github.com/INESCTEC/yake', paper: 'https://arxiv.org/abs/1609.02728'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [embedded, edge, desktop, server], notes: 'No model weights; pure-statistics, very lightweight.'}
+runtimes: [python]
+formats: [python]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Extracts keywords without training; statistical only.', needs_data: 'Documents; annotated keywords for evaluation.', update_strategy: 'Tune hyperparameters per language/domain; revalidate.'}
+data: {inputs: [text], outputs: [keywords], languages: [multilingual]}
+evaluation: ['Keyword precision/recall against an annotated set.']
+limitations: ['Custom licence (YAKE License Agreement); no semantic understanding.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/INESCTEC/yake', notes: 'YAKE keyword extraction.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, keywords, unsupervised]

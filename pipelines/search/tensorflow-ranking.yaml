@@ -1,0 +1,23 @@
+id: tensorflow-ranking
+name: TensorFlow Ranking
+domain: search
+tasks: [learning-to-rank, ranking, relevance]
+class: ranking-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for learning-to-rank models (pointwise, pairwise, listwise) in TensorFlow."
+links: {repository: 'https://github.com/tensorflow/ranking', homepage: 'https://www.tensorflow.org/ranking'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Training/serving LTR models; export for lightweight inference.'}
+runtimes: [tensorflow, tflite]
+formats: [savedmodel, tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains ranking models on labelled query-document data.', needs_data: 'Graded relevance labels plus features.', update_strategy: 'Retrain on new click/relevance data; watch feedback bias.'}
+data: {inputs: [query-document-features], outputs: [relevance-scores], languages: []}
+evaluation: ['nDCG/MRR/MAP on held-out queries plus bias review.']
+limitations: ['Needs relevance labels; click data can encode position bias.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/ranking', notes: 'TensorFlow Ranking.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, learning-to-rank, ranking]
