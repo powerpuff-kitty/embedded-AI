@@ -1,0 +1,34 @@
+name: browser lab workbench
+on:
+  push:
+    branches: [feat/procedural-browser-lab]
+    paths: ['.github/workflows/browser-lab-workbench.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with: {node-version: 22, package-manager-cache: false}
+      - run: npm ci --ignore-scripts
+      - name: Acquire explicitly selected development dependencies
+        run: |
+          mkdir -p /tmp/lab-deps /tmp/browser-lab-workbench
+          cd /tmp/lab-deps
+          printf '%s\n' '{"name":"embedded-ai-procedural-lab","private":true,"version":"0.1.0","type":"module"}' > package.json
+          npm install --ignore-scripts --save-exact simplex-noise@4.0.3 roughjs@4.6.6 @dgreenheck/ez-tree@1.1.0 three@0.169.0 zzfx@1.4.0 esbuild@0.28.2
+          npm audit --audit-level=high
+          tar -czf /tmp/browser-lab-workbench/lab-deps.tar.gz package.json package-lock.json node_modules
+      - name: Export tracked public sources and locked test dependencies only
+        run: |
+          git archive --format=tar HEAD | gzip > /tmp/browser-lab-workbench/source.tar.gz
+          tar -czf /tmp/browser-lab-workbench/root-deps.tar.gz node_modules
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: browser-lab-workbench
+          retention-days: 1
+          path: /tmp/browser-lab-workbench/
