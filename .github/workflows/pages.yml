@@ -25,7 +25,10 @@ jobs:
       - run: npm run index
       - run: npm run check
       - run: npm run reviews:check
-      - run: npm run site:build
+      - run: npm run lab:install
+      - run: npm audit --prefix recipes/procedural --audit-level=high
+      - run: npm run lab:test
+      - run: npm run site:build -- --with-procedural
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
         with:
           enablement: true

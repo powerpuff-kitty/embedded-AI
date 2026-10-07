@@ -1,0 +1,38 @@
+name: procedural browser lab
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: procedural-lab-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with: {node-version: 22, package-manager-cache: false}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with: {python-version: '3.11'}
+      - run: npm ci --ignore-scripts
+      - run: npm run lab:install
+      - run: npm audit --prefix recipes/procedural --audit-level=high
+      - run: npm run check && npm run lab:test
+      - run: npm run site:build -- --with-procedural
+      - run: python -m pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python tests_python/procedural_browser.py
+      - run: npm run lab:observations -- runs/procedural/observations
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: procedural-browser-evidence
+          retention-days: 14
+          path: |
+            runs/procedural/
+            dist/lab/
