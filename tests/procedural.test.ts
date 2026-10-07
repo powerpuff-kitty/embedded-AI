@@ -44,7 +44,7 @@ test('initial canonical batch is sourced, nonlearned and not claimed reproduced'
     assert.equal(e.learned, false); assert.equal(e.license.weights, 'not-applicable');
     assert.equal(e.model.parameters, null); assert.equal(e.model.file_size_mb, null);
     assert.equal(e.requirements.ram_mb.measured_peak, null);
-    assert.equal(e.procedural.evidence_level, 'documented');
+    assert.ok(['documented', 'inspected'].includes(e.procedural.evidence_level));
     assert.ok(e.evidence.some((x:any) => x.type === 'official' && x.url === e.links.repository));
     assert.equal(entries.filter(x => x.links.repository?.toLowerCase() === e.links.repository.toLowerCase()).length, 1);
   }

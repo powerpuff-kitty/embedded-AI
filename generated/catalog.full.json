@@ -2864,6 +2864,216 @@
       "view": "procedural"
     },
     {
+      "id": "space-colonization-2d",
+      "name": "2D Space Colonization Experiments",
+      "domain": "artificial-life",
+      "tasks": [
+        "rule-based-growth"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Browser experiments applying space-colonization growth rules to branching forms, veins and hyphae-like patterns.",
+      "links": {
+        "repository": "https://github.com/jasonwebb/2d-space-colonization-experiments"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "CC-BY-NC-SA-4.0",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "vegetation-ecosystems",
+          "images-materials"
+        ],
+        "integration": "browser-reference",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "attraction points, growth rules and starting nodes"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "attraction points, growth rules and starting nodes",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "attraction points, growth rules and starting nodes"
+        ],
+        "outputs": [
+          "branching two-dimensional structures"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Noncommercial share-alike reference, not a permissively licensed drop-in component. Geometric resemblance is not biological validation.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jasonwebb/2d-space-colonization-experiments",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "vegetation-ecosystems",
+        "images-materials",
+        "browser-reference"
+      ],
+      "path": "primitives/procedural/space-colonization-2d.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "cellular-automata-js",
+      "name": "cellular-automata (JavaScript)",
+      "domain": "artificial-life",
+      "tasks": [
+        "rule-based-growth"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "DOM-independent cellular automata runner supporting arbitrary dimensions and successive rule definitions.",
+      "links": {
+        "repository": "https://github.com/kchapelier/cellular-automata"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "vegetation-ecosystems",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "cell grid, rule strings and boundary values"
+        ],
+        "assets": [],
+        "incremental": true,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "cell grid, rule strings and boundary values",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "cell grid, rule strings and boundary values"
+        ],
+        "outputs": [
+          "evolved cell grid"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Cell count scales exponentially with dimension. Cellular rules do not automatically conserve resources or model real ecosystems.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kchapelier/cellular-automata",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "vegetation-ecosystems",
+        "foundations",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/cellular-automata-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "growing-nca-pytorch",
       "name": "Growing NCA (PyTorch, PWhiddy)",
       "domain": "artificial-life",
@@ -3225,7 +3435,9 @@
       "catalogue_batch": "procedural-2026-10-07",
       "description": "Configurable procedural tree generator with a Three.js library and visual authoring application.",
       "links": {
-        "repository": "https://github.com/dgreenheck/ez-tree"
+        "repository": "https://github.com/dgreenheck/ez-tree",
+        "demo": "https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=tree",
+        "fixture": "https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural"
       },
       "model": {
         "parameters": null,
@@ -3264,7 +3476,7 @@
         ],
         "incremental": null,
         "serialization": "unknown",
-        "evidence_level": "documented"
+        "evidence_level": "inspected"
       },
       "usage": {
         "mode": "companion",
@@ -3288,8 +3500,8 @@
         }
       },
       "evaluation": [
-        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
-        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+        "Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific run artifacts remain separate from hardware compatibility.",
+        "Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library RAM."
       ],
       "limitations": [
         "Generates tree appearance, not biological growth or a resource-conserving ecosystem; export controls belong to the authoring app.",
@@ -4479,7 +4691,9 @@
       "catalogue_batch": "procedural-2026-10-07",
       "description": "Parameter-driven JavaScript synthesizer for compact procedural game sound effects.",
       "links": {
-        "repository": "https://github.com/KilledByAPixel/ZzFX"
+        "repository": "https://github.com/KilledByAPixel/ZzFX",
+        "demo": "https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=audio",
+        "fixture": "https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural"
       },
       "model": {
         "parameters": null,
@@ -4516,7 +4730,7 @@
         "assets": [],
         "incremental": null,
         "serialization": "unknown",
-        "evidence_level": "documented"
+        "evidence_level": "inspected"
       },
       "usage": {
         "mode": "companion",
@@ -4540,8 +4754,8 @@
         }
       },
       "evaluation": [
-        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
-        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+        "Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific run artifacts remain separate from hardware compatibility.",
+        "Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library RAM."
       ],
       "limitations": [
         "Randomized parameters can vary output; bound duration and volume, and account for browser audio activation requirements.",
@@ -16424,6 +16638,115 @@
       "view": "procedural"
     },
     {
+      "id": "wfc-city-unity",
+      "name": "Wave Function Collapse City (Unity)",
+      "domain": "gaming",
+      "tasks": [
+        "world-generation"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Unity reference project for exploring an incrementally generated city assembled with Wave Function Collapse.",
+      "links": {
+        "repository": "https://github.com/marian42/wavefunctioncollapse"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "unity",
+        "csharp"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments"
+        ],
+        "integration": "native-reference",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "authored modules, adjacency constraints and generation settings"
+        ],
+        "assets": [
+          "authored building modules"
+        ],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "authored modules, adjacency constraints and generation settings",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "authored modules, adjacency constraints and generation settings"
+        ],
+        "outputs": [
+          "modular city scene"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Unity authoring reference, not an embeddable JavaScript library. Audit module assets separately from the code licence; no browser or board fit is claimed.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/marian42/wavefunctioncollapse",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "native-reference"
+      ],
+      "related": [
+        "wavefunctioncollapse",
+        "wavefunctioncollapse-js"
+      ],
+      "path": "primitives/procedural/wfc-city-unity.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "deepvariant",
       "name": "DeepVariant",
       "domain": "genomics",
@@ -24374,6 +24697,111 @@
       "view": "unclassified"
     },
     {
+      "id": "martini",
+      "name": "MARTINI",
+      "domain": "mapping",
+      "tasks": [
+        "mesh-generation"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "RTIN terrain mesh generator that builds variable-detail triangulations from height grids.",
+      "links": {
+        "repository": "https://github.com/mapbox/martini"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "ISC",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "height grid of size (2^k+1)^2 and maximum error"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "height grid of size (2^k+1)^2 and maximum error",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "height grid of size (2^k+1)^2 and maximum error"
+        ],
+        "outputs": [
+          "terrain vertex and triangle-index arrays"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Needs supplied height data; does not invent terrain elevations, infer metric scale or reconstruct a photographed room.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mapbox/martini",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "foundations",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/martini.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "instant-ngp",
       "name": "Instant-NGP",
       "domain": "mapping",
@@ -24878,6 +25306,115 @@
       "view": "unclassified"
     },
     {
+      "id": "d3-delaunay",
+      "name": "d3-delaunay",
+      "domain": "mapping",
+      "tasks": [
+        "triangulation",
+        "voronoi-diagrams"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Delaunay triangulations and Voronoi diagrams from two-dimensional points, built on Delaunator.",
+      "links": {
+        "repository": "https://github.com/d3/d3-delaunay"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "ISC",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "foundations",
+          "worlds-environments"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "two-dimensional points and clipping bounds"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "two-dimensional points and clipping bounds",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "two-dimensional points and clipping bounds"
+        ],
+        "outputs": [
+          "Delaunay triangles and Voronoi cells"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "A geometry building block, not an autonomous city or biome generator. The application supplies sites and semantics.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/d3/d3-delaunay",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "foundations",
+        "worlds-environments",
+        "browser-library"
+      ],
+      "related": [
+        "delaunator"
+      ],
+      "path": "primitives/procedural/d3-delaunay.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "orb-slam3",
       "name": "ORB-SLAM3",
       "kind": "pipeline",
@@ -25033,6 +25570,109 @@
       "usage_mode": "companion",
       "methods": [],
       "view": "unclassified"
+    },
+    {
+      "id": "tone-js",
+      "name": "Tone.js",
+      "domain": "music",
+      "tasks": [
+        "audio-synthesis"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Web Audio framework with synthesis, effects, transport and event scheduling for interactive music.",
+      "links": {
+        "repository": "https://github.com/Tonejs/Tone.js"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "audio-music"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "notes, synthesis parameters and scheduled events"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "notes, synthesis parameters and scheduled events",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "notes, synthesis parameters and scheduled events"
+        ],
+        "outputs": [
+          "synthesized audio"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Does not compose music autonomously. Sample-based instruments require separately licensed assets; audio requires user activation and bounded voices.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Tonejs/Tone.js",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "audio-music",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/tone-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
     },
     {
       "id": "basic-pitch",
@@ -38395,7 +39035,9 @@
       "catalogue_batch": "procedural-2026-10-07",
       "description": "JavaScript simplex-noise functions for two-, three- and four-dimensional procedural fields.",
       "links": {
-        "repository": "https://github.com/jwagner/simplex-noise.js"
+        "repository": "https://github.com/jwagner/simplex-noise.js",
+        "demo": "https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=noise",
+        "fixture": "https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural"
       },
       "model": {
         "parameters": null,
@@ -38434,7 +39076,7 @@
         "assets": [],
         "incremental": null,
         "serialization": "unknown",
-        "evidence_level": "documented"
+        "evidence_level": "inspected"
       },
       "usage": {
         "mode": "companion",
@@ -38458,8 +39100,8 @@
         }
       },
       "evaluation": [
-        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
-        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+        "Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific run artifacts remain separate from hardware compatibility.",
+        "Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library RAM."
       ],
       "limitations": [
         "Defaults to Math.random; repeatability needs an explicit PRNG and pinned versions. Major-version upgrades can change results.",
@@ -38591,6 +39233,219 @@
         "delaunator"
       ],
       "path": "primitives/procedural/earcut.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "fast-2d-poisson-disk-sampling",
+      "name": "fast-2d-poisson-disk-sampling",
+      "domain": "simulation",
+      "tasks": [
+        "procedural-simulation"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Two-dimensional Poisson disk sampling using a modified Bridson algorithm and a custom random source.",
+      "links": {
+        "repository": "https://github.com/kchapelier/fast-2d-poisson-disk-sampling"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "foundations",
+          "vegetation-ecosystems"
+        ],
+        "integration": "browser-library",
+        "seed_control": "injectable",
+        "determinism": "unknown",
+        "controls": [
+          "region dimensions, radius, attempts and optional RNG"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "region dimensions, radius, attempts and optional RNG",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "region dimensions, radius, attempts and optional RNG"
+        ],
+        "outputs": [
+          "spaced two-dimensional sample points"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Specialized 2D implementation, distinct from the arbitrary-dimensional sampler. Point spacing is not a terrain or ecosystem simulation.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kchapelier/fast-2d-poisson-disk-sampling",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "foundations",
+        "vegetation-ecosystems",
+        "browser-library"
+      ],
+      "related": [
+        "poisson-disk-sampling"
+      ],
+      "path": "primitives/procedural/fast-2d-poisson-disk-sampling.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "isosurface-js",
+      "name": "isosurface",
+      "domain": "simulation",
+      "tasks": [
+        "procedural-simulation"
+      ],
+      "class": "procedural-generator",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript isosurface extraction with surface nets, marching cubes and marching tetrahedra.",
+      "links": {
+        "repository": "https://github.com/mikolalysenko/isosurface"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "scalar potential field, resolution and bounds"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "scalar potential field, resolution and bounds",
+        "update_strategy": "Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "scalar potential field, resolution and bounds"
+        ],
+        "outputs": [
+          "surface vertex positions and faces"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
+        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "The host supplies the scalar field. Bound grid dimensions; output is not guaranteed suitable for CAD or physical manufacture.",
+        "Documentation-backed catalogue entry; no local performance or compatibility measurements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mikolalysenko/isosurface",
+          "notes": "Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07; not an execution benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "foundations",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/isosurface-js.yaml",
       "usage_mode": "companion",
       "view": "procedural"
     },
@@ -51779,7 +52634,9 @@
       "description": "Procedural sketch-style drawing of geometric primitives and paths to SVG or Canvas.",
       "links": {
         "repository": "https://github.com/rough-stuff/rough",
-        "documentation": "https://github.com/rough-stuff/rough/wiki"
+        "documentation": "https://github.com/rough-stuff/rough/wiki",
+        "demo": "https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=svg",
+        "fixture": "https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural"
       },
       "model": {
         "parameters": null,
@@ -51815,7 +52672,7 @@
         "assets": [],
         "incremental": null,
         "serialization": "unknown",
-        "evidence_level": "documented"
+        "evidence_level": "inspected"
       },
       "usage": {
         "mode": "companion",
@@ -51839,8 +52696,8 @@
         }
       },
       "evaluation": [
-        "Upstream documentation reviewed; no local execution or resource measurement in this entry.",
-        "Before integration, test bounded fixtures, output validity and repeatability in the intended runtime."
+        "Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific run artifacts remain separate from hardware compatibility.",
+        "Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library RAM."
       ],
       "limitations": [
         "Adds a drawing style to supplied geometry; it does not invent a scene or reconstruct an environment.",

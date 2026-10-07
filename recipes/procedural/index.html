@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; worker-src 'self'; style-src 'self'; img-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Procedural lab — embedded-AI</title><meta name="description" content="Four bounded, local browser fixtures for noise, SVG, tree geometry and sound. Inspect seeds, repeatability and output evidence.">
+<link rel="stylesheet" href="lab.css"></head><body><main>
+<header><a href="../?view=procedural">← Catalogue</a><span class="eyebrow">EMBEDDED-AI / LOCAL LAB</span></header>
+<section class="hero"><p class="eyebrow">01 — RUNNABLE PROCEDURAL FIXTURES</p><h1>Small rules.<br>Visible worlds.</h1><p>Real upstream generators. Your browser does the work.</p></section>
+<form id="controls"><label>Generator<select id="adapter"><option value="noise">01 / Noise field</option><option value="svg">02 / Vector sketch</option><option value="tree">03 / Tree geometry</option><option value="audio">04 / Sound synthesis</option></select></label>
+<label>Seed<input id="seed" type="number" value="42" min="1" max="2147483647" step="1" required></label>
+<label>Detail<select id="detail"><option value="1">Small fixture</option><option value="2">Medium fixture</option><option value="3">Larger fixture</option></select></label>
+<button id="generate" type="submit">Generate &amp; verify</button><button id="stop" type="button" disabled>Stop</button></form>
+<section class="stage" aria-label="Generated output"><canvas id="canvas" width="960" height="560" aria-label="Procedural output preview"></canvas><div id="empty">Choose a generator.<br>Nothing runs until you press Generate.</div><span id="stage-label">LOCAL / NO MODEL</span></section>
+<section class="toolbar"><div><h2 id="title">Noise field</h2><p id="description">A seeded scalar field, not an AI-generated landscape.</p><a id="source" href="../?entry=simplex-noise-js">Catalogue entry ↗</a></div><div class="actions"><button id="play" type="button" disabled>Play sound</button><button id="output" type="button" disabled>Export output</button><button id="receipt" type="button" disabled>Export run JSON</button></div></section>
+<p id="status" role="status" data-state="idle" aria-live="polite">Ready. Dependencies load locally on demand.</p>
+<dl class="metrics"><div><dt>Median generation</dt><dd id="latency">—</dd></div><div><dt>Output payload</dt><dd id="bytes">—</dd></div><div><dt>Same seed, 3 runs</dt><dd id="repeat">—</dd></div><div><dt>Model / JS peak RAM</dt><dd>None / unknown</dd></div></dl>
+<details><summary>Scope, pins and evidence</summary><p>Generation runs in a terminable worker with bounded inputs. Timings exclude module loading, hashing, transfer and rendering. Output bytes are not a memory measurement. Repeatability here does not guarantee identical output across versions or devices.</p><p>Tree: actual EZ-Tree geometry projected with Canvas 2D, without upstream textures. Audio: a bounded ZzFX sine preset with randomness disabled; sound plays only after a separate click. These are procedural fixtures, not executable hybrid AI recipes.</p><pre id="report">No run yet.</pre><p><a href="build.json">Build receipt</a> · <a href="THIRD-PARTY-NOTICES.txt">Third-party notices</a></p></details>
+<footer>On demand. No inference service. No uploads. <a href="../?view=hybrid">Hybrid designs →</a></footer>
+</main><script type="module" src="app.mjs"></script></body></html>

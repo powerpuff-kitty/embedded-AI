@@ -26,6 +26,7 @@ jobs:
       - run: npm run check
       - run: npm run reviews:check
       - run: npm run site:build
+      - run: npm run lab:install && npm run lab:build && npm run lab:test
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
         with:
           enablement: true

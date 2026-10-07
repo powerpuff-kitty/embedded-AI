@@ -13,6 +13,8 @@ catalogue_batch: procedural-2026-10-07
 description: Configurable procedural tree generator with a Three.js library and visual authoring application.
 links:
   repository: https://github.com/dgreenheck/ez-tree
+  demo: https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=tree
+  fixture: https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural
 model:
   parameters: null
   file_size_mb: null
@@ -43,7 +45,7 @@ procedural:
   - Renderer and material/texture resources appropriate to the selected tree preset.
   incremental: null
   serialization: unknown
-  evidence_level: documented
+  evidence_level: inspected
 usage:
   mode: companion
   training: No learned model training required.
@@ -60,8 +62,10 @@ requirements:
     minimum: null
     measured_peak: null
 evaluation:
-- Upstream documentation reviewed; no local execution or resource measurement in this entry.
-- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+- Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific
+  run artifacts remain separate from hardware compatibility.
+- Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library
+  RAM.
 limitations:
 - Generates tree appearance, not biological growth or a resource-conserving ecosystem; export controls
   belong to the authoring app.

@@ -1,5 +1,12 @@
 # Changelog
 
+## Procedural browser lab — 2026-10-07
+
+- Add four optional pinned, bounded worker-based fixtures with exports, repeatability checks and build/source receipts.
+- Add 14 sourced procedural components; distinguish browser libraries, geometry foundations and noncommercial/Unity references.
+- Add separate browser observation schema, validation, responsive smoke tests and CI artifacts. No universal compatibility or incremental RAM claims.
+- Keep hybrid recipes design-only and npm publishing unchanged.
+
 ## Unreleased — procedural catalogue
 
 Added 24 researched upstream generators, annotated 5 existing simulations, and added 3 design-only hybrid recipes. Shared method/view/category facets now work across the explorer, CLI, package and MCP. Added strict procedural metadata, recipe reference validation, generated procedural tables, source/unknown distinctions and regression tests. Existing component IDs and paths are retained; no upstream runtime benchmark or npm publication is implied.

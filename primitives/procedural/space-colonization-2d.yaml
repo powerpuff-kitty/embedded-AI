@@ -1,0 +1,81 @@
+id: space-colonization-2d
+name: 2D Space Colonization Experiments
+domain: artificial-life
+tasks:
+- rule-based-growth
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: Browser experiments applying space-colonization growth rules to branching forms, veins and
+  hyphae-like patterns.
+links:
+  repository: https://github.com/jasonwebb/2d-space-colonization-experiments
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: CC-BY-NC-SA-4.0
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - vegetation-ecosystems
+  - images-materials
+  integration: browser-reference
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - attraction points, growth rules and starting nodes
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: attraction points, growth rules and starting nodes
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - attraction points, growth rules and starting nodes
+  outputs:
+  - branching two-dimensional structures
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Noncommercial share-alike reference, not a permissively licensed drop-in component. Geometric resemblance
+  is not biological validation.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/jasonwebb/2d-space-colonization-experiments
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- vegetation-ecosystems
+- images-materials
+- browser-reference

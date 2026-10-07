@@ -1,0 +1,79 @@
+id: tone-js
+name: Tone.js
+domain: music
+tasks:
+- audio-synthesis
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: Web Audio framework with synthesis, effects, transport and event scheduling for interactive
+  music.
+links:
+  repository: https://github.com/Tonejs/Tone.js
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - audio-music
+  integration: browser-library
+  seed_control: unknown
+  determinism: unknown
+  controls:
+  - notes, synthesis parameters and scheduled events
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: notes, synthesis parameters and scheduled events
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - notes, synthesis parameters and scheduled events
+  outputs:
+  - synthesized audio
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Does not compose music autonomously. Sample-based instruments require separately licensed assets; audio
+  requires user activation and bounded voices.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/Tonejs/Tone.js
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- audio-music
+- browser-library

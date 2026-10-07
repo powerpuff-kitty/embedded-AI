@@ -1,0 +1,83 @@
+id: d3-delaunay
+name: d3-delaunay
+domain: mapping
+tasks:
+- triangulation
+- voronoi-diagrams
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: Delaunay triangulations and Voronoi diagrams from two-dimensional points, built on Delaunator.
+links:
+  repository: https://github.com/d3/d3-delaunay
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: ISC
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - foundations
+  - worlds-environments
+  integration: browser-library
+  seed_control: not-applicable
+  determinism: unknown
+  controls:
+  - two-dimensional points and clipping bounds
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: two-dimensional points and clipping bounds
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - two-dimensional points and clipping bounds
+  outputs:
+  - Delaunay triangles and Voronoi cells
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- A geometry building block, not an autonomous city or biome generator. The application supplies sites
+  and semantics.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/d3/d3-delaunay
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- foundations
+- worlds-environments
+- browser-library
+related:
+- delaunator

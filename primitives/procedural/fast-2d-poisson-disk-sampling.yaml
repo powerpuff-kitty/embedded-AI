@@ -1,0 +1,83 @@
+id: fast-2d-poisson-disk-sampling
+name: fast-2d-poisson-disk-sampling
+domain: simulation
+tasks:
+- procedural-simulation
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: Two-dimensional Poisson disk sampling using a modified Bridson algorithm and a custom random
+  source.
+links:
+  repository: https://github.com/kchapelier/fast-2d-poisson-disk-sampling
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - foundations
+  - vegetation-ecosystems
+  integration: browser-library
+  seed_control: injectable
+  determinism: unknown
+  controls:
+  - region dimensions, radius, attempts and optional RNG
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: region dimensions, radius, attempts and optional RNG
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - region dimensions, radius, attempts and optional RNG
+  outputs:
+  - spaced two-dimensional sample points
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Specialized 2D implementation, distinct from the arbitrary-dimensional sampler. Point spacing is not
+  a terrain or ecosystem simulation.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/kchapelier/fast-2d-poisson-disk-sampling
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- foundations
+- vegetation-ecosystems
+- browser-library
+related:
+- poisson-disk-sampling
