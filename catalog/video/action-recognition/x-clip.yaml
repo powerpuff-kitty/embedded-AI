@@ -1,0 +1,23 @@
+id: x-clip
+name: X-CLIP
+domain: video
+tasks: [video-text-retrieval, zero-shot-video-classification]
+class: video-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Expands CLIP to video, enabling zero-shot action recognition and video-text retrieval."
+links: {repository: 'https://github.com/microsoft/VideoX', paper: 'https://arxiv.org/abs/2208.02816'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'CLIP-scale encoders; not embedded-friendly without distillation.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained video-text model; zero-shot or fine-tuned.', needs_data: 'Video-text pairs or labelled clips for evaluation.', update_strategy: 'Verify licence; re-evaluate retrieval/zero-shot metrics.'}
+data: {inputs: [video-clip, text], outputs: [action-classes, similarity-scores], languages: [en]}
+evaluation: ['Zero-shot top-1 and retrieval recall on target data.']
+limitations: ['Licence not declared; compute-heavy; English prompts.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/VideoX', notes: 'X-CLIP in VideoX.'}]
+reviewed: '2026-10-06'
+tags: [video, clip, zero-shot, retrieval]

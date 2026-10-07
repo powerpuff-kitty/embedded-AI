@@ -1,0 +1,23 @@
+id: latent-consistency
+name: Latent Consistency Models (LCM)
+domain: vision
+tasks: [image-generation, diffusion-inference]
+class: generative-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Latent consistency models that generate images in a few steps, with LoRA adapters for existing SD models."
+links: {repository: 'https://github.com/luosiallen/latent-consistency-model', model: 'https://huggingface.co/SimianLuo/LCM_Dreamshaper_v7', paper: 'https://arxiv.org/abs/2310.04378'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Few-step sampling reduces compute; quantise for edge.'}
+runtimes: [diffusers, onnxruntime]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pre-trained LCMs plus LoRA adapters for SD models.', needs_data: 'Prompts; images for distillation/fine-tuning.', update_strategy: 'Verify per-checkpoint weight terms; re-measure latency.'}
+data: {inputs: [text-prompt, seed], outputs: [generated-image], languages: [en]}
+evaluation: ['Image quality plus steps/seconds-per-image on the target.']
+limitations: ['Weight terms vary per checkpoint; fewer steps can reduce fidelity.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/luosiallen/latent-consistency-model', notes: 'Latent Consistency Models.'}]
+reviewed: '2026-10-06'
+tags: [vision, diffusion, generative, few-step]

@@ -1,0 +1,23 @@
+id: videomae
+name: VideoMAE
+domain: video
+tasks: [video-classification, action-recognition, video-representations]
+class: video-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Self-supervised masked-autoencoder video models that transfer well to action recognition."
+links: {repository: 'https://github.com/MCG-NJU/VideoMAE', paper: 'https://arxiv.org/abs/2203.12602'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'ViT-based video model; heavier than mobile action models.'}
+runtimes: [pytorch, transformers]
+formats: [pytorch-checkpoint, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained representations; fine-tune per action dataset.', needs_data: 'Labelled video clips for fine-tuning/evaluation.', update_strategy: 'Verify licence; re-evaluate top-1 and latency on the target.'}
+data: {inputs: [video-clip], outputs: [action-classes, features], languages: []}
+evaluation: ['Top-1/top-k on target actions plus throughput.']
+limitations: ['Licence not declared; compute-heavy relative to mobile models.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/MCG-NJU/VideoMAE', notes: 'VideoMAE models.'}]
+reviewed: '2026-10-06'
+tags: [video, action-recognition, self-supervised]
