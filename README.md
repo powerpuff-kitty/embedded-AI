@@ -75,16 +75,16 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 <!-- AT-A-GLANCE:START -->
 | | |
 |---|---|
-| **539 entries** | models, collections, pipelines, toolkits and primitives |
-| **54 domains** | vision, audio, language, robotics, gaming, genomics and more |
+| **553 entries** | models, collections, pipelines, toolkits and primitives |
+| **55 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
-| **Evidence** | 539 sourced · 3 reproduced · 0 measured RAM · 157 unknown weights |
+| **Evidence** | 553 sourced · 3 reproduced · 0 measured RAM · 157 unknown weights |
 <!-- AT-A-GLANCE:END -->
 
 ## Domains
 
 <!-- DOMAINS:START -->
-54 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust & safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports · Graph · Retrieval · Agents · Reasoning.
+55 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust & safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports · Graph · Retrieval · Agents · Reasoning · Search.
 <!-- DOMAINS:END -->
 
 ## Documentation
@@ -135,5 +135,5 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 ## Catalogue
 
 <!-- CATALOGUE:START -->
-**539 entries** across 54 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
+**553 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
 <!-- CATALOGUE:END -->

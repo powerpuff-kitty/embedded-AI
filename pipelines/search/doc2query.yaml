@@ -1,0 +1,23 @@
+id: doc2query
+name: doc2query (DocT5Query)
+domain: search
+tasks: [query-expansion, document-expansion, retrieval]
+class: query-expansion-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Generates likely search queries for a document to improve its lexical retrievability."
+links: {repository: 'https://github.com/castorini/docTTTTTquery', model: 'https://huggingface.co/castorini/doc2query-t5-base-msmarco', paper: 'https://arxiv.org/abs/1904.08375'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server], notes: 'Fine-tuned T5; predicts queries at index time.'}
+runtimes: [transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained query generation; fine-tuning possible.', needs_data: 'A document corpus; qrels for end-to-end evaluation.', update_strategy: 'Append expansions at index time; re-evaluate recall.'}
+data: {inputs: [document], outputs: [predicted-queries], languages: [en, multilingual-variants]}
+evaluation: ['Retrieval recall/nDCG before vs after expansion.']
+limitations: ['English-focused; expansions can add noise to the index.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/castorini/docTTTTTquery', notes: 'doc2query/DocT5Query.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, query-expansion, retrieval]

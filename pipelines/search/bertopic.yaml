@@ -1,0 +1,23 @@
+id: bertopic
+name: BERTopic
+domain: search
+tasks: [topic-modelling, document-clustering, content-analysis]
+class: topic-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Creates interpretable topic clusters from documents via embeddings, UMAP and HDBSCAN."
+links: {repository: 'https://github.com/MaartenGr/BERTopic', homepage: 'https://maartengr.github.io/BERTopic/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis tooling; scales with corpus size.'}
+runtimes: [sentence-transformers, scikit-learn, umap]
+formats: [python]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Fits a topic model over a document corpus.', needs_data: 'A document corpus; optional labels for evaluation.', update_strategy: 'Refit on new corpora; review topic stability.'}
+data: {inputs: [documents], outputs: [topics, topic-words], languages: [multilingual, en]}
+evaluation: ['Topic coherence and human review of clusters.']
+limitations: ['Clusters shift with the corpus and hyperparameters.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/MaartenGr/BERTopic', notes: 'BERTopic.'}]
+reviewed: '2026-10-06'
+tags: [search, seo, topics, clustering]
