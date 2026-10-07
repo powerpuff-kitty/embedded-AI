@@ -1,0 +1,23 @@
+id: dlrm
+name: DLRM
+domain: recommendation
+tasks: [recommendation, ctr-prediction, ranking]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Meta's deep learning recommendation model combining embeddings with MLPs for CTR prediction."
+links: {repository: 'https://github.com/facebookresearch/dlrm', paper: 'https://arxiv.org/abs/1906.00091'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop], notes: 'Training/serving reference; large embedding tables need servers.'}
+runtimes: [pytorch, caffe2]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains CTR/ranking models on interaction data.', needs_data: 'Large user-item/feature datasets.', update_strategy: 'Retrain frequently; monitor feedback loops and bias.'}
+data: {inputs: [user-item-features], outputs: [ranking-scores], languages: []}
+evaluation: ['AUC/logloss offline plus online A/B where possible.']
+limitations: ['Reference implementation; production needs feature pipelines.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/dlrm', notes: 'DLRM reference model.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, ctr, ranking, embeddings]

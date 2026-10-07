@@ -1,0 +1,23 @@
+id: outlines
+name: Outlines
+domain: runtime
+tasks: [structured-generation, constrained-decoding]
+class: generation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library that forces LLM output to match regex, JSON schema or grammars during decoding."
+links: {repository: 'https://github.com/dottxt-ai/outlines', homepage: 'https://dottxt-ai.github.io/outlines/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Wraps local inference engines; CPU-friendly.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [python]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Constrains a chosen model during decoding; no training.', needs_data: 'A local model plus a schema/grammar.', update_strategy: 'Pin library/model; re-measure overhead per engine.'}
+data: {inputs: [text-prompt, schema], outputs: [valid-structured-output], languages: [en]}
+evaluation: ['Schema-validity rate plus decoding overhead on the target.']
+limitations: ['Constrained decoding adds overhead; schema errors cause failures.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dottxt-ai/outlines', notes: 'Outlines structured generation.'}]
+reviewed: '2026-10-06'
+tags: [runtime, structured-output, grammar, decoding]

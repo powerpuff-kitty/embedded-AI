@@ -1,0 +1,23 @@
+id: hermes-function-calling
+name: Hermes Function Calling
+domain: agents
+tasks: [tool-calling, function-calling, structured-output]
+class: agent-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Nous Research's Hermes models tuned for structured function calling and JSON output."
+links: {repository: 'https://github.com/NousResearch/Hermes-Function-Calling', model: 'https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: '7B/8B variants; quantize for edge deployment.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained function-calling models; fine-tuning supported.', needs_data: 'Tool schemas plus prompts for evaluation.', update_strategy: 'Verify weight terms; pin checkpoint and re-evaluate tool accuracy.'}
+data: {inputs: [text-instruction, tool-schemas], outputs: [tool-calls, json], languages: [en]}
+evaluation: ['Tool-call/JSON validity and task success on the target tools.']
+limitations: ['Weight terms not stated; base-model licence may also apply.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/NousResearch/Hermes-Function-Calling', notes: 'Hermes function-calling models.'}]
+reviewed: '2026-10-06'
+tags: [agents, tool-calling, function-calling]

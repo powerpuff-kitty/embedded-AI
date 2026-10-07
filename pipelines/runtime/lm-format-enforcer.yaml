@@ -1,0 +1,23 @@
+id: lm-format-enforcer
+name: LM Format Enforcer
+domain: runtime
+tasks: [structured-generation, constrained-decoding]
+class: generation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Enforces JSON-schema output by filtering tokens during decoding, across local runtimes."
+links: {repository: 'https://github.com/noamgat/lm-format-enforcer'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Integrates with llama.cpp, vLLM, transformers.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [python]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Constrains decoding to a schema; no training.', needs_data: 'A local model plus a JSON schema.', update_strategy: 'Pin library/model; re-measure overhead per backend.'}
+data: {inputs: [text-prompt, json-schema], outputs: [valid-json], languages: [en]}
+evaluation: ['JSON-validity rate plus decoding overhead on the target.']
+limitations: ['Character-level parsing adds overhead; complex schemas cost more.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/noamgat/lm-format-enforcer', notes: 'LM Format Enforcer.'}]
+reviewed: '2026-10-06'
+tags: [runtime, structured-output, json, decoding]

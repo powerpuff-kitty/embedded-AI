@@ -826,6 +826,458 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "smolagents",
+      "name": "smolagents",
+      "domain": "agents",
+      "tasks": [
+        "agent-orchestration",
+        "tool-use",
+        "code-agents"
+      ],
+      "class": "agent-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Minimal Hugging Face agent library that can drive small local models and tools.",
+      "links": {
+        "repository": "https://github.com/huggingface/smolagents",
+        "homepage": "https://huggingface.co/docs/smolagents"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Framework; can run fully offline with a local model."
+      },
+      "runtimes": [
+        "python",
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Orchestrates agents around a chosen model; no training.",
+        "needs_data": "Tools plus a model; tasks for evaluation.",
+        "update_strategy": "Pin library/model; sandbox code-executing agents."
+      },
+      "data": {
+        "inputs": [
+          "task",
+          "tools"
+        ],
+        "outputs": [
+          "actions",
+          "results"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task success plus safety review of tool/code execution."
+      ],
+      "limitations": [
+        "Code-executing agents need sandboxing; depends on the chosen model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/smolagents",
+          "notes": "smolagents library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "agents",
+        "orchestration",
+        "tool-use"
+      ],
+      "path": "pipelines/agents/smolagents.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "functionary",
+      "name": "Functionary",
+      "domain": "agents",
+      "tasks": [
+        "tool-calling",
+        "function-calling",
+        "structured-output"
+      ],
+      "class": "agent-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "MeetKai's open models that translate natural language into tool calls and interpret results.",
+      "links": {
+        "repository": "https://github.com/MeetKai/functionary",
+        "model": "https://huggingface.co/meetkai/functionary-small-v3.1"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small (7B/8B) variants; quantize for edge deployment."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained tool-calling models; fine-tuning supported.",
+        "needs_data": "Tool schemas plus dialogues for evaluation.",
+        "update_strategy": "Verify weight terms; pin checkpoint and re-evaluate tool accuracy."
+      },
+      "data": {
+        "inputs": [
+          "text-instruction",
+          "tool-schemas"
+        ],
+        "outputs": [
+          "tool-calls",
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Tool-call accuracy and schema validity on the target tools."
+      ],
+      "limitations": [
+        "Weight terms not stated; format must match the training template."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MeetKai/functionary",
+          "notes": "Functionary tool-calling models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "agents",
+        "tool-calling",
+        "function-calling"
+      ],
+      "path": "pipelines/agents/functionary.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "gorilla",
+      "name": "Gorilla",
+      "domain": "agents",
+      "tasks": [
+        "tool-calling",
+        "api-calling",
+        "retrieval-augmented"
+      ],
+      "class": "agent-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "LLM that writes API and tool calls, trained with retrieval-aware documentation.",
+      "links": {
+        "repository": "https://github.com/ShishirPatil/gorilla",
+        "model": "https://huggingface.co/gorilla-llm/gorilla-7b-hf-v1",
+        "paper": "https://arxiv.org/abs/2305.15334"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "7B-class; API-calling model, quantize for lighter targets."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained API-calling models; fine-tuning supported.",
+        "needs_data": "API docs plus tasks for evaluation.",
+        "update_strategy": "Verify weight terms; pin checkpoint and re-evaluate call accuracy."
+      },
+      "data": {
+        "inputs": [
+          "text-instruction",
+          "api-docs"
+        ],
+        "outputs": [
+          "api-calls"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "API-call validity and execution success on the target APIs."
+      ],
+      "limitations": [
+        "Weight terms not stated; hallucinated APIs remain a risk."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ShishirPatil/gorilla",
+          "notes": "Gorilla API-calling models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "agents",
+        "tool-calling",
+        "api"
+      ],
+      "path": "pipelines/agents/gorilla.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "hermes-function-calling",
+      "name": "Hermes Function Calling",
+      "domain": "agents",
+      "tasks": [
+        "tool-calling",
+        "function-calling",
+        "structured-output"
+      ],
+      "class": "agent-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Nous Research's Hermes models tuned for structured function calling and JSON output.",
+      "links": {
+        "repository": "https://github.com/NousResearch/Hermes-Function-Calling",
+        "model": "https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "7B/8B variants; quantize for edge deployment."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained function-calling models; fine-tuning supported.",
+        "needs_data": "Tool schemas plus prompts for evaluation.",
+        "update_strategy": "Verify weight terms; pin checkpoint and re-evaluate tool accuracy."
+      },
+      "data": {
+        "inputs": [
+          "text-instruction",
+          "tool-schemas"
+        ],
+        "outputs": [
+          "tool-calls",
+          "json"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Tool-call/JSON validity and task success on the target tools."
+      ],
+      "limitations": [
+        "Weight terms not stated; base-model licence may also apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NousResearch/Hermes-Function-Calling",
+          "notes": "Hermes function-calling models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "agents",
+        "tool-calling",
+        "function-calling"
+      ],
+      "path": "pipelines/agents/hermes-function-calling.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "xlam",
+      "name": "xLAM",
+      "domain": "agents",
+      "tasks": [
+        "tool-calling",
+        "function-calling"
+      ],
+      "class": "agent-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Salesforce's large action models for function calling, including 1B on-device variants.",
+      "links": {
+        "model": "https://huggingface.co/Salesforce/xLAM-1b-fc-r",
+        "paper": "https://arxiv.org/abs/2409.03215"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "1B variants target edge/on-device; larger are server-class."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained function-calling models; fine-tuning supported.",
+        "needs_data": "Tool schemas plus prompts for evaluation.",
+        "update_strategy": "Verify weight terms; pin checkpoint and re-evaluate tool accuracy."
+      },
+      "data": {
+        "inputs": [
+          "text-instruction",
+          "tool-schemas"
+        ],
+        "outputs": [
+          "tool-calls"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Function-call accuracy and schema validity on the target tools."
+      ],
+      "limitations": [
+        "Licence undocumented; small models may need format guidance."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/Salesforce/xLAM-1b-fc-r",
+          "notes": "xLAM model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "agents",
+        "tool-calling",
+        "on-device"
+      ],
+      "path": "pipelines/agents/xlam.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "agml",
       "name": "AgML",
       "domain": "agriculture",
@@ -6954,6 +7406,96 @@
       ],
       "path": "catalog/business/tabular/tabpfn.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "tensorflow-decision-forests",
+      "name": "TensorFlow Decision Forests",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression",
+        "ranking"
+      ],
+      "class": "tabular-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "TensorFlow library for training and serving decision-forest models on tabular data.",
+      "links": {
+        "repository": "https://github.com/tensorflow/decision-forests",
+        "homepage": "https://www.tensorflow.org/decision_forests"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Trees can be exported for lightweight inference."
+      },
+      "runtimes": [
+        "tensorflow",
+        "tflite"
+      ],
+      "formats": [
+        "savedmodel",
+        "tflite"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains GBDT/random-forest models on tabular data.",
+        "needs_data": "Labelled tabular data for the target task.",
+        "update_strategy": "Retrain on drift; revalidate calibration and fairness."
+      },
+      "data": {
+        "inputs": [
+          "tabular-features"
+        ],
+        "outputs": [
+          "class",
+          "value",
+          "ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out metrics plus calibration and importances review."
+      ],
+      "limitations": [
+        "Tabular focus; export fidelity should be verified after TFLite conversion."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/decision-forests",
+          "notes": "TF Decision Forests."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "business",
+        "tabular",
+        "decision-trees",
+        "tflite"
+      ],
+      "path": "pipelines/business/tabular/tensorflow-decision-forests.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "xgboost",
@@ -14194,6 +14736,93 @@
       "usage_mode": "companion"
     },
     {
+      "id": "river",
+      "name": "River",
+      "domain": "infrastructure",
+      "tasks": [
+        "online-learning",
+        "anomaly-detection",
+        "drift-detection"
+      ],
+      "class": "online-ml-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for online/incremental machine learning and concept-drift detection.",
+      "links": {
+        "repository": "https://github.com/online-ml/river",
+        "homepage": "https://riverml.xyz/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Incremental models are small and CPU-only, suited to streams."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Learns incrementally from a data stream.",
+        "needs_data": "A stream of labelled or unlabelled observations.",
+        "update_strategy": "Monitor drift; adapt learning rate and retrain as needed."
+      },
+      "data": {
+        "inputs": [
+          "streaming-features"
+        ],
+        "outputs": [
+          "predictions",
+          "drift-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Prequential metrics plus drift-detection review."
+      ],
+      "limitations": [
+        "Online models can be less accurate than batch models; order matters."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/online-ml/river",
+          "notes": "River online ML library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "infrastructure",
+        "online-learning",
+        "drift",
+        "anomaly"
+      ],
+      "path": "pipelines/infrastructure/river.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "pyrca",
       "name": "PyRCA",
       "domain": "infrastructure",
@@ -20675,6 +21304,260 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "dlrm",
+      "name": "DLRM",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "ctr-prediction",
+        "ranking"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's deep learning recommendation model combining embeddings with MLPs for CTR prediction.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/dlrm",
+        "paper": "https://arxiv.org/abs/1906.00091"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/serving reference; large embedding tables need servers."
+      },
+      "runtimes": [
+        "pytorch",
+        "caffe2"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains CTR/ranking models on interaction data.",
+        "needs_data": "Large user-item/feature datasets.",
+        "update_strategy": "Retrain frequently; monitor feedback loops and bias."
+      },
+      "data": {
+        "inputs": [
+          "user-item-features"
+        ],
+        "outputs": [
+          "ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "AUC/logloss offline plus online A/B where possible."
+      ],
+      "limitations": [
+        "Reference implementation; production needs feature pipelines."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/dlrm",
+          "notes": "DLRM reference model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "ctr",
+        "ranking",
+        "embeddings"
+      ],
+      "path": "pipelines/recommendation/dlrm.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "easyrec",
+      "name": "EasyRec",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "ctr-prediction",
+        "ranking"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Alibaba's framework for training and serving a large zoo of recommendation models.",
+      "links": {
+        "repository": "https://github.com/alibaba/EasyRec",
+        "homepage": "https://easyrec.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Training/serving framework; server-class for large models."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a zoo of ranking/CTR models.",
+        "needs_data": "Interaction/feature datasets.",
+        "update_strategy": "Retrain frequently; monitor drift and bias."
+      },
+      "data": {
+        "inputs": [
+          "user-item-features"
+        ],
+        "outputs": [
+          "ranking-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "AUC/GAUC offline plus online A/B where possible."
+      ],
+      "limitations": [
+        "TensorFlow-based; heavier than classical recommenders."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/alibaba/EasyRec",
+          "notes": "EasyRec framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "ctr",
+        "ranking",
+        "tensorflow"
+      ],
+      "path": "pipelines/recommendation/easyrec.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "merlin",
+      "name": "NVIDIA Merlin",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "feature-engineering",
+        "ranking"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA's end-to-end GPU framework for building and deploying recommender systems.",
+      "links": {
+        "repository": "https://github.com/NVIDIA-Merlin/Merlin",
+        "homepage": "https://nvidia-merlin.github.io/Merlin/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server"
+        ],
+        "notes": "GPU-centric training/inference; server-class."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorflow",
+        "cuda"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Builds data pipelines and models for recsys.",
+        "needs_data": "Large interaction/feature datasets.",
+        "update_strategy": "Retrain frequently; monitor drift and popularity bias."
+      },
+      "data": {
+        "inputs": [
+          "user-item-features"
+        ],
+        "outputs": [
+          "ranked-recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Ranking metrics offline plus online A/B where possible."
+      ],
+      "limitations": [
+        "GPU-oriented and server-class; complex stack."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA-Merlin/Merlin",
+          "notes": "NVIDIA Merlin framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "gpu",
+        "ranking",
+        "features"
+      ],
+      "path": "pipelines/recommendation/merlin.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "recbole",
       "name": "RecBole",
       "domain": "recommendation",
@@ -20754,6 +21637,93 @@
         "pytorch"
       ],
       "path": "pipelines/recommendation/recbole.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "surprise",
+      "name": "Surprise",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "collaborative-filtering",
+        "rating-prediction"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Scikit-learn-style library of collaborative-filtering algorithms for explicit ratings.",
+      "links": {
+        "repository": "https://github.com/NicolasHug/Surprise",
+        "homepage": "https://surpriselib.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "embedded",
+          "server"
+        ],
+        "notes": "Classical CF models are small and CPU-friendly."
+      },
+      "runtimes": [
+        "python",
+        "numpy"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits CF models on a ratings matrix.",
+        "needs_data": "User-item ratings for training/evaluation.",
+        "update_strategy": "Refit on new ratings; watch cold-start and popularity bias."
+      },
+      "data": {
+        "inputs": [
+          "user-item-ratings"
+        ],
+        "outputs": [
+          "rating-predictions",
+          "recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "RMSE/ranking metrics with cross-validation."
+      ],
+      "limitations": [
+        "Explicit-rating focus; scaling limited for very large catalogs."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NicolasHug/Surprise",
+          "notes": "Surprise recommender library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "collaborative-filtering",
+        "rating"
+      ],
+      "path": "pipelines/recommendation/surprise.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -23249,6 +24219,90 @@
         "local"
       ],
       "path": "pipelines/runtime/ollama.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "micromlgen",
+      "name": "micromlgen",
+      "domain": "runtime",
+      "tasks": [
+        "mcu-deployment",
+        "model-conversion"
+      ],
+      "class": "micro-ml-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Generates plain C code from scikit-learn models for microcontrollers.",
+      "links": {
+        "repository": "https://github.com/eloquentarduino/micromlgen"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge"
+        ],
+        "notes": "Targets MCUs such as AVR, ESP32 and ARM Cortex-M."
+      },
+      "runtimes": [
+        "python",
+        "native-cpp"
+      ],
+      "formats": [
+        "c-source"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Exports a model trained elsewhere (e.g. scikit-learn) to C.",
+        "needs_data": "A trained classifier/regressor plus test samples.",
+        "update_strategy": "Pin generator version; verify C output matches the source model."
+      },
+      "data": {
+        "inputs": [
+          "sensor-features"
+        ],
+        "outputs": [
+          "class",
+          "value"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Output parity vs the source model plus flash/RAM footprint."
+      ],
+      "limitations": [
+        "Supports a subset of models; no training on-device."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/eloquentarduino/micromlgen",
+          "notes": "micromlgen C-code generator."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "microcontroller",
+        "embedded",
+        "conversion"
+      ],
+      "path": "pipelines/runtime/micromlgen.yaml",
       "usage_mode": "companion"
     },
     {
@@ -25771,6 +26825,272 @@
       "usage_mode": "companion"
     },
     {
+      "id": "guidance",
+      "name": "Guidance",
+      "domain": "runtime",
+      "tasks": [
+        "structured-generation",
+        "constrained-decoding",
+        "prompting"
+      ],
+      "class": "generation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Template language that interleaves generation and control to constrain LLM output.",
+      "links": {
+        "repository": "https://github.com/guidance-ai/guidance",
+        "homepage": "https://guidance.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Works with local transformers/llama.cpp backends."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Constrains decoding via templates; no training.",
+        "needs_data": "A local model plus templates/schemas.",
+        "update_strategy": "Pin library/model; re-measure overhead per backend."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "template"
+        ],
+        "outputs": [
+          "valid-structured-output"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Schema-validity rate plus decoding overhead on the target."
+      ],
+      "limitations": [
+        "Backend support varies; overhead depends on the constraint."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/guidance-ai/guidance",
+          "notes": "Guidance template language."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "structured-output",
+        "prompting",
+        "decoding"
+      ],
+      "path": "pipelines/runtime/guidance.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "lm-format-enforcer",
+      "name": "LM Format Enforcer",
+      "domain": "runtime",
+      "tasks": [
+        "structured-generation",
+        "constrained-decoding"
+      ],
+      "class": "generation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Enforces JSON-schema output by filtering tokens during decoding, across local runtimes.",
+      "links": {
+        "repository": "https://github.com/noamgat/lm-format-enforcer"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Integrates with llama.cpp, vLLM, transformers."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Constrains decoding to a schema; no training.",
+        "needs_data": "A local model plus a JSON schema.",
+        "update_strategy": "Pin library/model; re-measure overhead per backend."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "json-schema"
+        ],
+        "outputs": [
+          "valid-json"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "JSON-validity rate plus decoding overhead on the target."
+      ],
+      "limitations": [
+        "Character-level parsing adds overhead; complex schemas cost more."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/noamgat/lm-format-enforcer",
+          "notes": "LM Format Enforcer."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "structured-output",
+        "json",
+        "decoding"
+      ],
+      "path": "pipelines/runtime/lm-format-enforcer.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "outlines",
+      "name": "Outlines",
+      "domain": "runtime",
+      "tasks": [
+        "structured-generation",
+        "constrained-decoding"
+      ],
+      "class": "generation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library that forces LLM output to match regex, JSON schema or grammars during decoding.",
+      "links": {
+        "repository": "https://github.com/dottxt-ai/outlines",
+        "homepage": "https://dottxt-ai.github.io/outlines/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Wraps local inference engines; CPU-friendly."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "python"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Constrains a chosen model during decoding; no training.",
+        "needs_data": "A local model plus a schema/grammar.",
+        "update_strategy": "Pin library/model; re-measure overhead per engine."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "schema"
+        ],
+        "outputs": [
+          "valid-structured-output"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Schema-validity rate plus decoding overhead on the target."
+      ],
+      "limitations": [
+        "Constrained decoding adds overhead; schema errors cause failures."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dottxt-ai/outlines",
+          "notes": "Outlines structured generation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "structured-output",
+        "grammar",
+        "decoding"
+      ],
+      "path": "pipelines/runtime/outlines.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "ctranslate2",
       "name": "CTranslate2",
       "domain": "runtime",
@@ -26083,6 +27403,98 @@
       "path": "catalog/science/materials/mattersim-small.yaml",
       "kind": "model",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "scikit-learn",
+      "name": "scikit-learn",
+      "domain": "science",
+      "tasks": [
+        "classical-ml",
+        "regression",
+        "classification",
+        "clustering"
+      ],
+      "class": "ml-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Foundational Python machine-learning library for classical models and preprocessing.",
+      "links": {
+        "repository": "https://github.com/scikit-learn/scikit-learn",
+        "homepage": "https://scikit-learn.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Models are small; pair with micromlgen/ONNX for MCU deployment."
+      },
+      "runtimes": [
+        "python",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pickle",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits classical models on tabular/signal data.",
+        "needs_data": "Labelled data for the target task.",
+        "update_strategy": "Refit on drift; validate assumptions and calibration."
+      },
+      "data": {
+        "inputs": [
+          "tabular-features"
+        ],
+        "outputs": [
+          "class",
+          "value",
+          "clusters"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Cross-validated metrics plus calibration/fairness review."
+      ],
+      "limitations": [
+        "Not deep learning; large data needs sampling or other tools."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/scikit-learn/scikit-learn",
+          "notes": "scikit-learn library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "science",
+        "classical-ml",
+        "tabular",
+        "toolkit"
+      ],
+      "path": "pipelines/science/scikit-learn.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "optuna",
