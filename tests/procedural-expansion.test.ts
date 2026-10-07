@@ -1,27 +1,51 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs/promises';
-import { loadEntries } from '../scripts/catalog.ts';
-import { ADAPTERS } from '../recipes/procedural/contracts.mjs';
-import { verifyObservation } from '../scripts/verify-procedural-runs.ts';
-const entries=await loadEntries();
-const expected=['fishdraw','wavefunctioncollapse-js','cellular-automata-js','martini','isosurface-js','d3-delaunay','delaunator','earcut','matter-js','cannon-es','tone-js','space-colonization-2d','fast-2d-poisson-disk-sampling','wfc-city-unity'];
-test('second procedural batch contains 14 distinct documentation-only entries',()=>{
- const batch=entries.filter(e=>e.catalogue_batch==='procedural-expansion-2026-10-07');
- assert.deepEqual(batch.map(e=>e.id).sort(),expected.sort());
- for(const e of batch){assert.equal(e.learned,false);assert.equal(e.procedural.evidence_level,'documented');assert.deepEqual(e.compatibility,[]);assert.equal(e.requirements.ram_mb.measured_peak,null);assert.equal(entries.filter(x=>x.links.repository?.toLowerCase()===e.links.repository.toLowerCase()).length,1);}
- assert.equal(batch.find(e=>e.id==='space-colonization-2d')?.license.code,'CC-BY-NC-SA-4.0');
- assert.equal(batch.find(e=>e.id==='wfc-city-unity')?.procedural.integration,'native-reference');
+import { loadEntries, filterEntries } from '../scripts/catalog.ts';
+import { viewOf, hasModelSize } from '../site/methods.mjs';
+
+const expected = ['fastnoise2', 'wavefunctioncollapse-js', 'delaunator', 'fullik', 'rapier',
+  'cannon-es', 'matter-js', 'recast-navigation-js', 'seedrandom', 'earcut', 'fishdraw', 'jscad-modeling'];
+const entries = await loadEntries();
+const byId = new Map(entries.map(entry => [entry.id, entry]));
+const repositoryKey = (url: string = '') => url.toLowerCase().replace(/\.git\/?$/, '').replace(/\/$/, '');
+
+test('procedural expansion uses unique canonical upstreams and non-model metadata', () => {
+  for (const id of expected) {
+    const entry = byId.get(id);
+    assert.ok(entry, `${id} must be a canonical entry`);
+    assert.equal(entry.catalogue_batch, 'procedural-expansion-2026-10-07');
+    assert.equal(entry.learned, false);
+    assert.equal(entry.usage.mode, 'companion');
+    assert.equal(entry.model.parameters, null);
+    assert.equal(entry.model.file_size_mb, null);
+    assert.equal(entry.license.weights, 'not-applicable');
+    assert.equal(viewOf(entry), 'procedural');
+    assert.equal(hasModelSize(entry), false);
+    const siblings = entries.filter(other => repositoryKey(other.links?.repository) === repositoryKey(entry.links.repository));
+    assert.equal(siblings.length, 1, `${id} must not duplicate another upstream repository`);
+  }
 });
-test('lab dependencies are exact and separate from catalogue runtime',async()=>{
- const lab=JSON.parse(await fs.readFile('recipes/procedural/package.json','utf8'));const root=JSON.parse(await fs.readFile('package.json','utf8'));
- assert.equal(lab.private,true);for(const a of Object.values(ADAPTERS)){assert.equal(lab.dependencies[a.package],a.version);assert.ok(!root.dependencies?.[a.package]);}
+
+test('new components are discoverable with the existing method and category filters', () => {
+  const physics = new Set(filterEntries(entries, { view: 'procedural', method: 'physics-based' }).map(e => e.id));
+  for (const id of ['rapier', 'cannon-es', 'matter-js']) assert.ok(physics.has(id));
+  const foundations = new Set(filterEntries(entries, { view: 'procedural', proceduralCategory: 'foundations' }).map(e => e.id));
+  for (const id of ['seedrandom', 'delaunator', 'earcut', 'jscad-modeling']) assert.ok(foundations.has(id));
+  const ai = new Set(filterEntries(entries, { view: 'ai' }).map(e => e.id));
+  for (const id of expected) assert.ok(!ai.has(id));
 });
-const hash='a'.repeat(64);
-const sample=()=>({schema_version:1,adapter:'noise',entry_id:'simplex-noise-js',config:{adapter:'noise',seed:42,detail:1},upstream:ADAPTERS.noise,generation_ms:[1,2,3],output_sha256:hash,repeated_output_equal:true,different_seed_changes_output:true,output_payload_bytes:16384,javascript_heap_peak_mb:null,scope:'Synthetic schema fixture only, NOT an actual performance observation.',observed_at:'2026-10-07T00:00:00Z',browser:'test-only',build:{schema_version:1,fixture_sha256:hash,bundler_version:'test',dependencies:{'simplex-noise':'4.0.3',roughjs:'4.6.6','@dgreenheck/ez-tree':'1.1.0',three:'0.169.0',zzfx:'1.4.0'},lock_sha256:hash,bundle_sha256:hash,bundle_bytes:1,source_tree_sha256:hash,zzfx_source_sha256:hash,adaptations:['test-only','test-only'],source:'recipes/procedural/',renderer:'test-only'}});
-const ids=new Set(entries.map(e=>e.id));
-test('observation validation preserves provenance, null heap RAM and actual adapter identity',()=>{
- verifyObservation(sample(),ids);
- for(const mutate of [(r:any)=>r.entry_id='zzfx',(r:any)=>r.config.adapter='tree',(r:any)=>r.upstream={...r.upstream,version:'latest'},(r:any)=>r.build.dependencies['simplex-noise']='latest',(r:any)=>r.output_sha256='bad',(r:any)=>r.javascript_heap_peak_mb=0,(r:any)=>r.generation_ms=[-1],(r:any)=>r.repeated_output_equal=false,(r:any)=>r.extra=true]){const r=sample();mutate(r);assert.throws(()=>verifyObservation(r,ids));}
- const r:any=sample();r.host_observation={os:'test',release:'test',architecture:'test',logical_cpus:1,browser_version:'test',headless:true,browser_process_tree_peak_rss_mb:10,sampling_interval_ms:20,samples:1,scope:'Synthetic schema fixture. This is not an actual measurement and cannot establish device fit.'};verifyObservation(r,ids);r.host_observation.samples=0;assert.throws(()=>verifyObservation(r,ids));
+
+test('ports, dimensions and replay metadata retain their integration boundaries', () => {
+  const wfc = byId.get('wavefunctioncollapse-js')!;
+  assert.notEqual(wfc.links.repository, byId.get('wavefunctioncollapse')!.links.repository);
+  assert.ok(wfc.related.includes('wavefunctioncollapse'));
+  assert.equal(wfc.procedural.seed_control, 'injectable');
+  assert.equal(wfc.procedural.incremental, true);
+  assert.equal(byId.get('seedrandom')!.procedural.serialization, 'state');
+  assert.equal(byId.get('recast-navigation-js')!.procedural.integration, 'browser-library');
+  assert.equal(byId.get('fastnoise2')!.procedural.integration, 'native-library');
+  assert.equal(byId.get('fishdraw')!.procedural.serialization, 'outputs-only');
+  assert.ok(byId.get('matter-js')!.data.outputs.includes('2D physics state'));
+  assert.ok(byId.get('cannon-es')!.data.outputs.includes('3D physics state'));
+  for (const id of ['earcut', 'delaunator']) assert.equal(byId.get(id)!.license.code, 'ISC');
 });

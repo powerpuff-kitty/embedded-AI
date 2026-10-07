@@ -1,80 +1,27 @@
-id: earcut
-name: Earcut
-domain: engineering
-tasks:
-- polygon-triangulation
-class: procedural-generator
-kind: toolkit
+id: "earcut"
+name: "Earcut"
+domain: "simulation"
+tasks: ["polygon-triangulation"]
+class: "procedural-companion"
+kind: "toolkit"
 learned: false
-methods:
-- procedural
-- rule-based
-catalogue_batch: procedural-expansion-2026-10-07
-description: JavaScript polygon triangulation supporting holes for rendering generated surfaces and footprints.
-links:
-  repository: https://github.com/mapbox/earcut
-model:
-  parameters: null
-  file_size_mb: null
-  measurement_scope: 'Not applicable: no learned model weights.'
-license:
-  code: ISC
-  weights: not-applicable
-  notes: Code terms do not automatically cover input assets or third-party dependencies.
-deployment:
-  offline: true
-  targets:
-  - browser
-  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
-    claim.
-runtimes:
-- javascript
-- nodejs
+methods: ["procedural", "rule-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "JavaScript polygon triangulation with holes for procedural meshes and rendering pipelines."
+links: {"repository": "https://github.com/mapbox/earcut"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "ISC", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
 formats: []
-procedural:
-  categories:
-  - foundations
-  - worlds-environments
-  integration: browser-library
-  seed_control: not-applicable
-  determinism: unknown
-  controls:
-  - polygon coordinates, hole offsets and dimensions
-  assets: []
-  incremental: null
-  serialization: unknown
-  evidence_level: documented
-usage:
-  mode: companion
-  training: No learned model training required.
-  needs_data: polygon coordinates, hole offsets and dimensions
-  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
-data:
-  inputs:
-  - polygon coordinates, hole offsets and dimensions
-  outputs:
-  - triangle vertex indices
-  languages: []
-requirements:
-  ram_mb:
-    minimum: null
-    measured_peak: null
-evaluation:
-- Upstream documentation reviewed; no local execution or resource measurement in this entry.
-- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
-limitations:
-- Primarily a 2D triangulator; extra coordinates are not general 3D surface reconstruction. It does not
-  guarantee correct output for every malformed polygon.
-- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+procedural: {"categories": ["foundations", "worlds-environments"], "integration": "browser-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["2D polygon coordinates", "hole indices"], "assets": [], "incremental": null, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["2D polygon coordinates", "hole indices"], "outputs": ["triangle indices"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Only XY coordinates are triangulated, even when a larger coordinate stride is supplied. This is not a general 3D surface triangulator.", "Validate problematic input and topology; arbitrary self-intersections and conforming-mesh requirements need additional handling."]
 compatibility: []
-evidence:
-- type: official
-  url: https://github.com/mapbox/earcut
-  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
-    not an execution benchmark.
-reviewed: '2026-10-07'
-tags:
-- procedural
-- foundations
-- worlds-environments
-- browser-library
+evidence: [{"type": "official", "url": "https://github.com/mapbox/earcut", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "foundations", "worlds-environments", "browser-library"]
+related: ["delaunator"]

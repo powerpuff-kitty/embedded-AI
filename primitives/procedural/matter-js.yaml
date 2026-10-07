@@ -1,79 +1,27 @@
-id: matter-js
-name: Matter.js
-domain: simulation
-tasks:
-- procedural-simulation
-class: procedural-generator
-kind: toolkit
+id: "matter-js"
+name: "Matter.js"
+domain: "simulation"
+tasks: ["rigid-body-simulation", "collision-detection"]
+class: "procedural-companion"
+kind: "toolkit"
 learned: false
-methods:
-- procedural
-- physics-based
-catalogue_batch: procedural-expansion-2026-10-07
-description: Two-dimensional rigid-body simulation for browser applications, including collisions and
-  constraints.
-links:
-  repository: https://github.com/liabru/matter-js
-model:
-  parameters: null
-  file_size_mb: null
-  measurement_scope: 'Not applicable: no learned model weights.'
-license:
-  code: MIT
-  weights: not-applicable
-  notes: Code terms do not automatically cover input assets or third-party dependencies.
-deployment:
-  offline: true
-  targets:
-  - browser
-  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
-    claim.
-runtimes:
-- javascript
-- nodejs
+methods: ["procedural", "physics-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "JavaScript 2D rigid-body engine with constraints, collisions and optional browser rendering."
+links: {"repository": "https://github.com/liabru/matter-js"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
 formats: []
-procedural:
-  categories:
-  - motion-behaviour
-  integration: browser-library
-  seed_control: not-applicable
-  determinism: unknown
-  controls:
-  - bodies, constraints, forces and time steps
-  assets: []
-  incremental: true
-  serialization: unknown
-  evidence_level: documented
-usage:
-  mode: companion
-  training: No learned model training required.
-  needs_data: bodies, constraints, forces and time steps
-  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
-data:
-  inputs:
-  - bodies, constraints, forces and time steps
-  outputs:
-  - simulated body poses and collision events
-  languages: []
-requirements:
-  ram_mb:
-    minimum: null
-    measured_peak: null
-evaluation:
-- Upstream documentation reviewed; no local execution or resource measurement in this entry.
-- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
-limitations:
-- Not a learned physics model or a certified engineering solver. Fixed time steps alone do not guarantee
-  cross-browser bitwise replay.
-- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+procedural: {"categories": ["motion-behaviour"], "integration": "browser-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["2D bodies", "constraints and forces", "time step"], "assets": [], "incremental": true, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["2D bodies", "constraints and forces", "time step"], "outputs": ["2D physics state", "collision events"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["This is a 2D engine, not a 3D scene system. Complete saved-state restoration requires application integration and appropriate serialization tooling."]
 compatibility: []
-evidence:
-- type: official
-  url: https://github.com/liabru/matter-js
-  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
-    not an execution benchmark.
-reviewed: '2026-10-07'
-tags:
-- procedural
-- motion-behaviour
-- browser-library
+evidence: [{"type": "official", "url": "https://github.com/liabru/matter-js", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "motion-behaviour", "browser-library"]
+related: ["rapier", "cannon-es"]

@@ -1,0 +1,27 @@
+id: "fastnoise2"
+name: "FastNoise2"
+domain: "simulation"
+tasks: ["noise-generation", "node-graph-generation"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "C++17 node-graph noise library with SIMD execution and serializable generator graphs for procedural fields."
+links: {"repository": "https://github.com/Auburn/FastNoise2"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["cpp", "wasm"]
+formats: []
+procedural: {"categories": ["worlds-environments", "images-materials", "foundations"], "integration": "native-library", "seed_control": "unknown", "determinism": "unknown", "controls": ["coordinates", "generator node graph", "numerical configuration"], "assets": ["Compiled library and its build dependencies; an Emscripten build is needed for browser integration."], "incremental": null, "serialization": "configuration", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["coordinates", "generator node graph", "numerical configuration"], "outputs": ["scalar noise fields", "serialized node graphs"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["WASM is an upstream compilation path, not a ready-made JavaScript library or a measured browser/device fit.", "Serialized graphs preserve configuration, not an entire simulated world. Pin compiler and numerical settings before testing repeatability."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/Auburn/FastNoise2", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "worlds-environments", "images-materials", "foundations", "native-library"]
+related: ["fastnoise-lite"]

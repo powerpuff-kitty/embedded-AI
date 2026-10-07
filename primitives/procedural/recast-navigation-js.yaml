@@ -1,0 +1,27 @@
+id: "recast-navigation-js"
+name: "recast-navigation-js"
+domain: "gaming"
+tasks: ["navigation-mesh-generation", "pathfinding", "crowd-simulation"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "rule-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "WebAssembly bindings for Recast and Detour, supporting navmesh generation, queries, crowds and temporary obstacles."
+links: {"repository": "https://github.com/isaac-mason/recast-navigation-js"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "MIT applies to these bindings; retain the separate upstream Recast/Detour and dependency notices."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "wasm", "nodejs"]
+formats: []
+procedural: {"categories": ["worlds-environments", "motion-behaviour", "foundations"], "integration": "browser-library", "seed_control": "unknown", "determinism": "conditional", "controls": ["triangle positions and indices", "agent dimensions and generator configuration", "navigation targets and obstacles"], "assets": ["The Recast/Detour WASM module and matching JavaScript bindings; initialize them before use."], "incremental": true, "serialization": "outputs-only", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["triangle positions and indices", "agent dimensions and generator configuration", "navigation targets and obstacles"], "outputs": ["navigation mesh", "paths and crowd updates"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Navmesh export/import is not complete game-state serialization. Temporary obstacles use the tile-cache workflow.", "Variable time steps make crowd behaviour non-deterministic. Bundle WASM for offline operation and bound regeneration work."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/isaac-mason/recast-navigation-js", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "worlds-environments", "motion-behaviour", "foundations", "browser-library"]
+related: ["yuka"]
