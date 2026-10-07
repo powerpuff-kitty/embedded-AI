@@ -1,0 +1,23 @@
+id: neural-compressor
+name: Intel Neural Compressor
+domain: runtime
+tasks: [quantisation, model-compression, pruning]
+class: compression-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Intel library for quantisation, pruning and distillation across frameworks."
+links: {repository: 'https://github.com/intel/neural-compressor', homepage: 'https://intel.github.io/neural-compressor/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'Produces INT8/INT4 models for CPU, GPU and NPU backends.'}
+runtimes: [pytorch, tensorflow, onnxruntime, openvino]
+formats: [onnx, pytorch-checkpoint, openvino]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Post-training and quantisation-aware compression of models.', needs_data: 'A trained model plus a calibration set.', update_strategy: 'Re-calibrate per target; measure accuracy drop after compression.'}
+data: {inputs: [model, calibration-data], outputs: [compressed-model], languages: []}
+evaluation: ['Accuracy delta plus latency/size on the target backend.']
+limitations: ['Compression can hurt accuracy; backend coverage varies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/intel/neural-compressor', notes: 'Intel Neural Compressor.'}]
+reviewed: '2026-10-06'
+tags: [runtime, quantisation, compression, intel]

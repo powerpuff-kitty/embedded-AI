@@ -1,0 +1,23 @@
+id: wav2vec2
+name: wav2vec 2.0
+domain: audio
+tasks: [speech-recognition, speech-representations]
+class: speech-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Self-supervised speech representations that underpin many ASR systems."
+links: {repository: 'https://github.com/facebookresearch/fairseq', paper: 'https://arxiv.org/abs/2006.11477'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'BASE and small variants; quantisation enables edge ASR.'}
+runtimes: [pytorch, transformers, onnxruntime]
+formats: [pytorch-checkpoint, safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained representations; fine-tuned for ASR or tasks.', needs_data: 'Transcribed audio for fine-tuning/evaluation.', update_strategy: 'Verify weight terms; re-evaluate WER on domain audio.'}
+data: {inputs: [audio], outputs: [transcript, representations], languages: [multilingual, en]}
+evaluation: ['WER on domain audio; latency for streaming.']
+limitations: ['Weight terms not stated; accuracy drops on unseen domains.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/fairseq', notes: 'wav2vec 2.0 in fairseq.'}]
+reviewed: '2026-10-06'
+tags: [audio, asr, speech, self-supervised]

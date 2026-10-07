@@ -1,0 +1,23 @@
+id: mlx
+name: MLX
+domain: runtime
+tasks: [on-device-ml, array-computing, model-inference]
+class: edge-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Apple array framework for machine learning on Apple silicon."
+links: {repository: 'https://github.com/ml-explore/mlx', homepage: 'https://ml-explore.github.io/mlx/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, mobile, edge], notes: 'Unified-memory inference on M-series and iOS devices.'}
+runtimes: [mlx, python]
+formats: [safetensors, mlx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runs and fine-tunes models on Apple silicon; no CUDA path.', needs_data: 'Converted models plus inputs.', update_strategy: 'Pin version; re-convert and re-benchmark per device.'}
+data: {inputs: [model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency/memory on the target Apple device.']
+limitations: ['Apple-silicon only; ecosystem smaller than PyTorch.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ml-explore/mlx', notes: 'MLX array framework.'}]
+reviewed: '2026-10-06'
+tags: [runtime, apple, on-device, fine-tuning]

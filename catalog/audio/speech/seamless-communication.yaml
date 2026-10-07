@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Meta's suite for expressive, streaming speech-to-speech and speech-to-text translation."
 links: {repository: 'https://github.com/facebookresearch/seamless_communication', paper: 'https://arxiv.org/abs/2312.05187'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: CC-BY-NC-4.0, weights: unknown}
 deployment: {offline: true, targets: [server, desktop], notes: 'Large multilingual speech models; server-class inference.'}
 runtimes: [pytorch, fairseq2]
 formats: [pytorch-checkpoint]

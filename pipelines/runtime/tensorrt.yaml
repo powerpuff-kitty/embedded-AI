@@ -1,0 +1,23 @@
+id: tensorrt
+name: NVIDIA TensorRT
+domain: runtime
+tasks: [gpu-inference, inference-optimisation]
+class: gpu-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "NVIDIA SDK that optimises and runs models on NVIDIA GPUs and Jetson devices."
+links: {repository: 'https://github.com/NVIDIA/TensorRT', homepage: 'https://developer.nvidia.com/tensorrt'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge, embedded, desktop, server], notes: 'Targets Jetson and discrete GPUs via TensorRT engines.'}
+runtimes: [tensorrt, cuda]
+formats: [onnx, tensorrt-engine]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Builds optimised engines from trained models; no training.', needs_data: 'An ONNX model plus calibration data.', update_strategy: 'Rebuild engines per GPU/version; verify precision impact.'}
+data: {inputs: [model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency/throughput and accuracy delta on the target GPU.']
+limitations: ['NVIDIA-only; engines are not portable across GPU generations.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/NVIDIA/TensorRT', notes: 'NVIDIA TensorRT.'}]
+reviewed: '2026-10-06'
+tags: [runtime, gpu, nvidia, optimisation]

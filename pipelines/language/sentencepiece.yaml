@@ -1,0 +1,23 @@
+id: sentencepiece
+name: SentencePiece
+domain: language
+tasks: [tokenisation, subword-segmentation]
+class: tokeniser
+kind: primitive
+catalogue_batch: expansion-2026-10-06
+description: "Language-independent subword tokeniser used by many LLM and translation models."
+links: {repository: 'https://github.com/google/sentencepiece', paper: 'https://arxiv.org/abs/1808.06226'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Small C++ library; model files are kilobytes.'}
+runtimes: [native-cpp, python, tensorflow]
+formats: [sentencepiece-model]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Trains a subword vocabulary or applies an existing model.', needs_data: 'A text corpus to train a vocabulary; model for inference.', update_strategy: 'Keep the tokeniser with the model; do not change after training.'}
+data: {inputs: [text], outputs: [token-ids, pieces], languages: [multilingual]}
+evaluation: ['Tokenisation fidelity and round-trip consistency.']
+limitations: ['Not a model itself; must match the model it accompanies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google/sentencepiece', notes: 'SentencePiece tokeniser.'}]
+reviewed: '2026-10-06'
+tags: [language, tokeniser, primitive, nlp]

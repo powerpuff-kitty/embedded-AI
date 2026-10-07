@@ -1,0 +1,23 @@
+id: cvxpylayers
+name: cvxpylayers
+domain: business
+tasks: [differentiable-optimisation, constrained-optimisation]
+class: optimisation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Differentiable convex optimisation layers that embed solvers inside neural networks."
+links: {repository: 'https://github.com/cvxpy/cvxpylayers', paper: 'https://arxiv.org/abs/1910.12430'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Research/engineering tool; solve times depend on the problem.'}
+runtimes: [pytorch, jax]
+formats: [numpy-model]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Wraps convex problems as differentiable layers for end-to-end training.', needs_data: 'Problem definition plus data if trained end to end.', update_strategy: 'Validate feasibility and solve-time budgets per deployment.'}
+data: {inputs: [parameters], outputs: [optimal-solution], languages: []}
+evaluation: ['Feasibility/optimality and gradient correctness checks.']
+limitations: ['Convex problems only; solver latency may not meet real-time.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/cvxpy/cvxpylayers', notes: 'cvxpylayers.'}]
+reviewed: '2026-10-06'
+tags: [business, optimization, differentiable, toolkit]

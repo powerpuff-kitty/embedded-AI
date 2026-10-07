@@ -1,0 +1,23 @@
+id: faiss
+name: FAISS
+domain: retrieval
+tasks: [approximate-nearest-neighbor, vector-search, clustering]
+class: retrieval-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Meta's library for efficient similarity search and clustering of dense vectors."
+links: {repository: 'https://github.com/facebookresearch/faiss', paper: 'https://arxiv.org/abs/2401.08281'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'CPU and GPU indexes; IVF/PQ indexes shrink memory.'}
+runtimes: [native-cpp, python, cuda]
+formats: [faiss-index]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Builds indexes from embeddings; no model training.', needs_data: 'Embedded vectors plus a query set.', update_strategy: 'Rebuild/refresh indexes on data drift; tune recall vs memory.'}
+data: {inputs: [embedding-vectors], outputs: [nearest-neighbours], languages: []}
+evaluation: ['Recall@k vs exhaustive search plus memory/latency.']
+limitations: ['ANN trade-offs; index must be rebuilt as data changes.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/faiss', notes: 'FAISS similarity search.'}]
+reviewed: '2026-10-06'
+tags: [retrieval, vector-search, ann, toolkit]

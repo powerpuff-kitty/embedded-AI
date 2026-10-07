@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Open-source implementation of CLIP with many pretrained image-text checkpoint families."
 links: {repository: 'https://github.com/mlfoundations/open_clip'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: MIT, weights: unknown}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Includes small ViT-B and distilled variants; larger checkpoints need GPU.'}
 runtimes: [pytorch, onnxruntime]
 formats: [pytorch-checkpoint, onnx]
