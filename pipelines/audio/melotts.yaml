@@ -1,0 +1,23 @@
+id: melotts
+name: MeloTTS
+domain: audio
+tasks: [text-to-speech, multilingual-tts, realtime-tts]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "MyShell's real-time multilingual TTS built for CPU inference and edge use."
+links: {repository: 'https://github.com/myshell-ai/MeloTTS'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [embedded, edge, desktop, mobile], notes: 'Designed to run in real time on CPU.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained multilingual voices; fine-tuning supported.', needs_data: 'Transcribed audio for fine-tuning/evaluation.', update_strategy: 'Verify weight terms; re-measure real-time factor per target.'}
+data: {inputs: [text], outputs: [synthesised-audio], languages: [multilingual, en, zh]}
+evaluation: ['MOS and real-time factor on the target.']
+limitations: ['Weight terms not stated; quality varies by language.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/myshell-ai/MeloTTS', notes: 'MeloTTS.'}]
+reviewed: '2026-10-06'
+tags: [audio, tts, multilingual, realtime]

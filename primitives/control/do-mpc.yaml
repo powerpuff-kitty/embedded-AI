@@ -1,0 +1,23 @@
+id: do-mpc
+name: do-mpc
+domain: control
+tasks: [model-predictive-control, optimal-control, state-estimation]
+class: control-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework for robust model predictive control and moving-horizon estimation."
+links: {repository: 'https://github.com/do-mpc/do-mpc', homepage: 'https://www.do-mpc.com/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: LGPL-3.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, embedded, edge, server], notes: 'Optimisation-based control; can be embedded with code generation.'}
+runtimes: [python, casadi, ipopt]
+formats: [python, c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Solves MPC problems from a plant model; no learning.', needs_data: 'A system model plus tuning for the objective/constraints.', update_strategy: 'Validate constraints and solve-time budgets per target.'}
+data: {inputs: [measurements, setpoints], outputs: [control-actions], languages: []}
+evaluation: ['Constraint satisfaction and worst-case solve time on the target.']
+limitations: ['Nonlinear MPC solve times may exceed real-time; model quality matters.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/do-mpc/do-mpc', notes: 'do-mpc.'}]
+reviewed: '2026-10-06'
+tags: [control, mpc, optimization, embedded]

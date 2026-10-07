@@ -1,17 +1,17 @@
 {
-  "total": 553,
+  "total": 563,
   "by_domain": {
     "accessibility": 2,
     "administrative": 7,
     "agents": 5,
     "agriculture": 1,
     "artificial-life": 19,
-    "audio": 43,
+    "audio": 49,
     "automotive": 2,
     "benchmark": 1,
     "business": 16,
     "climate": 1,
-    "control": 10,
+    "control": 11,
     "drug-discovery": 2,
     "education": 1,
     "energy": 3,
@@ -27,12 +27,12 @@
     "genomics": 4,
     "geospatial": 10,
     "graph": 2,
-    "healthcare": 6,
+    "healthcare": 7,
     "hydrology": 2,
     "infrastructure": 9,
     "language": 46,
     "manufacturing": 3,
-    "mapping": 9,
+    "mapping": 11,
     "marine": 1,
     "music": 5,
     "networking": 1,
@@ -58,24 +58,24 @@
     "weather": 1
   },
   "by_kind": {
-    "collection": 159,
+    "collection": 166,
     "model": 64,
     "pipeline": 52,
     "primitive": 27,
-    "toolkit": 251
+    "toolkit": 254
   },
   "by_usage": {
-    "companion": 182,
-    "pretrained": 192,
-    "requires-training": 129,
+    "companion": 184,
+    "pretrained": 198,
+    "requires-training": 131,
     "unknown": 50
   },
   "evidence": {
-    "entries_with_source": 553,
-    "entries_official_link_only": 536,
+    "entries_with_source": 563,
+    "entries_official_link_only": 546,
     "entries_multiple_or_non_official": 17,
     "items_by_type": {
-      "official": 560,
+      "official": 570,
       "paper": 10,
       "vendor": 0,
       "community": 0,
@@ -86,14 +86,14 @@
     "reported": 10,
     "theoretical": 0,
     "unsupported": 0,
-    "entries_with_evaluation": 503,
-    "entries_with_limitations": 503
+    "entries_with_evaluation": 513,
+    "entries_with_limitations": 513
   },
   "unknowns": {
     "usage": 50,
-    "code_license": 44,
-    "weights_license": 157,
-    "measured_peak_ram": 553
+    "code_license": 46,
+    "weights_license": 163,
+    "measured_peak_ram": 563
   },
   "reproduced_entries": 3,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Every entry carries at least one source link, but most stop at an official link with no measured or reproduced evidence. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."

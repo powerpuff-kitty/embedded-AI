@@ -1,0 +1,23 @@
+id: braindecode
+name: Braindecode
+domain: healthcare
+tasks: [eeg-decoding, brain-computer-interface, biosignal-classification]
+class: biosignal-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "PyTorch library for deep learning on EEG/BCI signals, with standard datasets and models."
+links: {repository: 'https://github.com/braindecode/braindecode', homepage: 'https://braindecode.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Small EEG models can run on embedded biosignal hardware.'}
+runtimes: [pytorch, mne]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains EEG decoders on labelled biosignal data.', needs_data: 'Physiological signals with labels; ethics/consent review.', update_strategy: 'Revalidate across subjects and sessions; monitor drift.'}
+data: {inputs: [eeg-signals], outputs: [classes, decoded-intent], languages: []}
+evaluation: ['Cross-subject/session accuracy plus ethics review.']
+limitations: ['Strong subject/session variability; medical claims need validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/braindecode/braindecode', notes: 'Braindecode.'}]
+reviewed: '2026-10-06'
+tags: [healthcare, eeg, bci, biosignals]

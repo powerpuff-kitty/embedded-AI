@@ -1,0 +1,23 @@
+id: matcha-tts
+name: Matcha-TTS
+domain: audio
+tasks: [text-to-speech, speech-synthesis]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Fast non-autoregressive TTS using conditional flow matching for high-quality synthesis."
+links: {repository: 'https://github.com/shivammehta25/Matcha-TTS', paper: 'https://arxiv.org/abs/2309.03199'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Efficient ODE-based decoder; fast enough for real time on CPU.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained voices; fine-tune per dataset.', needs_data: 'Transcribed audio for fine-tuning/evaluation.', update_strategy: 'Verify weight terms; re-measure real-time factor per target.'}
+data: {inputs: [text], outputs: [synthesised-audio], languages: [en, multilingual-variants]}
+evaluation: ['MOS and real-time factor on the target.']
+limitations: ['Weight terms not stated; single-speaker pretrained voices.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/shivammehta25/Matcha-TTS', notes: 'Matcha-TTS.'}]
+reviewed: '2026-10-06'
+tags: [audio, tts, flow-matching, realtime]
