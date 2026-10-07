@@ -1,0 +1,23 @@
+id: dgl
+name: Deep Graph Library (DGL)
+domain: graph
+tasks: [graph-neural-networks, node-classification, link-prediction]
+class: gnn-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Framework for graph neural networks that scales to large graphs across backends."
+links: {repository: 'https://github.com/dmlc/dgl', homepage: 'https://www.dgl.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/inference for graph models; server-class.'}
+runtimes: [pytorch, mxnet]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains GNNs, including sampling-based training on large graphs.', needs_data: 'Graph data with labels for the target task.', update_strategy: 'Revalidate on graph drift; re-benchmark sampling.'}
+data: {inputs: [graph], outputs: [node-labels, edge-scores], languages: []}
+evaluation: ['Task metrics plus scalability/memory profiling.']
+limitations: ['Needs substantial graph infrastructure; server-class memory.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dmlc/dgl', notes: 'Deep Graph Library.'}]
+reviewed: '2026-10-06'
+tags: [graph, gnn, toolkit]

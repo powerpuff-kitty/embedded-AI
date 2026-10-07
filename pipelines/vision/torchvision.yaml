@@ -1,0 +1,23 @@
+id: torchvision
+name: Torchvision
+domain: vision
+tasks: [image-classification, object-detection, segmentation, video]
+class: vision-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Official PyTorch vision library with reference datasets, transforms and pretrained models."
+links: {repository: 'https://github.com/pytorch/vision', homepage: 'https://pytorch.org/vision/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Backbones and transforms; export detection/classification to ONNX.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Loads pretrained models and reference training pipelines.', needs_data: 'Labelled images/video for fine-tuning.', update_strategy: 'Verify per-model licences; re-export and re-benchmark.'}
+data: {inputs: [rgb-image, video], outputs: [class-probabilities, boxes, masks], languages: []}
+evaluation: ['Task metrics plus post-export latency on the target.']
+limitations: ['Per-model weight licences vary; heavier than edge-specific libraries.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pytorch/vision', notes: 'Torchvision library.'}]
+reviewed: '2026-10-06'
+tags: [vision, pytorch, classification, detection, toolkit]

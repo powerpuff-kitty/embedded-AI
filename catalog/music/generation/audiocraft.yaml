@@ -1,0 +1,23 @@
+id: audiocraft
+name: AudioCraft (MusicGen / AudioGen)
+domain: music
+tasks: [music-generation, audio-generation, text-to-audio]
+class: audio-generation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Meta's MusicGen and AudioGen models for text-conditioned music and sound generation."
+links: {repository: 'https://github.com/facebookresearch/audiocraft', paper: 'https://arxiv.org/abs/2306.05284'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Generative audio; GPU strongly recommended.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained generation; fine-tuning on audio is possible.', needs_data: 'Text prompts; licensed audio datasets for fine-tuning.', update_strategy: 'Check weight terms (models are trained on licensed audio) before use.'}
+data: {inputs: [text-prompt], outputs: [generated-audio], languages: [en]}
+evaluation: ['Perceptual quality/diversity and originality review.']
+limitations: ['Weight terms differ from code; potential style/memorisation concerns.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/audiocraft', notes: 'AudioCraft/MusicGen models.'}]
+reviewed: '2026-10-06'
+tags: [music, audio, generative, musicgen]
