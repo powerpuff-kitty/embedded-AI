@@ -1,0 +1,27 @@
+id: "rapier"
+name: "Rapier"
+domain: "simulation"
+tasks: ["rigid-body-simulation", "collision-detection"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "physics-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "Rust 2D and 3D rigid-body physics engines with JavaScript and WebAssembly integration paths."
+links: {"repository": "https://github.com/dimforge/rapier"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "Apache-2.0", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["desktop", "browser"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["rust", "wasm", "javascript"]
+formats: []
+procedural: {"categories": ["motion-behaviour", "worlds-environments"], "integration": "native-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["2D or 3D bodies and colliders", "forces and constraints", "time step"], "assets": ["Native Rust library, or the corresponding JavaScript bindings and WASM bundle."], "incremental": true, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["2D or 3D bodies and colliders", "forces and constraints", "time step"], "outputs": ["2D or 3D physics state", "collision events"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Select the appropriate dimensionality and binding package; native and browser builds are distinct deployment paths.", "A physics engine does not supply ecosystem resource accounting. Fix engine settings and time steps before validating replay."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/dimforge/rapier", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "motion-behaviour", "worlds-environments", "native-library"]
+related: ["cannon-es", "matter-js", "mujoco"]

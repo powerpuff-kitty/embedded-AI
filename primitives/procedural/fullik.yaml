@@ -1,0 +1,27 @@
+id: "fullik"
+name: "Fullik / FIK"
+domain: "gaming"
+tasks: ["inverse-kinematics", "procedural-animation"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "rule-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "JavaScript FABRIK inverse-kinematics solver for constrained procedural skeleton motion, using the FIK API."
+links: {"repository": "https://github.com/lo-th/fullik"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "threejs"]
+formats: []
+procedural: {"categories": ["motion-behaviour"], "integration": "browser-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["bone chains", "joint constraints", "target positions"], "assets": ["A compatible renderer and application-owned skeleton for visualization."], "incremental": null, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["bone chains", "joint constraints", "target positions"], "outputs": ["solved joint poses"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Inverse kinematics solves joint placement; it does not provide perception, learned motion policies or a complete physical simulation. Check renderer/API versions."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/lo-th/fullik", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "motion-behaviour", "browser-library"]
+related: ["three-ik", "closed-chain-ik-js"]

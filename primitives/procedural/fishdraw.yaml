@@ -1,0 +1,27 @@
+id: "fishdraw"
+name: "fishdraw"
+domain: "vision"
+tasks: ["procedural-illustration", "svg-generation"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "Dependency-free JavaScript procedural fish illustrator with a Node.js CLI and reusable drawing functions."
+links: {"repository": "https://github.com/LingDong-/fishdraw"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
+formats: []
+procedural: {"categories": ["images-materials"], "integration": "native-library", "seed_control": "built-in", "determinism": "conditional", "controls": ["seed string", "fish drawing parameters", "output format"], "assets": [], "incremental": null, "serialization": "outputs-only", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["seed string", "fish drawing parameters", "output format"], "outputs": ["fish polylines", "SVG or animated SVG", "JSON or CSV drawing data"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Recorded integration is the Node.js CLI/library workflow. Drawn polylines are not 3D creatures or an ecological simulation.", "Animated SVG describes drawing presentation, not learned movement or simulated animal behaviour."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/LingDong-/fishdraw", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "images-materials", "native-library"]
+related: ["shan-shui-inf"]

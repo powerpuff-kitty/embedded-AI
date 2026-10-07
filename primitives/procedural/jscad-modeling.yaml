@@ -1,0 +1,26 @@
+id: "jscad-modeling"
+name: "JSCAD Modeling"
+domain: "engineering"
+tasks: ["parametric-modeling", "constructive-solid-geometry"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "rule-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "Embeddable @jscad/modeling JavaScript library for parametric geometry and constructive solid geometry."
+links: {"repository": "https://github.com/jscad/OpenJSCAD.org"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
+formats: []
+procedural: {"categories": ["worlds-environments", "foundations"], "integration": "browser-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["geometry operations", "model parameters"], "assets": ["The @jscad/modeling package; add separate renderer or I/O packages only as needed."], "incremental": null, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["geometry operations", "model parameters"], "outputs": ["2D geometry", "3D CSG geometry"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["This entry covers the modeling module, not the entire authoring application. File exporters belong to separate I/O packages.", "Modeling scripts execute code. Do not run untrusted scripts directly in a privileged application context."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/jscad/OpenJSCAD.org", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}, {"type": "official", "url": "https://github.com/jscad/OpenJSCAD.org/blob/master/packages/modeling/package.json", "notes": "The modeling package explicitly identifies its scope and MIT code licence."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "worlds-environments", "foundations", "browser-library"]

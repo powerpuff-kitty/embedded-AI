@@ -1,0 +1,27 @@
+id: "wavefunctioncollapse-js"
+name: "WaveFunctionCollapse (JavaScript)"
+domain: "gaming"
+tasks: ["tile-pattern-generation", "texture-generation"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "rule-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "Browser and Node.js port of WaveFunctionCollapse with overlapping-pattern and tile-constraint generators."
+links: {"repository": "https://github.com/kchapelier/wavefunctioncollapse"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
+formats: []
+procedural: {"categories": ["worlds-environments", "images-materials"], "integration": "browser-library", "seed_control": "injectable", "determinism": "conditional", "controls": ["RGBA example or tile adjacency definitions", "output dimensions and symmetry", "injected random function"], "assets": ["Example pixels or authored tile definitions; review input-asset licences separately."], "incremental": true, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["RGBA example or tile adjacency definitions", "output dimensions and symmetry", "injected random function"], "outputs": ["generated RGBA pixels", "generation success or contradiction status"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Contradictions may require retries. Use bounded iteration counts or a worker; iterate(0) means an unbounded run.", "graphics() returns pixels, not a navigable scene or collision mesh. Pin the supplied PRNG and input rules for replay tests."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/kchapelier/wavefunctioncollapse", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "worlds-environments", "images-materials", "browser-library"]
+related: ["wavefunctioncollapse", "seedrandom"]

@@ -1,0 +1,27 @@
+id: "cannon-es"
+name: "cannon-es"
+domain: "simulation"
+tasks: ["rigid-body-simulation", "collision-detection"]
+class: "procedural-companion"
+kind: "toolkit"
+learned: false
+methods: ["procedural", "physics-based"]
+catalogue_batch: "procedural-expansion-2026-10-07"
+description: "JavaScript 3D rigid-body physics engine distributed as modules for application and renderer integration."
+links: {"repository": "https://github.com/pmndrs/cannon-es"}
+model: {"parameters": null, "file_size_mb": null, "measurement_scope": "Not applicable: no learned model weights."}
+license: {"code": "MIT", "weights": "not-applicable", "notes": "Code terms do not automatically cover input assets or third-party dependencies."}
+deployment: {"offline": true, "targets": ["browser", "desktop"], "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."}
+runtimes: ["javascript", "nodejs"]
+formats: []
+procedural: {"categories": ["motion-behaviour"], "integration": "browser-library", "seed_control": "not-applicable", "determinism": "unknown", "controls": ["3D bodies and shapes", "constraints", "time step"], "assets": [], "incremental": true, "serialization": "unknown", "evidence_level": "documented"}
+usage: {"mode": "companion", "training": "No learned model training required.", "needs_data": "Provide the listed inputs and application-specific parameters.", "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."}
+data: {"inputs": ["3D bodies and shapes", "constraints", "time step"], "outputs": ["3D physics state", "collision events"], "languages": []}
+requirements: {"ram_mb": {"minimum": null, "measured_peak": null}}
+evaluation: ["Upstream documentation reviewed; no local execution or hardware benchmark for this entry.", "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."]
+limitations: ["Solver configuration and time stepping affect stability. No cross-browser bit-exact replay or constrained-board performance is established here."]
+compatibility: []
+evidence: [{"type": "official", "url": "https://github.com/pmndrs/cannon-es", "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."}]
+reviewed: "2026-10-07"
+tags: ["procedural", "motion-behaviour", "browser-library"]
+related: ["rapier", "matter-js"]
