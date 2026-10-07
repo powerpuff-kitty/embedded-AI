@@ -1,0 +1,23 @@
+id: bert
+name: BERT
+domain: language
+tasks: [text-classification, named-entity-recognition, embeddings]
+class: encoder-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "The original bidirectional transformer encoder, still a compact baseline for many NLP tasks."
+links: {repository: 'https://github.com/google-research/bert', model: 'https://huggingface.co/google-bert/bert-base-uncased', paper: 'https://arxiv.org/abs/1810.04805'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Base 110M and smaller distilations fit edge; export to ONNX.'}
+runtimes: [transformers, onnxruntime, tflite]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained encoder; fine-tune per task.', needs_data: 'Task-labelled text for fine-tuning/evaluation.', update_strategy: 'Pin checkpoint; revalidate on domain text.'}
+data: {inputs: [text], outputs: [class, tags, embeddings], languages: [en, multilingual-variants]}
+evaluation: ['Task F1/accuracy plus latency and memory on the target.']
+limitations: ['Not generative; input length limited; older than modern encoders.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-research/bert', notes: 'BERT models.'}]
+reviewed: '2026-10-06'
+tags: [language, encoder, transformer, nlp]

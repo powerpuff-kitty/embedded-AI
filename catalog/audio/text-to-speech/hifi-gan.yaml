@@ -1,0 +1,23 @@
+id: hifi-gan
+name: HiFi-GAN
+domain: audio
+tasks: [vocoder, speech-synthesis, audio-generation]
+class: vocoder-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "High-fidelity GAN vocoder that turns mel-spectrograms into waveforms in real time."
+links: {repository: 'https://github.com/jik876/hifi-gan', paper: 'https://arxiv.org/abs/2010.05646'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Small generator runs in real time on CPU; common TTS vocoder.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained vocoders; trainable per dataset.', needs_data: 'Audio for training; spectrograms at inference.', update_strategy: 'Verify weight terms; re-measure real-time factor per target.'}
+data: {inputs: [mel-spectrogram], outputs: [waveform], languages: [multilingual]}
+evaluation: ['MOS and real-time factor on the target device.']
+limitations: ['Vocoder only (needs an acoustic model); weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/jik876/hifi-gan', notes: 'HiFi-GAN vocoder.'}]
+reviewed: '2026-10-06'
+tags: [audio, vocoder, tts, realtime]

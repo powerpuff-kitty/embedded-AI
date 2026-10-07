@@ -1,0 +1,23 @@
+id: n-beats
+name: N-BEATS
+domain: time-series
+tasks: [time-series-forecasting]
+class: time-series-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Pure deep-learning forecasting architecture with interpretable trend/seasonality bases."
+links: {repository: 'https://github.com/ServiceNow/N-BEATS', paper: 'https://arxiv.org/abs/1905.10437'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [embedded, edge, desktop, server], notes: 'Small MLP-based models; fit for CPU/edge after training.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a model per dataset/series univariate or multivariate.', needs_data: 'Historical series with a defined horizon.', update_strategy: 'Refit on drift; re-run rolling-origin backtests.'}
+data: {inputs: [time-series], outputs: [forecast], languages: []}
+evaluation: ['Backtested MAPE/sMAPE vs baselines plus latency.']
+limitations: ['Per-series training; licence not declared.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ServiceNow/N-BEATS', notes: 'N-BEATS models.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, deep-learning]

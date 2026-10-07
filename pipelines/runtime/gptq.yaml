@@ -1,0 +1,23 @@
+id: gptq
+name: GPTQ
+domain: runtime
+tasks: [quantisation, llm-compression]
+class: quantisation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Post-training 4-bit weight quantisation for LLMs, the basis of many edge LLM builds."
+links: {repository: 'https://github.com/IST-DASLab/gptq', paper: 'https://arxiv.org/abs/2210.17323'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Produces 4-bit checkpoints runnable by ExLlama/AutoGPTQ/vLLM.'}
+runtimes: [pytorch, cuda]
+formats: [gptq, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Quantises a trained LLM using a calibration set.', needs_data: 'A trained model plus calibration text.', update_strategy: 'Re-quantise per target; measure perplexity and accuracy delta.'}
+data: {inputs: [model, calibration-data], outputs: [quantised-model], languages: []}
+evaluation: ['Perplexity/accuracy delta plus VRAM and throughput.']
+limitations: ['Requires calibration; quality loss at very low bit widths.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/IST-DASLab/gptq', notes: 'GPTQ quantisation.'}]
+reviewed: '2026-10-06'
+tags: [runtime, quantisation, llm, compression]

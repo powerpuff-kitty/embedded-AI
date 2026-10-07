@@ -1,0 +1,23 @@
+id: distil-whisper
+name: Distil-Whisper
+domain: audio
+tasks: [speech-recognition, speech-to-text]
+class: asr-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Distilled Whisper models that run several times faster with little accuracy loss."
+links: {repository: 'https://github.com/huggingface/distil-whisper', model: 'https://huggingface.co/distil-whisper/distil-large-v3', paper: 'https://arxiv.org/abs/2311.00430'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Faster than Whisper; use faster-whisper/whisper.cpp for edge builds.'}
+runtimes: [transformers, ctranslate2, onnxruntime]
+formats: [safetensors, ctranslate2]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained distillation; fine-tuning uses Whisper recipes.', needs_data: 'Transcribed audio for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint; re-evaluate WER and RTF on domain audio.'}
+data: {inputs: [audio], outputs: [transcript], languages: [multilingual, en]}
+evaluation: ['WER plus real-time factor on the target.']
+limitations: ['Distilled models can lag on hard audio; long-form needs chunking.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/distil-whisper', notes: 'Distil-Whisper models.'}]
+reviewed: '2026-10-06'
+tags: [audio, asr, whisper, distilled]
