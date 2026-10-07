@@ -21208,6 +21208,100 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "lava",
+      "name": "Lava",
+      "domain": "neuromorphic",
+      "tasks": [
+        "neuromorphic-computing",
+        "spiking-neural-networks",
+        "event-based-processing"
+      ],
+      "class": "neuromorphic-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Intel's open framework for programming neuromorphic hardware such as Loihi.",
+      "links": {
+        "repository": "https://github.com/lava-nc/lava",
+        "homepage": "https://lava-nc.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "neuromorphic",
+          "edge",
+          "embedded"
+        ],
+        "notes": "Targets Loihi; a CPU simulator is available for development."
+      },
+      "runtimes": [
+        "lava",
+        "python"
+      ],
+      "formats": [
+        "lava-process"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Composes spiking processes; training uses external SNN tools.",
+        "needs_data": "Event/sensor streams plus network definitions.",
+        "update_strategy": "Verify licence; re-validate on target hardware."
+      },
+      "data": {
+        "inputs": [
+          "spikes",
+          "events"
+        ],
+        "outputs": [
+          "spikes",
+          "decisions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task accuracy plus energy/latency on neuromorphic hardware."
+      ],
+      "limitations": [
+        "Licence not declared; hardware access needed for full value."
+      ],
+      "compatibility": [
+        {
+          "target": "intel-loihi",
+          "status": "unknown",
+          "notes": "Framework targets Loihi; not benchmarked by this catalogue."
+        }
+      ],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lava-nc/lava",
+          "notes": "Lava neuromorphic framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "neuromorphic",
+        "spiking",
+        "loihi",
+        "event-based"
+      ],
+      "path": "pipelines/neuromorphic/lava.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "intel-lava",
       "name": "Intel Lava",
       "domain": "neuromorphic",
@@ -23593,6 +23687,437 @@
       "usage_mode": "companion"
     },
     {
+      "id": "chroma",
+      "name": "Chroma",
+      "domain": "retrieval",
+      "tasks": [
+        "vector-search",
+        "rag-store"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Open-source embedding database popular for local RAG prototypes and applications.",
+      "links": {
+        "repository": "https://github.com/chroma-core/chroma",
+        "homepage": "https://www.trychroma.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Runs in-process or as a service; local persistence supported."
+      },
+      "runtimes": [
+        "python",
+        "javascript"
+      ],
+      "formats": [
+        "sqlite-db",
+        "hnsw-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Manages collections of vectors/metadata; no training.",
+        "needs_data": "Embedded documents plus metadata.",
+        "update_strategy": "Persist/back up collections; re-index as data grows."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors",
+          "documents"
+        ],
+        "outputs": [
+          "nearest-neighbours",
+          "rows"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall and latency at the target data size."
+      ],
+      "limitations": [
+        "Larger deployments need a server and tuning."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/chroma-core/chroma",
+          "notes": "Chroma embedding database."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "rag"
+      ],
+      "path": "pipelines/retrieval/chroma.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "lancedb",
+      "name": "LanceDB",
+      "domain": "retrieval",
+      "tasks": [
+        "vector-search",
+        "embedded-database"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Embedded vector database on the Lance columnar format, usable within an application process.",
+      "links": {
+        "repository": "https://github.com/lancedb/lancedb",
+        "homepage": "https://lancedb.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Serverless embedded mode; no separate service required."
+      },
+      "runtimes": [
+        "python",
+        "rust",
+        "javascript"
+      ],
+      "formats": [
+        "lance"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Stores/searches vectors and metadata; no training.",
+        "needs_data": "Embedded vectors plus metadata.",
+        "update_strategy": "Compact/optimise tables on drift; re-index as data grows."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors",
+          "metadata"
+        ],
+        "outputs": [
+          "nearest-neighbours",
+          "rows"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall and latency at the target data size."
+      ],
+      "limitations": [
+        "Embedded mode shares process memory; large data may need a server."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lancedb/lancedb",
+          "notes": "LanceDB embedded vector database."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "embedded-database"
+      ],
+      "path": "pipelines/retrieval/lancedb.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "domain": "retrieval",
+      "tasks": [
+        "vector-search",
+        "rag-store"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Vector similarity search engine with filtering, used for production RAG and matching.",
+      "links": {
+        "repository": "https://github.com/qdrant/qdrant",
+        "homepage": "https://qdrant.tech/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Runs as a service; local/offline mode available."
+      },
+      "runtimes": [
+        "rust",
+        "python"
+      ],
+      "formats": [
+        "qdrant-storage"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Stores/searches vectors with payload filters; no training.",
+        "needs_data": "Embedded vectors plus payloads.",
+        "update_strategy": "Snapshot/back up; tune HNSW per data size."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors",
+          "payloads"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall and filtered-latency at the target data size."
+      ],
+      "limitations": [
+        "Service-oriented; heavier than embedded stores."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/qdrant/qdrant",
+          "notes": "Qdrant vector engine."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "rag"
+      ],
+      "path": "pipelines/retrieval/qdrant.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "usearch",
+      "name": "USearch",
+      "domain": "retrieval",
+      "tasks": [
+        "vector-search",
+        "approximate-nearest-neighbor"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Compact single-file vector search engine small enough for edge and mobile apps.",
+      "links": {
+        "repository": "https://github.com/unum-cloud/usearch"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small footprint with SIMD; indexes can be memory-mapped."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python",
+        "rust"
+      ],
+      "formats": [
+        "usearch-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds/loads ANN indexes from embeddings; no training.",
+        "needs_data": "Embedded vectors plus queries.",
+        "update_strategy": "Re-tune connectivity/expansion on drift; refresh indexes."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k vs brute force plus memory and latency."
+      ],
+      "limitations": [
+        "ANN trade-offs; index updates strategy matters at scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/unum-cloud/usearch",
+          "notes": "USearch vector search."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "on-device",
+        "ann"
+      ],
+      "path": "pipelines/retrieval/usearch.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "sqlite-vec",
+      "name": "sqlite-vec",
+      "domain": "retrieval",
+      "tasks": [
+        "vector-search",
+        "embedded-database"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "SQLite extension for vector search that runs anywhere SQLite does, including phones.",
+      "links": {
+        "repository": "https://github.com/asg017/sqlite-vec"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Zero-dependency SQLite extension; brute-force and IVF indexes."
+      },
+      "runtimes": [
+        "sqlite"
+      ],
+      "formats": [
+        "sqlite-db"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Stores/queries vectors in SQLite; no training.",
+        "needs_data": "Embedded vectors stored in tables.",
+        "update_strategy": "Back up/refresh the database; re-index as data grows."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall and query latency at the target database size."
+      ],
+      "limitations": [
+        "Early-stage project; large-scale performance needs care."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/asg017/sqlite-vec",
+          "notes": "sqlite-vec extension."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "sqlite",
+        "on-device"
+      ],
+      "path": "pipelines/retrieval/sqlite-vec.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "mavsdk",
       "name": "MAVSDK",
       "domain": "robotics",
@@ -25838,6 +26363,186 @@
       "usage_mode": "companion"
     },
     {
+      "id": "localai",
+      "name": "LocalAI",
+      "domain": "runtime",
+      "tasks": [
+        "llm-serving",
+        "offline-serving",
+        "multimodal-serving"
+      ],
+      "class": "serving-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Drop-in OpenAI-compatible API server for local LLMs, image and audio models.",
+      "links": {
+        "repository": "https://github.com/mudler/LocalAI",
+        "homepage": "https://localai.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Runs locally on CPU/GPU; can be packaged for edge appliances."
+      },
+      "runtimes": [
+        "llama-cpp",
+        "transformers",
+        "diffusers"
+      ],
+      "formats": [
+        "gguf",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves local models behind an API; no training.",
+        "needs_data": "Local model files plus requests.",
+        "update_strategy": "Pin version/models; re-benchmark on the target host."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "image"
+        ],
+        "outputs": [
+          "generated-text",
+          "images",
+          "audio"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Latency/throughput and quality on the target host."
+      ],
+      "limitations": [
+        "Convenience layer; inherits limits of the underlying runtimes."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mudler/LocalAI",
+          "notes": "LocalAI server."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "serving",
+        "offline",
+        "local"
+      ],
+      "path": "pipelines/runtime/localai.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "text-generation-inference",
+      "name": "Text Generation Inference (TGI)",
+      "domain": "runtime",
+      "tasks": [
+        "llm-serving",
+        "model-serving"
+      ],
+      "class": "serving-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Hugging Face's production toolkit for serving large language models efficiently.",
+      "links": {
+        "repository": "https://github.com/huggingface/text-generation-inference",
+        "homepage": "https://huggingface.co/docs/text-generation-inference"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Server-class; supports quantisation and continuous batching."
+      },
+      "runtimes": [
+        "pytorch",
+        "cuda",
+        "rocm"
+      ],
+      "formats": [
+        "safetensors",
+        "gptq"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves pretrained LLMs; no training.",
+        "needs_data": "A model plus prompts.",
+        "update_strategy": "Pin image/model; re-benchmark throughput per GPU."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Throughput/latency and quality per quantisation on the target."
+      ],
+      "limitations": [
+        "Server/GPU-oriented; not for embedded targets."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/text-generation-inference",
+          "notes": "Text Generation Inference."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "serving",
+        "llm"
+      ],
+      "path": "pipelines/runtime/text-generation-inference.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "vllm",
       "name": "vLLM",
       "domain": "runtime",
@@ -27310,6 +28015,94 @@
         "interoperability"
       ],
       "path": "pipelines/runtime/onnx.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "triton-inference-server",
+      "name": "Triton Inference Server",
+      "domain": "runtime",
+      "tasks": [
+        "model-serving",
+        "multi-framework-serving"
+      ],
+      "class": "serving-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA's inference server that serves models from many frameworks on CPU and GPU.",
+      "links": {
+        "repository": "https://github.com/triton-inference-server/server",
+        "homepage": "https://developer.nvidia.com/triton-inference-server"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "edge"
+        ],
+        "notes": "Can run on Jetson for edge fleets; dynamic batching supported."
+      },
+      "runtimes": [
+        "tensorrt",
+        "onnxruntime",
+        "pytorch",
+        "tensorflow"
+      ],
+      "formats": [
+        "onnx",
+        "tensorrt-engine",
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves exported models; no training.",
+        "needs_data": "A model repository plus request clients.",
+        "update_strategy": "Pin server/model versions; re-benchmark per backend."
+      },
+      "data": {
+        "inputs": [
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Throughput/latency and concurrency on the target."
+      ],
+      "limitations": [
+        "Operationally heavy; model repository layout required."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/triton-inference-server/server",
+          "notes": "Triton Inference Server."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "serving",
+        "nvidia",
+        "multi-framework"
+      ],
+      "path": "pipelines/runtime/triton-inference-server.yaml",
       "usage_mode": "companion"
     },
     {
@@ -34213,6 +35006,92 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "pytorch-forecasting",
+      "name": "PyTorch Forecasting",
+      "domain": "time-series",
+      "tasks": [
+        "time-series-forecasting",
+        "probabilistic-forecasting"
+      ],
+      "class": "time-series-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "High-level PyTorch library for deep forecasting models including TFT and N-BEATS.",
+      "links": {
+        "repository": "https://github.com/sktime/pytorch-forecasting",
+        "homepage": "https://pytorch-forecasting.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/inference framework; trained models can be exported."
+      },
+      "runtimes": [
+        "pytorch",
+        "lightning"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains deep forecasting models on panel data.",
+        "needs_data": "Historical series with covariates and horizon.",
+        "update_strategy": "Refit on drift; re-run backtests and check calibration."
+      },
+      "data": {
+        "inputs": [
+          "time-series",
+          "covariates"
+        ],
+        "outputs": [
+          "forecast",
+          "quantiles"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Backtested metrics and prediction-interval calibration."
+      ],
+      "limitations": [
+        "Needs tuning and enough history; not a zero-shot model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/sktime/pytorch-forecasting",
+          "notes": "PyTorch Forecasting."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "deep-learning",
+        "toolkit"
+      ],
+      "path": "pipelines/time-series/pytorch-forecasting.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "diffprivlib",
       "name": "Diffprivlib",
       "domain": "trust-and-safety",
@@ -36032,6 +36911,191 @@
         "remaining": "Acquire this exact tiny checkpoint separately from the RTMPose-S recipe."
       },
       "path": "catalog/vision/pose/rtmpose-t.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "donut",
+      "name": "Donut",
+      "domain": "vision",
+      "tasks": [
+        "document-understanding",
+        "ocr-free-parsing",
+        "information-extraction"
+      ],
+      "class": "document-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OCR-free document understanding transformer that reads documents into structured output.",
+      "links": {
+        "repository": "https://github.com/clovaai/donut",
+        "model": "https://huggingface.co/naver-clova-ix/donut-base",
+        "paper": "https://arxiv.org/abs/2111.15664"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Encoder-decoder; heavier than OCR-only pipelines."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base; fine-tune per document schema.",
+        "needs_data": "Document images with target JSON annotations.",
+        "update_strategy": "Pin checkpoint; revalidate on new document types."
+      },
+      "data": {
+        "inputs": [
+          "document-image"
+        ],
+        "outputs": [
+          "structured-json",
+          "text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Field-level accuracy on target documents plus latency."
+      ],
+      "limitations": [
+        "Needs fine-tuning per schema; can hallucinate fields."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/clovaai/donut",
+          "notes": "Donut document model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "document-ai",
+        "ocr-free",
+        "extraction"
+      ],
+      "path": "catalog/vision/document/donut.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "layoutlmv3",
+      "name": "LayoutLMv3",
+      "domain": "vision",
+      "tasks": [
+        "document-understanding",
+        "form-parsing",
+        "information-extraction"
+      ],
+      "class": "document-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Multimodal document model combining text, layout and image for form and receipt understanding.",
+      "links": {
+        "repository": "https://github.com/microsoft/unilm",
+        "model": "https://huggingface.co/microsoft/layoutlmv3-base",
+        "paper": "https://arxiv.org/abs/2204.08387"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Base ~125M; OCR text/layout needed as input."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained document model; fine-tune per document type.",
+        "needs_data": "Annotated documents (text+layout+labels).",
+        "update_strategy": "Pin checkpoint; revalidate on new document templates."
+      },
+      "data": {
+        "inputs": [
+          "document-image",
+          "ocr-text",
+          "word-boxes"
+        ],
+        "outputs": [
+          "labels",
+          "extracted-fields"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Field-level F1 on target documents plus latency."
+      ],
+      "limitations": [
+        "Depends on OCR/layout quality; needs per-template fine-tuning."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/unilm",
+          "notes": "LayoutLMv3 in unilm."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "document-ai",
+        "forms",
+        "layout"
+      ],
+      "path": "catalog/vision/document/layoutlmv3.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -43161,6 +44225,95 @@
       ],
       "path": "catalog/vision/depth/lightstereo.yaml",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "table-transformer",
+      "name": "Table Transformer",
+      "domain": "vision",
+      "tasks": [
+        "table-detection",
+        "table-structure-recognition",
+        "document-understanding"
+      ],
+      "class": "document-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "DETR-based model that detects tables and their rows/columns in document images.",
+      "links": {
+        "repository": "https://github.com/microsoft/table-transformer",
+        "model": "https://huggingface.co/microsoft/table-transformer-detection",
+        "paper": "https://arxiv.org/abs/2110.00061"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "DETR-based; export to ONNX; GPU helps for many pages."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained detection/structure models; fine-tune per layout.",
+        "needs_data": "Annotated document images for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on new table layouts."
+      },
+      "data": {
+        "inputs": [
+          "document-image"
+        ],
+        "outputs": [
+          "table-boxes",
+          "cell-structure"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Table-detection and structure F1 on target documents."
+      ],
+      "limitations": [
+        "Complex/merged cells are hard; results vary by layout."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/table-transformer",
+          "notes": "Table Transformer."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "document-ai",
+        "tables",
+        "detection"
+      ],
+      "path": "catalog/vision/document/table-transformer.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "cosmo-edge",

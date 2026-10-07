@@ -1,0 +1,23 @@
+id: donut
+name: Donut
+domain: vision
+tasks: [document-understanding, ocr-free-parsing, information-extraction]
+class: document-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "OCR-free document understanding transformer that reads documents into structured output."
+links: {repository: 'https://github.com/clovaai/donut', model: 'https://huggingface.co/naver-clova-ix/donut-base', paper: 'https://arxiv.org/abs/2111.15664'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server], notes: 'Encoder-decoder; heavier than OCR-only pipelines.'}
+runtimes: [transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained base; fine-tune per document schema.', needs_data: 'Document images with target JSON annotations.', update_strategy: 'Pin checkpoint; revalidate on new document types.'}
+data: {inputs: [document-image], outputs: [structured-json, text], languages: [multilingual, en]}
+evaluation: ['Field-level accuracy on target documents plus latency.']
+limitations: ['Needs fine-tuning per schema; can hallucinate fields.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/clovaai/donut', notes: 'Donut document model.'}]
+reviewed: '2026-10-06'
+tags: [vision, document-ai, ocr-free, extraction]

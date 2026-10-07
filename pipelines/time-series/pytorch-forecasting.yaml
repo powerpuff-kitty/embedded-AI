@@ -1,0 +1,23 @@
+id: pytorch-forecasting
+name: PyTorch Forecasting
+domain: time-series
+tasks: [time-series-forecasting, probabilistic-forecasting]
+class: time-series-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "High-level PyTorch library for deep forecasting models including TFT and N-BEATS."
+links: {repository: 'https://github.com/sktime/pytorch-forecasting', homepage: 'https://pytorch-forecasting.readthedocs.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/inference framework; trained models can be exported.'}
+runtimes: [pytorch, lightning]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains deep forecasting models on panel data.', needs_data: 'Historical series with covariates and horizon.', update_strategy: 'Refit on drift; re-run backtests and check calibration.'}
+data: {inputs: [time-series, covariates], outputs: [forecast, quantiles], languages: []}
+evaluation: ['Backtested metrics and prediction-interval calibration.']
+limitations: ['Needs tuning and enough history; not a zero-shot model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sktime/pytorch-forecasting', notes: 'PyTorch Forecasting.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, deep-learning, toolkit]

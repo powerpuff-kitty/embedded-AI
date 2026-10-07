@@ -1,0 +1,23 @@
+id: lava
+name: Lava
+domain: neuromorphic
+tasks: [neuromorphic-computing, spiking-neural-networks, event-based-processing]
+class: neuromorphic-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Intel's open framework for programming neuromorphic hardware such as Loihi."
+links: {repository: 'https://github.com/lava-nc/lava', homepage: 'https://lava-nc.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [neuromorphic, edge, embedded], notes: 'Targets Loihi; a CPU simulator is available for development.'}
+runtimes: [lava, python]
+formats: [lava-process]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Composes spiking processes; training uses external SNN tools.', needs_data: 'Event/sensor streams plus network definitions.', update_strategy: 'Verify licence; re-validate on target hardware.'}
+data: {inputs: [spikes, events], outputs: [spikes, decisions], languages: []}
+evaluation: ['Task accuracy plus energy/latency on neuromorphic hardware.']
+limitations: ['Licence not declared; hardware access needed for full value.']
+compatibility: [{"target": "intel-loihi", "status": "unknown", "notes": "Framework targets Loihi; not benchmarked by this catalogue."}]
+evidence: [{type: official, url: 'https://github.com/lava-nc/lava', notes: 'Lava neuromorphic framework.'}]
+reviewed: '2026-10-06'
+tags: [neuromorphic, spiking, loihi, event-based]

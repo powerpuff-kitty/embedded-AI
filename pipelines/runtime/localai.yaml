@@ -1,0 +1,23 @@
+id: localai
+name: LocalAI
+domain: runtime
+tasks: [llm-serving, offline-serving, multimodal-serving]
+class: serving-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Drop-in OpenAI-compatible API server for local LLMs, image and audio models."
+links: {repository: 'https://github.com/mudler/LocalAI', homepage: 'https://localai.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Runs locally on CPU/GPU; can be packaged for edge appliances.'}
+runtimes: [llama-cpp, transformers, diffusers]
+formats: [gguf, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Serves local models behind an API; no training.', needs_data: 'Local model files plus requests.', update_strategy: 'Pin version/models; re-benchmark on the target host.'}
+data: {inputs: [text-prompt, image], outputs: [generated-text, images, audio], languages: [multilingual]}
+evaluation: ['Latency/throughput and quality on the target host.']
+limitations: ['Convenience layer; inherits limits of the underlying runtimes.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mudler/LocalAI', notes: 'LocalAI server.'}]
+reviewed: '2026-10-06'
+tags: [runtime, serving, offline, local]
