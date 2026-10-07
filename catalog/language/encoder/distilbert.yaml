@@ -1,0 +1,23 @@
+id: distilbert
+name: DistilBERT
+domain: language
+tasks: [text-classification, named-entity-recognition, embeddings]
+class: encoder-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Distilled BERT that keeps most accuracy at ~40% fewer parameters, well suited to edge."
+links: {model: 'https://huggingface.co/distilbert/distilbert-base-uncased', paper: 'https://arxiv.org/abs/1910.01108'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: '66M parameters; runs on CPUs and exports to ONNX/TFLite.'}
+runtimes: [transformers, onnxruntime, tflite]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained distilled encoder; fine-tune per task.', needs_data: 'Task-labelled text for fine-tuning/evaluation.', update_strategy: 'Pin checkpoint; revalidate on domain text.'}
+data: {inputs: [text], outputs: [class, tags, embeddings], languages: [multilingual, en]}
+evaluation: ['Task F1/accuracy plus latency and memory on the target.']
+limitations: ['Slightly less accurate than BERT; not generative.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/distilbert/distilbert-base-uncased', notes: 'DistilBERT model card and paper.'}]
+reviewed: '2026-10-06'
+tags: [language, encoder, distilled, on-device]

@@ -1,0 +1,23 @@
+id: opus-mt
+name: OPUS-MT / Marian
+domain: language
+tasks: [machine-translation]
+class: translation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Helsinki-NLP's open translation models and training pipeline for many language pairs."
+links: {repository: 'https://github.com/Helsinki-NLP/OPUS-MT-train', model: 'https://huggingface.co/Helsinki-NLP/opus-mt-en-de'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [embedded, edge, desktop, server], notes: 'Marian models are relatively small; export to CTranslate2 for CPU/edge.'}
+runtimes: [marian, ctranslate2, transformers]
+formats: [marian, ctranslate2, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained per-pair models; training pipeline included.', needs_data: 'Parallel text for evaluation/fine-tuning.', update_strategy: 'Verify per-model terms; re-evaluate BLEU on the target pair.'}
+data: {inputs: [text], outputs: [translated-text], languages: [multilingual]}
+evaluation: ['BLEU/chrF per language pair plus latency.']
+limitations: ['Quality varies by pair; per-model weight terms not always stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Helsinki-NLP/OPUS-MT-train', notes: 'OPUS-MT/Marian models.'}]
+reviewed: '2026-10-06'
+tags: [language, translation, marian, on-device]

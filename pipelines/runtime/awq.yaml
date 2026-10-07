@@ -1,0 +1,23 @@
+id: awq
+name: AWQ
+domain: runtime
+tasks: [quantisation, llm-compression]
+class: quantisation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Activation-aware 4-bit weight quantisation that preserves LLM quality for edge deployment."
+links: {repository: 'https://github.com/mit-han-lab/llm-awq', paper: 'https://arxiv.org/abs/2306.00978'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'AWQ checkpoints run in vLLM/TinyChat and other runtimes.'}
+runtimes: [pytorch, cuda]
+formats: [awq, safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Quantises a trained LLM with activation-aware scaling.', needs_data: 'A trained model plus calibration text.', update_strategy: 'Re-quantise per target; measure quality and latency.'}
+data: {inputs: [model, calibration-data], outputs: [quantised-model], languages: []}
+evaluation: ['Perplexity/accuracy delta plus VRAM and throughput.']
+limitations: ['Calibration-dependent; GPU typically needed for packing.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mit-han-lab/llm-awq', notes: 'AWQ quantisation.'}]
+reviewed: '2026-10-06'
+tags: [runtime, quantisation, llm, compression]

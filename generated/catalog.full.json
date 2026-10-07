@@ -3811,6 +3811,96 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "wespeaker",
+      "name": "WeSpeaker",
+      "domain": "audio",
+      "tasks": [
+        "speaker-verification",
+        "speaker-recognition",
+        "speaker-embedding"
+      ],
+      "class": "speaker-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Production-oriented toolkit for speaker verification and diarization, including ECAPA/ResNet models.",
+      "links": {
+        "repository": "https://github.com/wenet-e2e/wespeaker",
+        "homepage": "https://wespeaker.github.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Embedding models are small; ONNX export supported."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained speaker models; fine-tuning supported.",
+        "needs_data": "Speaker-labelled audio; biometric-consent review.",
+        "update_strategy": "Revalidate EER across conditions; treat embeddings as biometric."
+      },
+      "data": {
+        "inputs": [
+          "audio"
+        ],
+        "outputs": [
+          "speaker-embedding",
+          "scores"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "EER/minDCF on target audio plus fairness review."
+      ],
+      "limitations": [
+        "Biometric/privacy concerns; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/wenet-e2e/wespeaker",
+          "notes": "WeSpeaker toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "speaker",
+        "verification",
+        "biometrics"
+      ],
+      "path": "pipelines/audio/wespeaker.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "dtln",
       "name": "DTLN",
       "domain": "audio",
@@ -4073,6 +4163,97 @@
         "diffusion"
       ],
       "path": "pipelines/audio/resemble-enhance.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "distil-whisper",
+      "name": "Distil-Whisper",
+      "domain": "audio",
+      "tasks": [
+        "speech-recognition",
+        "speech-to-text"
+      ],
+      "class": "asr-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Distilled Whisper models that run several times faster with little accuracy loss.",
+      "links": {
+        "repository": "https://github.com/huggingface/distil-whisper",
+        "model": "https://huggingface.co/distil-whisper/distil-large-v3",
+        "paper": "https://arxiv.org/abs/2311.00430"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Faster than Whisper; use faster-whisper/whisper.cpp for edge builds."
+      },
+      "runtimes": [
+        "transformers",
+        "ctranslate2",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "ctranslate2"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained distillation; fine-tuning uses Whisper recipes.",
+        "needs_data": "Transcribed audio for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint; re-evaluate WER and RTF on domain audio."
+      },
+      "data": {
+        "inputs": [
+          "audio"
+        ],
+        "outputs": [
+          "transcript"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "WER plus real-time factor on the target."
+      ],
+      "limitations": [
+        "Distilled models can lag on hard audio; long-form needs chunking."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/distil-whisper",
+          "notes": "Distil-Whisper models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "asr",
+        "whisper",
+        "distilled"
+      ],
+      "path": "catalog/audio/speech-to-text/distil-whisper.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -5914,6 +6095,97 @@
       ],
       "path": "catalog/audio/text-to-speech/vits.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "hifi-gan",
+      "name": "HiFi-GAN",
+      "domain": "audio",
+      "tasks": [
+        "vocoder",
+        "speech-synthesis",
+        "audio-generation"
+      ],
+      "class": "vocoder-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "High-fidelity GAN vocoder that turns mel-spectrograms into waveforms in real time.",
+      "links": {
+        "repository": "https://github.com/jik876/hifi-gan",
+        "paper": "https://arxiv.org/abs/2010.05646"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small generator runs in real time on CPU; common TTS vocoder."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained vocoders; trainable per dataset.",
+        "needs_data": "Audio for training; spectrograms at inference.",
+        "update_strategy": "Verify weight terms; re-measure real-time factor per target."
+      },
+      "data": {
+        "inputs": [
+          "mel-spectrogram"
+        ],
+        "outputs": [
+          "waveform"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "MOS and real-time factor on the target device."
+      ],
+      "limitations": [
+        "Vocoder only (needs an acoustic model); weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jik876/hifi-gan",
+          "notes": "HiFi-GAN vocoder."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "vocoder",
+        "tts",
+        "realtime"
+      ],
+      "path": "catalog/audio/text-to-speech/hifi-gan.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "silero-vad",
@@ -16156,6 +16428,184 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "nllb",
+      "name": "NLLB",
+      "domain": "language",
+      "tasks": [
+        "machine-translation",
+        "multilingual-translation"
+      ],
+      "class": "translation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's No Language Left Behind translation models covering 200 languages, with a 600M distilled model.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fairseq",
+        "model": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+        "paper": "https://arxiv.org/abs/2207.04672"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "CC-BY-NC-4.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "600M distilled is the smallest; larger models are server-class."
+      },
+      "runtimes": [
+        "transformers",
+        "ctranslate2",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "ctranslate2"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained translation; fine-tuning supported.",
+        "needs_data": "Parallel text for evaluation/fine-tuning.",
+        "update_strategy": "Weights are CC-BY-NC; verify terms; re-evaluate per language pair."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "translated-text"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "BLEU/COMET per language pair plus latency."
+      ],
+      "limitations": [
+        "Weights are non-commercial; quality varies by language pair."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+          "notes": "NLLB model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "translation",
+        "multilingual"
+      ],
+      "path": "catalog/language/translation/nllb.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "opus-mt",
+      "name": "OPUS-MT / Marian",
+      "domain": "language",
+      "tasks": [
+        "machine-translation"
+      ],
+      "class": "translation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Helsinki-NLP's open translation models and training pipeline for many language pairs.",
+      "links": {
+        "repository": "https://github.com/Helsinki-NLP/OPUS-MT-train",
+        "model": "https://huggingface.co/Helsinki-NLP/opus-mt-en-de"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Marian models are relatively small; export to CTranslate2 for CPU/edge."
+      },
+      "runtimes": [
+        "marian",
+        "ctranslate2",
+        "transformers"
+      ],
+      "formats": [
+        "marian",
+        "ctranslate2",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained per-pair models; training pipeline included.",
+        "needs_data": "Parallel text for evaluation/fine-tuning.",
+        "update_strategy": "Verify per-model terms; re-evaluate BLEU on the target pair."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "translated-text"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "BLEU/chrF per language pair plus latency."
+      ],
+      "limitations": [
+        "Quality varies by pair; per-model weight terms not always stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Helsinki-NLP/OPUS-MT-train",
+          "notes": "OPUS-MT/Marian models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "translation",
+        "marian",
+        "on-device"
+      ],
+      "path": "catalog/language/translation/opus-mt.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "gpt4all",
       "name": "GPT4All",
       "domain": "language",
@@ -16239,6 +16689,381 @@
       ],
       "path": "pipelines/language/gpt4all.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "bert",
+      "name": "BERT",
+      "domain": "language",
+      "tasks": [
+        "text-classification",
+        "named-entity-recognition",
+        "embeddings"
+      ],
+      "class": "encoder-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "The original bidirectional transformer encoder, still a compact baseline for many NLP tasks.",
+      "links": {
+        "repository": "https://github.com/google-research/bert",
+        "model": "https://huggingface.co/google-bert/bert-base-uncased",
+        "paper": "https://arxiv.org/abs/1810.04805"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Base 110M and smaller distilations fit edge; export to ONNX."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "tflite"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained encoder; fine-tune per task.",
+        "needs_data": "Task-labelled text for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on domain text."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "class",
+          "tags",
+          "embeddings"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Task F1/accuracy plus latency and memory on the target."
+      ],
+      "limitations": [
+        "Not generative; input length limited; older than modern encoders."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/bert",
+          "notes": "BERT models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "encoder",
+        "transformer",
+        "nlp"
+      ],
+      "path": "catalog/language/encoder/bert.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "distilbert",
+      "name": "DistilBERT",
+      "domain": "language",
+      "tasks": [
+        "text-classification",
+        "named-entity-recognition",
+        "embeddings"
+      ],
+      "class": "encoder-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Distilled BERT that keeps most accuracy at ~40% fewer parameters, well suited to edge.",
+      "links": {
+        "model": "https://huggingface.co/distilbert/distilbert-base-uncased",
+        "paper": "https://arxiv.org/abs/1910.01108"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "66M parameters; runs on CPUs and exports to ONNX/TFLite."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "tflite"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained distilled encoder; fine-tune per task.",
+        "needs_data": "Task-labelled text for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on domain text."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "class",
+          "tags",
+          "embeddings"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task F1/accuracy plus latency and memory on the target."
+      ],
+      "limitations": [
+        "Slightly less accurate than BERT; not generative."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/distilbert/distilbert-base-uncased",
+          "notes": "DistilBERT model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "encoder",
+        "distilled",
+        "on-device"
+      ],
+      "path": "catalog/language/encoder/distilbert.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "roberta",
+      "name": "RoBERTa",
+      "domain": "language",
+      "tasks": [
+        "text-classification",
+        "named-entity-recognition",
+        "question-answering"
+      ],
+      "class": "encoder-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Robustly optimised BERT variant trained on more data, a strong text encoder baseline.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fairseq",
+        "model": "https://huggingface.co/FacebookAI/roberta-base",
+        "paper": "https://arxiv.org/abs/1907.11692"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Base 125M; distilations available for lighter targets."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained encoder; fine-tune per task.",
+        "needs_data": "Task-labelled text for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on domain text."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "class",
+          "tags",
+          "answers"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task metrics plus latency and memory on the target."
+      ],
+      "limitations": [
+        "English-centric; not generative; input length limited."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/FacebookAI/roberta-base",
+          "notes": "RoBERTa model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "encoder",
+        "transformer",
+        "nlp"
+      ],
+      "path": "catalog/language/encoder/roberta.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "xlm-roberta",
+      "name": "XLM-RoBERTa",
+      "domain": "language",
+      "tasks": [
+        "text-classification",
+        "named-entity-recognition",
+        "cross-lingual-transfer"
+      ],
+      "class": "encoder-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Multilingual RoBERTa trained on 100 languages, a common cross-lingual encoder.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fairseq",
+        "model": "https://huggingface.co/FacebookAI/xlm-roberta-base",
+        "paper": "https://arxiv.org/abs/1911.02116"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Base ~280M; larger than monolingual encoders."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained multilingual encoder; fine-tune per task/language.",
+        "needs_data": "Task-labelled text in target languages.",
+        "update_strategy": "Pin checkpoint; revalidate per language."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "class",
+          "tags",
+          "embeddings"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Task metrics per language plus latency and memory."
+      ],
+      "limitations": [
+        "Larger than monolingual encoders; low-resource languages weaker."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/FacebookAI/xlm-roberta-base",
+          "notes": "XLM-RoBERTa model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "encoder",
+        "multilingual",
+        "nlp"
+      ],
+      "path": "catalog/language/encoder/xlm-roberta.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "bge-m3",
@@ -20208,6 +21033,96 @@
         "pretrained"
       ],
       "path": "pipelines/music/spleeter.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "crepe",
+      "name": "CREPE",
+      "domain": "music",
+      "tasks": [
+        "pitch-estimation",
+        "music-analysis"
+      ],
+      "class": "music-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Convolutional pitch estimator that predicts fundamental frequency frame by frame.",
+      "links": {
+        "repository": "https://github.com/marl/crepe",
+        "paper": "https://arxiv.org/abs/1802.06182"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "Small CNN; runs in real time on CPU."
+      },
+      "runtimes": [
+        "tensorflow",
+        "onnxruntime",
+        "tflite"
+      ],
+      "formats": [
+        "savedmodel",
+        "tflite",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained pitch model; retraining is uncommon.",
+        "needs_data": "Audio for inference; annotated pitch for evaluation.",
+        "update_strategy": "Verify weight terms; re-measure latency on the target."
+      },
+      "data": {
+        "inputs": [
+          "audio"
+        ],
+        "outputs": [
+          "pitch",
+          "confidence"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Pitch accuracy (RPA) plus real-time factor."
+      ],
+      "limitations": [
+        "Monophonic focus; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/marl/crepe",
+          "notes": "CREPE pitch estimator."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "music",
+        "pitch",
+        "analysis",
+        "realtime"
+      ],
+      "path": "catalog/music/analysis/crepe.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -27344,6 +28259,180 @@
       "usage_mode": "companion"
     },
     {
+      "id": "awq",
+      "name": "AWQ",
+      "domain": "runtime",
+      "tasks": [
+        "quantisation",
+        "llm-compression"
+      ],
+      "class": "quantisation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Activation-aware 4-bit weight quantisation that preserves LLM quality for edge deployment.",
+      "links": {
+        "repository": "https://github.com/mit-han-lab/llm-awq",
+        "paper": "https://arxiv.org/abs/2306.00978"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "AWQ checkpoints run in vLLM/TinyChat and other runtimes."
+      },
+      "runtimes": [
+        "pytorch",
+        "cuda"
+      ],
+      "formats": [
+        "awq",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Quantises a trained LLM with activation-aware scaling.",
+        "needs_data": "A trained model plus calibration text.",
+        "update_strategy": "Re-quantise per target; measure quality and latency."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "calibration-data"
+        ],
+        "outputs": [
+          "quantised-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Perplexity/accuracy delta plus VRAM and throughput."
+      ],
+      "limitations": [
+        "Calibration-dependent; GPU typically needed for packing."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mit-han-lab/llm-awq",
+          "notes": "AWQ quantisation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "quantisation",
+        "llm",
+        "compression"
+      ],
+      "path": "pipelines/runtime/awq.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "gptq",
+      "name": "GPTQ",
+      "domain": "runtime",
+      "tasks": [
+        "quantisation",
+        "llm-compression"
+      ],
+      "class": "quantisation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Post-training 4-bit weight quantisation for LLMs, the basis of many edge LLM builds.",
+      "links": {
+        "repository": "https://github.com/IST-DASLab/gptq",
+        "paper": "https://arxiv.org/abs/2210.17323"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Produces 4-bit checkpoints runnable by ExLlama/AutoGPTQ/vLLM."
+      },
+      "runtimes": [
+        "pytorch",
+        "cuda"
+      ],
+      "formats": [
+        "gptq",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Quantises a trained LLM using a calibration set.",
+        "needs_data": "A trained model plus calibration text.",
+        "update_strategy": "Re-quantise per target; measure perplexity and accuracy delta."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "calibration-data"
+        ],
+        "outputs": [
+          "quantised-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Perplexity/accuracy delta plus VRAM and throughput."
+      ],
+      "limitations": [
+        "Requires calibration; quality loss at very low bit widths."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/IST-DASLab/gptq",
+          "notes": "GPTQ quantisation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "quantisation",
+        "llm",
+        "compression"
+      ],
+      "path": "pipelines/runtime/gptq.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "neural-compressor",
       "name": "Intel Neural Compressor",
       "domain": "runtime",
@@ -32949,6 +34038,178 @@
         "classical-ml"
       ],
       "path": "pipelines/time-series/sktime.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "chronos",
+      "name": "Chronos",
+      "domain": "time-series",
+      "tasks": [
+        "time-series-forecasting",
+        "zero-shot-forecasting"
+      ],
+      "class": "time-series-foundation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Amazon's pretrained time-series foundation models that forecast zero-shot as token sequences.",
+      "links": {
+        "repository": "https://github.com/amazon-science/chronos-forecasting",
+        "model": "https://huggingface.co/amazon/chronos-t5-small",
+        "paper": "https://arxiv.org/abs/2403.07815"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small variants (T5-mini/tiny) can run on CPU; larger need servers."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained zero-shot forecaster; fine-tuning optional.",
+        "needs_data": "Historical series; backtests for evaluation.",
+        "update_strategy": "Pin checkpoint; re-run backtests on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "time-series"
+        ],
+        "outputs": [
+          "forecast",
+          "quantiles"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Backtested MAPE/sMAPE vs naive baselines plus latency."
+      ],
+      "limitations": [
+        "Zero-shot may trail tuned models; longer horizons degrade."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/amazon-science/chronos-forecasting",
+          "notes": "Chronos forecasting models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "foundation-model",
+        "zero-shot"
+      ],
+      "path": "catalog/time-series/forecasting/chronos.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "n-beats",
+      "name": "N-BEATS",
+      "domain": "time-series",
+      "tasks": [
+        "time-series-forecasting"
+      ],
+      "class": "time-series-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Pure deep-learning forecasting architecture with interpretable trend/seasonality bases.",
+      "links": {
+        "repository": "https://github.com/ServiceNow/N-BEATS",
+        "paper": "https://arxiv.org/abs/1905.10437"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small MLP-based models; fit for CPU/edge after training."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a model per dataset/series univariate or multivariate.",
+        "needs_data": "Historical series with a defined horizon.",
+        "update_strategy": "Refit on drift; re-run rolling-origin backtests."
+      },
+      "data": {
+        "inputs": [
+          "time-series"
+        ],
+        "outputs": [
+          "forecast"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Backtested MAPE/sMAPE vs baselines plus latency."
+      ],
+      "limitations": [
+        "Per-series training; licence not declared."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ServiceNow/N-BEATS",
+          "notes": "N-BEATS models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "deep-learning"
+      ],
+      "path": "catalog/time-series/forecasting/n-beats.yaml",
       "usage_mode": "requires-training"
     },
     {

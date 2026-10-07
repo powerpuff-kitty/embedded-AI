@@ -1,0 +1,23 @@
+id: crepe
+name: CREPE
+domain: music
+tasks: [pitch-estimation, music-analysis]
+class: music-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Convolutional pitch estimator that predicts fundamental frequency frame by frame."
+links: {repository: 'https://github.com/marl/crepe', paper: 'https://arxiv.org/abs/1802.06182'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop], notes: 'Small CNN; runs in real time on CPU.'}
+runtimes: [tensorflow, onnxruntime, tflite]
+formats: [savedmodel, tflite, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained pitch model; retraining is uncommon.', needs_data: 'Audio for inference; annotated pitch for evaluation.', update_strategy: 'Verify weight terms; re-measure latency on the target.'}
+data: {inputs: [audio], outputs: [pitch, confidence], languages: []}
+evaluation: ['Pitch accuracy (RPA) plus real-time factor.']
+limitations: ['Monophonic focus; weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/marl/crepe', notes: 'CREPE pitch estimator.'}]
+reviewed: '2026-10-06'
+tags: [music, pitch, analysis, realtime]

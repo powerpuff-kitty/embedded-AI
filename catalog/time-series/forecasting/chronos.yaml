@@ -1,0 +1,23 @@
+id: chronos
+name: Chronos
+domain: time-series
+tasks: [time-series-forecasting, zero-shot-forecasting]
+class: time-series-foundation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Amazon's pretrained time-series foundation models that forecast zero-shot as token sequences."
+links: {repository: 'https://github.com/amazon-science/chronos-forecasting', model: 'https://huggingface.co/amazon/chronos-t5-small', paper: 'https://arxiv.org/abs/2403.07815'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Small variants (T5-mini/tiny) can run on CPU; larger need servers.'}
+runtimes: [pytorch, transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained zero-shot forecaster; fine-tuning optional.', needs_data: 'Historical series; backtests for evaluation.', update_strategy: 'Pin checkpoint; re-run backtests on the target domain.'}
+data: {inputs: [time-series], outputs: [forecast, quantiles], languages: []}
+evaluation: ['Backtested MAPE/sMAPE vs naive baselines plus latency.']
+limitations: ['Zero-shot may trail tuned models; longer horizons degrade.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/amazon-science/chronos-forecasting', notes: 'Chronos forecasting models.'}]
+reviewed: '2026-10-06'
+tags: [time-series, forecasting, foundation-model, zero-shot]
