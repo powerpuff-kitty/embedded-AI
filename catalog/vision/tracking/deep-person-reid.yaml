@@ -1,0 +1,23 @@
+id: deep-person-reid
+name: Deep Person ReID (torchreid)
+domain: vision
+tasks: [person-re-identification, metric-learning, tracking]
+class: reid-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Library of person re-identification models and training pipelines for cross-camera matching."
+links: {repository: 'https://github.com/KaiyangZhou/deep-person-reid', paper: 'https://arxiv.org/abs/1910.10093'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Compact backbones exist; embedding models depend on the input.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains re-identification embeddings from labelled identities.', needs_data: 'Identity-labelled multi-camera imagery (privacy-sensitive).', update_strategy: 'Revalidate across cameras; treat embeddings as biometric.'}
+data: {inputs: [person-image], outputs: [identity-embedding], languages: []}
+evaluation: ['mAP/CMC on target cameras plus demographic bias review.']
+limitations: ['Biometric/privacy concerns; weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/KaiyangZhou/deep-person-reid', notes: 'torchreid person re-identification.'}]
+reviewed: '2026-10-06'
+tags: [vision, reid, biometrics, tracking]

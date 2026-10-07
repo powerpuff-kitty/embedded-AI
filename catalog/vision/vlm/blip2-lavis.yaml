@@ -1,0 +1,23 @@
+id: blip2-lavis
+name: BLIP-2 (LAVIS)
+domain: vision
+tasks: [image-captioning, visual-question-answering, image-text-retrieval]
+class: vision-language-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Salesforce vision-language models (BLIP-2) and the LAVIS library that hosts them."
+links: {repository: 'https://github.com/salesforce/LAVIS', paper: 'https://arxiv.org/abs/2301.12597'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Large vision-language models; GPU recommended.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained captioning/VQA models; fine-tuning is supported.', needs_data: 'Image-text data for evaluation/adaptation.', update_strategy: 'Verify weight terms; revalidate on target tasks.'}
+data: {inputs: [rgb-image, text], outputs: [caption, answer, embeddings], languages: [en]}
+evaluation: ['Captioning/VQA/retrieval metrics on held-out data.']
+limitations: ['Weight terms not stated; desktop/server scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/salesforce/LAVIS', notes: 'BLIP-2 and LAVIS models.'}]
+reviewed: '2026-10-06'
+tags: [vision, captioning, vqa, vision-language]

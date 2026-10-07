@@ -1,0 +1,23 @@
+id: diffusers
+name: Diffusers
+domain: vision
+tasks: [image-generation, diffusion-inference]
+class: generative-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Hugging Face library of pretrained diffusion models for image and audio generation."
+links: {repository: 'https://github.com/huggingface/diffusers', homepage: 'https://huggingface.co/docs/diffusers'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Runs diffusion pipelines; larger models need GPU.'}
+runtimes: [pytorch, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Inference and fine-tuning (DreamBooth/LoRA) of diffusion models.', needs_data: 'Text/image datasets for fine-tuning; prompts for generation.', update_strategy: 'Verify per-model licences (many are research/non-commercial).' }
+data: {inputs: [text-prompt, seed], outputs: [generated-image], languages: [en]}
+evaluation: ['Image quality/diversity and prompt adherence; licence review.']
+limitations: ['Many model weights are research/non-commercial; desktop/server scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/diffusers', notes: 'Diffusers library.'}]
+reviewed: '2026-10-06'
+tags: [vision, diffusion, generative, toolkit]

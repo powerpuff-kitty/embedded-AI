@@ -1,0 +1,23 @@
+id: big-vision
+name: Big Vision (SigLIP)
+domain: vision
+tasks: [image-text-similarity, zero-shot-image-classification, embeddings]
+class: vision-language-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Google's training codebase and SigLIP image-text models with a sigmoid contrastive loss."
+links: {repository: 'https://github.com/google-research/big_vision', paper: 'https://arxiv.org/abs/2303.15343'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Includes ViT-B/16 SigLIP checkpoints; larger variants need GPU.'}
+runtimes: [jax, pytorch, transformers]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Zero-shot or fine-tuned image-text models.', needs_data: 'Images plus labels/prompts for evaluation.', update_strategy: 'Pin checkpoint; revalidate on target data.'}
+data: {inputs: [rgb-image, text], outputs: [embeddings, similarity-scores], languages: [en]}
+evaluation: ['Zero-shot or retrieval metrics on the target data.']
+limitations: ['Weight terms not stated; large variants are desktop/server scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-research/big_vision', notes: 'Big Vision / SigLIP models.'}]
+reviewed: '2026-10-06'
+tags: [vision, siglip, clip, zero-shot]

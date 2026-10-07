@@ -1,0 +1,23 @@
+id: imagebind
+name: ImageBind
+domain: vision
+tasks: [multimodal-embeddings, cross-modal-retrieval]
+class: multimodal-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Model that binds six modalities (image, text, audio, depth, thermal, IMU) into one embedding space."
+links: {repository: 'https://github.com/facebookresearch/ImageBind', paper: 'https://arxiv.org/abs/2305.05665'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Large multimodal encoder; not an embedded model.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained encoders; task heads are fine-tuned.', needs_data: 'Paired multimodal data for evaluation/adaptation.', update_strategy: 'Verify licence and weight terms; revalidate per modality.'}
+data: {inputs: [image, text, audio, depth, thermal, imu], outputs: [shared-embeddings], languages: [en]}
+evaluation: ['Cross-modal retrieval and zero-shot transfer metrics.']
+limitations: ['Code licence ambiguous (NOASSERTION); weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/ImageBind', notes: 'ImageBind multimodal model.'}]
+reviewed: '2026-10-06'
+tags: [vision, audio, multimodal, embeddings]

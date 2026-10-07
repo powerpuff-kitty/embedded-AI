@@ -1,0 +1,23 @@
+id: detr
+name: DETR
+domain: vision
+tasks: [object-detection]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Detection Transformer that frames object detection as set prediction."
+links: {repository: 'https://github.com/facebookresearch/detr', paper: 'https://arxiv.org/abs/2005.12872'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'ResNet backbones; heavier than tiny CNNs but a common reference.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained detectors; fine-tuning on custom classes is common.', needs_data: 'Labelled detection data for the target classes.', update_strategy: 'Verify weight terms; re-export and re-benchmark.'}
+data: {inputs: [rgb-image], outputs: [detection-boxes, classes], languages: []}
+evaluation: ['mAP on target classes plus latency.']
+limitations: ['Weight terms not stated; transformer detection is compute-heavy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/detr', notes: 'DETR detection transformer.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, transformer]

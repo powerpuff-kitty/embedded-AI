@@ -1,0 +1,23 @@
+id: wasmedge
+name: WasmEdge
+domain: runtime
+tasks: [wasm-inference, edge-runtime]
+class: wasm-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight WebAssembly runtime for edge and serverless AI inference."
+links: {repository: 'https://github.com/WasmEdge/WasmEdge', homepage: 'https://wasmedge.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [edge, mobile, embedded, server], notes: 'Sandboxed WASM runtime; can host WASI-NN backends.'}
+runtimes: [wasm, wasi-nn]
+formats: [wasm]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Serves pre-trained models compiled or loaded into WASM.', needs_data: 'A pre-trained model plus a WASM build of the app.', update_strategy: 'Pin runtime version; re-benchmark backend performance.'}
+data: {inputs: [model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Throughput/latency and sandbox isolation tests on the target.']
+limitations: ['Performance depends on the WASI-NN backend; weight licences are per model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/WasmEdge/WasmEdge', notes: 'WasmEdge WASM runtime.'}]
+reviewed: '2026-10-06'
+tags: [runtime, wasm, edge, serverless]
