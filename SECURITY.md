@@ -42,4 +42,5 @@ Out of scope:
 - Upstream and evidence links are validated (`http`/`https`, no credentials) before rendering.
 - CI installs with `npm ci --ignore-scripts`, uses least-privilege tokens and checks out with
   `persist-credentials: false`.
+- All GitHub Actions are pinned to full commit SHAs, with Dependabot keeping them current.
 - No secrets are stored in the repository.

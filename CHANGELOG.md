@@ -16,6 +16,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   branch gate, enforced on pull requests; CLI tests for `validate`, `audit`,
   `audit --strict` and `search`.
 
+### Security
+- Pin every GitHub Action to a full commit SHA (with a version comment);
+  Dependabot's `github-actions` updater keeps the pins current.
+
 ## [0.2.0] - 2026-10-07
 
 ### Added
