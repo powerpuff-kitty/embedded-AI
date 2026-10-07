@@ -1,0 +1,23 @@
+id: tensorflow-federated
+name: TensorFlow Federated
+domain: federated-learning
+tasks: [federated-learning, distributed-training]
+class: federated-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Google's framework for federated learning and decentralised computation over local data."
+links: {repository: 'https://github.com/google-parfait/tensorflow-federated', homepage: 'https://www.tensorflow.org/federated'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop, mobile], notes: 'Server orchestrates rounds; clients keep data local.'}
+runtimes: [tensorflow]
+formats: [savedmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Coordinates federated training across clients.', needs_data: 'Simulated or real client datasets that stay local.', update_strategy: 'Revalidate rounds and privacy budget on drift.'}
+data: {inputs: [local-client-data], outputs: [aggregated-model], languages: []}
+evaluation: ['Global model metrics plus privacy/communication accounting.']
+limitations: ['Complex orchestration; communication/privacy budgets need care.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-parfait/tensorflow-federated', notes: 'TensorFlow Federated.'}]
+reviewed: '2026-10-06'
+tags: [federated-learning, distributed, tensorflow]

@@ -1,0 +1,23 @@
+id: concrete-ml
+name: Concrete ML
+domain: trust-and-safety
+tasks: [homomorphic-encryption, private-inference]
+class: privacy-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Zama's library that compiles models to run on encrypted data using fully homomorphic encryption."
+links: {repository: 'https://github.com/zama-ai/concrete-ml', homepage: 'https://docs.zama.ai/concrete-ml'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-provided}
+deployment: {offline: true, targets: [edge, desktop, server], notes: 'FHE inference; latency and key sizes matter on constrained devices.'}
+runtimes: [python, onnx]
+formats: [onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Trains non-linear models then compiles to FHE circuits.', needs_data: 'Training data plus an evaluation/calibration set.', update_strategy: 'Re-check latency/key size; verify licence terms.'}
+data: {inputs: [encrypted-input], outputs: [encrypted-output], languages: []}
+evaluation: ['Accuracy vs encrypted-runtime latency and key size.']
+limitations: ['Some model types only; FHE inference is slower; licence is non-standard.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/zama-ai/concrete-ml', notes: 'Concrete ML.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, privacy, homomorphic-encryption]

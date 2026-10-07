@@ -1,0 +1,23 @@
+id: act
+name: ACT (ALOHA)
+domain: robotics
+tasks: [imitation-learning, robot-manipulation, action-chunking]
+class: robot-policy-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Action Chunking Transformer and the ALOHA low-cost teleoperation platform for fine manipulation."
+links: {repository: 'https://github.com/tonyzhaozh/aloha', paper: 'https://arxiv.org/abs/2304.13705'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [edge, desktop], notes: 'Small policy (~80M) runs on modest GPUs; real-time control.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a policy from teleoperated demonstrations.', needs_data: 'Many demonstration episodes per task.', update_strategy: 'Re-collect on setup changes; validate safety and latency.'}
+data: {inputs: [camera-images, joint-states], outputs: [action-chunks], languages: []}
+evaluation: ['Success rate over trials plus control latency and safety review.']
+limitations: ['Needs per-task demonstrations; weight terms not stated; sim-to-real gap.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tonyzhaozh/aloha', notes: 'ACT and ALOHA platform.'}]
+reviewed: '2026-10-06'
+tags: [robotics, imitation-learning, manipulation, act]

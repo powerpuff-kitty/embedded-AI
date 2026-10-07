@@ -1,0 +1,23 @@
+id: tenseal
+name: TenSEAL
+domain: trust-and-safety
+tasks: [homomorphic-encryption, private-computation]
+class: privacy-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for homomorphic encryption of tensors, enabling computation on encrypted data."
+links: {repository: 'https://github.com/OpenMined/TenSEAL', paper: 'https://arxiv.org/abs/2104.03152'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Encrypted-tensor primitives; not a full model pipeline.'}
+runtimes: [python, native-cpp]
+formats: [native-cpp]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Provides HE primitives for encrypted inference/training.', needs_data: 'Plaintext for key setup; encrypted inputs at runtime.', update_strategy: 'Re-check ciphertext sizes and latency per scheme.'}
+data: {inputs: [encrypted-vectors], outputs: [encrypted-results], languages: []}
+evaluation: ['Correctness, ciphertext size and latency on the target.']
+limitations: ['Limited operation set; sizes/latency can be large.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/OpenMined/TenSEAL', notes: 'TenSEAL library.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, privacy, homomorphic-encryption]

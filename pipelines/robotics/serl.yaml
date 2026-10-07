@@ -1,0 +1,23 @@
+id: serl
+name: SERL
+domain: robotics
+tasks: [reinforcement-learning, robot-manipulation, sample-efficient-rl]
+class: robot-rl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Berkeley's sample-efficient robot reinforcement-learning framework built on JAX."
+links: {repository: 'https://github.com/rail-berkeley/serl', paper: 'https://arxiv.org/abs/2401.16013'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server, desktop, edge], notes: 'Training/control framework; policies can run on robot compute.'}
+runtimes: [jax, pytorch, gym]
+formats: [jax-params, pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Learns policies online with real/simulated robots.', needs_data: 'Environment interaction and reward design.', update_strategy: 'Validate safe exploration; re-tune per robot.'}
+data: {inputs: [robot-observations], outputs: [robot-actions], languages: []}
+evaluation: ['Return/success across seeds plus safety review.']
+limitations: ['Reward design and safe exploration are hard; real-robot risk.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/rail-berkeley/serl', notes: 'SERL framework.'}]
+reviewed: '2026-10-06'
+tags: [robotics, reinforcement-learning, manipulation, jax]

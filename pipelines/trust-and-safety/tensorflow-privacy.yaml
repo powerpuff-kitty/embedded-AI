@@ -1,0 +1,23 @@
+id: tensorflow-privacy
+name: TensorFlow Privacy
+domain: trust-and-safety
+tasks: [differential-privacy, private-training]
+class: privacy-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library that adds differentially private training (DP-SGD) to TensorFlow/Keras models."
+links: {repository: 'https://github.com/tensorflow/privacy'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training-time privacy; the trained model runs normally.'}
+runtimes: [tensorflow]
+formats: [savedmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Wraps training with DP-SGD and privacy accounting.', needs_data: 'Private training data plus a privacy budget.', update_strategy: 'Track epsilon per release; re-account when data changes.'}
+data: {inputs: [training-data], outputs: [private-model, privacy-budget], languages: []}
+evaluation: ['Utility vs epsilon trade-off plus membership-inference review.']
+limitations: ['DP-SGD can reduce accuracy; accounting must be done correctly.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/privacy', notes: 'TensorFlow Privacy.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, privacy, differential-privacy]

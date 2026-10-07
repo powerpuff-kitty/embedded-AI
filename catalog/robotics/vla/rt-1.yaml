@@ -1,0 +1,23 @@
+id: rt-1
+name: RT-1
+domain: robotics
+tasks: [vision-language-action, robot-manipulation, imitation-learning]
+class: robot-foundation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Google's Robotics Transformer that maps images and language to discretized robot actions."
+links: {repository: 'https://github.com/google-research/robotics_transformer', paper: 'https://arxiv.org/abs/2212.06817'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [server, edge], notes: '35M-parameter transformer; reference research implementation.'}
+runtimes: [tensorflow, jax]
+formats: [savedmodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained model + training code; fine-tune per robot.', needs_data: 'Robot demonstrations with language annotations.', update_strategy: 'Verify weight terms; re-evaluate per robot and task.'}
+data: {inputs: [camera-image, text-instruction], outputs: [robot-actions], languages: [en]}
+evaluation: ['Task success rate on the target robot plus safety review.']
+limitations: ['Research code; weight terms not stated; sim-to-real gap.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-research/robotics_transformer', notes: 'RT-1 Robotics Transformer.'}]
+reviewed: '2026-10-06'
+tags: [robotics, vla, manipulation, transformer]

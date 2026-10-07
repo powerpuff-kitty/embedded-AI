@@ -3811,6 +3811,99 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "dtln",
+      "name": "DTLN",
+      "domain": "audio",
+      "tasks": [
+        "speech-enhancement",
+        "noise-suppression",
+        "real-time-audio"
+      ],
+      "class": "audio-enhancement-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Dual-signal Transformation LSTM Network for low-latency, real-time noise suppression.",
+      "links": {
+        "repository": "https://github.com/breizhn/DTLN",
+        "model": "https://huggingface.co/breizhn/DTLN"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "Small LSTM models with ONNX/TFLite exports for real-time use."
+      },
+      "runtimes": [
+        "tensorflow",
+        "onnxruntime",
+        "tflite"
+      ],
+      "formats": [
+        "tflite",
+        "onnx",
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained denoisers; retraining on domain noise possible.",
+        "needs_data": "Noisy/clean pairs for evaluation or retraining.",
+        "update_strategy": "Verify weight terms; re-measure latency and quality per device."
+      },
+      "data": {
+        "inputs": [
+          "noisy-audio"
+        ],
+        "outputs": [
+          "enhanced-audio"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Noise-suppression metrics plus real-time factor on the target."
+      ],
+      "limitations": [
+        "Weight terms not stated; quality depends on noise type."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/breizhn/DTLN",
+          "notes": "DTLN noise suppression."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "enhancement",
+        "realtime",
+        "on-device"
+      ],
+      "path": "catalog/audio/enhancement/dtln.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "deepfilternet",
       "name": "DeepFilterNet",
       "domain": "audio",
@@ -3893,6 +3986,93 @@
         "edge"
       ],
       "path": "pipelines/audio/deepfilternet.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "resemble-enhance",
+      "name": "Resemble Enhance",
+      "domain": "audio",
+      "tasks": [
+        "speech-enhancement",
+        "speech-restoration"
+      ],
+      "class": "audio-enhancement-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Two-stage model that denoises speech and then restores fidelity with a diffusion stage.",
+      "links": {
+        "repository": "https://github.com/resemble-ai/resemble-enhance",
+        "model": "https://huggingface.co/ResembleAI/resemble-enhance"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Diffusion stage is heavier; denoiser can run faster."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained enhancement; fine-tuning possible.",
+        "needs_data": "Noisy/clean audio for evaluation.",
+        "update_strategy": "Verify weight terms; re-measure latency and quality on domain audio."
+      },
+      "data": {
+        "inputs": [
+          "noisy-audio"
+        ],
+        "outputs": [
+          "enhanced-audio"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Denoising/enhancement metrics and listening tests."
+      ],
+      "limitations": [
+        "Diffusion stage is compute-heavy; may hallucinate detail."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/resemble-ai/resemble-enhance",
+          "notes": "Resemble Enhance."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "enhancement",
+        "restoration",
+        "diffusion"
+      ],
+      "path": "pipelines/audio/resemble-enhance.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -4353,6 +4533,181 @@
       ],
       "path": "catalog/audio/speech/wav2vec2.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "voicefixer",
+      "name": "VoiceFixer",
+      "domain": "audio",
+      "tasks": [
+        "speech-restoration",
+        "speech-enhancement"
+      ],
+      "class": "audio-enhancement-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Restoration model that repairs degraded speech, noise, clipping and low sample rates.",
+      "links": {
+        "repository": "https://github.com/haoheliu/voicefixer",
+        "paper": "https://arxiv.org/abs/2109.13731"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Mode 0 is lightweight for real-time; other modes are heavier."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained restoration; fine-tuning possible.",
+        "needs_data": "Degraded audio for evaluation.",
+        "update_strategy": "Verify weight terms; re-measure latency and quality per device."
+      },
+      "data": {
+        "inputs": [
+          "degraded-audio"
+        ],
+        "outputs": [
+          "restored-audio"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Restoration metrics and listening tests plus real-time factor."
+      ],
+      "limitations": [
+        "Weight terms not stated; heavier modes are not real-time."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/haoheliu/voicefixer",
+          "notes": "VoiceFixer restoration."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "restoration",
+        "enhancement"
+      ],
+      "path": "pipelines/audio/voicefixer.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "asteroid",
+      "name": "Asteroid",
+      "domain": "audio",
+      "tasks": [
+        "speech-separation",
+        "speech-enhancement"
+      ],
+      "class": "audio-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch toolkit for training and evaluating speech separation and enhancement models.",
+      "links": {
+        "repository": "https://github.com/asteroid-team/asteroid",
+        "homepage": "https://asteroid.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/inference toolkit; models can be exported to ONNX."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Trains/evaluates separation models; pretrained recipes included.",
+        "needs_data": "Mixed audio with sources for training/evaluation.",
+        "update_strategy": "Verify per-recipe terms; re-evaluate SI-SDR on domain audio."
+      },
+      "data": {
+        "inputs": [
+          "mixed-audio"
+        ],
+        "outputs": [
+          "separated-sources",
+          "enhanced-audio"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "SI-SDR/SDR plus latency on the target."
+      ],
+      "limitations": [
+        "Per-recipe model licences vary; quality depends on domain match."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/asteroid-team/asteroid",
+          "notes": "Asteroid toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "separation",
+        "enhancement",
+        "toolkit"
+      ],
+      "path": "pipelines/audio/asteroid.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "moonshine",
@@ -10109,6 +10464,92 @@
       "usage_mode": "companion"
     },
     {
+      "id": "nvflare",
+      "name": "NVIDIA FLARE",
+      "domain": "federated-learning",
+      "tasks": [
+        "federated-learning",
+        "privacy-preserving-ml",
+        "distributed-training"
+      ],
+      "class": "federated-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA's federated learning platform with support for secure aggregation and cross-silo training.",
+      "links": {
+        "repository": "https://github.com/NVIDIA/NVFlare",
+        "homepage": "https://nvflare.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "edge",
+          "desktop"
+        ],
+        "notes": "Client-server and peer-to-peer topologies; clients keep data local."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorflow"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Orchestrates federated jobs with optional privacy filters.",
+        "needs_data": "Local client datasets plus job configuration.",
+        "update_strategy": "Revalidate aggregation and privacy settings on drift."
+      },
+      "data": {
+        "inputs": [
+          "local-client-data"
+        ],
+        "outputs": [
+          "aggregated-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Global model metrics plus privacy/security review."
+      ],
+      "limitations": [
+        "Platform complexity; secure aggregation has overhead."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA/NVFlare",
+          "notes": "NVIDIA FLARE."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "federated-learning",
+        "privacy",
+        "distributed"
+      ],
+      "path": "pipelines/federated-learning/nvflare.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "openfl",
       "name": "OpenFL",
       "domain": "federated-learning",
@@ -10188,6 +10629,89 @@
       ],
       "path": "pipelines/federated-learning/openfl.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "tensorflow-federated",
+      "name": "TensorFlow Federated",
+      "domain": "federated-learning",
+      "tasks": [
+        "federated-learning",
+        "distributed-training"
+      ],
+      "class": "federated-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's framework for federated learning and decentralised computation over local data.",
+      "links": {
+        "repository": "https://github.com/google-parfait/tensorflow-federated",
+        "homepage": "https://www.tensorflow.org/federated"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop",
+          "mobile"
+        ],
+        "notes": "Server orchestrates rounds; clients keep data local."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Coordinates federated training across clients.",
+        "needs_data": "Simulated or real client datasets that stay local.",
+        "update_strategy": "Revalidate rounds and privacy budget on drift."
+      },
+      "data": {
+        "inputs": [
+          "local-client-data"
+        ],
+        "outputs": [
+          "aggregated-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Global model metrics plus privacy/communication accounting."
+      ],
+      "limitations": [
+        "Complex orchestration; communication/privacy budgets need care."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-parfait/tensorflow-federated",
+          "notes": "TensorFlow Federated."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "federated-learning",
+        "distributed",
+        "tensorflow"
+      ],
+      "path": "pipelines/federated-learning/tensorflow-federated.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "pysyft",
@@ -22324,6 +22848,91 @@
       "usage_mode": "companion"
     },
     {
+      "id": "act",
+      "name": "ACT (ALOHA)",
+      "domain": "robotics",
+      "tasks": [
+        "imitation-learning",
+        "robot-manipulation",
+        "action-chunking"
+      ],
+      "class": "robot-policy-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Action Chunking Transformer and the ALOHA low-cost teleoperation platform for fine manipulation.",
+      "links": {
+        "repository": "https://github.com/tonyzhaozh/aloha",
+        "paper": "https://arxiv.org/abs/2304.13705"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop"
+        ],
+        "notes": "Small policy (~80M) runs on modest GPUs; real-time control."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a policy from teleoperated demonstrations.",
+        "needs_data": "Many demonstration episodes per task.",
+        "update_strategy": "Re-collect on setup changes; validate safety and latency."
+      },
+      "data": {
+        "inputs": [
+          "camera-images",
+          "joint-states"
+        ],
+        "outputs": [
+          "action-chunks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Success rate over trials plus control latency and safety review."
+      ],
+      "limitations": [
+        "Needs per-task demonstrations; weight terms not stated; sim-to-real gap."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tonyzhaozh/aloha",
+          "notes": "ACT and ALOHA platform."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "imitation-learning",
+        "manipulation",
+        "act"
+      ],
+      "path": "catalog/robotics/vla/act.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "robomimic",
       "name": "robomimic",
       "domain": "robotics",
@@ -22496,6 +23105,94 @@
       ],
       "path": "primitives/robotics/navigation2.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "serl",
+      "name": "SERL",
+      "domain": "robotics",
+      "tasks": [
+        "reinforcement-learning",
+        "robot-manipulation",
+        "sample-efficient-rl"
+      ],
+      "class": "robot-rl-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Berkeley's sample-efficient robot reinforcement-learning framework built on JAX.",
+      "links": {
+        "repository": "https://github.com/rail-berkeley/serl",
+        "paper": "https://arxiv.org/abs/2401.16013"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop",
+          "edge"
+        ],
+        "notes": "Training/control framework; policies can run on robot compute."
+      },
+      "runtimes": [
+        "jax",
+        "pytorch",
+        "gym"
+      ],
+      "formats": [
+        "jax-params",
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Learns policies online with real/simulated robots.",
+        "needs_data": "Environment interaction and reward design.",
+        "update_strategy": "Validate safe exploration; re-tune per robot."
+      },
+      "data": {
+        "inputs": [
+          "robot-observations"
+        ],
+        "outputs": [
+          "robot-actions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Return/success across seeds plus safety review."
+      ],
+      "limitations": [
+        "Reward design and safe exploration are hard; real-robot risk."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/rail-berkeley/serl",
+          "notes": "SERL framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "reinforcement-learning",
+        "manipulation",
+        "jax"
+      ],
+      "path": "pipelines/robotics/serl.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "lerobot",
@@ -22820,6 +23517,96 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "isaac-gr00t",
+      "name": "NVIDIA Isaac GR00T",
+      "domain": "robotics",
+      "tasks": [
+        "vision-language-action",
+        "robot-manipulation",
+        "imitation-learning"
+      ],
+      "class": "robot-foundation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA's generalist robot foundation model (GR00T N1) for language-conditioned manipulation.",
+      "links": {
+        "repository": "https://github.com/NVIDIA/Isaac-GR00T",
+        "model": "https://huggingface.co/nvidia/GR00T-N1.5-3B",
+        "paper": "https://arxiv.org/abs/2503.14734"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "server"
+        ],
+        "notes": "3B model; deployed on Jetson-class hardware with the Isaac stack."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorrt"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained VLA; fine-tuned per robot with demonstration data.",
+        "needs_data": "Robot demonstrations plus language task instructions.",
+        "update_strategy": "Verify weight terms; re-evaluate per robot setup."
+      },
+      "data": {
+        "inputs": [
+          "camera-image",
+          "text-instruction",
+          "robot-state"
+        ],
+        "outputs": [
+          "robot-actions"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task success rate on the target robot plus safety review."
+      ],
+      "limitations": [
+        "Weight terms not stated; real-robot safety and latency need validation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA/Isaac-GR00T",
+          "notes": "Isaac GR00T N1 model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "vla",
+        "manipulation",
+        "nvidia"
+      ],
+      "path": "catalog/robotics/vla/isaac-gr00t.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "openvla",
       "name": "OpenVLA",
       "domain": "robotics",
@@ -22906,6 +23693,94 @@
         "pretrained"
       ],
       "path": "catalog/robotics/vla/openvla.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "rt-1",
+      "name": "RT-1",
+      "domain": "robotics",
+      "tasks": [
+        "vision-language-action",
+        "robot-manipulation",
+        "imitation-learning"
+      ],
+      "class": "robot-foundation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's Robotics Transformer that maps images and language to discretized robot actions.",
+      "links": {
+        "repository": "https://github.com/google-research/robotics_transformer",
+        "paper": "https://arxiv.org/abs/2212.06817"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "edge"
+        ],
+        "notes": "35M-parameter transformer; reference research implementation."
+      },
+      "runtimes": [
+        "tensorflow",
+        "jax"
+      ],
+      "formats": [
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained model + training code; fine-tune per robot.",
+        "needs_data": "Robot demonstrations with language annotations.",
+        "update_strategy": "Verify weight terms; re-evaluate per robot and task."
+      },
+      "data": {
+        "inputs": [
+          "camera-image",
+          "text-instruction"
+        ],
+        "outputs": [
+          "robot-actions"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task success rate on the target robot plus safety review."
+      ],
+      "limitations": [
+        "Research code; weight terms not stated; sim-to-real gap."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/robotics_transformer",
+          "notes": "RT-1 Robotics Transformer."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "vla",
+        "manipulation",
+        "transformer"
+      ],
+      "path": "catalog/robotics/vla/rt-1.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -32075,6 +32950,425 @@
       ],
       "path": "pipelines/time-series/sktime.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "diffprivlib",
+      "name": "Diffprivlib",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "differential-privacy",
+        "private-statistics"
+      ],
+      "class": "privacy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "IBM's general-purpose differential privacy library for statistics and scikit-learn-style models.",
+      "links": {
+        "repository": "https://github.com/IBM/differential-privacy-library",
+        "homepage": "https://diffprivlib.readthedocs.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Lightweight; DP mechanisms run on CPU."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Provides DP mechanisms and private estimators.",
+        "needs_data": "Data plus a privacy budget.",
+        "update_strategy": "Track epsilon per release; re-account when data changes."
+      },
+      "data": {
+        "inputs": [
+          "tabular-data"
+        ],
+        "outputs": [
+          "private-statistics",
+          "private-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Utility vs epsilon trade-off plus privacy audit."
+      ],
+      "limitations": [
+        "DP reduces utility; choosing epsilon requires domain judgement."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/IBM/differential-privacy-library",
+          "notes": "IBM diffprivlib."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "privacy",
+        "differential-privacy"
+      ],
+      "path": "pipelines/trust-and-safety/diffprivlib.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "opacus",
+      "name": "Opacus",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "differential-privacy",
+        "private-training"
+      ],
+      "class": "privacy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch library for training models with differential privacy (DP-SGD).",
+      "links": {
+        "repository": "https://github.com/meta-pytorch/opacus",
+        "homepage": "https://opacus.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training-time privacy; trained models deploy normally."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Enables per-sample gradients and DP-SGD.",
+        "needs_data": "Private training data plus a privacy budget.",
+        "update_strategy": "Track epsilon per release; re-account when data changes."
+      },
+      "data": {
+        "inputs": [
+          "training-data"
+        ],
+        "outputs": [
+          "private-model",
+          "privacy-budget"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Utility vs epsilon trade-off plus privacy audit."
+      ],
+      "limitations": [
+        "Accuracy cost and slower training; accounting must be correct."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/meta-pytorch/opacus",
+          "notes": "Opacus DP library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "privacy",
+        "differential-privacy",
+        "pytorch"
+      ],
+      "path": "pipelines/trust-and-safety/opacus.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "tensorflow-privacy",
+      "name": "TensorFlow Privacy",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "differential-privacy",
+        "private-training"
+      ],
+      "class": "privacy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library that adds differentially private training (DP-SGD) to TensorFlow/Keras models.",
+      "links": {
+        "repository": "https://github.com/tensorflow/privacy"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training-time privacy; the trained model runs normally."
+      },
+      "runtimes": [
+        "tensorflow"
+      ],
+      "formats": [
+        "savedmodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Wraps training with DP-SGD and privacy accounting.",
+        "needs_data": "Private training data plus a privacy budget.",
+        "update_strategy": "Track epsilon per release; re-account when data changes."
+      },
+      "data": {
+        "inputs": [
+          "training-data"
+        ],
+        "outputs": [
+          "private-model",
+          "privacy-budget"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Utility vs epsilon trade-off plus membership-inference review."
+      ],
+      "limitations": [
+        "DP-SGD can reduce accuracy; accounting must be done correctly."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tensorflow/privacy",
+          "notes": "TensorFlow Privacy."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "privacy",
+        "differential-privacy"
+      ],
+      "path": "pipelines/trust-and-safety/tensorflow-privacy.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "concrete-ml",
+      "name": "Concrete ML",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "homomorphic-encryption",
+        "private-inference"
+      ],
+      "class": "privacy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Zama's library that compiles models to run on encrypted data using fully homomorphic encryption.",
+      "links": {
+        "repository": "https://github.com/zama-ai/concrete-ml",
+        "homepage": "https://docs.zama.ai/concrete-ml"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "FHE inference; latency and key sizes matter on constrained devices."
+      },
+      "runtimes": [
+        "python",
+        "onnx"
+      ],
+      "formats": [
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Trains non-linear models then compiles to FHE circuits.",
+        "needs_data": "Training data plus an evaluation/calibration set.",
+        "update_strategy": "Re-check latency/key size; verify licence terms."
+      },
+      "data": {
+        "inputs": [
+          "encrypted-input"
+        ],
+        "outputs": [
+          "encrypted-output"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy vs encrypted-runtime latency and key size."
+      ],
+      "limitations": [
+        "Some model types only; FHE inference is slower; licence is non-standard."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/zama-ai/concrete-ml",
+          "notes": "Concrete ML."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "privacy",
+        "homomorphic-encryption"
+      ],
+      "path": "pipelines/trust-and-safety/concrete-ml.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "tenseal",
+      "name": "TenSEAL",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "homomorphic-encryption",
+        "private-computation"
+      ],
+      "class": "privacy-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for homomorphic encryption of tensors, enabling computation on encrypted data.",
+      "links": {
+        "repository": "https://github.com/OpenMined/TenSEAL",
+        "paper": "https://arxiv.org/abs/2104.03152"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Encrypted-tensor primitives; not a full model pipeline."
+      },
+      "runtimes": [
+        "python",
+        "native-cpp"
+      ],
+      "formats": [
+        "native-cpp"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Provides HE primitives for encrypted inference/training.",
+        "needs_data": "Plaintext for key setup; encrypted inputs at runtime.",
+        "update_strategy": "Re-check ciphertext sizes and latency per scheme."
+      },
+      "data": {
+        "inputs": [
+          "encrypted-vectors"
+        ],
+        "outputs": [
+          "encrypted-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Correctness, ciphertext size and latency on the target."
+      ],
+      "limitations": [
+        "Limited operation set; sizes/latency can be large."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenMined/TenSEAL",
+          "notes": "TenSEAL library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "privacy",
+        "homomorphic-encryption"
+      ],
+      "path": "pipelines/trust-and-safety/tenseal.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "lime",
