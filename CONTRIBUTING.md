@@ -14,7 +14,8 @@ Use primary sources where possible. Unknown values stay unknown; do not infer RA
 ## Tooling
 - `npm run validate` — schema + rule validation of all entries.
 - `npm run check` — validate, tests and generated-output freshness.
-- `npm run test` — unit tests (catalogue, business metadata, need matcher, i18n, explorer).
+- `npm run test` — unit tests (catalogue, business metadata, need matcher, i18n, explorer, package API, CLIs).
+- `npm run test:coverage` — the same suite with a coverage gate (lines ≥ 90, functions ≥ 75, branches ≥ 65). Enforced on pull requests.
 - `npm run search -- --domain finance --usage pretrained` — metadata search.
 - `npm run need -- "detect people offline with a tiny model"` — offline need matcher (same engine as the site).
 - `npm run audit` — catalogue hygiene (id/filename, naming, descriptions, duplicates, coverage).

@@ -69,6 +69,25 @@
     "requires-training": 128,
     "unknown": 50
   },
+  "evidence": {
+    "entries_with_source": 539,
+    "entries_official_link_only": 522,
+    "entries_multiple_or_non_official": 17,
+    "items_by_type": {
+      "official": 546,
+      "paper": 10,
+      "vendor": 0,
+      "community": 0,
+      "benchmark": 0
+    },
+    "measured_ram": 0,
+    "reproduced": 3,
+    "reported": 10,
+    "theoretical": 0,
+    "unsupported": 0,
+    "entries_with_evaluation": 489,
+    "entries_with_limitations": 489
+  },
   "unknowns": {
     "usage": 50,
     "code_license": 43,
@@ -76,5 +95,5 @@
     "measured_peak_ram": 539
   },
   "reproduced_entries": 3,
-  "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."
+  "note": "Counts describe catalogue coverage, not deployment guarantees. Every entry carries at least one source link, but most stop at an official link with no measured or reproduced evidence. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."
 }

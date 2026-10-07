@@ -6,6 +6,16 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- `generated/coverage.json` now includes an `evidence` block: source counts by
+  type, official-link-only vs multi-source, measured RAM, reproduced/reported
+  compatibility and evaluation/limitation coverage.
+- README "At a glance" carries a generated Evidence row so the evidence gap is
+  visible rather than implied.
+- `npm run test:coverage` (Node's built-in V8 coverage) with a line/function/
+  branch gate, enforced on pull requests; CLI tests for `validate`, `audit`,
+  `audit --strict` and `search`.
+
 ## [0.2.0] - 2026-10-07
 
 ### Added

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
-import { Entry, loadEntries, validateEntries, renderCatalogue, renderFullIndex, renderCoverage, filterEntries, usageOf } from '../scripts/catalog.ts';
+import { Entry, loadEntries, validateEntries, renderCatalogue, renderFullIndex, renderCoverage, renderAtAGlance, filterEntries, usageOf } from '../scripts/catalog.ts';
 const entries = await loadEntries();
 const batch = JSON.parse(await fs.readFile('docs/batches/business-2026-10-05.json', 'utf8'));
 const additions = entries.filter(e => e.catalogue_batch === batch.id);
@@ -89,6 +89,18 @@ test('coverage totals reconcile and expose missing measurements', () => {
   assert.equal(report.unknowns.usage, entries.filter(e => usageOf(e) === 'unknown').length);
   assert.equal(report.unknowns.measured_peak_ram, entries.filter(e => e.requirements?.ram_mb?.measured_peak == null).length);
   assert.ok(report.unknowns.measured_peak_ram >= additions.length);
+});
+
+test('coverage and the README expose evidence depth honestly', () => {
+  const report = JSON.parse(renderCoverage(entries));
+  const sourced = entries.filter(e => (e.evidence ?? []).length > 0).length;
+  assert.equal(report.evidence.entries_with_source, sourced);
+  assert.equal(report.evidence.reproduced, report.reproduced_entries);
+  assert.equal(report.evidence.measured_ram, entries.filter(e => e.requirements?.ram_mb?.measured_peak != null).length);
+  assert.ok(report.evidence.entries_official_link_only + report.evidence.entries_multiple_or_non_official <= sourced);
+  const glance = renderAtAGlance(entries);
+  assert.match(glance, /\*\*Evidence\*\*/);
+  assert.match(glance, new RegExp(`${sourced} sourced`));
 });
 
 test('the business guide links every added manifest', async () => {

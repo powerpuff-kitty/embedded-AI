@@ -68,6 +68,7 @@ The generated JSON also ships directly: `embedded-ai-catalog/catalog.json`, `emb
 | **539 entries** | models, collections, pipelines, toolkits and primitives |
 | **54 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
+| **Evidence** | 539 sourced · 3 reproduced · 0 measured RAM · 157 unknown weights |
 <!-- AT-A-GLANCE:END -->
 
 ## Domains

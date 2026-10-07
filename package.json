@@ -28,6 +28,7 @@
     "audit": "tsx scripts/audit.ts",
     "licences": "tsx scripts/licences.ts",
     "test": "tsx --test tests/*.test.ts",
+    "test:coverage": "node --import tsx --test --experimental-test-coverage --test-coverage-lines=90 --test-coverage-functions=75 --test-coverage-branches=65 tests/*.test.ts",
     "check": "npm run validate && npm test && npm run index -- --check",
     "site:build": "tsx scripts/build-site.ts",
     "site:serve": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",

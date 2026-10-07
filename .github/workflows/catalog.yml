@@ -19,7 +19,9 @@ jobs:
         with: {node-version: 22, package-manager-cache: false}
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=high
-      - run: npm run check
+      - run: npm run validate
+      - run: npm run test:coverage
+      - run: npm run index -- --check
       - run: npm run audit -- --strict
       - run: npm run reviews:check
       - run: npm run site:build

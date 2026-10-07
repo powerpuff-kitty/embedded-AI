@@ -106,12 +106,17 @@ export function renderCataloguePage(entries: Entry[]): string {
 export function renderAtAGlance(entries: Entry[]): string {
   const domains = new Set(entries.map(e => e.domain)).size;
   const kinds = new Set(entries.map(kindOf)).size;
+  const sourced = entries.filter(e => (e.evidence ?? []).length > 0).length;
+  const reproduced = entries.filter(e => (e.compatibility ?? []).some((c: any) => c.status === 'reproduced')).length;
+  const measuredRam = entries.filter(e => e.requirements?.ram_mb?.measured_peak != null).length;
+  const unknownWeights = entries.filter(e => e.license.weights === 'unknown').length;
   return [
     '| | |',
     '|---|---|',
     `| **${entries.length} entries** | models, collections, pipelines, toolkits and primitives |`,
     `| **${domains} domains** | vision, audio, language, robotics, gaming, genomics and more |`,
     `| **${kinds} kinds** | model · collection · pipeline · toolkit · primitive |`,
+    `| **Evidence** | ${sourced} sourced · ${reproduced} reproduced · ${measuredRam} measured RAM · ${unknownWeights} unknown weights |`,
   ].join('\n');
 }
 const DOMAIN_ORDER = ['audio', 'video', 'vision', 'language', 'geospatial', 'weather', 'climate', 'time-series', 'engineering', 'robotics', 'control', 'science', 'genomics', 'drug-discovery', 'sensors', 'mapping', 'simulation', 'gaming', 'music', 'healthcare', 'agriculture', 'automotive', 'manufacturing', 'finance', 'fraud-detection', 'recommendation', 'administrative', 'business', 'infrastructure', 'energy', 'security', 'runtime', 'telecom', 'networking', 'benchmark', 'artificial-life', 'neuromorphic', 'event-vision', 'education', 'trust-and-safety', 'federated-learning', 'quantum', 'marine', 'accessibility', 'environment', 'fashion', 'space', 'hydrology', 'forestry', 'sports', 'graph', 'retrieval', 'agents', 'reasoning'];
@@ -141,11 +146,25 @@ export function renderFullIndex(entries: Entry[]): string {
 }
 export function renderCoverage(entries: Entry[]): string {
   const countBy = (fn: (e: Entry) => string) => Object.fromEntries([...new Set(entries.map(fn))].sort(cmp).map(key => [key, entries.filter(e => fn(e) === key).length]));
+  const items = entries.flatMap(e => e.evidence ?? []);
+  const byType = (type: string) => items.filter((ev: any) => ev.type === type).length;
+  const compatCount = (status: string) => entries.filter(e => (e.compatibility ?? []).some((c: any) => c.status === status)).length;
+  const sourced = entries.filter(e => (e.evidence ?? []).length > 0);
   return JSON.stringify({ total: entries.length, by_domain: countBy(e => e.domain), by_kind: countBy(kindOf), by_usage: countBy(usageOf),
+    evidence: {
+      entries_with_source: sourced.length,
+      entries_official_link_only: sourced.filter(e => e.evidence.length === 1 && e.evidence.every((ev: any) => ev.type === 'official')).length,
+      entries_multiple_or_non_official: sourced.filter(e => e.evidence.length > 1 || e.evidence.some((ev: any) => ev.type !== 'official')).length,
+      items_by_type: { official: byType('official'), paper: byType('paper'), vendor: byType('vendor'), community: byType('community'), benchmark: byType('benchmark') },
+      measured_ram: entries.filter(e => e.requirements?.ram_mb?.measured_peak != null).length,
+      reproduced: compatCount('reproduced'), reported: compatCount('reported'), theoretical: compatCount('theoretical'), unsupported: compatCount('unsupported'),
+      entries_with_evaluation: entries.filter(e => (e.evaluation ?? []).length > 0).length,
+      entries_with_limitations: entries.filter(e => (e.limitations ?? []).length > 0).length
+    },
     unknowns: { usage: entries.filter(e => usageOf(e) === 'unknown').length, code_license: entries.filter(e => e.license.code === 'unknown').length,
       weights_license: entries.filter(e => e.license.weights === 'unknown').length, measured_peak_ram: entries.filter(e => e.requirements?.ram_mb?.measured_peak == null).length },
     reproduced_entries: entries.filter(e => e.compatibility.some((c: any) => c.status === 'reproduced')).length,
-    note: 'Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes.' }, null, 2) + '\n';
+    note: 'Counts describe catalogue coverage, not deployment guarantees. Every entry carries at least one source link, but most stop at an official link with no measured or reproduced evidence. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes.' }, null, 2) + '\n';
 }
 export function filterEntries(entries: Entry[], filters: { domain?: string; task?: string; kind?: string; usage?: string; query?: string } = {}): Entry[] {
   return entries.filter(e => (!filters.domain || e.domain === filters.domain) && (!filters.task || e.tasks.includes(filters.task)) &&
