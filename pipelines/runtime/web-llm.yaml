@@ -1,0 +1,23 @@
+id: web-llm
+name: WebLLM
+domain: runtime
+tasks: [in-browser-llm-inference, text-generation]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "In-browser LLM inference engine using WebGPU with no server."
+links: {repository: 'https://github.com/mlc-ai/web-llm', homepage: 'https://webllm.mlc.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [browser, desktop], notes: 'Requires a WebGPU-capable browser; performance varies by GPU.'}
+runtimes: [webgpu, mlc-native]
+formats: [mlc]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime; models are compiled from MLC artifacts.', needs_data: 'A compatible compiled model and a WebGPU browser.', update_strategy: 'Pin runtime and model; re-measure tokens/s per GPU.'}
+data: {inputs: [compiled-model, text-prompt], outputs: [generated-text], languages: []}
+evaluation: ['Tokens/s and memory on the target GPU/browser.']
+limitations: ['Model availability and speed depend on the browser and GPU.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mlc-ai/web-llm', notes: 'WebLLM in-browser inference.'}]
+reviewed: '2026-10-06'
+tags: [runtime, llm, webgpu, browser]

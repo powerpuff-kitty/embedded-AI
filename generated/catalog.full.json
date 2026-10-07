@@ -2475,6 +2475,257 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "ast",
+      "name": "AST (Audio Spectrogram Transformer)",
+      "domain": "audio",
+      "tasks": [
+        "audio-classification"
+      ],
+      "class": "audio-classification-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Transformer that classifies audio directly from spectrograms, with AudioSet-pretrained weights.",
+      "links": {
+        "repository": "https://github.com/YuanGongND/ast",
+        "paper": "https://arxiv.org/abs/2104.01778"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Transformer-scale; not a tiny embedded model."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained classifier; fine-tuning on target audio is expected.",
+        "needs_data": "Labelled audio for the target classes.",
+        "update_strategy": "Verify weight terms; revalidate on target audio."
+      },
+      "data": {
+        "inputs": [
+          "audio-spectrogram"
+        ],
+        "outputs": [
+          "class-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy/mAP on target classes."
+      ],
+      "limitations": [
+        "Weight terms not stated; transformer compute is desktop-scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/YuanGongND/ast",
+          "notes": "AST audio classification."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "classification",
+        "transformer"
+      ],
+      "path": "catalog/audio/classification/ast.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "panns",
+      "name": "PANNs",
+      "domain": "audio",
+      "tasks": [
+        "audio-tagging",
+        "sound-event-classification"
+      ],
+      "class": "audio-tagging-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Pretrained audio neural networks for tagging sound events across AudioSet classes.",
+      "links": {
+        "repository": "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+        "paper": "https://arxiv.org/abs/1912.10211"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "CNN14 and MobileNet variants; the mobile variant targets constrained inference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained taggers; fine-tuning on target audio is common.",
+        "needs_data": "Audio clips with tags for evaluation/adaptation.",
+        "update_strategy": "Verify weight terms; revalidate mAP on target audio."
+      },
+      "data": {
+        "inputs": [
+          "audio-clip"
+        ],
+        "outputs": [
+          "sound-event-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP on target sound classes plus latency."
+      ],
+      "limitations": [
+        "Weight terms not stated; class set follows AudioSet."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/qiuqiangkong/audioset_tagging_cnn",
+          "notes": "PANNs audio tagging models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tagging",
+        "audio-set"
+      ],
+      "path": "catalog/audio/classification/panns.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "clap",
+      "name": "CLAP (Contrastive Language-Audio Pretraining)",
+      "domain": "audio",
+      "tasks": [
+        "audio-text-similarity",
+        "zero-shot-audio-classification"
+      ],
+      "class": "audio-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Contrastive language-audio model that enables zero-shot audio classification from text.",
+      "links": {
+        "repository": "https://github.com/LAION-AI/CLAP",
+        "paper": "https://arxiv.org/abs/2206.04769"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "CC0-1.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Audio-encoder scale; not a microcontroller model."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot or fine-tuned audio-text matching.",
+        "needs_data": "Audio plus text labels for evaluation/adaptation.",
+        "update_strategy": "Verify weight terms; revalidate on target audio."
+      },
+      "data": {
+        "inputs": [
+          "audio",
+          "text"
+        ],
+        "outputs": [
+          "embeddings",
+          "similarity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Zero-shot classification/retrieval on target audio."
+      ],
+      "limitations": [
+        "Weight terms not stated; text prompts are English-centric."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/LAION-AI/CLAP",
+          "notes": "CLAP audio-text model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "clip",
+        "zero-shot",
+        "embeddings"
+      ],
+      "path": "catalog/audio/classification/clap.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "megadetector-acoustic",
       "name": "MegaDetector-Acoustic",
       "domain": "audio",
@@ -4240,6 +4491,90 @@
       "usage_mode": "companion"
     },
     {
+      "id": "bark",
+      "name": "Bark",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "audio-generation"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Transformer text-to-speech model that also generates laughter, music and sound effects.",
+      "links": {
+        "repository": "https://github.com/suno-ai/bark"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Needs a GPU for practical generation; small variants exist."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained generative TTS; not fine-tunable in the repo.",
+        "needs_data": "Text prompts and optional speaker history.",
+        "update_strategy": "Verify weight terms; re-measure real-time factor."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "voice-prompt"
+        ],
+        "outputs": [
+          "speech-audio"
+        ],
+        "languages": [
+          "multilingual-models"
+        ]
+      },
+      "evaluation": [
+        "Intelligibility, naturalness and real-time factor on the target."
+      ],
+      "limitations": [
+        "Weight terms not stated; generative output can vary."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/suno-ai/bark",
+          "notes": "Bark text-prompted audio model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "text-to-speech",
+        "generative"
+      ],
+      "path": "catalog/audio/text-to-speech/bark.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "kokoro-82m",
       "name": "Kokoro-82M",
       "domain": "audio",
@@ -4514,6 +4849,90 @@
       },
       "path": "catalog/audio/vad/silero-vad.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "rvc",
+      "name": "RVC (Retrieval-based Voice Conversion)",
+      "domain": "audio",
+      "tasks": [
+        "voice-conversion",
+        "speech-synthesis"
+      ],
+      "class": "voice-conversion-toolkit",
+      "kind": "pipeline",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Voice-conversion toolkit that trains a target voice from short recordings and converts speech.",
+      "links": {
+        "repository": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "GPU recommended; real-time conversion is possible on desktop GPUs."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a voice model from minutes of target-speaker audio.",
+        "needs_data": "Clean target-speaker recordings; consent is essential.",
+        "update_strategy": "Version datasets and checkpoints; revalidate quality."
+      },
+      "data": {
+        "inputs": [
+          "source-speech",
+          "voice-model"
+        ],
+        "outputs": [
+          "converted-speech"
+        ],
+        "languages": [
+          "multilingual-voices"
+        ]
+      },
+      "evaluation": [
+        "Speaker similarity and naturalness; consent and misuse review."
+      ],
+      "limitations": [
+        "Voice cloning raises consent and misuse concerns; weight terms vary per model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI",
+          "notes": "RVC voice conversion."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "voice-conversion",
+        "voice-cloning"
+      ],
+      "path": "pipelines/audio/rvc.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "esp-sr",
@@ -12287,6 +12706,91 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "pyod",
+      "name": "PyOD",
+      "domain": "infrastructure",
+      "tasks": [
+        "anomaly-detection",
+        "outlier-detection"
+      ],
+      "class": "anomaly-detection-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library of 60+ anomaly-detection algorithms across tabular, time-series, image and graph data.",
+      "links": {
+        "repository": "https://github.com/yzhao062/pyod",
+        "paper": "https://www.jmlr.org/papers/v20/19-011.html"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-2-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Classical detectors can be lightweight; neural detectors need more compute."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn",
+        "pytorch"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits detectors on normal or labelled data.",
+        "needs_data": "Representative data and a labelled anomaly set for evaluation.",
+        "update_strategy": "Re-tune thresholds; monitor drift and false alarms."
+      },
+      "data": {
+        "inputs": [
+          "feature-vector",
+          "time-series"
+        ],
+        "outputs": [
+          "anomaly-score",
+          "outlier-label"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Precision/recall and AUC at the operating threshold."
+      ],
+      "limitations": [
+        "High scores are not proof of an incident; threshold choice is critical."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/yzhao062/pyod",
+          "notes": "PyOD anomaly-detection library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "infrastructure",
+        "anomaly-detection",
+        "classical-ml"
+      ],
+      "path": "pipelines/infrastructure/pyod.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "merlion",
       "name": "Merlion",
       "domain": "infrastructure",
@@ -12998,6 +13502,97 @@
         "cpu"
       ],
       "path": "pipelines/language/fastembed.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "flagembedding",
+      "name": "FlagEmbedding (BGE)",
+      "domain": "language",
+      "tasks": [
+        "embeddings",
+        "semantic-search",
+        "reranking",
+        "retrieval"
+      ],
+      "class": "embedding-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "BGE embedding and reranker family for retrieval and retrieval-augmented generation.",
+      "links": {
+        "repository": "https://github.com/FlagOpen/FlagEmbedding",
+        "model": "https://huggingface.co/BAAI/bge-small-en-v1.5"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small/base/large variants; small models can run on constrained inference."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings/rerankers; fine-tuning on domain pairs improves retrieval.",
+        "needs_data": "Text corpus; (query, passage) pairs for fine-tuning/evaluation.",
+        "update_strategy": "Pin model; re-embed the corpus and re-benchmark recall on upgrade."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector",
+          "relevance-score"
+        ],
+        "languages": [
+          "multilingual-models"
+        ]
+      },
+      "evaluation": [
+        "Retrieval recall/nDCG and reranking quality on the target corpus."
+      ],
+      "limitations": [
+        "Embedding models inherit training bias; index must be rebuilt on change."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/FlagOpen/FlagEmbedding",
+          "notes": "BGE embedding and reranker family."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "reranking"
+      ],
+      "path": "pipelines/language/flagembedding.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -17108,6 +17703,93 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "openpi",
+      "name": "OpenPI",
+      "domain": "robotics",
+      "tasks": [
+        "robot-policy",
+        "vision-language-action",
+        "robot-manipulation"
+      ],
+      "class": "robot-policy-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Physical Intelligence open models and runtime for general-purpose robot policies.",
+      "links": {
+        "repository": "https://github.com/Physical-Intelligence/openpi"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Large policy models; typically served on a workstation."
+      },
+      "runtimes": [
+        "jax",
+        "pytorch"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained policies plus fine-tuning to a target robot.",
+        "needs_data": "Robot observations and demonstrations for adaptation.",
+        "update_strategy": "Verify weight terms; revalidate on the robot with safety bounds."
+      },
+      "data": {
+        "inputs": [
+          "camera-observations",
+          "instruction"
+        ],
+        "outputs": [
+          "robot-actions"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task success on the target robot plus inference latency."
+      ],
+      "limitations": [
+        "Weight terms not stated; needs a robot and safety validation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Physical-Intelligence/openpi",
+          "notes": "OpenPI robot policy models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "vla",
+        "manipulation",
+        "pretrained"
+      ],
+      "path": "catalog/robotics/policies/openpi.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "octo",
       "name": "Octo",
       "domain": "robotics",
@@ -17345,6 +18027,91 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "diffusion-policy",
+      "name": "Diffusion Policy",
+      "domain": "robotics",
+      "tasks": [
+        "visuomotor-policy",
+        "imitation-learning",
+        "robot-manipulation"
+      ],
+      "class": "robot-policy-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Visuomotor policy that represents robot actions as a learned diffusion process.",
+      "links": {
+        "repository": "https://github.com/real-stanford/diffusion_policy",
+        "paper": "https://arxiv.org/abs/2303.04137"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Trains on demonstrations; deployment to real robots is a separate step."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains diffusion policies from demonstration datasets.",
+        "needs_data": "Robot demonstrations with synchronized observations/actions.",
+        "update_strategy": "Revalidate on the target robot; enforce safety limits."
+      },
+      "data": {
+        "inputs": [
+          "camera-observations",
+          "robot-state"
+        ],
+        "outputs": [
+          "action-trajectories"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task success on the target robot plus control-rate latency."
+      ],
+      "limitations": [
+        "Policies are embodiment-specific; real-robot safety must be enforced."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/real-stanford/diffusion_policy",
+          "notes": "Diffusion Policy robot learning."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "robotics",
+        "imitation-learning",
+        "diffusion",
+        "manipulation"
+      ],
+      "path": "catalog/robotics/policies/diffusion-policy.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "maixpy",
       "name": "MaixPy",
       "domain": "runtime",
@@ -17434,6 +18201,181 @@
         "vision"
       ],
       "path": "pipelines/runtime/maixpy.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "ggml",
+      "name": "ggml",
+      "domain": "runtime",
+      "tasks": [
+        "edge-inference",
+        "quantization",
+        "model-execution"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Tensor library and quantization format underlying llama.cpp, whisper.cpp and others.",
+      "links": {
+        "repository": "https://github.com/ggml-org/ggml",
+        "homepage": "https://ggml.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "mobile",
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU-focused with optional GPU backends; enables low-bit quantized inference."
+      },
+      "runtimes": [
+        "ggml-native"
+      ],
+      "formats": [
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime/tensor library; supports training experiments too.",
+        "needs_data": "A converted GGUF model or program using the ggml API.",
+        "update_strategy": "Pin version; re-measure per quantization and target."
+      },
+      "data": {
+        "inputs": [
+          "gguf-model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency, memory and quality at the chosen quantization."
+      ],
+      "limitations": [
+        "Low-level library; most users consume it via llama.cpp-family tools."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ggml-org/ggml",
+          "notes": "ggml tensor library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "ggml",
+        "quantization",
+        "edge"
+      ],
+      "path": "pipelines/runtime/ggml.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "tract",
+      "name": "tract",
+      "domain": "runtime",
+      "tasks": [
+        "embedded-inference",
+        "onnx-inference",
+        "tensorflow-inference"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Self-contained Rust inference engine for ONNX and TensorFlow models, aimed at embedded targets.",
+      "links": {
+        "repository": "https://github.com/sonos/tract"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "mobile",
+          "desktop",
+          "browser"
+        ],
+        "notes": "No heavy dependencies; designed for small footprint and embedded Rust."
+      },
+      "runtimes": [
+        "tract-native",
+        "wasm"
+      ],
+      "formats": [
+        "onnx",
+        "tensorflow"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Inference only; models are trained elsewhere.",
+        "needs_data": "An ONNX or TensorFlow model.",
+        "update_strategy": "Pin version; re-measure footprint and latency per target."
+      },
+      "data": {
+        "inputs": [
+          "onnx-model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Footprint, latency and accuracy on the embedded target."
+      ],
+      "limitations": [
+        "Code licence ambiguous (NOASSERTION); operator coverage varies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/sonos/tract",
+          "notes": "tract embedded inference engine."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "rust",
+        "embedded",
+        "onnx"
+      ],
+      "path": "pipelines/runtime/tract.yaml",
       "usage_mode": "companion"
     },
     {
@@ -17610,6 +18552,351 @@
         "quantization"
       ],
       "path": "pipelines/runtime/vitis-ai.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "transformers-js",
+      "name": "Transformers.js",
+      "domain": "runtime",
+      "tasks": [
+        "in-browser-inference",
+        "on-device-inference"
+      ],
+      "class": "on-device-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Run Hugging Face Transformers models directly in the browser or Node.js via ONNX.",
+      "links": {
+        "repository": "https://github.com/huggingface/transformers.js",
+        "homepage": "https://huggingface.co/docs/transformers.js"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "WebGPU/WASM backends; model weights are fetched at runtime."
+      },
+      "runtimes": [
+        "onnxruntime",
+        "wasm",
+        "webgpu"
+      ],
+      "formats": [
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime; uses ONNX-exported models.",
+        "needs_data": "An ONNX model and a web/Node environment.",
+        "update_strategy": "Pin library and model; re-measure per browser/device."
+      },
+      "data": {
+        "inputs": [
+          "onnx-model",
+          "input-data"
+        ],
+        "outputs": [
+          "predictions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency and accuracy on the target browser and model size."
+      ],
+      "limitations": [
+        "Model coverage is limited to supported ONNX exports; first load downloads weights."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/transformers.js",
+          "notes": "Transformers.js web runtime."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "browser",
+        "onnx",
+        "transformers"
+      ],
+      "path": "pipelines/runtime/transformers-js.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "web-llm",
+      "name": "WebLLM",
+      "domain": "runtime",
+      "tasks": [
+        "in-browser-llm-inference",
+        "text-generation"
+      ],
+      "class": "on-device-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "In-browser LLM inference engine using WebGPU with no server.",
+      "links": {
+        "repository": "https://github.com/mlc-ai/web-llm",
+        "homepage": "https://webllm.mlc.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Requires a WebGPU-capable browser; performance varies by GPU."
+      },
+      "runtimes": [
+        "webgpu",
+        "mlc-native"
+      ],
+      "formats": [
+        "mlc"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime; models are compiled from MLC artifacts.",
+        "needs_data": "A compatible compiled model and a WebGPU browser.",
+        "update_strategy": "Pin runtime and model; re-measure tokens/s per GPU."
+      },
+      "data": {
+        "inputs": [
+          "compiled-model",
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Tokens/s and memory on the target GPU/browser."
+      ],
+      "limitations": [
+        "Model availability and speed depend on the browser and GPU."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mlc-ai/web-llm",
+          "notes": "WebLLM in-browser inference."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "llm",
+        "webgpu",
+        "browser"
+      ],
+      "path": "pipelines/runtime/web-llm.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "vllm",
+      "name": "vLLM",
+      "domain": "runtime",
+      "tasks": [
+        "llm-serving",
+        "high-throughput-inference"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "High-throughput LLM inference and serving engine using paged attention.",
+      "links": {
+        "repository": "https://github.com/vllm-project/vllm",
+        "homepage": "https://docs.vllm.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server"
+        ],
+        "notes": "GPU server engine; not an embedded runtime."
+      },
+      "runtimes": [
+        "pytorch",
+        "cuda"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serving runtime; models are trained and converted externally.",
+        "needs_data": "A supported model and GPU resources.",
+        "update_strategy": "Pin version; benchmark throughput and memory per model."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "requests"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual-models"
+        ]
+      },
+      "evaluation": [
+        "Throughput, latency and memory on the target GPU."
+      ],
+      "limitations": [
+        "Server/GPU scope; weight terms follow the model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/vllm-project/vllm",
+          "notes": "vLLM serving engine."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "llm",
+        "serving",
+        "gpu"
+      ],
+      "path": "pipelines/runtime/vllm.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "domain": "runtime",
+      "tasks": [
+        "local-llm-serving",
+        "text-generation"
+      ],
+      "class": "on-device-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Tooling that packages and serves local LLMs with a simple model runner.",
+      "links": {
+        "repository": "https://github.com/ollama/ollama",
+        "homepage": "https://ollama.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU and GPU; desktop/server scope rather than microcontrollers."
+      },
+      "runtimes": [
+        "llama-cpp-native",
+        "ggml"
+      ],
+      "formats": [
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime/serving; models are pulled as GGUF/quantized artifacts.",
+        "needs_data": "A pulled model and enough RAM for it.",
+        "update_strategy": "Pin runtime and model tags; re-measure memory and tokens/s."
+      },
+      "data": {
+        "inputs": [
+          "model-tag",
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual-models"
+        ]
+      },
+      "evaluation": [
+        "Tokens/s, memory and quality for the chosen quantization."
+      ],
+      "limitations": [
+        "Weight terms follow each pulled model; desktop scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ollama/ollama",
+          "notes": "Ollama local model runner."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "llm",
+        "gguf",
+        "local"
+      ],
+      "path": "pipelines/runtime/ollama.yaml",
       "usage_mode": "companion"
     },
     {
@@ -19688,6 +20975,183 @@
       "usage_mode": "companion"
     },
     {
+      "id": "burn",
+      "name": "Burn",
+      "domain": "runtime",
+      "tasks": [
+        "rust-deep-learning",
+        "on-device-inference",
+        "model-training"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Rust deep-learning framework with portable backends and ONNX import/export.",
+      "links": {
+        "repository": "https://github.com/tracel-ai/burn",
+        "homepage": "https://burn.dev/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge",
+          "browser"
+        ],
+        "notes": "Backends include ndarray (CPU), WGPU, CUDA and LibTorch; portable to embedded Rust."
+      },
+      "runtimes": [
+        "burn-native",
+        "wasm"
+      ],
+      "formats": [
+        "onnx",
+        "burn"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Supports training and inference in Rust.",
+        "needs_data": "A model definition or imported ONNX graph.",
+        "update_strategy": "Pin version/backend; re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency, memory and accuracy on the selected backend."
+      ],
+      "limitations": [
+        "Model coverage depends on the ONNX import path."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tracel-ai/burn",
+          "notes": "Burn Rust DL framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "rust",
+        "on-device",
+        "onnx"
+      ],
+      "path": "pipelines/runtime/burn.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "candle",
+      "name": "Candle",
+      "domain": "runtime",
+      "tasks": [
+        "rust-inference",
+        "on-device-inference",
+        "model-serving"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Minimalist Rust ML framework for running models natively, on-device and in WASM.",
+      "links": {
+        "repository": "https://github.com/huggingface/candle"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge",
+          "browser"
+        ],
+        "notes": "CPU, CUDA, Metal and WASM backends; a Rust-native alternative to Python runtimes."
+      },
+      "runtimes": [
+        "candle-native",
+        "wasm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Inference framework; supports some training.",
+        "needs_data": "A supported model in safetensors/GGUF.",
+        "update_strategy": "Pin version; re-measure per backend and target."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency, memory and accuracy on the chosen backend."
+      ],
+      "limitations": [
+        "Operator/model coverage is smaller than PyTorch."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/candle",
+          "notes": "Candle Rust ML framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "rust",
+        "on-device",
+        "wasm"
+      ],
+      "path": "pipelines/runtime/candle.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "audio-cpp",
       "name": "audio.cpp",
       "domain": "runtime",
@@ -19773,6 +21237,91 @@
         "cpp"
       ],
       "path": "pipelines/runtime/audio-cpp.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "ctranslate2",
+      "name": "CTranslate2",
+      "domain": "runtime",
+      "tasks": [
+        "transformer-inference",
+        "model-quantization"
+      ],
+      "class": "inference-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fast C++/Python inference engine for Transformer models with CPU quantization.",
+      "links": {
+        "repository": "https://github.com/OpenNMT/CTranslate2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "int8 quantization enables CPU edge inference; powers faster-whisper."
+      },
+      "runtimes": [
+        "ctranslate2-native",
+        "python"
+      ],
+      "formats": [
+        "ctranslate2"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runtime/quantizer; models are trained and converted elsewhere.",
+        "needs_data": "A supported model converted to CTranslate2 format.",
+        "update_strategy": "Pin version; re-measure memory and throughput per target."
+      },
+      "data": {
+        "inputs": [
+          "converted-model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency, memory and accuracy at the chosen quantization."
+      ],
+      "limitations": [
+        "Supports a subset of Transformer architectures."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenNMT/CTranslate2",
+          "notes": "CTranslate2 inference engine."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "transformer",
+        "quantization",
+        "cpu"
+      ],
+      "path": "pipelines/runtime/ctranslate2.yaml",
       "usage_mode": "companion"
     },
     {
@@ -23386,6 +24935,87 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "moirai",
+      "name": "Moirai (uni2ts)",
+      "domain": "time-series",
+      "tasks": [
+        "forecasting"
+      ],
+      "class": "time-series-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Salesforce universal time-series forecasting transformer series (Moirai).",
+      "links": {
+        "repository": "https://github.com/SalesforceAIResearch/uni2ts",
+        "paper": "https://arxiv.org/abs/2402.02592"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Small/base/large variants; largely desktop/server scale."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot or fine-tuned forecasting.",
+        "needs_data": "Time series with rolling validation.",
+        "update_strategy": "Verify weight terms; revalidate on target series."
+      },
+      "data": {
+        "inputs": [
+          "historic-time-series"
+        ],
+        "outputs": [
+          "forecast-horizon"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin metrics across series and frequencies."
+      ],
+      "limitations": [
+        "Weight terms not stated; foundation priors need domain validation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/SalesforceAIResearch/uni2ts",
+          "notes": "Moirai / uni2ts forecasting."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "foundation-model"
+      ],
+      "path": "catalog/time-series/forecasting/moirai.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "orbit",
       "name": "Orbit",
       "domain": "time-series",
@@ -23640,6 +25270,88 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "timesfm",
+      "name": "TimesFM",
+      "domain": "time-series",
+      "tasks": [
+        "forecasting"
+      ],
+      "class": "time-series-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google Research pretrained foundation model for zero-shot time-series forecasting.",
+      "links": {
+        "repository": "https://github.com/google-research/timesfm",
+        "paper": "https://arxiv.org/abs/2310.10688"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Decoder transformer; 200M-class checkpoints, not microcontroller scale."
+      },
+      "runtimes": [
+        "pytorch",
+        "jax"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot forecasting or fine-tuning on target series.",
+        "needs_data": "Historical time series with rolling validation.",
+        "update_strategy": "Verify weight terms; backtest on rolling windows."
+      },
+      "data": {
+        "inputs": [
+          "historic-time-series"
+        ],
+        "outputs": [
+          "forecast-horizon"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Rolling-origin error versus naive and statistical baselines."
+      ],
+      "limitations": [
+        "Weight terms not stated; foundation priors can mislead on unusual series."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/timesfm",
+          "notes": "TimesFM forecasting model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "foundation-model"
+      ],
+      "path": "catalog/time-series/forecasting/timesfm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "tiny-time-mixer",
       "name": "TinyTimeMixer",
       "kind": "model",
@@ -23815,6 +25527,170 @@
       ],
       "path": "pipelines/time-series/neuralforecast.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "gluonts",
+      "name": "GluonTS",
+      "domain": "time-series",
+      "tasks": [
+        "probabilistic-forecasting",
+        "time-series-model-evaluation"
+      ],
+      "class": "forecasting-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "AWS toolkit for probabilistic time-series modelling and large-scale forecasting experiments.",
+      "links": {
+        "repository": "https://github.com/awslabs/gluonts",
+        "homepage": "https://ts.gluon.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/evaluation framework; not a device runtime."
+      },
+      "runtimes": [
+        "pytorch",
+        "mxnet"
+      ],
+      "formats": [],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains classical and neural probabilistic forecasting models.",
+        "needs_data": "Time series with correct temporal splits.",
+        "update_strategy": "Backtest on rolling windows; refit as data drifts."
+      },
+      "data": {
+        "inputs": [
+          "time-series",
+          "covariates"
+        ],
+        "outputs": [
+          "forecast-distributions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Probabilistic metrics (CRPS, quantile losses) on rolling origins."
+      ],
+      "limitations": [
+        "Large dependency footprint; random splits invalid."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/awslabs/gluonts",
+          "notes": "GluonTS forecasting toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "probabilistic",
+        "toolkit"
+      ],
+      "path": "pipelines/time-series/gluonts.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "lag-llama",
+      "name": "Lag-Llama",
+      "domain": "time-series",
+      "tasks": [
+        "probabilistic-forecasting"
+      ],
+      "class": "time-series-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Foundation model for probabilistic time-series forecasting with uncertainty estimates.",
+      "links": {
+        "repository": "https://github.com/time-series-foundation-models/lag-llama",
+        "paper": "https://arxiv.org/abs/2310.02880"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Lagged transformer; desktop/server scale."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained probabilistic forecaster; fine-tuning is supported.",
+        "needs_data": "Time series with rolling validation.",
+        "update_strategy": "Verify weight terms; calibrate on target data."
+      },
+      "data": {
+        "inputs": [
+          "historic-time-series"
+        ],
+        "outputs": [
+          "forecast-distribution"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Calibration and probabilistic metrics on held-out windows."
+      ],
+      "limitations": [
+        "Weight terms not stated; uncertainty calibration is data-dependent."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/time-series-foundation-models/lag-llama",
+          "notes": "Lag-Llama probabilistic forecasting."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "time-series",
+        "forecasting",
+        "probabilistic"
+      ],
+      "path": "catalog/time-series/forecasting/lag-llama.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "statsforecast",
@@ -26407,6 +28283,178 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "dinov2",
+      "name": "DINOv2",
+      "domain": "vision",
+      "tasks": [
+        "image-embeddings",
+        "self-supervised-representations",
+        "feature-extraction"
+      ],
+      "class": "vision-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Self-supervised vision transformer family producing strong general-purpose image features.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/dinov2",
+        "paper": "https://arxiv.org/abs/2304.07193"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "ViT-S/B/L variants; larger backbones need GPU memory."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Frozen features or fine-tuning per task.",
+        "needs_data": "Task-labelled images for probes or fine-tuning.",
+        "update_strategy": "Verify weight terms; revalidate on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "embeddings",
+          "dense-features"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Linear-probe or fine-tuned accuracy on the target task."
+      ],
+      "limitations": [
+        "Weight terms not stated; large variants are not embedded-friendly."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/dinov2",
+          "notes": "DINOv2 code and models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "embeddings",
+        "self-supervised",
+        "transformer"
+      ],
+      "path": "catalog/vision/embeddings/dinov2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "efficient-sam",
+      "name": "EfficientSAM",
+      "domain": "vision",
+      "tasks": [
+        "image-segmentation",
+        "edge-segmentation"
+      ],
+      "class": "segmentation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Lightweight Segment Anything variants distilled for efficient inference.",
+      "links": {
+        "repository": "https://github.com/yformer/EfficientSAM",
+        "paper": "https://arxiv.org/abs/2312.00863"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "Tiny/Small encoders target constrained inference."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained efficient encoders; fine-tuning is optional.",
+        "needs_data": "Images and prompts; masks for evaluation.",
+        "update_strategy": "Verify weight terms; re-measure latency on the target."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "prompts"
+        ],
+        "outputs": [
+          "segmentation-masks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Mask quality versus latency on the target device."
+      ],
+      "limitations": [
+        "Weight terms not stated; quality trails full SAM."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/yformer/EfficientSAM",
+          "notes": "EfficientSAM models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "segmentation",
+        "efficient",
+        "edge"
+      ],
+      "path": "catalog/vision/segmentation/efficient-sam.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "mobile-sam",
       "name": "MobileSAM",
       "kind": "model",
@@ -26811,6 +28859,96 @@
       ],
       "path": "catalog/vision/embeddings/mobileclip2-s0.yaml",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "open-clip",
+      "name": "OpenCLIP",
+      "domain": "vision",
+      "tasks": [
+        "image-text-similarity",
+        "zero-shot-image-classification",
+        "embeddings"
+      ],
+      "class": "vision-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Open-source implementation of CLIP with many pretrained image-text checkpoint families.",
+      "links": {
+        "repository": "https://github.com/mlfoundations/open_clip"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Includes small ViT-B and distilled variants; larger checkpoints need GPU."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot use or fine-tuning; text embeddings can be precomputed for fixed labels.",
+        "needs_data": "Images plus class prompts; labelled data for fine-tuning/evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on target distribution."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "text"
+        ],
+        "outputs": [
+          "embeddings",
+          "similarity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Zero-shot top-1 or retrieval recall on the target data."
+      ],
+      "limitations": [
+        "Code licence ambiguous (NOASSERTION) and weight terms vary per checkpoint."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mlfoundations/open_clip",
+          "notes": "OpenCLIP checkpoints and training code."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "clip",
+        "embeddings",
+        "zero-shot"
+      ],
+      "path": "catalog/vision/embeddings/open-clip.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "superpoint",
@@ -27319,6 +29457,92 @@
       ],
       "path": "catalog/vision/depth/lite-mono.yaml",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "midas",
+      "name": "MiDaS",
+      "domain": "vision",
+      "tasks": [
+        "monocular-depth-estimation"
+      ],
+      "class": "depth-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Robust monocular depth estimation with several small and large model variants.",
+      "links": {
+        "repository": "https://github.com/isl-org/MiDaS",
+        "paper": "https://arxiv.org/abs/1907.01341"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "MiDaS small uses a lightweight backbone; larger variants are desktop-scale."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx",
+        "tflite"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained relative-depth models; fine-tuning on domain data is possible.",
+        "needs_data": "Images; labelled depth for evaluation.",
+        "update_strategy": "Verify weight terms; revalidate scale and latency."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "relative-depth-map"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Depth error on target scenes; note relative vs metric depth."
+      ],
+      "limitations": [
+        "Relative depth is not distance in metres; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/isl-org/MiDaS",
+          "notes": "MiDaS depth models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "depth",
+        "monocular",
+        "edge"
+      ],
+      "path": "catalog/vision/depth/midas.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "zipdepth",
@@ -28503,6 +30727,94 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "rt-detr",
+      "name": "RT-DETR",
+      "domain": "vision",
+      "tasks": [
+        "object-detection",
+        "real-time-detection"
+      ],
+      "class": "detector-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Real-time detection transformer family with compact variants for edge inference.",
+      "links": {
+        "repository": "https://github.com/lyuwenyu/RT-DETR",
+        "paper": "https://arxiv.org/abs/2304.08069"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Includes R18/R34 compact models and export to ONNX/TensorRT."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained detectors; fine-tuning on custom classes is typical.",
+        "needs_data": "Labelled detection data for the target classes.",
+        "update_strategy": "Re-export and re-benchmark; verify weight terms."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "detection-boxes",
+          "classes"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP on target classes plus post-export latency."
+      ],
+      "limitations": [
+        "Weight terms not stated; transformer detectors need more compute than tiny CNNs."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lyuwenyu/RT-DETR",
+          "notes": "RT-DETR detectors."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "detection",
+        "transformer",
+        "realtime"
+      ],
+      "path": "catalog/vision/detection/rt-detr.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "ultralytics",
       "name": "Ultralytics YOLO",
       "domain": "vision",
@@ -29499,6 +31811,92 @@
       "usage_mode": "companion"
     },
     {
+      "id": "u2net",
+      "name": "U^2-Net",
+      "domain": "vision",
+      "tasks": [
+        "salient-object-detection",
+        "background-removal",
+        "image-segmentation"
+      ],
+      "class": "saliency-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Nested U-structure network for salient object detection and background removal.",
+      "links": {
+        "repository": "https://github.com/xuebinqin/U-2-Net",
+        "paper": "https://arxiv.org/abs/2005.09007"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge"
+        ],
+        "notes": "Widely used for on-device background removal; small variant exists."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained saliency models; fine-tuning on domain data is possible.",
+        "needs_data": "Images; masks for evaluation.",
+        "update_strategy": "Verify weight terms; re-measure latency and edge quality."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "saliency-mask"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Mask edge quality and latency on representative images."
+      ],
+      "limitations": [
+        "Weight terms not stated; quality degrades on complex or transparent subjects."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/xuebinqin/U-2-Net",
+          "notes": "U^2-Net saliency models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "saliency",
+        "segmentation",
+        "background-removal"
+      ],
+      "path": "catalog/vision/segmentation/u2net.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "mmsegmentation",
       "name": "MMSegmentation",
       "domain": "vision",
@@ -30059,6 +32457,94 @@
       ],
       "path": "pipelines/vision/cosmo-edge.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "sam2",
+      "name": "SAM 2",
+      "domain": "vision",
+      "tasks": [
+        "video-segmentation",
+        "promptable-segmentation",
+        "object-tracking"
+      ],
+      "class": "segmentation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta Segment Anything Model 2 for promptable segmentation in images and video.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/sam2",
+        "paper": "https://arxiv.org/abs/2408.00714"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Tiny/Small variants exist; larger models need GPU."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained segmentation models; fine-tuning on domain data is optional.",
+        "needs_data": "Images/video and prompts; labelled masks for evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate masks and latency per target."
+      },
+      "data": {
+        "inputs": [
+          "image-or-video",
+          "prompts"
+        ],
+        "outputs": [
+          "segmentation-masks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Mask IoU against references plus prompt latency on the target."
+      ],
+      "limitations": [
+        "Compute-heavy for small devices; not a semantic labeller by itself."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/sam2",
+          "notes": "SAM 2 models and inference."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "segmentation",
+        "video",
+        "promptable"
+      ],
+      "path": "catalog/vision/segmentation/sam2.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "anomalib",

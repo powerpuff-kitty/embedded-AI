@@ -1,0 +1,23 @@
+id: ollama
+name: Ollama
+domain: runtime
+tasks: [local-llm-serving, text-generation]
+class: on-device-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Tooling that packages and serves local LLMs with a simple model runner."
+links: {repository: 'https://github.com/ollama/ollama', homepage: 'https://ollama.com/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server], notes: 'CPU and GPU; desktop/server scope rather than microcontrollers.'}
+runtimes: [llama-cpp-native, ggml]
+formats: [gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/serving; models are pulled as GGUF/quantized artifacts.', needs_data: 'A pulled model and enough RAM for it.', update_strategy: 'Pin runtime and model tags; re-measure memory and tokens/s.'}
+data: {inputs: [model-tag, text-prompt], outputs: [generated-text], languages: [multilingual-models]}
+evaluation: ['Tokens/s, memory and quality for the chosen quantization.']
+limitations: ['Weight terms follow each pulled model; desktop scale.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ollama/ollama', notes: 'Ollama local model runner.'}]
+reviewed: '2026-10-06'
+tags: [runtime, llm, gguf, local]

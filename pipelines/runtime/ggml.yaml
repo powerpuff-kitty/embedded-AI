@@ -1,0 +1,23 @@
+id: ggml
+name: ggml
+domain: runtime
+tasks: [edge-inference, quantization, model-execution]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Tensor library and quantization format underlying llama.cpp, whisper.cpp and others."
+links: {repository: 'https://github.com/ggml-org/ggml', homepage: 'https://ggml.ai/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-applicable}
+deployment: {offline: true, targets: [edge, mobile, desktop, server], notes: 'CPU-focused with optional GPU backends; enables low-bit quantized inference.'}
+runtimes: [ggml-native]
+formats: [gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runtime/tensor library; supports training experiments too.', needs_data: 'A converted GGUF model or program using the ggml API.', update_strategy: 'Pin version; re-measure per quantization and target.'}
+data: {inputs: [gguf-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and quality at the chosen quantization.']
+limitations: ['Low-level library; most users consume it via llama.cpp-family tools.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ggml-org/ggml', notes: 'ggml tensor library.'}]
+reviewed: '2026-10-06'
+tags: [runtime, ggml, quantization, edge]

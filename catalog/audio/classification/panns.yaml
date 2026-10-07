@@ -1,0 +1,23 @@
+id: panns
+name: PANNs
+domain: audio
+tasks: [audio-tagging, sound-event-classification]
+class: audio-tagging-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Pretrained audio neural networks for tagging sound events across AudioSet classes."
+links: {repository: 'https://github.com/qiuqiangkong/audioset_tagging_cnn', paper: 'https://arxiv.org/abs/1912.10211'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'CNN14 and MobileNet variants; the mobile variant targets constrained inference.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained taggers; fine-tuning on target audio is common.', needs_data: 'Audio clips with tags for evaluation/adaptation.', update_strategy: 'Verify weight terms; revalidate mAP on target audio.'}
+data: {inputs: [audio-clip], outputs: [sound-event-scores], languages: []}
+evaluation: ['mAP on target sound classes plus latency.']
+limitations: ['Weight terms not stated; class set follows AudioSet.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/qiuqiangkong/audioset_tagging_cnn', notes: 'PANNs audio tagging models.'}]
+reviewed: '2026-10-06'
+tags: [audio, tagging, audio-set]

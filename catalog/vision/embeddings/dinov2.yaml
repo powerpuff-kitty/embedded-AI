@@ -1,0 +1,23 @@
+id: dinov2
+name: DINOv2
+domain: vision
+tasks: [image-embeddings, self-supervised-representations, feature-extraction]
+class: vision-foundation-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Self-supervised vision transformer family producing strong general-purpose image features."
+links: {repository: 'https://github.com/facebookresearch/dinov2', paper: 'https://arxiv.org/abs/2304.07193'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'ViT-S/B/L variants; larger backbones need GPU memory.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Frozen features or fine-tuning per task.', needs_data: 'Task-labelled images for probes or fine-tuning.', update_strategy: 'Verify weight terms; revalidate on the target domain.'}
+data: {inputs: [rgb-image], outputs: [embeddings, dense-features], languages: []}
+evaluation: ['Linear-probe or fine-tuned accuracy on the target task.']
+limitations: ['Weight terms not stated; large variants are not embedded-friendly.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/dinov2', notes: 'DINOv2 code and models.'}]
+reviewed: '2026-10-06'
+tags: [vision, embeddings, self-supervised, transformer]

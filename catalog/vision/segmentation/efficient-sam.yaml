@@ -1,0 +1,23 @@
+id: efficient-sam
+name: EfficientSAM
+domain: vision
+tasks: [image-segmentation, edge-segmentation]
+class: segmentation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Lightweight Segment Anything variants distilled for efficient inference."
+links: {repository: 'https://github.com/yformer/EfficientSAM', paper: 'https://arxiv.org/abs/2312.00863'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: 'Tiny/Small encoders target constrained inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained efficient encoders; fine-tuning is optional.', needs_data: 'Images and prompts; masks for evaluation.', update_strategy: 'Verify weight terms; re-measure latency on the target.'}
+data: {inputs: [rgb-image, prompts], outputs: [segmentation-masks], languages: []}
+evaluation: ['Mask quality versus latency on the target device.']
+limitations: ['Weight terms not stated; quality trails full SAM.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/yformer/EfficientSAM', notes: 'EfficientSAM models.'}]
+reviewed: '2026-10-06'
+tags: [vision, segmentation, efficient, edge]

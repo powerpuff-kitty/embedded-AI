@@ -1,0 +1,23 @@
+id: rvc
+name: RVC (Retrieval-based Voice Conversion)
+domain: audio
+tasks: [voice-conversion, speech-synthesis]
+class: voice-conversion-toolkit
+kind: pipeline
+catalogue_batch: expansion-2026-10-06
+description: "Voice-conversion toolkit that trains a target voice from short recordings and converts speech."
+links: {repository: 'https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'GPU recommended; real-time conversion is possible on desktop GPUs.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a voice model from minutes of target-speaker audio.', needs_data: 'Clean target-speaker recordings; consent is essential.', update_strategy: 'Version datasets and checkpoints; revalidate quality.'}
+data: {inputs: [source-speech, voice-model], outputs: [converted-speech], languages: [multilingual-voices]}
+evaluation: ['Speaker similarity and naturalness; consent and misuse review.']
+limitations: ['Voice cloning raises consent and misuse concerns; weight terms vary per model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI', notes: 'RVC voice conversion.'}]
+reviewed: '2026-10-06'
+tags: [audio, voice-conversion, voice-cloning]

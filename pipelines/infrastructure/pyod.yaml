@@ -1,0 +1,23 @@
+id: pyod
+name: PyOD
+domain: infrastructure
+tasks: [anomaly-detection, outlier-detection]
+class: anomaly-detection-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library of 60+ anomaly-detection algorithms across tabular, time-series, image and graph data."
+links: {repository: 'https://github.com/yzhao062/pyod', paper: 'https://www.jmlr.org/papers/v20/19-011.html'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-2-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Classical detectors can be lightweight; neural detectors need more compute.'}
+runtimes: [python, scikit-learn, pytorch]
+formats: []
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits detectors on normal or labelled data.', needs_data: 'Representative data and a labelled anomaly set for evaluation.', update_strategy: 'Re-tune thresholds; monitor drift and false alarms.'}
+data: {inputs: [feature-vector, time-series], outputs: [anomaly-score, outlier-label], languages: []}
+evaluation: ['Precision/recall and AUC at the operating threshold.']
+limitations: ['High scores are not proof of an incident; threshold choice is critical.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/yzhao062/pyod', notes: 'PyOD anomaly-detection library.'}]
+reviewed: '2026-10-06'
+tags: [infrastructure, anomaly-detection, classical-ml]

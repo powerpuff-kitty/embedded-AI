@@ -1,0 +1,23 @@
+id: candle
+name: Candle
+domain: runtime
+tasks: [rust-inference, on-device-inference, model-serving]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Minimalist Rust ML framework for running models natively, on-device and in WASM."
+links: {repository: 'https://github.com/huggingface/candle'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-applicable}
+deployment: {offline: true, targets: [desktop, server, edge, browser], notes: 'CPU, CUDA, Metal and WASM backends; a Rust-native alternative to Python runtimes.'}
+runtimes: [candle-native, wasm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Inference framework; supports some training.', needs_data: 'A supported model in safetensors/GGUF.', update_strategy: 'Pin version; re-measure per backend and target.'}
+data: {inputs: [model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Latency, memory and accuracy on the chosen backend.']
+limitations: ['Operator/model coverage is smaller than PyTorch.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/candle', notes: 'Candle Rust ML framework.'}]
+reviewed: '2026-10-06'
+tags: [runtime, rust, on-device, wasm]

@@ -1,0 +1,23 @@
+id: flagembedding
+name: FlagEmbedding (BGE)
+domain: language
+tasks: [embeddings, semantic-search, reranking, retrieval]
+class: embedding-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "BGE embedding and reranker family for retrieval and retrieval-augmented generation."
+links: {repository: 'https://github.com/FlagOpen/FlagEmbedding', model: 'https://huggingface.co/BAAI/bge-small-en-v1.5'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Small/base/large variants; small models can run on constrained inference.'}
+runtimes: [pytorch, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained embeddings/rerankers; fine-tuning on domain pairs improves retrieval.', needs_data: 'Text corpus; (query, passage) pairs for fine-tuning/evaluation.', update_strategy: 'Pin model; re-embed the corpus and re-benchmark recall on upgrade.'}
+data: {inputs: [text], outputs: [embedding-vector, relevance-score], languages: [multilingual-models]}
+evaluation: ['Retrieval recall/nDCG and reranking quality on the target corpus.']
+limitations: ['Embedding models inherit training bias; index must be rebuilt on change.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/FlagOpen/FlagEmbedding', notes: 'BGE embedding and reranker family.'}]
+reviewed: '2026-10-06'
+tags: [language, embeddings, retrieval, reranking]

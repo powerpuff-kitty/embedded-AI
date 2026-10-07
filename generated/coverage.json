@@ -1,11 +1,11 @@
 {
-  "total": 365,
+  "total": 394,
   "by_domain": {
     "accessibility": 2,
     "administrative": 7,
     "agriculture": 1,
     "artificial-life": 19,
-    "audio": 27,
+    "audio": 32,
     "automotive": 2,
     "benchmark": 1,
     "business": 9,
@@ -27,8 +27,8 @@
     "geospatial": 10,
     "healthcare": 6,
     "hydrology": 2,
-    "infrastructure": 7,
-    "language": 8,
+    "infrastructure": 8,
+    "language": 9,
     "manufacturing": 3,
     "mapping": 9,
     "marine": 1,
@@ -38,8 +38,8 @@
     "quantum": 4,
     "reasoning": 1,
     "recommendation": 4,
-    "robotics": 8,
-    "runtime": 28,
+    "robotics": 10,
+    "runtime": 37,
     "science": 10,
     "security": 4,
     "sensors": 7,
@@ -47,30 +47,30 @@
     "space": 3,
     "sports": 3,
     "telecom": 2,
-    "time-series": 14,
+    "time-series": 18,
     "trust-and-safety": 1,
     "video": 7,
-    "vision": 69,
+    "vision": 76,
     "weather": 1
   },
   "by_kind": {
-    "collection": 59,
+    "collection": 75,
     "model": 64,
-    "pipeline": 51,
+    "pipeline": 52,
     "primitive": 24,
-    "toolkit": 167
+    "toolkit": 179
   },
   "by_usage": {
-    "companion": 122,
-    "pretrained": 94,
-    "requires-training": 99,
+    "companion": 131,
+    "pretrained": 110,
+    "requires-training": 103,
     "unknown": 50
   },
   "unknowns": {
     "usage": 50,
-    "code_license": 30,
-    "weights_license": 106,
-    "measured_peak_ram": 365
+    "code_license": 32,
+    "weights_license": 122,
+    "measured_peak_ram": 394
   },
   "reproduced_entries": 3,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."

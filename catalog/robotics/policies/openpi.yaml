@@ -1,0 +1,23 @@
+id: openpi
+name: OpenPI
+domain: robotics
+tasks: [robot-policy, vision-language-action, robot-manipulation]
+class: robot-policy-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Physical Intelligence open models and runtime for general-purpose robot policies."
+links: {repository: 'https://github.com/Physical-Intelligence/openpi'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [server, desktop], notes: 'Large policy models; typically served on a workstation.'}
+runtimes: [jax, pytorch]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained policies plus fine-tuning to a target robot.', needs_data: 'Robot observations and demonstrations for adaptation.', update_strategy: 'Verify weight terms; revalidate on the robot with safety bounds.'}
+data: {inputs: [camera-observations, instruction], outputs: [robot-actions], languages: [en]}
+evaluation: ['Task success on the target robot plus inference latency.']
+limitations: ['Weight terms not stated; needs a robot and safety validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Physical-Intelligence/openpi', notes: 'OpenPI robot policy models.'}]
+reviewed: '2026-10-06'
+tags: [robotics, vla, manipulation, pretrained]

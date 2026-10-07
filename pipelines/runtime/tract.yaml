@@ -1,0 +1,23 @@
+id: tract
+name: tract
+domain: runtime
+tasks: [embedded-inference, onnx-inference, tensorflow-inference]
+class: inference-runtime
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Self-contained Rust inference engine for ONNX and TensorFlow models, aimed at embedded targets."
+links: {repository: 'https://github.com/sonos/tract'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: not-applicable}
+deployment: {offline: true, targets: [edge, mobile, desktop, browser], notes: 'No heavy dependencies; designed for small footprint and embedded Rust.'}
+runtimes: [tract-native, wasm]
+formats: [onnx, tensorflow]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Inference only; models are trained elsewhere.', needs_data: 'An ONNX or TensorFlow model.', update_strategy: 'Pin version; re-measure footprint and latency per target.'}
+data: {inputs: [onnx-model, input-tensors], outputs: [inference-results], languages: []}
+evaluation: ['Footprint, latency and accuracy on the embedded target.']
+limitations: ['Code licence ambiguous (NOASSERTION); operator coverage varies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sonos/tract', notes: 'tract embedded inference engine.'}]
+reviewed: '2026-10-06'
+tags: [runtime, rust, embedded, onnx]
