@@ -1,0 +1,26 @@
+name: procedural catalogue workbench
+on:
+  push:
+    branches: [feat/procedural-catalogue]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with: {node-version: 22, package-manager-cache: false}
+      - run: npm ci --ignore-scripts
+      - name: Export public sources and locked test dependencies, excluding Git credentials
+        run: |
+          mkdir -p /tmp/catalog-workbench
+          git archive --format=tar HEAD | gzip > /tmp/catalog-workbench/source.tar.gz
+          tar -czf /tmp/catalog-workbench/dependencies.tar.gz node_modules
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: procedural-workbench
+          retention-days: 1
+          path: /tmp/catalog-workbench/
