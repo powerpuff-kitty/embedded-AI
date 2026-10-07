@@ -1,0 +1,23 @@
+id: bge-m3
+name: BGE-M3
+domain: language
+tasks: [text-embeddings, semantic-search, retrieval, reranking]
+class: embedding-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "BAAI's multilingual, multi-function embedding model supporting dense, sparse and multi-vector retrieval."
+links: {repository: 'https://github.com/FlagOpen/FlagEmbedding', model: 'https://huggingface.co/BAAI/bge-m3', paper: 'https://arxiv.org/abs/2402.03216'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Large-ish; quantisation/ONNX helps edge deployment.'}
+runtimes: [transformers, onnxruntime, flagembedding]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained embeddings/reranking; fine-tuning supported.', needs_data: 'Text pairs for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint; re-benchmark retrieval on the target domain.'}
+data: {inputs: [text], outputs: [embedding-vector, sparse-weights, scores], languages: [multilingual]}
+evaluation: ['Retrieval/reranking metrics plus latency and memory on the target.']
+limitations: ['Larger than tiny embedding models; multi-mode adds complexity.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/FlagOpen/FlagEmbedding', notes: 'BGE-M3 in FlagEmbedding.'}]
+reviewed: '2026-10-06'
+tags: [language, embeddings, retrieval, multilingual]

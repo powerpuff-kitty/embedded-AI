@@ -15088,6 +15088,646 @@
       "usage_mode": "companion"
     },
     {
+      "id": "bge-m3",
+      "name": "BGE-M3",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval",
+        "reranking"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "BAAI's multilingual, multi-function embedding model supporting dense, sparse and multi-vector retrieval.",
+      "links": {
+        "repository": "https://github.com/FlagOpen/FlagEmbedding",
+        "model": "https://huggingface.co/BAAI/bge-m3",
+        "paper": "https://arxiv.org/abs/2402.03216"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Large-ish; quantisation/ONNX helps edge deployment."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "flagembedding"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings/reranking; fine-tuning supported.",
+        "needs_data": "Text pairs for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint; re-benchmark retrieval on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector",
+          "sparse-weights",
+          "scores"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Retrieval/reranking metrics plus latency and memory on the target."
+      ],
+      "limitations": [
+        "Larger than tiny embedding models; multi-mode adds complexity."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/FlagOpen/FlagEmbedding",
+          "notes": "BGE-M3 in FlagEmbedding."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "multilingual"
+      ],
+      "path": "catalog/language/embeddings/bge-m3.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "e5",
+      "name": "E5",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft's text embeddings from weak supervision, with small and multilingual variants.",
+      "links": {
+        "repository": "https://github.com/microsoft/unilm",
+        "model": "https://huggingface.co/intfloat/e5-large-v2",
+        "paper": "https://arxiv.org/abs/2212.03533"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Small/base variants run on CPU; export to ONNX for edge."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "sentence-transformers"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings using query/passage prefixes; fine-tuning supported.",
+        "needs_data": "Text pairs for evaluation/fine-tuning.",
+        "update_strategy": "Keep the query/passage prefixes; re-benchmark on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Retrieval/MTEB-style metrics plus latency on the target."
+      ],
+      "limitations": [
+        "Prefix usage matters; quality drops with wrong formatting."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/intfloat/e5-large-v2",
+          "notes": "E5 model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "microsoft"
+      ],
+      "path": "catalog/language/embeddings/e5.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "embeddinggemma",
+      "name": "EmbeddingGemma",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's 300M on-device text embedding model derived from Gemma, for local RAG and search.",
+      "links": {
+        "model": "https://huggingface.co/google/embeddinggemma-300m"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "Gemma-Terms"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "300M parameter count; designed for on-device; quantisation available."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "mediapipe"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings; accepts Gemma terms.",
+        "needs_data": "Text pairs/documents for evaluation.",
+        "update_strategy": "Accept Gemma terms; pin checkpoint and re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Retrieval metrics plus memory and latency on the target device."
+      ],
+      "limitations": [
+        "Weights use Gemma Terms; no repository licence declared."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/google/embeddinggemma-300m",
+          "notes": "EmbeddingGemma model card."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "on-device",
+        "gemma"
+      ],
+      "path": "catalog/language/embeddings/embeddinggemma.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "gte",
+      "name": "GTE",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Alibaba's General Text Embeddings, including multilingual models suited to on-device retrieval.",
+      "links": {
+        "model": "https://huggingface.co/Alibaba-NLP/gte-multilingual-base",
+        "paper": "https://arxiv.org/abs/2308.03281"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "mobile",
+          "server"
+        ],
+        "notes": "Base/small variants are CPU-friendly; export to ONNX."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "sentence-transformers"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings; fine-tuning supported.",
+        "needs_data": "Text pairs for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint; re-benchmark retrieval on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Retrieval/MTEB-style metrics plus latency on the target."
+      ],
+      "limitations": [
+        "Quality varies by language; long inputs may need truncation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/Alibaba-NLP/gte-multilingual-base",
+          "notes": "GTE model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "multilingual"
+      ],
+      "path": "catalog/language/embeddings/gte.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "jina-embeddings",
+      "name": "Jina Embeddings",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Jina AI's multilingual long-context embedding models for retrieval and RAG.",
+      "links": {
+        "model": "https://huggingface.co/jinaai/jina-embeddings-v3",
+        "paper": "https://arxiv.org/abs/2409.10173"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "CC-BY-NC-4.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Long-context embeddings; export to ONNX for deployment."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "sentence-transformers"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings; commercial use requires a licence.",
+        "needs_data": "Text pairs for evaluation.",
+        "update_strategy": "Non-commercial weights; check Commercial licence terms before use."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Retrieval metrics plus latency and memory on the target."
+      ],
+      "limitations": [
+        "Weights are CC-BY-NC-4.0 (commercial use needs a separate licence)."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/jinaai/jina-embeddings-v3",
+          "notes": "Jina Embeddings model card and licence."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "multilingual"
+      ],
+      "path": "catalog/language/embeddings/jina-embeddings.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "nomic-embed",
+      "name": "Nomic Embed",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fully open text embedding model with long context, usable for on-device retrieval.",
+      "links": {
+        "model": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+        "paper": "https://arxiv.org/abs/2402.01613"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Small transformer; quantised ONNX runs on CPU/edge."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "fastembed"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings; fine-tuning optional.",
+        "needs_data": "Text pairs/documents for evaluation.",
+        "update_strategy": "Pin checkpoint; re-benchmark retrieval on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Retrieval/MTEB-style metrics plus vector dimension and latency."
+      ],
+      "limitations": [
+        "Matryoshka truncation trades quality for size; English-focused."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+          "notes": "Nomic Embed model card."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "on-device"
+      ],
+      "path": "catalog/language/embeddings/nomic-embed.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "snowflake-arctic-embed",
+      "name": "Snowflake Arctic Embed",
+      "domain": "language",
+      "tasks": [
+        "text-embeddings",
+        "semantic-search",
+        "retrieval"
+      ],
+      "class": "embedding-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Snowflake's Apache-2.0 retrieval embeddings, optimised for real search workloads.",
+      "links": {
+        "model": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+        "paper": "https://arxiv.org/abs/2405.17428"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small/base variants run on CPU; use ONNX for edge."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "sentence-transformers"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained embeddings; fine-tuning localised for retrieval.",
+        "needs_data": "Query/document pairs for evaluation.",
+        "update_strategy": "Keep the query prefix; re-benchmark retrieval on the target domain."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "embedding-vector"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Retrieval metrics plus latency/memory on the target."
+      ],
+      "limitations": [
+        "Query-prefix handling matters; quality varies by language."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0",
+          "notes": "Arctic Embed model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "embeddings",
+        "retrieval",
+        "snowflake"
+      ],
+      "path": "catalog/language/embeddings/snowflake-arctic-embed.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "bitnet",
       "name": "BitNet (1.58-bit)",
       "domain": "language",
@@ -21915,6 +22555,94 @@
       "usage_mode": "companion"
     },
     {
+      "id": "stable-diffusion-cpp",
+      "name": "stable-diffusion.cpp",
+      "domain": "runtime",
+      "tasks": [
+        "image-generation",
+        "diffusion-inference"
+      ],
+      "class": "diffusion-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Dependency-light C/C++ implementation of Stable Diffusion inference for CPU and edge.",
+      "links": {
+        "repository": "https://github.com/leejet/stable-diffusion.cpp"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "embedded"
+        ],
+        "notes": "Quantised GGUF checkpoints run without a GPU; measure per device."
+      },
+      "runtimes": [
+        "stable-diffusion.cpp",
+        "ggml"
+      ],
+      "formats": [
+        "gguf",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runs pre-trained diffusion checkpoints; no training.",
+        "needs_data": "A compatible checkpoint plus prompts.",
+        "update_strategy": "Pin build/checkpoint; re-measure time-per-image on the target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "seed"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Image quality plus seconds-per-image and memory on the target."
+      ],
+      "limitations": [
+        "Quality depends on quantization; per-checkpoint licences apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/leejet/stable-diffusion.cpp",
+          "notes": "stable-diffusion.cpp."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "diffusion",
+        "image-generation",
+        "cpu"
+      ],
+      "path": "pipelines/runtime/stable-diffusion-cpp.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "transformers-js",
       "name": "Transformers.js",
       "domain": "runtime",
@@ -22170,6 +22898,95 @@
         "gpu"
       ],
       "path": "pipelines/runtime/exllamav2.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "onnxruntime-genai",
+      "name": "ONNX Runtime GenAI",
+      "domain": "runtime",
+      "tasks": [
+        "llm-inference",
+        "vlm-inference",
+        "on-device-inference"
+      ],
+      "class": "generative-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft runtime for running generative LLMs/VLMs across cloud, desktop and edge.",
+      "links": {
+        "repository": "https://github.com/microsoft/onnxruntime-genai"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Targets CPU, GPU, NPU and mobile via ONNX Runtime."
+      },
+      "runtimes": [
+        "onnxruntime"
+      ],
+      "formats": [
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves exported generative models; no training.",
+        "needs_data": "An ONNX model package plus prompts.",
+        "update_strategy": "Pin runtime/EP; re-export and re-benchmark per device."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "image"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Tokens/s and memory per execution provider on the target."
+      ],
+      "limitations": [
+        "Needs models exported in the expected ONNX layout."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/onnxruntime-genai",
+          "notes": "ONNX Runtime GenAI."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "onnx",
+        "llm",
+        "on-device"
+      ],
+      "path": "pipelines/runtime/onnxruntime-genai.yaml",
       "usage_mode": "companion"
     },
     {
@@ -30581,6 +31398,92 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "videomae",
+      "name": "VideoMAE",
+      "domain": "video",
+      "tasks": [
+        "video-classification",
+        "action-recognition",
+        "video-representations"
+      ],
+      "class": "video-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Self-supervised masked-autoencoder video models that transfer well to action recognition.",
+      "links": {
+        "repository": "https://github.com/MCG-NJU/VideoMAE",
+        "paper": "https://arxiv.org/abs/2203.12602"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "ViT-based video model; heavier than mobile action models."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained representations; fine-tune per action dataset.",
+        "needs_data": "Labelled video clips for fine-tuning/evaluation.",
+        "update_strategy": "Verify licence; re-evaluate top-1 and latency on the target."
+      },
+      "data": {
+        "inputs": [
+          "video-clip"
+        ],
+        "outputs": [
+          "action-classes",
+          "features"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Top-1/top-k on target actions plus throughput."
+      ],
+      "limitations": [
+        "Licence not declared; compute-heavy relative to mobile models."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/MCG-NJU/VideoMAE",
+          "notes": "VideoMAE models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "video",
+        "action-recognition",
+        "self-supervised"
+      ],
+      "path": "catalog/video/action-recognition/videomae.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "fastdvdnet",
       "name": "FastDVDnet",
       "kind": "model",
@@ -30646,6 +31549,95 @@
       ],
       "path": "catalog/video/denoising/fastdvdnet.yaml",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "x-clip",
+      "name": "X-CLIP",
+      "domain": "video",
+      "tasks": [
+        "video-text-retrieval",
+        "zero-shot-video-classification"
+      ],
+      "class": "video-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Expands CLIP to video, enabling zero-shot action recognition and video-text retrieval.",
+      "links": {
+        "repository": "https://github.com/microsoft/VideoX",
+        "paper": "https://arxiv.org/abs/2208.02816"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "CLIP-scale encoders; not embedded-friendly without distillation."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained video-text model; zero-shot or fine-tuned.",
+        "needs_data": "Video-text pairs or labelled clips for evaluation.",
+        "update_strategy": "Verify licence; re-evaluate retrieval/zero-shot metrics."
+      },
+      "data": {
+        "inputs": [
+          "video-clip",
+          "text"
+        ],
+        "outputs": [
+          "action-classes",
+          "similarity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Zero-shot top-1 and retrieval recall on target data."
+      ],
+      "limitations": [
+        "Licence not declared; compute-heavy; English prompts."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/VideoX",
+          "notes": "X-CLIP in VideoX."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "video",
+        "clip",
+        "zero-shot",
+        "retrieval"
+      ],
+      "path": "catalog/video/action-recognition/x-clip.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "videopose3d",
@@ -32879,6 +33871,93 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "ml-stable-diffusion",
+      "name": "Core ML Stable Diffusion",
+      "domain": "vision",
+      "tasks": [
+        "image-generation",
+        "diffusion-inference"
+      ],
+      "class": "diffusion-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Apple's tooling to convert and run Stable Diffusion on-device with Core ML.",
+      "links": {
+        "repository": "https://github.com/apple-aiml-research/ml-stable-diffusion"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "desktop",
+          "edge"
+        ],
+        "notes": "Runs on Apple silicon/iOS via Core ML; measure per device."
+      },
+      "runtimes": [
+        "coreml"
+      ],
+      "formats": [
+        "coreml"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Converts and runs pre-trained diffusion checkpoints; no training.",
+        "needs_data": "A compatible checkpoint plus prompts.",
+        "update_strategy": "Pin converter/checkpoint; re-measure per Apple device."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "seed"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Image quality plus seconds-per-image and memory on the device."
+      ],
+      "limitations": [
+        "Apple platforms only; per-checkpoint licences apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/apple-aiml-research/ml-stable-diffusion",
+          "notes": "Core ML Stable Diffusion."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "diffusion",
+        "apple",
+        "coreml",
+        "on-device"
+      ],
+      "path": "pipelines/vision/ml-stable-diffusion.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "diffusers",
       "name": "Diffusers",
       "domain": "vision",
@@ -32965,6 +34044,186 @@
       ],
       "path": "pipelines/vision/diffusers.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "latent-consistency",
+      "name": "Latent Consistency Models (LCM)",
+      "domain": "vision",
+      "tasks": [
+        "image-generation",
+        "diffusion-inference"
+      ],
+      "class": "generative-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Latent consistency models that generate images in a few steps, with LoRA adapters for existing SD models.",
+      "links": {
+        "repository": "https://github.com/luosiallen/latent-consistency-model",
+        "model": "https://huggingface.co/SimianLuo/LCM_Dreamshaper_v7",
+        "paper": "https://arxiv.org/abs/2310.04378"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Few-step sampling reduces compute; quantise for edge."
+      },
+      "runtimes": [
+        "diffusers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pre-trained LCMs plus LoRA adapters for SD models.",
+        "needs_data": "Prompts; images for distillation/fine-tuning.",
+        "update_strategy": "Verify per-checkpoint weight terms; re-measure latency."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "seed"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Image quality plus steps/seconds-per-image on the target."
+      ],
+      "limitations": [
+        "Weight terms vary per checkpoint; fewer steps can reduce fidelity."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/luosiallen/latent-consistency-model",
+          "notes": "Latent Consistency Models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "diffusion",
+        "generative",
+        "few-step"
+      ],
+      "path": "catalog/vision/generative/latent-consistency.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "sdxl-turbo",
+      "name": "SDXL-Turbo / SD-Turbo",
+      "domain": "vision",
+      "tasks": [
+        "image-generation",
+        "diffusion-inference"
+      ],
+      "class": "generative-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Stability AI's few-step distilled diffusion models for fast, low-latency image generation.",
+      "links": {
+        "repository": "https://github.com/Stability-AI/generative-models",
+        "model": "https://huggingface.co/stabilityai/sdxl-turbo",
+        "paper": "https://arxiv.org/abs/2311.17042"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "Stability-AI-Community-License"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "1-4 step generation; still GPU-friendly, edge needs quantisation."
+      },
+      "runtimes": [
+        "diffusers",
+        "onnxruntime",
+        "coreml"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pre-trained few-step models; LoRA/DreamBooth fine-tuning possible.",
+        "needs_data": "Prompts; images for fine-tuning.",
+        "update_strategy": "Check community licence for commercial use; pin checkpoint."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "seed"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Image quality plus seconds-per-image and memory on the target."
+      ],
+      "limitations": [
+        "Weights under Stability AI Community Licence; quality limited at low steps."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Stability-AI/generative-models",
+          "notes": "SDXL-Turbo/SD-Turbo models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "diffusion",
+        "generative",
+        "fast"
+      ],
+      "path": "catalog/vision/generative/sdxl-turbo.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "stylegan3",

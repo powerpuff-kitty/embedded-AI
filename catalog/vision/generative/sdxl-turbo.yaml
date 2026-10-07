@@ -1,0 +1,23 @@
+id: sdxl-turbo
+name: SDXL-Turbo / SD-Turbo
+domain: vision
+tasks: [image-generation, diffusion-inference]
+class: generative-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Stability AI's few-step distilled diffusion models for fast, low-latency image generation."
+links: {repository: 'https://github.com/Stability-AI/generative-models', model: 'https://huggingface.co/stabilityai/sdxl-turbo', paper: 'https://arxiv.org/abs/2311.17042'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: 'Stability-AI-Community-License'}
+deployment: {offline: true, targets: [desktop, server, edge], notes: '1-4 step generation; still GPU-friendly, edge needs quantisation.'}
+runtimes: [diffusers, onnxruntime, coreml]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pre-trained few-step models; LoRA/DreamBooth fine-tuning possible.', needs_data: 'Prompts; images for fine-tuning.', update_strategy: 'Check community licence for commercial use; pin checkpoint.'}
+data: {inputs: [text-prompt, seed], outputs: [generated-image], languages: [en]}
+evaluation: ['Image quality plus seconds-per-image and memory on the target.']
+limitations: ['Weights under Stability AI Community Licence; quality limited at low steps.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Stability-AI/generative-models', notes: 'SDXL-Turbo/SD-Turbo models.'}]
+reviewed: '2026-10-06'
+tags: [vision, diffusion, generative, fast]

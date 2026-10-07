@@ -1,0 +1,23 @@
+id: e5
+name: E5
+domain: language
+tasks: [text-embeddings, semantic-search, retrieval]
+class: embedding-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Microsoft's text embeddings from weak supervision, with small and multilingual variants."
+links: {repository: 'https://github.com/microsoft/unilm', model: 'https://huggingface.co/intfloat/e5-large-v2', paper: 'https://arxiv.org/abs/2212.03533'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, edge, server], notes: 'Small/base variants run on CPU; export to ONNX for edge.'}
+runtimes: [transformers, onnxruntime, sentence-transformers]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained embeddings using query/passage prefixes; fine-tuning supported.', needs_data: 'Text pairs for evaluation/fine-tuning.', update_strategy: 'Keep the query/passage prefixes; re-benchmark on the target domain.'}
+data: {inputs: [text], outputs: [embedding-vector], languages: [en, multilingual-variants]}
+evaluation: ['Retrieval/MTEB-style metrics plus latency on the target.']
+limitations: ['Prefix usage matters; quality drops with wrong formatting.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/intfloat/e5-large-v2', notes: 'E5 model card and paper.'}]
+reviewed: '2026-10-06'
+tags: [language, embeddings, retrieval, microsoft]
