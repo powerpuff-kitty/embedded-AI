@@ -1,0 +1,23 @@
+id: florence-2
+name: Florence-2
+domain: vision
+tasks: [image-captioning, object-detection, ocr, grounding]
+class: vision-foundation-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Microsoft's unified vision foundation model handling captioning, detection, grounding and OCR from prompts."
+links: {model: 'https://huggingface.co/microsoft/Florence-2-large', paper: 'https://arxiv.org/abs/2311.06242'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [desktop, edge, server], notes: '0.23B/0.77B variants are comparatively small; measure per device.'}
+runtimes: [transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained task-prompted model; fine-tuning supported.', needs_data: 'Images plus task prompts; labels for fine-tuning.', update_strategy: 'Pin checkpoint; re-measure per task and target.'}
+data: {inputs: [image, text-prompt], outputs: [caption, boxes, masks, text], languages: [en]}
+evaluation: ['Per-task quality (caption/detect/OCR) plus memory and latency.']
+limitations: ['Prompt-templated outputs; English-centric; no chat interface.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/microsoft/Florence-2-large', notes: 'Florence-2 model card and paper.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, captioning, ocr]

@@ -1,0 +1,23 @@
+id: moondream
+name: Moondream
+domain: vision
+tasks: [visual-question-answering, image-captioning, on-device-vlm]
+class: edge-vlm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Tiny ~2B open vision-language model designed to run efficiently on modest hardware."
+links: {repository: 'https://github.com/m87-labs/moondream', model: 'https://huggingface.co/vikhyatk/moondream2'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [edge, desktop, mobile], notes: 'Quantized builds run on CPU/edge; measure per device.'}
+runtimes: [transformers, onnxruntime]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained VLM; fine-tuning recipes provided.', needs_data: 'Images plus prompts; task data for evaluation.', update_strategy: 'Pin checkpoint; re-measure memory and quality per target.'}
+data: {inputs: [image, text-prompt], outputs: [text-response], languages: [en]}
+evaluation: ['VQA/caption quality plus memory and latency on the target.']
+limitations: ['Limited world knowledge and fine-grained reasoning; English-centric.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/m87-labs/moondream', notes: 'Moondream VLM.'}]
+reviewed: '2026-10-06'
+tags: [vision, language, vlm, on-device]

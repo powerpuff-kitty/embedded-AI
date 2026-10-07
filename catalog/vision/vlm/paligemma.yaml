@@ -1,0 +1,23 @@
+id: paligemma
+name: PaliGemma
+domain: vision
+tasks: [visual-question-answering, image-captioning, detection, segmentation]
+class: edge-vlm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Google's vision-language model combining SigLIP with Gemma, with 3B transfer variants."
+links: {repository: 'https://github.com/google-research/big_vision', model: 'https://huggingface.co/google/paligemma2-3b-pt-224'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Gemma-Terms}
+deployment: {offline: true, targets: [desktop, edge, server], notes: '3B is desktop/edge with quantization; measure per device.'}
+runtimes: [transformers, jax]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained transfer models; fine-tune for tasks.', needs_data: 'Images plus task prompts/labels; fine-tuning data.', update_strategy: 'Accept Gemma terms; pin checkpoint and re-measure.'}
+data: {inputs: [image, text-prompt], outputs: [text-response, boxes, masks], languages: [multilingual, en]}
+evaluation: ['Task quality (caption/VQA/detection) plus memory and latency.']
+limitations: ['Weights use Gemma Terms; not a general conversational VLM.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/google-research/big_vision', notes: 'PaliGemma in big_vision.'}]
+reviewed: '2026-10-06'
+tags: [vision, language, vlm, google]
