@@ -3,8 +3,8 @@
   <rect width="1200" height="16" fill="#cc5c34"/>
   <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
     <text x="90" y="300" font-size="104" font-weight="700" letter-spacing="-3" fill="#f5f4ee">embedded-AI</text>
-    <text x="94" y="372" font-size="38" fill="#c9d3cb">The evidence-first catalogue of on-device AI</text>
-    <text x="94" y="436" font-size="26" fill="#8fa094">models · toolkits · primitives — with hardware, runtime and compatibility evidence</text>
+    <text x="94" y="372" font-size="38" fill="#c9d3cb">An embeddable AI catalogue</text>
+    <text x="94" y="436" font-size="26" fill="#8fa094">models · toolkits · primitives for local and resource-constrained computing</text>
   </g>
   <g stroke="#cc5c34" stroke-width="4" fill="none" opacity="0.85">
     <circle cx="1030" cy="300" r="22"/>
