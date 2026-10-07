@@ -23,7 +23,7 @@ The `ai` view includes entries with the learned method. For backward compatibili
 | `procedural.evidence_level` | documented, inspected or reproduced; reproduced requires a stored benchmark-backed compatibility record. |
 | `data.inputs` / `data.outputs` | Use existing I/O fields; SVG artwork, scalar fields, meshes, joint poses and audio are not interchangeable. |
 
-Code licences do not automatically cover samples, music, textures, model weights or dependencies. Hardware compatibility and RAM stay unknown unless supported by actual measurements. Native authoring references are included for offline generation/adaptation, not presented as embeddable browser or MCU libraries. The catalogue does not download or execute these upstream tools.
+Code licences do not automatically cover samples, music, textures, model weights or dependencies. Hardware compatibility and RAM stay unknown unless supported by actual measurements. Native authoring references are included for offline generation/adaptation, not presented as embeddable browser or MCU libraries. Browsing the catalogue does not download or execute these upstream tools. The separately installed, opt-in [browser lab](PROCEDURAL-LAB.md) builds and executes four pinned adapters; it does not run a model or the hybrid designs.
 
 ## Search and integration
 
@@ -58,6 +58,6 @@ For a living world, the deterministic application simulation owns entities and r
 
 For generated art, validate numeric controls, isolate third-party generators, and sanitize SVG. Never execute arbitrary model-generated source. For audio, select allowlisted presets, cap duration/gain/voices/buffer sizes and require user audio activation. Preserve seeds, versions and event logs, but test rather than assume replay consistency.
 
-## Next evidence milestone
+## Runnable fixture milestone
 
-Add pinned, opt-in runnable adapters with small fixtures for noise, SVG, tree geometry and audio. Test outputs, repeatability, time and memory on named browsers/devices. Promote only the specific tested adapter and environment, not the upstream family or every target. Keep model downloads and heavier desktop generation explicit and optional.
+The [procedural browser lab](PROCEDURAL-LAB.md) now provides pinned noise, SVG, tree geometry and audio fixtures with output bounds, export and same-runtime repeatability observations. Output payload bytes are measured; process memory remains null. Next, collect reviewed observations on named physical devices and browsers. Promote only the tested adapter/environment, not the upstream family or every target. Model downloads and heavier desktop generation remain separate and optional.

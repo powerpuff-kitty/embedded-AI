@@ -1,0 +1,20 @@
+{
+  "name": "embedded-ai-procedural-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@dgreenheck/ez-tree": "1.1.0",
+    "esbuild": "0.28.2",
+    "roughjs": "4.6.6",
+    "simplex-noise": "4.0.3",
+    "three": "0.169.0",
+    "zzfx": "1.4.0"
+  },
+  "description": "Opt-in local browser fixtures for procedural catalogue components",
+  "license": "MIT",
+  "scripts": {
+    "test": "node build.mjs --tests && node --test tests/*.test.mjs",
+    "build": "node build.mjs"
+  }
+}

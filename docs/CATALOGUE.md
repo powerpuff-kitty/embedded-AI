@@ -4,7 +4,7 @@
 
 ## Full catalogue
 
-**602 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**610 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -250,7 +250,10 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
 | [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+| [isosurface](primitives/procedural/isosurface.yaml) · [upstream](<https://github.com/mikolalysenko/isosurface>) | toolkit / companion | implicit-surface, surface-nets, marching-cubes | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
+| [three-bvh-csg](primitives/procedural/three-bvh-csg.yaml) · [upstream](<https://github.com/gkjohnson/three-bvh-csg>) | toolkit / companion | mesh-boolean, constructive-solid-geometry | — | — | javascript, threejs | browser, desktop | MIT / not-applicable | unknown |
 | [JSCAD Modeling](primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | toolkit / companion | parametric-modeling, constructive-solid-geometry | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
+| [Manifold](primitives/procedural/manifold.yaml) · [upstream](<https://github.com/elalish/manifold>) | toolkit / companion | solid-geometry, mesh-boolean, level-set-meshing | — | — | c++, javascript, webassembly, python | desktop | Apache-2.0 / not-applicable | unknown |
 
 <a id="catalogue-environment"></a>
 
@@ -337,6 +340,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Maia-3](catalog/gaming/maia3.yaml) · [upstream](<https://huggingface.co/collections/UofTCSSLab/maia3>) | model / pretrained | chess-move-prediction, human-like-policy-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | AGPL-3.0 / unknown | unknown |
 | [WaveFunctionCollapse](primitives/procedural/wavefunctioncollapse.yaml) · [upstream](<https://github.com/mxgmn/WaveFunctionCollapse>) | primitive / companion | constraint-based-generation | — | — | csharp | desktop | MIT / not-applicable | unknown |
 | [rot.js](primitives/procedural/rot-js.yaml) · [upstream](<https://github.com/ondras/rot.js>) | toolkit / companion | dungeon-generation | — | — | javascript, nodejs | browser | BSD-3-Clause / not-applicable | unknown |
+| [canvas-sketch](primitives/procedural/canvas-sketch.yaml) · [upstream](<https://github.com/mattdesl/canvas-sketch>) | toolkit / companion | generative-art, print-artwork, sketch-lifecycle | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [Hybrid living-world companion](pipelines/hybrid/hybrid-living-world.yaml) · [upstream](<https://github.com/powerpuff-kitty/embedded-AI/blob/main/docs/PROCEDURAL-GUIDE.md>) | pipeline / companion | hybrid-procedural-integration | — | — | — | — | not-applicable / component-specific | unknown |
 | [Fullik / FIK](primitives/procedural/fullik.yaml) · [upstream](<https://github.com/lo-th/fullik>) | toolkit / companion | inverse-kinematics, procedural-animation | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
 | [THREE.IK](primitives/procedural/three-ik.yaml) · [upstream](<https://github.com/jsantell/THREE.IK>) | toolkit / companion | inverse-kinematics | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
@@ -356,6 +360,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Unity ML-Agents](pipelines/gaming/ml-agents.yaml) · [upstream](<https://github.com/Unity-Technologies/ml-agents>) | toolkit / requires-training | reinforcement-learning, imitation-learning, game-agent-training | — | — | pytorch, onnxruntime, onnx | desktop, mobile | Apache-2.0 / not-provided | unknown |
 | [Stable Retro](pipelines/gaming/stable-retro.yaml) · [upstream](<https://github.com/Farama-Foundation/stable-retro>) | toolkit / companion | retro-game-reinforcement-learning, environment-emulation | — | — | python | desktop | MIT / not-applicable | unknown |
 | [Infinigen](primitives/procedural/infinigen.yaml) · [upstream](<https://github.com/princeton-vl/infinigen>) | primitive / companion | scene-generation | — | — | python, blender | desktop | BSD-3-Clause / not-applicable | unknown |
+| [canvas-sketch-util](primitives/procedural/canvas-sketch-util.yaml) · [upstream](<https://github.com/mattdesl/canvas-sketch-util>) | toolkit / companion | seeded-random, geometry-utilities, pen-plotting | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [OpenSteer](primitives/procedural/opensteer.yaml) · [upstream](<https://github.com/meshula/OpenSteer>) | toolkit / companion | steering-behaviour | — | — | cpp | desktop | MIT / not-applicable | unknown |
 | [Yuka](primitives/procedural/yuka.yaml) · [upstream](<https://github.com/Mugen87/yuka>) | toolkit / companion | steering-behaviour | — | — | javascript | browser | MIT / not-applicable | unknown |
 | [THREE.Terrain](primitives/procedural/three-terrain.yaml) · [upstream](<https://github.com/IceCreamYou/THREE.Terrain>) | toolkit / companion | terrain-generation | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
@@ -518,6 +523,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [RTAB-Map](pipelines/mapping/rtabmap.yaml) · [upstream](<https://github.com/introlab/rtabmap>) | pipeline / unknown | slam, scene-mapping | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
 | [COLMAP](pipelines/reconstruction/colmap.yaml) · [upstream](<https://github.com/colmap/colmap>) | pipeline / unknown | structure-from-motion, multi-view-stereo | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
 | [ORB-SLAM3](pipelines/mapping/orb-slam3.yaml) · [upstream](<https://github.com/UZ-SLAMLab/ORB_SLAM3>) | pipeline / unknown | visual-slam, camera-localization | — | — | native-cpp | desktop | GPL-3.0 / not-applicable | luckfox-rv1106: unknown |
+| [d3-delaunay](primitives/procedural/d3-delaunay.yaml) · [upstream](<https://github.com/d3/d3-delaunay>) | toolkit / companion | voronoi-diagram, delaunay-triangulation, spatial-partition | — | — | javascript, nodejs | browser, desktop | ISC / not-applicable | unknown |
 
 <a id="catalogue-marine"></a>
 
@@ -537,7 +543,9 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [AudioCraft (MusicGen / AudioGen)](catalog/music/generation/audiocraft.yaml) · [upstream](<https://github.com/facebookresearch/audiocraft>) | collection / pretrained | music-generation, audio-generation, text-to-audio | — | — | pytorch, pytorch-checkpoint | server, desktop | MIT / unknown | unknown |
 | [Demucs](catalog/music/source-separation/demucs.yaml) · [upstream](<https://github.com/facebookresearch/demucs>) | collection / pretrained | music-source-separation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
 | [Spleeter](pipelines/music/spleeter.yaml) · [upstream](<https://github.com/deezer/spleeter>) | toolkit / pretrained | music-source-separation | — | — | tensorflow, python | desktop, server | MIT / MIT | unknown |
+| [Scribbletune](primitives/procedural/scribbletune.yaml) · [upstream](<https://github.com/scribbletune/scribbletune>) | toolkit / companion | pattern-music, midi-generation, algorithmic-composition | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [CREPE](catalog/music/analysis/crepe.yaml) · [upstream](<https://github.com/marl/crepe>) | collection / pretrained | pitch-estimation, music-analysis | — | — | tensorflow, onnxruntime, tflite, savedmodel, onnx | embedded, mobile, edge, desktop | MIT / unknown | unknown |
+| [Tone.js](primitives/procedural/tone-js.yaml) · [upstream](<https://github.com/Tonejs/Tone.js>) | toolkit / companion | sound-synthesis, music-scheduling, audio-effects | — | — | javascript, web-audio | browser, desktop | MIT / not-applicable | unknown |
 
 <a id="catalogue-networking"></a>
 

@@ -11420,6 +11420,225 @@
       "view": "ai"
     },
     {
+      "id": "isosurface",
+      "name": "isosurface",
+      "domain": "engineering",
+      "tasks": [
+        "implicit-surface",
+        "surface-nets",
+        "marching-cubes"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "JavaScript isosurface polygonizers implementing surface nets, marching cubes and marching tetrahedra for scalar fields.",
+      "links": {
+        "repository": "https://github.com/mikolalysenko/isosurface"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "bounded scalar potential function",
+          "3D sampling dimensions and bounds"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "bounded scalar potential function; 3D sampling dimensions and bounds.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "bounded scalar potential function",
+          "3D sampling dimensions and bounds"
+        ],
+        "outputs": [
+          "mesh vertex positions and faces"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "Requires a supplied scalar field; it does not infer geometry from photographs. Sampling resolution controls work and detail. Validate manifoldness, face structure and winding before downstream use.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mikolalysenko/isosurface",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "worlds-environments",
+        "foundations"
+      ],
+      "path": "primitives/procedural/isosurface.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "three-bvh-csg",
+      "name": "three-bvh-csg",
+      "domain": "engineering",
+      "tasks": [
+        "mesh-boolean",
+        "constructive-solid-geometry"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Experimental constructive solid geometry implementation for Three.js, built on three-mesh-bvh.",
+      "links": {
+        "repository": "https://github.com/gkjohnson/three-bvh-csg"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "threejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "watertight brush geometry with attributes",
+          "Boolean operation and transforms"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "watertight brush geometry with attributes; Boolean operation and transforms.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "watertight brush geometry with attributes",
+          "Boolean operation and transforms"
+        ],
+        "outputs": [
+          "resulting Three.js geometry with transferred attributes"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "Upstream labels the implementation experimental. Brushes must be watertight two-manifold geometry without triangle interpenetration; do not assume every output is manufacturing-ready.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/gkjohnson/three-bvh-csg",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "worlds-environments",
+        "foundations"
+      ],
+      "path": "primitives/procedural/three-bvh-csg.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "jscad-modeling",
       "name": "JSCAD Modeling",
       "domain": "engineering",
@@ -11533,6 +11752,123 @@
         "browser-library"
       ],
       "path": "primitives/procedural/jscad-modeling.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "manifold",
+      "name": "Manifold",
+      "domain": "engineering",
+      "tasks": [
+        "solid-geometry",
+        "mesh-boolean",
+        "level-set-meshing"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Geometry kernel for constructing and operating on manifold triangle meshes, with C++ and JavaScript/WebAssembly bindings.",
+      "links": {
+        "repository": "https://github.com/elalish/manifold",
+        "homepage": "https://manifoldcad.org/docs/html/index.html"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "c++",
+        "javascript",
+        "webassembly",
+        "python"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "native-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "manifold input meshes or primitive constructors",
+          "Boolean operations and bounded level-set functions"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "manifold input meshes or primitive constructors; Boolean operations and bounded level-set functions.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "manifold input meshes or primitive constructors",
+          "Boolean operations and bounded level-set functions"
+        ],
+        "outputs": [
+          "manifold triangle meshes and vertex properties"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "Input meshes must satisfy the library topology contract; not every scanned or generated mesh is valid input. WebAssembly and bindings require their own packaging and evaluation.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/elalish/manifold",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        },
+        {
+          "type": "official",
+          "url": "https://manifoldcad.org/docs/html/index.html",
+          "notes": "Maintainer documentation for capabilities and usage."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "native-library",
+        "worlds-environments",
+        "foundations"
+      ],
+      "path": "primitives/procedural/manifold.yaml",
       "usage_mode": "companion",
       "view": "procedural"
     },
@@ -14215,6 +14551,115 @@
       "view": "procedural"
     },
     {
+      "id": "canvas-sketch",
+      "name": "canvas-sketch",
+      "domain": "gaming",
+      "tasks": [
+        "generative-art",
+        "print-artwork",
+        "sketch-lifecycle"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Framework for authoring generative artwork in JavaScript and the browser, with lifecycle and print-dimension configuration.",
+      "links": {
+        "repository": "https://github.com/mattdesl/canvas-sketch"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "images-materials"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "application-authored sketch function",
+          "canvas dimensions and timing settings"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "application-authored sketch function; canvas dimensions and timing settings.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "application-authored sketch function",
+          "canvas dimensions and timing settings"
+        ],
+        "outputs": [
+          "rendered Canvas or WebGL artwork",
+          "exported frames through the companion CLI"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "The library hosts user-authored generators rather than supplying a world simulation or pretrained model. Authoring and file-export CLI workflows are separate from the browser runtime; never run untrusted sketch code.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mattdesl/canvas-sketch",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "images-materials"
+      ],
+      "path": "primitives/procedural/canvas-sketch.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "hybrid-living-world",
       "name": "Hybrid living-world companion",
       "domain": "gaming",
@@ -15995,6 +16440,120 @@
         "native-reference"
       ],
       "path": "primitives/procedural/infinigen.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "canvas-sketch-util",
+      "name": "canvas-sketch-util",
+      "domain": "gaming",
+      "tasks": [
+        "seeded-random",
+        "geometry-utilities",
+        "pen-plotting"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Modular utilities for generative artwork, covering seeded randomness, geometry, colour, mathematics and pen plotting.",
+      "links": {
+        "repository": "https://github.com/mattdesl/canvas-sketch-util"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "images-materials",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "built-in",
+        "determinism": "conditional",
+        "controls": [
+          "seed and numeric ranges",
+          "geometry and polylines"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "seed and numeric ranges; geometry and polylines.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "seed and numeric ranges",
+          "geometry and polylines"
+        ],
+        "outputs": [
+          "sampled values and geometry transformations",
+          "pen-plotter drawing data"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "This is a separate utility package from canvas-sketch. Preserve generator state and call order when replaying. Plotting and rendering still need application integration; numeric helpers are not AI.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mattdesl/canvas-sketch-util",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "images-materials",
+        "foundations"
+      ],
+      "related": [
+        "canvas-sketch"
+      ],
+      "path": "primitives/procedural/canvas-sketch-util.yaml",
       "usage_mode": "companion",
       "view": "procedural"
     },
@@ -24951,6 +25510,126 @@
       "view": "unclassified"
     },
     {
+      "id": "d3-delaunay",
+      "name": "d3-delaunay",
+      "domain": "mapping",
+      "tasks": [
+        "voronoi-diagram",
+        "delaunay-triangulation",
+        "spatial-partition"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Two-dimensional Delaunay and Voronoi library based on Delaunator, adding cell construction and spatial query interfaces.",
+      "links": {
+        "repository": "https://github.com/d3/d3-delaunay",
+        "homepage": "https://d3js.org/d3-delaunay"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "ISC",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "2D point coordinates",
+          "clipping bounds"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "2D point coordinates; clipping bounds.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "2D point coordinates",
+          "clipping bounds"
+        ],
+        "outputs": [
+          "Voronoi cells",
+          "Delaunay triangles and neighbourhood queries"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "Operates on 2D coordinates, not geodetic surfaces or 3D point clouds. It is distinct from the existing Delaunator entry and does not generate semantic biomes on its own.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/d3/d3-delaunay",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        },
+        {
+          "type": "official",
+          "url": "https://d3js.org/d3-delaunay",
+          "notes": "Maintainer documentation for capabilities and usage."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "worlds-environments",
+        "foundations"
+      ],
+      "related": [
+        "delaunator"
+      ],
+      "path": "primitives/procedural/d3-delaunay.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "pamguard",
       "name": "PAMGuard",
       "domain": "marine",
@@ -25382,6 +26061,124 @@
       "view": "unclassified"
     },
     {
+      "id": "scribbletune",
+      "name": "Scribbletune",
+      "domain": "music",
+      "tasks": [
+        "pattern-music",
+        "midi-generation",
+        "algorithmic-composition"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Pattern-based JavaScript music construction using strings and arrays to create rhythms, melodies and chord progressions.",
+      "links": {
+        "repository": "https://github.com/scribbletune/scribbletune",
+        "homepage": "https://scribbletune.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "audio-music"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "note arrays, scales or chord specifications",
+          "rhythm and arpeggio patterns"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "note arrays, scales or chord specifications; rhythm and arpeggio patterns.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "note arrays, scales or chord specifications",
+          "rhythm and arpeggio patterns"
+        ],
+        "outputs": [
+          "musical clips and MIDI files",
+          "browser playback when paired with Tone.js"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "MIDI is event data, not rendered audio. Browser sound requires Tone.js or another synthesizer. Random progression generation is not treated as reproducible without an explicit tested RNG integration.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/scribbletune/scribbletune",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        },
+        {
+          "type": "official",
+          "url": "https://scribbletune.com/",
+          "notes": "Maintainer documentation for capabilities and usage."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "audio-music"
+      ],
+      "related": [
+        "tone-js"
+      ],
+      "path": "primitives/procedural/scribbletune.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "crepe",
       "name": "CREPE",
       "domain": "music",
@@ -25474,6 +26271,124 @@
         "learned"
       ],
       "view": "ai"
+    },
+    {
+      "id": "tone-js",
+      "name": "Tone.js",
+      "domain": "music",
+      "tasks": [
+        "sound-synthesis",
+        "music-scheduling",
+        "audio-effects"
+      ],
+      "class": "procedural-toolkit",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-lab-expansion-2026-10-07",
+      "description": "Web Audio framework with synthesizers, effects, musical timing and interactive scheduling for browser applications.",
+      "links": {
+        "repository": "https://github.com/Tonejs/Tone.js",
+        "homepage": "https://tonejs.github.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms are not a grant for separately supplied input assets, samples or dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware compatibility or memory claim."
+      },
+      "runtimes": [
+        "javascript",
+        "web-audio"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "audio-music"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "notes or frequencies with durations",
+          "instrument and effect parameters",
+          "optional externally supplied samples"
+        ],
+        "assets": [
+          "Application inputs and separately licensed samples, when used."
+        ],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned-model training required.",
+        "needs_data": "notes or frequencies with durations; instrument and effect parameters; optional externally supplied samples.",
+        "update_strategy": "Pin code, dependencies, configuration and input assets; rerun bounded fixtures after updates."
+      },
+      "data": {
+        "inputs": [
+          "notes or frequencies with durations",
+          "instrument and effect parameters",
+          "optional externally supplied samples"
+        ],
+        "outputs": [
+          "synthesized and scheduled audio"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Primary upstream documentation reviewed for the stated scope.",
+        "No execution or hardware measurement was performed for this new catalogue entry."
+      ],
+      "limitations": [
+        "User activation is required for audible playback. Sample-based instruments require separately sourced assets and licences. Musical structure must be supplied by the application; this is not a trained composer.",
+        "Browser-lab tests of other components do not certify this project or establish its memory requirements."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Tonejs/Tone.js",
+          "notes": "Upstream README and displayed code licence; capability and integration review only."
+        },
+        {
+          "type": "official",
+          "url": "https://tonejs.github.io/",
+          "notes": "Maintainer documentation for capabilities and usage."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "browser-library",
+        "audio-music"
+      ],
+      "path": "primitives/procedural/tone-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
     },
     {
       "id": "nprintml",

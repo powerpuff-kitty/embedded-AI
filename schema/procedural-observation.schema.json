@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scoped procedural browser observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "adapter_version",
+    "kind",
+    "recipe",
+    "environment",
+    "provenance",
+    "measurements",
+    "validation",
+    "scope"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "adapter_version": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "const": "procedural-browser-observation"
+    },
+    "recipe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "adapter",
+        "seed",
+        "detail"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "adapter": {
+          "enum": [
+            "noise",
+            "svg",
+            "tree",
+            "audio"
+          ]
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483646
+        },
+        "detail": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_agent",
+        "platform",
+        "hardware_concurrency"
+      ],
+      "properties": {
+        "user_agent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "platform": {
+          "type": "string"
+        },
+        "hardware_concurrency": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "adapter_version",
+        "lock_sha256",
+        "bundle_sha256",
+        "dependencies",
+        "adaptations",
+        "assets_bytes"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "adapter_version": {
+          "const": "1.0.0"
+        },
+        "lock_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bundle_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "dependencies": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          }
+        },
+        "adaptations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "assets_bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "warmup_iterations",
+        "iterations",
+        "latency_ms",
+        "output_payload_bytes",
+        "process_peak_rss_mb"
+      ],
+      "properties": {
+        "warmup_iterations": {
+          "const": 1
+        },
+        "iterations": {
+          "const": 8
+        },
+        "latency_ms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "samples",
+            "p50",
+            "p95"
+          ],
+          "properties": {
+            "samples": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "p50": {
+              "type": "number",
+              "minimum": 0
+            },
+            "p95": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "output_payload_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2000000
+        },
+        "process_peak_rss_mb": {
+          "type": "null"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finite_and_bounded",
+        "same_runtime_repeatable",
+        "output_sha256",
+        "repeat_hashes"
+      ],
+      "properties": {
+        "finite_and_bounded": {
+          "const": true
+        },
+        "same_runtime_repeatable": {
+          "type": "boolean"
+        },
+        "output_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "repeat_hashes": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 50
+    }
+  }
+}

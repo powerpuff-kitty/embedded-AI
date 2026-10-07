@@ -2,7 +2,7 @@
 
 > Generated from canonical YAML. Do not edit by hand; run `npm run index`.
 
-**41 procedural components** and **3 hybrid recipes**. Category memberships overlap; entries are not duplicated.
+**49 procedural components** and **3 hybrid recipes**. Category memberships overlap; entries are not duplicated.
 
 [Integration guide](PROCEDURAL-GUIDE.md) · [All components](CATALOGUE.md) · [Live procedural view](https://powerpuff-kitty.github.io/embedded-AI/?view=procedural) · [Hybrid recipes](https://powerpuff-kitty.github.io/embedded-AI/?view=hybrid)
 
@@ -12,7 +12,10 @@ A browser library, standalone browser reference, native library, native authorin
 
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
+| [isosurface](../primitives/procedural/isosurface.yaml) · [upstream](<https://github.com/mikolalysenko/isosurface>) | browser-library | mesh vertex positions and faces | not-applicable / unknown | MIT | documented |
+| [three-bvh-csg](../primitives/procedural/three-bvh-csg.yaml) · [upstream](<https://github.com/gkjohnson/three-bvh-csg>) | browser-library | resulting Three.js geometry with transferred attributes | not-applicable / unknown | MIT | documented |
 | [JSCAD Modeling](../primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | browser-library | 2D geometry, 3D CSG geometry | not-applicable / unknown | MIT | documented |
+| [Manifold](../primitives/procedural/manifold.yaml) · [upstream](<https://github.com/elalish/manifold>) | native-library | manifold triangle meshes and vertex properties | not-applicable / unknown | Apache-2.0 | documented |
 | [WaveFunctionCollapse](../primitives/procedural/wavefunctioncollapse.yaml) · [upstream](<https://github.com/mxgmn/WaveFunctionCollapse>) | native-reference | bitmaps and tilemaps | unknown / unknown | MIT | documented |
 | [rot.js](../primitives/procedural/rot-js.yaml) · [upstream](<https://github.com/ondras/rot.js>) | browser-library | tilemaps and navigation results | unknown / unknown | BSD-3-Clause | documented |
 | [recast-navigation-js](../primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | browser-library | navigation mesh, paths and crowd updates | unknown / conditional | MIT | documented |
@@ -20,6 +23,7 @@ A browser library, standalone browser reference, native library, native authorin
 | [Infinigen](../primitives/procedural/infinigen.yaml) · [upstream](<https://github.com/princeton-vl/infinigen>) | native-reference | generated scenes and rendered data | unknown / unknown | BSD-3-Clause | documented |
 | [THREE.Terrain](../primitives/procedural/three-terrain.yaml) · [upstream](<https://github.com/IceCreamYou/THREE.Terrain>) | browser-library | terrain mesh and height data | unknown / unknown | MIT | documented |
 | [WaveFunctionCollapse (JavaScript)](../primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | browser-library | generated RGBA pixels, generation success or contradiction status | injectable / conditional | MIT | documented |
+| [d3-delaunay](../primitives/procedural/d3-delaunay.yaml) · [upstream](<https://github.com/d3/d3-delaunay>) | browser-library | Voronoi cells, Delaunay triangles and neighbourhood queries | not-applicable / unknown | ISC | documented |
 | [Delaunator](../primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | browser-library | triangle indices, halfedge adjacency | not-applicable / unknown | ISC | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
 | [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |
@@ -46,6 +50,8 @@ A browser library, standalone browser reference, native library, native authorin
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
 | [Reaction-Diffusion Playground](../primitives/artificial-life/reaction-diffusion-playground.yaml) · [upstream](<https://github.com/jasonwebb/reaction-diffusion-playground>) | browser-reference | evolved-patterns | unknown / unknown | CC-BY-NC-SA-4.0 | documented |
+| [canvas-sketch](../primitives/procedural/canvas-sketch.yaml) · [upstream](<https://github.com/mattdesl/canvas-sketch>) | browser-library | rendered Canvas or WebGL artwork, exported frames through the companion CLI | unknown / unknown | MIT | documented |
+| [canvas-sketch-util](../primitives/procedural/canvas-sketch-util.yaml) · [upstream](<https://github.com/mattdesl/canvas-sketch-util>) | browser-library | sampled values and geometry transformations, pen-plotter drawing data | built-in / conditional | MIT | documented |
 | [WaveFunctionCollapse (JavaScript)](../primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | browser-library | generated RGBA pixels, generation success or contradiction status | injectable / conditional | MIT | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
 | [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |
@@ -80,14 +86,21 @@ A browser library, standalone browser reference, native library, native authorin
 | [ZzFXM](../primitives/procedural/zzfxm.yaml) · [upstream](<https://github.com/keithclark/ZzFXM>) | browser-library | synthesized music | unknown / unknown | MIT | documented |
 | [ZzFX](../primitives/procedural/zzfx.yaml) · [upstream](<https://github.com/KilledByAPixel/ZzFX>) | browser-library | synthesized audio | unknown / unknown | MIT | documented |
 | [jsfxr](../primitives/procedural/jsfxr.yaml) · [upstream](<https://github.com/chr15m/jsfxr>) | browser-library | audio buffer or wav | unknown / unknown | Unlicense | documented |
+| [Scribbletune](../primitives/procedural/scribbletune.yaml) · [upstream](<https://github.com/scribbletune/scribbletune>) | browser-library | musical clips and MIDI files, browser playback when paired with Tone.js | unknown / unknown | MIT | documented |
+| [Tone.js](../primitives/procedural/tone-js.yaml) · [upstream](<https://github.com/Tonejs/Tone.js>) | browser-library | synthesized and scheduled audio | unknown / unknown | MIT | documented |
 
 ## foundations
 
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
 | [Lindenmayer](../primitives/procedural/lindenmayer.yaml) · [upstream](<https://github.com/nylki/lindenmayer>) | browser-library | expanded symbol sequences | unknown / unknown | MIT | documented |
+| [isosurface](../primitives/procedural/isosurface.yaml) · [upstream](<https://github.com/mikolalysenko/isosurface>) | browser-library | mesh vertex positions and faces | not-applicable / unknown | MIT | documented |
+| [three-bvh-csg](../primitives/procedural/three-bvh-csg.yaml) · [upstream](<https://github.com/gkjohnson/three-bvh-csg>) | browser-library | resulting Three.js geometry with transferred attributes | not-applicable / unknown | MIT | documented |
 | [JSCAD Modeling](../primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | browser-library | 2D geometry, 3D CSG geometry | not-applicable / unknown | MIT | documented |
+| [Manifold](../primitives/procedural/manifold.yaml) · [upstream](<https://github.com/elalish/manifold>) | native-library | manifold triangle meshes and vertex properties | not-applicable / unknown | Apache-2.0 | documented |
 | [recast-navigation-js](../primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | browser-library | navigation mesh, paths and crowd updates | unknown / conditional | MIT | documented |
+| [canvas-sketch-util](../primitives/procedural/canvas-sketch-util.yaml) · [upstream](<https://github.com/mattdesl/canvas-sketch-util>) | browser-library | sampled values and geometry transformations, pen-plotter drawing data | built-in / conditional | MIT | documented |
+| [d3-delaunay](../primitives/procedural/d3-delaunay.yaml) · [upstream](<https://github.com/d3/d3-delaunay>) | browser-library | Voronoi cells, Delaunay triangles and neighbourhood queries | not-applicable / unknown | ISC | documented |
 | [Delaunator](../primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | browser-library | triangle indices, halfedge adjacency | not-applicable / unknown | ISC | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
 | [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |

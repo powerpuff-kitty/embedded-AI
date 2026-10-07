@@ -73,3 +73,12 @@ if(!Array.isArray(built.entries)||!built.entries.length) throw new Error('dist/d
 const html=await fs.readFile('dist/index.html','utf8');
 if(!html.includes('app.mjs')||!html.includes('id="need"')) throw new Error('dist/index.html is missing the explorer or need matcher');
 console.log(`Built static explorer: ${entries.length} entries, ${records.length} measured runs. Verified ${required.length} assets. No public deployment performed.`);
+
+// Optional examples are built only when explicitly requested; basic catalogue builds stay lean.
+if (process.argv.includes('--with-procedural')) {
+  await import('../recipes/procedural/build.mjs');
+  const index = await fs.readFile('dist/index.html', 'utf8');
+  await fs.writeFile('dist/index.html', index.replace('<footer>', '<footer><a href="lab/">Procedural lab</a> · '));
+  const sitemap = await fs.readFile('dist/sitemap.xml', 'utf8');
+  await fs.writeFile('dist/sitemap.xml', sitemap.replace('</urlset>', `<url><loc>${BASE}/lab/</loc></url>\n</urlset>`));
+}

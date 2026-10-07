@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "files_sha256": {
+    "zzfx/ZzFX.js": "43f321101a935892c112a291e2e943b4da33159b43fcd4a21f3eae710f4a27ff",
+    "@dgreenheck/ez-tree/src/lib/tree.js": "721433501003241545cfaab1faf10658fa7ee0cab4622028d2bb49d541ae9b7a",
+    "@dgreenheck/ez-tree/src/lib/textures.js": "fb93a17ae654a64cc9a1bc222534ff45ea8a6b20376015e82c1efb6bc5cc9358"
+  },
+  "adaptations": [
+    "EZ-Tree 1.1.0 uses its pinned internal tree entrypoint. A geometry-only texture provider returns null, preventing image loading. No bark/leaf image assets are shipped. Tree generation code is unchanged.",
+    "ZzFX 1.4.0: eager AudioContext initialization is replaced with null, and frequency randomness is fixed to its midpoint. Only buildSamples is used. Playback is owned by the host after an explicit Play gesture."
+  ]
+}

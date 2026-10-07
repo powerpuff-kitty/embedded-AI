@@ -1,5 +1,12 @@
 # Changelog
 
+## Procedural browser lab — 2026-10-07
+
+- Add opt-in worker-based fixtures for simplex-noise, Rough.js, EZ-Tree geometry and ZzFX sample synthesis, with exact dependency pins and guarded initialization adapters.
+- Add versioned recipe import/export, SVG/OBJ/WAV/heightfield exports, bounded workloads, cancellation and eight-run repeatability reports.
+- Add eight sourced catalogue entries (610 total, 49 procedural components); keep hybrid designs and untested project compatibility unchanged.
+- Separate output-payload measurements from process memory, and add observation validation and dedicated browser CI.
+
 ## Unreleased — procedural catalogue
 
 Added 24 researched upstream generators, annotated 5 existing simulations, and added 3 design-only hybrid recipes. Shared method/view/category facets now work across the explorer, CLI, package and MCP. Added strict procedural metadata, recipe reference validation, generated procedural tables, source/unknown distinctions and regression tests. Existing component IDs and paths are retained; no upstream runtime benchmark or npm publication is implied.

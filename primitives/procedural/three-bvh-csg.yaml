@@ -1,0 +1,82 @@
+id: three-bvh-csg
+name: three-bvh-csg
+domain: engineering
+tasks:
+- mesh-boolean
+- constructive-solid-geometry
+class: procedural-toolkit
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-lab-expansion-2026-10-07
+description: Experimental constructive solid geometry implementation for Three.js, built on three-mesh-bvh.
+links:
+  repository: https://github.com/gkjohnson/three-bvh-csg
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms are not a grant for separately supplied input assets, samples or dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  - desktop
+  notes: Local use with dependencies and any required WebAssembly or sample assets bundled. Not a hardware
+    compatibility or memory claim.
+runtimes:
+- javascript
+- threejs
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  - foundations
+  integration: browser-library
+  seed_control: not-applicable
+  determinism: unknown
+  controls: &id001
+  - watertight brush geometry with attributes
+  - Boolean operation and transforms
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned-model training required.
+  needs_data: watertight brush geometry with attributes; Boolean operation and transforms.
+  update_strategy: Pin code, dependencies, configuration and input assets; rerun bounded fixtures after
+    updates.
+data:
+  inputs: *id001
+  outputs:
+  - resulting Three.js geometry with transferred attributes
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Primary upstream documentation reviewed for the stated scope.
+- No execution or hardware measurement was performed for this new catalogue entry.
+limitations:
+- Upstream labels the implementation experimental. Brushes must be watertight two-manifold geometry without
+  triangle interpenetration; do not assume every output is manufacturing-ready.
+- Browser-lab tests of other components do not certify this project or establish its memory requirements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/gkjohnson/three-bvh-csg
+  notes: Upstream README and displayed code licence; capability and integration review only.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- browser-library
+- worlds-environments
+- foundations
