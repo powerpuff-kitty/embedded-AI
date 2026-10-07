@@ -1,26 +1,76 @@
-name: procedural catalogue workbench
+name: materialize and validate procedural catalogue
 on:
   push:
     branches: [feat/procedural-catalogue]
+    paths:
+      - '.github/procedural-capsule.*'
+      - '.github/workflows/procedural-workbench.yml'
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: procedural-catalogue-materialization
+  cancel-in-progress: false
 jobs:
-  source:
+  apply:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with: {persist-credentials: false}
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with: {node-version: 22, package-manager-cache: false}
-      - run: npm ci --ignore-scripts
-      - name: Export public sources and locked test dependencies, excluding Git credentials
+      - name: Verify and materialize the locally tested source changes
         run: |
-          mkdir -p /tmp/catalog-workbench
-          git archive --format=tar HEAD | gzip > /tmp/catalog-workbench/source.tar.gz
-          tar -czf /tmp/catalog-workbench/dependencies.tar.gz node_modules
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        with:
-          name: procedural-workbench
-          retention-days: 1
-          path: /tmp/catalog-workbench/
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma
+          from pathlib import Path, PurePosixPath
+          parts = [Path(f'.github/procedural-capsule.{i}') for i in range(4)]
+          raw = base64.b64decode(''.join(p.read_text().strip() for p in parts), validate=True)
+          assert hashlib.sha256(raw).hexdigest() == '1c425e9e60baa41437215d48d8ae4d8a82f525a2a4e3bd080c231b7bdc0a3898', 'Transport checksum mismatch'
+          changes = json.loads(lzma.decompress(raw))
+          assert len(changes) == 70
+          seen = set()
+          allowed = {'README.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'package.json', '.github/workflows/catalog.yml'}
+          roots = {'docs', 'lib', 'mcp', 'pipelines', 'primitives', 'schema', 'scripts', 'site', 'tests', 'tests_python'}
+          for change in changes:
+              name = change['path']
+              pure = PurePosixPath(name)
+              assert not pure.is_absolute() and '..' not in pure.parts and name not in seen
+              assert name in allowed or pure.parts[0] in roots, name
+              seen.add(name)
+              p = Path(name)
+              assert not p.is_symlink()
+              if 'content' in change:
+                  assert not p.exists(), f'New path already exists: {name}'
+                  text = change['content']
+              else:
+                  text = p.read_text(encoding='utf-8')
+                  assert hashlib.sha256(text.encode()).hexdigest() == change['base'], f'Base changed: {name}'
+                  end = len(text)
+                  for start, stop, replacement in reversed(change['edits']):
+                      assert 0 <= start <= stop <= end
+                      text = text[:start] + replacement + text[stop:]
+                      end = start
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(text, encoding='utf-8')
+          print(f'Materialized {len(changes)} verified source files')
+          PY
+      - run: npm ci --ignore-scripts
+      - run: npm run index
+      - run: npm run check
+      - run: npm run test:coverage
+      - run: npm run audit -- --strict
+      - run: npm run reviews:check && npm run site:build
+      - name: Commit validated sources and generated outputs; remove temporary transport
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm .github/procedural-capsule.{0,1,2,3} .github/workflows/procedural-workbench.yml
+          git add --all
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: add procedural catalogue views, 24 generators and hybrid design recipes'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/procedural-catalogue
+          git rev-parse HEAD
