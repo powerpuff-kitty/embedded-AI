@@ -21,6 +21,8 @@ jobs:
         with: {node-version: 22, package-manager-cache: false}
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=high
+      # Build from this push's canonical YAML, without waiting for a separate bot commit.
+      - run: npm run index
       - run: npm run check
       - run: npm run reviews:check
       - run: npm run site:build

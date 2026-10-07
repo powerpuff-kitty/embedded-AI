@@ -38,8 +38,9 @@ jobs:
         with: {node-version: 22, package-manager-cache: false}
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=high
-      - run: npm run validate && npm test
+      - run: npm run validate
       - run: npm run audit -- --strict
+      # Package/CLI parity tests consume generated exports: refresh them before npm run check.
       - run: npm run index
       - run: npm run check && npm run reviews:check && npm run site:build
       - name: Commit generated catalogue only

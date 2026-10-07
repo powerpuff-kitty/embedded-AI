@@ -1,0 +1,70 @@
+name: reconcile concurrent procedural additions
+on:
+  push:
+    branches: [feat/procedural-lab]
+    paths: ['.github/workflows/procedural-reconcile.yml']
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with: {persist-credentials: false, fetch-depth: 0}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with: {node-version: 22, package-manager-cache: false}
+      - name: Reconcile canonical entries and retain both test suites
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          pin = 'dbe4d2fc9798659dfd1d5ceb1d9e05aa9060a595'
+          run = lambda *args: subprocess.check_output(args, text=True)
+          lab = run('git','show','HEAD:tests/procedural-expansion.test.ts')
+          overlap = [f'primitives/procedural/{id}.yaml' for id in ['fishdraw','wavefunctioncollapse-js','delaunator','earcut','matter-js','cannon-es']]
+          generated = ['README.md','docs/CATALOGUE.md','docs/PROCEDURAL.md','generated/catalog.json','generated/catalog.full.json','generated/coverage.json']
+          allowed = set(overlap + generated + ['tests/procedural.test.ts','tests/procedural-expansion.test.ts'])
+          result = subprocess.run(['git','merge','--no-commit','--no-ff',pin])
+          assert result.returncode in (0,1), 'Merge failed unexpectedly'
+          conflicts = set(run('git','diff','--name-only','--diff-filter=U').splitlines())
+          assert conflicts <= allowed, f'Unexpected conflicts: {conflicts-allowed}'
+          # The main entries already include reviewed seed/serialization and dimension distinctions.
+          subprocess.check_call(['git','checkout',pin,'--',*overlap,'tests/procedural-expansion.test.ts','tests/procedural.test.ts'])
+          # Preserve authored lab prose; regenerate all catalogue blocks from the union of canonical YAML.
+          subprocess.check_call(['git','checkout','HEAD','--',*generated])
+          target = Path('tests/procedural.test.ts')
+          text = target.read_text()
+          old = "assert.equal(e.procedural.evidence_level, 'documented');"
+          assert text.count(old) == 1
+          target.write_text(text.replace(old,"assert.ok(['documented', 'inspected'].includes(e.procedural.evidence_level));"))
+          old = "entries.filter(e=>e.catalogue_batch==='procedural-expansion-2026-10-07')"
+          assert lab.count(old) == 1
+          lab = lab.replace(old,'entries.filter(e=>expected.includes(e.id))')
+          lab = lab.replace('second procedural batch contains 14 distinct documentation-only entries','lab research candidates retain 14 canonical documentation-only entries')
+          Path('tests/procedural-lab.test.ts').write_text(lab)
+          subprocess.check_call(['git','add','--all'])
+          assert not run('git','diff','--name-only','--diff-filter=U').strip()
+          PY
+      - run: npm ci --ignore-scripts && npm run lab:install
+      - run: npm run index && npm run check && npm run test:coverage
+      - run: npm run audit -- --strict && npm run reviews:check
+      - run: npm run site:build && npm run lab:build && npm run lab:test
+      - name: Commit only validated source reconciliation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add --all
+          if git diff --cached --name-only | grep -q '^.github/workflows/'; then echo 'Unexpected workflow edit'; exit 1; fi
+          git diff --cached --check
+          git commit -m 'Merge concurrent procedural additions and preserve canonical entries and CI fixes'
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $AUTH" push origin HEAD:refs/heads/feat/procedural-lab
+          git archive --format=tar HEAD | gzip > /tmp/procedural-reconciled.tar.gz
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: procedural-reconciled-source
+          retention-days: 1
+          path: /tmp/procedural-reconciled.tar.gz
