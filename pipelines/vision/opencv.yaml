@@ -1,0 +1,23 @@
+id: opencv
+name: OpenCV
+domain: vision
+tasks: [image-processing, classical-cv, dnn-inference]
+class: vision-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Foundational computer-vision library with a DNN module for running pre-trained models on the edge."
+links: {repository: 'https://github.com/opencv/opencv', homepage: 'https://opencv.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Classic CV plus a DNN loader for ONNX/Caffe/TFLite models.'}
+runtimes: [native-cpp, python, opencv-dnn, onnxruntime]
+formats: [onnx, caffemodel, tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runs pre-trained models and classical pipelines; no training.', needs_data: 'Images/video plus a pre-trained model for the DNN module.', update_strategy: 'Pin version; re-benchmark the target backend (CPU/OpenCL).' }
+data: {inputs: [image, video], outputs: [processed-image, inference-results], languages: []}
+evaluation: ['Accuracy of the loaded model plus end-to-end latency on the target.']
+limitations: ['DNN module is an inference wrapper; per-model licences still apply.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/opencv/opencv', notes: 'OpenCV library and DNN module.'}]
+reviewed: '2026-10-06'
+tags: [vision, opencv, toolkit, dnn]

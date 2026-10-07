@@ -1,0 +1,23 @@
+id: d-fine
+name: D-FINE
+domain: vision
+tasks: [object-detection, real-time-detection]
+class: detector-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Real-time detection transformer that refines bounding boxes as probability distributions."
+links: {repository: 'https://github.com/Peterande/D-FINE', paper: 'https://arxiv.org/abs/2410.13842'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Small/medium/large variants with ONNX/TensorRT export.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained detectors; fine-tuning on custom classes.', needs_data: 'Labelled detection data for the target classes.', update_strategy: 'Verify weight terms; re-export and re-benchmark.'}
+data: {inputs: [rgb-image], outputs: [detection-boxes, classes], languages: []}
+evaluation: ['mAP on target classes plus post-export latency.']
+limitations: ['Weight terms not stated; smaller variants trade accuracy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/Peterande/D-FINE', notes: 'D-FINE detection transformer.'}]
+reviewed: '2026-10-06'
+tags: [vision, detection, realtime, transformer]

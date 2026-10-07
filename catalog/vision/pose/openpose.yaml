@@ -1,0 +1,23 @@
+id: openpose
+name: OpenPose
+domain: vision
+tasks: [multi-person-pose-estimation, hand-pose-estimation, face-landmark]
+class: pose-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Real-time multi-person keypoint detection for body, hand and face landmarks."
+links: {repository: 'https://github.com/CMU-Perceptual-Computing-Lab/openpose', paper: 'https://arxiv.org/abs/1812.08008'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'GPU-oriented; a widely used reference for real-time pose.'}
+runtimes: [native-cpp, caffe]
+formats: [caffemodel]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained pose models; retraining is uncommon.', needs_data: 'Images/video; labelled keypoints for evaluation.', update_strategy: 'Verify licence (custom) and re-measure latency.'}
+data: {inputs: [rgb-image], outputs: [body-hand-face-keypoints], languages: []}
+evaluation: ['Keypoint AP on target data plus latency.']
+limitations: ['Custom/ambiguous licence; depends on Caffe and GPU tooling.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/CMU-Perceptual-Computing-Lab/openpose', notes: 'OpenPose keypoint detection.'}]
+reviewed: '2026-10-06'
+tags: [vision, pose, keypoints, realtime]

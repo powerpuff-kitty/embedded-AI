@@ -1,0 +1,23 @@
+id: tabnet
+name: TabNet
+domain: business
+tasks: [tabular-classification, tabular-regression]
+class: tabular-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Attentive interpretable network for tabular data with built-in feature selection."
+links: {repository: 'https://github.com/dreamquark-ai/tabnet', paper: 'https://arxiv.org/abs/1908.07442'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Small tabular models; CPU inference is typical.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Fits a model per dataset with its own preprocessing.', needs_data: 'Labelled tabular rows for the target task.', update_strategy: 'Retrain on drift; revalidate calibration and feature drift.'}
+data: {inputs: [tabular-features], outputs: [class, value, feature-importance], languages: []}
+evaluation: ['AUC/RMSE with a held-out split and calibration check.']
+limitations: ['Requires per-dataset training and preprocessing.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/dreamquark-ai/tabnet', notes: 'TabNet tabular model.'}]
+reviewed: '2026-10-06'
+tags: [tabular, classification, regression, interpretable]

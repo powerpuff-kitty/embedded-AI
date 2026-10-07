@@ -1,0 +1,23 @@
+id: clip
+name: CLIP
+domain: vision
+tasks: [image-text-similarity, zero-shot-image-classification, embeddings]
+class: vision-language-model
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "OpenAI contrastive image-text model that enables zero-shot classification from text prompts."
+links: {repository: 'https://github.com/openai/CLIP', paper: 'https://arxiv.org/abs/2103.00020'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'ViT-B/32 and ResNet variants; text embeddings can be precomputed for fixed labels.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Zero-shot or fine-tuned; precompute text embeddings for fixed vocabularies.', needs_data: 'Images plus class prompts; labelled data for fine-tuning.', update_strategy: 'Pin checkpoint; revalidate on target distribution.'}
+data: {inputs: [rgb-image, text], outputs: [embeddings, similarity-scores], languages: [en]}
+evaluation: ['Zero-shot top-1 or retrieval metrics on the target data.']
+limitations: ['Weight terms not stated; English-centric and dataset-biased.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/openai/CLIP', notes: 'CLIP models and inference.'}]
+reviewed: '2026-10-06'
+tags: [vision, clip, zero-shot, embeddings]

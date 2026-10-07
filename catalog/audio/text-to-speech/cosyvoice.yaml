@@ -1,0 +1,23 @@
+id: cosyvoice
+name: CosyVoice
+domain: audio
+tasks: [text-to-speech, voice-cloning, speech-synthesis]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Multilingual zero-shot voice-cloning TTS with controllable emotion and streaming synthesis."
+links: {repository: 'https://github.com/QwenAudio/CosyVoice', paper: 'https://arxiv.org/abs/2407.05407'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Zero-shot cloning from a short reference clip; GPU recommended.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained synthesis; fine-tuning on speaker data supported.', needs_data: 'Text plus a short reference utterance; consent to clone.', update_strategy: 'Verify weight terms; require speaker consent and abuse review.'}
+data: {inputs: [text, reference-audio], outputs: [synthesised-audio], languages: [multilingual]}
+evaluation: ['MOS/word-error and speaker-similarity checks; consent and abuse review.']
+limitations: ['Voice cloning can be misused; weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/QwenAudio/CosyVoice', notes: 'CosyVoice text-to-speech.'}]
+reviewed: '2026-10-06'
+tags: [audio, tts, voice-cloning, multilingual]

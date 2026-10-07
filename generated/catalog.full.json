@@ -4491,6 +4491,96 @@
       "usage_mode": "companion"
     },
     {
+      "id": "seamless-communication",
+      "name": "Seamless Communication",
+      "domain": "audio",
+      "tasks": [
+        "speech-translation",
+        "speech-to-speech-translation",
+        "speech-to-text"
+      ],
+      "class": "speech-translation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's suite for expressive, streaming speech-to-speech and speech-to-text translation.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/seamless_communication",
+        "paper": "https://arxiv.org/abs/2312.05187"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Large multilingual speech models; server-class inference."
+      },
+      "runtimes": [
+        "pytorch",
+        "fairseq2"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained translation models; fine-tuning supported.",
+        "needs_data": "Paired multilingual audio/text for evaluation.",
+        "update_strategy": "Verify licence (NOASSERTION) and weight terms; revalidate per language."
+      },
+      "data": {
+        "inputs": [
+          "audio",
+          "text"
+        ],
+        "outputs": [
+          "translation",
+          "audio",
+          "transcript"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "BLEU/COMET and speech quality per language pair."
+      ],
+      "limitations": [
+        "Licence ambiguous; large and desktop/server scale; per-language quality varies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/seamless_communication",
+          "notes": "Seamless speech translation suite."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "speech",
+        "translation",
+        "multilingual"
+      ],
+      "path": "catalog/audio/speech/seamless-communication.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "bark",
       "name": "Bark",
       "domain": "audio",
@@ -4572,6 +4662,93 @@
         "generative"
       ],
       "path": "catalog/audio/text-to-speech/bark.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "cosyvoice",
+      "name": "CosyVoice",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "voice-cloning",
+        "speech-synthesis"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Multilingual zero-shot voice-cloning TTS with controllable emotion and streaming synthesis.",
+      "links": {
+        "repository": "https://github.com/QwenAudio/CosyVoice",
+        "paper": "https://arxiv.org/abs/2407.05407"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Zero-shot cloning from a short reference clip; GPU recommended."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained synthesis; fine-tuning on speaker data supported.",
+        "needs_data": "Text plus a short reference utterance; consent to clone.",
+        "update_strategy": "Verify weight terms; require speaker consent and abuse review."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "reference-audio"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "MOS/word-error and speaker-similarity checks; consent and abuse review."
+      ],
+      "limitations": [
+        "Voice cloning can be misused; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/QwenAudio/CosyVoice",
+          "notes": "CosyVoice text-to-speech."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "voice-cloning",
+        "multilingual"
+      ],
+      "path": "catalog/audio/text-to-speech/cosyvoice.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -4750,6 +4927,94 @@
       ],
       "path": "pipelines/audio/piper.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "vits",
+      "name": "VITS",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "speech-synthesis"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "End-to-end adversarial TTS that synthesises natural speech directly from text.",
+      "links": {
+        "repository": "https://github.com/jaywalnut310/vits",
+        "paper": "https://arxiv.org/abs/2106.06103"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Compact single-speaker models can run in real time."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a voice from a labelled single-speaker corpus.",
+        "needs_data": "Hours of transcribed single-speaker audio.",
+        "update_strategy": "Verify weight terms; re-benchmark real-time factor on target."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "en",
+          "multilingual-community"
+        ]
+      },
+      "evaluation": [
+        "MOS and real-time factor on the target device."
+      ],
+      "limitations": [
+        "Voice cloning/consent concerns; quality depends on training data."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jaywalnut310/vits",
+          "notes": "VITS text-to-speech."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "speech"
+      ],
+      "path": "catalog/audio/text-to-speech/vits.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "silero-vad",
@@ -6076,6 +6341,92 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "tabnet",
+      "name": "TabNet",
+      "domain": "business",
+      "tasks": [
+        "tabular-classification",
+        "tabular-regression"
+      ],
+      "class": "tabular-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Attentive interpretable network for tabular data with built-in feature selection.",
+      "links": {
+        "repository": "https://github.com/dreamquark-ai/tabnet",
+        "paper": "https://arxiv.org/abs/1908.07442"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Small tabular models; CPU inference is typical."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits a model per dataset with its own preprocessing.",
+        "needs_data": "Labelled tabular rows for the target task.",
+        "update_strategy": "Retrain on drift; revalidate calibration and feature drift."
+      },
+      "data": {
+        "inputs": [
+          "tabular-features"
+        ],
+        "outputs": [
+          "class",
+          "value",
+          "feature-importance"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "AUC/RMSE with a held-out split and calibration check."
+      ],
+      "limitations": [
+        "Requires per-dataset training and preprocessing."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dreamquark-ai/tabnet",
+          "notes": "TabNet tabular model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "tabular",
+        "classification",
+        "regression",
+        "interpretable"
+      ],
+      "path": "pipelines/business/tabular/tabnet.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "tabpfn",
       "name": "TabPFN model family",
       "domain": "business",
@@ -6256,6 +6607,90 @@
         "requires-training"
       ],
       "path": "pipelines/business/tabular/xgboost.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "skrub",
+      "name": "skrub",
+      "domain": "business",
+      "tasks": [
+        "tabular-preprocessing",
+        "feature-engineering"
+      ],
+      "class": "tabular-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Scikit-learn-compatible tools for preparing dirty, real-world tables for models.",
+      "links": {
+        "repository": "https://github.com/skrub-data/skrub",
+        "homepage": "https://skrub-data.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Preprocessing library; pairs with classical or learned models."
+      },
+      "runtimes": [
+        "scikit-learn",
+        "python"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits encoders/transformers on the target table.",
+        "needs_data": "Raw tabular data for the target pipeline.",
+        "update_strategy": "Refit on new columns; track schema drift."
+      },
+      "data": {
+        "inputs": [
+          "raw-tabular-data"
+        ],
+        "outputs": [
+          "model-ready-features"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Downstream model metrics plus data-cleaning review."
+      ],
+      "limitations": [
+        "Preprocessing only; does not ship a predictive model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/skrub-data/skrub",
+          "notes": "skrub tabular preprocessing."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "tabular",
+        "preprocessing",
+        "scikit-learn",
+        "toolkit"
+      ],
+      "path": "pipelines/business/tabular/skrub.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -21325,6 +21760,93 @@
       "usage_mode": "companion"
     },
     {
+      "id": "wasmedge",
+      "name": "WasmEdge",
+      "domain": "runtime",
+      "tasks": [
+        "wasm-inference",
+        "edge-runtime"
+      ],
+      "class": "wasm-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Lightweight WebAssembly runtime for edge and serverless AI inference.",
+      "links": {
+        "repository": "https://github.com/WasmEdge/WasmEdge",
+        "homepage": "https://wasmedge.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "mobile",
+          "embedded",
+          "server"
+        ],
+        "notes": "Sandboxed WASM runtime; can host WASI-NN backends."
+      },
+      "runtimes": [
+        "wasm",
+        "wasi-nn"
+      ],
+      "formats": [
+        "wasm"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves pre-trained models compiled or loaded into WASM.",
+        "needs_data": "A pre-trained model plus a WASM build of the app.",
+        "update_strategy": "Pin runtime version; re-benchmark backend performance."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Throughput/latency and sandbox isolation tests on the target."
+      ],
+      "limitations": [
+        "Performance depends on the WASI-NN backend; weight licences are per model."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/WasmEdge/WasmEdge",
+          "notes": "WasmEdge WASM runtime."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "wasm",
+        "edge",
+        "serverless"
+      ],
+      "path": "pipelines/runtime/wasmedge.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "mace",
       "name": "MACE",
       "domain": "science",
@@ -27692,6 +28214,95 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "blip2-lavis",
+      "name": "BLIP-2 (LAVIS)",
+      "domain": "vision",
+      "tasks": [
+        "image-captioning",
+        "visual-question-answering",
+        "image-text-retrieval"
+      ],
+      "class": "vision-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Salesforce vision-language models (BLIP-2) and the LAVIS library that hosts them.",
+      "links": {
+        "repository": "https://github.com/salesforce/LAVIS",
+        "paper": "https://arxiv.org/abs/2301.12597"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Large vision-language models; GPU recommended."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained captioning/VQA models; fine-tuning is supported.",
+        "needs_data": "Image-text data for evaluation/adaptation.",
+        "update_strategy": "Verify weight terms; revalidate on target tasks."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "text"
+        ],
+        "outputs": [
+          "caption",
+          "answer",
+          "embeddings"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Captioning/VQA/retrieval metrics on held-out data."
+      ],
+      "limitations": [
+        "Weight terms not stated; desktop/server scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/salesforce/LAVIS",
+          "notes": "BLIP-2 and LAVIS models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "captioning",
+        "vqa",
+        "vision-language"
+      ],
+      "path": "catalog/vision/vlm/blip2-lavis.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "apple-cvnets",
       "name": "CVNets",
       "domain": "vision",
@@ -28368,6 +28979,270 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "diffusers",
+      "name": "Diffusers",
+      "domain": "vision",
+      "tasks": [
+        "image-generation",
+        "diffusion-inference"
+      ],
+      "class": "generative-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Hugging Face library of pretrained diffusion models for image and audio generation.",
+      "links": {
+        "repository": "https://github.com/huggingface/diffusers",
+        "homepage": "https://huggingface.co/docs/diffusers"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Runs diffusion pipelines; larger models need GPU."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Inference and fine-tuning (DreamBooth/LoRA) of diffusion models.",
+        "needs_data": "Text/image datasets for fine-tuning; prompts for generation.",
+        "update_strategy": "Verify per-model licences (many are research/non-commercial)."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt",
+          "seed"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Image quality/diversity and prompt adherence; licence review."
+      ],
+      "limitations": [
+        "Many model weights are research/non-commercial; desktop/server scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/diffusers",
+          "notes": "Diffusers library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "diffusion",
+        "generative",
+        "toolkit"
+      ],
+      "path": "pipelines/vision/diffusers.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "stylegan3",
+      "name": "StyleGAN3",
+      "domain": "vision",
+      "tasks": [
+        "image-generation",
+        "generative-modelling"
+      ],
+      "class": "generative-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA alias-free generative adversarial network for high-quality image synthesis.",
+      "links": {
+        "repository": "https://github.com/NVlabs/stylegan3",
+        "paper": "https://arxiv.org/abs/2106.12423"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "GPU-heavy generative model; not embedded-friendly."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained generators; retraining needs large datasets.",
+        "needs_data": "Image datasets for training; prompts/seeds for sampling.",
+        "update_strategy": "Verify NV licence and weight terms before any use."
+      },
+      "data": {
+        "inputs": [
+          "latent-vector"
+        ],
+        "outputs": [
+          "generated-image"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "FID and diversity metrics; misuse review."
+      ],
+      "limitations": [
+        "NVIDIA non-commercial/custom licence; large and desktop/server scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVlabs/stylegan3",
+          "notes": "StyleGAN3 generative model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "gan",
+        "generative"
+      ],
+      "path": "catalog/vision/generative/stylegan3.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "opencv",
+      "name": "OpenCV",
+      "domain": "vision",
+      "tasks": [
+        "image-processing",
+        "classical-cv",
+        "dnn-inference"
+      ],
+      "class": "vision-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Foundational computer-vision library with a DNN module for running pre-trained models on the edge.",
+      "links": {
+        "repository": "https://github.com/opencv/opencv",
+        "homepage": "https://opencv.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Classic CV plus a DNN loader for ONNX/Caffe/TFLite models."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python",
+        "opencv-dnn",
+        "onnxruntime"
+      ],
+      "formats": [
+        "onnx",
+        "caffemodel",
+        "tflite"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runs pre-trained models and classical pipelines; no training.",
+        "needs_data": "Images/video plus a pre-trained model for the DNN module.",
+        "update_strategy": "Pin version; re-benchmark the target backend (CPU/OpenCL)."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "video"
+        ],
+        "outputs": [
+          "processed-image",
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy of the loaded model plus end-to-end latency on the target."
+      ],
+      "limitations": [
+        "DNN module is an inference wrapper; per-model licences still apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/opencv/opencv",
+          "notes": "OpenCV library and DNN module."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "opencv",
+        "toolkit",
+        "dnn"
+      ],
+      "path": "pipelines/vision/opencv.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "efficient-sam",
       "name": "EfficientSAM",
       "domain": "vision",
@@ -28784,6 +29659,187 @@
         "ncnn"
       ],
       "path": "catalog/vision/super-resolution/real-esrgan.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "big-vision",
+      "name": "Big Vision (SigLIP)",
+      "domain": "vision",
+      "tasks": [
+        "image-text-similarity",
+        "zero-shot-image-classification",
+        "embeddings"
+      ],
+      "class": "vision-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's training codebase and SigLIP image-text models with a sigmoid contrastive loss.",
+      "links": {
+        "repository": "https://github.com/google-research/big_vision",
+        "paper": "https://arxiv.org/abs/2303.15343"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Includes ViT-B/16 SigLIP checkpoints; larger variants need GPU."
+      },
+      "runtimes": [
+        "jax",
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot or fine-tuned image-text models.",
+        "needs_data": "Images plus labels/prompts for evaluation.",
+        "update_strategy": "Pin checkpoint; revalidate on target data."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "text"
+        ],
+        "outputs": [
+          "embeddings",
+          "similarity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Zero-shot or retrieval metrics on the target data."
+      ],
+      "limitations": [
+        "Weight terms not stated; large variants are desktop/server scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/big_vision",
+          "notes": "Big Vision / SigLIP models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "siglip",
+        "clip",
+        "zero-shot"
+      ],
+      "path": "catalog/vision/embeddings/big-vision.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "clip",
+      "name": "CLIP",
+      "domain": "vision",
+      "tasks": [
+        "image-text-similarity",
+        "zero-shot-image-classification",
+        "embeddings"
+      ],
+      "class": "vision-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OpenAI contrastive image-text model that enables zero-shot classification from text prompts.",
+      "links": {
+        "repository": "https://github.com/openai/CLIP",
+        "paper": "https://arxiv.org/abs/2103.00020"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "ViT-B/32 and ResNet variants; text embeddings can be precomputed for fixed labels."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Zero-shot or fine-tuned; precompute text embeddings for fixed vocabularies.",
+        "needs_data": "Images plus class prompts; labelled data for fine-tuning.",
+        "update_strategy": "Pin checkpoint; revalidate on target distribution."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "text"
+        ],
+        "outputs": [
+          "embeddings",
+          "similarity-scores"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Zero-shot top-1 or retrieval metrics on the target data."
+      ],
+      "limitations": [
+        "Weight terms not stated; English-centric and dataset-biased."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/openai/CLIP",
+          "notes": "CLIP models and inference."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "clip",
+        "zero-shot",
+        "embeddings"
+      ],
+      "path": "catalog/vision/embeddings/clip.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -30147,6 +31203,92 @@
       "usage_mode": "unknown"
     },
     {
+      "id": "openpose",
+      "name": "OpenPose",
+      "domain": "vision",
+      "tasks": [
+        "multi-person-pose-estimation",
+        "hand-pose-estimation",
+        "face-landmark"
+      ],
+      "class": "pose-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Real-time multi-person keypoint detection for body, hand and face landmarks.",
+      "links": {
+        "repository": "https://github.com/CMU-Perceptual-Computing-Lab/openpose",
+        "paper": "https://arxiv.org/abs/1812.08008"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "GPU-oriented; a widely used reference for real-time pose."
+      },
+      "runtimes": [
+        "native-cpp",
+        "caffe"
+      ],
+      "formats": [
+        "caffemodel"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained pose models; retraining is uncommon.",
+        "needs_data": "Images/video; labelled keypoints for evaluation.",
+        "update_strategy": "Verify licence (custom) and re-measure latency."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "body-hand-face-keypoints"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Keypoint AP on target data plus latency."
+      ],
+      "limitations": [
+        "Custom/ambiguous licence; depends on Caffe and GPU tooling."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/CMU-Perceptual-Computing-Lab/openpose",
+          "notes": "OpenPose keypoint detection."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "pose",
+        "keypoints",
+        "realtime"
+      ],
+      "path": "catalog/vision/pose/openpose.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "depth-anything-3-small",
       "name": "Depth Anything 3 Small",
       "kind": "model",
@@ -30216,6 +31358,355 @@
       ],
       "path": "catalog/vision/depth/depth-anything-3-small.yaml",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "imagebind",
+      "name": "ImageBind",
+      "domain": "vision",
+      "tasks": [
+        "multimodal-embeddings",
+        "cross-modal-retrieval"
+      ],
+      "class": "multimodal-foundation-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Model that binds six modalities (image, text, audio, depth, thermal, IMU) into one embedding space.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/ImageBind",
+        "paper": "https://arxiv.org/abs/2305.05665"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Large multimodal encoder; not an embedded model."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained encoders; task heads are fine-tuned.",
+        "needs_data": "Paired multimodal data for evaluation/adaptation.",
+        "update_strategy": "Verify licence and weight terms; revalidate per modality."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text",
+          "audio",
+          "depth",
+          "thermal",
+          "imu"
+        ],
+        "outputs": [
+          "shared-embeddings"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Cross-modal retrieval and zero-shot transfer metrics."
+      ],
+      "limitations": [
+        "Code licence ambiguous (NOASSERTION); weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/ImageBind",
+          "notes": "ImageBind multimodal model."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "audio",
+        "multimodal",
+        "embeddings"
+      ],
+      "path": "catalog/vision/embeddings/imagebind.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "d-fine",
+      "name": "D-FINE",
+      "domain": "vision",
+      "tasks": [
+        "object-detection",
+        "real-time-detection"
+      ],
+      "class": "detector-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Real-time detection transformer that refines bounding boxes as probability distributions.",
+      "links": {
+        "repository": "https://github.com/Peterande/D-FINE",
+        "paper": "https://arxiv.org/abs/2410.13842"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small/medium/large variants with ONNX/TensorRT export."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained detectors; fine-tuning on custom classes.",
+        "needs_data": "Labelled detection data for the target classes.",
+        "update_strategy": "Verify weight terms; re-export and re-benchmark."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "detection-boxes",
+          "classes"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP on target classes plus post-export latency."
+      ],
+      "limitations": [
+        "Weight terms not stated; smaller variants trade accuracy."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Peterande/D-FINE",
+          "notes": "D-FINE detection transformer."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "detection",
+        "realtime",
+        "transformer"
+      ],
+      "path": "catalog/vision/detection/d-fine.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "detr",
+      "name": "DETR",
+      "domain": "vision",
+      "tasks": [
+        "object-detection"
+      ],
+      "class": "detector-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Detection Transformer that frames object detection as set prediction.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/detr",
+        "paper": "https://arxiv.org/abs/2005.12872"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "ResNet backbones; heavier than tiny CNNs but a common reference."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained detectors; fine-tuning on custom classes is common.",
+        "needs_data": "Labelled detection data for the target classes.",
+        "update_strategy": "Verify weight terms; re-export and re-benchmark."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "detection-boxes",
+          "classes"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP on target classes plus latency."
+      ],
+      "limitations": [
+        "Weight terms not stated; transformer detection is compute-heavy."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/detr",
+          "notes": "DETR detection transformer."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "detection",
+        "transformer"
+      ],
+      "path": "catalog/vision/detection/detr.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "detectron2",
+      "name": "Detectron2",
+      "domain": "vision",
+      "tasks": [
+        "object-detection",
+        "instance-segmentation",
+        "keypoint-detection"
+      ],
+      "class": "detection-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's detection/segmentation library with a large model zoo and export tooling.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/detectron2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/export toolkit; deploy exported models to edge runtimes."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains/fine-tunes detectors and segmentation models.",
+        "needs_data": "Labelled detection/segmentation data.",
+        "update_strategy": "Re-export and re-benchmark per target; verify per-model licences."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "boxes",
+          "masks",
+          "keypoints"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP/mask metrics plus post-export latency on the target."
+      ],
+      "limitations": [
+        "Model-zoo entries carry their own licences; large backbones need servers."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/detectron2",
+          "notes": "Detectron2 toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "detection",
+        "segmentation",
+        "toolkit"
+      ],
+      "path": "pipelines/vision/detectron2.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "efficientdet-lite0",
@@ -31513,6 +33004,92 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "deep-person-reid",
+      "name": "Deep Person ReID (torchreid)",
+      "domain": "vision",
+      "tasks": [
+        "person-re-identification",
+        "metric-learning",
+        "tracking"
+      ],
+      "class": "reid-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library of person re-identification models and training pipelines for cross-camera matching.",
+      "links": {
+        "repository": "https://github.com/KaiyangZhou/deep-person-reid",
+        "paper": "https://arxiv.org/abs/1910.10093"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Compact backbones exist; embedding models depend on the input."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains re-identification embeddings from labelled identities.",
+        "needs_data": "Identity-labelled multi-camera imagery (privacy-sensitive).",
+        "update_strategy": "Revalidate across cameras; treat embeddings as biometric."
+      },
+      "data": {
+        "inputs": [
+          "person-image"
+        ],
+        "outputs": [
+          "identity-embedding"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "mAP/CMC on target cameras plus demographic bias review."
+      ],
+      "limitations": [
+        "Biometric/privacy concerns; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/KaiyangZhou/deep-person-reid",
+          "notes": "torchreid person re-identification."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "reid",
+        "biometrics",
+        "tracking"
+      ],
+      "path": "catalog/vision/tracking/deep-person-reid.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "mediapipe",
       "name": "MediaPipe",
       "domain": "vision",
@@ -32633,6 +34210,94 @@
       ],
       "path": "pipelines/vision/anomalib.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "llava",
+      "name": "LLaVA",
+      "domain": "vision",
+      "tasks": [
+        "visual-instruction-following",
+        "visual-question-answering",
+        "image-captioning"
+      ],
+      "class": "vision-language-model",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Large language-and-vision assistant family that follows instructions about images.",
+      "links": {
+        "repository": "https://github.com/haotian-liu/LLaVA",
+        "paper": "https://arxiv.org/abs/2304.08485"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "7B+ parameters; served on workstations, not embedded."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained vision-language assistant; fine-tuning on domain data is possible.",
+        "needs_data": "Image-instruction data for evaluation/fine-tuning.",
+        "update_strategy": "Verify weight terms and base-model licence; revalidate."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-instruction"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Instruction-following quality and hallucination review on target images."
+      ],
+      "limitations": [
+        "Weight terms follow the base LLM; large and non-embedded."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/haotian-liu/LLaVA",
+          "notes": "LLaVA vision-language assistant."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "assistant",
+        "vision-language"
+      ],
+      "path": "catalog/vision/vlm/llava.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "megadetector-v6",
