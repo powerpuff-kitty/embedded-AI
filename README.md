@@ -83,10 +83,10 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 <!-- AT-A-GLANCE:START -->
 | | |
 |---|---|
-| **590 entries** | models, collections, pipelines, toolkits and primitives |
+| **602 entries** | models, collections, pipelines, toolkits and primitives |
 | **55 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
-| **Evidence** | 590 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
+| **Evidence** | 602 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
 <!-- AT-A-GLANCE:END -->
 
 ## Domains
@@ -144,5 +144,5 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 ## Catalogue
 
 <!-- CATALOGUE:START -->
-**590 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
+**602 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
 <!-- CATALOGUE:END -->

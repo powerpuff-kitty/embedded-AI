@@ -2,7 +2,7 @@
 
 > Generated from canonical YAML. Do not edit by hand; run `npm run index`.
 
-**29 procedural components** and **3 hybrid recipes**. Category memberships overlap; entries are not duplicated.
+**41 procedural components** and **3 hybrid recipes**. Category memberships overlap; entries are not duplicated.
 
 [Integration guide](PROCEDURAL-GUIDE.md) · [All components](CATALOGUE.md) · [Live procedural view](https://powerpuff-kitty.github.io/embedded-AI/?view=procedural) · [Hybrid recipes](https://powerpuff-kitty.github.io/embedded-AI/?view=hybrid)
 
@@ -12,14 +12,21 @@ A browser library, standalone browser reference, native library, native authorin
 
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
+| [JSCAD Modeling](../primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | browser-library | 2D geometry, 3D CSG geometry | not-applicable / unknown | MIT | documented |
 | [WaveFunctionCollapse](../primitives/procedural/wavefunctioncollapse.yaml) · [upstream](<https://github.com/mxgmn/WaveFunctionCollapse>) | native-reference | bitmaps and tilemaps | unknown / unknown | MIT | documented |
 | [rot.js](../primitives/procedural/rot-js.yaml) · [upstream](<https://github.com/ondras/rot.js>) | browser-library | tilemaps and navigation results | unknown / unknown | BSD-3-Clause | documented |
+| [recast-navigation-js](../primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | browser-library | navigation mesh, paths and crowd updates | unknown / conditional | MIT | documented |
 | [MarkovJunior](../primitives/procedural/markovjunior.yaml) · [upstream](<https://github.com/mxgmn/MarkovJunior>) | native-reference | bitmap and voxel patterns | unknown / unknown | MIT | documented |
 | [Infinigen](../primitives/procedural/infinigen.yaml) · [upstream](<https://github.com/princeton-vl/infinigen>) | native-reference | generated scenes and rendered data | unknown / unknown | BSD-3-Clause | documented |
 | [THREE.Terrain](../primitives/procedural/three-terrain.yaml) · [upstream](<https://github.com/IceCreamYou/THREE.Terrain>) | browser-library | terrain mesh and height data | unknown / unknown | MIT | documented |
+| [WaveFunctionCollapse (JavaScript)](../primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | browser-library | generated RGBA pixels, generation success or contradiction status | injectable / conditional | MIT | documented |
+| [Delaunator](../primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | browser-library | triangle indices, halfedge adjacency | not-applicable / unknown | ISC | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
+| [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |
 | [noise-rs](../primitives/procedural/noise-rs.yaml) · [upstream](<https://github.com/Razaekel/noise-rs>) | native-library | noise fields and optional image outputs | unknown / unknown | MIT OR Apache-2.0 | documented |
 | [simplex-noise.js](../primitives/procedural/simplex-noise-js.yaml) · [upstream](<https://github.com/jwagner/simplex-noise.js>) | browser-library | scalar-noise-values | injectable / conditional | MIT | documented |
+| [Earcut](../primitives/procedural/earcut.yaml) · [upstream](<https://github.com/mapbox/earcut>) | browser-library | triangle indices | not-applicable / unknown | ISC | documented |
+| [Rapier](../primitives/procedural/rapier.yaml) · [upstream](<https://github.com/dimforge/rapier>) | native-library | 2D or 3D physics state, collision events | not-applicable / unknown | Apache-2.0 | documented |
 | [{Shan, Shui}*](../primitives/procedural/shan-shui-inf.yaml) · [upstream](<https://github.com/LingDong-/shan-shui-inf>) | browser-reference | svg-artwork | built-in / conditional | MIT | documented |
 
 ## vegetation-ecosystems
@@ -39,10 +46,13 @@ A browser library, standalone browser reference, native library, native authorin
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
 | [Reaction-Diffusion Playground](../primitives/artificial-life/reaction-diffusion-playground.yaml) · [upstream](<https://github.com/jasonwebb/reaction-diffusion-playground>) | browser-reference | evolved-patterns | unknown / unknown | CC-BY-NC-SA-4.0 | documented |
+| [WaveFunctionCollapse (JavaScript)](../primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | browser-library | generated RGBA pixels, generation success or contradiction status | injectable / conditional | MIT | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
+| [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |
 | [noise-rs](../primitives/procedural/noise-rs.yaml) · [upstream](<https://github.com/Razaekel/noise-rs>) | native-library | noise fields and optional image outputs | unknown / unknown | MIT OR Apache-2.0 | documented |
 | [simplex-noise.js](../primitives/procedural/simplex-noise-js.yaml) · [upstream](<https://github.com/jwagner/simplex-noise.js>) | browser-library | scalar-noise-values | injectable / conditional | MIT | documented |
 | [Material Maker](../primitives/procedural/material-maker.yaml) · [upstream](<https://github.com/RodZill4/material-maker>) | native-reference | material textures | unknown / unknown | MIT | documented |
+| [fishdraw](../primitives/procedural/fishdraw.yaml) · [upstream](<https://github.com/LingDong-/fishdraw>) | native-library | fish polylines, SVG or animated SVG, JSON or CSV drawing data | built-in / conditional | MIT | documented |
 | [glNoise](../primitives/procedural/glnoise.yaml) · [upstream](<https://github.com/FarazzShaikh/glNoise>) | shader-library | noise-enabled shader source and values | unknown / unknown | MIT | documented |
 | [webgl-noise](../primitives/procedural/webgl-noise.yaml) · [upstream](<https://github.com/ashima/webgl-noise>) | shader-library | shader noise values | unknown / unknown | MIT | documented |
 | [Rough.js](../primitives/procedural/rough-js.yaml) · [upstream](<https://github.com/rough-stuff/rough>) | browser-library | svg or canvas drawing | built-in / conditional | MIT | documented |
@@ -52,11 +62,16 @@ A browser library, standalone browser reference, native library, native authorin
 
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
+| [Fullik / FIK](../primitives/procedural/fullik.yaml) · [upstream](<https://github.com/lo-th/fullik>) | browser-library | solved joint poses | not-applicable / unknown | MIT | documented |
 | [THREE.IK](../primitives/procedural/three-ik.yaml) · [upstream](<https://github.com/jsantell/THREE.IK>) | browser-library | updated joint poses | not-applicable / unknown | MIT | documented |
 | [closed-chain-ik-js](../primitives/procedural/closed-chain-ik-js.yaml) · [upstream](<https://github.com/gkjohnson/closed-chain-ik-js>) | browser-library | solved joint configurations | not-applicable / unknown | Apache-2.0 | documented |
+| [recast-navigation-js](../primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | browser-library | navigation mesh, paths and crowd updates | unknown / conditional | MIT | documented |
 | [OpenSteer](../primitives/procedural/opensteer.yaml) · [upstream](<https://github.com/meshula/OpenSteer>) | native-library | steering forces and motion updates | unknown / unknown | MIT | documented |
 | [Yuka](../primitives/procedural/yuka.yaml) · [upstream](<https://github.com/Mugen87/yuka>) | browser-library | steering and behaviour updates | unknown / unknown | MIT | documented |
 | [MuJoCo](../primitives/simulation/mujoco.yaml) · [upstream](<https://github.com/google-deepmind/mujoco>) | native-library | simulated-state, contacts | not-applicable / unknown | Apache-2.0 | documented |
+| [Matter.js](../primitives/procedural/matter-js.yaml) · [upstream](<https://github.com/liabru/matter-js>) | browser-library | 2D physics state, collision events | not-applicable / unknown | MIT | documented |
+| [Rapier](../primitives/procedural/rapier.yaml) · [upstream](<https://github.com/dimforge/rapier>) | native-library | 2D or 3D physics state, collision events | not-applicable / unknown | Apache-2.0 | documented |
+| [cannon-es](../primitives/procedural/cannon-es.yaml) · [upstream](<https://github.com/pmndrs/cannon-es>) | browser-library | 3D physics state, collision events | not-applicable / unknown | MIT | documented |
 
 ## audio-music
 
@@ -71,9 +86,15 @@ A browser library, standalone browser reference, native library, native authorin
 | Component / source | Integration | Output | Seed / determinism | Code licence | Evidence |
 |---|---|---|---|---|---|
 | [Lindenmayer](../primitives/procedural/lindenmayer.yaml) · [upstream](<https://github.com/nylki/lindenmayer>) | browser-library | expanded symbol sequences | unknown / unknown | MIT | documented |
+| [JSCAD Modeling](../primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | browser-library | 2D geometry, 3D CSG geometry | not-applicable / unknown | MIT | documented |
+| [recast-navigation-js](../primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | browser-library | navigation mesh, paths and crowd updates | unknown / conditional | MIT | documented |
+| [Delaunator](../primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | browser-library | triangle indices, halfedge adjacency | not-applicable / unknown | ISC | documented |
 | [FastNoise Lite](../primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | native-library | scalar-noise-fields | unknown / unknown | MIT | documented |
+| [FastNoise2](../primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | native-library | scalar noise fields, serialized node graphs | unknown / unknown | MIT | documented |
 | [noise-rs](../primitives/procedural/noise-rs.yaml) · [upstream](<https://github.com/Razaekel/noise-rs>) | native-library | noise fields and optional image outputs | unknown / unknown | MIT OR Apache-2.0 | documented |
 | [simplex-noise.js](../primitives/procedural/simplex-noise-js.yaml) · [upstream](<https://github.com/jwagner/simplex-noise.js>) | browser-library | scalar-noise-values | injectable / conditional | MIT | documented |
+| [Earcut](../primitives/procedural/earcut.yaml) · [upstream](<https://github.com/mapbox/earcut>) | browser-library | triangle indices | not-applicable / unknown | ISC | documented |
+| [seedrandom](../primitives/procedural/seedrandom.yaml) · [upstream](<https://github.com/davidbau/seedrandom>) | browser-library | pseudo-random numbers, optional PRNG state snapshot | built-in / conditional | MIT | documented |
 | [poisson-disk-sampling](../primitives/procedural/poisson-disk-sampling.yaml) · [upstream](<https://github.com/kchapelier/poisson-disk-sampling>) | browser-library | sample-point coordinates | injectable / conditional | MIT | documented |
 | [glNoise](../primitives/procedural/glnoise.yaml) · [upstream](<https://github.com/FarazzShaikh/glNoise>) | shader-library | noise-enabled shader source and values | unknown / unknown | MIT | documented |
 | [webgl-noise](../primitives/procedural/webgl-noise.yaml) · [upstream](<https://github.com/ashima/webgl-noise>) | shader-library | shader noise values | unknown / unknown | MIT | documented |

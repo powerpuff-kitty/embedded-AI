@@ -11420,6 +11420,123 @@
       "view": "ai"
     },
     {
+      "id": "jscad-modeling",
+      "name": "JSCAD Modeling",
+      "domain": "engineering",
+      "tasks": [
+        "parametric-modeling",
+        "constructive-solid-geometry"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Embeddable @jscad/modeling JavaScript library for parametric geometry and constructive solid geometry.",
+      "links": {
+        "repository": "https://github.com/jscad/OpenJSCAD.org"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "geometry operations",
+          "model parameters"
+        ],
+        "assets": [
+          "The @jscad/modeling package; add separate renderer or I/O packages only as needed."
+        ],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "geometry operations",
+          "model parameters"
+        ],
+        "outputs": [
+          "2D geometry",
+          "3D CSG geometry"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "This entry covers the modeling module, not the entire authoring application. File exporters belong to separate I/O packages.",
+        "Modeling scripts execute code. Do not run untrusted scripts directly in a privileged application context."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/jscad/OpenJSCAD.org",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        },
+        {
+          "type": "official",
+          "url": "https://github.com/jscad/OpenJSCAD.org/blob/master/packages/modeling/package.json",
+          "notes": "The modeling package explicitly identifies its scope and MIT code licence."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "foundations",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/jscad-modeling.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "pyro-vision",
       "name": "Pyro Vision",
       "domain": "environment",
@@ -14210,6 +14327,119 @@
       "view": "hybrid"
     },
     {
+      "id": "fullik",
+      "name": "Fullik / FIK",
+      "domain": "gaming",
+      "tasks": [
+        "inverse-kinematics",
+        "procedural-animation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript FABRIK inverse-kinematics solver for constrained procedural skeleton motion, using the FIK API.",
+      "links": {
+        "repository": "https://github.com/lo-th/fullik"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "threejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "motion-behaviour"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "bone chains",
+          "joint constraints",
+          "target positions"
+        ],
+        "assets": [
+          "A compatible renderer and application-owned skeleton for visualization."
+        ],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "bone chains",
+          "joint constraints",
+          "target positions"
+        ],
+        "outputs": [
+          "solved joint poses"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Inverse kinematics solves joint placement; it does not provide perception, learned motion policies or a complete physical simulation. Check renderer/API versions."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/lo-th/fullik",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "motion-behaviour",
+        "browser-library"
+      ],
+      "related": [
+        "three-ik",
+        "closed-chain-ik-js"
+      ],
+      "path": "primitives/procedural/fullik.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "three-ik",
       "name": "THREE.IK",
       "domain": "gaming",
@@ -14675,6 +14905,127 @@
       "usage_mode": "companion",
       "methods": [],
       "view": "unclassified"
+    },
+    {
+      "id": "recast-navigation-js",
+      "name": "recast-navigation-js",
+      "domain": "gaming",
+      "tasks": [
+        "navigation-mesh-generation",
+        "pathfinding",
+        "crowd-simulation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "WebAssembly bindings for Recast and Detour, supporting navmesh generation, queries, crowds and temporary obstacles.",
+      "links": {
+        "repository": "https://github.com/isaac-mason/recast-navigation-js"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "MIT applies to these bindings; retain the separate upstream Recast/Detour and dependency notices."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "wasm",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "motion-behaviour",
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "unknown",
+        "determinism": "conditional",
+        "controls": [
+          "triangle positions and indices",
+          "agent dimensions and generator configuration",
+          "navigation targets and obstacles"
+        ],
+        "assets": [
+          "The Recast/Detour WASM module and matching JavaScript bindings; initialize them before use."
+        ],
+        "incremental": true,
+        "serialization": "outputs-only",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "triangle positions and indices",
+          "agent dimensions and generator configuration",
+          "navigation targets and obstacles"
+        ],
+        "outputs": [
+          "navigation mesh",
+          "paths and crowd updates"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Navmesh export/import is not complete game-state serialization. Temporary obstacles use the tile-cache workflow.",
+        "Variable time steps make crowd behaviour non-deterministic. Bundle WASM for offline operation and bound regeneration work."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/isaac-mason/recast-navigation-js",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "motion-behaviour",
+        "foundations",
+        "browser-library"
+      ],
+      "related": [
+        "yuka"
+      ],
+      "path": "primitives/procedural/recast-navigation-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
     },
     {
       "id": "markovjunior",
@@ -15951,6 +16302,124 @@
         "browser-library"
       ],
       "path": "primitives/procedural/three-terrain.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "wavefunctioncollapse-js",
+      "name": "WaveFunctionCollapse (JavaScript)",
+      "domain": "gaming",
+      "tasks": [
+        "tile-pattern-generation",
+        "texture-generation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Browser and Node.js port of WaveFunctionCollapse with overlapping-pattern and tile-constraint generators.",
+      "links": {
+        "repository": "https://github.com/kchapelier/wavefunctioncollapse"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "images-materials"
+        ],
+        "integration": "browser-library",
+        "seed_control": "injectable",
+        "determinism": "conditional",
+        "controls": [
+          "RGBA example or tile adjacency definitions",
+          "output dimensions and symmetry",
+          "injected random function"
+        ],
+        "assets": [
+          "Example pixels or authored tile definitions; review input-asset licences separately."
+        ],
+        "incremental": true,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "RGBA example or tile adjacency definitions",
+          "output dimensions and symmetry",
+          "injected random function"
+        ],
+        "outputs": [
+          "generated RGBA pixels",
+          "generation success or contradiction status"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Contradictions may require retries. Use bounded iteration counts or a worker; iterate(0) means an unbounded run.",
+        "graphics() returns pixels, not a navigable scene or collision mesh. Pin the supplied PRNG and input rules for replay tests."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kchapelier/wavefunctioncollapse",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "images-materials",
+        "browser-library"
+      ],
+      "related": [
+        "wavefunctioncollapse",
+        "seedrandom"
+      ],
+      "path": "primitives/procedural/wavefunctioncollapse-js.yaml",
       "usage_mode": "companion",
       "view": "procedural"
     },
@@ -37215,6 +37684,116 @@
       "view": "unclassified"
     },
     {
+      "id": "delaunator",
+      "name": "Delaunator",
+      "domain": "simulation",
+      "tasks": [
+        "delaunay-triangulation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript Delaunay triangulation of 2D point coordinates for spatial and procedural-geometry pipelines.",
+      "links": {
+        "repository": "https://github.com/mapbox/delaunator"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "ISC",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "foundations",
+          "worlds-environments"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "2D point coordinates"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "2D point coordinates"
+        ],
+        "outputs": [
+          "triangle indices",
+          "halfedge adjacency"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Point triangulation is not polygon-with-holes triangulation or arbitrary 3D surface reconstruction. Validate degeneracies and downstream topology."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mapbox/delaunator",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "foundations",
+        "worlds-environments",
+        "browser-library"
+      ],
+      "related": [
+        "earcut",
+        "poisson-disk-sampling"
+      ],
+      "path": "primitives/procedural/delaunator.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "gym-pybullet-drones",
       "name": "gym-pybullet-drones",
       "domain": "simulation",
@@ -37579,6 +38158,123 @@
       "view": "procedural"
     },
     {
+      "id": "fastnoise2",
+      "name": "FastNoise2",
+      "domain": "simulation",
+      "tasks": [
+        "noise-generation",
+        "node-graph-generation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "C++17 node-graph noise library with SIMD execution and serializable generator graphs for procedural fields.",
+      "links": {
+        "repository": "https://github.com/Auburn/FastNoise2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "cpp",
+        "wasm"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "worlds-environments",
+          "images-materials",
+          "foundations"
+        ],
+        "integration": "native-library",
+        "seed_control": "unknown",
+        "determinism": "unknown",
+        "controls": [
+          "coordinates",
+          "generator node graph",
+          "numerical configuration"
+        ],
+        "assets": [
+          "Compiled library and its build dependencies; an Emscripten build is needed for browser integration."
+        ],
+        "incremental": null,
+        "serialization": "configuration",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "coordinates",
+          "generator node graph",
+          "numerical configuration"
+        ],
+        "outputs": [
+          "scalar noise fields",
+          "serialized node graphs"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "WASM is an upstream compilation path, not a ready-made JavaScript library or a measured browser/device fit.",
+        "Serialized graphs preserve configuration, not an entire simulated world. Pin compiler and numerical settings before testing repeatability."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Auburn/FastNoise2",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "worlds-environments",
+        "images-materials",
+        "foundations",
+        "native-library"
+      ],
+      "related": [
+        "fastnoise-lite"
+      ],
+      "path": "primitives/procedural/fastnoise2.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
       "id": "noise-rs",
       "name": "noise-rs",
       "domain": "simulation",
@@ -37784,6 +38480,463 @@
         "browser-library"
       ],
       "path": "primitives/procedural/simplex-noise-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "earcut",
+      "name": "Earcut",
+      "domain": "simulation",
+      "tasks": [
+        "polygon-triangulation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "rule-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript polygon triangulation with holes for procedural meshes and rendering pipelines.",
+      "links": {
+        "repository": "https://github.com/mapbox/earcut"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "ISC",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "foundations",
+          "worlds-environments"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "2D polygon coordinates",
+          "hole indices"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "2D polygon coordinates",
+          "hole indices"
+        ],
+        "outputs": [
+          "triangle indices"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Only XY coordinates are triangulated, even when a larger coordinate stride is supplied. This is not a general 3D surface triangulator.",
+        "Validate problematic input and topology; arbitrary self-intersections and conforming-mesh requirements need additional handling."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mapbox/earcut",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "foundations",
+        "worlds-environments",
+        "browser-library"
+      ],
+      "related": [
+        "delaunator"
+      ],
+      "path": "primitives/procedural/earcut.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "matter-js",
+      "name": "Matter.js",
+      "domain": "simulation",
+      "tasks": [
+        "rigid-body-simulation",
+        "collision-detection"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "physics-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript 2D rigid-body engine with constraints, collisions and optional browser rendering.",
+      "links": {
+        "repository": "https://github.com/liabru/matter-js"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "motion-behaviour"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "2D bodies",
+          "constraints and forces",
+          "time step"
+        ],
+        "assets": [],
+        "incremental": true,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "2D bodies",
+          "constraints and forces",
+          "time step"
+        ],
+        "outputs": [
+          "2D physics state",
+          "collision events"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "This is a 2D engine, not a 3D scene system. Complete saved-state restoration requires application integration and appropriate serialization tooling."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/liabru/matter-js",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "motion-behaviour",
+        "browser-library"
+      ],
+      "related": [
+        "rapier",
+        "cannon-es"
+      ],
+      "path": "primitives/procedural/matter-js.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "rapier",
+      "name": "Rapier",
+      "domain": "simulation",
+      "tasks": [
+        "rigid-body-simulation",
+        "collision-detection"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "physics-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Rust 2D and 3D rigid-body physics engines with JavaScript and WebAssembly integration paths.",
+      "links": {
+        "repository": "https://github.com/dimforge/rapier"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "browser"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "rust",
+        "wasm",
+        "javascript"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "motion-behaviour",
+          "worlds-environments"
+        ],
+        "integration": "native-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "2D or 3D bodies and colliders",
+          "forces and constraints",
+          "time step"
+        ],
+        "assets": [
+          "Native Rust library, or the corresponding JavaScript bindings and WASM bundle."
+        ],
+        "incremental": true,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "2D or 3D bodies and colliders",
+          "forces and constraints",
+          "time step"
+        ],
+        "outputs": [
+          "2D or 3D physics state",
+          "collision events"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Select the appropriate dimensionality and binding package; native and browser builds are distinct deployment paths.",
+        "A physics engine does not supply ecosystem resource accounting. Fix engine settings and time steps before validating replay."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dimforge/rapier",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "motion-behaviour",
+        "worlds-environments",
+        "native-library"
+      ],
+      "related": [
+        "cannon-es",
+        "matter-js",
+        "mujoco"
+      ],
+      "path": "primitives/procedural/rapier.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
+    },
+    {
+      "id": "cannon-es",
+      "name": "cannon-es",
+      "domain": "simulation",
+      "tasks": [
+        "rigid-body-simulation",
+        "collision-detection"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural",
+        "physics-based"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript 3D rigid-body physics engine distributed as modules for application and renderer integration.",
+      "links": {
+        "repository": "https://github.com/pmndrs/cannon-es"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "motion-behaviour"
+        ],
+        "integration": "browser-library",
+        "seed_control": "not-applicable",
+        "determinism": "unknown",
+        "controls": [
+          "3D bodies and shapes",
+          "constraints",
+          "time step"
+        ],
+        "assets": [],
+        "incremental": true,
+        "serialization": "unknown",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "3D bodies and shapes",
+          "constraints",
+          "time step"
+        ],
+        "outputs": [
+          "3D physics state",
+          "collision events"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Solver configuration and time stepping affect stability. No cross-browser bit-exact replay or constrained-board performance is established here."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pmndrs/cannon-es",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "motion-behaviour",
+        "browser-library"
+      ],
+      "related": [
+        "rapier",
+        "matter-js"
+      ],
+      "path": "primitives/procedural/cannon-es.yaml",
       "usage_mode": "companion",
       "view": "procedural"
     },
@@ -38046,6 +39199,115 @@
       "usage_mode": "companion",
       "methods": [],
       "view": "unclassified"
+    },
+    {
+      "id": "seedrandom",
+      "name": "seedrandom",
+      "domain": "simulation",
+      "tasks": [
+        "seeded-random-generation",
+        "random-state-replay"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "JavaScript seeded pseudo-random generators with local instances and optional state save/restore for procedural applications.",
+      "links": {
+        "repository": "https://github.com/davidbau/seedrandom"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "browser",
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "foundations"
+        ],
+        "integration": "browser-library",
+        "seed_control": "built-in",
+        "determinism": "conditional",
+        "controls": [
+          "seed",
+          "PRNG algorithm",
+          "optional saved generator state"
+        ],
+        "assets": [],
+        "incremental": true,
+        "serialization": "state",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "seed",
+          "PRNG algorithm",
+          "optional saved generator state"
+        ],
+        "outputs": [
+          "pseudo-random numbers",
+          "optional PRNG state snapshot"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Use a local generator rather than replacing global Math.random. Do not use this generator for cryptographic secrets.",
+        "State snapshots require the state option. Repeatability also depends on algorithm, version and call order; a seed alone is insufficient."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/davidbau/seedrandom",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "foundations",
+        "browser-library"
+      ],
+      "path": "primitives/procedural/seedrandom.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
     },
     {
       "id": "poisson-disk-sampling",
@@ -49838,6 +51100,118 @@
       "usage_mode": "companion",
       "methods": [],
       "view": "unclassified"
+    },
+    {
+      "id": "fishdraw",
+      "name": "fishdraw",
+      "domain": "vision",
+      "tasks": [
+        "procedural-illustration",
+        "svg-generation"
+      ],
+      "class": "procedural-companion",
+      "kind": "toolkit",
+      "learned": false,
+      "methods": [
+        "procedural"
+      ],
+      "catalogue_batch": "procedural-expansion-2026-10-07",
+      "description": "Dependency-free JavaScript procedural fish illustrator with a Node.js CLI and reusable drawing functions.",
+      "links": {
+        "repository": "https://github.com/LingDong-/fishdraw"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null,
+        "measurement_scope": "Not applicable: no learned model weights."
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-applicable",
+        "notes": "Code terms do not automatically cover input assets or third-party dependencies."
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop"
+        ],
+        "notes": "Offline with the appropriate code, dependencies and assets bundled; no measured device-fit claim."
+      },
+      "runtimes": [
+        "javascript",
+        "nodejs"
+      ],
+      "formats": [],
+      "procedural": {
+        "categories": [
+          "images-materials"
+        ],
+        "integration": "native-library",
+        "seed_control": "built-in",
+        "determinism": "conditional",
+        "controls": [
+          "seed string",
+          "fish drawing parameters",
+          "output format"
+        ],
+        "assets": [],
+        "incremental": null,
+        "serialization": "outputs-only",
+        "evidence_level": "documented"
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "No learned model training required.",
+        "needs_data": "Provide the listed inputs and application-specific parameters.",
+        "update_strategy": "Pin upstream code, dependencies and configuration; rerun fixtures after upgrades."
+      },
+      "data": {
+        "inputs": [
+          "seed string",
+          "fish drawing parameters",
+          "output format"
+        ],
+        "outputs": [
+          "fish polylines",
+          "SVG or animated SVG",
+          "JSON or CSV drawing data"
+        ],
+        "languages": []
+      },
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "evaluation": [
+        "Upstream documentation reviewed; no local execution or hardware benchmark for this entry.",
+        "Before integration, test bounded workloads, output validity and repeatability in the intended runtime."
+      ],
+      "limitations": [
+        "Recorded integration is the Node.js CLI/library workflow. Drawn polylines are not 3D creatures or an ecological simulation.",
+        "Animated SVG describes drawing presentation, not learned movement or simulated animal behaviour."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/LingDong-/fishdraw",
+          "notes": "Upstream README and code licence reviewed for integration scope; not a reproduced benchmark."
+        }
+      ],
+      "reviewed": "2026-10-07",
+      "tags": [
+        "procedural",
+        "images-materials",
+        "native-library"
+      ],
+      "related": [
+        "shan-shui-inf"
+      ],
+      "path": "primitives/procedural/fishdraw.yaml",
+      "usage_mode": "companion",
+      "view": "procedural"
     },
     {
       "id": "u2net",

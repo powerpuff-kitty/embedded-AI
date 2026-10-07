@@ -1,5 +1,5 @@
 {
-  "total": 590,
+  "total": 602,
   "by_domain": {
     "accessibility": 2,
     "administrative": 7,
@@ -15,7 +15,7 @@
     "drug-discovery": 2,
     "education": 1,
     "energy": 3,
-    "engineering": 2,
+    "engineering": 3,
     "environment": 2,
     "event-vision": 4,
     "fashion": 3,
@@ -23,7 +23,7 @@
     "finance": 6,
     "forestry": 2,
     "fraud-detection": 2,
-    "gaming": 24,
+    "gaming": 27,
     "genomics": 4,
     "geospatial": 10,
     "graph": 2,
@@ -47,14 +47,14 @@
     "search": 10,
     "security": 4,
     "sensors": 7,
-    "simulation": 12,
+    "simulation": 19,
     "space": 3,
     "sports": 3,
     "telecom": 2,
     "time-series": 21,
     "trust-and-safety": 8,
     "video": 9,
-    "vision": 114,
+    "vision": 115,
     "weather": 1
   },
   "by_kind": {
@@ -62,10 +62,10 @@
     "model": 64,
     "pipeline": 55,
     "primitive": 32,
-    "toolkit": 273
+    "toolkit": 285
   },
   "by_usage": {
-    "companion": 211,
+    "companion": 223,
     "pretrained": 198,
     "requires-training": 131,
     "unknown": 50
@@ -73,22 +73,22 @@
   "by_view": {
     "ai": 230,
     "hybrid": 3,
-    "procedural": 29,
+    "procedural": 41,
     "unclassified": 328
   },
   "by_method": {
     "hybrid": 3,
     "learned": 233,
-    "physics-based": 1,
-    "procedural": 32,
-    "rule-based": 31
+    "physics-based": 4,
+    "procedural": 44,
+    "rule-based": 37
   },
   "evidence": {
-    "entries_with_source": 590,
-    "entries_official_link_only": 572,
-    "entries_multiple_or_non_official": 18,
+    "entries_with_source": 602,
+    "entries_official_link_only": 583,
+    "entries_multiple_or_non_official": 19,
     "items_by_type": {
-      "official": 598,
+      "official": 611,
       "paper": 10,
       "vendor": 0,
       "community": 0,
@@ -99,14 +99,14 @@
     "reported": 10,
     "theoretical": 0,
     "unsupported": 0,
-    "entries_with_evaluation": 540,
-    "entries_with_limitations": 541
+    "entries_with_evaluation": 552,
+    "entries_with_limitations": 553
   },
   "unknowns": {
     "usage": 50,
     "code_license": 46,
     "weights_license": 163,
-    "measured_peak_ram": 590
+    "measured_peak_ram": 602
   },
   "reproduced_entries": 3,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Every entry carries at least one source link, but most stop at an official link with no measured or reproduced evidence. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."

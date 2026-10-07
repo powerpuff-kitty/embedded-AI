@@ -4,7 +4,7 @@
 
 ## Full catalogue
 
-**590 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**602 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -250,6 +250,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
 | [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+| [JSCAD Modeling](primitives/procedural/jscad-modeling.yaml) · [upstream](<https://github.com/jscad/OpenJSCAD.org>) | toolkit / companion | parametric-modeling, constructive-solid-geometry | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 
 <a id="catalogue-environment"></a>
 
@@ -337,11 +338,13 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [WaveFunctionCollapse](primitives/procedural/wavefunctioncollapse.yaml) · [upstream](<https://github.com/mxgmn/WaveFunctionCollapse>) | primitive / companion | constraint-based-generation | — | — | csharp | desktop | MIT / not-applicable | unknown |
 | [rot.js](primitives/procedural/rot-js.yaml) · [upstream](<https://github.com/ondras/rot.js>) | toolkit / companion | dungeon-generation | — | — | javascript, nodejs | browser | BSD-3-Clause / not-applicable | unknown |
 | [Hybrid living-world companion](pipelines/hybrid/hybrid-living-world.yaml) · [upstream](<https://github.com/powerpuff-kitty/embedded-AI/blob/main/docs/PROCEDURAL-GUIDE.md>) | pipeline / companion | hybrid-procedural-integration | — | — | — | — | not-applicable / component-specific | unknown |
+| [Fullik / FIK](primitives/procedural/fullik.yaml) · [upstream](<https://github.com/lo-th/fullik>) | toolkit / companion | inverse-kinematics, procedural-animation | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
 | [THREE.IK](primitives/procedural/three-ik.yaml) · [upstream](<https://github.com/jsantell/THREE.IK>) | toolkit / companion | inverse-kinematics | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
 | [closed-chain-ik-js](primitives/procedural/closed-chain-ik-js.yaml) · [upstream](<https://github.com/gkjohnson/closed-chain-ik-js>) | toolkit / companion | inverse-kinematics | — | — | javascript | browser | Apache-2.0 / not-applicable | unknown |
 | [mctx](primitives/gaming/mctx.yaml) · [upstream](<https://github.com/google-deepmind/mctx>) | primitive / companion | monte-carlo-tree-search, planning, game-search | — | — | jax | desktop, server | Apache-2.0 / not-applicable | unknown |
 | [PettingZoo](primitives/gaming/pettingzoo.yaml) · [upstream](<https://github.com/Farama-Foundation/PettingZoo>) | primitive / companion | multi-agent-environments, reinforcement-learning, environment-api | — | — | python | desktop, server, edge | MIT / not-applicable | unknown |
 | [Melting Pot](pipelines/gaming/meltingpot.yaml) · [upstream](<https://github.com/google-deepmind/meltingpot>) | pipeline / companion | multi-agent-reinforcement-learning, social-simulation | — | — | python | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [recast-navigation-js](primitives/procedural/recast-navigation-js.yaml) · [upstream](<https://github.com/isaac-mason/recast-navigation-js>) | toolkit / companion | navigation-mesh-generation, pathfinding, crowd-simulation | — | — | javascript, wasm, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [MarkovJunior](primitives/procedural/markovjunior.yaml) · [upstream](<https://github.com/mxgmn/MarkovJunior>) | primitive / companion | pattern-rewriting | — | — | csharp | desktop | MIT / not-applicable | unknown |
 | [CleanRL](pipelines/gaming/cleanrl.yaml) · [upstream](<https://github.com/vwxyzjn/cleanrl>) | toolkit / requires-training | reinforcement-learning, policy-training | — | — | pytorch, onnx | desktop, server | MIT / not-provided | unknown |
 | [Dopamine](pipelines/gaming/dopamine.yaml) · [upstream](<https://github.com/google/dopamine>) | toolkit / requires-training | reinforcement-learning, atari-agents, policy-training | — | — | jax, tensorflow | desktop, server | Apache-2.0 / not-provided | unknown |
@@ -356,6 +359,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [OpenSteer](primitives/procedural/opensteer.yaml) · [upstream](<https://github.com/meshula/OpenSteer>) | toolkit / companion | steering-behaviour | — | — | cpp | desktop | MIT / not-applicable | unknown |
 | [Yuka](primitives/procedural/yuka.yaml) · [upstream](<https://github.com/Mugen87/yuka>) | toolkit / companion | steering-behaviour | — | — | javascript | browser | MIT / not-applicable | unknown |
 | [THREE.Terrain](primitives/procedural/three-terrain.yaml) · [upstream](<https://github.com/IceCreamYou/THREE.Terrain>) | toolkit / companion | terrain-generation | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
+| [WaveFunctionCollapse (JavaScript)](primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | toolkit / companion | tile-pattern-generation, texture-generation | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 
 <a id="catalogue-genomics"></a>
 
@@ -765,15 +769,22 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [MuJoCo](primitives/simulation/mujoco.yaml) · [upstream](<https://github.com/google-deepmind/mujoco>) | primitive / unknown | articulated-physics-simulation | — | — | native-c-cpp, python | desktop | Apache-2.0 / not-applicable | luckfox-rv1106: unknown |
 | [CARLA](pipelines/simulation/carla.yaml) · [upstream](<https://github.com/carla-simulator/carla>) | pipeline / companion | autonomous-driving-simulation, reinforcement-learning, perception-testing | — | — | python, native-cpp | desktop, server | MIT / not-applicable | unknown |
+| [Delaunator](primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | toolkit / companion | delaunay-triangulation | — | — | javascript, nodejs | browser, desktop | ISC / not-applicable | unknown |
 | [gym-pybullet-drones](pipelines/simulation/gym-pybullet-drones.yaml) · [upstream](<https://github.com/utiasDSL/gym-pybullet-drones>) | pipeline / companion | drone-control, reinforcement-learning, simulation | — | — | python, pybullet | desktop, server | MIT / not-applicable | unknown |
 | [AirSim](pipelines/simulation/airsim.yaml) · [upstream](<https://github.com/microsoft/AirSim>) | pipeline / companion | drone-simulation, autonomous-vehicle-simulation, reinforcement-learning | — | — | python, native-cpp | desktop | MIT / not-applicable | unknown |
 | [Meta-World](pipelines/simulation/metaworld.yaml) · [upstream](<https://github.com/Farama-Foundation/Metaworld>) | pipeline / companion | meta-reinforcement-learning, robot-manipulation, benchmarking | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
 | [FastNoise Lite](primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | toolkit / companion | noise-generation | — | — | cpp, rust, javascript, glsl | desktop | MIT / not-applicable | unknown |
+| [FastNoise2](primitives/procedural/fastnoise2.yaml) · [upstream](<https://github.com/Auburn/FastNoise2>) | toolkit / companion | noise-generation, node-graph-generation | — | — | cpp, wasm | desktop | MIT / not-applicable | unknown |
 | [noise-rs](primitives/procedural/noise-rs.yaml) · [upstream](<https://github.com/Razaekel/noise-rs>) | toolkit / companion | noise-generation | — | — | rust | desktop | MIT OR Apache-2.0 / not-applicable | unknown |
 | [simplex-noise.js](primitives/procedural/simplex-noise-js.yaml) · [upstream](<https://github.com/jwagner/simplex-noise.js>) | toolkit / companion | noise-generation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
+| [Earcut](primitives/procedural/earcut.yaml) · [upstream](<https://github.com/mapbox/earcut>) | toolkit / companion | polygon-triangulation | — | — | javascript, nodejs | browser, desktop | ISC / not-applicable | unknown |
+| [Matter.js](primitives/procedural/matter-js.yaml) · [upstream](<https://github.com/liabru/matter-js>) | toolkit / companion | rigid-body-simulation, collision-detection | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
+| [Rapier](primitives/procedural/rapier.yaml) · [upstream](<https://github.com/dimforge/rapier>) | toolkit / companion | rigid-body-simulation, collision-detection | — | — | rust, wasm, javascript | desktop, browser | Apache-2.0 / not-applicable | unknown |
+| [cannon-es](primitives/procedural/cannon-es.yaml) · [upstream](<https://github.com/pmndrs/cannon-es>) | toolkit / companion | rigid-body-simulation, collision-detection | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [Isaac Lab](pipelines/simulation/isaac-lab.yaml) · [upstream](<https://github.com/isaac-sim/IsaacLab>) | pipeline / companion | robot-learning, reinforcement-learning, simulation | — | — | pytorch, omni-isaac | desktop, server | BSD-3-Clause / not-applicable | unknown |
 | [robosuite](pipelines/simulation/robosuite.yaml) · [upstream](<https://github.com/ARISE-Initiative/robosuite>) | pipeline / companion | robot-manipulation, simulation, reinforcement-learning | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
 | [Genesis](pipelines/simulation/genesis.yaml) · [upstream](<https://github.com/Genesis-Embodied-AI/Genesis>) | pipeline / companion | robotics-simulation, physics-simulation, reinforcement-learning | — | — | python, native-cpp | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [seedrandom](primitives/procedural/seedrandom.yaml) · [upstream](<https://github.com/davidbau/seedrandom>) | toolkit / companion | seeded-random-generation, random-state-replay | — | — | javascript, nodejs | browser, desktop | MIT / not-applicable | unknown |
 | [poisson-disk-sampling](primitives/procedural/poisson-disk-sampling.yaml) · [upstream](<https://github.com/kchapelier/poisson-disk-sampling>) | toolkit / companion | spatial-sampling | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 
 <a id="catalogue-space"></a>
@@ -957,6 +968,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [MediaPipe](pipelines/vision/mediapipe.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | toolkit / companion | pose-estimation, face-detection, hand-tracking, object-detection | — | — | tflite, mediapipe-task | mobile, browser, desktop, edge | Apache-2.0 / unknown | unknown |
 | [MoveNet Lightning](catalog/vision/pose/movenet-lightning.yaml) · [upstream](<https://www.tensorflow.org/hub/tutorials/movenet>) | model / pretrained | pose-estimation | — | 2.9 MB | tflite | edge | Apache-2.0 / unknown | unknown |
 | [rtmlib](pipelines/pose/rtmlib.yaml) · [upstream](<https://github.com/Tau-J/rtmlib>) | toolkit / companion | pose-inference, pose-tracking | — | — | onnxruntime, python, onnx | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown; local-process-darwin-arm64-ddf7ff5ebd: reproduced |
+| [fishdraw](primitives/procedural/fishdraw.yaml) · [upstream](<https://github.com/LingDong-/fishdraw>) | toolkit / companion | procedural-illustration, svg-generation | — | — | javascript, nodejs | desktop | MIT / not-applicable | unknown |
 | [U^2-Net](catalog/vision/segmentation/u2net.yaml) · [upstream](<https://github.com/xuebinqin/U-2-Net>) | collection / pretrained | salient-object-detection, background-removal, image-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, edge | Apache-2.0 / unknown | unknown |
 | [MMSegmentation](pipelines/vision/mmsegmentation.yaml) · [upstream](<https://github.com/open-mmlab/mmsegmentation>) | toolkit / requires-training | semantic-segmentation, scene-parsing | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [PIDNet-S](catalog/vision/segmentation/pidnet-s.yaml) · [upstream](<https://github.com/XuJiacong/PIDNet>) | model / unknown | semantic-segmentation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |
