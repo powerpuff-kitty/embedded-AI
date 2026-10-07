@@ -7,7 +7,7 @@ class: "vision-toolkit"
 description: "Toolbox for monocular and multi-view markerless motion capture."
 links: {"repository": "https://github.com/zju3dv/EasyMocap"}
 model: {"parameters": null, "file_size_mb": null}
-license: {"code": "unknown", "weights": "unknown"}
+license: {"code": "Project-Registration-License-1.0", "weights": "unknown"}
 deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
 runtimes: ["pytorch", "opencv"]
 formats: []

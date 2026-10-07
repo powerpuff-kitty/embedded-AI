@@ -2080,7 +2080,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-SA-4.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -2121,7 +2121,7 @@
         "Pattern stability and diversity across parameter sets."
       ],
       "limitations": [
-        "License not stated; a simulation toy, not an AI model."
+        "CC-BY-NC-SA-4.0 licence (non-commercial); a simulation toy, not an AI model."
       ],
       "compatibility": [],
       "evidence": [
@@ -6255,7 +6255,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "BSD-2-Clause",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -6302,7 +6302,7 @@
         "Solve time, robustness and constraint satisfaction on the target."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before commercial use."
+        "BSD-2-Clause code licence; verify generated-artifact terms before commercial use."
       ],
       "compatibility": [],
       "evidence": [
@@ -7872,7 +7872,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-SA-4.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -7916,7 +7916,7 @@
         "Texture fidelity and identity preservation on held-out pairs."
       ],
       "limitations": [
-        "License not stated; potential for misuse with real people."
+        "CC-BY-NC-SA-4.0 licence (non-commercial); potential for misuse with real people."
       ],
       "compatibility": [],
       "evidence": [
@@ -7961,7 +7961,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-SA-4.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -8005,7 +8005,7 @@
         "Garment fidelity, identity preservation and artifact review."
       ],
       "limitations": [
-        "License not stated; diffusion outputs can misrepresent garments or people."
+        "CC-BY-NC-SA-4.0 licence (non-commercial); diffusion outputs can misrepresent garments or people."
       ],
       "compatibility": [],
       "evidence": [
@@ -9178,7 +9178,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "GPL-3.0",
         "weights": "not-provided"
       },
       "deployment": {
@@ -9221,7 +9221,7 @@
         "Precision-recall AUC and alert volume under delayed labels."
       ],
       "limitations": [
-        "License not stated; extreme class imbalance and concept drift."
+        "GPL-3.0 code licence; extreme class imbalance and concept drift."
       ],
       "compatibility": [],
       "evidence": [
@@ -10590,7 +10590,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-SA-4.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -10635,7 +10635,7 @@
         "Downstream task metrics on held-out genomic regions."
       ],
       "limitations": [
-        "License not stated by the repository; not a clinical tool."
+        "CC-BY-NC-SA-4.0 licence (non-commercial); not a clinical tool."
       ],
       "compatibility": [],
       "evidence": [
@@ -13957,7 +13957,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Gaussian-Splatting-License",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -14368,7 +14368,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "BSD-3-Clause",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -14997,7 +14997,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "mixed BSD-3-Clause / LGPL-2.1-or-later",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -15039,7 +15039,7 @@
         "Latency, energy and accuracy on the target neuromorphic processor."
       ],
       "limitations": [
-        "License not stated by the repository; real benefit requires neuromorphic hardware."
+        "Mixed BSD-3-Clause / LGPL-2.1-or-later code licence; real benefit requires neuromorphic hardware."
       ],
       "compatibility": [],
       "evidence": [
@@ -15331,7 +15331,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CeCILL",
         "weights": "not-provided"
       },
       "deployment": {
@@ -15373,7 +15373,7 @@
         "Numerical agreement with reference models and simulation cost."
       ],
       "limitations": [
-        "License not stated by the repository; a simulator, not an ML deployment stack."
+        "CeCILL code licence; a simulator, not an ML deployment stack."
       ],
       "compatibility": [],
       "evidence": [
@@ -15415,7 +15415,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "GPL-2.0",
         "weights": "not-provided"
       },
       "deployment": {
@@ -15456,7 +15456,7 @@
         "Model behaviour and simulation cost."
       ],
       "limitations": [
-        "License not stated by the repository; primarily modelling."
+        "GPL-2.0 code licence; primarily modelling."
       ],
       "compatibility": [],
       "evidence": [
@@ -15576,7 +15576,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CeCILL",
         "weights": "not-provided"
       },
       "deployment": {
@@ -15617,7 +15617,7 @@
         "Consistency of results across backends."
       ],
       "limitations": [
-        "License not stated by the repository; depends on external simulators."
+        "CeCILL code licence; depends on external simulators."
       ],
       "compatibility": [],
       "evidence": [
@@ -18935,7 +18935,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "custom-restricted",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -19709,7 +19709,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -19755,7 +19755,7 @@
         "Real-time factor, memory and output quality on the target device."
       ],
       "limitations": [
-        "License not stated in the reviewed README; verify before commercial use."
+        "Apache-2.0 code licence; validate on the target device."
       ],
       "compatibility": [],
       "evidence": [
@@ -23405,7 +23405,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "not-provided"
       },
       "deployment": {
@@ -23451,14 +23451,14 @@
         "Rolling-origin accuracy and uncertainty calibration."
       ],
       "limitations": [
-        "License not stated in the reviewed README; sampling can be slow on large data."
+        "Apache-2.0 code licence; sampling can be slow on large data."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/uber/orbit",
-          "notes": "Documentation review of Bayesian forecasting scope; licence not confirmed."
+          "notes": "Documentation review of Bayesian forecasting scope; Apache-2.0 code licence."
         }
       ],
       "reviewed": "2026-10-06",
@@ -25670,7 +25670,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "S-Lab-1.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -25753,7 +25753,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -25795,14 +25795,14 @@
         "Identity preservation and artifact review, not only perceptual scores."
       ],
       "limitations": [
-        "Can alter identity or invent detail; licence terms not confirmed."
+        "Can alter identity or invent detail; Apache-2.0 code licence (third-party components vary)."
       ],
       "compatibility": [],
       "evidence": [
         {
           "type": "official",
           "url": "https://github.com/TencentARC/GFPGAN",
-          "notes": "Documentation review of face-restoration scope; licence not confirmed."
+          "notes": "Documentation review of face-restoration scope; Apache-2.0 code licence (third-party components listed upstream)."
         }
       ],
       "reviewed": "2026-10-06",
@@ -26104,7 +26104,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Apache-2.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -26835,7 +26835,7 @@
         "precision": null
       },
       "license": {
-        "code": "unknown",
+        "code": "noncommercial-research-only",
         "weights": "unknown"
       },
       "deployment": {
@@ -27412,7 +27412,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "Project-Registration-License-1.0",
         "weights": "unknown"
       },
       "deployment": {

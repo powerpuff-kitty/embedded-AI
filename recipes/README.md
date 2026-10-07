@@ -1,5 +1,7 @@
 # Runnable recipes
 
+> Runnable local examples for forecasting, voice-activity detection and pose — explicit downloads, synthetic fixtures, honest scopes.
+
 Reference implementations for local experimentation, not production camera, medical or trading systems. Python 3.11 is the CI reference; the process-RSS runner supports Linux/macOS. Direct versions are pinned in `requirements.txt`, with the resolved package inventory saved for each CI run. The npm catalogue has a separate complete lockfile.
 
 ## Setup

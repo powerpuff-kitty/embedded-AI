@@ -1,0 +1,95 @@
+name: Benchmark submission
+description: Contribute a measured run so an entry can move from unknown/reported to reproduced
+title: "[benchmark] "
+labels: ["benchmark"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for measuring! Read [benchmarks/README.md](../blob/main/benchmarks/README.md) and record a real, exact-environment observation. One target, one workload, no hand-edited numbers.
+  - type: input
+    id: entry
+    attributes:
+      label: Catalogue entry id
+      description: The `id` from the YAML manifest (e.g. `silero-vad`).
+      placeholder: silero-vad
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Exact hardware
+      description: Board/module, SoC, RAM, and any accelerator. Record the exact variant.
+      placeholder: Luckfox Pico Max (RV1106), 256 MB, no external NPU
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime, format and precision
+      description: e.g. onnxruntime 1.22 CPU, ONNX, int8.
+      placeholder: onnxruntime 1.22, ONNX, float32
+    validations:
+      required: true
+  - type: input
+    id: artifact
+    attributes:
+      label: Artifact SHA-256
+      description: Hash of the exact model file measured.
+      placeholder: "1a153a22…e3"
+    validations:
+      required: true
+  - type: input
+    id: input
+    attributes:
+      label: Input shape / provenance
+      description: Shape and whether the input is real or a synthetic fixture.
+      placeholder: "512 samples, 16 kHz mono, synthetic silence"
+    validations:
+      required: true
+  - type: input
+    id: samples
+    attributes:
+      label: Warmup / sample count
+      placeholder: "5 warmup, 30 timed"
+    validations:
+      required: true
+  - type: input
+    id: latency
+    attributes:
+      label: Latency (p50 / p95 / p99)
+      placeholder: "1.2 / 1.6 / 2.1 ms"
+    validations:
+      required: true
+  - type: input
+    id: rss
+    attributes:
+      label: Peak process RSS (MB)
+      description: How it was measured (e.g. resource.getrusage high-water mark).
+      placeholder: "42.1 MB, ru_maxrss"
+    validations:
+      required: true
+  - type: input
+    id: method
+    attributes:
+      label: How measured
+      description: Command used (e.g. `python -m bench.runner ...`) and OS/versions.
+      placeholder: python -m bench.runner silero-vad --config … ; Debian 12, Python 3.11
+    validations:
+      required: true
+  - type: textarea
+    id: raw
+    attributes:
+      label: Raw samples / record JSON
+      description: Attach or paste the benchmark record JSON (as produced by the runner) so it can be committed under benchmarks/results/.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: The target is the exact device reported, and no measurement was inferred or copied from marketing.
+          required: true
+        - label: Synthetic fixtures are labelled as such (they are not accuracy results).
+          required: true

@@ -68,7 +68,7 @@
   },
   "unknowns": {
     "usage": 50,
-    "code_license": 50,
+    "code_license": 30,
     "weights_license": 106,
     "measured_peak_ram": 365
   },

@@ -18,6 +18,7 @@ Use primary sources where possible. Unknown values stay unknown; do not infer RA
 - `npm run search -- --domain finance --usage pretrained` — metadata search.
 - `npm run need -- "detect people offline with a tiny model"` — offline need matcher (same engine as the site).
 - `npm run audit` — catalogue hygiene (id/filename, naming, descriptions, duplicates, coverage).
+- `npm run licences` — propose code/weights licences from GitHub and Hugging Face; `--write` applies them.
 - `npm run links` — HTTP-check every upstream and evidence URL.
 - `npm run index` — regenerate README tables and JSON exports from YAML.
 - `npm run site:build` / `npm run site:serve` — build and serve the static explorer.

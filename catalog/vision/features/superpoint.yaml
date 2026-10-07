@@ -6,7 +6,7 @@ class: small-specialized-model
 description: "Self-supervised keypoint detector and descriptor for geometry tasks."
 links: { repository: "https://github.com/magicleap/SuperPointPretrainedNetwork", model: null, paper: null, homepage: null }
 model: { parameters: 1300000, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
+license: { code: noncommercial-research-only, weights: unknown }
 deployment: { offline: true, targets: [edge], accelerators: [] }
 runtimes: [pytorch]
 formats: []

@@ -7,7 +7,7 @@ class: "vision-pipeline"
 description: "Mapping and localization library with a standalone application."
 links: {"repository": "https://github.com/introlab/rtabmap"}
 model: {"parameters": null, "file_size_mb": null}
-license: {"code": "unknown", "weights": "not-applicable"}
+license: {"code": "BSD-3-Clause", "weights": "not-applicable"}
 deployment: {"offline": true, "targets": ["desktop"], "notes": "Upstream target classes, not hardware results reproduced by this catalogue."}
 runtimes: ["native-cpp"]
 formats: []

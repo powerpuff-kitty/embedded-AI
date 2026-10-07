@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Quantization, kernels and inference engine for phones, wearables, smart homes and robots."
 links: {repository: 'https://github.com/cactus-compute/cactus'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-applicable}
+license: {code: custom-restricted, weights: not-applicable}
 deployment: {offline: true, targets: [mobile, edge, robot], notes: 'Upstream target classes, not hardware results reproduced by this catalogue.'}
 runtimes: [cactus-native]
 formats: []
