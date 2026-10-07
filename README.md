@@ -45,6 +45,21 @@ npm run check                                              # validate + tests + 
 
 Edit YAML, not generated tables. On `main`, CI regenerates and commits only catalogue outputs; pull-request checks stay read-only.
 
+**As a package** (Node ≥18, zero dependencies) — the catalogue and the same need matcher, importable:
+
+```js
+import { need, search, get, domains, entries, coverage, shortlist } from "embedded-ai-catalog";
+
+const { results, intent } = need("offline wake word on a microcontroller", { limit: 5 });
+results[0].entry.name;   // "MLPerf Tiny"
+results[0].reasons;      // ["task: wake", "task: keyword", ...]
+
+search("", { domain: "vision", usage: "pretrained" }).length;  // metadata search
+get("docling").links.repository;                               // lookup by id
+```
+
+The generated JSON also ships directly: `embedded-ai-catalog/catalog.json`, `embedded-ai-catalog/catalog.full.json`, `embedded-ai-catalog/coverage.json`.
+
 ## At a glance
 
 <!-- AT-A-GLANCE:START -->
