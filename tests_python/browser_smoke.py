@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 import subprocess
 import time
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 root=Path('runs/browser');root.mkdir(parents=True,exist_ok=True)
 server=subprocess.Popen(['python3','-m','http.server','4173','--bind','127.0.0.1','--directory','dist'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -34,11 +34,11 @@ try:
         page.reload();page.wait_for_selector('#entries tbody tr')
         assert page.locator('[name=proceduralCategory]').input_value()=='audio-music'
         page.locator('#locale').select_option('fr')
-        page.wait_for_function("document.documentElement.lang === 'fr'")
+        expect(page.locator('html')).to_have_attribute('lang', 'fr')
         assert page.locator('[name=method]').input_value()=='procedural'
         assert page.locator('[name=proceduralCategory]').input_value()=='audio-music'
         page.locator('#locale').select_option('en')
-        page.wait_for_function("document.documentElement.lang === 'en'")
+        expect(page.locator('html')).to_have_attribute('lang', 'en')
         page.locator('#need').fill('procedural sound effects');page.locator('#match').click()
         page.wait_for_selector('#entries tbody tr')
         assert 'ZzFX' in page.locator('#entries').inner_text()
@@ -67,7 +67,7 @@ try:
         page.locator('#match').click();page.wait_for_selector('#entries tbody tr')
         assert 'Why it matched' in page.locator('#entries').inner_text() or 'rank score' in page.locator('#entries').inner_text()
         page.goto('http://127.0.0.1:4173/skeleton.html');page.locator('#demo').click()
-        page.wait_for_function("document.querySelector('#play').disabled === false")
+        expect(page.locator('#play')).to_be_enabled()
         page.locator('#play').click();page.wait_for_timeout(200)
         assert 'SYNTHETIC' in page.locator('#status').inner_text()
         page.screenshot(path=str(root/'skeleton-desktop.png'))
