@@ -1,0 +1,23 @@
+id: shap
+name: SHAP
+domain: trust-and-safety
+tasks: [model-explainability, feature-attribution]
+class: explainability-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Shapley-value explanations of model predictions for tabular, text and image models."
+links: {repository: 'https://github.com/shap/shap', paper: 'https://arxiv.org/abs/1705.07874'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis tooling; not deployed on-device.'}
+runtimes: [python]
+formats: [numpy-model]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Explains a trained model; adds no predictive power.', needs_data: 'Background/representative data plus a trained model.', update_strategy: 'Recompute per model version; watch compute for large models.'}
+data: {inputs: [model, features], outputs: [feature-attributions], languages: []}
+evaluation: ['Explanation stability and fidelity checks.']
+limitations: ['Computationally expensive; explanations are not causal proof.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/shap/shap', notes: 'SHAP explainability.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, explainability, interpretability, toolkit]

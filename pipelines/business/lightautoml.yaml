@@ -1,0 +1,23 @@
+id: lightautoml
+name: LightAutoML
+domain: business
+tasks: [automl, tabular-classification, tabular-regression]
+class: automl-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Sber's fast AutoML framework for tabular, text and time-series tasks."
+links: {repository: 'https://github.com/sb-ai-lab/LightAutoML'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Produces classical/GBM models that can deploy on CPU.'}
+runtimes: [python, scikit-learn]
+formats: [pickle]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Builds stacked models/ensembles per dataset.', needs_data: 'Labelled tabular data for the target task.', update_strategy: 'Retrain on drift; revalidate calibration and subgroups.'}
+data: {inputs: [tabular-features], outputs: [class, value], languages: []}
+evaluation: ['Held-out metrics plus calibration and fairness review.']
+limitations: ['AutoML can overfit small data; needs careful validation.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/sb-ai-lab/LightAutoML', notes: 'LightAutoML framework.'}]
+reviewed: '2026-10-06'
+tags: [business, automl, tabular, toolkit]

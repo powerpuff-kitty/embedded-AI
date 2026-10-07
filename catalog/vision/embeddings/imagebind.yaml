@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Model that binds six modalities (image, text, audio, depth, thermal, IMU) into one embedding space."
 links: {repository: 'https://github.com/facebookresearch/ImageBind', paper: 'https://arxiv.org/abs/2305.05665'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: CC-BY-NC-SA-4.0, weights: unknown}
 deployment: {offline: true, targets: [desktop, server], notes: 'Large multimodal encoder; not an embedded model.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint]

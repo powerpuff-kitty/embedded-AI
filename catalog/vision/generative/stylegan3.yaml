@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "NVIDIA alias-free generative adversarial network for high-quality image synthesis."
 links: {repository: 'https://github.com/NVlabs/stylegan3', paper: 'https://arxiv.org/abs/2106.12423'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: NVIDIA-Source-Code-License, weights: unknown}
 deployment: {offline: true, targets: [server, desktop], notes: 'GPU-heavy generative model; not embedded-friendly.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint]

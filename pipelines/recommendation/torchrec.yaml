@@ -1,0 +1,23 @@
+id: torchrec
+name: TorchRec
+domain: recommendation
+tasks: [recommendation, embedding-tables, distributed-training]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Meta's library for large-scale recommendation models with sharded embeddings."
+links: {repository: 'https://github.com/meta-pytorch/torchrec'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-3-Clause, weights: not-provided}
+deployment: {offline: true, targets: [server], notes: 'Training and serving for large recommender models; server-class.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains recommendation models with large embedding tables.', needs_data: 'Large interaction datasets and feature pipelines.', update_strategy: 'Retrain frequently; monitor popularity/feedback loops.'}
+data: {inputs: [user-item-features], outputs: [ranked-recommendations], languages: []}
+evaluation: ['Offline ranking metrics plus online A/B where possible.']
+limitations: ['Requires distributed infrastructure; heavy engineering overhead.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/meta-pytorch/torchrec', notes: 'TorchRec recommender library.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, embeddings, recsys, toolkit]

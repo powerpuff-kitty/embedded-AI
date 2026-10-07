@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "BGE embedding and reranker family for retrieval and retrieval-augmented generation."
 links: {repository: 'https://github.com/FlagOpen/FlagEmbedding', model: 'https://huggingface.co/BAAI/bge-small-en-v1.5'}
 model: {parameters: null, file_size_mb: null}
-license: {code: MIT, weights: unknown}
+license: {code: MIT, weights: MIT}
 deployment: {offline: true, targets: [desktop, server, edge], notes: 'Small/base/large variants; small models can run on constrained inference.'}
 runtimes: [pytorch, onnxruntime]
 formats: [safetensors, onnx]

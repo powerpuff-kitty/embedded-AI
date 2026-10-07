@@ -3811,6 +3811,98 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "wav2vec2",
+      "name": "wav2vec 2.0",
+      "domain": "audio",
+      "tasks": [
+        "speech-recognition",
+        "speech-representations"
+      ],
+      "class": "speech-model-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Self-supervised speech representations that underpin many ASR systems.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/fairseq",
+        "paper": "https://arxiv.org/abs/2006.11477"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "BASE and small variants; quantisation enables edge ASR."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained representations; fine-tuned for ASR or tasks.",
+        "needs_data": "Transcribed audio for fine-tuning/evaluation.",
+        "update_strategy": "Verify weight terms; re-evaluate WER on domain audio."
+      },
+      "data": {
+        "inputs": [
+          "audio"
+        ],
+        "outputs": [
+          "transcript",
+          "representations"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "WER on domain audio; latency for streaming."
+      ],
+      "limitations": [
+        "Weight terms not stated; accuracy drops on unseen domains."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/fairseq",
+          "notes": "wav2vec 2.0 in fairseq."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "asr",
+        "speech",
+        "self-supervised"
+      ],
+      "path": "catalog/audio/speech/wav2vec2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "moonshine",
       "name": "Moonshine",
       "domain": "audio",
@@ -4512,7 +4604,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-4.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -5786,6 +5878,92 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "lightautoml",
+      "name": "LightAutoML",
+      "domain": "business",
+      "tasks": [
+        "automl",
+        "tabular-classification",
+        "tabular-regression"
+      ],
+      "class": "automl-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Sber's fast AutoML framework for tabular, text and time-series tasks.",
+      "links": {
+        "repository": "https://github.com/sb-ai-lab/LightAutoML"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Produces classical/GBM models that can deploy on CPU."
+      },
+      "runtimes": [
+        "python",
+        "scikit-learn"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Builds stacked models/ensembles per dataset.",
+        "needs_data": "Labelled tabular data for the target task.",
+        "update_strategy": "Retrain on drift; revalidate calibration and subgroups."
+      },
+      "data": {
+        "inputs": [
+          "tabular-features"
+        ],
+        "outputs": [
+          "class",
+          "value"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out metrics plus calibration and fairness review."
+      ],
+      "limitations": [
+        "AutoML can overfit small data; needs careful validation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/sb-ai-lab/LightAutoML",
+          "notes": "LightAutoML framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "business",
+        "automl",
+        "tabular",
+        "toolkit"
+      ],
+      "path": "pipelines/business/lightautoml.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "pycaret",
       "name": "PyCaret",
       "domain": "business",
@@ -5807,7 +5985,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "FSL-1.1-MIT",
         "weights": "not-provided"
       },
       "deployment": {
@@ -6052,6 +6230,90 @@
         "toolkit"
       ],
       "path": "pipelines/business/cvxpy.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "cvxpylayers",
+      "name": "cvxpylayers",
+      "domain": "business",
+      "tasks": [
+        "differentiable-optimisation",
+        "constrained-optimisation"
+      ],
+      "class": "optimisation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Differentiable convex optimisation layers that embed solvers inside neural networks.",
+      "links": {
+        "repository": "https://github.com/cvxpy/cvxpylayers",
+        "paper": "https://arxiv.org/abs/1910.12430"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Research/engineering tool; solve times depend on the problem."
+      },
+      "runtimes": [
+        "pytorch",
+        "jax"
+      ],
+      "formats": [
+        "numpy-model"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Wraps convex problems as differentiable layers for end-to-end training.",
+        "needs_data": "Problem definition plus data if trained end to end.",
+        "update_strategy": "Validate feasibility and solve-time budgets per deployment."
+      },
+      "data": {
+        "inputs": [
+          "parameters"
+        ],
+        "outputs": [
+          "optimal-solution"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Feasibility/optimality and gradient correctness checks."
+      ],
+      "limitations": [
+        "Convex problems only; solver latency may not meet real-time."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/cvxpy/cvxpylayers",
+          "notes": "cvxpylayers."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "business",
+        "optimization",
+        "differentiable",
+        "toolkit"
+      ],
+      "path": "pipelines/business/cvxpylayers.yaml",
       "usage_mode": "companion"
     },
     {
@@ -14308,7 +14570,7 @@
       },
       "license": {
         "code": "MIT",
-        "weights": "unknown"
+        "weights": "MIT"
       },
       "deployment": {
         "offline": true,
@@ -14652,6 +14914,95 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "kenlm",
+      "name": "KenLM",
+      "domain": "language",
+      "tasks": [
+        "language-modelling",
+        "text-scoring"
+      ],
+      "class": "ngram-language-model",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Efficient n-gram language-model toolkit for scoring and rescoring text.",
+      "links": {
+        "repository": "https://github.com/kpu/kenlm"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "LGPL-2.1",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Compact n-gram models suitable for on-device scoring."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [
+        "arpa",
+        "binary-lm"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Estimates n-gram models from text corpora.",
+        "needs_data": "A large text corpus for the domain.",
+        "update_strategy": "Retrain on drift; watch licence (LGPL-family)."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "log-probability"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Perplexity on held-out text."
+      ],
+      "limitations": [
+        "n-gram models have limited context; licence is LGPL-family (verify)."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/kpu/kenlm",
+          "notes": "KenLM language-model toolkit."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "ngram",
+        "language-model",
+        "primitive"
+      ],
+      "path": "pipelines/language/kenlm.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "gpt4all",
       "name": "GPT4All",
       "domain": "language",
@@ -14914,6 +15265,97 @@
       ],
       "path": "catalog/language/on-device/tinyllama.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "sentencepiece",
+      "name": "SentencePiece",
+      "domain": "language",
+      "tasks": [
+        "tokenisation",
+        "subword-segmentation"
+      ],
+      "class": "tokeniser",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Language-independent subword tokeniser used by many LLM and translation models.",
+      "links": {
+        "repository": "https://github.com/google/sentencepiece",
+        "paper": "https://arxiv.org/abs/1808.06226"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small C++ library; model files are kilobytes."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python",
+        "tensorflow"
+      ],
+      "formats": [
+        "sentencepiece-model"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Trains a subword vocabulary or applies an existing model.",
+        "needs_data": "A text corpus to train a vocabulary; model for inference.",
+        "update_strategy": "Keep the tokeniser with the model; do not change after training."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "token-ids",
+          "pieces"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Tokenisation fidelity and round-trip consistency."
+      ],
+      "limitations": [
+        "Not a model itself; must match the model it accompanies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google/sentencepiece",
+          "notes": "SentencePiece tokeniser."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "tokeniser",
+        "primitive",
+        "nlp"
+      ],
+      "path": "pipelines/language/sentencepiece.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "spacy",
@@ -18231,6 +18673,350 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "torchrec",
+      "name": "TorchRec",
+      "domain": "recommendation",
+      "tasks": [
+        "recommendation",
+        "embedding-tables",
+        "distributed-training"
+      ],
+      "class": "recommender-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's library for large-scale recommendation models with sharded embeddings.",
+      "links": {
+        "repository": "https://github.com/meta-pytorch/torchrec"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server"
+        ],
+        "notes": "Training and serving for large recommender models; server-class."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains recommendation models with large embedding tables.",
+        "needs_data": "Large interaction datasets and feature pipelines.",
+        "update_strategy": "Retrain frequently; monitor popularity/feedback loops."
+      },
+      "data": {
+        "inputs": [
+          "user-item-features"
+        ],
+        "outputs": [
+          "ranked-recommendations"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Offline ranking metrics plus online A/B where possible."
+      ],
+      "limitations": [
+        "Requires distributed infrastructure; heavy engineering overhead."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/meta-pytorch/torchrec",
+          "notes": "TorchRec recommender library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "recommendation",
+        "embeddings",
+        "recsys",
+        "toolkit"
+      ],
+      "path": "pipelines/recommendation/torchrec.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "annoy",
+      "name": "Annoy",
+      "domain": "retrieval",
+      "tasks": [
+        "approximate-nearest-neighbor",
+        "vector-search"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Spotify's approximate nearest-neighbour library using random projection trees, with memory-mapped indexes.",
+      "links": {
+        "repository": "https://github.com/spotify/annoy"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Static read-only indexes can be memory-mapped on edge."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [
+        "annoy-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds immutable indexes from vectors; no training.",
+        "needs_data": "Embedded vectors plus queries.",
+        "update_strategy": "Rebuild index to add data; tune trees vs recall."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k plus index size and query latency."
+      ],
+      "limitations": [
+        "Indexes are read-only after build; recall depends on tree count."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/spotify/annoy",
+          "notes": "Annoy ANN search."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "ann",
+        "toolkit"
+      ],
+      "path": "pipelines/retrieval/annoy.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "faiss",
+      "name": "FAISS",
+      "domain": "retrieval",
+      "tasks": [
+        "approximate-nearest-neighbor",
+        "vector-search",
+        "clustering"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's library for efficient similarity search and clustering of dense vectors.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/faiss",
+        "paper": "https://arxiv.org/abs/2401.08281"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU and GPU indexes; IVF/PQ indexes shrink memory."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python",
+        "cuda"
+      ],
+      "formats": [
+        "faiss-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds indexes from embeddings; no model training.",
+        "needs_data": "Embedded vectors plus a query set.",
+        "update_strategy": "Rebuild/refresh indexes on data drift; tune recall vs memory."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k vs exhaustive search plus memory/latency."
+      ],
+      "limitations": [
+        "ANN trade-offs; index must be rebuilt as data changes."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/faiss",
+          "notes": "FAISS similarity search."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "ann",
+        "toolkit"
+      ],
+      "path": "pipelines/retrieval/faiss.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "hnswlib",
+      "name": "hnswlib",
+      "domain": "retrieval",
+      "tasks": [
+        "approximate-nearest-neighbor",
+        "vector-search"
+      ],
+      "class": "retrieval-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Header-only approximate nearest-neighbour search using hierarchical navigable small world graphs.",
+      "links": {
+        "repository": "https://github.com/nmslib/hnswlib",
+        "paper": "https://arxiv.org/abs/1603.09320"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Tiny C++ dependency; low memory footprint."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [
+        "hnsw-index"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds HNSW indexes from vectors; no training.",
+        "needs_data": "Embedded vectors plus queries.",
+        "update_strategy": "Re-tune ef/M per dataset; refresh on drift."
+      },
+      "data": {
+        "inputs": [
+          "embedding-vectors"
+        ],
+        "outputs": [
+          "nearest-neighbours"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Recall@k vs brute force plus latency/memory."
+      ],
+      "limitations": [
+        "Graph index has memory/time trade-offs; no native GPU support."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/nmslib/hnswlib",
+          "notes": "hnswlib ANN search."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "retrieval",
+        "vector-search",
+        "ann",
+        "toolkit"
+      ],
+      "path": "pipelines/retrieval/hnswlib.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "mavsdk",
       "name": "MAVSDK",
       "domain": "robotics",
@@ -19270,7 +20056,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT OR Apache-2.0",
         "weights": "not-applicable"
       },
       "deployment": {
@@ -19514,6 +20300,94 @@
       "usage_mode": "companion"
     },
     {
+      "id": "tensorrt",
+      "name": "NVIDIA TensorRT",
+      "domain": "runtime",
+      "tasks": [
+        "gpu-inference",
+        "inference-optimisation"
+      ],
+      "class": "gpu-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA SDK that optimises and runs models on NVIDIA GPUs and Jetson devices.",
+      "links": {
+        "repository": "https://github.com/NVIDIA/TensorRT",
+        "homepage": "https://developer.nvidia.com/tensorrt"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "embedded",
+          "desktop",
+          "server"
+        ],
+        "notes": "Targets Jetson and discrete GPUs via TensorRT engines."
+      },
+      "runtimes": [
+        "tensorrt",
+        "cuda"
+      ],
+      "formats": [
+        "onnx",
+        "tensorrt-engine"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Builds optimised engines from trained models; no training.",
+        "needs_data": "An ONNX model plus calibration data.",
+        "update_strategy": "Rebuild engines per GPU/version; verify precision impact."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency/throughput and accuracy delta on the target GPU."
+      ],
+      "limitations": [
+        "NVIDIA-only; engines are not portable across GPU generations."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVIDIA/TensorRT",
+          "notes": "NVIDIA TensorRT."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "gpu",
+        "nvidia",
+        "optimisation"
+      ],
+      "path": "pipelines/runtime/tensorrt.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "transformers-js",
       "name": "Transformers.js",
       "domain": "runtime",
@@ -19682,6 +20556,181 @@
         "browser"
       ],
       "path": "pipelines/runtime/web-llm.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "exllamav2",
+      "name": "ExLlamaV2",
+      "domain": "runtime",
+      "tasks": [
+        "llm-inference",
+        "quantisation"
+      ],
+      "class": "llm-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fast GPTQ/EXL2 inference library for large language models on consumer GPUs.",
+      "links": {
+        "repository": "https://github.com/turboderp-org/exllamav2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "GPU-focused; EXL2/GPTQ quantisation lowers VRAM."
+      },
+      "runtimes": [
+        "pytorch",
+        "cuda"
+      ],
+      "formats": [
+        "exl2",
+        "gptq",
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves quantised LLMs; no training.",
+        "needs_data": "A quantised model plus prompts.",
+        "update_strategy": "Re-quantise per target GPU; verify licence of the base weights."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-completion"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Perplexity plus tokens/s and VRAM on the target GPU."
+      ],
+      "limitations": [
+        "Requires a discrete GPU; base-model licences still apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/turboderp-org/exllamav2",
+          "notes": "ExLlamaV2 inference library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "llm",
+        "quantisation",
+        "gpu"
+      ],
+      "path": "pipelines/runtime/exllamav2.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "llama-cpp-python",
+      "name": "llama-cpp-python",
+      "domain": "runtime",
+      "tasks": [
+        "llm-inference",
+        "gguf-inference"
+      ],
+      "class": "llm-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Python bindings for llama.cpp, running GGUF LLMs on CPU, GPU and Apple silicon.",
+      "links": {
+        "repository": "https://github.com/abetlen/llama-cpp-python"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU/quantised inference with optional GPU offload."
+      },
+      "runtimes": [
+        "llama.cpp",
+        "python"
+      ],
+      "formats": [
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Serves GGUF models; no training.",
+        "needs_data": "A GGUF model plus prompts.",
+        "update_strategy": "Pin build; re-check base-model licence; re-benchmark on target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-completion"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Perplexity plus tokens/s and RAM on the target device."
+      ],
+      "limitations": [
+        "Quantisation trades quality; base-model licences still apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/abetlen/llama-cpp-python",
+          "notes": "llama.cpp Python bindings."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "llm",
+        "gguf",
+        "cpu"
+      ],
+      "path": "pipelines/runtime/llama-cpp-python.yaml",
       "usage_mode": "companion"
     },
     {
@@ -21934,6 +22983,185 @@
       "usage_mode": "companion"
     },
     {
+      "id": "mlx",
+      "name": "MLX",
+      "domain": "runtime",
+      "tasks": [
+        "on-device-ml",
+        "array-computing",
+        "model-inference"
+      ],
+      "class": "edge-runtime",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Apple array framework for machine learning on Apple silicon.",
+      "links": {
+        "repository": "https://github.com/ml-explore/mlx",
+        "homepage": "https://ml-explore.github.io/mlx/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "mobile",
+          "edge"
+        ],
+        "notes": "Unified-memory inference on M-series and iOS devices."
+      },
+      "runtimes": [
+        "mlx",
+        "python"
+      ],
+      "formats": [
+        "safetensors",
+        "mlx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runs and fine-tunes models on Apple silicon; no CUDA path.",
+        "needs_data": "Converted models plus inputs.",
+        "update_strategy": "Pin version; re-convert and re-benchmark per device."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "input-tensors"
+        ],
+        "outputs": [
+          "inference-results"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Latency/memory on the target Apple device."
+      ],
+      "limitations": [
+        "Apple-silicon only; ecosystem smaller than PyTorch."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ml-explore/mlx",
+          "notes": "MLX array framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "apple",
+        "on-device",
+        "fine-tuning"
+      ],
+      "path": "pipelines/runtime/mlx.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "neural-compressor",
+      "name": "Intel Neural Compressor",
+      "domain": "runtime",
+      "tasks": [
+        "quantisation",
+        "model-compression",
+        "pruning"
+      ],
+      "class": "compression-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Intel library for quantisation, pruning and distillation across frameworks.",
+      "links": {
+        "repository": "https://github.com/intel/neural-compressor",
+        "homepage": "https://intel.github.io/neural-compressor/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Produces INT8/INT4 models for CPU, GPU and NPU backends."
+      },
+      "runtimes": [
+        "pytorch",
+        "tensorflow",
+        "onnxruntime",
+        "openvino"
+      ],
+      "formats": [
+        "onnx",
+        "pytorch-checkpoint",
+        "openvino"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Post-training and quantisation-aware compression of models.",
+        "needs_data": "A trained model plus a calibration set.",
+        "update_strategy": "Re-calibrate per target; measure accuracy drop after compression."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "calibration-data"
+        ],
+        "outputs": [
+          "compressed-model"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Accuracy delta plus latency/size on the target backend."
+      ],
+      "limitations": [
+        "Compression can hurt accuracy; backend coverage varies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/intel/neural-compressor",
+          "notes": "Intel Neural Compressor."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "runtime",
+        "quantisation",
+        "compression",
+        "intel"
+      ],
+      "path": "pipelines/runtime/neural-compressor.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "burn",
       "name": "Burn",
       "domain": "runtime",
@@ -22511,6 +23739,91 @@
       "path": "catalog/science/materials/mattersim-small.yaml",
       "kind": "model",
       "usage_mode": "unknown"
+    },
+    {
+      "id": "optuna",
+      "name": "Optuna",
+      "domain": "science",
+      "tasks": [
+        "hyperparameter-optimisation",
+        "experiment-tracking"
+      ],
+      "class": "hpo-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Define-by-run hyperparameter optimisation framework with pruning and distributed search.",
+      "links": {
+        "repository": "https://github.com/optuna/optuna",
+        "homepage": "https://optuna.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Development/tuning tool; not deployed to the device."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "study-db"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Drives training/tuning trials; no model of its own.",
+        "needs_data": "A search space plus an objective to minimise.",
+        "update_strategy": "Record search spaces and seeds; avoid tuning on the test set."
+      },
+      "data": {
+        "inputs": [
+          "search-space",
+          "objective"
+        ],
+        "outputs": [
+          "best-parameters"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Objective improvement with proper validation splits."
+      ],
+      "limitations": [
+        "Misuse can overfit the validation set; not an inference component."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/optuna/optuna",
+          "notes": "Optuna HPO framework."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "science",
+        "hpo",
+        "tuning",
+        "toolkit"
+      ],
+      "path": "pipelines/science/optuna.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "torchmd-net",
@@ -23185,6 +24498,97 @@
         "structure-prediction"
       ],
       "path": "pipelines/science/openfold.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "statsmodels",
+      "name": "statsmodels",
+      "domain": "science",
+      "tasks": [
+        "statistical-modelling",
+        "time-series-analysis",
+        "regression"
+      ],
+      "class": "statistics-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Classical statistical models and tests, including ARIMA and state-space time series.",
+      "links": {
+        "repository": "https://github.com/statsmodels/statsmodels",
+        "homepage": "https://www.statsmodels.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU-only, lightweight; good as a baseline on edge."
+      },
+      "runtimes": [
+        "python",
+        "numpy"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Fits statistical models to data.",
+        "needs_data": "Historical data with the target variable.",
+        "update_strategy": "Refit on drift; revalidate residual assumptions."
+      },
+      "data": {
+        "inputs": [
+          "tabular-data",
+          "time-series"
+        ],
+        "outputs": [
+          "parameters",
+          "forecasts",
+          "tests"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Residual diagnostics, information criteria and backtests."
+      ],
+      "limitations": [
+        "Classical assumptions may not hold; less flexible than deep models."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/statsmodels/statsmodels",
+          "notes": "statsmodels library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "science",
+        "statistics",
+        "time-series",
+        "toolkit"
+      ],
+      "path": "pipelines/science/statsmodels.yaml",
       "usage_mode": "requires-training"
     },
     {
@@ -26917,6 +28321,174 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "lime",
+      "name": "LIME",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "model-explainability",
+        "local-explanation"
+      ],
+      "class": "explainability-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Local surrogate explanations that approximate a model around a single prediction.",
+      "links": {
+        "repository": "https://github.com/marcotcr/lime",
+        "paper": "https://arxiv.org/abs/1602.04938"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-2-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Analysis tooling; not deployed on-device."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "numpy-model"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Explains a trained model locally; no training.",
+        "needs_data": "A trained model plus samples to explain.",
+        "update_strategy": "Recompute per version; check explanation stability."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "instance"
+        ],
+        "outputs": [
+          "local-feature-weights"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Local fidelity and stability across seeds."
+      ],
+      "limitations": [
+        "Local approximations can be unstable; not causal."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/marcotcr/lime",
+          "notes": "LIME explainability."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "explainability",
+        "interpretability",
+        "toolkit"
+      ],
+      "path": "pipelines/trust-and-safety/lime.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "shap",
+      "name": "SHAP",
+      "domain": "trust-and-safety",
+      "tasks": [
+        "model-explainability",
+        "feature-attribution"
+      ],
+      "class": "explainability-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Shapley-value explanations of model predictions for tabular, text and image models.",
+      "links": {
+        "repository": "https://github.com/shap/shap",
+        "paper": "https://arxiv.org/abs/1705.07874"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Analysis tooling; not deployed on-device."
+      },
+      "runtimes": [
+        "python"
+      ],
+      "formats": [
+        "numpy-model"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Explains a trained model; adds no predictive power.",
+        "needs_data": "Background/representative data plus a trained model.",
+        "update_strategy": "Recompute per model version; watch compute for large models."
+      },
+      "data": {
+        "inputs": [
+          "model",
+          "features"
+        ],
+        "outputs": [
+          "feature-attributions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Explanation stability and fidelity checks."
+      ],
+      "limitations": [
+        "Computationally expensive; explanations are not causal proof."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shap/shap",
+          "notes": "SHAP explainability."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "trust-and-safety",
+        "explainability",
+        "interpretability",
+        "toolkit"
+      ],
+      "path": "pipelines/trust-and-safety/shap.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "detoxify",
       "name": "Detoxify",
       "domain": "trust-and-safety",
@@ -29703,7 +31275,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "NVIDIA-Source-Code-License",
         "weights": "unknown"
       },
       "deployment": {
@@ -30553,7 +32125,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "MIT",
         "weights": "unknown"
       },
       "deployment": {
@@ -31996,7 +33568,7 @@
         "file_size_mb": null
       },
       "license": {
-        "code": "unknown",
+        "code": "CC-BY-NC-SA-4.0",
         "weights": "unknown"
       },
       "deployment": {
@@ -33617,6 +35189,94 @@
         "pretrained"
       ],
       "path": "catalog/vision/detection/grounding-dino.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "tesseract",
+      "name": "Tesseract OCR",
+      "domain": "vision",
+      "tasks": [
+        "optical-character-recognition"
+      ],
+      "class": "ocr-toolkit",
+      "kind": "primitive",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Long-standing LSTM-based OCR engine supporting over 100 languages.",
+      "links": {
+        "repository": "https://github.com/tesseract-ocr/tesseract",
+        "homepage": "https://tesseract-ocr.github.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "CPU-only; language models are compact and edge-friendly."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [
+        "traineddata"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Runs trained language data; can be retrained per script.",
+        "needs_data": "Images/scans; ground-truth text for evaluation.",
+        "update_strategy": "Pin language data; re-evaluate on domain documents."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image"
+        ],
+        "outputs": [
+          "text"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Character/word accuracy on domain documents."
+      ],
+      "limitations": [
+        "Sensitive to image quality/layout; weaker than modern deep OCR on hard cases."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/tesseract-ocr/tesseract",
+          "notes": "Tesseract OCR engine."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "ocr",
+        "primitive",
+        "text"
+      ],
+      "path": "pipelines/vision/tesseract.yaml",
       "usage_mode": "pretrained"
     },
     {

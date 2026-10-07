@@ -1,0 +1,23 @@
+id: lime
+name: LIME
+domain: trust-and-safety
+tasks: [model-explainability, local-explanation]
+class: explainability-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Local surrogate explanations that approximate a model around a single prediction."
+links: {repository: 'https://github.com/marcotcr/lime', paper: 'https://arxiv.org/abs/1602.04938'}
+model: {parameters: null, file_size_mb: null}
+license: {code: BSD-2-Clause, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Analysis tooling; not deployed on-device.'}
+runtimes: [python]
+formats: [numpy-model]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Explains a trained model locally; no training.', needs_data: 'A trained model plus samples to explain.', update_strategy: 'Recompute per version; check explanation stability.'}
+data: {inputs: [model, instance], outputs: [local-feature-weights], languages: []}
+evaluation: ['Local fidelity and stability across seeds.']
+limitations: ['Local approximations can be unstable; not causal.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/marcotcr/lime', notes: 'LIME explainability.'}]
+reviewed: '2026-10-06'
+tags: [trust-and-safety, explainability, interpretability, toolkit]
