@@ -1,5 +1,7 @@
 # embedded-AI
 
+> The evidence-first catalogue of AI you can actually run on-device.
+
 [![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
 [![pages](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/pages.yml?label=pages)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
 [![catalog](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/catalog.yml?label=validate)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
@@ -7,29 +9,91 @@
 [![entries](https://img.shields.io/badge/dynamic/json?color=blue&label=entries&query=%24.total&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](generated/coverage.json)
 [![reproduced](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=reproduced&query=%24.reproduced_entries&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](benchmarks/README.md)
 
-**▶ Live explorer — https://powerpuff-kitty.github.io/embedded-AI/** — describe a need in plain language and get ranked, evidence-labelled components. No account, no uploads, no tracking.
+**Explore it live — https://powerpuff-kitty.github.io/embedded-AI/** · no install, no account, no tracking.
 
-A machine-readable catalogue of AI/ML models for local and resource-constrained computing, plus clearly labelled companion tools for perception, control, business analysis, mapping and simulation.
+---
 
-## Goals
-- Catalogue specialist models across domains, including compact classical ML.
-- Keep hardware/runtime compatibility and evidence first-class.
-- Separate pretrained weights, models requiring training, and companion tools.
-- Never invent missing RAM, latency, power, license or compatibility data.
-- Generate the complete human-facing catalogue and JSON exports from YAML.
+## What is this?
+
+**embedded-AI is a machine-readable catalogue of AI/ML models, toolkits and non-AI primitives for local and resource-constrained computing** — from microcontrollers and neuromorphic chips to phones, single-board computers and servers.
+
+It exists to do one job well: help you find the right component for a device, and show you the evidence behind every claim. Each entry is a small YAML file; the tables below, the JSON exports and the web explorer are all generated from them.
+
+## Why it is different
+
+- **Evidence first.** A target is only `reproduced` when a benchmark record exists for the exact hardware. Parameter counts and edge marketing never establish fit.
+- **Unknowns stay unknown.** Missing RAM, latency, power, licence or compatibility is shown as unknown — never invented or inferred from model size.
+- **Labelled honestly.** Pretrained models, models that need training, and companion tools are separated, with code and weights licences recorded independently.
+- **One source, many faces.** The same YAML drives the README table, the JSON exports, the search/need CLIs, and a fully offline web explorer with per-entry pages.
+
+## Quick start
+
+**Use the live explorer** — nothing to install:
+
+```text
+https://powerpuff-kitty.github.io/embedded-AI/
+```
+
+**Or work locally:**
+
+```sh
+npm ci --ignore-scripts
+npm run search -- --domain finance --usage pretrained      # metadata search
+npm run need -- "detect people offline with a tiny model"  # plain-language matcher
+npm run links                                              # audit upstream links
+npm run audit                                              # catalogue hygiene
+npm run check                                              # validate + tests + freshness
+```
+
+Edit YAML, not generated tables. On `main`, CI regenerates and commits only catalogue outputs; pull-request checks stay read-only.
+
+## At a glance
+
+| | |
+|---|---|
+| **365 entries** | models, collections, pipelines, toolkits and primitives |
+| **51 domains** | from vision and audio to neuromorphic, genomics and space |
+| **10 hardware profiles** | MCUs, SBCs, NPUs and neuromorphic processors |
+| **3 reproduced benchmarks** | measured on exact hosts, with raw latency samples |
+
+## Compatibility levels
+
+Compatibility is recorded per hardware target and is independent of popularity or file size.
+
+| Level | Meaning |
+|---|---|
+| `reproduced` | A benchmark record exists in `benchmarks/` for the exact target |
+| `reported` | An upstream or vendor source documents the target (evidence URL required) |
+| `theoretical` | Plausibly compatible, but not demonstrated |
+| `unsupported` | Known not to work |
+| `unknown` | Not assessed — the honest default |
 
 ## Domains
+
 51 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports.
 
-## Structure
+## Documentation
+
+- [Need matcher guide](docs/NEED-MATCHER.md) — how plain-language search ranks components
+- [Vision, video & 3D](docs/VISION-VIDEO-3D.md) — per-task guides
+- [Finance, administration & business](docs/BUSINESS-AI.md) — per-task guides
+- [Runnable Catalogue v0.2](docs/RUNNABLE-V02.md) — explorer, recipes and benchmarks
+- [Design system](docs/DESIGN.md) — tokens and components
+- [Taxonomy](docs/TAXONOMY.md) — how components are classified
+- [Building small models](docs/BUILDING-SMALL-MODELS.md) — a practical workflow
+- [Dependency & security review](docs/SECURITY-REVIEW-V02.md)
+- [Contributing](CONTRIBUTING.md) — entry rules and tooling
+
+## Project layout
+
 ```text
 catalog/       # learned models, architectures and collections
 pipelines/     # applications and training/integration toolkits
 primitives/    # non-AI optimization and simulation
-hardware/      # device profiles
+hardware/      # device profiles (MCU, SBC, NPU, neuromorphic)
 runtimes/      # runtime profiles
 schema/        # catalogue and benchmark schemas
-scripts/       # validation, search, generation and site build
+scripts/       # validation, search, need matcher, audits, generation, site build
 site/          # static explorer and local skeleton viewer
 recipes/       # local forecast, VAD and pose examples
 bench/         # process-isolated measurement adapters
@@ -37,40 +101,11 @@ benchmarks/    # actual environment-specific observations
 generated/     # summary, full metadata and coverage JSON
 ```
 
-See [Contributing](CONTRIBUTING.md), [vision/video/3D](docs/VISION-VIDEO-3D.md) and [finance/administration/business](docs/BUSINESS-AI.md).
+## Contributing
 
-## Use the catalogue
+Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTING.md); run `npm run check`, `npm run audit -- --strict` and `npm run links` before opening a pull request.
 
-Start with the [live explorer](https://powerpuff-kitty.github.io/embedded-AI/) (no install), or run it locally:
-
-```sh
-npm ci --ignore-scripts
-npm run search -- --domain finance --usage pretrained
-npm run search -- --query anomaly --json
-npm run need -- "detect people offline with a tiny model"
-npm run links
-npm run audit
-npm run index
-npm run check
-```
-
-Edit YAML, not generated tables. Main-branch CI regenerates and commits only catalogue outputs; pull-request checks remain read-only.
-
-Compatibility levels are `unsupported`, `theoretical`, `reported`, `reproduced` and `unknown`. Only actual device evidence qualifies as reproduced. Small model parameters and edge marketing do not establish MCU or RV1106 compatibility.
-
-## Runnable Catalogue v0.2
-
-Read the [v0.2 guide](docs/RUNNABLE-V02.md), [runnable recipes](recipes/README.md), [benchmark methodology](benchmarks/README.md), [design system](docs/DESIGN.md) and [dependency review](docs/SECURITY-REVIEW-V02.md).
-
-```sh
-npm run reviews:check
-npm run site:build
-npm run site:serve
-```
-
-The static explorer supports search, filters, source details and comparison, plus a deterministic offline need matcher that ranks entries from a plain-language description with visible reasons (see the [need matcher guide](docs/NEED-MATCHER.md)). The local skeleton viewer reads JSONL without uploading files. Downloads/inference are explicit. A Linux measurement is never labelled Mac/RV1106 evidence. The site is built locally and, on `main`, published read-only to GitHub Pages by `.github/workflows/pages.yml`; no analytics or upload endpoints are used.
-
-This is a growing curated catalogue, not an exhaustive list or a guarantee that all entries fit small devices. Unknown fields remain visible.
+---
 
 <!-- CATALOG:START -->
 
