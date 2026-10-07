@@ -1,0 +1,23 @@
+id: pytorch-geometric
+name: PyTorch Geometric
+domain: graph
+tasks: [graph-neural-networks, node-classification, link-prediction]
+class: gnn-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Library for deep learning on graphs, point clouds and manifolds."
+links: {repository: 'https://github.com/pyg-team/pytorch_geometric', homepage: 'https://pyg.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server], notes: 'Training/inference for graph models; usually server-side.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains GNNs on graph-structured data.', needs_data: 'Graph data with node/edge labels.', update_strategy: 'Revalidate on graph drift; watch for distribution shift.'}
+data: {inputs: [graph], outputs: [node-labels, edge-scores, graph-embeddings], languages: []}
+evaluation: ['Task metrics plus inductive/transductive generalisation checks.']
+limitations: ['Needs graph infrastructure; large graphs are memory-heavy.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/pyg-team/pytorch_geometric', notes: 'PyTorch Geometric.'}]
+reviewed: '2026-10-06'
+tags: [graph, gnn, toolkit]

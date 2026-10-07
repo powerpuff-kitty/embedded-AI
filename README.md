@@ -47,13 +47,13 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 | | |
 |---|---|
-| **413 entries** | models, collections, pipelines, toolkits and primitives |
-| **51 domains** | vision, audio, language, robotics, gaming, genomics and more |
+| **420 entries** | models, collections, pipelines, toolkits and primitives |
+| **52 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
 ## Domains
 
-51 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports.
+51 domains: Audio · Video · Vision · Language · Geospatial · Weather · Climate · Time series · Engineering/CAD · Robotics · Control · Science · Genomics · Drug discovery · Sensors · Mapping · Simulation · Gaming · Music · Healthcare · Agriculture · Automotive · Manufacturing · Finance · Fraud detection · Recommendation · Administration · Business · IT infrastructure · Energy · Security · Runtime · Telecom · Networking · Benchmark · Artificial life · Neuromorphic · Event vision · Education · Trust &amp; safety · Federated learning · Quantum · Marine · Accessibility · Environment · Fashion · Space · Hydrology · Forestry · Sports · Graph.
 
 ## Documentation
 
@@ -94,7 +94,7 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 
 ## Full catalogue
 
-**413 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**420 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -106,7 +106,7 @@ This is a curated, expandable catalogue, not an exhaustive list of every AI or a
 
 Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administration and business](docs/BUSINESS-AI.md). Exports: [summary](generated/catalog.json) · [full metadata](generated/catalog.full.json) · [coverage and unknowns](generated/coverage.json).
 
-[accessibility](#catalogue-accessibility) · [administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [drug-discovery](#catalogue-drug-discovery) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [environment](#catalogue-environment) · [event-vision](#catalogue-event-vision) · [fashion](#catalogue-fashion) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [forestry](#catalogue-forestry) · [fraud-detection](#catalogue-fraud-detection) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [healthcare](#catalogue-healthcare) · [hydrology](#catalogue-hydrology) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [manufacturing](#catalogue-manufacturing) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [recommendation](#catalogue-recommendation) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [space](#catalogue-space) · [sports](#catalogue-sports) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
+[accessibility](#catalogue-accessibility) · [administrative](#catalogue-administrative) · [agriculture](#catalogue-agriculture) · [artificial-life](#catalogue-artificial-life) · [audio](#catalogue-audio) · [automotive](#catalogue-automotive) · [benchmark](#catalogue-benchmark) · [business](#catalogue-business) · [climate](#catalogue-climate) · [control](#catalogue-control) · [drug-discovery](#catalogue-drug-discovery) · [education](#catalogue-education) · [energy](#catalogue-energy) · [engineering](#catalogue-engineering) · [environment](#catalogue-environment) · [event-vision](#catalogue-event-vision) · [fashion](#catalogue-fashion) · [federated-learning](#catalogue-federated-learning) · [finance](#catalogue-finance) · [forestry](#catalogue-forestry) · [fraud-detection](#catalogue-fraud-detection) · [gaming](#catalogue-gaming) · [genomics](#catalogue-genomics) · [geospatial](#catalogue-geospatial) · [graph](#catalogue-graph) · [healthcare](#catalogue-healthcare) · [hydrology](#catalogue-hydrology) · [infrastructure](#catalogue-infrastructure) · [language](#catalogue-language) · [manufacturing](#catalogue-manufacturing) · [mapping](#catalogue-mapping) · [marine](#catalogue-marine) · [music](#catalogue-music) · [networking](#catalogue-networking) · [neuromorphic](#catalogue-neuromorphic) · [quantum](#catalogue-quantum) · [reasoning](#catalogue-reasoning) · [recommendation](#catalogue-recommendation) · [robotics](#catalogue-robotics) · [runtime](#catalogue-runtime) · [science](#catalogue-science) · [security](#catalogue-security) · [sensors](#catalogue-sensors) · [simulation](#catalogue-simulation) · [space](#catalogue-space) · [sports](#catalogue-sports) · [telecom](#catalogue-telecom) · [time-series](#catalogue-time-series) · [trust-and-safety](#catalogue-trust-and-safety) · [video](#catalogue-video) · [vision](#catalogue-vision) · [weather](#catalogue-weather)
 
 <a id="catalogue-accessibility"></a>
 
@@ -231,7 +231,9 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [AutoGluon](pipelines/business/tabular/autogluon.yaml) · [upstream](<https://github.com/autogluon/autogluon>) | toolkit / requires-training | automl, tabular-classification, tabular-regression, time-series-forecasting | — | — | python, pytorch, pytorch-checkpoint, onnx | desktop, server | Apache-2.0 / not-provided | unknown |
+| [PyCaret](pipelines/business/pycaret.yaml) · [upstream](<https://github.com/pycaret/pycaret>) | toolkit / requires-training | automl, tabular-classification, tabular-regression | — | — | scikit-learn, python, pickle | desktop, server, edge | unknown / not-provided | unknown |
 | [OR-Tools](primitives/optimization/or-tools.yaml) · [upstream](<https://github.com/google/or-tools>) | primitive / companion | constraint-optimization, scheduling, routing, assignment | — | — | or-tools-native, python | desktop, server | Apache-2.0 / not-applicable | unknown |
+| [CVXPY](pipelines/business/cvxpy.yaml) · [upstream](<https://github.com/cvxpy/cvxpy>) | toolkit / companion | convex-optimization, constrained-optimisation, scheduling | — | — | python, native-cpp, numpy-model | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
 | [Vowpal Wabbit](pipelines/business/decision/vowpal-wabbit.yaml) · [upstream](<https://github.com/VowpalWabbit/vowpal_wabbit>) | toolkit / requires-training | online-learning, contextual-bandits, action-ranking | — | — | vowpal-wabbit-native, python | desktop, server | BSD-3-Clause / not-provided | unknown |
 | [Splink](pipelines/business/records/splink.yaml) · [upstream](<https://github.com/moj-analytical-services/splink>) | toolkit / requires-training | probabilistic-record-linkage, deduplication | — | — | python, sql-backend | desktop, server | MIT / not-provided | unknown |
 | [LightFM](pipelines/business/recommendation/lightfm.yaml) · [upstream](<https://github.com/lyst/lightfm>) | toolkit / requires-training | recommendation, personalised-ranking | — | — | python, lightfm | desktop, server | Apache-2.0 / not-provided | unknown |
@@ -425,6 +427,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Raster Vision](pipelines/geospatial/raster-vision.yaml) · [upstream](<https://github.com/azavea/raster-vision>) | toolkit / requires-training | geospatial-object-detection, geospatial-semantic-segmentation, geospatial-classification | — | — | pytorch, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [segment-geospatial](pipelines/geospatial/segment-geospatial.yaml) · [upstream](<https://github.com/opengeos/segment-geospatial>) | toolkit / pretrained | geospatial-segmentation, interactive-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
 
+<a id="catalogue-graph"></a>
+
+### Graph
+
+| Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
+|---|---|---|---:|---:|---|---|---|---|
+| [Deep Graph Library (DGL)](pipelines/graph/dgl.yaml) · [upstream](<https://github.com/dmlc/dgl>) | toolkit / requires-training | graph-neural-networks, node-classification, link-prediction | — | — | pytorch, mxnet, pytorch-checkpoint | desktop, server | Apache-2.0 / not-provided | unknown |
+| [PyTorch Geometric](pipelines/graph/pytorch-geometric.yaml) · [upstream](<https://github.com/pyg-team/pytorch_geometric>) | toolkit / requires-training | graph-neural-networks, node-classification, link-prediction | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / not-provided | unknown |
+
 <a id="catalogue-healthcare"></a>
 
 ### Healthcare
@@ -476,6 +487,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [GPT4All](pipelines/language/gpt4all.yaml) · [upstream](<https://github.com/nomic-ai/gpt4all>) | toolkit / companion | on-device-llm, text-generation, local-chat | — | — | llama-cpp-native, gguf | desktop | MIT / not-provided | unknown |
 | [SmolLM](catalog/language/on-device/smollm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolLM2-135M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
 | [TinyLlama](catalog/language/on-device/tinyllama.yaml) · [upstream](<https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>) | collection / pretrained | text-generation, on-device-llm | 1.1B | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
+| [spaCy](pipelines/language/spacy.yaml) · [upstream](<https://github.com/explosion/spaCy>) | toolkit / companion | tokenisation, named-entity-recognition, part-of-speech, dependency-parsing | — | — | python, onnxruntime, thinc, spacy-pipeline | desktop, server, edge | MIT / not-provided | unknown |
 | [Needle 3](catalog/language/tool-calling/cactus-needle3.yaml) · [upstream](<https://huggingface.co/Cactus-Compute/needle3>) | model / unknown | tool-calling, structured-extraction, embeddings | — | — | — | edge | unknown / Apache-2.0 | unknown |
 
 <a id="catalogue-manufacturing"></a>
@@ -519,6 +531,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
 | [Basic Pitch](pipelines/music/basic-pitch.yaml) · [upstream](<https://github.com/spotify/basic-pitch>) | toolkit / pretrained | automatic-music-transcription, pitch-estimation | — | — | tensorflow, coreml, tflite, onnxruntime, onnx | mobile, desktop, browser | Apache-2.0 / Apache-2.0 | unknown |
+| [AudioCraft (MusicGen / AudioGen)](catalog/music/generation/audiocraft.yaml) · [upstream](<https://github.com/facebookresearch/audiocraft>) | collection / pretrained | music-generation, audio-generation, text-to-audio | — | — | pytorch, pytorch-checkpoint | server, desktop | MIT / unknown | unknown |
 | [Demucs](catalog/music/source-separation/demucs.yaml) · [upstream](<https://github.com/facebookresearch/demucs>) | collection / pretrained | music-source-separation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
 | [Spleeter](pipelines/music/spleeter.yaml) · [upstream](<https://github.com/deezer/spleeter>) | toolkit / pretrained | music-source-separation | — | — | tensorflow, python | desktop, server | MIT / MIT | unknown |
 
@@ -801,6 +814,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [MobileNetV3 Small](catalog/vision/classification/mobilenetv3-small.yaml) · [upstream](<https://github.com/tensorflow/models>) | model / unknown | image-classification, feature-extraction | — | — | tensorflow | edge | Apache-2.0 / unknown | unknown |
 | [MobileOne](catalog/vision/classification/mobileone.yaml) · [upstream](<https://github.com/apple/ml-mobileone>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, coreml, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop | unknown / unknown | unknown |
 | [TorchVision Models](catalog/vision/classification/torchvision-models.yaml) · [upstream](<https://github.com/pytorch/vision>) | collection / pretrained | image-classification, object-detection, semantic-segmentation, video-classification | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | mobile, desktop, server | BSD-3-Clause / unknown | unknown |
+| [Torchvision](pipelines/vision/torchvision.yaml) · [upstream](<https://github.com/pytorch/vision>) | toolkit / companion | image-classification, object-detection, segmentation, video | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | BSD-3-Clause / not-provided | unknown |
 | [timm (PyTorch Image Models)](catalog/vision/classification/timm.yaml) · [upstream](<https://github.com/huggingface/pytorch-image-models>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop, server | Apache-2.0 / unknown | unknown |
 | [DINOv2](catalog/vision/embeddings/dinov2.yaml) · [upstream](<https://github.com/facebookresearch/dinov2>) | collection / pretrained | image-embeddings, self-supervised-representations, feature-extraction | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / unknown | unknown |
 | [Diffusers](pipelines/vision/diffusers.yaml) · [upstream](<https://github.com/huggingface/diffusers>) | toolkit / companion | image-generation, diffusion-inference | — | — | pytorch, onnxruntime, safetensors, onnx | desktop, server | Apache-2.0 / not-provided | unknown |

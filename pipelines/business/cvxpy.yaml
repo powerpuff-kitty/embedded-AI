@@ -1,0 +1,23 @@
+id: cvxpy
+name: CVXPY
+domain: business
+tasks: [convex-optimization, constrained-optimisation, scheduling]
+class: optimisation-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Embedded modelling language for convex optimisation problems with solver backends."
+links: {repository: 'https://github.com/cvxpy/cvxpy', homepage: 'https://www.cvxpy.org/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Classical optimiser; deterministic and CPU-only.'}
+runtimes: [python, native-cpp]
+formats: [numpy-model]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Solves user-defined convex problems; no learning.', needs_data: 'A problem formulation plus coefficients at solve time.', update_strategy: 'Validate the formulation; bound solve times for real-time use.'}
+data: {inputs: [problem-coefficients], outputs: [decision-variables], languages: []}
+evaluation: ['Optimality/feasibility and solve-time bounds on the target hardware.']
+limitations: ['Convex problems only; solve time can exceed real-time budgets.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/cvxpy/cvxpy', notes: 'CVXPY modelling language.'}]
+reviewed: '2026-10-06'
+tags: [optimization, convex, scheduling, toolkit]

@@ -5786,6 +5786,93 @@
       "usage_mode": "requires-training"
     },
     {
+      "id": "pycaret",
+      "name": "PyCaret",
+      "domain": "business",
+      "tasks": [
+        "automl",
+        "tabular-classification",
+        "tabular-regression"
+      ],
+      "class": "automl-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Low-code AutoML that compares and tunes classical tabular models end to end.",
+      "links": {
+        "repository": "https://github.com/pycaret/pycaret",
+        "homepage": "https://pycaret.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Produces classical models, often deployable on CPU/edge."
+      },
+      "runtimes": [
+        "scikit-learn",
+        "python"
+      ],
+      "formats": [
+        "pickle"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains/tunes/ensembles models per dataset.",
+        "needs_data": "Labelled tabular data for the target task.",
+        "update_strategy": "Retrain on drift; revalidate calibration and fairness."
+      },
+      "data": {
+        "inputs": [
+          "tabular-features"
+        ],
+        "outputs": [
+          "class",
+          "value"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Held-out metrics plus calibration and subgroup review."
+      ],
+      "limitations": [
+        "Licence ambiguous (NOASSERTION); results depend on data quality."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pycaret/pycaret",
+          "notes": "PyCaret AutoML."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "business",
+        "automl",
+        "tabular",
+        "toolkit"
+      ],
+      "path": "pipelines/business/pycaret.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "or-tools",
       "name": "OR-Tools",
       "domain": "business",
@@ -5877,6 +5964,94 @@
         "companion"
       ],
       "path": "primitives/optimization/or-tools.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "cvxpy",
+      "name": "CVXPY",
+      "domain": "business",
+      "tasks": [
+        "convex-optimization",
+        "constrained-optimisation",
+        "scheduling"
+      ],
+      "class": "optimisation-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Embedded modelling language for convex optimisation problems with solver backends.",
+      "links": {
+        "repository": "https://github.com/cvxpy/cvxpy",
+        "homepage": "https://www.cvxpy.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Classical optimiser; deterministic and CPU-only."
+      },
+      "runtimes": [
+        "python",
+        "native-cpp"
+      ],
+      "formats": [
+        "numpy-model"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Solves user-defined convex problems; no learning.",
+        "needs_data": "A problem formulation plus coefficients at solve time.",
+        "update_strategy": "Validate the formulation; bound solve times for real-time use."
+      },
+      "data": {
+        "inputs": [
+          "problem-coefficients"
+        ],
+        "outputs": [
+          "decision-variables"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Optimality/feasibility and solve-time bounds on the target hardware."
+      ],
+      "limitations": [
+        "Convex problems only; solve time can exceed real-time budgets."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/cvxpy/cvxpy",
+          "notes": "CVXPY modelling language."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "optimization",
+        "convex",
+        "scheduling",
+        "toolkit"
+      ],
+      "path": "pipelines/business/cvxpy.yaml",
       "usage_mode": "companion"
     },
     {
@@ -12474,6 +12649,176 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "dgl",
+      "name": "Deep Graph Library (DGL)",
+      "domain": "graph",
+      "tasks": [
+        "graph-neural-networks",
+        "node-classification",
+        "link-prediction"
+      ],
+      "class": "gnn-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Framework for graph neural networks that scales to large graphs across backends.",
+      "links": {
+        "repository": "https://github.com/dmlc/dgl",
+        "homepage": "https://www.dgl.ai/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/inference for graph models; server-class."
+      },
+      "runtimes": [
+        "pytorch",
+        "mxnet"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains GNNs, including sampling-based training on large graphs.",
+        "needs_data": "Graph data with labels for the target task.",
+        "update_strategy": "Revalidate on graph drift; re-benchmark sampling."
+      },
+      "data": {
+        "inputs": [
+          "graph"
+        ],
+        "outputs": [
+          "node-labels",
+          "edge-scores"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task metrics plus scalability/memory profiling."
+      ],
+      "limitations": [
+        "Needs substantial graph infrastructure; server-class memory."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/dmlc/dgl",
+          "notes": "Deep Graph Library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "graph",
+        "gnn",
+        "toolkit"
+      ],
+      "path": "pipelines/graph/dgl.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
+      "id": "pytorch-geometric",
+      "name": "PyTorch Geometric",
+      "domain": "graph",
+      "tasks": [
+        "graph-neural-networks",
+        "node-classification",
+        "link-prediction"
+      ],
+      "class": "gnn-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for deep learning on graphs, point clouds and manifolds.",
+      "links": {
+        "repository": "https://github.com/pyg-team/pytorch_geometric",
+        "homepage": "https://pyg.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Training/inference for graph models; usually server-side."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains GNNs on graph-structured data.",
+        "needs_data": "Graph data with node/edge labels.",
+        "update_strategy": "Revalidate on graph drift; watch for distribution shift."
+      },
+      "data": {
+        "inputs": [
+          "graph"
+        ],
+        "outputs": [
+          "node-labels",
+          "edge-scores",
+          "graph-embeddings"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task metrics plus inductive/transductive generalisation checks."
+      ],
+      "limitations": [
+        "Needs graph infrastructure; large graphs are memory-heavy."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pyg-team/pytorch_geometric",
+          "notes": "PyTorch Geometric."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "graph",
+        "gnn",
+        "toolkit"
+      ],
+      "path": "pipelines/graph/pytorch-geometric.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "brainflow",
       "name": "BrainFlow",
       "domain": "healthcare",
@@ -14571,6 +14916,99 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "spacy",
+      "name": "spaCy",
+      "domain": "language",
+      "tasks": [
+        "tokenisation",
+        "named-entity-recognition",
+        "part-of-speech",
+        "dependency-parsing"
+      ],
+      "class": "nlp-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fast production NLP pipeline with pretrained pipelines for many languages.",
+      "links": {
+        "repository": "https://github.com/explosion/spaCy",
+        "homepage": "https://spacy.io/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "CPU-fast; small models fit edge devices."
+      },
+      "runtimes": [
+        "python",
+        "onnxruntime",
+        "thinc"
+      ],
+      "formats": [
+        "spacy-pipeline"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Runs pretrained pipelines; supports training custom NER/classification.",
+        "needs_data": "Annotated text for custom components.",
+        "update_strategy": "Verify model licences (some are research); re-evaluate on domain text."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "tokens",
+          "entities",
+          "tags"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Entity/POS F1 on domain text plus throughput."
+      ],
+      "limitations": [
+        "Some pretrained pipelines are restricted to research/non-commercial."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/explosion/spaCy",
+          "notes": "spaCy NLP library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "nlp",
+        "ner",
+        "toolkit"
+      ],
+      "path": "pipelines/language/spacy.yaml",
+      "usage_mode": "companion"
+    },
+    {
       "id": "cactus-needle3",
       "name": "Needle 3",
       "domain": "language",
@@ -15763,6 +16201,92 @@
         "tflite"
       ],
       "path": "pipelines/music/basic-pitch.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "audiocraft",
+      "name": "AudioCraft (MusicGen / AudioGen)",
+      "domain": "music",
+      "tasks": [
+        "music-generation",
+        "audio-generation",
+        "text-to-audio"
+      ],
+      "class": "audio-generation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's MusicGen and AudioGen models for text-conditioned music and sound generation.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/audiocraft",
+        "paper": "https://arxiv.org/abs/2306.05284"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "server",
+          "desktop"
+        ],
+        "notes": "Generative audio; GPU strongly recommended."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained generation; fine-tuning on audio is possible.",
+        "needs_data": "Text prompts; licensed audio datasets for fine-tuning.",
+        "update_strategy": "Check weight terms (models are trained on licensed audio) before use."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-audio"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Perceptual quality/diversity and originality review."
+      ],
+      "limitations": [
+        "Weight terms differ from code; potential style/memorisation concerns."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/audiocraft",
+          "notes": "AudioCraft/MusicGen models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "music",
+        "audio",
+        "generative",
+        "musicgen"
+      ],
+      "path": "catalog/music/generation/audiocraft.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -28805,6 +29329,98 @@
       ],
       "path": "catalog/vision/classification/torchvision-models.yaml",
       "usage_mode": "pretrained"
+    },
+    {
+      "id": "torchvision",
+      "name": "Torchvision",
+      "domain": "vision",
+      "tasks": [
+        "image-classification",
+        "object-detection",
+        "segmentation",
+        "video"
+      ],
+      "class": "vision-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Official PyTorch vision library with reference datasets, transforms and pretrained models.",
+      "links": {
+        "repository": "https://github.com/pytorch/vision",
+        "homepage": "https://pytorch.org/vision/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Backbones and transforms; export detection/classification to ONNX."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Loads pretrained models and reference training pipelines.",
+        "needs_data": "Labelled images/video for fine-tuning.",
+        "update_strategy": "Verify per-model licences; re-export and re-benchmark."
+      },
+      "data": {
+        "inputs": [
+          "rgb-image",
+          "video"
+        ],
+        "outputs": [
+          "class-probabilities",
+          "boxes",
+          "masks"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Task metrics plus post-export latency on the target."
+      ],
+      "limitations": [
+        "Per-model weight licences vary; heavier than edge-specific libraries."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/pytorch/vision",
+          "notes": "Torchvision library."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "pytorch",
+        "classification",
+        "detection",
+        "toolkit"
+      ],
+      "path": "pipelines/vision/torchvision.yaml",
+      "usage_mode": "companion"
     },
     {
       "id": "timm",

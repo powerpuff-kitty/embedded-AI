@@ -1,0 +1,23 @@
+id: spacy
+name: spaCy
+domain: language
+tasks: [tokenisation, named-entity-recognition, part-of-speech, dependency-parsing]
+class: nlp-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Fast production NLP pipeline with pretrained pipelines for many languages."
+links: {repository: 'https://github.com/explosion/spaCy', homepage: 'https://spacy.io/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'CPU-fast; small models fit edge devices.'}
+runtimes: [python, onnxruntime, thinc]
+formats: [spacy-pipeline]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Runs pretrained pipelines; supports training custom NER/classification.', needs_data: 'Annotated text for custom components.', update_strategy: 'Verify model licences (some are research); re-evaluate on domain text.'}
+data: {inputs: [text], outputs: [tokens, entities, tags], languages: [multilingual, en]}
+evaluation: ['Entity/POS F1 on domain text plus throughput.']
+limitations: ['Some pretrained pipelines are restricted to research/non-commercial.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/explosion/spaCy', notes: 'spaCy NLP library.'}]
+reviewed: '2026-10-06'
+tags: [language, nlp, ner, toolkit]
