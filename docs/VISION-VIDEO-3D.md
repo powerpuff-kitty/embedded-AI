@@ -1,5 +1,7 @@
 # Image, video, skeleton and 3D catalogue expansion
 
+> Per-task guides for image, video, skeleton and 3D work — what each component does, and what it does not prove.
+
 Reviewed on 2026-10-05. This batch adds **27 distinct records**: 18 model entries, 8 pipeline/toolkit entries and 1 physics primitive. It documents projects; it does not bundle their weights, install their code or establish board compatibility.
 
 ## All additions

@@ -1,5 +1,7 @@
 # Embedded intelligence taxonomy
 
+> How the catalogue separates what a component is (model, pipeline, primitive) from where it runs.
+
 The catalogue separates **what a component is** from **where it runs**.
 
 ## Models

@@ -29,7 +29,7 @@ async function visit(dir: string): Promise<void> {
 }
 await visit('benchmarks/results');
 await fs.mkdir('dist/data',{recursive:true});
-for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
+for(const name of ['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','logo.svg','skeleton.html','skeleton.mjs'])await fs.copyFile(`site/${name}`,`dist/${name}`);
 await fs.mkdir('dist/locales',{recursive:true});
 for(const name of await fs.readdir('site/locales'))await fs.copyFile(path.join('site','locales',name),path.join('dist','locales',name));
 await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e)})),benchmarks:records,hardware}));
@@ -65,7 +65,7 @@ await fs.writeFile('dist/domains.html', domainsHtml);
 
 const sitemapUrls=[`${BASE}/`,`${BASE}/domains.html`,`${BASE}/skeleton.html`,...entries.map(e=>`${BASE}/c/${e.id}.html`),`${BASE}/llms.txt`,`${BASE}/llms-full.txt`];
 await fs.writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(u=>`<url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','skeleton.html','skeleton.mjs','data/catalog.json','locales/en.json','robots.txt','sitemap.xml','llms.txt','llms-full.txt','.nojekyll'];
+const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','i18n.mjs','logo.svg','skeleton.html','skeleton.mjs','data/catalog.json','locales/en.json','robots.txt','sitemap.xml','llms.txt','llms-full.txt','.nojekyll'];
 for(const name of required) await fs.access(path.join('dist',name));
 const built=JSON.parse(await fs.readFile('dist/data/catalog.json','utf8'));
 if(!Array.isArray(built.entries)||!built.entries.length) throw new Error('dist/data/catalog.json has no entries');

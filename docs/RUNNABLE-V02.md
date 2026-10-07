@@ -1,5 +1,7 @@
 # Runnable Catalogue v0.2
 
+> The v0.2 milestone: a catalogue plus a runnable, reproducible workflow — not more entries.
+
 This milestone turns the existing 95-entry catalogue into a local explorer and reproducible execution workflow. It does not certify unsupported boards or inflate the model count.
 
 ## Implemented capabilities

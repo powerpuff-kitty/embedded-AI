@@ -1,5 +1,7 @@
 # embedded-AI
 
+<p align="center"><img src="assets/banner.svg" alt="embedded-AI — the evidence-first catalogue of on-device AI" width="100%"></p>
+
 > The evidence-first catalogue of AI you can actually run on-device.
 
 [![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
