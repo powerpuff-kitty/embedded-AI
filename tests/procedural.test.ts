@@ -35,13 +35,13 @@ test('method inference is conservative and explicit metadata wins', () => {
 });
 
 test('new canonical batch is sourced, nonlearned and not claimed reproduced', () => {
-  const additions = entries.filter(e => e.path.startsWith('primitives/procedural/'));
+  const additions = entries.filter(e => e.path.startsWith('primitives/procedural/') && e.catalogue_batch === 'procedural-2026-10-07');
   assert.equal(additions.length, 24);
   for (const e of additions) {
     assert.equal(e.learned, false); assert.equal(e.license.weights, 'not-applicable');
     assert.equal(e.model.parameters, null); assert.equal(e.model.file_size_mb, null);
     assert.equal(e.requirements.ram_mb.measured_peak, null);
-    assert.equal(e.procedural.evidence_level, 'documented');
+    assert.ok(['documented', 'inspected'].includes(e.procedural.evidence_level));
     assert.ok(e.evidence.some((x:any) => x.type === 'official' && x.url === e.links.repository));
     assert.equal(entries.filter(x => x.links.repository?.toLowerCase() === e.links.repository.toLowerCase()).length, 1);
   }
@@ -56,7 +56,7 @@ test('all seven categories are populated without moving existing entries', () =>
   for (const category of PROCEDURAL_CATEGORIES) assert.ok(entries.some(e => e.procedural?.categories.includes(category)));
   assert.equal(byId.get('lenia')!.path, 'primitives/artificial-life/lenia.yaml');
   assert.equal(byId.get('mujoco')!.path, 'primitives/simulation/mujoco.yaml');
-  assert.equal(filterEntries(entries, {view:'procedural'}).length, 29);
+  assert.equal(filterEntries(entries, {view:'procedural'}).length, entries.filter(e => e.procedural && !e.recipe).length);
   assert.equal(filterEntries(entries, {view:'hybrid'}).length, 3);
 });
 
@@ -106,7 +106,7 @@ test('MCP exposes facets, recipe status and method coverage', () => {
   assert.match(getTool({id:'ez-tree'}), /seed: built-in; determinism: conditional/);
   assert.match(getTool({id:'hybrid-living-world'}), /recipe status: design/);
   assert.match(getTool({id:'hybrid-living-world'}), /component: smollm/);
-  assert.match(statsTool(), /procedural 29/);
+  assert.match(statsTool(), new RegExp(`procedural ${entries.filter(e => e.procedural && !e.recipe).length}`));
 });
 
 for (const [label, mutate, pattern] of [
@@ -156,11 +156,11 @@ test('generated views preserve metadata, canonical links and overlapping method 
   const full=JSON.parse(renderFullIndex(entries));const summary=JSON.parse(renderIndex(entries));const coverage=JSON.parse(renderCoverage(entries));
   assert.equal(full.entries.find((e:any)=>e.id==='ez-tree').procedural.seed_control,'built-in');
   assert.equal(summary.find((e:any)=>e.id==='ez-tree').view,'procedural');
-  assert.equal(coverage.by_view.procedural,29);assert.equal(coverage.by_view.hybrid,3);
+  assert.equal(coverage.by_view.procedural,entries.filter(e => e.procedural && !e.recipe).length);assert.equal(coverage.by_view.hybrid,3);
   assert.equal(Object.values(coverage.by_view).reduce((a:any,b:any)=>a+b,0),entries.length);
   assert.ok(coverage.by_method.procedural>coverage.by_view.procedural);
   const markdown=renderProceduralPage(entries);
-  assert.match(markdown,/29 procedural components/);assert.match(markdown,/not runnable integrations/);
+  assert.match(markdown,new RegExp(`${coverage.by_view.procedural} procedural components`));assert.match(markdown,/not runnable integrations/);
   assert.match(markdown,/\.\.\/primitives\/artificial-life\/lenia.yaml/);
   assert.match(markdown,/\.\.\/catalog\//);
   assert.ok(!renderProceduralPage([]).includes('## audio-music'));

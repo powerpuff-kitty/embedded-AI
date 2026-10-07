@@ -1,0 +1,83 @@
+id: wavefunctioncollapse-js
+name: WaveFunctionCollapse (JavaScript)
+domain: gaming
+tasks:
+- world-generation
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: JavaScript port of overlapping-pattern and simple-tiled Wave Function Collapse with an injectable
+  random source and iteration API.
+links:
+  repository: https://github.com/kchapelier/wavefunctioncollapse
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: MIT
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  - images-materials
+  integration: browser-library
+  seed_control: injectable
+  determinism: unknown
+  controls:
+  - example pixels or authored tiles, constraints, dimensions and RNG
+  assets: []
+  incremental: true
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: example pixels or authored tiles, constraints, dimensions and RNG
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - example pixels or authored tiles, constraints, dimensions and RNG
+  outputs:
+  - RGBA tile or texture output
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Generation can reach a contradiction; bound iterations, retry counts and memory. Input images and tile
+  assets retain their own terms.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/kchapelier/wavefunctioncollapse
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- worlds-environments
+- images-materials
+- browser-library
+related:
+- wavefunctioncollapse

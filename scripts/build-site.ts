@@ -35,6 +35,10 @@ await fs.mkdir('dist/locales',{recursive:true});
 for(const name of await fs.readdir('site/locales'))await fs.copyFile(path.join('site','locales',name),path.join('dist','locales',name));
 await fs.writeFile('dist/data/catalog.json',JSON.stringify({schema_version:1,entries:entries.map(e=>({...e,kind:kindOf(e),methods:methodsOf(e),view:viewOf(e)})),benchmarks:records,hardware}));
 await fs.writeFile('dist/.nojekyll','');
+// Optional procedural lab shell; lab:build adds pinned local runtime and its receipt.
+await fs.mkdir('dist/procedural', { recursive: true });
+for (const name of ['index.html','lab.css','app.mjs','contracts.mjs','worker.mjs']) await fs.copyFile(`recipes/procedural/${name}`, `dist/procedural/${name}`);
+
 const BASE='https://powerpuff-kitty.github.io/embedded-AI';
 const domains=[...new Set(entries.map(e=>e.domain))].sort();
 const upstreamOf=(e:any)=>e.links?.model||e.links?.repository||e.links?.homepage||e.links?.paper||'';
@@ -64,7 +68,7 @@ const domainsJsonld = JSON.stringify({ '@context':'https://schema.org','@type':'
 const domainsHtml = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Domains — embedded-AI catalogue</title><meta name="description" content="All ${domainList.length} domains in the embedded-AI catalogue, with entry counts."><link rel="canonical" href="${BASE}/domains.html"><meta name="robots" content="index,follow"><meta property="og:type" content="website"><meta property="og:title" content="Domains — embedded-AI catalogue"><meta property="og:url" content="${BASE}/domains.html"><meta property="og:image" content="${BASE}/og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${BASE}/og.png"><script type="application/ld+json">${domainsJsonld}</script><link rel="stylesheet" href="style.css"></head><body><main><p class="eyebrow">embedded-AI catalogue</p><h1>Domains</h1><p>${entries.length} entries across ${domainList.length} domains.</p><ul>${domainList.map(([d,n])=>`<li><a href="./?domain=${encodeURIComponent(d)}">${esc(d)}</a> (${n})</li>`).join('')}</ul><p><a href="./">\u2190 embedded-AI catalogue</a></p></main></body></html>\n`;
 await fs.writeFile('dist/domains.html', domainsHtml);
 
-const sitemapUrls=[`${BASE}/`,`${BASE}/domains.html`,`${BASE}/skeleton.html`,...entries.map(e=>`${BASE}/c/${e.id}.html`),`${BASE}/llms.txt`,`${BASE}/llms-full.txt`];
+const sitemapUrls=[`${BASE}/`,`${BASE}/domains.html`,`${BASE}/skeleton.html`,`${BASE}/procedural/`,...entries.map(e=>`${BASE}/c/${e.id}.html`),`${BASE}/llms.txt`,`${BASE}/llms-full.txt`];
 await fs.writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(u=>`<url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 const required=['index.html','style.css','app.mjs','catalogue.mjs','needs.mjs','methods.mjs','i18n.mjs','logo.svg','og.png','skeleton.html','skeleton.mjs','data/catalog.json','locales/en.json','robots.txt','sitemap.xml','llms.txt','llms-full.txt','.nojekyll'];
 for(const name of required) await fs.access(path.join('dist',name));

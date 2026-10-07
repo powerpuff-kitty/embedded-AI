@@ -28,7 +28,7 @@ try:
         # Shared facets, deep links, language changes, design labels and non-model sizes.
         page.goto('http://127.0.0.1:4173/?view=procedural&method=procedural&proceduralCategory=audio-music')
         page.wait_for_selector('#entries tbody tr')
-        assert page.locator('#entries tbody tr').count()==3
+        assert page.locator('#entries tbody tr').count()==4
         assert page.locator('[name=view]').input_value()=='procedural'
         assert 'Not applicable' in page.locator('#entries').inner_text()
         page.reload();page.wait_for_selector('#entries tbody tr')
@@ -46,7 +46,7 @@ try:
         assert 'view=procedural' in page.url
         page.screenshot(path=str(root/'procedural-audio.png'))
         page.goto('http://127.0.0.1:4173/?view=hybrid');page.wait_for_selector('#entries tbody tr')
-        assert page.locator('#entries tbody tr').count()==3
+        assert page.locator('#entries tbody tr').count()==4
         assert 'design' in page.locator('#entries').inner_text()
         page.locator('.model-name').first.click()
         assert 'design' in page.locator('#details').inner_text()

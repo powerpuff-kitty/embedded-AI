@@ -13,6 +13,8 @@ catalogue_batch: procedural-2026-10-07
 description: Parameter-driven JavaScript synthesizer for compact procedural game sound effects.
 links:
   repository: https://github.com/KilledByAPixel/ZzFX
+  demo: https://powerpuff-kitty.github.io/embedded-AI/procedural/?adapter=audio
+  fixture: https://github.com/powerpuff-kitty/embedded-AI/tree/main/recipes/procedural
 model:
   parameters: null
   file_size_mb: null
@@ -42,7 +44,7 @@ procedural:
   assets: []
   incremental: null
   serialization: unknown
-  evidence_level: documented
+  evidence_level: inspected
 usage:
   mode: companion
   training: No learned model training required.
@@ -59,8 +61,10 @@ requirements:
     minimum: null
     measured_peak: null
 evaluation:
-- Upstream documentation reviewed; no local execution or resource measurement in this entry.
-- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+- Pinned bounded adapter implemented in recipes/procedural; upstream source inspected. Adapter-specific
+  run artifacts remain separate from hardware compatibility.
+- Test output validity and repeated seeds; output bytes and whole-browser RSS are not incremental library
+  RAM.
 limitations:
 - Randomized parameters can vary output; bound duration and volume, and account for browser audio activation
   requirements.

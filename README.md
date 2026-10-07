@@ -35,6 +35,10 @@ Each entry is a small YAML file. The tables below, the JSON exports, the search 
 
 [Full procedural table](docs/PROCEDURAL.md) · [Integration and metadata guide](docs/PROCEDURAL-GUIDE.md). New tools are documented, not benchmarked; the initial hybrid recipes are design-only. Browser/native/shader integration scope is explicit, and non-learned tools have no model weights.
 
+## Procedural browser lab
+
+Run four opt-in, pinned browser fixtures for noise, SVG drawing, tree geometry and audio: [open the lab](https://powerpuff-kitty.github.io/embedded-AI/procedural/) or follow the [local setup and evidence guide](recipes/procedural/README.md). Generator timings, output hashes and bytes are distinct from model weights and device RAM. The hybrid recipes remain design-only.
+
 ## Quick start
 
 **Use the live explorer** — nothing to install:
@@ -83,10 +87,10 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 <!-- AT-A-GLANCE:START -->
 | | |
 |---|---|
-| **590 entries** | models, collections, pipelines, toolkits and primitives |
+| **604 entries** | models, collections, pipelines, toolkits and primitives |
 | **55 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
-| **Evidence** | 590 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
+| **Evidence** | 604 sourced · 3 reproduced · 0 measured RAM · 163 unknown weights |
 <!-- AT-A-GLANCE:END -->
 
 ## Domains
@@ -144,5 +148,5 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 ## Catalogue
 
 <!-- CATALOGUE:START -->
-**590 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
+**604 entries** across 55 domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [`generated/`](generated/).
 <!-- CATALOGUE:END -->

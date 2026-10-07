@@ -1,0 +1,80 @@
+id: martini
+name: MARTINI
+domain: mapping
+tasks:
+- mesh-generation
+class: procedural-generator
+kind: toolkit
+learned: false
+methods:
+- procedural
+- rule-based
+catalogue_batch: procedural-expansion-2026-10-07
+description: RTIN terrain mesh generator that builds variable-detail triangulations from height grids.
+links:
+  repository: https://github.com/mapbox/martini
+model:
+  parameters: null
+  file_size_mb: null
+  measurement_scope: 'Not applicable: no learned model weights.'
+license:
+  code: ISC
+  weights: not-applicable
+  notes: Code terms do not automatically cover input assets or third-party dependencies.
+deployment:
+  offline: true
+  targets:
+  - browser
+  notes: Local upstream workflow with dependencies/assets installed or bundled; no measured device-fit
+    claim.
+runtimes:
+- javascript
+- nodejs
+formats: []
+procedural:
+  categories:
+  - worlds-environments
+  - foundations
+  integration: browser-library
+  seed_control: not-applicable
+  determinism: unknown
+  controls:
+  - height grid of size (2^k+1)^2 and maximum error
+  assets: []
+  incremental: null
+  serialization: unknown
+  evidence_level: documented
+usage:
+  mode: companion
+  training: No learned model training required.
+  needs_data: height grid of size (2^k+1)^2 and maximum error
+  update_strategy: Pin upstream code, dependencies, parameters and any assets; rerun fixtures after upgrades.
+data:
+  inputs:
+  - height grid of size (2^k+1)^2 and maximum error
+  outputs:
+  - terrain vertex and triangle-index arrays
+  languages: []
+requirements:
+  ram_mb:
+    minimum: null
+    measured_peak: null
+evaluation:
+- Upstream documentation reviewed; no local execution or resource measurement in this entry.
+- Before integration, test bounded fixtures, output validity and repeatability in the intended runtime.
+limitations:
+- Needs supplied height data; does not invent terrain elevations, infer metric scale or reconstruct a
+  photographed room.
+- Documentation-backed catalogue entry; no local performance or compatibility measurements.
+compatibility: []
+evidence:
+- type: official
+  url: https://github.com/mapbox/martini
+  notes: Upstream README and repository licence inspected for capabilities and integration scope on 2026-10-07;
+    not an execution benchmark.
+reviewed: '2026-10-07'
+tags:
+- procedural
+- worlds-environments
+- foundations
+- browser-library

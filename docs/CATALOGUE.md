@@ -4,7 +4,7 @@
 
 ## Full catalogue
 
-**590 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**604 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -83,6 +83,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [Adaptive Particle Lenia](primitives/artificial-life/adaptive-particle-lenia.yaml) · [upstream](<https://github.com/KazuyaHoribe/AdaptiveParticleLenia>) | primitive / companion | particle-simulation, artificial-life-simulation, evolutionary-search | — | — | python | desktop | unknown / not-applicable | unknown |
 | [Particle Lenia](primitives/artificial-life/particle-lenia.yaml) · [upstream](<https://github.com/silvernio/particle-lenia>) | primitive / companion | particle-simulation, artificial-life-simulation | — | — | typescript, webgpu | browser | unknown / not-applicable | unknown |
 | [Reaction-Diffusion Playground](primitives/artificial-life/reaction-diffusion-playground.yaml) · [upstream](<https://github.com/jasonwebb/reaction-diffusion-playground>) | primitive / companion | reaction-diffusion-simulation, pattern-formation | — | — | javascript, webgl | browser | CC-BY-NC-SA-4.0 / not-applicable | unknown |
+| [2D Space Colonization Experiments](primitives/procedural/space-colonization-2d.yaml) · [upstream](<https://github.com/jasonwebb/2d-space-colonization-experiments>) | toolkit / companion | rule-based-growth | — | — | javascript, nodejs | browser | CC-BY-NC-SA-4.0 / not-applicable | unknown |
+| [cellular-automata (JavaScript)](primitives/procedural/cellular-automata-js.yaml) · [upstream](<https://github.com/kchapelier/cellular-automata>) | toolkit / companion | rule-based-growth | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 | [Growing NCA (PyTorch, PWhiddy)](pipelines/artificial-life/growing-nca-pytorch.yaml) · [upstream](<https://github.com/PWhiddy/Growing-Neural-Cellular-Automata-Pytorch>) | pipeline / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | pytorch | desktop, browser | Apache-2.0 / not-provided | unknown |
 | [Growing NCA Reproduction (PyTorch)](pipelines/artificial-life/growing-nca-repro.yaml) · [upstream](<https://github.com/chenmingxiang110/Growing-Neural-Cellular-Automata>) | pipeline / requires-training | self-organising-pattern-generation, morphogenesis | — | — | pytorch | desktop | MIT / not-provided | unknown |
 | [Growing Neural Cellular Automata](catalog/artificial-life/growing-nca.yaml) · [upstream](<https://github.com/google-research/self-organising-systems>) | collection / requires-training | self-organising-pattern-generation, texture-synthesis, morphogenesis | — | — | jax | desktop | Apache-2.0 / not-provided | unknown |
@@ -250,6 +252,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 |---|---|---|---:|---:|---|---|---|---|
 | [Taiga-S1](catalog/engineering/cad/taiga-s1.yaml) · [upstream](<https://github.com/shhivv/taiga-s1>) | model / unknown | cad-action-selection | 1.2M | — | — | edge | MIT / unknown | unknown |
 | [DeepCAD](catalog/engineering/cad/deepcad.yaml) · [upstream](<https://github.com/ChrisWu1997/DeepCAD>) | collection / pretrained | cad-generation, cad-autoencoding, parametric-shape-modelling | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
+| [Earcut](primitives/procedural/earcut.yaml) · [upstream](<https://github.com/mapbox/earcut>) | toolkit / companion | polygon-triangulation | — | — | javascript, nodejs | browser | ISC / not-applicable | unknown |
 
 <a id="catalogue-environment"></a>
 
@@ -356,6 +359,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [OpenSteer](primitives/procedural/opensteer.yaml) · [upstream](<https://github.com/meshula/OpenSteer>) | toolkit / companion | steering-behaviour | — | — | cpp | desktop | MIT / not-applicable | unknown |
 | [Yuka](primitives/procedural/yuka.yaml) · [upstream](<https://github.com/Mugen87/yuka>) | toolkit / companion | steering-behaviour | — | — | javascript | browser | MIT / not-applicable | unknown |
 | [THREE.Terrain](primitives/procedural/three-terrain.yaml) · [upstream](<https://github.com/IceCreamYou/THREE.Terrain>) | toolkit / companion | terrain-generation | — | — | javascript, threejs | browser | MIT / not-applicable | unknown |
+| [Wave Function Collapse City (Unity)](primitives/procedural/wfc-city-unity.yaml) · [upstream](<https://github.com/marian42/wavefunctioncollapse>) | toolkit / companion | world-generation | — | — | unity, csharp | desktop | MIT / not-applicable | unknown |
+| [WaveFunctionCollapse (JavaScript)](primitives/procedural/wavefunctioncollapse-js.yaml) · [upstream](<https://github.com/kchapelier/wavefunctioncollapse>) | toolkit / companion | world-generation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 
 <a id="catalogue-genomics"></a>
 
@@ -507,12 +512,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [3D Gaussian Splatting](pipelines/mapping/gaussian-splatting.yaml) · [upstream](<https://github.com/graphdeco-inria/gaussian-splatting>) | pipeline / companion | gaussian-splat-reconstruction, novel-view-synthesis | — | — | pytorch, cuda, ply | desktop, server | Gaussian-Splatting-License / not-applicable | unknown |
 | [Brush](pipelines/reconstruction/brush.yaml) · [upstream](<https://github.com/ArthurBrussee/brush>) | pipeline / unknown | gaussian-splat-reconstruction, novel-view-rendering | — | — | rust, burn, webgpu | desktop, browser | Apache-2.0 / not-applicable | luckfox-rv1106: unknown |
 | [g2o](primitives/optimization/g2o.yaml) · [upstream](<https://github.com/RainerKuemmerle/g2o>) | primitive / companion | graph-optimization, slam | — | — | native-cpp | desktop, server, edge | unknown / not-applicable | unknown |
+| [MARTINI](primitives/procedural/martini.yaml) · [upstream](<https://github.com/mapbox/martini>) | toolkit / companion | mesh-generation | — | — | javascript, nodejs | browser | ISC / not-applicable | unknown |
 | [Instant-NGP](pipelines/mapping/instant-ngp.yaml) · [upstream](<https://github.com/NVlabs/instant-ngp>) | collection / requires-training | neural-radiance-fields, 3d-reconstruction, view-synthesis | — | — | cuda, native-cpp | desktop, server | unknown / unknown | unknown |
 | [Nerfstudio](pipelines/mapping/nerfstudio.yaml) · [upstream](<https://github.com/nerfstudio-project/nerfstudio>) | pipeline / companion | neural-radiance-fields, novel-view-synthesis, 3d-reconstruction | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / not-applicable | unknown |
 | [Ceres Solver](primitives/optimization/ceres-solver.yaml) · [upstream](<https://github.com/ceres-solver/ceres-solver>) | primitive / companion | nonlinear-least-squares, bundle-adjustment, slam | — | — | native-cpp, c-source | desktop, server, edge | BSD-3-Clause / not-applicable | unknown |
 | [Open3D](pipelines/mapping/open3d.yaml) · [upstream](<https://github.com/isl-org/Open3D>) | toolkit / companion | point-cloud-processing, 3d-reconstruction, geometry | — | — | native-cpp, python, ply, pcd | desktop, embedded, edge, server | unknown / not-provided | unknown |
 | [RTAB-Map](pipelines/mapping/rtabmap.yaml) · [upstream](<https://github.com/introlab/rtabmap>) | pipeline / unknown | slam, scene-mapping | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
 | [COLMAP](pipelines/reconstruction/colmap.yaml) · [upstream](<https://github.com/colmap/colmap>) | pipeline / unknown | structure-from-motion, multi-view-stereo | — | — | native-cpp | desktop | BSD-3-Clause / not-applicable | luckfox-rv1106: unknown |
+| [Delaunator](primitives/procedural/delaunator.yaml) · [upstream](<https://github.com/mapbox/delaunator>) | toolkit / companion | triangulation | — | — | javascript, nodejs | browser | ISC / not-applicable | unknown |
+| [d3-delaunay](primitives/procedural/d3-delaunay.yaml) · [upstream](<https://github.com/d3/d3-delaunay>) | toolkit / companion | triangulation, voronoi-diagrams | — | — | javascript, nodejs | browser | ISC / not-applicable | unknown |
 | [ORB-SLAM3](pipelines/mapping/orb-slam3.yaml) · [upstream](<https://github.com/UZ-SLAMLab/ORB_SLAM3>) | pipeline / unknown | visual-slam, camera-localization | — | — | native-cpp | desktop | GPL-3.0 / not-applicable | luckfox-rv1106: unknown |
 
 <a id="catalogue-marine"></a>
@@ -529,6 +537,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 
 | Entry / source | Kind / use | Task | Params | Model file | Runtime / format | Target class | License C / W | Compatibility |
 |---|---|---|---:|---:|---|---|---|---|
+| [Tone.js](primitives/procedural/tone-js.yaml) · [upstream](<https://github.com/Tonejs/Tone.js>) | toolkit / companion | audio-synthesis | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 | [Basic Pitch](pipelines/music/basic-pitch.yaml) · [upstream](<https://github.com/spotify/basic-pitch>) | toolkit / pretrained | automatic-music-transcription, pitch-estimation | — | — | tensorflow, coreml, tflite, onnxruntime, onnx | mobile, desktop, browser | Apache-2.0 / Apache-2.0 | unknown |
 | [AudioCraft (MusicGen / AudioGen)](catalog/music/generation/audiocraft.yaml) · [upstream](<https://github.com/facebookresearch/audiocraft>) | collection / pretrained | music-generation, audio-generation, text-to-audio | — | — | pytorch, pytorch-checkpoint | server, desktop | MIT / unknown | unknown |
 | [Demucs](catalog/music/source-separation/demucs.yaml) · [upstream](<https://github.com/facebookresearch/demucs>) | collection / pretrained | music-source-separation | — | — | pytorch, pytorch-checkpoint | desktop, server | MIT / unknown | unknown |
@@ -771,6 +780,10 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [FastNoise Lite](primitives/procedural/fastnoise-lite.yaml) · [upstream](<https://github.com/Auburn/FastNoiseLite>) | toolkit / companion | noise-generation | — | — | cpp, rust, javascript, glsl | desktop | MIT / not-applicable | unknown |
 | [noise-rs](primitives/procedural/noise-rs.yaml) · [upstream](<https://github.com/Razaekel/noise-rs>) | toolkit / companion | noise-generation | — | — | rust | desktop | MIT OR Apache-2.0 / not-applicable | unknown |
 | [simplex-noise.js](primitives/procedural/simplex-noise-js.yaml) · [upstream](<https://github.com/jwagner/simplex-noise.js>) | toolkit / companion | noise-generation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
+| [Matter.js](primitives/procedural/matter-js.yaml) · [upstream](<https://github.com/liabru/matter-js>) | toolkit / companion | procedural-simulation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
+| [cannon-es](primitives/procedural/cannon-es.yaml) · [upstream](<https://github.com/pmndrs/cannon-es>) | toolkit / companion | procedural-simulation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
+| [fast-2d-poisson-disk-sampling](primitives/procedural/fast-2d-poisson-disk-sampling.yaml) · [upstream](<https://github.com/kchapelier/fast-2d-poisson-disk-sampling>) | toolkit / companion | procedural-simulation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
+| [isosurface](primitives/procedural/isosurface-js.yaml) · [upstream](<https://github.com/mikolalysenko/isosurface>) | toolkit / companion | procedural-simulation | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 | [Isaac Lab](pipelines/simulation/isaac-lab.yaml) · [upstream](<https://github.com/isaac-sim/IsaacLab>) | pipeline / companion | robot-learning, reinforcement-learning, simulation | — | — | pytorch, omni-isaac | desktop, server | BSD-3-Clause / not-applicable | unknown |
 | [robosuite](pipelines/simulation/robosuite.yaml) · [upstream](<https://github.com/ARISE-Initiative/robosuite>) | pipeline / companion | robot-manipulation, simulation, reinforcement-learning | — | — | python, mujoco | desktop, server | MIT / not-applicable | unknown |
 | [Genesis](pipelines/simulation/genesis.yaml) · [upstream](<https://github.com/Genesis-Embodied-AI/Genesis>) | pipeline / companion | robotics-simulation, physics-simulation, reinforcement-learning | — | — | python, native-cpp | desktop, server | Apache-2.0 / not-applicable | unknown |
@@ -957,6 +970,7 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [MediaPipe](pipelines/vision/mediapipe.yaml) · [upstream](<https://github.com/google-ai-edge/mediapipe>) | toolkit / companion | pose-estimation, face-detection, hand-tracking, object-detection | — | — | tflite, mediapipe-task | mobile, browser, desktop, edge | Apache-2.0 / unknown | unknown |
 | [MoveNet Lightning](catalog/vision/pose/movenet-lightning.yaml) · [upstream](<https://www.tensorflow.org/hub/tutorials/movenet>) | model / pretrained | pose-estimation | — | 2.9 MB | tflite | edge | Apache-2.0 / unknown | unknown |
 | [rtmlib](pipelines/pose/rtmlib.yaml) · [upstream](<https://github.com/Tau-J/rtmlib>) | toolkit / companion | pose-inference, pose-tracking | — | — | onnxruntime, python, onnx | desktop | Apache-2.0 / unknown | luckfox-rv1106: unknown; local-process-darwin-arm64-ddf7ff5ebd: reproduced |
+| [Fishdraw](primitives/procedural/fishdraw.yaml) · [upstream](<https://github.com/LingDong-/fishdraw>) | toolkit / companion | procedural-drawing | — | — | javascript, nodejs | browser | MIT / not-applicable | unknown |
 | [U^2-Net](catalog/vision/segmentation/u2net.yaml) · [upstream](<https://github.com/xuebinqin/U-2-Net>) | collection / pretrained | salient-object-detection, background-removal, image-segmentation | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, edge | Apache-2.0 / unknown | unknown |
 | [MMSegmentation](pipelines/vision/mmsegmentation.yaml) · [upstream](<https://github.com/open-mmlab/mmsegmentation>) | toolkit / requires-training | semantic-segmentation, scene-parsing | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [PIDNet-S](catalog/vision/segmentation/pidnet-s.yaml) · [upstream](<https://github.com/XuJiacong/PIDNet>) | model / unknown | semantic-segmentation | — | — | pytorch | desktop | MIT / unknown | luckfox-rv1106: unknown |

@@ -23,7 +23,7 @@ The `ai` view includes entries with the learned method. For backward compatibili
 | `procedural.evidence_level` | documented, inspected or reproduced; reproduced requires a stored benchmark-backed compatibility record. |
 | `data.inputs` / `data.outputs` | Use existing I/O fields; SVG artwork, scalar fields, meshes, joint poses and audio are not interchangeable. |
 
-Code licences do not automatically cover samples, music, textures, model weights or dependencies. Hardware compatibility and RAM stay unknown unless supported by actual measurements. Native authoring references are included for offline generation/adaptation, not presented as embeddable browser or MCU libraries. The catalogue does not download or execute these upstream tools.
+Code licences do not automatically cover samples, music, textures, model weights or dependencies. Hardware compatibility and RAM stay unknown unless supported by actual measurements. Native authoring references are included for offline generation/adaptation, not presented as embeddable browser or MCU libraries. The catalogue itself does not execute upstream tools. The separate, opt-in [browser lab](../recipes/procedural/README.md) runs four pinned bounded adapters.
 
 ## Search and integration
 
@@ -58,6 +58,6 @@ For a living world, the deterministic application simulation owns entities and r
 
 For generated art, validate numeric controls, isolate third-party generators, and sanitize SVG. Never execute arbitrary model-generated source. For audio, select allowlisted presets, cap duration/gain/voices/buffer sizes and require user audio activation. Preserve seeds, versions and event logs, but test rather than assume replay consistency.
 
-## Next evidence milestone
+## Runnable evidence milestone
 
-Add pinned, opt-in runnable adapters with small fixtures for noise, SVG, tree geometry and audio. Test outputs, repeatability, time and memory on named browsers/devices. Promote only the specific tested adapter and environment, not the upstream family or every target. Keep model downloads and heavier desktop generation explicit and optional.
+Pinned, opt-in runnable adapters for noise, SVG, tree geometry and audio now live in [recipes/procedural](../recipes/procedural/README.md). Worker time limits, output hashes, run-specific reports and browser tests are included. These procedural fixtures do not change the three hybrid recipes from design status. Test outputs, repeatability, time and memory on named browsers/devices. Promote only the specific tested adapter and environment, not the upstream family or every target. Keep model downloads and heavier desktop generation explicit and optional.
