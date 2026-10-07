@@ -1,0 +1,23 @@
+id: merlin
+name: NVIDIA Merlin
+domain: recommendation
+tasks: [recommendation, feature-engineering, ranking]
+class: recommender-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "NVIDIA's end-to-end GPU framework for building and deploying recommender systems."
+links: {repository: 'https://github.com/NVIDIA-Merlin/Merlin', homepage: 'https://nvidia-merlin.github.io/Merlin/'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [server], notes: 'GPU-centric training/inference; server-class.'}
+runtimes: [pytorch, tensorflow, cuda]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Builds data pipelines and models for recsys.', needs_data: 'Large interaction/feature datasets.', update_strategy: 'Retrain frequently; monitor drift and popularity bias.'}
+data: {inputs: [user-item-features], outputs: [ranked-recommendations], languages: []}
+evaluation: ['Ranking metrics offline plus online A/B where possible.']
+limitations: ['GPU-oriented and server-class; complex stack.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/NVIDIA-Merlin/Merlin', notes: 'NVIDIA Merlin framework.'}]
+reviewed: '2026-10-06'
+tags: [recommendation, gpu, ranking, features]

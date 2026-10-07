@@ -1,0 +1,23 @@
+id: gorilla
+name: Gorilla
+domain: agents
+tasks: [tool-calling, api-calling, retrieval-augmented]
+class: agent-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "LLM that writes API and tool calls, trained with retrieval-aware documentation."
+links: {repository: 'https://github.com/ShishirPatil/gorilla', model: 'https://huggingface.co/gorilla-llm/gorilla-7b-hf-v1', paper: 'https://arxiv.org/abs/2305.15334'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: '7B-class; API-calling model, quantize for lighter targets.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained API-calling models; fine-tuning supported.', needs_data: 'API docs plus tasks for evaluation.', update_strategy: 'Verify weight terms; pin checkpoint and re-evaluate call accuracy.'}
+data: {inputs: [text-instruction, api-docs], outputs: [api-calls], languages: [en]}
+evaluation: ['API-call validity and execution success on the target APIs.']
+limitations: ['Weight terms not stated; hallucinated APIs remain a risk.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ShishirPatil/gorilla', notes: 'Gorilla API-calling models.'}]
+reviewed: '2026-10-06'
+tags: [agents, tool-calling, api]

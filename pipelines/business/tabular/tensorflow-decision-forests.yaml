@@ -1,0 +1,23 @@
+id: tensorflow-decision-forests
+name: TensorFlow Decision Forests
+domain: business
+tasks: [tabular-classification, tabular-regression, ranking]
+class: tabular-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "TensorFlow library for training and serving decision-forest models on tabular data."
+links: {repository: 'https://github.com/tensorflow/decision-forests', homepage: 'https://www.tensorflow.org/decision_forests'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [embedded, edge, desktop, server], notes: 'Trees can be exported for lightweight inference.'}
+runtimes: [tensorflow, tflite]
+formats: [savedmodel, tflite]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains GBDT/random-forest models on tabular data.', needs_data: 'Labelled tabular data for the target task.', update_strategy: 'Retrain on drift; revalidate calibration and fairness.'}
+data: {inputs: [tabular-features], outputs: [class, value, ranking-scores], languages: []}
+evaluation: ['Held-out metrics plus calibration and importances review.']
+limitations: ['Tabular focus; export fidelity should be verified after TFLite conversion.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/tensorflow/decision-forests', notes: 'TF Decision Forests.'}]
+reviewed: '2026-10-06'
+tags: [business, tabular, decision-trees, tflite]

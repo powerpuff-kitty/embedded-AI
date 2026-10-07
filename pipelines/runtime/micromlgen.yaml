@@ -1,0 +1,23 @@
+id: micromlgen
+name: micromlgen
+domain: runtime
+tasks: [mcu-deployment, model-conversion]
+class: micro-ml-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Generates plain C code from scikit-learn models for microcontrollers."
+links: {repository: 'https://github.com/eloquentarduino/micromlgen'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: not-provided}
+deployment: {offline: true, targets: [embedded, edge], notes: 'Targets MCUs such as AVR, ESP32 and ARM Cortex-M.'}
+runtimes: [python, native-cpp]
+formats: [c-source]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Exports a model trained elsewhere (e.g. scikit-learn) to C.', needs_data: 'A trained classifier/regressor plus test samples.', update_strategy: 'Pin generator version; verify C output matches the source model.'}
+data: {inputs: [sensor-features], outputs: [class, value], languages: []}
+evaluation: ['Output parity vs the source model plus flash/RAM footprint.']
+limitations: ['Supports a subset of models; no training on-device.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/eloquentarduino/micromlgen', notes: 'micromlgen C-code generator.'}]
+reviewed: '2026-10-06'
+tags: [runtime, microcontroller, embedded, conversion]

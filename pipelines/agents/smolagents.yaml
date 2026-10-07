@@ -1,0 +1,23 @@
+id: smolagents
+name: smolagents
+domain: agents
+tasks: [agent-orchestration, tool-use, code-agents]
+class: agent-toolkit
+kind: toolkit
+catalogue_batch: expansion-2026-10-06
+description: "Minimal Hugging Face agent library that can drive small local models and tools."
+links: {repository: 'https://github.com/huggingface/smolagents', homepage: 'https://huggingface.co/docs/smolagents'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: not-provided}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Framework; can run fully offline with a local model.'}
+runtimes: [python, transformers, llama-cpp]
+formats: [python]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: companion, training: 'Orchestrates agents around a chosen model; no training.', needs_data: 'Tools plus a model; tasks for evaluation.', update_strategy: 'Pin library/model; sandbox code-executing agents.'}
+data: {inputs: [task, tools], outputs: [actions, results], languages: [en]}
+evaluation: ['Task success plus safety review of tool/code execution.']
+limitations: ['Code-executing agents need sandboxing; depends on the chosen model.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/smolagents', notes: 'smolagents library.'}]
+reviewed: '2026-10-06'
+tags: [agents, orchestration, tool-use]

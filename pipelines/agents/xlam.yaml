@@ -1,0 +1,23 @@
+id: xlam
+name: xLAM
+domain: agents
+tasks: [tool-calling, function-calling]
+class: agent-model-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Salesforce's large action models for function calling, including 1B on-device variants."
+links: {model: 'https://huggingface.co/Salesforce/xLAM-1b-fc-r', paper: 'https://arxiv.org/abs/2409.03215'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: '1B variants target edge/on-device; larger are server-class.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained function-calling models; fine-tuning supported.', needs_data: 'Tool schemas plus prompts for evaluation.', update_strategy: 'Verify weight terms; pin checkpoint and re-evaluate tool accuracy.'}
+data: {inputs: [text-instruction, tool-schemas], outputs: [tool-calls], languages: [en]}
+evaluation: ['Function-call accuracy and schema validity on the target tools.']
+limitations: ['Licence undocumented; small models may need format guidance.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/Salesforce/xLAM-1b-fc-r', notes: 'xLAM model card and paper.'}]
+reviewed: '2026-10-06'
+tags: [agents, tool-calling, on-device]
