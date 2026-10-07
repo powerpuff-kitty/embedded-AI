@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a defect in the catalogue, tooling, explorer or package
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. For security problems, use the
+        [security policy](../blob/main/SECURITY.md) instead of a public issue.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Explorer / site
+        - Need matcher
+        - Validation / schema
+        - CLI scripts (search, need, audit, links, licences)
+        - Package / API
+        - CI / workflows
+        - Catalogue data
+        - Docs
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the exact command or URL, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `...`
+        2. Observe `...`
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: "v0.2.0 or commit sha"
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "macOS 15, Node 22, Python 3.11"
+    validations:
+      required: false

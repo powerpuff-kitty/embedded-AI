@@ -22,9 +22,11 @@ export const usageOf = (e: Entry): string => e.usage?.mode ?? 'unknown';
 export function validateEntries(entries: Entry[], root = process.cwd()): void {
   const errors: string[] = [], ids = new Set<string>();
   for (const e of entries) {
-    if (!validate(e)) { errors.push(`${e.path}: ${ajv.errorsText(validate.errors, { separator: '; ' })}`); continue; }
     if (ids.has(e.id)) errors.push(`${e.path}: duplicate id ${e.id}`);
     ids.add(e.id);
+    const candidate: Record<string, unknown> = { ...e };
+    delete candidate.path;
+    if (!validate(candidate)) { errors.push(`${e.path}: ${ajv.errorsText(validate.errors, { separator: '; ' })}`); continue; }
     if (!Object.values(e.links).some(Boolean)) errors.push(`${e.path}: at least one upstream link is required`);
     if (e.catalogue_batch === 'business-2026-10-05' || e.usage !== undefined) {
       if (!validateBusiness(e)) errors.push(`${e.path}: ${ajv.errorsText(validateBusiness.errors, { separator: '; ' })}`);
@@ -93,6 +95,13 @@ export function renderCatalogue(entries: Entry[]): string {
     out += '\n';
   }
   return out;
+}
+export function renderCatalogueSummary(entries: Entry[]): string {
+  const domains = new Set(entries.map(e => e.domain)).size;
+  return `**${entries.length} entries** across ${domains} domains — models, collections, pipelines, toolkits and non-AI primitives. Browse the full generated catalogue in [docs/CATALOGUE.md](docs/CATALOGUE.md); machine-readable exports are in [\`generated/\`](generated/).`;
+}
+export function renderCataloguePage(entries: Entry[]): string {
+  return `# embedded-AI catalogue\n\n> Generated from YAML in \`catalog/\`, \`pipelines/\` and \`primitives/\`. Do not edit by hand — run \`npm run index\` to regenerate.\n\n${renderCatalogue(entries)}`;
 }
 export function renderAtAGlance(entries: Entry[]): string {
   const domains = new Set(entries.map(e => e.domain)).size;

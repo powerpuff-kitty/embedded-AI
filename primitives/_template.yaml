@@ -1,11 +1,25 @@
-# Intelligence primitive template
-
-id:
-name:
-category: planning | optimization | state-estimation | sensor-fusion | tracking | control
-learned: false
-description:
-inputs: []
-outputs: []
-implementations: []
-embedded_notes:
+# Copy this file next to the primitive it describes. The filename must equal `id`.
+# Non-AI primitives use the same catalogue schema as models and toolkits.
+id: example-primitive
+name: Example Primitive
+domain: control
+tasks: [model-predictive-control]
+class: control-primitive
+kind: primitive        # model | collection | pipeline | toolkit | primitive
+description: "One or two factual sentences; at least 20 characters."
+links: { repository: null, model: null, paper: null, homepage: null }
+model: { parameters: null, file_size_mb: null }   # primitives normally carry no neural size
+license: { code: unknown, weights: not-applicable }
+deployment: { offline: null, targets: [], accelerators: [] }
+runtimes: []
+formats: []
+requirements: { ram_mb: { minimum: null, measured_peak: null } }
+compatibility: []
+evidence: []           # at least one: {type: official|paper|vendor|community|benchmark, url}
+tags: []
+# Optional, for entries with `usage`:
+# usage: { mode: companion|pretrained|requires-training|unknown, training: ..., needs_data: ..., update_strategy: ... }
+# data: { inputs: [], outputs: [], languages: [] }
+# evaluation: ['...']
+# limitations: ['...']
+# reviewed: 'YYYY-MM-DD'

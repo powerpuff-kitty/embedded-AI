@@ -1,15 +1,26 @@
+# Copy this file next to the entry it describes. The filename must equal `id`.
+# Leave anything you have not verified as `unknown`/null; never infer values.
 id: example-model
 name: Example Model
 domain: vision
 tasks: [object-detection]
 class: small-specialized-model
-description: ""
+kind: model            # model | collection | pipeline | toolkit | primitive
+description: "One or two factual sentences; at least 20 characters."
 links: { repository: null, model: null, paper: null, homepage: null }
 model: { parameters: null, file_size_mb: null, architecture: null, precision: null }
-license: { code: unknown, weights: unknown }
+license: { code: unknown, weights: unknown }   # split code and weights terms; never infer
 deployment: { offline: null, targets: [], accelerators: [] }
+runtimes: []
 formats: []
 requirements: { ram_mb: { minimum: null, measured_peak: null } }
-compatibility: []
-evidence: []
+compatibility: []      # {target, status: unsupported|theoretical|reported|reproduced|unknown, evidence?, benchmark?}
+evidence: []           # at least one: {type: official|paper|vendor|community|benchmark, url}
 tags: []
+# Optional, for entries with `usage`:
+# usage: { mode: companion|pretrained|requires-training|unknown, training: ..., needs_data: ..., update_strategy: ... }
+# data: { inputs: [], outputs: [], languages: [] }
+# evaluation: ['...']
+# limitations: ['...']
+# reviewed: 'YYYY-MM-DD'
+# related: []

@@ -32,6 +32,16 @@ test('README generation is idempotent and preserves surrounding prose', () => {
   for (const e of entries) assert.ok(first.includes(`](${e.path})`), e.id);
   assert.throws(() => updateReadme('<!-- CATALOG:START -->', block), /markers/);
 });
+test('unknown top-level fields are rejected instead of silently accepted', () => {
+  const e = sample(); (e as any).descripiton = 'typo';
+  assert.throws(() => validateEntries([e]), /additional properties/);
+});
+test('nested schemas reject unknown keys', () => {
+  const e = sample(); (e as any).license.bogus = 'x';
+  assert.throws(() => validateEntries([e]), /additional properties/);
+  const f = sample(); (f as any).deployment.mystery = true;
+  assert.throws(() => validateEntries([f]), /additional properties/);
+});
 test('licences and compatibility are not collapsed misleadingly', () => {
   const e = sample(); e.license = { code: 'MIT', weights: 'unknown' };
   e.compatibility = [{ target: 'a', status: 'reported', evidence: 'https://example.org/report' }, { target: 'b', status: 'unsupported' }];

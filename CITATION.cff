@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use the embedded-AI catalogue or its tooling, please cite it."
+title: "embedded-AI: an evidence-first catalogue of embeddable AI"
+abstract: >-
+  A machine-readable catalogue of on-device and embedded AI models, toolkits
+  and non-AI primitives, with hardware, runtime and compatibility evidence,
+  an offline plain-language need matcher, and explicit unknowns. Code is
+  licensed MIT; the catalogue data is licensed CC BY 4.0.
+authors:
+  - name: "powerpuff-kitty"
+type: dataset
+version: 0.2.0
+date-released: "2026-10-07"
+url: "https://github.com/powerpuff-kitty/embedded-AI"
+repository-code: "https://github.com/powerpuff-kitty/embedded-AI"
+homepage: "https://powerpuff-kitty.github.io/embedded-AI/"
+license: MIT
+keywords:
+  - edge-ai
+  - embedded-ai
+  - on-device-ml
+  - tinyml
+  - model-catalog
+  - machine-learning
