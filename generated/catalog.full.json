@@ -31926,6 +31926,191 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "florence-2",
+      "name": "Florence-2",
+      "domain": "vision",
+      "tasks": [
+        "image-captioning",
+        "object-detection",
+        "ocr",
+        "grounding"
+      ],
+      "class": "vision-foundation-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft's unified vision foundation model handling captioning, detection, grounding and OCR from prompts.",
+      "links": {
+        "model": "https://huggingface.co/microsoft/Florence-2-large",
+        "paper": "https://arxiv.org/abs/2311.06242"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "0.23B/0.77B variants are comparatively small; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained task-prompted model; fine-tuning supported.",
+        "needs_data": "Images plus task prompts; labels for fine-tuning.",
+        "update_strategy": "Pin checkpoint; re-measure per task and target."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "caption",
+          "boxes",
+          "masks",
+          "text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Per-task quality (caption/detect/OCR) plus memory and latency."
+      ],
+      "limitations": [
+        "Prompt-templated outputs; English-centric; no chat interface."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/microsoft/Florence-2-large",
+          "notes": "Florence-2 model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "detection",
+        "captioning",
+        "ocr"
+      ],
+      "path": "catalog/vision/vlm/florence-2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "smolvlm",
+      "name": "SmolVLM",
+      "domain": "vision",
+      "tasks": [
+        "image-captioning",
+        "visual-question-answering",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Hugging Face's sub-1B vision-language models built for laptops, phones and browsers.",
+      "links": {
+        "repository": "https://github.com/huggingface/smollm",
+        "model": "https://huggingface.co/HuggingFaceTB/SmolVLM-256M-Instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "256M/500M variants can run in-browser and on phones; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "mlx"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct VLMs; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure memory and quality."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA/caption quality plus memory and latency on the target."
+      ],
+      "limitations": [
+        "Small size limits fine-grained reasoning and OCR."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/huggingface/smollm",
+          "notes": "SmolVLM model family and licence."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "on-device"
+      ],
+      "path": "catalog/vision/vlm/smolvlm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "apple-cvnets",
       "name": "CVNets",
       "domain": "vision",
@@ -38100,6 +38285,835 @@
         "vision-language"
       ],
       "path": "catalog/vision/vlm/llava.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "fastvlm",
+      "name": "FastVLM",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Apple's efficient vision-language models with a fast vision encoder for on-device use.",
+      "links": {
+        "repository": "https://github.com/apple-aiml-research/ml-fastvlm",
+        "model": "https://huggingface.co/apple/FastVLM-0.5B",
+        "paper": "https://arxiv.org/abs/2412.13303"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "0.5B variant targets Apple devices; verify licence before use."
+      },
+      "runtimes": [
+        "mlx",
+        "transformers"
+      ],
+      "formats": [
+        "safetensors",
+        "mlx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained VLM; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Check Apple model licence; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA/caption quality plus time-to-first-token and memory."
+      ],
+      "limitations": [
+        "Apple sample-code/model licence (non-standard); MLX-centric."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/apple-aiml-research/ml-fastvlm",
+          "notes": "FastVLM models and licence review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "apple"
+      ],
+      "path": "catalog/vision/vlm/fastvlm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "internvl",
+      "name": "InternVL",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "ocr",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Shanghai AI Lab's vision-language family, including 1B-2B models for edge deployment.",
+      "links": {
+        "repository": "https://github.com/OpenGVLab/InternVL",
+        "model": "https://huggingface.co/OpenGVLab/InternVL2-2B"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Small variants target edge; larger are server-class."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "lmdeploy"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained chat VLM; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Verify per-model terms; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "video",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "multilingual",
+          "en",
+          "zh"
+        ]
+      },
+      "evaluation": [
+        "VQA/OCR quality plus memory and latency at the chosen size."
+      ],
+      "limitations": [
+        "Licence differs between code and weights; edge only at small sizes."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenGVLab/InternVL",
+          "notes": "InternVL model family."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "internvl"
+      ],
+      "path": "catalog/vision/vlm/internvl.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "minicpm-v",
+      "name": "MiniCPM-V",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "ocr",
+        "image-captioning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OpenBMB's compact vision-language models (2B-8B) tuned for phone and edge deployment.",
+      "links": {
+        "repository": "https://github.com/OpenBMB/MiniCPM-V",
+        "model": "https://huggingface.co/openbmb/MiniCPM-V-2_6"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "2B variant runs on phones; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained chat VLM; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Check per-model terms; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "video",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "multilingual",
+          "en",
+          "zh"
+        ]
+      },
+      "evaluation": [
+        "VQA/OCR quality plus memory and latency at the chosen size."
+      ],
+      "limitations": [
+        "Some checkpoints carry separate terms; English/Chinese focus."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenBMB/MiniCPM-V",
+          "notes": "MiniCPM-V models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "on-device"
+      ],
+      "path": "catalog/vision/vlm/minicpm-v.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "mobilevlm",
+      "name": "MobileVLM",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meituan's vision-language models explicitly optimised for mobile devices.",
+      "links": {
+        "repository": "https://github.com/Meituan-AutoML/MobileVLM",
+        "model": "https://huggingface.co/mtgv/MobileVLM-1.7B"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "embedded"
+        ],
+        "notes": "Builds targeting phone CPUs; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "ncnn"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained VLM; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA quality plus memory and latency on the target phone."
+      ],
+      "limitations": [
+        "Documentation/tooling largely research-oriented; English-centric."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Meituan-AutoML/MobileVLM",
+          "notes": "MobileVLM models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "mobile"
+      ],
+      "path": "catalog/vision/vlm/mobilevlm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "moondream",
+      "name": "Moondream",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Tiny ~2B open vision-language model designed to run efficiently on modest hardware.",
+      "links": {
+        "repository": "https://github.com/m87-labs/moondream",
+        "model": "https://huggingface.co/vikhyatk/moondream2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "edge",
+          "desktop",
+          "mobile"
+        ],
+        "notes": "Quantized builds run on CPU/edge; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained VLM; fine-tuning recipes provided.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Pin checkpoint; re-measure memory and quality per target."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA/caption quality plus memory and latency on the target."
+      ],
+      "limitations": [
+        "Limited world knowledge and fine-grained reasoning; English-centric."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/m87-labs/moondream",
+          "notes": "Moondream VLM."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "on-device"
+      ],
+      "path": "catalog/vision/vlm/moondream.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "paligemma",
+      "name": "PaliGemma",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "detection",
+        "segmentation"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's vision-language model combining SigLIP with Gemma, with 3B transfer variants.",
+      "links": {
+        "repository": "https://github.com/google-research/big_vision",
+        "model": "https://huggingface.co/google/paligemma2-3b-pt-224"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Gemma-Terms"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "3B is desktop/edge with quantization; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "jax"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained transfer models; fine-tune for tasks.",
+        "needs_data": "Images plus task prompts/labels; fine-tuning data.",
+        "update_strategy": "Accept Gemma terms; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response",
+          "boxes",
+          "masks"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality (caption/VQA/detection) plus memory and latency."
+      ],
+      "limitations": [
+        "Weights use Gemma Terms; not a general conversational VLM."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-research/big_vision",
+          "notes": "PaliGemma in big_vision."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "google"
+      ],
+      "path": "catalog/vision/vlm/paligemma.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "phi-3-vision",
+      "name": "Phi-3-Vision",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "ocr",
+        "chart-reasoning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft's 4.2B vision-language model for image reasoning, OCR and chart understanding.",
+      "links": {
+        "model": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "4.2B needs quantization/adequate RAM; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct VLM; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint; re-measure memory and quality per target."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA/OCR/chart quality plus memory and latency."
+      ],
+      "limitations": [
+        "4.2B is not phone-scale; OCR accuracy depends on image quality."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/microsoft/Phi-3-vision-128k-instruct",
+          "notes": "Phi-3-Vision model card."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "phi"
+      ],
+      "path": "catalog/vision/vlm/phi-3-vision.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "qwen3-vl",
+      "name": "Qwen3-VL",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "ocr",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Alibaba's Qwen3-VL vision-language models, including 2B variants for phones.",
+      "links": {
+        "repository": "https://github.com/QwenLM/Qwen3-VL",
+        "model": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "2B variants target edge; larger sizes are server-class."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm",
+        "mlx"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct VLMs; fine-tuning supported.",
+        "needs_data": "Images plus prompts; task data for evaluation.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure memory and quality."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "VQA/OCR/caption quality plus memory and latency at the chosen size."
+      ],
+      "limitations": [
+        "Edge-capable only at the smallest sizes; OCR/grounding vary by quant."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/QwenLM/Qwen3-VL",
+          "notes": "Qwen3-VL model family (Qwen2-VL/Qwen2.5-VL repo redirects here)."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "qwen"
+      ],
+      "path": "catalog/vision/vlm/qwen3-vl.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "tinyllava",
+      "name": "TinyLLaVA",
+      "domain": "vision",
+      "tasks": [
+        "visual-question-answering",
+        "image-captioning",
+        "on-device-vlm"
+      ],
+      "class": "edge-vlm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Framework and small vision-language models (1B-3B) built for efficient deployment.",
+      "links": {
+        "model": "https://huggingface.co/bczhou/TinyLLaVA-1.5B",
+        "paper": "https://arxiv.org/abs/2402.14289"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "1B variants target edge; verify per checkpoint."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained small VLMs; training framework included.",
+        "needs_data": "Images plus prompts; task data for evaluation/fine-tuning.",
+        "update_strategy": "Verify licence; pin checkpoint and re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "image",
+          "text-prompt"
+        ],
+        "outputs": [
+          "text-response"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "VQA/caption quality plus memory and latency on the target."
+      ],
+      "limitations": [
+        "Licence undocumented; smaller quality than large VLMs."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/bczhou/TinyLLaVA-1.5B",
+          "notes": "TinyLLaVA model card and paper."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "vision",
+        "language",
+        "vlm",
+        "tiny"
+      ],
+      "path": "catalog/vision/vlm/tinyllava.yaml",
       "usage_mode": "pretrained"
     },
     {

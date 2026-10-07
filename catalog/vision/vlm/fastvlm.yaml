@@ -1,0 +1,23 @@
+id: fastvlm
+name: FastVLM
+domain: vision
+tasks: [visual-question-answering, image-captioning, on-device-vlm]
+class: edge-vlm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Apple's efficient vision-language models with a fast vision encoder for on-device use."
+links: {repository: 'https://github.com/apple-aiml-research/ml-fastvlm', model: 'https://huggingface.co/apple/FastVLM-0.5B', paper: 'https://arxiv.org/abs/2412.13303'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: '0.5B variant targets Apple devices; verify licence before use.'}
+runtimes: [mlx, transformers]
+formats: [safetensors, mlx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained VLM; fine-tuning supported.', needs_data: 'Images plus prompts; task data for evaluation.', update_strategy: 'Check Apple model licence; pin checkpoint and re-measure.'}
+data: {inputs: [image, text-prompt], outputs: [text-response], languages: [en]}
+evaluation: ['VQA/caption quality plus time-to-first-token and memory.']
+limitations: ['Apple sample-code/model licence (non-standard); MLX-centric.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/apple-aiml-research/ml-fastvlm', notes: 'FastVLM models and licence review.'}]
+reviewed: '2026-10-06'
+tags: [vision, language, vlm, apple]

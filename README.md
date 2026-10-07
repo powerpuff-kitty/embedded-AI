@@ -47,7 +47,7 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 | | |
 |---|---|
-| **456 entries** | models, collections, pipelines, toolkits and primitives |
+| **467 entries** | models, collections, pipelines, toolkits and primitives |
 | **53 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
@@ -94,7 +94,7 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 
 ## Full catalogue
 
-**456 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**467 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -850,6 +850,8 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [CodeFormer](catalog/vision/enhancement/codeformer.yaml) · [upstream](<https://github.com/sczhou/CodeFormer>) | collection / pretrained | face-restoration, image-restoration | — | — | pytorch, pytorch-checkpoint | desktop, server | S-Lab-1.0 / unknown | unknown |
 | [GFPGAN](catalog/vision/enhancement/gfpgan.yaml) · [upstream](<https://github.com/TencentARC/GFPGAN>) | collection / pretrained | face-restoration, image-restoration | — | — | pytorch, pytorch-checkpoint | desktop, server | Apache-2.0 / unknown | unknown |
 | [BLIP-2 (LAVIS)](catalog/vision/vlm/blip2-lavis.yaml) · [upstream](<https://github.com/salesforce/LAVIS>) | collection / pretrained | image-captioning, visual-question-answering, image-text-retrieval | — | — | pytorch, pytorch-checkpoint | desktop, server | BSD-3-Clause / unknown | unknown |
+| [Florence-2](catalog/vision/vlm/florence-2.yaml) · [upstream](<https://huggingface.co/microsoft/Florence-2-large>) | collection / pretrained | image-captioning, object-detection, ocr, grounding | — | — | transformers, onnxruntime, safetensors, onnx | desktop, edge, server | MIT / MIT | unknown |
+| [SmolVLM](catalog/vision/vlm/smolvlm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolVLM-256M-Instruct>) | collection / pretrained | image-captioning, visual-question-answering, on-device-vlm | — | — | transformers, onnxruntime, mlx, safetensors, onnx | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
 | [CVNets](catalog/vision/classification/apple-cvnets.yaml) · [upstream](<https://github.com/apple/ml-cvnets>) | collection / pretrained | image-classification, object-detection, semantic-segmentation | — | — | pytorch, coreml, onnxruntime, pytorch-checkpoint, onnx | mobile, edge, desktop, server | unknown / unknown | unknown |
 | [FastViT](catalog/vision/classification/apple-fastvit.yaml) · [upstream](<https://github.com/apple/ml-fastvit>) | collection / pretrained | image-classification, feature-extraction | — | — | pytorch, coreml, pytorch-checkpoint | mobile, edge, desktop | unknown / unknown | unknown |
 | [MMPreTrain](pipelines/vision/mmpretrain.yaml) · [upstream](<https://github.com/open-mmlab/mmpretrain>) | toolkit / requires-training | image-classification, feature-extraction, self-supervised-learning | — | — | pytorch, onnxruntime, onnx, pytorch-checkpoint | desktop, server, edge | Apache-2.0 / not-provided | unknown |
@@ -924,6 +926,15 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [SAM 2](catalog/vision/segmentation/sam2.yaml) · [upstream](<https://github.com/facebookresearch/sam2>) | collection / pretrained | video-segmentation, promptable-segmentation, object-tracking | — | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
 | [Anomalib](pipelines/vision/anomalib.yaml) · [upstream](<https://github.com/openvinotoolkit/anomalib>) | toolkit / requires-training | visual-anomaly-detection, defect-detection | — | — | pytorch, openvino, onnxruntime, onnx, openvino-ir | desktop, server, edge | Apache-2.0 / not-provided | unknown |
 | [LLaVA](catalog/vision/vlm/llava.yaml) · [upstream](<https://github.com/haotian-liu/LLaVA>) | collection / pretrained | visual-instruction-following, visual-question-answering, image-captioning | — | — | pytorch, transformers, safetensors | server, desktop | Apache-2.0 / unknown | unknown |
+| [FastVLM](catalog/vision/vlm/fastvlm.yaml) · [upstream](<https://huggingface.co/apple/FastVLM-0.5B>) | collection / pretrained | visual-question-answering, image-captioning, on-device-vlm | — | — | mlx, transformers, safetensors | mobile, edge, desktop | unknown / unknown | unknown |
+| [InternVL](catalog/vision/vlm/internvl.yaml) · [upstream](<https://huggingface.co/OpenGVLab/InternVL2-2B>) | collection / pretrained | visual-question-answering, image-captioning, ocr, on-device-vlm | — | — | transformers, llama-cpp, lmdeploy, safetensors, gguf | mobile, edge, desktop, server | MIT / Apache-2.0 | unknown |
+| [MiniCPM-V](catalog/vision/vlm/minicpm-v.yaml) · [upstream](<https://huggingface.co/openbmb/MiniCPM-V-2_6>) | collection / pretrained | visual-question-answering, ocr, image-captioning, on-device-vlm | — | — | transformers, llama-cpp, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [MobileVLM](catalog/vision/vlm/mobilevlm.yaml) · [upstream](<https://huggingface.co/mtgv/MobileVLM-1.7B>) | collection / pretrained | visual-question-answering, image-captioning, on-device-vlm | — | — | transformers, llama-cpp, ncnn, safetensors, gguf | mobile, edge, embedded | Apache-2.0 / Apache-2.0 | unknown |
+| [Moondream](catalog/vision/vlm/moondream.yaml) · [upstream](<https://huggingface.co/vikhyatk/moondream2>) | collection / pretrained | visual-question-answering, image-captioning, on-device-vlm | — | — | transformers, onnxruntime, safetensors, onnx | edge, desktop, mobile | Apache-2.0 / Apache-2.0 | unknown |
+| [PaliGemma](catalog/vision/vlm/paligemma.yaml) · [upstream](<https://huggingface.co/google/paligemma2-3b-pt-224>) | collection / pretrained | visual-question-answering, image-captioning, detection, segmentation | — | — | transformers, jax, safetensors | desktop, edge, server | Apache-2.0 / Gemma-Terms | unknown |
+| [Phi-3-Vision](catalog/vision/vlm/phi-3-vision.yaml) · [upstream](<https://huggingface.co/microsoft/Phi-3-vision-128k-instruct>) | collection / pretrained | visual-question-answering, ocr, chart-reasoning, on-device-vlm | — | — | transformers, onnxruntime, safetensors, onnx | desktop, edge, server | MIT / MIT | unknown |
+| [Qwen3-VL](catalog/vision/vlm/qwen3-vl.yaml) · [upstream](<https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct>) | collection / pretrained | visual-question-answering, image-captioning, ocr, on-device-vlm | — | — | transformers, llama-cpp, vllm, mlx, safetensors, gguf | mobile, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+| [TinyLLaVA](catalog/vision/vlm/tinyllava.yaml) · [upstream](<https://huggingface.co/bczhou/TinyLLaVA-1.5B>) | collection / pretrained | visual-question-answering, image-captioning, on-device-vlm | — | — | transformers, llama-cpp, safetensors, gguf | mobile, edge, desktop | unknown / unknown | unknown |
 | [MegaDetector V6](catalog/vision/detection/megadetector-v6.yaml) · [upstream](<https://github.com/microsoft/MegaDetector>) | collection / pretrained | wildlife-detection, object-detection | 2.3M | — | pytorch, onnxruntime, pytorch-checkpoint, onnx | edge, desktop, server | MIT / MIT, Apache-2.0 or AGPL-3.0 per variant | unknown |
 | [PyTorch-Wildlife](pipelines/vision/pytorch-wildlife.yaml) · [upstream](<https://github.com/microsoft/Pytorch-Wildlife>) | toolkit / companion | wildlife-detection, species-classification, conservation-inference | — | — | pytorch, python, pytorch-checkpoint | desktop, server, edge | MIT / not-provided | unknown |
 

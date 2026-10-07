@@ -1,0 +1,23 @@
+id: internvl
+name: InternVL
+domain: vision
+tasks: [visual-question-answering, image-captioning, ocr, on-device-vlm]
+class: edge-vlm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Shanghai AI Lab's vision-language family, including 1B-2B models for edge deployment."
+links: {repository: 'https://github.com/OpenGVLab/InternVL', model: 'https://huggingface.co/OpenGVLab/InternVL2-2B'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: 'Small variants target edge; larger are server-class.'}
+runtimes: [transformers, llama-cpp, lmdeploy]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained chat VLM; fine-tuning supported.', needs_data: 'Images plus prompts; task data for evaluation.', update_strategy: 'Verify per-model terms; pin checkpoint and re-measure.'}
+data: {inputs: [image, video, text-prompt], outputs: [text-response], languages: [multilingual, en, zh]}
+evaluation: ['VQA/OCR quality plus memory and latency at the chosen size.']
+limitations: ['Licence differs between code and weights; edge only at small sizes.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/OpenGVLab/InternVL', notes: 'InternVL model family.'}]
+reviewed: '2026-10-06'
+tags: [vision, language, vlm, internvl]

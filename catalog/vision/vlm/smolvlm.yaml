@@ -1,0 +1,23 @@
+id: smolvlm
+name: SmolVLM
+domain: vision
+tasks: [image-captioning, visual-question-answering, on-device-vlm]
+class: edge-vlm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Hugging Face's sub-1B vision-language models built for laptops, phones and browsers."
+links: {repository: 'https://github.com/huggingface/smollm', model: 'https://huggingface.co/HuggingFaceTB/SmolVLM-256M-Instruct'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: '256M/500M variants can run in-browser and on phones; measure per device.'}
+runtimes: [transformers, onnxruntime, mlx]
+formats: [safetensors, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained instruct VLMs; fine-tuning supported.', needs_data: 'Images plus prompts; task data for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality.'}
+data: {inputs: [image, text-prompt], outputs: [text-response], languages: [en]}
+evaluation: ['VQA/caption quality plus memory and latency on the target.']
+limitations: ['Small size limits fine-grained reasoning and OCR.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/huggingface/smollm', notes: 'SmolVLM model family and licence.'}]
+reviewed: '2026-10-06'
+tags: [vision, language, vlm, on-device]
