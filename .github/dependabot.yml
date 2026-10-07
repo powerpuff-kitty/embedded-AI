@@ -13,6 +13,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # numpy >= 2.5 requires Python >= 3.12; the recipes CI pins Python 3.11.
+      - dependency-name: "numpy"
+        versions: [">=2.5.0"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

@@ -100,6 +100,7 @@ Tools: `need`, `search`, `get_entry`, `list_domains`, `catalogue_stats`; plus `e
 - [Full catalogue](docs/CATALOGUE.md) — generated tables for all entries
 - [Dependency & security review](docs/SECURITY-REVIEW-V02.md)
 - [Contributing](CONTRIBUTING.md) — entry rules and tooling
+- [Publishing](docs/PUBLISHING.md) — runbook for the npm packages
 - [Changelog](CHANGELOG.md) · [Security policy](SECURITY.md) · [Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Project layout

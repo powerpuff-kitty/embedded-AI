@@ -19,6 +19,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `get_entry`, `list_domains` and `catalogue_stats` tools, plus
   `embedded-ai://catalog` and `embedded-ai://coverage` resources. Includes an
   end-to-end handshake test and its own CI workflow.
+- `docs/PUBLISHING.md` runbook for the two npm packages.
+
+### Changed
+- Dependabot ignores `numpy >= 2.5` for the recipes requirements: those releases
+  require Python >= 3.12, while the recipes CI pins Python 3.11.
 
 ### Security
 - Pin every GitHub Action to a full commit SHA (with a version comment);
