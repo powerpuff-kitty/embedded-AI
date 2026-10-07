@@ -35,6 +35,7 @@ function details(entry){
   const sources=el('ul',undefined,'sources');
   for(const [key,url] of Object.entries(entry.links||{})){if(!url)continue;const li=el('li');li.append(sourceLink(t(LINK_LABELS[key]||'ui.linkHomepage'),String(url),LINK_ICONS[key]));sources.append(li);}
   const manifest=el('li');manifest.append(sourceLink(t('ui.detailsManifest'),repoPath(entry.path),'fa-code'));sources.append(manifest);
+  const permalink=el('li');permalink.append(sourceLink('Permalink','./c/'+entry.id+'.html','fa-link'));sources.append(permalink);
   for(const evidence of entry.evidence||[]){const li=el('li');li.append(sourceLink(evidence.notes||evidence.type,evidence.url));sources.append(li);}
   box.append(sources);
   box.append(el('h3',t('ui.detailsRuns')));
