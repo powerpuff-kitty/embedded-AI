@@ -61,11 +61,12 @@ jobs:
       - run: npm run test:coverage
       - run: npm run audit -- --strict
       - run: npm run reviews:check && npm run site:build
-      - name: Commit validated sources and generated outputs; remove temporary transport
+      - name: Commit validated catalogue sources without changing workflow permissions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          rm .github/procedural-capsule.{0,1,2,3} .github/workflows/procedural-workbench.yml
+          git restore --source=HEAD --staged --worktree .github/workflows
+          rm .github/procedural-capsule.{0,1,2,3}
           git add --all
           git diff --cached --check
           git config user.name 'github-actions[bot]'
