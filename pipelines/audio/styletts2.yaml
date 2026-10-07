@@ -1,0 +1,23 @@
+id: styletts2
+name: StyleTTS 2
+domain: audio
+tasks: [text-to-speech, voice-cloning, expressive-tts]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Style-based TTS with diffusion and adversarial training for human-level naturalness."
+links: {repository: 'https://github.com/yl4579/StyleTTS2', paper: 'https://arxiv.org/abs/2306.07691'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Smaller than large TTS; on-device with optimisation.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained models; fine-tuning/voice cloning from samples.', needs_data: 'Text plus reference audio for cloning; consent required.', update_strategy: 'Verify weight terms; require consent and re-measure latency.'}
+data: {inputs: [text, style-reference], outputs: [synthesised-audio], languages: [en]}
+evaluation: ['MOS/speaker-similarity plus consent and abuse review.']
+limitations: ['Voice cloning risk; weight terms not stated; English focus.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/yl4579/StyleTTS2', notes: 'StyleTTS 2.'}]
+reviewed: '2026-10-06'
+tags: [audio, tts, expressive, voice-cloning]

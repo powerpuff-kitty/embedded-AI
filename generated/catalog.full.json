@@ -3008,6 +3008,97 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "encodec",
+      "name": "EnCodec",
+      "domain": "audio",
+      "tasks": [
+        "audio-codec",
+        "neural-compression",
+        "audio-tokenisation"
+      ],
+      "class": "audio-codec-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's neural audio codec that compresses audio to discrete tokens at low bitrates.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/encodec",
+        "paper": "https://arxiv.org/abs/2210.13438"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "mobile"
+        ],
+        "notes": "Real-time streaming at low bitrate; suitable for constrained links."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained codec; trainable on new audio domains.",
+        "needs_data": "Audio for evaluation/training.",
+        "update_strategy": "Pin checkpoint; re-measure bitrate/quality per content type."
+      },
+      "data": {
+        "inputs": [
+          "audio"
+        ],
+        "outputs": [
+          "tokens",
+          "reconstructed-audio"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Bitrate vs perceptual quality and real-time factor."
+      ],
+      "limitations": [
+        "Lossy; quality depends on bitrate and content."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/encodec",
+          "notes": "EnCodec neural audio codec."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "codec",
+        "compression",
+        "streaming"
+      ],
+      "path": "pipelines/audio/encodec.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "panns",
       "name": "PANNs",
       "domain": "audio",
@@ -5923,6 +6014,184 @@
       "usage_mode": "pretrained"
     },
     {
+      "id": "matcha-tts",
+      "name": "Matcha-TTS",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "speech-synthesis"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Fast non-autoregressive TTS using conditional flow matching for high-quality synthesis.",
+      "links": {
+        "repository": "https://github.com/shivammehta25/Matcha-TTS",
+        "paper": "https://arxiv.org/abs/2309.03199"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Efficient ODE-based decoder; fast enough for real time on CPU."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained voices; fine-tune per dataset.",
+        "needs_data": "Transcribed audio for fine-tuning/evaluation.",
+        "update_strategy": "Verify weight terms; re-measure real-time factor per target."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "MOS and real-time factor on the target."
+      ],
+      "limitations": [
+        "Weight terms not stated; single-speaker pretrained voices."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/shivammehta25/Matcha-TTS",
+          "notes": "Matcha-TTS."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "flow-matching",
+        "realtime"
+      ],
+      "path": "pipelines/audio/matcha-tts.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "melotts",
+      "name": "MeloTTS",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "multilingual-tts",
+        "realtime-tts"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "MyShell's real-time multilingual TTS built for CPU inference and edge use.",
+      "links": {
+        "repository": "https://github.com/myshell-ai/MeloTTS"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "mobile"
+        ],
+        "notes": "Designed to run in real time on CPU."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained multilingual voices; fine-tuning supported.",
+        "needs_data": "Transcribed audio for fine-tuning/evaluation.",
+        "update_strategy": "Verify weight terms; re-measure real-time factor per target."
+      },
+      "data": {
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "multilingual",
+          "en",
+          "zh"
+        ]
+      },
+      "evaluation": [
+        "MOS and real-time factor on the target."
+      ],
+      "limitations": [
+        "Weight terms not stated; quality varies by language."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/myshell-ai/MeloTTS",
+          "notes": "MeloTTS."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "multilingual",
+        "realtime"
+      ],
+      "path": "pipelines/audio/melotts.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "piper",
       "name": "Piper",
       "domain": "audio",
@@ -6007,6 +6276,94 @@
       ],
       "path": "pipelines/audio/piper.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "styletts2",
+      "name": "StyleTTS 2",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "voice-cloning",
+        "expressive-tts"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Style-based TTS with diffusion and adversarial training for human-level naturalness.",
+      "links": {
+        "repository": "https://github.com/yl4579/StyleTTS2",
+        "paper": "https://arxiv.org/abs/2306.07691"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Smaller than large TTS; on-device with optimisation."
+      },
+      "runtimes": [
+        "pytorch",
+        "onnxruntime"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained models; fine-tuning/voice cloning from samples.",
+        "needs_data": "Text plus reference audio for cloning; consent required.",
+        "update_strategy": "Verify weight terms; require consent and re-measure latency."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "style-reference"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "MOS/speaker-similarity plus consent and abuse review."
+      ],
+      "limitations": [
+        "Voice cloning risk; weight terms not stated; English focus."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/yl4579/StyleTTS2",
+          "notes": "StyleTTS 2."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "expressive",
+        "voice-cloning"
+      ],
+      "path": "pipelines/audio/styletts2.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "vits",
@@ -6095,6 +6452,93 @@
       ],
       "path": "catalog/audio/text-to-speech/vits.yaml",
       "usage_mode": "requires-training"
+    },
+    {
+      "id": "xtts",
+      "name": "XTTS",
+      "domain": "audio",
+      "tasks": [
+        "text-to-speech",
+        "voice-cloning",
+        "multilingual-tts"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Coqui XTTS multilingual voice-cloning TTS that clones a voice from a short sample.",
+      "links": {
+        "repository": "https://github.com/coqui-ai/TTS",
+        "model": "https://huggingface.co/coqui/XTTS-v2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MPL-2.0",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "GPU recommended for real time; CPU is slower."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained multi-speaker model; fine-tuning supported.",
+        "needs_data": "Text plus a short reference clip; consent required.",
+        "update_strategy": "Verify weight terms; require speaker consent and abuse review."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "reference-audio"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "MOS/speaker-similarity plus consent and abuse review."
+      ],
+      "limitations": [
+        "Voice cloning can be misused; repo archived, weights terms unclear."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/coqui-ai/TTS",
+          "notes": "Coqui TTS/XTTS-v2 (archived repo)."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "tts",
+        "voice-cloning",
+        "multilingual"
+      ],
+      "path": "pipelines/audio/xtts.yaml",
+      "usage_mode": "pretrained"
     },
     {
       "id": "hifi-gan",
@@ -6284,6 +6728,96 @@
         "remaining": "See recipe acquisition receipts; hardware tests are separate."
       },
       "path": "catalog/audio/vad/silero-vad.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "openvoice",
+      "name": "OpenVoice",
+      "domain": "audio",
+      "tasks": [
+        "voice-cloning",
+        "text-to-speech",
+        "voice-conversion"
+      ],
+      "class": "tts-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "MyShell's instant voice cloning with fine-grained control over tone, emotion and accent.",
+      "links": {
+        "repository": "https://github.com/myshell-ai/OpenVoice",
+        "paper": "https://arxiv.org/abs/2312.01479"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "Two-stage tone conversion; base TTS + converter."
+      },
+      "runtimes": [
+        "pytorch"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained tone converter; clones from short samples.",
+        "needs_data": "Reference audio; consent required.",
+        "update_strategy": "Verify weight terms; require consent and abuse review."
+      },
+      "data": {
+        "inputs": [
+          "text",
+          "reference-audio"
+        ],
+        "outputs": [
+          "synthesised-audio"
+        ],
+        "languages": [
+          "multilingual",
+          "en",
+          "zh"
+        ]
+      },
+      "evaluation": [
+        "Speaker similarity/MOS plus consent and abuse review."
+      ],
+      "limitations": [
+        "Voice cloning can be misused; weight terms not stated."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/myshell-ai/OpenVoice",
+          "notes": "OpenVoice."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "audio",
+        "voice-cloning",
+        "tts",
+        "voice-conversion"
+      ],
+      "path": "pipelines/audio/openvoice.yaml",
       "usage_mode": "pretrained"
     },
     {
@@ -8780,6 +9314,96 @@
         "primitive"
       ],
       "path": "primitives/control/acados.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "do-mpc",
+      "name": "do-mpc",
+      "domain": "control",
+      "tasks": [
+        "model-predictive-control",
+        "optimal-control",
+        "state-estimation"
+      ],
+      "class": "control-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Framework for robust model predictive control and moving-horizon estimation.",
+      "links": {
+        "repository": "https://github.com/do-mpc/do-mpc",
+        "homepage": "https://www.do-mpc.com/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "LGPL-3.0",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "embedded",
+          "edge",
+          "server"
+        ],
+        "notes": "Optimisation-based control; can be embedded with code generation."
+      },
+      "runtimes": [
+        "python",
+        "casadi",
+        "ipopt"
+      ],
+      "formats": [
+        "python",
+        "c-source"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Solves MPC problems from a plant model; no learning.",
+        "needs_data": "A system model plus tuning for the objective/constraints.",
+        "update_strategy": "Validate constraints and solve-time budgets per target."
+      },
+      "data": {
+        "inputs": [
+          "measurements",
+          "setpoints"
+        ],
+        "outputs": [
+          "control-actions"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Constraint satisfaction and worst-case solve time on the target."
+      ],
+      "limitations": [
+        "Nonlinear MPC solve times may exceed real-time; model quality matters."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/do-mpc/do-mpc",
+          "notes": "do-mpc."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "control",
+        "mpc",
+        "optimization",
+        "embedded"
+      ],
+      "path": "primitives/control/do-mpc.yaml",
       "usage_mode": "companion"
     },
     {
@@ -14670,6 +15294,93 @@
       ],
       "path": "pipelines/healthcare/mne-python.yaml",
       "usage_mode": "companion"
+    },
+    {
+      "id": "braindecode",
+      "name": "Braindecode",
+      "domain": "healthcare",
+      "tasks": [
+        "eeg-decoding",
+        "brain-computer-interface",
+        "biosignal-classification"
+      ],
+      "class": "biosignal-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "PyTorch library for deep learning on EEG/BCI signals, with standard datasets and models.",
+      "links": {
+        "repository": "https://github.com/braindecode/braindecode",
+        "homepage": "https://braindecode.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "BSD-3-Clause",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Small EEG models can run on embedded biosignal hardware."
+      },
+      "runtimes": [
+        "pytorch",
+        "mne"
+      ],
+      "formats": [
+        "pytorch-checkpoint"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains EEG decoders on labelled biosignal data.",
+        "needs_data": "Physiological signals with labels; ethics/consent review.",
+        "update_strategy": "Revalidate across subjects and sessions; monitor drift."
+      },
+      "data": {
+        "inputs": [
+          "eeg-signals"
+        ],
+        "outputs": [
+          "classes",
+          "decoded-intent"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Cross-subject/session accuracy plus ethics review."
+      ],
+      "limitations": [
+        "Strong subject/session variability; medical claims need validation."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/braindecode/braindecode",
+          "notes": "Braindecode."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "healthcare",
+        "eeg",
+        "bci",
+        "biosignals"
+      ],
+      "path": "pipelines/healthcare/braindecode.yaml",
+      "usage_mode": "requires-training"
     },
     {
       "id": "monai",
@@ -20600,6 +21311,92 @@
       "usage_mode": "companion"
     },
     {
+      "id": "instant-ngp",
+      "name": "Instant-NGP",
+      "domain": "mapping",
+      "tasks": [
+        "neural-radiance-fields",
+        "3d-reconstruction",
+        "view-synthesis"
+      ],
+      "class": "radiance-field-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "NVIDIA's multi-resolution hash encoding that trains NeRFs in seconds to minutes.",
+      "links": {
+        "repository": "https://github.com/NVlabs/instant-ngp",
+        "paper": "https://arxiv.org/abs/2201.05989"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server"
+        ],
+        "notes": "Requires an NVIDIA GPU for training; not embedded-scale."
+      },
+      "runtimes": [
+        "cuda",
+        "native-cpp"
+      ],
+      "formats": [
+        "native-cpp"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "requires-training",
+        "training": "Trains a radiance field per captured scene.",
+        "needs_data": "Posed images/video of the scene.",
+        "update_strategy": "Verify licence (NVIDIA custom); re-train per scene."
+      },
+      "data": {
+        "inputs": [
+          "posed-images"
+        ],
+        "outputs": [
+          "3d-scene",
+          "novel-views"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "PSNR/SSIM on held-out views."
+      ],
+      "limitations": [
+        "NVIDIA GPU required; per-scene training; custom licence."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/NVlabs/instant-ngp",
+          "notes": "Instant-NGP."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "mapping",
+        "nerf",
+        "reconstruction",
+        "nvidia"
+      ],
+      "path": "pipelines/mapping/instant-ngp.yaml",
+      "usage_mode": "requires-training"
+    },
+    {
       "id": "nerfstudio",
       "name": "Nerfstudio",
       "domain": "mapping",
@@ -20768,6 +21565,96 @@
         "primitive"
       ],
       "path": "primitives/optimization/ceres-solver.yaml",
+      "usage_mode": "companion"
+    },
+    {
+      "id": "open3d",
+      "name": "Open3D",
+      "domain": "mapping",
+      "tasks": [
+        "point-cloud-processing",
+        "3d-reconstruction",
+        "geometry"
+      ],
+      "class": "3d-toolkit",
+      "kind": "toolkit",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Library for 3D data processing, including point clouds, meshes and registration.",
+      "links": {
+        "repository": "https://github.com/isl-org/Open3D",
+        "homepage": "https://www.open3d.org/"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "not-provided"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "embedded",
+          "edge",
+          "server"
+        ],
+        "notes": "CPU algorithms; some deep-learning pipelines need a GPU."
+      },
+      "runtimes": [
+        "native-cpp",
+        "python"
+      ],
+      "formats": [
+        "ply",
+        "pcd"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "companion",
+        "training": "Processes/registers point clouds; deep models trained separately.",
+        "needs_data": "Point-cloud/mesh data for the target pipeline.",
+        "update_strategy": "Pin version; re-benchmark registration on the target."
+      },
+      "data": {
+        "inputs": [
+          "point-cloud",
+          "mesh"
+        ],
+        "outputs": [
+          "processed-3d",
+          "poses"
+        ],
+        "languages": []
+      },
+      "evaluation": [
+        "Reconstruction/registration error plus runtime on the target."
+      ],
+      "limitations": [
+        "Licence file not standard (verify terms); deep pipelines want a GPU."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/isl-org/Open3D",
+          "notes": "Open3D."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "mapping",
+        "3d",
+        "point-cloud",
+        "toolkit"
+      ],
+      "path": "pipelines/mapping/open3d.yaml",
       "usage_mode": "companion"
     },
     {

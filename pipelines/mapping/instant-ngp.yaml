@@ -1,0 +1,23 @@
+id: instant-ngp
+name: Instant-NGP
+domain: mapping
+tasks: [neural-radiance-fields, 3d-reconstruction, view-synthesis]
+class: radiance-field-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "NVIDIA's multi-resolution hash encoding that trains NeRFs in seconds to minutes."
+links: {repository: 'https://github.com/NVlabs/instant-ngp', paper: 'https://arxiv.org/abs/2201.05989'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'Requires an NVIDIA GPU for training; not embedded-scale.'}
+runtimes: [cuda, native-cpp]
+formats: [native-cpp]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: requires-training, training: 'Trains a radiance field per captured scene.', needs_data: 'Posed images/video of the scene.', update_strategy: 'Verify licence (NVIDIA custom); re-train per scene.'}
+data: {inputs: [posed-images], outputs: [3d-scene, novel-views], languages: []}
+evaluation: ['PSNR/SSIM on held-out views.']
+limitations: ['NVIDIA GPU required; per-scene training; custom licence.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/NVlabs/instant-ngp', notes: 'Instant-NGP.'}]
+reviewed: '2026-10-06'
+tags: [mapping, nerf, reconstruction, nvidia]

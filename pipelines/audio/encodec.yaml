@@ -1,0 +1,23 @@
+id: encodec
+name: EnCodec
+domain: audio
+tasks: [audio-codec, neural-compression, audio-tokenisation]
+class: audio-codec-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Meta's neural audio codec that compresses audio to discrete tokens at low bitrates."
+links: {repository: 'https://github.com/facebookresearch/encodec', paper: 'https://arxiv.org/abs/2210.13438'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [embedded, edge, desktop, mobile], notes: 'Real-time streaming at low bitrate; suitable for constrained links.'}
+runtimes: [pytorch, onnxruntime]
+formats: [pytorch-checkpoint, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained codec; trainable on new audio domains.', needs_data: 'Audio for evaluation/training.', update_strategy: 'Pin checkpoint; re-measure bitrate/quality per content type.'}
+data: {inputs: [audio], outputs: [tokens, reconstructed-audio], languages: [multilingual]}
+evaluation: ['Bitrate vs perceptual quality and real-time factor.']
+limitations: ['Lossy; quality depends on bitrate and content.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/facebookresearch/encodec', notes: 'EnCodec neural audio codec.'}]
+reviewed: '2026-10-06'
+tags: [audio, codec, compression, streaming]

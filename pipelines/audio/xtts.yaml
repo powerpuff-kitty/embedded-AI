@@ -1,0 +1,23 @@
+id: xtts
+name: XTTS
+domain: audio
+tasks: [text-to-speech, voice-cloning, multilingual-tts]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Coqui XTTS multilingual voice-cloning TTS that clones a voice from a short sample."
+links: {repository: 'https://github.com/coqui-ai/TTS', model: 'https://huggingface.co/coqui/XTTS-v2'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MPL-2.0, weights: unknown}
+deployment: {offline: true, targets: [desktop, server], notes: 'GPU recommended for real time; CPU is slower.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained multi-speaker model; fine-tuning supported.', needs_data: 'Text plus a short reference clip; consent required.', update_strategy: 'Verify weight terms; require speaker consent and abuse review.'}
+data: {inputs: [text, reference-audio], outputs: [synthesised-audio], languages: [multilingual]}
+evaluation: ['MOS/speaker-similarity plus consent and abuse review.']
+limitations: ['Voice cloning can be misused; repo archived, weights terms unclear.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/coqui-ai/TTS', notes: 'Coqui TTS/XTTS-v2 (archived repo).'}]
+reviewed: '2026-10-06'
+tags: [audio, tts, voice-cloning, multilingual]

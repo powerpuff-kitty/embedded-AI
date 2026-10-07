@@ -1,0 +1,23 @@
+id: openvoice
+name: OpenVoice
+domain: audio
+tasks: [voice-cloning, text-to-speech, voice-conversion]
+class: tts-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "MyShell's instant voice cloning with fine-grained control over tone, emotion and accent."
+links: {repository: 'https://github.com/myshell-ai/OpenVoice', paper: 'https://arxiv.org/abs/2312.01479'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: unknown}
+deployment: {offline: true, targets: [desktop, server, edge], notes: 'Two-stage tone conversion; base TTS + converter.'}
+runtimes: [pytorch]
+formats: [pytorch-checkpoint]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained tone converter; clones from short samples.', needs_data: 'Reference audio; consent required.', update_strategy: 'Verify weight terms; require consent and abuse review.'}
+data: {inputs: [text, reference-audio], outputs: [synthesised-audio], languages: [multilingual, en, zh]}
+evaluation: ['Speaker similarity/MOS plus consent and abuse review.']
+limitations: ['Voice cloning can be misused; weight terms not stated.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/myshell-ai/OpenVoice', notes: 'OpenVoice.'}]
+reviewed: '2026-10-06'
+tags: [audio, voice-cloning, tts, voice-conversion]
