@@ -1,5 +1,5 @@
 {
-  "total": 439,
+  "total": 456,
   "by_domain": {
     "accessibility": 2,
     "administrative": 7,
@@ -29,7 +29,7 @@
     "healthcare": 6,
     "hydrology": 2,
     "infrastructure": 8,
-    "language": 12,
+    "language": 29,
     "manufacturing": 3,
     "mapping": 9,
     "marine": 1,
@@ -56,7 +56,7 @@
     "weather": 1
   },
   "by_kind": {
-    "collection": 90,
+    "collection": 107,
     "model": 64,
     "pipeline": 52,
     "primitive": 27,
@@ -64,15 +64,15 @@
   },
   "by_usage": {
     "companion": 150,
-    "pretrained": 124,
+    "pretrained": 141,
     "requires-training": 115,
     "unknown": 50
   },
   "unknowns": {
     "usage": 50,
-    "code_license": 31,
-    "weights_license": 136,
-    "measured_peak_ram": 439
+    "code_license": 33,
+    "weights_license": 137,
+    "measured_peak_ram": 456
   },
   "reproduced_entries": 3,
   "note": "Counts describe catalogue coverage, not deployment guarantees. Unknown RAM is not estimated from weights. Non-neural tools can legitimately lack model sizes."

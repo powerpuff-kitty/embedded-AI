@@ -1,0 +1,23 @@
+id: qwen3
+name: Qwen3
+domain: language
+tasks: [text-generation, on-device-llm, tool-calling]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Alibaba's Qwen3 family, including 0.6B-4B models intended for phones and edge devices."
+links: {repository: 'https://github.com/QwenLM/Qwen3', model: 'https://huggingface.co/Qwen/Qwen3-0.6B'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: Apache-2.0}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: '0.6B/1.7B/4B variants target phones; verify per device.'}
+runtimes: [transformers, llama-cpp, mlx, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained models with thinking/non-thinking modes; fine-tuning supported.', needs_data: 'Prompts for inference; task data for evaluation/fine-tuning.', update_strategy: 'Verify per-model licence; pin checkpoint and re-measure memory.'}
+data: {inputs: [text-prompt], outputs: [generated-text, tool-calls], languages: [multilingual]}
+evaluation: ['Task quality plus memory and tokens/s at the chosen size/quantization.']
+limitations: ['Repository licence not declared; larger variants are not edge-sized.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/QwenLM/Qwen3', notes: 'Qwen3 model family documentation.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, on-device, qwen]

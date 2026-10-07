@@ -1,0 +1,23 @@
+id: bitnet
+name: BitNet (1.58-bit)
+domain: language
+tasks: [text-generation, on-device-llm, quantisation]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Microsoft's ternary 1.58-bit LLM family and the bitnet.cpp CPU inference framework."
+links: {repository: 'https://github.com/microsoft/BitNet', model: 'https://huggingface.co/microsoft/BitNet-b1.58-2B-4T', paper: 'https://arxiv.org/abs/2402.17764'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [embedded, mobile, edge, desktop, server], notes: 'Low-precision weights shrink memory and speed up CPU inference.'}
+runtimes: [bitnet.cpp, llama-cpp]
+formats: [gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained ternary models via bitnet.cpp; training from scratch is research-grade.', needs_data: 'Prompts for inference; task data for evaluation.', update_strategy: 'Pin model and runtime; re-measure memory and quality per target.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en, multilingual-variants]}
+evaluation: ['Quality vs full-precision baseline plus memory and tokens/s.']
+limitations: ['Low-precision quality gaps; limited model availability.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/BitNet', notes: 'BitNet 1.58-bit models and bitnet.cpp.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, quantisation, on-device]

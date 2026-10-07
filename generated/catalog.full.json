@@ -15088,6 +15088,1445 @@
       "usage_mode": "companion"
     },
     {
+      "id": "bitnet",
+      "name": "BitNet (1.58-bit)",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm",
+        "quantisation"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft's ternary 1.58-bit LLM family and the bitnet.cpp CPU inference framework.",
+      "links": {
+        "repository": "https://github.com/microsoft/BitNet",
+        "model": "https://huggingface.co/microsoft/BitNet-b1.58-2B-4T",
+        "paper": "https://arxiv.org/abs/2402.17764"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Low-precision weights shrink memory and speed up CPU inference."
+      },
+      "runtimes": [
+        "bitnet.cpp",
+        "llama-cpp"
+      ],
+      "formats": [
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained ternary models via bitnet.cpp; training from scratch is research-grade.",
+        "needs_data": "Prompts for inference; task data for evaluation.",
+        "update_strategy": "Pin model and runtime; re-measure memory and quality per target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Quality vs full-precision baseline plus memory and tokens/s."
+      ],
+      "limitations": [
+        "Low-precision quality gaps; limited model availability."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/BitNet",
+          "notes": "BitNet 1.58-bit models and bitnet.cpp."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "quantisation",
+        "on-device"
+      ],
+      "path": "catalog/language/on-device/bitnet.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "gpt-2",
+      "name": "GPT-2",
+      "domain": "language",
+      "tasks": [
+        "text-generation"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OpenAI's classic 124M-1.5B generative model, still a common tiny on-device baseline.",
+      "links": {
+        "repository": "https://github.com/openai/gpt-2",
+        "model": "https://huggingface.co/openai-community/gpt2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop"
+        ],
+        "notes": "124M fits tiny devices; older and weaker than modern small LLMs."
+      },
+      "runtimes": [
+        "transformers",
+        "onnxruntime",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "onnx",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base model; fine-tuning is common.",
+        "needs_data": "Prompts for inference; text for fine-tuning.",
+        "update_strategy": "Pin checkpoint; expect weak coherence versus newer models."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Perplexity/quality plus memory and latency on the target."
+      ],
+      "limitations": [
+        "Dated quality and known bias; base model without safety tuning."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/openai/gpt-2",
+          "notes": "GPT-2 models (modified MIT)."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "baseline",
+        "compact"
+      ],
+      "path": "catalog/language/on-device/gpt-2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "gemma",
+      "name": "Gemma",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Google's open small language models (2B and 7B), with 2B variants aimed at on-device use.",
+      "links": {
+        "repository": "https://github.com/google-deepmind/gemma",
+        "model": "https://huggingface.co/google/gemma-2-2b-it"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Gemma-Terms"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "2B 4-bit variants run on modern phones; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "mediapipe"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct models; fine-tuning permitted under terms.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Accept the Gemma terms; pin checkpoint and re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality at the chosen size/quantization plus memory and tokens/s."
+      ],
+      "limitations": [
+        "Weights use Gemma Terms (not open-source); safety policy obligations apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/google-deepmind/gemma",
+          "notes": "Gemma reference implementation and licence review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "gemma"
+      ],
+      "path": "catalog/language/on-device/gemma.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "granite",
+      "name": "IBM Granite",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "IBM's Granite language models, including 2B variants intended for constrained deployment.",
+      "links": {
+        "repository": "https://github.com/ibm-granite/granite-3.0-language-models",
+        "model": "https://huggingface.co/ibm-granite/granite-3.0-2b-instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "2B 4-bit variants suit edge; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct models under Apache-2.0; fine-tuning supported.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure memory and quality."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s at the chosen size."
+      ],
+      "limitations": [
+        "Smaller sizes trade knowledge/reasoning for efficiency."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/ibm-granite/granite-3.0-language-models",
+          "notes": "Granite language models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "granite"
+      ],
+      "path": "catalog/language/on-device/granite.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "llama-3-2",
+      "name": "Llama 3.2",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's Llama 3.2 family, whose 1B and 3B models are explicitly aimed at edge devices.",
+      "links": {
+        "repository": "https://github.com/meta-llama/llama-models",
+        "model": "https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Llama-3.2-Community-License",
+        "weights": "Llama-3.2-Community-License"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "1B/3B 4-bit variants fit phones; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "executorch"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct models; community licence governs use and derivatives.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Comply with the community licence; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s at the chosen quantization."
+      ],
+      "limitations": [
+        "Custom community licence (not OSI open source); use restrictions apply."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/meta-llama/llama-models",
+          "notes": "Llama 3.2 model documentation and licence review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "llama"
+      ],
+      "path": "catalog/language/on-device/llama-3-2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "mamba",
+      "name": "Mamba",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "sequence-modelling"
+      ],
+      "class": "ssm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Selective state-space models with linear-time sequence modelling as an alternative to attention.",
+      "links": {
+        "repository": "https://github.com/state-spaces/mamba",
+        "model": "https://huggingface.co/state-spaces/mamba-130m-hf",
+        "paper": "https://arxiv.org/abs/2312.00752"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Linear-time inference; small checkpoints suit constrained devices."
+      },
+      "runtimes": [
+        "pytorch",
+        "transformers"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base models; training recipes provided.",
+        "needs_data": "Text corpora for training; prompts for inference.",
+        "update_strategy": "Pin checkpoint; verify kernel support on the target hardware."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Quality plus throughput/latency on the target hardware."
+      ],
+      "limitations": [
+        "Custom CUDA kernels needed for best speed; smaller ecosystem."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/state-spaces/mamba",
+          "notes": "Mamba state-space models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "ssm",
+        "mamba",
+        "sequence"
+      ],
+      "path": "catalog/language/on-device/mamba.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "minicpm",
+      "name": "MiniCPM",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "OpenBMB's compact models (1B-4B) built for phones, including MiniCPM-V vision variants.",
+      "links": {
+        "repository": "https://github.com/OpenBMB/MiniCPM",
+        "model": "https://huggingface.co/openbmb/MiniCPM-1B-sft-bf16"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "1B/2B variants run on phones; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained chat models; fine-tuning supported.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Check per-model terms; pin checkpoint and re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en",
+          "zh"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s on the target device."
+      ],
+      "limitations": [
+        "Some deployments carry separate model terms; verify per checkpoint."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/OpenBMB/MiniCPM",
+          "notes": "MiniCPM model family."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "minicpm"
+      ],
+      "path": "catalog/language/on-device/minicpm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral (7B / Small)",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Mistral AI's open models and reference inference stack, including 7B and small variants.",
+      "links": {
+        "repository": "https://github.com/mistralai/mistral-inference",
+        "model": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "server",
+          "edge"
+        ],
+        "notes": "7B is desktop/server; smaller quantized variants target edge."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct models; fine-tuning supported.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure memory and quality."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Instruction quality plus memory and tokens/s at the chosen quantization."
+      ],
+      "limitations": [
+        "7B is not embedded-scale; per-model licences can differ from Apache-2.0."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/mistralai/mistral-inference",
+          "notes": "Mistral inference stack and model references."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "mistral",
+        "pretrained"
+      ],
+      "path": "catalog/language/on-device/mistral.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "mobilellm",
+      "name": "MobileLLM",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta sub-billion-parameter models designed specifically for on-device deployment.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/MobileLLM",
+        "model": "https://huggingface.co/facebook/MobileLLM-1B"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "FAIR-Noncommercial-Research-License",
+        "weights": "FAIR-Noncommercial-Research-License"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "embedded"
+        ],
+        "notes": "Sub-1B models quantize to phone scale; measure per device."
+      },
+      "runtimes": [
+        "transformers",
+        "executorch",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained models; research licence restricts commercial use.",
+        "needs_data": "Prompts for inference; task data for evaluation.",
+        "update_strategy": "Non-commercial licence; pin checkpoint and re-measure per target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s on the target device."
+      ],
+      "limitations": [
+        "FAIR non-commercial research licence forbids commercial use."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/MobileLLM",
+          "notes": "MobileLLM paper/code and licence review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "mobile"
+      ],
+      "path": "catalog/language/on-device/mobilellm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "opt",
+      "name": "OPT",
+      "domain": "language",
+      "tasks": [
+        "text-generation"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Meta's open pre-trained transformer family (125M-175B) with small variants usable on edge CPUs.",
+      "links": {
+        "repository": "https://github.com/facebookresearch/metaseq",
+        "model": "https://huggingface.co/facebook/opt-350m",
+        "paper": "https://arxiv.org/abs/2205.01068"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "125M-1.3B variants run on CPUs; larger are not edge-sized."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base models; fine-tuning possible.",
+        "needs_data": "Prompts for inference; task data for evaluation.",
+        "update_strategy": "Pin checkpoint; base models are not safety-tuned."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Perplexity/quality plus memory and latency at the chosen size."
+      ],
+      "limitations": [
+        "Base models without instruction tuning; larger sizes are server-scale."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/facebookresearch/metaseq",
+          "notes": "OPT models via metaseq."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "research",
+        "compact"
+      ],
+      "path": "catalog/language/on-device/opt.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "openelm",
+      "name": "OpenELM",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Apple's open efficient language models (270M-3B) with per-layer parameter scaling.",
+      "links": {
+        "model": "https://huggingface.co/apple/OpenELM-270M",
+        "paper": "https://arxiv.org/abs/2404.14619"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "unknown"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop"
+        ],
+        "notes": "270M/450M/1.1B target on-device; verify licence per model."
+      },
+      "runtimes": [
+        "transformers",
+        "mlx",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base/instruct variants; fine-tuning possible.",
+        "needs_data": "Prompts for inference; task data for evaluation.",
+        "update_strategy": "Check the Apple model licence; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s on the target device."
+      ],
+      "limitations": [
+        "Licence terms are non-standard (Apple model terms); verify before use."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/apple/OpenELM-270M",
+          "notes": "OpenELM model card review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "apple"
+      ],
+      "path": "catalog/language/on-device/openelm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "phi-2",
+      "name": "Phi-2",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm",
+        "reasoning"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "2.7B-parameter Microsoft model emphasising reasoning from textbook-quality data.",
+      "links": {
+        "model": "https://huggingface.co/microsoft/phi-2"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "Base (not chat-tuned); quantization needed for edge."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base model; instruction tuning is left to the user.",
+        "needs_data": "Prompts for inference; instruction data for alignment.",
+        "update_strategy": "Pin checkpoint; add safety tuning before user-facing deployment."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus safety review before user-facing use."
+      ],
+      "limitations": [
+        "Base model without instruction tuning or safety alignment."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://huggingface.co/microsoft/phi-2",
+          "notes": "Model card review; MIT licence."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "compact"
+      ],
+      "path": "catalog/language/on-device/phi-2.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "phi-3",
+      "name": "Phi-3",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm",
+        "reasoning"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Microsoft's small language models (mini 3.8B / small 7B) tuned for reasoning at modest size.",
+      "links": {
+        "repository": "https://github.com/microsoft/PhiCookBook",
+        "model": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "MIT",
+        "weights": "MIT"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "4-bit mini fits high-end phones; verify RAM/thermal per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "onnxruntime"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf",
+        "onnx"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained instruct models; fine-tuning optional.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure memory and quality per target."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en",
+          "multilingual-variants"
+        ]
+      },
+      "evaluation": [
+        "Reasoning/instruction quality at the chosen quantization plus memory and tokens/s."
+      ],
+      "limitations": [
+        "Knowledge is limited relative to large models; quantized quality varies."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/microsoft/PhiCookBook",
+          "notes": "Docs review of Phi-3 sizes and licence; not a board benchmark."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "reasoning"
+      ],
+      "path": "catalog/language/on-device/phi-3.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "pythia",
+      "name": "Pythia",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "research"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "EleutherAI's suite of small interpretable models (70M-12B) with public training checkpoints.",
+      "links": {
+        "repository": "https://github.com/EleutherAI/pythia",
+        "model": "https://huggingface.co/EleutherAI/pythia-160m"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Tiny variants are useful for experiments on constrained devices."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base models with intermediate checkpoints for research.",
+        "needs_data": "Prompts for inference; corpora for further training.",
+        "update_strategy": "Pin checkpoint; note these are base models without safety tuning."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Perplexity and downstream task checks for the chosen size."
+      ],
+      "limitations": [
+        "Research base models; not instruction-tuned or safety-aligned."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/EleutherAI/pythia",
+          "notes": "Pythia model suite."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "research",
+        "compact"
+      ],
+      "path": "catalog/language/on-device/pythia.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "qwen3",
+      "name": "Qwen3",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm",
+        "tool-calling"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Alibaba's Qwen3 family, including 0.6B-4B models intended for phones and edge devices.",
+      "links": {
+        "repository": "https://github.com/QwenLM/Qwen3",
+        "model": "https://huggingface.co/Qwen/Qwen3-0.6B"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "unknown",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "0.6B/1.7B/4B variants target phones; verify per device."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp",
+        "mlx",
+        "vllm"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained models with thinking/non-thinking modes; fine-tuning supported.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Verify per-model licence; pin checkpoint and re-measure memory."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text",
+          "tool-calls"
+        ],
+        "languages": [
+          "multilingual"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s at the chosen size/quantization."
+      ],
+      "limitations": [
+        "Repository licence not declared; larger variants are not edge-sized."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/QwenLM/Qwen3",
+          "notes": "Qwen3 model family documentation."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "qwen"
+      ],
+      "path": "catalog/language/on-device/qwen3.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "rwkv",
+      "name": "RWKV",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Recurrent RNN-style language models with linear-time inference and constant memory per token.",
+      "links": {
+        "repository": "https://github.com/BlinkDL/RWKV-LM",
+        "model": "https://huggingface.co/BlinkDL/rwkv-7-world"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Apache-2.0"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "embedded",
+          "mobile",
+          "edge",
+          "desktop",
+          "server"
+        ],
+        "notes": "Constant memory regardless of context suits edge streaming."
+      },
+      "runtimes": [
+        "rwkv.cpp",
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained models; training recipes are provided.",
+        "needs_data": "Prompts for inference; task data for evaluation/training.",
+        "update_strategy": "Pin checkpoint and quantization; re-measure constant-memory behaviour."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "multilingual",
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Quality plus memory/tokens-per-second, including long-context behaviour."
+      ],
+      "limitations": [
+        "Ecosystem/tooling smaller than transformer models."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/BlinkDL/RWKV-LM",
+          "notes": "RWKV architecture and models."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "rnn",
+        "on-device"
+      ],
+      "path": "catalog/language/on-device/rwkv.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
       "id": "smollm",
       "name": "SmolLM",
       "domain": "language",
@@ -15175,6 +16614,94 @@
         "pretrained"
       ],
       "path": "catalog/language/on-device/smollm.yaml",
+      "usage_mode": "pretrained"
+    },
+    {
+      "id": "stablelm",
+      "name": "StableLM",
+      "domain": "language",
+      "tasks": [
+        "text-generation",
+        "on-device-llm"
+      ],
+      "class": "small-llm-collection",
+      "kind": "collection",
+      "catalogue_batch": "expansion-2026-10-06",
+      "description": "Stability AI's small language models, with 1.6B/3B variants suitable for modest hardware.",
+      "links": {
+        "repository": "https://github.com/Stability-AI/StableLM",
+        "model": "https://huggingface.co/stabilityai/stablelm-2-1_6b"
+      },
+      "model": {
+        "parameters": null,
+        "file_size_mb": null
+      },
+      "license": {
+        "code": "Apache-2.0",
+        "weights": "Stability-AI-Community-License"
+      },
+      "deployment": {
+        "offline": true,
+        "targets": [
+          "desktop",
+          "edge",
+          "server"
+        ],
+        "notes": "1.6B fits edge with quantization; verify per model term."
+      },
+      "runtimes": [
+        "transformers",
+        "llama-cpp"
+      ],
+      "formats": [
+        "safetensors",
+        "gguf"
+      ],
+      "requirements": {
+        "ram_mb": {
+          "minimum": null,
+          "measured_peak": null
+        }
+      },
+      "usage": {
+        "mode": "pretrained",
+        "training": "Pretrained base/instruct models; fine-tuning supported.",
+        "needs_data": "Prompts for inference; task data for evaluation/fine-tuning.",
+        "update_strategy": "Check per-model community licence; pin checkpoint and re-measure."
+      },
+      "data": {
+        "inputs": [
+          "text-prompt"
+        ],
+        "outputs": [
+          "generated-text"
+        ],
+        "languages": [
+          "en"
+        ]
+      },
+      "evaluation": [
+        "Task quality plus memory and tokens/s at the chosen size."
+      ],
+      "limitations": [
+        "Some weights use the Stability AI Community Licence, not Apache-2.0."
+      ],
+      "compatibility": [],
+      "evidence": [
+        {
+          "type": "official",
+          "url": "https://github.com/Stability-AI/StableLM",
+          "notes": "StableLM models and licence review."
+        }
+      ],
+      "reviewed": "2026-10-06",
+      "tags": [
+        "language",
+        "llm",
+        "on-device",
+        "stability"
+      ],
+      "path": "catalog/language/on-device/stablelm.yaml",
       "usage_mode": "pretrained"
     },
     {

@@ -47,7 +47,7 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 
 | | |
 |---|---|
-| **439 entries** | models, collections, pipelines, toolkits and primitives |
+| **456 entries** | models, collections, pipelines, toolkits and primitives |
 | **53 domains** | vision, audio, language, robotics, gaming, genomics and more |
 | **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
@@ -94,7 +94,7 @@ Use primary sources and leave unknowns unknown. See [CONTRIBUTING.md](CONTRIBUTI
 
 ## Full catalogue
 
-**439 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
+**456 entries**, including models, collections, pipelines, toolkits and non-AI primitives. Generated from YAML in `catalog/`, `pipelines/` and `primitives/`.
 
 Names link to manifests; upstream links point to original projects. **—** means unknown or not applicable, never zero. Parameter counts and model files are not RAM budgets. Read measurement scope and runtime notes.
 
@@ -489,7 +489,24 @@ Guides: [vision, video and 3D](docs/VISION-VIDEO-3D.md) · [finance, administrat
 | [fastText lid.176](catalog/language/classification/fasttext-lid176.yaml) · [upstream](<https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz>) | model / pretrained | language-identification | — | 917 kB | fasttext-cpp, python, fasttext-ftz | edge | MIT / CC-BY-SA-3.0 | unknown |
 | [KenLM](pipelines/language/kenlm.yaml) · [upstream](<https://github.com/kpu/kenlm>) | primitive / requires-training | language-modelling, text-scoring | — | — | native-cpp, python, arpa, binary-lm | embedded, mobile, edge, desktop, server | LGPL-2.1 / not-provided | unknown |
 | [GPT4All](pipelines/language/gpt4all.yaml) · [upstream](<https://github.com/nomic-ai/gpt4all>) | toolkit / companion | on-device-llm, text-generation, local-chat | — | — | llama-cpp-native, gguf | desktop | MIT / not-provided | unknown |
+| [BitNet (1.58-bit)](catalog/language/on-device/bitnet.yaml) · [upstream](<https://huggingface.co/microsoft/BitNet-b1.58-2B-4T>) | collection / pretrained | text-generation, on-device-llm, quantisation | — | — | bitnet.cpp, llama-cpp, gguf | embedded, mobile, edge, desktop, server | MIT / MIT | unknown |
+| [GPT-2](catalog/language/on-device/gpt-2.yaml) · [upstream](<https://huggingface.co/openai-community/gpt2>) | collection / pretrained | text-generation | — | — | transformers, onnxruntime, llama-cpp, safetensors, onnx, gguf | embedded, edge, desktop | MIT / MIT | unknown |
+| [Gemma](catalog/language/on-device/gemma.yaml) · [upstream](<https://huggingface.co/google/gemma-2-2b-it>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, mediapipe, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Gemma-Terms | unknown |
+| [IBM Granite](catalog/language/on-device/granite.yaml) · [upstream](<https://huggingface.co/ibm-granite/granite-3.0-2b-instruct>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, vllm, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
+| [Llama 3.2](catalog/language/on-device/llama-3-2.yaml) · [upstream](<https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop, server | Llama-3.2-Community-License / Llama-3.2-Community-License | unknown |
+| [Mamba](catalog/language/on-device/mamba.yaml) · [upstream](<https://huggingface.co/state-spaces/mamba-130m-hf>) | collection / pretrained | text-generation, sequence-modelling | — | — | pytorch, transformers, safetensors | embedded, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+| [MiniCPM](catalog/language/on-device/minicpm.yaml) · [upstream](<https://huggingface.co/openbmb/MiniCPM-1B-sft-bf16>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [Mistral (7B / Small)](catalog/language/on-device/mistral.yaml) · [upstream](<https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, vllm, safetensors, gguf | desktop, server, edge | Apache-2.0 / Apache-2.0 | unknown |
+| [MobileLLM](catalog/language/on-device/mobilellm.yaml) · [upstream](<https://huggingface.co/facebook/MobileLLM-1B>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, executorch, llama-cpp, safetensors | mobile, edge, embedded | FAIR-Noncommercial-Research-License / FAIR-Noncommercial-Research-License | unknown |
+| [OPT](catalog/language/on-device/opt.yaml) · [upstream](<https://huggingface.co/facebook/opt-350m>) | collection / pretrained | text-generation | — | — | transformers, llama-cpp, safetensors | embedded, edge, desktop, server | MIT / MIT | unknown |
+| [OpenELM](catalog/language/on-device/openelm.yaml) · [upstream](<https://huggingface.co/apple/OpenELM-270M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, mlx, llama-cpp, safetensors | mobile, edge, desktop | unknown / unknown | unknown |
+| [Phi-2](catalog/language/on-device/phi-2.yaml) · [upstream](<https://huggingface.co/microsoft/phi-2>) | collection / pretrained | text-generation, on-device-llm, reasoning | — | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | MIT / MIT | unknown |
+| [Phi-3](catalog/language/on-device/phi-3.yaml) · [upstream](<https://huggingface.co/microsoft/Phi-3-mini-4k-instruct>) | collection / pretrained | text-generation, on-device-llm, reasoning | — | — | transformers, llama-cpp, onnxruntime, safetensors, gguf, onnx | mobile, edge, desktop, server | MIT / MIT | unknown |
+| [Pythia](catalog/language/on-device/pythia.yaml) · [upstream](<https://huggingface.co/EleutherAI/pythia-160m>) | collection / pretrained | text-generation, research | — | — | transformers, llama-cpp, safetensors | embedded, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
+| [Qwen3](catalog/language/on-device/qwen3.yaml) · [upstream](<https://huggingface.co/Qwen/Qwen3-0.6B>) | collection / pretrained | text-generation, on-device-llm, tool-calling | — | — | transformers, llama-cpp, mlx, vllm, safetensors, gguf | mobile, edge, desktop, server | unknown / Apache-2.0 | unknown |
+| [RWKV](catalog/language/on-device/rwkv.yaml) · [upstream](<https://huggingface.co/BlinkDL/rwkv-7-world>) | collection / pretrained | text-generation, on-device-llm | — | — | rwkv.cpp, transformers, llama-cpp, safetensors, gguf | embedded, mobile, edge, desktop, server | Apache-2.0 / Apache-2.0 | unknown |
 | [SmolLM](catalog/language/on-device/smollm.yaml) · [upstream](<https://huggingface.co/HuggingFaceTB/SmolLM2-135M>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, executorch, safetensors, gguf | mobile, edge, desktop | Apache-2.0 / Apache-2.0 | unknown |
+| [StableLM](catalog/language/on-device/stablelm.yaml) · [upstream](<https://huggingface.co/stabilityai/stablelm-2-1_6b>) | collection / pretrained | text-generation, on-device-llm | — | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Stability-AI-Community-License | unknown |
 | [TinyLlama](catalog/language/on-device/tinyllama.yaml) · [upstream](<https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0>) | collection / pretrained | text-generation, on-device-llm | 1.1B | — | transformers, llama-cpp, safetensors, gguf | desktop, edge, server | Apache-2.0 / Apache-2.0 | unknown |
 | [SentencePiece](pipelines/language/sentencepiece.yaml) · [upstream](<https://github.com/google/sentencepiece>) | primitive / companion | tokenisation, subword-segmentation | — | — | native-cpp, python, tensorflow, sentencepiece-model | embedded, mobile, edge, desktop, server | Apache-2.0 / not-provided | unknown |
 | [spaCy](pipelines/language/spacy.yaml) · [upstream](<https://github.com/explosion/spaCy>) | toolkit / companion | tokenisation, named-entity-recognition, part-of-speech, dependency-parsing | — | — | python, onnxruntime, thinc, spacy-pipeline | desktop, server, edge | MIT / not-provided | unknown |

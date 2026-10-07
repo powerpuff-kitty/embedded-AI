@@ -1,0 +1,23 @@
+id: pythia
+name: Pythia
+domain: language
+tasks: [text-generation, research]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "EleutherAI's suite of small interpretable models (70M-12B) with public training checkpoints."
+links: {repository: 'https://github.com/EleutherAI/pythia', model: 'https://huggingface.co/EleutherAI/pythia-160m'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [embedded, edge, desktop, server], notes: 'Tiny variants are useful for experiments on constrained devices.'}
+runtimes: [transformers, llama-cpp]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained base models with intermediate checkpoints for research.', needs_data: 'Prompts for inference; corpora for further training.', update_strategy: 'Pin checkpoint; note these are base models without safety tuning.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en]}
+evaluation: ['Perplexity and downstream task checks for the chosen size.']
+limitations: ['Research base models; not instruction-tuned or safety-aligned.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/EleutherAI/pythia', notes: 'Pythia model suite.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, research, compact]
