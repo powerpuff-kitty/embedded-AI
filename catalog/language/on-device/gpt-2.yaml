@@ -1,0 +1,23 @@
+id: gpt-2
+name: GPT-2
+domain: language
+tasks: [text-generation]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "OpenAI's classic 124M-1.5B generative model, still a common tiny on-device baseline."
+links: {repository: 'https://github.com/openai/gpt-2', model: 'https://huggingface.co/openai-community/gpt2'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [embedded, edge, desktop], notes: '124M fits tiny devices; older and weaker than modern small LLMs.'}
+runtimes: [transformers, onnxruntime, llama-cpp]
+formats: [safetensors, onnx, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained base model; fine-tuning is common.', needs_data: 'Prompts for inference; text for fine-tuning.', update_strategy: 'Pin checkpoint; expect weak coherence versus newer models.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en]}
+evaluation: ['Perplexity/quality plus memory and latency on the target.']
+limitations: ['Dated quality and known bias; base model without safety tuning.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/openai/gpt-2', notes: 'GPT-2 models (modified MIT).'}]
+reviewed: '2026-10-06'
+tags: [language, llm, baseline, compact]

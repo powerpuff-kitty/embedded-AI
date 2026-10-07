@@ -1,0 +1,23 @@
+id: phi-3
+name: Phi-3
+domain: language
+tasks: [text-generation, on-device-llm, reasoning]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Microsoft's small language models (mini 3.8B / small 7B) tuned for reasoning at modest size."
+links: {repository: 'https://github.com/microsoft/PhiCookBook', model: 'https://huggingface.co/microsoft/Phi-3-mini-4k-instruct'}
+model: {parameters: null, file_size_mb: null}
+license: {code: MIT, weights: MIT}
+deployment: {offline: true, targets: [mobile, edge, desktop, server], notes: '4-bit mini fits high-end phones; verify RAM/thermal per device.'}
+runtimes: [transformers, llama-cpp, onnxruntime]
+formats: [safetensors, gguf, onnx]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained instruct models; fine-tuning optional.', needs_data: 'Prompts for inference; task data for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality per target.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en, multilingual-variants]}
+evaluation: ['Reasoning/instruction quality at the chosen quantization plus memory and tokens/s.']
+limitations: ['Knowledge is limited relative to large models; quantized quality varies.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/microsoft/PhiCookBook', notes: 'Docs review of Phi-3 sizes and licence; not a board benchmark.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, on-device, reasoning]

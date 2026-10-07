@@ -1,0 +1,23 @@
+id: granite
+name: IBM Granite
+domain: language
+tasks: [text-generation, on-device-llm]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "IBM's Granite language models, including 2B variants intended for constrained deployment."
+links: {repository: 'https://github.com/ibm-granite/granite-3.0-language-models', model: 'https://huggingface.co/ibm-granite/granite-3.0-2b-instruct'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, edge, server], notes: '2B 4-bit variants suit edge; verify per device.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained instruct models under Apache-2.0; fine-tuning supported.', needs_data: 'Prompts for inference; task data for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [multilingual, en]}
+evaluation: ['Task quality plus memory and tokens/s at the chosen size.']
+limitations: ['Smaller sizes trade knowledge/reasoning for efficiency.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/ibm-granite/granite-3.0-language-models', notes: 'Granite language models.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, on-device, granite]

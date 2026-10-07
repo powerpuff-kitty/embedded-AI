@@ -1,0 +1,23 @@
+id: mistral
+name: Mistral (7B / Small)
+domain: language
+tasks: [text-generation, on-device-llm]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Mistral AI's open models and reference inference stack, including 7B and small variants."
+links: {repository: 'https://github.com/mistralai/mistral-inference', model: 'https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3'}
+model: {parameters: null, file_size_mb: null}
+license: {code: Apache-2.0, weights: Apache-2.0}
+deployment: {offline: true, targets: [desktop, server, edge], notes: '7B is desktop/server; smaller quantized variants target edge.'}
+runtimes: [transformers, llama-cpp, vllm]
+formats: [safetensors, gguf]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained instruct models; fine-tuning supported.', needs_data: 'Prompts for inference; task data for evaluation/fine-tuning.', update_strategy: 'Pin checkpoint and quantization; re-measure memory and quality.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [multilingual, en]}
+evaluation: ['Instruction quality plus memory and tokens/s at the chosen quantization.']
+limitations: ['7B is not embedded-scale; per-model licences can differ from Apache-2.0.']
+compatibility: []
+evidence: [{type: official, url: 'https://github.com/mistralai/mistral-inference', notes: 'Mistral inference stack and model references.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, mistral, pretrained]

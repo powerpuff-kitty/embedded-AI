@@ -1,0 +1,23 @@
+id: openelm
+name: OpenELM
+domain: language
+tasks: [text-generation, on-device-llm]
+class: small-llm-collection
+kind: collection
+catalogue_batch: expansion-2026-10-06
+description: "Apple's open efficient language models (270M-3B) with per-layer parameter scaling."
+links: {model: 'https://huggingface.co/apple/OpenELM-270M', paper: 'https://arxiv.org/abs/2404.14619'}
+model: {parameters: null, file_size_mb: null}
+license: {code: unknown, weights: unknown}
+deployment: {offline: true, targets: [mobile, edge, desktop], notes: '270M/450M/1.1B target on-device; verify licence per model.'}
+runtimes: [transformers, mlx, llama-cpp]
+formats: [safetensors]
+requirements: {ram_mb: {minimum: null, measured_peak: null}}
+usage: {mode: pretrained, training: 'Pretrained base/instruct variants; fine-tuning possible.', needs_data: 'Prompts for inference; task data for evaluation.', update_strategy: 'Check the Apple model licence; pin checkpoint and re-measure.'}
+data: {inputs: [text-prompt], outputs: [generated-text], languages: [en]}
+evaluation: ['Task quality plus memory and tokens/s on the target device.']
+limitations: ['Licence terms are non-standard (Apple model terms); verify before use.']
+compatibility: []
+evidence: [{type: official, url: 'https://huggingface.co/apple/OpenELM-270M', notes: 'OpenELM model card review.'}]
+reviewed: '2026-10-06'
+tags: [language, llm, on-device, apple]
