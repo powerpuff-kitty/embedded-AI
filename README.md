@@ -1,40 +1,34 @@
 # embedded-AI
 
-<p align="center"><img src="assets/banner.svg" alt="embedded-AI — the evidence-first catalogue of on-device AI" width="100%"></p>
-
-> The evidence-first catalogue of AI you can actually run on-device.
+> An embeddable AI catalogue — models, toolkits and non-AI primitives for local and resource-constrained computing.
 
 [![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
 [![pages](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/pages.yml?label=pages)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
 [![catalog](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/catalog.yml?label=validate)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
 [![recipes](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/recipes.yml?label=recipes)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml)
 [![entries](https://img.shields.io/badge/dynamic/json?color=blue&label=entries&query=%24.total&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](generated/coverage.json)
-[![reproduced](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=reproduced&query=%24.reproduced_entries&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](benchmarks/README.md)
 
-**Explore it live — https://powerpuff-kitty.github.io/embedded-AI/** · no install, no account, no tracking.
+**Explore it live** — <a href="https://powerpuff-kitty.github.io/embedded-AI/" target="_blank" rel="noopener">powerpuff-kitty.github.io/embedded-AI</a> · no install, no account, no tracking.
 
 ---
 
 ## What is this?
 
-**embedded-AI is a machine-readable catalogue of AI/ML models, toolkits and non-AI primitives for local and resource-constrained computing** — from microcontrollers and neuromorphic chips to phones, single-board computers and servers.
+**embedded-AI is a machine-readable catalogue of embeddable AI** — models, toolkits and non-AI primitives for local and resource-constrained computing, from microcontrollers and phones to single-board computers and servers.
 
-It exists to do one job well: help you find the right component for a device, and show you the evidence behind every claim. Each entry is a small YAML file; the tables below, the JSON exports and the web explorer are all generated from them.
+Each entry is a small YAML file. The tables below, the JSON exports, the search and need-matching CLIs, and the web explorer are all generated from those files. Fields that are not known are left unknown rather than guessed.
 
-## Why it is different
+## How it is organised
 
-- **Evidence first.** A target is only `reproduced` when a benchmark record exists for the exact hardware. Parameter counts and edge marketing never establish fit.
-- **Unknowns stay unknown.** Missing RAM, latency, power, licence or compatibility is shown as unknown — never invented or inferred from model size.
-- **Labelled honestly.** Pretrained models, models that need training, and companion tools are separated, with code and weights licences recorded independently.
-- **One source, many faces.** The same YAML drives the README table, the JSON exports, the search/need CLIs, and a fully offline web explorer with per-entry pages.
+- **Kinds:** `model`, `collection`, `pipeline`, `toolkit` and `primitive` are labelled separately.
+- **Use:** `pretrained`, `requires-training` and `companion` are recorded per entry.
+- **Domains:** 51 areas, from vision and audio to genomics, gaming and space.
+- **One source, many faces:** the same YAML drives the README table, the JSON exports and the explorer.
 
 ## Quick start
 
 **Use the live explorer** — nothing to install:
-
-```text
-https://powerpuff-kitty.github.io/embedded-AI/
-```
+<a href="https://powerpuff-kitty.github.io/embedded-AI/" target="_blank" rel="noopener">https://powerpuff-kitty.github.io/embedded-AI/</a>
 
 **Or work locally:**
 
@@ -54,21 +48,8 @@ Edit YAML, not generated tables. On `main`, CI regenerates and commits only cata
 | | |
 |---|---|
 | **365 entries** | models, collections, pipelines, toolkits and primitives |
-| **51 domains** | from vision and audio to neuromorphic, genomics and space |
-| **10 hardware profiles** | MCUs, SBCs, NPUs and neuromorphic processors |
-| **3 reproduced benchmarks** | measured on exact hosts, with raw latency samples |
-
-## Compatibility levels
-
-Compatibility is recorded per hardware target and is independent of popularity or file size.
-
-| Level | Meaning |
-|---|---|
-| `reproduced` | A benchmark record exists in `benchmarks/` for the exact target |
-| `reported` | An upstream or vendor source documents the target (evidence URL required) |
-| `theoretical` | Plausibly compatible, but not demonstrated |
-| `unsupported` | Known not to work |
-| `unknown` | Not assessed — the honest default |
+| **51 domains** | vision, audio, language, robotics, gaming, genomics and more |
+| **5 kinds** | model · collection · pipeline · toolkit · primitive |
 
 ## Domains
 
@@ -83,7 +64,6 @@ Compatibility is recorded per hardware target and is independent of popularity o
 - [Design system](docs/DESIGN.md) — tokens and components
 - [Taxonomy](docs/TAXONOMY.md) — how components are classified
 - [Building small models](docs/BUILDING-SMALL-MODELS.md) — a practical workflow
-- [Getting hardware evidence](docs/HARDWARE-DATA.md) — how to produce reproducible benchmarks
 - [Dependency & security review](docs/SECURITY-REVIEW-V02.md)
 - [Contributing](CONTRIBUTING.md) — entry rules and tooling
 
