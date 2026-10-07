@@ -139,5 +139,7 @@ try{
   localeSelect.addEventListener('change',async()=>{try{await loadLocale(localeSelect.value);localStorage.setItem('locale',localeSelect.value);}catch{}applyStatic(document);populate();updateCompare();render();});
   for(const [key,value]of new URLSearchParams(location.search)){const input=form.elements.namedItem(key);if(input){if(input.type==='checkbox')input.checked=value==='1';else input.value=value;}}
   const needParam=new URLSearchParams(location.search).get('need');if(needParam){$('#need').value=needParam;needQuery=needParam;}
+  const entryParam=new URLSearchParams(location.search).get('entry');const deepLinked=entryParam?entries.find(e=>e.id===entryParam):null;
   populate();render();
+  if(deepLinked)details(deepLinked);
 }catch(error){$('#entries').replaceChildren();$('#error').textContent=`Could not load the catalogue: ${error.message}. Build with npm run site:build and serve dist over HTTP.`;$('#count').textContent=t('ui.catalogUnavailable');}
