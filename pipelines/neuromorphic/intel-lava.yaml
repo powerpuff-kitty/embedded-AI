@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Intel's open-source software framework for programming neuromorphic hardware."
 links: {repository: 'https://github.com/lava-nc/lava'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-applicable}
+license: {code: "mixed BSD-3-Clause / LGPL-2.1-or-later", weights: not-applicable}
 deployment: {offline: true, targets: [desktop, edge], notes: 'Targets Loihi-class neuromorphic processors and CPU simulation.'}
 runtimes: [python]
 formats: []
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: companion, training: 'Runtime/compiler for neuromorphic programs; models trained elsewhere.', needs_data: 'A process graph and target hardware or simulator.', update_strategy: 'Match framework and hardware versions; revalidate per device.'}
 data: {inputs: [process-graph, spikes], outputs: [spikes, predictions], languages: []}
 evaluation: ['Latency, energy and accuracy on the target neuromorphic processor.']
-limitations: ['License not stated by the repository; real benefit requires neuromorphic hardware.']
+limitations: ['Mixed BSD-3-Clause / LGPL-2.1-or-later code licence; real benefit requires neuromorphic hardware.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/lava-nc/lava', notes: 'Intel Lava framework.'}]
 reviewed: '2026-10-06'

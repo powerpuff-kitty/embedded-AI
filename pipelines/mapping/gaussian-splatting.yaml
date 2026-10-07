@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Reference implementation of 3D Gaussian splatting for real-time radiance-field rendering."
 links: {repository: 'https://github.com/graphdeco-inria/gaussian-splatting', paper: 'https://arxiv.org/abs/2308.04079'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-applicable}
+license: {code: Gaussian-Splatting-License, weights: not-applicable}
 deployment: {offline: true, targets: [desktop, server], notes: 'CUDA-heavy training; rendered splats can be viewed on lighter devices.'}
 runtimes: [pytorch, cuda]
 formats: [ply]

@@ -1,5 +1,7 @@
 # Benchmark evidence
 
+> How measurements are taken, what RSS really means, and why a number is never a guarantee.
+
 `python -m bench.runner ADAPTER --config local.json --output runs/result.json` starts one isolated child process. Adapters: `dlinear`, `silero-vad`, `rtmpose` (RTMPose-S through rtmlib). Config specifies a local `model` path; acquisition is explicit and separate.
 
 Records include OS, CPU, architecture, Python/packages, source/artifact hashes, initialization/first-call time, warmups, raw latency samples and p50/p95/p99. Process lifetime high-water RSS is separate from sampled process-tree RSS. RSS includes Python, imports, input buffers and the model. It is not NPU/GPU memory. Sampling can miss peaks; summing process RSS can double-count shared pages. Power and accelerator memory remain null without instruments.

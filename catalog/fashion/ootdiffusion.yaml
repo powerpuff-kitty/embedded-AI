@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Latent-diffusion model for controllable virtual clothing try-on (outfitting fusion)."
 links: {repository: 'https://github.com/levihsu/OOTDiffusion', paper: 'https://arxiv.org/abs/2403.01779'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: unknown}
+license: {code: CC-BY-NC-SA-4.0, weights: unknown}
 deployment: {offline: true, targets: [server, desktop], notes: 'Diffusion inference is GPU-class; not an embedded model.'}
 runtimes: [pytorch]
 formats: [pytorch-checkpoint, safetensors]
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: pretrained, training: 'Released weights; fine-tuning is possible but data-heavy.', needs_data: 'Person and garment images for inference.', update_strategy: 'Verify licence; review outputs for consent and identity misuse.'}
 data: {inputs: [person-image, garment-image], outputs: [try-on-image], languages: []}
 evaluation: ['Garment fidelity, identity preservation and artifact review.']
-limitations: ['License not stated; diffusion outputs can misrepresent garments or people.']
+limitations: ['CC-BY-NC-SA-4.0 licence (non-commercial); diffusion outputs can misrepresent garments or people.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/levihsu/OOTDiffusion', notes: 'OOTDiffusion virtual try-on.'}, {type: paper, url: 'https://arxiv.org/abs/2403.01779', notes: 'Outfitting fusion latent diffusion for try-on.'}]
 reviewed: '2026-10-06'

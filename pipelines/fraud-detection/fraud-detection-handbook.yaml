@@ -8,7 +8,7 @@ catalogue_batch: expansion-2026-10-06
 description: "Reproducible machine-learning handbook for credit-card fraud detection with streaming features."
 links: {repository: 'https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook', paper: 'https://arxiv.org/abs/2009.13477'}
 model: {parameters: null, file_size_mb: null}
-license: {code: unknown, weights: not-provided}
+license: {code: GPL-3.0, weights: not-provided}
 deployment: {offline: true, targets: [server, desktop], notes: 'Reference pipeline; production fraud stacks differ.'}
 runtimes: [python, scikit-learn]
 formats: []
@@ -16,7 +16,7 @@ requirements: {ram_mb: {minimum: null, measured_peak: null}}
 usage: {mode: requires-training, training: 'Trains and evaluates fraud detectors with time-aware validation.', needs_data: 'Transaction streams with labels and realistic delay.', update_strategy: 'Revalidate PR-AUC over time; adapt thresholds to alert budgets.'}
 data: {inputs: [transaction-stream, card-features], outputs: [fraud-scores, alerts], languages: []}
 evaluation: ['Precision-recall AUC and alert volume under delayed labels.']
-limitations: ['License not stated; extreme class imbalance and concept drift.']
+limitations: ['GPL-3.0 code licence; extreme class imbalance and concept drift.']
 compatibility: []
 evidence: [{type: official, url: 'https://github.com/Fraud-Detection-Handbook/fraud-detection-handbook', notes: 'Fraud Detection Handbook.'}]
 reviewed: '2026-10-06'
