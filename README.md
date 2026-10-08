@@ -43,6 +43,8 @@ Each entry is a small YAML file. The tables below, the JSON exports, the search 
 **Or work locally:**
 
 ```sh
+git clone https://github.com/powerpuff-kitty/embedded-AI.git
+cd embedded-AI
 npm ci --ignore-scripts
 npm run search -- --domain finance --usage pretrained      # metadata search
 npm run need -- "detect people offline with a tiny model"  # plain-language matcher
