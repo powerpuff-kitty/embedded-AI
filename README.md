@@ -3,9 +3,9 @@
 > Embeddable intelligence and procedural computing — learned models, generators, simulations and hybrid recipes, with explicit runtime and evidence boundaries.
 
 [![Live explorer](https://img.shields.io/badge/live_explorer-open-2ea44f?logo=githubpages&logoColor=white)](https://powerpuff-kitty.github.io/embedded-AI/)
-[![pages](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/pages.yml?label=pages)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
-[![catalog](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/catalog.yml?label=validate)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
-[![recipes](https://img.shields.io/github/actions/workflow/status/powerpuff-kitty/embedded-AI/recipes.yml?label=recipes)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml)
+[![pages](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml/badge.svg?branch=main&event=push)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/pages.yml)
+[![catalog](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml/badge.svg?branch=main&event=push)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/catalog.yml)
+[![recipes](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml/badge.svg?branch=main&event=push)](https://github.com/powerpuff-kitty/embedded-AI/actions/workflows/recipes.yml)
 [![entries](https://img.shields.io/badge/dynamic/json?color=blue&label=entries&query=%24.total&url=https%3A%2F%2Fraw.githubusercontent.com%2Fpowerpuff-kitty%2Fembedded-AI%2Fmain%2Fgenerated%2Fcoverage.json)](generated/coverage.json)
 [![code license: MIT](https://img.shields.io/badge/code_license-MIT-blue.svg)](LICENSE)
 [![data license: CC BY 4.0](https://img.shields.io/badge/data_license-CC_BY_4.0-lightgrey.svg)](LICENSE-DATA)
